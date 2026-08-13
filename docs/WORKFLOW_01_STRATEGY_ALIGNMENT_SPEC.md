@@ -1,7 +1,7 @@
 # Workflow 01 — Strategy alignment implementation spec
 
 > [CX] Draft started: 2026-08-13  
-> Status: six tools at `contract`; illustrative fixtures and one internal operating pilot exist, but behavior-level method coverage, domain review and customer samples remain incomplete.
+> Status: SWOT and landscape map at `fixture`; four remaining tools at `contract`. Domain review and customer samples remain incomplete.
 
 ## Outcome
 
@@ -46,4 +46,4 @@ The four illustrative scenarios are encoded in `tests/fixtures/` and checked by 
 
 ## Current implementation sequence
 
-Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. The next batch is behavior-level rule enforcement for SWOT and landscape map together, followed by the remaining tools in table order. Do not clone validation logic into six pages, and do not promote readiness based only on the internal pilot or Python fixture audit.
+Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. SWOT and landscape map now use one shared browser rule module, reproduce valid and missing-source fixture outcomes, and block invalid handoffs in the actual pages. Continue with business model and value proposition together, then OKR and roadmap. Do not clone validation logic into six pages, and do not promote readiness based only on the internal pilot or Python fixture audit.

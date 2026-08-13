@@ -134,17 +134,17 @@
 
     <script src="../shared/js/project-store.js"></script>
     <script src="../shared/js/workflow-store.js"></script>
+    <script src="../shared/js/workflow01-rules.js"></script>
     <script src="../shared/js/core.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const app = new ModiqiApp('swot_analysis_v1');
+            new ModiqiApp('swot_analysis_v1');
             lucide.createIcons({
                 attrs: {
                     class: "icon",
                     'stroke-width': 2
                 }
             });
-            app.setupStrategicClipboard();
         });
     </script>
     <script src="../shared/js/workflow-panel.js"></script>

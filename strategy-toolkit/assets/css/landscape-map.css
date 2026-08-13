@@ -19,7 +19,8 @@
 }
 
 .axis-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(120px, 1.4fr) minmax(120px, 1fr) minmax(90px, 0.8fr);
     align-items: center;
     gap: var(--spacing-sm);
     flex: 1;
@@ -49,6 +50,15 @@
     border-color: var(--color-focus-border);
 }
 
+@media screen {
+    .paper-a3 {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
 /* ========================================
    LANDSCAPE CONTAINER
    ======================================== */
@@ -63,6 +73,7 @@
 }
 
 .landscape-map {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -266,6 +277,57 @@
     flex-shrink: 0;
 }
 
+.position-records {
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.position-help {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+.position-table-wrap {
+    overflow-x: auto;
+}
+
+.position-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-xs);
+}
+
+.position-table th,
+.position-table td {
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-border-medium);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.position-table th {
+    background: var(--color-bg-subtle);
+    font-weight: var(--font-weight-semibold);
+}
+
+.position-table select,
+.position-table input {
+    width: 100%;
+    min-width: 76px;
+    box-sizing: border-box;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    background: var(--color-bg-white);
+    color: var(--color-text-primary);
+    font: inherit;
+}
+
+.position-table td:last-child {
+    width: 42%;
+}
+
 .section-title {
     display: flex;
     align-items: center;
@@ -400,7 +462,7 @@
 
     .axis-item {
         align-items: stretch;
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .landscape-container {
@@ -423,6 +485,10 @@
 
     .competitor-card {
         padding: var(--spacing-md);
+    }
+
+    .position-table {
+        min-width: 760px;
     }
 }
 

@@ -60,12 +60,16 @@
         <!-- Axis Configuration -->
         <div class="axis-config">
             <div class="axis-item">
-                <label>X轴 <span class="en-sub">(X-Axis)</span>:</label>
-                <input type="text" class="axis-input" value="价格定位 (低 → 高)" data-save-key="axis_x" aria-label="axis x">
+                <label>X轴 <span class="en-sub">(X-Axis)</span></label>
+                <input type="text" class="axis-input" value="价格定位" data-save-key="axis_x" aria-label="X轴名称">
+                <input type="text" class="axis-input" placeholder="单位，例如：元/月" data-save-key="axis_x_unit" aria-label="X轴单位">
+                <input type="text" class="axis-input" value="低 → 高" data-save-key="axis_x_direction" aria-label="X轴方向">
             </div>
             <div class="axis-item">
-                <label>Y轴 <span class="en-sub">(Y-Axis)</span>:</label>
-                <input type="text" class="axis-input" value="产品复杂度 (简单 → 复杂)" data-save-key="axis_y" aria-label="axis y">
+                <label>Y轴 <span class="en-sub">(Y-Axis)</span></label>
+                <input type="text" class="axis-input" value="产品复杂度" data-save-key="axis_y" aria-label="Y轴名称">
+                <input type="text" class="axis-input" placeholder="单位，例如：等级 1-5" data-save-key="axis_y_unit" aria-label="Y轴单位">
+                <input type="text" class="axis-input" value="简单 → 复杂" data-save-key="axis_y_direction" aria-label="Y轴方向">
             </div>
         </div>
 
@@ -152,6 +156,24 @@
                 </div>
             </div>
         </div>
+
+        <section class="position-records" aria-labelledby="position-records-title">
+            <h2 class="section-title" id="position-records-title"><i data-lucide="map-pin"></i> 定位依据 <span class="en-sub">(Position Evidence)</span></h2>
+            <p class="position-help">为每个已绘制对象记录类型、坐标和来源；坐标采用 0–100 的相对刻度。</p>
+            <div class="position-table-wrap">
+                <table class="position-table">
+                    <thead><tr><th>对象</th><th>类型</th><th>X</th><th>Y</th><th>来源或来源缺失说明</th></tr></thead>
+                    <tbody>
+                        <tr data-position-row="us"><th scope="row" data-alt-label="us">我们</th><td><select data-save-key="alt_us_type" aria-label="我们的类型"><option value="own_offer" selected>own offer</option><option value="competitor">competitor</option><option value="substitute">substitute</option></select></td><td><input type="number" min="0" max="100" value="65" data-save-key="alt_us_x" aria-label="我们的X坐标"></td><td><input type="number" min="0" max="100" value="65" data-save-key="alt_us_y" aria-label="我们的Y坐标"></td><td><input type="text" data-save-key="alt_us_source" aria-label="我们的来源" placeholder="来源，或明确的来源缺失说明"></td></tr>
+                        <tr data-position-row="leader"><th scope="row" data-alt-label="leader">市场领导者</th><td><select data-save-key="alt_leader_type" aria-label="市场领导者类型"><option value="competitor" selected>competitor</option><option value="substitute">substitute</option><option value="own_offer">own offer</option></select></td><td><input type="number" min="0" max="100" value="75" data-save-key="alt_leader_x" aria-label="市场领导者X坐标"></td><td><input type="number" min="0" max="100" value="75" data-save-key="alt_leader_y" aria-label="市场领导者Y坐标"></td><td><input type="text" data-save-key="alt_leader_source" aria-label="市场领导者来源" placeholder="来源，或明确的来源缺失说明"></td></tr>
+                        <tr data-position-row="challenger"><th scope="row" data-alt-label="challenger">挑战者A</th><td><select data-save-key="alt_challenger_type" aria-label="挑战者类型"><option value="competitor" selected>competitor</option><option value="substitute">substitute</option><option value="own_offer">own offer</option></select></td><td><input type="number" min="0" max="100" value="55" data-save-key="alt_challenger_x" aria-label="挑战者X坐标"></td><td><input type="number" min="0" max="100" value="55" data-save-key="alt_challenger_y" aria-label="挑战者Y坐标"></td><td><input type="text" data-save-key="alt_challenger_source" aria-label="挑战者来源" placeholder="来源，或明确的来源缺失说明"></td></tr>
+                        <tr data-position-row="niche"><th scope="row" data-alt-label="niche">细分玩家B</th><td><select data-save-key="alt_niche_type" aria-label="细分玩家类型"><option value="competitor" selected>competitor</option><option value="substitute">substitute</option><option value="own_offer">own offer</option></select></td><td><input type="number" min="0" max="100" value="35" data-save-key="alt_niche_x" aria-label="细分玩家X坐标"></td><td><input type="number" min="0" max="100" value="70" data-save-key="alt_niche_y" aria-label="细分玩家Y坐标"></td><td><input type="text" data-save-key="alt_niche_source" aria-label="细分玩家来源" placeholder="来源，或明确的来源缺失说明"></td></tr>
+                        <tr data-position-row="follower"><th scope="row" data-alt-label="follower">跟随者C</th><td><select data-save-key="alt_follower_type" aria-label="跟随者类型"><option value="competitor" selected>competitor</option><option value="substitute">substitute</option><option value="own_offer">own offer</option></select></td><td><input type="number" min="0" max="100" value="25" data-save-key="alt_follower_x" aria-label="跟随者X坐标"></td><td><input type="number" min="0" max="100" value="35" data-save-key="alt_follower_y" aria-label="跟随者Y坐标"></td><td><input type="text" data-save-key="alt_follower_source" aria-label="跟随者来源" placeholder="来源，或明确的来源缺失说明"></td></tr>
+                        <tr data-position-row="startup"><th scope="row" data-alt-label="startup">新进入者D</th><td><select data-save-key="alt_startup_type" aria-label="新进入者类型"><option value="competitor">competitor</option><option value="substitute" selected>substitute</option><option value="own_offer">own offer</option></select></td><td><input type="number" min="0" max="100" value="45" data-save-key="alt_startup_x" aria-label="新进入者X坐标"></td><td><input type="number" min="0" max="100" value="30" data-save-key="alt_startup_y" aria-label="新进入者Y坐标"></td><td><input type="text" data-save-key="alt_startup_source" aria-label="新进入者来源" placeholder="来源，或明确的来源缺失说明"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <!-- Competitor List -->
         <div class="competitor-list">
@@ -257,10 +279,13 @@
 
     <script src="../shared/js/project-store.js"></script>
     <script src="../shared/js/workflow-store.js"></script>
+    <script src="../shared/js/workflow01-rules.js"></script>
     <script src="../shared/js/core.js"></script>
+    <script src="assets/js/landscape-map.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             new ModiqiApp('landscape_map_v1');
+            window.ModiqiLandscapeMap.init();
             lucide.createIcons({
                 attrs: {
                     class: "icon",

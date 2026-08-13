@@ -19,38 +19,106 @@ async function seedProject(page) {
     await page.addInitScript(value => localStorage.setItem('modiqi_project_context_v2', JSON.stringify(value)), project);
 }
 
+async function addEvidence(panel, fieldKey, statement) {
+    const evidence = panel.locator('[data-evidence-form]');
+    await evidence.locator('[name="fieldKey"]').fill(fieldKey);
+    await evidence.locator('[name="statement"]').fill(statement);
+    await evidence.locator('[name="kind"]').selectOption('assumption');
+    await evidence.locator('[name="source"]').fill('Illustrative synthetic runtime fixture; no customer evidence');
+    await evidence.locator('[name="reviewDate"]').fill('2026-08-20');
+    await evidence.locator('button[type="submit"]').click();
+    await expect(panel.locator('[data-evidence-status]')).toContainText('证据已登记');
+}
+
 test('SWOT evidence and handoff retain provenance for explicit downstream adoption', async ({ page }) => {
     await seedProject(page);
     await page.goto('/strategy-toolkit/swot-analysis.html');
     const panel = page.locator('[data-workflow-panel]');
     await expect(panel).toContainText('Workflow 01 Runtime');
-    const evidence = panel.locator('[data-evidence-form]');
-    await evidence.locator('[name="fieldKey"]').fill('strengths');
-    await evidence.locator('[name="statement"]').fill('Current customers renew after strategy workshops');
-    await evidence.locator('[name="kind"]').selectOption('fact');
-    await evidence.locator('[name="source"]').fill('Illustrative public-method fixture; not customer evidence');
-    await evidence.locator('[name="reviewDate"]').fill('2026-08-20');
-    await evidence.locator('button[type="submit"]').click();
-    await expect(panel.locator('[data-evidence-status]')).toContainText('证据已登记');
+    await addEvidence(panel, 'strengths', 'A repeatable workshop format is available as an internal assumption.');
 
     const handoff = panel.locator('[data-handoff-form]');
-    await handoff.locator('[name="evidenceIds"]').check();
+    for (const checkbox of await handoff.locator('[name="evidenceIds"]').all()) await checkbox.check();
     await handoff.locator('[name="summary"]').fill('Prioritize evidence-led strategic workshops for the selected segment.');
     await handoff.locator('[name="unresolvedRisk"]').fill('Market size remains to verify.');
     await handoff.locator('[name="reviewDate"]').fill('2026-08-20');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(panel.locator('[data-handoff-status]')).toContainText('SWOT 每个适用象限');
+    expect(await page.evaluate(() => localStorage.getItem('modiqi_workflow_handoffs_v1'))).toBeNull();
+
+    await addEvidence(panel, 'weaknesses', 'The acquisition baseline is not validated.');
+    await addEvidence(panel, 'opportunities', 'SME planning demand remains to verify.');
+    await addEvidence(panel, 'threats', 'Substitute templates may reduce willingness to pay.');
+    await page.locator('[data-save-key="conclusion"]').fill('Validate one narrow evidence-led workflow before expanding the catalog.');
+    for (const checkbox of await handoff.locator('[name="evidenceIds"]').all()) await checkbox.check();
     await handoff.locator('button[type="submit"]').click();
     await expect(panel.locator('[data-handoff-status]')).toContainText('交接已保存');
 
     const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('modiqi_workflow_handoffs_v1')));
     const record = stored['key:project_workflow01_runtime']['key:strategy-alignment']['key:strategy-toolkit%2Fswot-analysis.html'];
     expect(record).toMatchObject({ schemaVersion: 1, projectId: project.id, status: 'ready', owner: 'Strategy Owner' });
-    expect(record.evidenceIds).toHaveLength(1);
+    expect(record.evidenceIds).toHaveLength(4);
 
     await page.goto('/strategy-toolkit/landscape-map.html');
     await expect(page.locator('[data-upstream]')).toContainText('Prioritize evidence-led strategic workshops');
     await page.locator('[name="adoptionNote"]').fill('Use as a hypothesis; validate against three alternatives.');
     await page.locator('[data-adopt]').click();
     await expect(page.locator('[data-adoption-status]')).toContainText('当前画布内容未被静默覆盖');
+});
+
+test('landscape method fields drive positions and block handoff until axes and sources are complete', async ({ page }) => {
+    await seedProject(page);
+    await page.goto('/strategy-toolkit/landscape-map.html');
+    const panel = page.locator('[data-workflow-panel]');
+    await addEvidence(panel, 'axis_x', 'The selected dimensions are an internal comparison hypothesis.');
+    const handoff = panel.locator('[data-handoff-form]');
+    await handoff.locator('[name="evidenceIds"]').check();
+    await handoff.locator('[name="summary"]').fill('Test the gap between isolated templates and reviewed workflows.');
+    await handoff.locator('[name="reviewDate"]').fill('2026-08-20');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('两条轴都必须填写名称、单位和方向');
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('缺少来源');
+
+    await page.locator('[data-save-key="axis_x_unit"]').fill('ordinal score 0-100');
+    await page.locator('[data-save-key="axis_y_unit"]').fill('ordinal score 0-100');
+    for (const id of ['us', 'leader', 'challenger', 'niche', 'follower', 'startup']) {
+        await page.locator(`[data-save-key="alt_${id}_source"]`).fill('Illustrative internal hypothesis; external source pending');
+    }
+    await page.locator('[data-save-key="alt_us_x"]').fill('');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('有效的 X/Y 数值位置');
+    await page.locator('[data-save-key="alt_us_x"]').fill('20');
+    await page.locator('[data-save-key="alt_us_y"]').fill('80');
+    await expect(page.locator('.competitor.us')).toHaveAttribute('style', /left: 20%; top: 20%/);
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('交接已保存');
+    await page.waitForTimeout(1200);
+    await page.reload();
+    await expect(page.locator('[data-save-key="axis_x_unit"]')).toHaveValue('ordinal score 0-100');
+    await expect(page.locator('[data-save-key="alt_us_source"]')).toHaveValue('Illustrative internal hypothesis; external source pending');
+    await expect(page.locator('.competitor.us')).toHaveAttribute('style', /left: 20%; top: 20%/);
+});
+
+test('shared Workflow 01 rules reproduce valid and missing-source fixture outcomes', async ({ page }) => {
+    await page.goto('/strategy-toolkit/landscape-map.html');
+    const result = await page.evaluate(async () => {
+        const paths = ['swot-analysis', 'landscape-map'];
+        const output = {};
+        for (const stem of paths) {
+            const fixture = await fetch(`/tests/fixtures/${stem}.json`).then(response => response.json());
+            output[stem] = Object.fromEntries(fixture.cases
+                .filter(item => ['valid', 'missing-source'].includes(item.id))
+                .map(item => [
+                    item.id,
+                    window.ModiqiWorkflow01Rules.validateStructured(fixture.toolPath, item.input).map(issue => issue.code),
+                ]));
+        }
+        return output;
+    });
+    expect(result).toEqual({
+        'swot-analysis': { valid: [], 'missing-source': ['missing_source'] },
+        'landscape-map': { valid: [], 'missing-source': ['missing_source'] },
+    });
 });
 
 test('handoff completion is blocked without evidence, owner, and review date', async ({ page }) => {

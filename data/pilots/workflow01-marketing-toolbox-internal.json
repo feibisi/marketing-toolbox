@@ -29,7 +29,7 @@
         "weaknesses": [
           {
             "id": "ev-internal-readiness",
-            "statement": "Six core tools have source-backed method bases and contract readiness; no core tool has fixture, reviewed, or release readiness.",
+            "statement": "At baseline commit 59868e5, six core tools had source-backed method bases and contract readiness; no core tool had fixture, reviewed, or release readiness.",
             "kind": "fact",
             "source": "https://feicode.com/Modiqi-com/marketing-toolbox/src/commit/59868e5a108ccf413be8d17d140f20c1651d2344/data/core-readiness.json",
             "sourceGapReason": "",

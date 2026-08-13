@@ -3,8 +3,8 @@
   "source": "canonical core tools from data/tools.json",
   "summary": {
     "smoke": 24,
-    "contract": 6,
-    "fixture": 0,
+    "contract": 4,
+    "fixture": 2,
     "reviewed": 0,
     "release": 0
   },
@@ -421,12 +421,12 @@
       "path": "strategy-toolkit/landscape-map.html",
       "tool_id": "strategy-toolkit:landscape-map",
       "workflow_id": "strategy-alignment",
-      "validation_level": "contract",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
-        "persistable_fields": 32,
-        "form_controls": 4,
+        "persistable_fields": 60,
+        "form_controls": 32,
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": true,
@@ -489,7 +489,7 @@
       "path": "strategy-toolkit/swot-analysis.html",
       "tool_id": "strategy-toolkit:swot-analysis",
       "workflow_id": "strategy-alignment",
-      "validation_level": "contract",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,

@@ -31,6 +31,6 @@ Statements without a qualifying source are marked as assumptions and carry an ex
 
 ## Decision
 
-Continue Workflow 01 hardening. Do not add more supported tools, promote any core tool to `fixture`, advertise customer validation, or begin Workflow 02 business implementation yet.
+At the pilot decision point, continue Workflow 01 hardening and do not promote a tool until its behavior gate passes. The follow-on SWOT and landscape batch later passed its page/shared-module fixture gate; this does not change the pilot's zero-customer and pending-domain-review boundary. Do not add more supported tools, advertise customer validation, or begin Workflow 02 business implementation yet.
 
 The next admissible business evidence is one to three project samples with recorded authorization, sanitisation responsibility, allowed purpose, retention boundary and named domain reviewer. An internal sample can test operations but cannot replace customer evidence.

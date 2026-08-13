@@ -141,6 +141,14 @@
         if (!evidenceIds.length) issues.push('至少关联一条当前工具证据。');
         const selected = project.evidence.filter(item => evidenceIds.includes(item.id));
         if (selected.some(item => !item.source || !item.owner || !item.reviewDate)) issues.push('关联证据缺少来源、负责人或复核日期。');
+        const pageSnapshot = snapshot();
+        const methodIssues = window.ModiqiWorkflow01Rules?.validateHandoff({
+            toolPath,
+            snapshot: pageSnapshot,
+            evidence: selected,
+            summary: values.summary,
+        }) || [];
+        issues.push(...methodIssues.map(item => item.message));
         const status = root.querySelector('[data-handoff-status]');
         if (issues.length) {
             status.textContent = `未完成：${issues.join(' ')}`;
@@ -156,7 +164,7 @@
             owner: values.owner,
             reviewDate: values.reviewDate,
             evidenceIds,
-            snapshot: snapshot(),
+            snapshot: pageSnapshot,
             status: 'ready',
         });
         status.textContent = downstreamPath ? `交接已保存，可由下一工具确认采用：${downstreamPath}` : '工作流最终交付已保存。';

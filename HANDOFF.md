@@ -274,3 +274,33 @@ gitleaks dir                             PASS
 - The internal pilot proves that one coherent internal decision can be represented by the six written contracts. It does not prove page-level method behavior, customer demand, willingness to pay, domain approval or release readiness.
 - `real_customer_samples=0`; no readiness level was promoted. The next technical batch remains SWOT plus landscape behavior-level validation, while authorized sample intake is a separate Modiqi business gate.
 - FeiCode accepted branch `codex/workflow01-internal-pilot` at functional commit `16d1f7e87b325f10a211d382cffe8f54ddcb345d`; Git updated the local tracking ref to the same SHA. A separate post-push `ls-remote` readback timed out, so independent remote SHA verification remains SKIP. No website, deployment, DNS, VM, provider, credential, permission or cluster-service change was made.
+
+## [CX] 2026-08-13 Workflow 01 first behavior batch
+
+### Result
+
+- Added a shared Workflow 01 rule module and connected it to the evidence/handoff panel so page snapshots are checked before handoff.
+- SWOT now requires sourced evidence in all four quadrants and a non-placeholder strategic implication. The duplicate strategic-clipboard listener was removed.
+- Competitive Landscape now records axis label/unit/direction plus six objects' type, 0–100 coordinates and source/source-gap; coordinates and names synchronize to plotted objects after saved state is restored.
+- Runtime tests exercise the real SWOT and Landscape pages plus the valid and missing-source illustrative fixture cases. Readiness is now 24 `smoke`, 4 `contract`, 2 `fixture`, 0 `reviewed`, 0 `release`.
+
+### Verification
+
+```text
+npm run test:quality             PASS
+- internal pilot audit           1 internal project / 6 tools / 0 customer samples
+- fixture audit                  6 tools / 4 illustrative scenarios / 0 real customer samples
+- JavaScript                     214 samples
+- static                         165 pages / 1648 refs / 878 controls
+- Playwright                     195 passed
+- layout                         318 clear / 0 high / 0 blocker
+- CSS                            0 errors / 715 existing warnings
+gitleaks dir .                    PASS
+git diff --check                 PASS
+```
+
+### Boundary
+
+- The two `fixture` ratings mean deterministic page/module behavior is now asserted for those two tools only. They do not mean domain review, customer validation, deployment or product release.
+- `real_customer_samples=0`, the named domain reviewer is still absent, and business release remains BLOCKED. No production VM, website, DNS, provider, credential or permission was changed.
+- The next behavior batch is Business Model Canvas plus Value Proposition Canvas; the feature branch remains unmerged pending review.

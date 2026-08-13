@@ -14,7 +14,7 @@
 - 144 个工具已有规范化清单；30 个核心工具按 6 条工作流组织。
 - 桌面 144、移动 144、核心打印 30 个布局样本的已知阻断项已清零。
 - 日常 `npm run test:quality` 已覆盖清单、数据合同、依赖、语法、静态引用、CSS、浏览器和布局。
-- 24 个核心工具处于 `smoke`、Workflow 01 的 6 个处于 `contract`；`fixture`、`reviewed` 和 `release` 均为 0。
+- 24 个核心工具处于 `smoke`；Workflow 01 中 4 个处于 `contract`、SWOT 与竞争格局图 2 个处于 `fixture`；`reviewed` 和 `release` 均为 0。
 - 715 个 CSS 设计令牌 warning 是未完成债务。
 - 当前验证以本地自动化和合成/技术样本为主，不能代替真实业务成效验证。
 
