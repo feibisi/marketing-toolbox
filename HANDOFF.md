@@ -235,3 +235,10 @@ CSS                              0 errors; existing warning baseline remains
 - Workflow 01 is now honestly recorded as six `contract`, 24 other core tools remain `smoke`, and no tool is `fixture`, `reviewed`, or `release`.
 - `npm run test:quality` PASS: 193 Playwright tests and 318/318 layout measurements clear; gitleaks directory scan also PASS.
 - Security hardening commit `daf4c754da88838fc56c82423420e4b6c033b119` is local only. Three bounded FeiCode SSH/HTTPS attempts timed out on 2026-08-13; remote feature branch remains `7f0fd50b61f915d8145ccf5daaa75963e70782bb` and remote `main` remains `4d2f205656a36abb703db7f6a1e80ce5a97f7c83`. Merge is BLOCKED until the reviewed commit can be pushed and its remote SHA verified.
+
+## [CX] 2026-08-13 Workflow 01 merged to main
+
+- FeiCode accepted feature-branch push `59868e5a108ccf413be8d17d140f20c1651d2344`; local `main` was fast-forwarded only after the independent review APPROVE and the pre-merge local/remote `main` check matched `4d2f205656a36abb703db7f6a1e80ce5a97f7c83`.
+- FeiCode then acknowledged `main` update `4d2f205..59868e5`. Local `main` and its push-updated `origin/main` tracking ref match `59868e5`; public repository metadata still reports `default_branch=main`.
+- Independent post-push `ls-remote`/branch-API SHA readback is SKIP for now because FeiCode SSH/TLS handshakes repeatedly time out after the successful push. Do not describe that independent readback as PASS until a later clean check returns the SHA.
+- Real-sample execution has not started: `real_customer_samples=0`. The Modiqi VM is production but already held by another tracked takeover, so this task did not enter it or read customer/marketing data. Candidate portfolio projects and illustrative fixtures are not substitutes for authorized real customer samples.
