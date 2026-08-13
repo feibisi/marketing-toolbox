@@ -222,3 +222,9 @@ CSS                              0 errors; existing warning baseline remains
 - Deterministic illustrative fixtures verify rules and failure detection; they are not real business validation. `real_customer_samples=0`, so business release remains BLOCKED.
 - Method contracts remain `review_status=draft`; domain review, real samples, export/import regression, Firefox/Safari and assistive-technology verification are still required.
 - No website, deployment, DNS, VM, provider, credential, permission or cluster-service change was made.
+
+## [CX] 2026-08-13 Workflow 01 feature branch published
+
+- Local commit `4064dd23006de821103675ef5929cbc8b3fd25f9` was pushed to FeiCode branch `codex/feicode-doc-hardening`; local and remote branch SHA match.
+- Review URL: `https://feicode.com/Modiqi-com/marketing-toolbox/compare/main...codex/feicode-doc-hardening`.
+- The branch was not merged into `main`; this is source collaboration evidence, not a website deployment or product release.
