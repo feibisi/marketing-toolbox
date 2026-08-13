@@ -6,6 +6,8 @@
         landscape: 'strategy-toolkit/landscape-map.html',
         businessModel: 'strategy-toolkit/business-model-canvas.html',
         valueProposition: 'strategy-toolkit/value-proposition.html',
+        okr: 'strategy-toolkit/okr-cascade.html',
+        roadmap: 'strategy-toolkit/strategic-roadmap.html',
     });
     const EVIDENCE_KINDS = new Set(['fact', 'assumption', 'to_verify']);
     const ALTERNATIVE_TYPES = new Set(['competitor', 'substitute', 'own_offer']);
@@ -42,6 +44,14 @@
         missing_promise: '需要选择一个可验证的价值承诺。',
         missing_mismatch: '需要记录尚未解决的价值匹配缺口。',
         segment_mismatch: '价值主张的客户细分必须与上游商业模式画布一致，或先返回上游修订。',
+        missing_okr_context: 'OKR 需要明确客户细分、目标和上游战略链接。',
+        invalid_kr_metric: '每条关键结果都需要稳定 ID、结果陈述、基线、目标、单位、截止日期、负责人和来源。',
+        activity_only_kr: '关键结果必须描述可衡量结果，不能只是活动或任务。',
+        roadmap_unmapped_outcome: '每项举措必须映射到上游 OKR 的关键结果 ID。',
+        roadmap_dependency_missing: '路线图依赖必须引用当前路线图中存在的举措 ID。',
+        roadmap_dependency_cycle: '路线图存在循环依赖，必须调整举措顺序。',
+        invalid_date_window: '路线图举措需要有效的开始和结束日期，且开始日期不能晚于结束日期。',
+        invalid_initiative: '每项路线图举措都需要稳定 ID、名称、负责人和决策门。',
     });
 
     function text(value) {
@@ -174,11 +184,75 @@
         return unique(issues);
     }
 
-    function validateStructured(toolPath, input) {
+    function validDate(value) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return false;
+        const parsed = new Date(`${value}T00:00:00Z`);
+        return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+    }
+
+    function validateOkr(input) {
+        const issues = [];
+        if (!text(input?.customerSegment) || !meaningful(input?.objective) || !text(input?.strategyLink)) {
+            issues.push(issue('missing_okr_context'));
+        }
+        const keyResults = Array.isArray(input?.keyResults) ? input.keyResults : [];
+        if (!keyResults.length) issues.push(issue('invalid_kr_metric'));
+        keyResults.forEach(item => {
+            const baseline = item?.baseline;
+            const target = item?.target;
+            if (!text(item?.id) || !meaningful(item?.statement) || baseline === '' || target === '' ||
+                !Number.isFinite(Number(baseline)) || !Number.isFinite(Number(target)) || !text(item?.unit) ||
+                !validDate(item?.dueDate) || !text(item?.owner) || !text(item?.source)) {
+                issues.push(issue('invalid_kr_metric'));
+            }
+            if (item?.kind !== 'outcome') issues.push(issue('activity_only_kr'));
+        });
+        return unique(issues);
+    }
+
+    function hasDependencyCycle(initiatives) {
+        const graph = new Map(initiatives.map(item => [item.id, item.dependencies || []]));
+        const visiting = new Set();
+        const visited = new Set();
+        function visit(id) {
+            if (visiting.has(id)) return true;
+            if (visited.has(id)) return false;
+            visiting.add(id);
+            if ((graph.get(id) || []).some(visit)) return true;
+            visiting.delete(id);
+            visited.add(id);
+            return false;
+        }
+        return [...graph.keys()].some(visit);
+    }
+
+    function validateRoadmap(input, context = {}) {
+        const issues = [];
+        const initiatives = Array.isArray(input?.initiatives) ? input.initiatives : [];
+        const ids = new Set(initiatives.map(item => text(item?.id)).filter(Boolean));
+        const krIds = new Set(context.krIds || []);
+        if (!initiatives.length) issues.push(issue('invalid_initiative'));
+        initiatives.forEach(item => {
+            if (!text(item?.id) || !meaningful(item?.name) || !text(item?.owner) || !text(item?.decisionGate)) {
+                issues.push(issue('invalid_initiative'));
+            }
+            if (!krIds.has(text(item?.outcomeLink))) issues.push(issue('roadmap_unmapped_outcome'));
+            if ((item?.dependencies || []).some(id => !ids.has(id))) issues.push(issue('roadmap_dependency_missing'));
+            if (!validDate(item?.startDate) || !validDate(item?.endDate) || item.startDate > item.endDate) {
+                issues.push(issue('invalid_date_window'));
+            }
+        });
+        if (hasDependencyCycle(initiatives)) issues.push(issue('roadmap_dependency_cycle'));
+        return unique(issues);
+    }
+
+    function validateStructured(toolPath, input, context = {}) {
         if (toolPath === TOOL_PATHS.swot) return validateSwot(input);
         if (toolPath === TOOL_PATHS.landscape) return validateLandscape(input);
         if (toolPath === TOOL_PATHS.businessModel) return validateBusinessModel(input);
         if (toolPath === TOOL_PATHS.valueProposition) return validateValueProposition(input);
+        if (toolPath === TOOL_PATHS.okr) return validateOkr(input);
+        if (toolPath === TOOL_PATHS.roadmap) return validateRoadmap(input, context);
         return [];
     }
 
@@ -254,6 +328,40 @@
         };
     }
 
+    function okrFromPage({ snapshot }) {
+        return {
+            customerSegment: snapshot.okr_customer_segment,
+            objective: snapshot.okr_objective,
+            strategyLink: snapshot.okr_strategy_link,
+            keyResults: [1, 2].map(index => ({
+                id: snapshot[`okr_kr_${index}_id`],
+                statement: snapshot[`okr_kr_${index}_statement`],
+                kind: snapshot[`okr_kr_${index}_kind`],
+                baseline: snapshot[`okr_kr_${index}_baseline`],
+                target: snapshot[`okr_kr_${index}_target`],
+                unit: snapshot[`okr_kr_${index}_unit`],
+                dueDate: snapshot[`okr_kr_${index}_due_date`],
+                owner: snapshot[`okr_kr_${index}_owner`],
+                source: snapshot[`okr_kr_${index}_source`],
+            })),
+        };
+    }
+
+    function roadmapFromPage({ snapshot }) {
+        return {
+            initiatives: [1, 2].map(index => ({
+                id: snapshot[`roadmap_${index}_id`],
+                name: snapshot[`roadmap_${index}_name`],
+                outcomeLink: snapshot[`roadmap_${index}_outcome_link`],
+                owner: snapshot[`roadmap_${index}_owner`],
+                dependencies: text(snapshot[`roadmap_${index}_dependencies`]).split(',').map(text).filter(Boolean),
+                startDate: snapshot[`roadmap_${index}_start_date`],
+                endDate: snapshot[`roadmap_${index}_end_date`],
+                decisionGate: snapshot[`roadmap_${index}_decision_gate`],
+            })),
+        };
+    }
+
     function validateHandoff({ toolPath, snapshot, evidence, summary, upstreamHandoff }) {
         if (toolPath === TOOL_PATHS.swot) return validateSwot(swotFromPage({ snapshot, evidence }));
         if (toolPath === TOOL_PATHS.landscape) return validateLandscape(landscapeFromPage({ snapshot, summary }));
@@ -263,6 +371,16 @@
             const upstreamSegment = text(upstreamHandoff?.snapshot?.bmc_customer_segment);
             if (upstreamSegment && upstreamSegment !== text(snapshot.customer_segment)) issues.push(issue('segment_mismatch'));
             return unique(issues);
+        }
+        if (toolPath === TOOL_PATHS.okr) {
+            const issues = validateOkr(okrFromPage({ snapshot }));
+            const upstreamSegment = text(upstreamHandoff?.snapshot?.customer_segment);
+            if (upstreamSegment && upstreamSegment !== text(snapshot.okr_customer_segment)) issues.push(issue('segment_mismatch'));
+            return unique(issues);
+        }
+        if (toolPath === TOOL_PATHS.roadmap) {
+            const krIds = [1, 2].map(index => text(upstreamHandoff?.snapshot?.[`okr_kr_${index}_id`])).filter(Boolean);
+            return validateRoadmap(roadmapFromPage({ snapshot }), { krIds });
         }
         return [];
     }

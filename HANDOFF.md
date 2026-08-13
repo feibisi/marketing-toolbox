@@ -346,3 +346,30 @@ git diff --check                 PASS
 - Remote `main` was read at `59868e5a108ccf413be8d17d140f20c1651d2344`, confirmed as an ancestor, then local `main` was fast-forwarded and pushed without force.
 - Independent post-push readback confirmed local HEAD = remote `refs/heads/main` = `8f7d844f966338384d14eab08867e6980b26e6f0`; remote HEAD resolves to `refs/heads/main`.
 - This is source merge evidence only. It is not a website deployment, product release, domain review or customer validation.
+
+## [CX] 2026-08-14 Workflow 01 final fixture batch
+
+### Result
+
+- OKR now records one upstream-consistent segment, a qualitative objective, a strategy link and two structured outcome KRs with stable IDs, baseline, target, unit, due date, owner and source. Activity-only KRs and segment mismatches block handoff.
+- Strategic Roadmap now records two structured initiatives with stable IDs, upstream KR links, owners, dependencies, start/end dates and decision gates. Missing links, unknown dependencies, invalid date windows and dependency cycles block final delivery.
+- Shared browser rules reproduce all six deterministic fixture contracts. Readiness is now 24 `smoke`, 0 `contract`, 6 `fixture`, 0 `reviewed`, 0 `release`.
+
+### Verification
+
+```text
+npm run test:quality             PASS
+- JavaScript                     214 samples
+- static                         165 pages / 1652 refs / 933 controls
+- Playwright                     200 passed
+- layout                         318 clear / 0 high / 0 blocker
+- CSS                            0 errors / existing warnings only
+- real customer samples          0
+```
+
+Desktop and mobile screenshots for both changed pages were inspected. The first full run found 9 px of OKR print-paper clipping; the print rule was corrected and two subsequent layout audits were 318/318 clear.
+
+### Boundary
+
+- Six `fixture` tools mean deterministic contract and page behavior, not domain approval or customer validation.
+- A named domain reviewer and one to three authorized, sanitised project samples are still absent. `reviewed`, business release and Workflow 02 implementation remain BLOCKED.

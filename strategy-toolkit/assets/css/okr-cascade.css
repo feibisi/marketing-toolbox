@@ -391,6 +391,12 @@ body:not(.theme-dark).color-mode .kr-item {
 
 @media print {
 
+    main.paper-a3 {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
     .btn-add-kr,
     .delete-item-btn,
     .btn-add-item {
@@ -440,6 +446,69 @@ body:not(.theme-dark).color-mode .kr-item {
 .theme-dark .obj-label {
     background: var(--color-text-primary);
     color: var(--color-bg-white);
+}
+
+.okr-method-record {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border-light);
+    background: var(--color-bg-subtle);
+}
+
+.okr-context-grid,
+.okr-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-md);
+}
+
+.okr-metric-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.okr-metric-card {
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border-light);
+    background: var(--color-bg-white);
+}
+
+.okr-method-record label {
+    display: grid;
+    gap: var(--spacing-xs);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.okr-method-record input,
+.okr-method-record select {
+    min-width: 0;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border-medium);
+    background: var(--color-bg-white);
+    color: var(--color-text-primary);
+}
+
+.okr-wide {
+    grid-column: span 2;
+}
+
+@media screen and (min-width: 769px) {
+    main.paper-a3 {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .cascade-container,
+    .level-objectives,
+    .list-body {
+        height: auto;
+        overflow: visible;
+    }
 }
 
 /* Mobile composition: allow the cascade to grow instead of clipping its cards. */
@@ -506,5 +575,15 @@ body:not(.theme-dark).color-mode .kr-item {
     .kr-list {
         padding-left: 0;
         margin-left: 0;
+    }
+
+    .okr-context-grid,
+    .okr-metric-list,
+    .okr-metric-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .okr-wide {
+        grid-column: auto;
     }
 }

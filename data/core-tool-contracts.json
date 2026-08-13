@@ -214,7 +214,7 @@
       "downstream": [
         "strategy-toolkit/strategic-roadmap.html"
       ],
-      "validation_level": "contract",
+      "validation_level": "fixture",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#okr-cascade",
       "method_sources": [
@@ -259,7 +259,7 @@
         "strategy-toolkit/okr-cascade.html"
       ],
       "downstream": [],
-      "validation_level": "contract",
+      "validation_level": "fixture",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#strategic-roadmap",
       "method_sources": [

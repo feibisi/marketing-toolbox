@@ -102,15 +102,17 @@ test('landscape method fields drive positions and block handoff until axes and s
 test('shared Workflow 01 rules reproduce valid and missing-source fixture outcomes', async ({ page }) => {
     await page.goto('/strategy-toolkit/landscape-map.html');
     const result = await page.evaluate(async () => {
-        const paths = ['swot-analysis', 'landscape-map', 'business-model-canvas', 'value-proposition'];
+        const paths = ['swot-analysis', 'landscape-map', 'business-model-canvas', 'value-proposition', 'okr-cascade', 'strategic-roadmap'];
         const output = {};
+        const okrFixture = await fetch('/tests/fixtures/okr-cascade.json').then(response => response.json());
+        const krIds = okrFixture.cases.find(item => item.id === 'valid').input.keyResults.map(item => item.id);
         for (const stem of paths) {
             const fixture = await fetch(`/tests/fixtures/${stem}.json`).then(response => response.json());
             output[stem] = Object.fromEntries(fixture.cases
-                .filter(item => ['valid', 'missing-source'].includes(item.id))
+                .filter(item => ['valid', 'missing-source'].includes(item.id) || (stem === 'strategic-roadmap' && item.id === 'roadmap-cycle'))
                 .map(item => [
                     item.id,
-                    window.ModiqiWorkflow01Rules.validateStructured(fixture.toolPath, item.input).map(issue => issue.code),
+                    window.ModiqiWorkflow01Rules.validateStructured(fixture.toolPath, item.input, { krIds }).map(issue => issue.code),
                 ]));
         }
         return output;
@@ -120,6 +122,8 @@ test('shared Workflow 01 rules reproduce valid and missing-source fixture outcom
         'landscape-map': { valid: [], 'missing-source': ['missing_source'] },
         'business-model-canvas': { valid: [], 'missing-source': [] },
         'value-proposition': { valid: [], 'missing-source': [] },
+        'okr-cascade': { valid: [], 'missing-source': [] },
+        'strategic-roadmap': { valid: [], 'missing-source': [], 'roadmap-cycle': ['roadmap_dependency_cycle'] },
     });
 });
 
@@ -230,6 +234,95 @@ test('OKR dynamic objectives persist after add and refresh', async ({ page }) =>
     await page.waitForTimeout(1200);
     await page.reload();
     await expect(page.locator('.objective-card')).toHaveCount(before + 1);
+});
+
+test('OKR handoff requires measurable outcomes and matches the upstream segment', async ({ page }) => {
+    await seedProject(page);
+    await page.goto('/strategy-toolkit/value-proposition.html');
+    await page.evaluate(projectId => window.ModiqiWorkflowStore.save({
+        projectId,
+        workflowId: 'strategy-alignment',
+        sourceTool: 'strategy-toolkit/value-proposition.html',
+        targetTool: 'strategy-toolkit/okr-cascade.html',
+        summary: 'Illustrative upstream value proposition',
+        owner: 'Strategy Owner',
+        reviewDate: '2026-08-20',
+        evidenceIds: ['ev-upstream-illustrative'],
+        snapshot: { customer_segment: 'Regional accounting firms' },
+        status: 'ready',
+    }), project.id);
+    await page.goto('/strategy-toolkit/okr-cascade.html');
+    const panel = page.locator('[data-workflow-panel]');
+    await addEvidence(panel, 'okr_objective', 'The OKR is an illustrative internal acceptance fixture.');
+    const handoff = panel.locator('[data-handoff-form]');
+    await handoff.locator('[name="evidenceIds"]').check();
+    await handoff.locator('[name="summary"]').fill('Use outcome KRs to validate the selected strategy.');
+    await handoff.locator('[name="reviewDate"]').fill('2026-08-20');
+    await page.locator('[data-save-key="okr_customer_segment"]').fill('Independent retailers');
+    await page.locator('[data-save-key="okr_objective"]').fill('Make the workshop a credible decision aid.');
+    await page.locator('[data-save-key="okr_strategy_link"]').fill('Validate the narrow workshop before recurring delivery.');
+    const keyResults = [
+        ['Raise documented plan completion rate', '0', '80', 'percent of illustrative runs', '2026-10-31', 'Illustrative product owner', 'Acceptance-run register'],
+        ['Reduce unresolved evidence gaps', '6', '2', 'gaps per illustrative run', '2026-11-30', 'Illustrative research owner', 'Evidence review register'],
+    ];
+    for (let index = 1; index <= 2; index += 1) {
+        const [statement, baseline, target, unit, dueDate, owner, source] = keyResults[index - 1];
+        for (const [suffix, value] of Object.entries({ statement, baseline, target, unit, due_date: dueDate, owner, source })) {
+            await page.locator(`[data-save-key="okr_kr_${index}_${suffix}"]`).fill(value);
+        }
+    }
+    await page.locator('[data-save-key="okr_kr_1_kind"]').selectOption('activity');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('不能只是活动');
+    await page.locator('[data-save-key="okr_kr_1_kind"]').selectOption('outcome');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('客户细分必须与上游');
+    await page.locator('[data-save-key="okr_customer_segment"]').fill('Regional accounting firms');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('交接已保存');
+});
+
+test('strategic roadmap blocks missing outcome links and dependency cycles', async ({ page }) => {
+    await seedProject(page);
+    await page.goto('/strategy-toolkit/okr-cascade.html');
+    await page.evaluate(projectId => window.ModiqiWorkflowStore.save({
+        projectId,
+        workflowId: 'strategy-alignment',
+        sourceTool: 'strategy-toolkit/okr-cascade.html',
+        targetTool: 'strategy-toolkit/strategic-roadmap.html',
+        summary: 'Illustrative upstream OKR',
+        owner: 'Strategy Owner',
+        reviewDate: '2026-08-20',
+        evidenceIds: ['ev-upstream-illustrative'],
+        snapshot: { okr_kr_1_id: 'kr-1', okr_kr_2_id: 'kr-2' },
+        status: 'ready',
+    }), project.id);
+    await page.goto('/strategy-toolkit/strategic-roadmap.html');
+    const panel = page.locator('[data-workflow-panel]');
+    await addEvidence(panel, 'roadmap_1_name', 'The roadmap is an illustrative internal acceptance fixture.');
+    const handoff = panel.locator('[data-handoff-form]');
+    await handoff.locator('[name="evidenceIds"]').check();
+    await handoff.locator('[name="summary"]').fill('Sequence two initiatives against the selected outcomes.');
+    await handoff.locator('[name="reviewDate"]').fill('2026-08-20');
+    const initiatives = [
+        ['Instrument acceptance runs', 'kr-missing', 'Illustrative product owner', 'initiative-2', '2026-10-01', '2026-09-30', 'Proceed only after acceptance checks.'],
+        ['Review evidence gaps', 'kr-2', 'Illustrative research owner', 'initiative-1', '2026-10-01', '2026-10-31', 'Stop if provenance is lost.'],
+    ];
+    for (let index = 1; index <= 2; index += 1) {
+        const [name, outcome_link, owner, dependencies, start_date, end_date, decision_gate] = initiatives[index - 1];
+        for (const [suffix, value] of Object.entries({ name, outcome_link, owner, dependencies, start_date, end_date, decision_gate })) {
+            await page.locator(`[data-save-key="roadmap_${index}_${suffix}"]`).fill(value);
+        }
+    }
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('映射到上游 OKR');
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('循环依赖');
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('开始日期不能晚于结束日期');
+    await page.locator('[data-save-key="roadmap_1_outcome_link"]').fill('kr-1');
+    await page.locator('[data-save-key="roadmap_1_dependencies"]').fill('');
+    await page.locator('[data-save-key="roadmap_1_start_date"]').fill('2026-09-01');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('工作流最终交付已保存');
 });
 
 test('invalid handoff JSON does not stop a workflow page from opening', async ({ page }) => {

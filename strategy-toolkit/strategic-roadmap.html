@@ -198,6 +198,38 @@
                 </div>
             </div>
         </div>
+        <section class="roadmap-method-record" aria-labelledby="roadmap-method-title">
+            <h2 class="section-title" id="roadmap-method-title"><i data-lucide="git-branch"></i> 举措依赖验证 <span class="en-sub">(Initiative Validation)</span></h2>
+            <p>每项举措必须映射到上游 KR；依赖用逗号分隔的举措 ID 表示，循环依赖会阻止交接。</p>
+            <div class="roadmap-initiative-list">
+                <article class="roadmap-initiative-card">
+                    <h3>举措 1</h3>
+                    <div class="roadmap-method-grid">
+                        <label>ID<input type="text" value="initiative-1" data-save-key="roadmap_1_id"></label>
+                        <label>名称<input type="text" data-save-key="roadmap_1_name"></label>
+                        <label>对应 KR ID<input type="text" value="kr-1" data-save-key="roadmap_1_outcome_link"></label>
+                        <label>负责人<input type="text" data-save-key="roadmap_1_owner"></label>
+                        <label>依赖举措 ID<input type="text" data-save-key="roadmap_1_dependencies" placeholder="例如：initiative-2"></label>
+                        <label>开始日期<input type="date" data-save-key="roadmap_1_start_date"></label>
+                        <label>结束日期<input type="date" data-save-key="roadmap_1_end_date"></label>
+                        <label class="roadmap-wide">决策门<textarea rows="2" data-save-key="roadmap_1_decision_gate"></textarea></label>
+                    </div>
+                </article>
+                <article class="roadmap-initiative-card">
+                    <h3>举措 2</h3>
+                    <div class="roadmap-method-grid">
+                        <label>ID<input type="text" value="initiative-2" data-save-key="roadmap_2_id"></label>
+                        <label>名称<input type="text" data-save-key="roadmap_2_name"></label>
+                        <label>对应 KR ID<input type="text" value="kr-2" data-save-key="roadmap_2_outcome_link"></label>
+                        <label>负责人<input type="text" data-save-key="roadmap_2_owner"></label>
+                        <label>依赖举措 ID<input type="text" data-save-key="roadmap_2_dependencies" placeholder="例如：initiative-1"></label>
+                        <label>开始日期<input type="date" data-save-key="roadmap_2_start_date"></label>
+                        <label>结束日期<input type="date" data-save-key="roadmap_2_end_date"></label>
+                        <label class="roadmap-wide">决策门<textarea rows="2" data-save-key="roadmap_2_decision_gate"></textarea></label>
+                    </div>
+                </article>
+            </div>
+        </section>
         <!-- Footer -->
         <footer class="modiqi-footer">
             <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
@@ -210,6 +242,7 @@
 
     <script src="../shared/js/project-store.js"></script>
     <script src="../shared/js/workflow-store.js"></script>
+    <script src="../shared/js/workflow01-rules.js"></script>
     <script src="../shared/js/core.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

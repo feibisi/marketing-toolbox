@@ -1,7 +1,7 @@
 # Workflow 01 — Strategy alignment implementation spec
 
 > [CX] Draft started: 2026-08-13  
-> Status: SWOT, landscape map, business model and value proposition at `fixture`; OKR and roadmap remain at `contract`. Domain review and customer samples remain incomplete.
+> Status: all six tools are at `fixture`; domain review and customer samples remain incomplete, so `reviewed` and `release` remain at zero.
 
 ## Outcome
 
@@ -46,4 +46,4 @@ The four illustrative scenarios are encoded in `tests/fixtures/` and checked by 
 
 ## Current implementation sequence
 
-Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. SWOT, landscape map, business model and value proposition now use one shared browser rule module and block invalid handoffs in the actual pages. Business model rejects prompt-only blocks and missing economic bases; value proposition requires ranked customer items, response mappings, fit evidence and segment consistency with the upstream model. Continue with OKR and roadmap together. Do not clone validation logic into six pages, and do not promote readiness based only on the internal pilot or Python fixture audit.
+Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. One shared browser rule module blocks invalid handoffs in the actual pages. OKR requires an upstream-consistent segment, qualitative objective, strategy link and outcome KRs with stable IDs, baseline, target, unit, due date, owner and source. Strategic Roadmap requires stable initiative IDs, valid upstream KR links, owners, dates, decision gates, existing dependencies and an acyclic dependency graph. The six deterministic fixtures now reproduce browser-rule outcomes, but the next gate is a named domain review plus authorized, sanitised project samples—not Workflow 02 implementation or readiness promotion from internal evidence alone.
