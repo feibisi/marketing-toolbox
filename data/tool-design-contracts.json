@@ -1,0 +1,875 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "path": "ai-toolkit/ai-agent-card.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "ai-toolkit/ai-opportunity-radar.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "ai-toolkit/ai-persona-generator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "ai-toolkit/ai-tool-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "ai-toolkit/ai-workflow-builder.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "ai-toolkit/content-repurposing-engine.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "ai-toolkit/prompt-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/ab-test-planner.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/attribution-model.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/budget-allocator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/budget-planner.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/clv-calculator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/cohort-analysis.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/competitor-analysis.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/experiment-board.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/funnel-diagnosis.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/ice-scoring.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/kpi-dashboard.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/measurement-plan.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/north-star-metric.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/pirate-metrics.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/rfm-analysis.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "analytics-toolkit/roi-calculator.html",
+      "kind": "calculator",
+      "migration_status": "declared",
+      "paper": "a4-portrait",
+      "output": "result-summary"
+    },
+    {
+      "path": "behavior-toolkit/aida-model.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/attribution-analysis.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/bj-fogg-model.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/cognitive-bias.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/customer-experience-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/customer-journey.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/empathy-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/hook-model.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/marketing-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/nudge-planner.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/service-blueprint.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/touchpoint-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "behavior-toolkit/user-persona.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-archetype-wheel.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-archetypes.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-architecture.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-essence-wheel.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-messaging.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-naming.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-positioning-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-prism.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/brand-story.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/jtbd-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/perceptual-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/positioning-statement.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/tone-voice.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/touchpoint-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "brand-toolkit/visual-identity.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "cdp-toolkit/cdp-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "cdp-toolkit/ltv-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "cdp-toolkit/segmentation-engine.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-audit.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-calendar.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-distribution-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-performance.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-repurposing.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-seo-checklist.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/content-strategy-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/editorial-workflow.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/headline-optimizer.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/storytelling-framework.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "content-toolkit/topic-cluster-mapper.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "customer-toolkit/customer-journey-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "customer-toolkit/user-persona.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "email-toolkit/deliverability-checklist.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "email-toolkit/drip-campaign-blueprint.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "email-toolkit/marketing-mix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "email-toolkit/newsletter-planner.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "email-toolkit/subject-line-tester.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/blue-ocean-strategy.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/design-thinking-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/innovation-ambition-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/kano-model.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/pmf-engine.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/scamper-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/service-blueprint.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/six-thinking-hats.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "innovation-toolkit/user-story-map.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/abm-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/closing-checklist.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/competitive-battlecard.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/growth-funnel.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/lead-scoring.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/objection-handling-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/pdp-optimizer.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/pricing-tier.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/proposal-generator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/quote-calculator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/sales-funnel.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sales-toolkit/sales-script.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/ad-copy-ab-tester.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/ad-copy-architect.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/bid-calculator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/keyword-mixer.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/negative-keyword-manager.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/ppc-budget-planner.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "sem-toolkit/quality-score.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/backlink-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/core-vitals.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/keyword-intent-mapper.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/keyword-research.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/schema-generator.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/seo-planner.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/serp-analyzer.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/technical-seo-audit.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "seo-toolkit/topic-cluster-mapper.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/community-persona.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/content-idea-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/crisis-playbook.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/engagement-strategy.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/kol-evaluation.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/social-account-audit.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/social-listening.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/social-media-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "social-toolkit/utm-builder.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/ansoff-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/balanced-scorecard.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/bcg-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/blue-ocean-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/business-model-canvas.html",
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
+    },
+    {
+      "path": "strategy-toolkit/digital-audit-report.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/feature-comparison.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/ge-mckinsey-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/gtm-strategy.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/impact-effort-matrix.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/landscape-map.html",
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
+    },
+    {
+      "path": "strategy-toolkit/lean-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/market-positioning.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/mckinsey-7s.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/okr-cascade.html",
+      "kind": "worksheet",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "multi-page"
+    },
+    {
+      "path": "strategy-toolkit/okr-template.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/pestel-analysis.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/porters-five-forces.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/stakeholder-radar.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/stp-canvas.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/strategic-roadmap.html",
+      "kind": "worksheet",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "multi-page"
+    },
+    {
+      "path": "strategy-toolkit/swot-analysis.html",
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
+    },
+    {
+      "path": "strategy-toolkit/three-horizons.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/value-chain.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/value-proposition.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    },
+    {
+      "path": "strategy-toolkit/vrio-framework.html",
+      "kind": "legacy-unclassified",
+      "migration_status": "legacy-unclassified",
+      "output": "undecided"
+    }
+  ]
+}

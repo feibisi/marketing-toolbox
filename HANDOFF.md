@@ -380,3 +380,32 @@ Desktop and mobile screenshots for both changed pages were inspected. The first 
 - Remote `main` was independently read at `bfa95c9c792b183f972978fcba6086c99aeae84f`, confirmed as an ancestor, then local `main` was fast-forwarded and pushed without force.
 - Independent post-push readback confirmed local HEAD = remote `refs/heads/main` = `2860594d59f6698dd22b585998ad9ff53387c924`; remote HEAD resolves to `refs/heads/main`.
 - This is source merge evidence only. It is not a website deployment, product release, domain review or customer validation.
+
+## [CX] 2026-08-14 Design Constitution and reference-tool boundary
+
+### Result
+
+- Added `docs/DESIGN_CONSTITUTION.md` as the precedence document for tool type, paper boundary and visual acceptance.
+- Added a 144-entry design-contract inventory: 6 representative tools are declared and 138 remain explicitly `legacy-unclassified`; the latter are migration debt, not design PASS.
+- SWOT, Business Model Canvas and Landscape Map now have enforced desktop A3 single-sheet contracts. OKR and Strategic Roadmap are declared continuous worksheets; ROI is declared a calculator with a result-summary output contract.
+- Moved Business Model Canvas validation metadata outside the A3 delivery sheet. Existing save keys and Workflow 01 validation behavior remain compatible.
+- Mobile pages now identify themselves as editing mode rather than paper preview. Added contract and browser gates for type declarations, fixed-paper ratio and support UI separation.
+
+### Verification
+
+```text
+npm run test:quality             PASS
+- design contracts               144 covered / 6 declared / 138 legacy-unclassified
+- JavaScript                     215 samples
+- static                         165 pages / 1659 refs / 933 controls
+- Playwright                     207 passed
+- layout                         318 clear / 0 high / 0 blocker
+- CSS                            0 errors / 715 existing warnings
+```
+
+Desktop Business Model Canvas and mobile SWOT screenshots were inspected. The first fixed-paper run correctly exposed the validation block as 148 px outside the A3 capacity; moving that workspace-only block outside the paper cleared the issue without making the sheet infinitely tall.
+
+### Boundary
+
+- This is the first representative batch, not a claim that all 144 tools comply. The remaining 138 tools are deliberately marked unclassified until product type and output are reviewed.
+- No website deployment, product release, production VM, DNS, provider, credential or permission changed. Workflow 01 still has zero customer samples and no named domain reviewer.

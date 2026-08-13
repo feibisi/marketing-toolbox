@@ -1,0 +1,48 @@
+/* Design Constitution modes. Loaded after page CSS so product type, rather
+   than a historical overflow patch, owns the outer document behavior. */
+@media screen and (min-width: 769px) {
+    body[data-tool-kind="fixed-canvas"] main[data-output-format="single-sheet"].paper-a3 {
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: var(--paper-a3-aspect) !important;
+        overflow: hidden !important;
+    }
+}
+
+.workspace-support-panel {
+    width: min(100%, var(--container-2xl));
+    margin: var(--spacing-xl) auto 0;
+    padding: var(--spacing-xl);
+    box-sizing: border-box;
+    border: 1px solid var(--color-border-medium);
+    background: var(--color-bg-paper);
+}
+
+.workspace-panel-note {
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+@media screen and (max-width: 768px) {
+    body[data-tool-kind]::after {
+        content: "移动编辑模式 · 打印输出按纸张合同生成";
+        display: block;
+        width: 100%;
+        padding: var(--spacing-sm) var(--spacing-md);
+        box-sizing: border-box;
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-xs);
+        text-align: center;
+    }
+}
+
+@media print {
+    .workspace-support-panel {
+        display: none !important;
+    }
+
+    body[data-tool-kind]::after {
+        content: none;
+    }
+}

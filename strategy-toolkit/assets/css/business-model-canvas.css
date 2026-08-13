@@ -159,9 +159,7 @@ body:not(.theme-dark).color-mode .bmc-channels {
 }
 
 .bmc-method-record {
-    margin-top: var(--spacing-lg);
-    border-top: 1px solid var(--border-sem-outer);
-    padding-top: var(--spacing-md);
+    flex: none;
 }
 
 .bmc-method-grid {
@@ -192,15 +190,9 @@ body:not(.theme-dark).color-mode .bmc-channels {
 }
 
 @media screen and (min-width: 769px) {
-    main.paper-a3 {
-        aspect-ratio: auto;
-        min-height: 210mm;
-        overflow: visible;
-    }
-
     .bmc-container {
-        min-height: 620px;
-        flex: none;
+        min-height: 0;
+        flex: 1;
     }
 }
 

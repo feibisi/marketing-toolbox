@@ -27,12 +27,13 @@
     <!-- Tool-specific styles -->
     <link rel="stylesheet" href="assets/css/business-model-canvas.css">
     <link rel="stylesheet" href="../shared/css/workflow-panel.css">
+    <link rel="stylesheet" href="../shared/css/design-modes.css">
 </head>
 
-<body>
+<body data-tool-kind="fixed-canvas" data-paper-contract="a3-landscape">
     <div class="desk-background"></div>
 
-    <main class="paper-a3">
+    <main class="paper-a3" data-output-format="single-sheet">
         <header class="canvas-header">
             <div class="title-group">
                 <h1>商业模式画布</h1>
@@ -190,8 +191,17 @@
             </div>
         </div>
 
-        <section class="bmc-method-record" aria-labelledby="bmc-method-title">
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <section class="bmc-method-record workspace-support-panel" aria-labelledby="bmc-method-title">
             <h2 class="section-title" id="bmc-method-title"><i data-lucide="list-checks"></i> 商业模式验证 <span class="en-sub">(Model Validation)</span></h2>
+        <p class="workspace-panel-note">工作台校验信息，不属于 A3 商业模式画布打印正文。</p>
             <div class="bmc-method-grid">
                 <label>目标客户细分<input type="text" data-save-key="bmc_customer_segment" placeholder="与客户细分区块一致的单一目标细分"></label>
                 <label>关键依赖<textarea rows="2" data-save-key="bmc_dependencies" placeholder="例如：获授权的匿名渠道数据"></textarea></label>
@@ -201,13 +211,6 @@
                 <label>风险最高的假设<textarea rows="2" data-save-key="bmc_riskiest_assumption" placeholder="写明最可能推翻当前模式的一个假设"></textarea></label>
             </div>
         </section>
-        <!-- Footer -->
-        <footer class="modiqi-footer">
-            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
-            <span>Modiqi Digital Marketing Workbench © 2026</span>
-        </footer>
-
-    </main>
 
     <section class="workflow-panel-shell" data-evidence-panel data-workflow-panel data-workflow-id="strategy-alignment" data-tool-path="strategy-toolkit/business-model-canvas.html" data-upstream-path="strategy-toolkit/landscape-map.html" data-downstream-path="strategy-toolkit/value-proposition.html" aria-label="证据与工作流交接"></section>
 
