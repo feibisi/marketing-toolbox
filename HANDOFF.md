@@ -228,3 +228,10 @@ CSS                              0 errors; existing warning baseline remains
 - Local commit `4064dd23006de821103675ef5929cbc8b3fd25f9` was pushed to FeiCode branch `codex/feicode-doc-hardening`; local and remote branch SHA match.
 - Review URL: `https://feicode.com/Modiqi-com/marketing-toolbox/compare/main...codex/feicode-doc-hardening`.
 - The branch was not merged into `main`; this is source collaboration evidence, not a website deployment or product release.
+
+## [CX] 2026-08-13 Workflow 01 pre-merge review
+
+- Independent code review initially found three HIGH issues: readiness overstated as `fixture`, attribute-context injection from imported project data, and unsafe object-key storage isolation. All three were fixed and the re-review returned APPROVE with zero remaining findings.
+- Workflow 01 is now honestly recorded as six `contract`, 24 other core tools remain `smoke`, and no tool is `fixture`, `reviewed`, or `release`.
+- `npm run test:quality` PASS: 193 Playwright tests and 318/318 layout measurements clear; gitleaks directory scan also PASS.
+- Security hardening commit `daf4c754da88838fc56c82423420e4b6c033b119` is local only. Three bounded FeiCode SSH/HTTPS attempts timed out on 2026-08-13; remote feature branch remains `7f0fd50b61f915d8145ccf5daaa75963e70782bb` and remote `main` remains `4d2f205656a36abb703db7f6a1e80ce5a97f7c83`. Merge is BLOCKED until the reviewed commit can be pushed and its remote SHA verified.
