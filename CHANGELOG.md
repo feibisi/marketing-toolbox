@@ -11,6 +11,15 @@
 - FeiCode 仓库身份、权限、凭据事故和分层验收运行文档。
 - 长期项目的仓库治理、贡献、安全和路线文档。
 - 独立工具箱与 `modiqi.com` WordPress 营销入口之间的职责边界。
+- Workflow 01 六个核心工具的来源化方法合同、项目级证据面板、显式工作流交接和四类 illustrative fixture。
+
+### Changed
+
+- 核心 readiness 由 30 个 `smoke` 更新为 24 个 `smoke`、6 个 `fixture`；真实客户样本仍为 0，业务 release 保持阻断。
+
+### Fixed
+
+- 修复 OKR 级联动态目标新增后无法可靠持久化和刷新恢复的问题。
 
 ## [2.4.0] - 2026-08-13
 

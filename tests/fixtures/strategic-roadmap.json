@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "workflowId": "strategy-alignment",
+  "toolPath": "strategy-toolkit/strategic-roadmap.html",
+  "provenance": {
+    "classification": "illustrative_synthetic",
+    "realCustomerSamples": 0,
+    "disclosure": "This is an illustrative synthetic fixture for deterministic rule testing. It contains zero real customer, order, revenue or production samples; cited public pages exercise traceability only."
+  },
+  "cases": [
+    {
+      "id": "valid",
+      "input": {
+        "initiatives": [
+          {
+            "id": "initiative-1",
+            "name": "Instrument acceptance runs",
+            "outcomeLink": "kr-1",
+            "owner": "Illustrative product owner",
+            "dependencies": [],
+            "startDate": "2026-09-01",
+            "endDate": "2026-09-30",
+            "decisionGate": "Proceed only when fixture and accessibility checks are documented."
+          },
+          {
+            "id": "initiative-2",
+            "name": "Review evidence gaps",
+            "outcomeLink": "kr-2",
+            "owner": "Illustrative research owner",
+            "dependencies": [
+              "initiative-1"
+            ],
+            "startDate": "2026-10-01",
+            "endDate": "2026-10-31",
+            "decisionGate": "Stop if evidence fields cannot retain provenance."
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": true,
+        "workflowIssueCodes": []
+      }
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "initiatives": [
+          {
+            "id": "initiative-1",
+            "name": "Instrument acceptance runs",
+            "outcomeLink": "kr-1",
+            "owner": "Illustrative product owner",
+            "dependencies": [],
+            "startDate": "2026-09-01",
+            "endDate": "2026-09-30",
+            "decisionGate": "Proceed only when fixture and accessibility checks are documented."
+          },
+          {
+            "id": "initiative-2",
+            "name": "Review evidence gaps",
+            "outcomeLink": "kr-2",
+            "owner": "Illustrative research owner",
+            "dependencies": [
+              "initiative-1"
+            ],
+            "startDate": "2026-10-01",
+            "endDate": "2026-10-31",
+            "decisionGate": "Stop if evidence fields cannot retain provenance."
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "segment_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "missing-source",
+      "input": {
+        "initiatives": [
+          {
+            "id": "initiative-1",
+            "name": "Instrument acceptance runs",
+            "outcomeLink": "kr-1",
+            "owner": "Illustrative product owner",
+            "dependencies": [],
+            "startDate": "2026-09-01",
+            "endDate": "2026-09-30",
+            "decisionGate": "Proceed only when fixture and accessibility checks are documented."
+          },
+          {
+            "id": "initiative-2",
+            "name": "Review evidence gaps",
+            "outcomeLink": "kr-2",
+            "owner": "Illustrative research owner",
+            "dependencies": [
+              "initiative-1"
+            ],
+            "startDate": "2026-10-01",
+            "endDate": "2026-10-31",
+            "decisionGate": "Stop if evidence fields cannot retain provenance."
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "missing_source"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-cycle",
+      "input": {
+        "initiatives": [
+          {
+            "id": "initiative-1",
+            "name": "Instrument acceptance runs",
+            "outcomeLink": "kr-1",
+            "owner": "Illustrative product owner",
+            "dependencies": [
+              "initiative-2"
+            ],
+            "startDate": "2026-09-01",
+            "endDate": "2026-09-30",
+            "decisionGate": "Proceed only when fixture and accessibility checks are documented."
+          },
+          {
+            "id": "initiative-2",
+            "name": "Review evidence gaps",
+            "outcomeLink": "kr-2",
+            "owner": "Illustrative research owner",
+            "dependencies": [
+              "initiative-1"
+            ],
+            "startDate": "2026-10-01",
+            "endDate": "2026-10-31",
+            "decisionGate": "Stop if evidence fields cannot retain provenance."
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": false,
+        "toolIssueCodes": [
+          "roadmap_dependency_cycle"
+        ],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "roadmap_dependency_cycle"
+        ]
+      }
+    }
+  ]
+}

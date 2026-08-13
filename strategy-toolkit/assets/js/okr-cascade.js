@@ -186,6 +186,16 @@ function saveListState() {
     }
 }
 
+window.restoreOkrListState = function () {
+    const list = document.getElementById('objectiveList');
+    if (!list || !window.modiqiApp) return;
+    const saveKey = list.getAttribute('data-save-key');
+    const saved = saveKey ? localStorage.getItem(window.modiqiApp.storageKeyPrefix + saveKey) : '';
+    if (saved) list.innerHTML = window.modiqiApp.sanitizeHTML(saved);
+    updateLabels();
+    calculateScores();
+};
+
 function updateLabels() {
     const objs = document.querySelectorAll('.objective-card');
     objs.forEach((obj, index) => {
@@ -195,5 +205,4 @@ function updateLabels() {
         }
     });
 }
-
 

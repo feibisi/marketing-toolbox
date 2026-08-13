@@ -78,6 +78,15 @@ def build() -> dict:
                 raise ValueError(f"{path}: {key} must be a non-empty list")
         if set(contract["evidence_requirement"]) != {"fact", "assumption", "to_verify"}:
             raise ValueError(f"{path}: evidence_requirement must contain fact, assumption, and to_verify")
+        fixture_path = ROOT / "tests" / "fixtures" / (Path(path).stem + ".json")
+        evidence_ui = "data-evidence-panel" in source
+        handoff_ui = "data-workflow-panel" in source
+        if LEVELS.index(contract["validation_level"]) >= LEVELS.index("contract"):
+            if "待领域负责人复核" in contract["method"]:
+                raise ValueError(f"{path}: contract validation requires an operational method")
+        if LEVELS.index(contract["validation_level"]) >= LEVELS.index("fixture"):
+            if not fixture_path.exists() or not evidence_ui or not handoff_ui:
+                raise ValueError(f"{path}: fixture validation requires fixture, evidence UI, and workflow handoff UI")
 
         rows.append({
             "path": path,
@@ -91,8 +100,9 @@ def build() -> dict:
                 "form_controls": len(re.findall(r"<(?:input|textarea|select)\b", source, re.I)),
                 "strategic_fields": len(re.findall(r"\bdata-strategic-id=", source)),
                 "example_hook": bool(re.search(r"loadExample|examples\.js|示例|范例", source, re.I)),
-                "evidence_ui": "data-evidence-panel" in source,
-                "business_fixture": (ROOT / "tests/fixtures" / (Path(path).stem + ".json")).exists(),
+                "evidence_ui": evidence_ui,
+                "workflow_handoff_ui": handoff_ui,
+                "business_fixture": fixture_path.exists(),
             },
         })
 

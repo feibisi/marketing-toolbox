@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "workflowId": "strategy-alignment",
+  "toolPath": "strategy-toolkit/business-model-canvas.html",
+  "provenance": {
+    "classification": "illustrative_synthetic",
+    "realCustomerSamples": 0,
+    "disclosure": "This is an illustrative synthetic fixture for deterministic rule testing. It contains zero real customer, order, revenue or production samples; cited public pages exercise traceability only."
+  },
+  "cases": [
+    {
+      "id": "valid",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "blocks": {
+          "partners": [
+            "Illustrative analytics implementation partner"
+          ],
+          "activities": [
+            "Run measurement workshop"
+          ],
+          "resources": [
+            "Reusable diagnostic worksheet"
+          ],
+          "valuePropositions": [
+            "A fixed-scope measurement plan for regional accounting firms"
+          ],
+          "relationships": [
+            "Facilitated workshop plus review"
+          ],
+          "channels": [
+            "Professional association webinar"
+          ],
+          "customerSegments": [
+            "Regional accounting firms"
+          ],
+          "costStructure": [
+            {
+              "item": "Facilitator time",
+              "basis": "hours per workshop"
+            }
+          ],
+          "revenueStreams": [
+            {
+              "item": "Workshop fee",
+              "basis": "fee per completed workshop"
+            }
+          ]
+        },
+        "dependencies": [
+          "Access to anonymised channel metrics"
+        ],
+        "contradictions": [],
+        "riskiestAssumption": "Regional accounting firms will pay for a fixed-scope workshop before requesting execution support."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": true,
+        "workflowIssueCodes": []
+      }
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "blocks": {
+          "partners": [
+            "Illustrative analytics implementation partner"
+          ],
+          "activities": [
+            "Run measurement workshop"
+          ],
+          "resources": [
+            "Reusable diagnostic worksheet"
+          ],
+          "valuePropositions": [
+            "A fixed-scope measurement plan for regional accounting firms"
+          ],
+          "relationships": [
+            "Facilitated workshop plus review"
+          ],
+          "channels": [
+            "Professional association webinar"
+          ],
+          "customerSegments": [
+            "Regional accounting firms"
+          ],
+          "costStructure": [
+            {
+              "item": "Facilitator time",
+              "basis": "hours per workshop"
+            }
+          ],
+          "revenueStreams": [
+            {
+              "item": "Workshop fee",
+              "basis": "fee per completed workshop"
+            }
+          ]
+        },
+        "dependencies": [
+          "Access to anonymised channel metrics"
+        ],
+        "contradictions": [],
+        "riskiestAssumption": "Regional accounting firms will pay for a fixed-scope workshop before requesting execution support."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "segment_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "missing-source",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "blocks": {
+          "partners": [
+            "Illustrative analytics implementation partner"
+          ],
+          "activities": [
+            "Run measurement workshop"
+          ],
+          "resources": [
+            "Reusable diagnostic worksheet"
+          ],
+          "valuePropositions": [
+            "A fixed-scope measurement plan for regional accounting firms"
+          ],
+          "relationships": [
+            "Facilitated workshop plus review"
+          ],
+          "channels": [
+            "Professional association webinar"
+          ],
+          "customerSegments": [
+            "Regional accounting firms"
+          ],
+          "costStructure": [
+            {
+              "item": "Facilitator time",
+              "basis": "hours per workshop"
+            }
+          ],
+          "revenueStreams": [
+            {
+              "item": "Workshop fee",
+              "basis": "fee per completed workshop"
+            }
+          ]
+        },
+        "dependencies": [
+          "Access to anonymised channel metrics"
+        ],
+        "contradictions": [],
+        "riskiestAssumption": "Regional accounting firms will pay for a fixed-scope workshop before requesting execution support."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "missing_source"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-cycle",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "blocks": {
+          "partners": [
+            "Illustrative analytics implementation partner"
+          ],
+          "activities": [
+            "Run measurement workshop"
+          ],
+          "resources": [
+            "Reusable diagnostic worksheet"
+          ],
+          "valuePropositions": [
+            "A fixed-scope measurement plan for regional accounting firms"
+          ],
+          "relationships": [
+            "Facilitated workshop plus review"
+          ],
+          "channels": [
+            "Professional association webinar"
+          ],
+          "customerSegments": [
+            "Regional accounting firms"
+          ],
+          "costStructure": [
+            {
+              "item": "Facilitator time",
+              "basis": "hours per workshop"
+            }
+          ],
+          "revenueStreams": [
+            {
+              "item": "Workshop fee",
+              "basis": "fee per completed workshop"
+            }
+          ]
+        },
+        "dependencies": [
+          "Access to anonymised channel metrics"
+        ],
+        "contradictions": [],
+        "riskiestAssumption": "Regional accounting firms will pay for a fixed-scope workshop before requesting execution support."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "roadmap_dependency_cycle"
+        ]
+      }
+    }
+  ]
+}

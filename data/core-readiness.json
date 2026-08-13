@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source": "canonical core tools from data/tools.json",
   "summary": {
-    "smoke": 30,
+    "smoke": 24,
     "contract": 0,
-    "fixture": 0,
+    "fixture": 6,
     "reviewed": 0,
     "release": 0
   },
@@ -22,6 +22,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -38,6 +39,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -54,6 +56,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -70,6 +73,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -86,6 +90,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -102,6 +107,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -118,6 +124,7 @@
         "strategic_fields": 2,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -134,6 +141,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -150,6 +158,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -166,6 +175,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -182,6 +192,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -198,6 +209,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -214,6 +226,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -230,6 +243,7 @@
         "strategic_fields": 0,
         "example_hook": true,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -246,6 +260,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -262,6 +277,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -278,6 +294,7 @@
         "strategic_fields": 3,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -294,6 +311,7 @@
         "strategic_fields": 5,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -310,6 +328,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -326,6 +345,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -342,6 +362,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -358,6 +379,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -365,7 +387,7 @@
       "path": "strategy-toolkit/business-model-canvas.html",
       "tool_id": "strategy-toolkit:business-model-canvas",
       "workflow_id": "strategy-alignment",
-      "validation_level": "smoke",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -373,8 +395,9 @@
         "form_controls": 2,
         "strategic_fields": 0,
         "example_hook": false,
-        "evidence_ui": false,
-        "business_fixture": false
+        "evidence_ui": true,
+        "workflow_handoff_ui": true,
+        "business_fixture": true
       }
     },
     {
@@ -390,6 +413,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -397,7 +421,7 @@
       "path": "strategy-toolkit/landscape-map.html",
       "tool_id": "strategy-toolkit:landscape-map",
       "workflow_id": "strategy-alignment",
-      "validation_level": "smoke",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -405,15 +429,16 @@
         "form_controls": 4,
         "strategic_fields": 0,
         "example_hook": false,
-        "evidence_ui": false,
-        "business_fixture": false
+        "evidence_ui": true,
+        "workflow_handoff_ui": true,
+        "business_fixture": true
       }
     },
     {
       "path": "strategy-toolkit/okr-cascade.html",
       "tool_id": "strategy-toolkit:okr-cascade",
       "workflow_id": "strategy-alignment",
-      "validation_level": "smoke",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -421,8 +446,9 @@
         "form_controls": 6,
         "strategic_fields": 0,
         "example_hook": false,
-        "evidence_ui": false,
-        "business_fixture": false
+        "evidence_ui": true,
+        "workflow_handoff_ui": true,
+        "business_fixture": true
       }
     },
     {
@@ -438,6 +464,7 @@
         "strategic_fields": 0,
         "example_hook": false,
         "evidence_ui": false,
+        "workflow_handoff_ui": false,
         "business_fixture": false
       }
     },
@@ -445,7 +472,7 @@
       "path": "strategy-toolkit/strategic-roadmap.html",
       "tool_id": "strategy-toolkit:strategic-roadmap",
       "workflow_id": "strategy-alignment",
-      "validation_level": "smoke",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -453,15 +480,16 @@
         "form_controls": 2,
         "strategic_fields": 0,
         "example_hook": false,
-        "evidence_ui": false,
-        "business_fixture": false
+        "evidence_ui": true,
+        "workflow_handoff_ui": true,
+        "business_fixture": true
       }
     },
     {
       "path": "strategy-toolkit/swot-analysis.html",
       "tool_id": "strategy-toolkit:swot-analysis",
       "workflow_id": "strategy-alignment",
-      "validation_level": "smoke",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -469,15 +497,16 @@
         "form_controls": 2,
         "strategic_fields": 5,
         "example_hook": false,
-        "evidence_ui": false,
-        "business_fixture": false
+        "evidence_ui": true,
+        "workflow_handoff_ui": true,
+        "business_fixture": true
       }
     },
     {
       "path": "strategy-toolkit/value-proposition.html",
       "tool_id": "strategy-toolkit:value-proposition",
       "workflow_id": "strategy-alignment",
-      "validation_level": "smoke",
+      "validation_level": "fixture",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -485,8 +514,9 @@
         "form_controls": 3,
         "strategic_fields": 0,
         "example_hook": false,
-        "evidence_ui": false,
-        "business_fixture": false
+        "evidence_ui": true,
+        "workflow_handoff_ui": true,
+        "business_fixture": true
       }
     }
   ]

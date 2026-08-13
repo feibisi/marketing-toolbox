@@ -1,7 +1,7 @@
 # Workflow 01 — Strategy alignment implementation spec
 
 > [CX] Draft started: 2026-08-13  
-> Status: implementation input; methods and fixtures still require domain review.
+> Status: implementation input; source basis drafted, fixtures still require domain review.
 
 ## Outcome
 
@@ -17,6 +17,19 @@ Transform a project objective and traceable environmental evidence into a sequen
 | 4 | Value proposition canvas | Customer jobs, pains and gains are ranked; each product response maps to an item rather than forming a separate list | At least one evidence-backed fit link and explicit unresolved mismatch; passes chosen promise and risk to OKR cascade |
 | 5 | OKR cascade | Objective is qualitative; key results have baseline, target, unit, due date, owner and data source | No activity-only key result; each objective links to the chosen strategy; passes measurable outcomes to roadmap |
 | 6 | Strategic roadmap | Initiatives have outcome link, owner, dependency, start/end window and decision gate | All committed initiatives map to a key result; dependencies have no unresolved cycle; produces the workflow deliverable |
+
+## Method basis and provenance
+
+The short `method` text in `data/core-tool-contracts.json` should stay operational. The durable source basis lives in `docs/WORKFLOW_01_METHOD_BASES.md`.
+
+| Tool | Source-backed rules | Project inference | Rights / naming note |
+|---|---|---|---|
+| SWOT analysis | Separate internal and external factors; use the method for strategic planning and decision-making; use the four quadrants as a revisable structure. | Record evidence kind, source, owner, and review date per item; collapse the result into one prioritized strategic implication; pass the implication to the next tool. | SWOT is a common framework name; no special reuse license was verified on the cited page during this review. |
+| Competitive landscape map | Use two dimensions that matter to competition or buyer perception; plot rivals relative to each other; use the map to find clusters, closest rivals, and gaps. | Axis labels must include unit and direction; distinguish competitor, substitute, and own offer; require at least three comparable alternatives or state why the map is not applicable. | The Virginia Tech page is published under CC BY-NC-SA; keep attribution and do not imply that the combined tool is an official standard. |
+| Business Model Canvas | Treat the canvas as a simplified business model representation; keep the nine building blocks together; use the canvas to design and challenge the model. | Record assumptions and dependencies in each block; name the unit or economic basis for revenue and cost; surface contradictions instead of hiding them. | Business Model Canvas is a Strategyzer-branded method name; cite Strategyzer and do not claim ownership of the framework. |
+| Value Proposition Canvas | Start from customer jobs, pains, and gains; map how the offering relieves pain and creates gains; use the canvas to test fit. | Rank jobs/pains/gains; map each response to a specific customer item; preserve at least one unresolved mismatch as risk input. | Value Proposition Canvas is a Strategyzer-branded method name; cite Strategyzer and do not imply a reusable license was verified beyond the source pages. |
+| OKR cascade | Keep objectives ambitious and outcome-oriented; keep key results measurable; use OKRs for alignment rather than as a task list. | Every objective needs baseline, target, unit, due date, owner, and data source; activity-only KRs are invalid; each objective must trace back to the chosen strategy. | OKR is a common management framework name; the cited sources describe the method, but no special trademark or reuse restriction was verified here. |
+| Strategic roadmap | Present a plan of action over time; keep teams aligned on short- and long-term goals; update the roadmap when priorities shift. | Every initiative needs an outcome link, owner, dependency, and start/end window; every committed initiative must map to an OKR key result; dependency cycles are invalid. | Roadmap is a common planning term; the Atlassian page is used as the method reference for this workflow. |
 
 ## Project and evidence behavior
 

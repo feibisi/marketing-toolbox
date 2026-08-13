@@ -18,7 +18,7 @@
         "至少一条可追溯事实或明确标记的假设",
         "负责人和复核日期"
       ],
-      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "method": "用 2×2 SWOT 矩阵区分内部与外部因素，并把结论收束为一条优先战略含义。",
       "deliverable": "有假设、依据和责任人的战略结论",
       "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
       "evidence_requirement": [
@@ -30,8 +30,21 @@
       "downstream": [
         "strategy-toolkit/landscape-map.html"
       ],
-      "validation_level": "smoke",
-      "review_status": "draft"
+      "validation_level": "fixture",
+      "review_status": "draft",
+      "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#swot-analysis",
+      "method_sources": [
+        {
+          "url": "https://ctb.ku.edu/en/table-of-contents/assessment/assessing-community-needs-and-resources/swot-analysis/main",
+          "support": "SWOT 定义、内部/外部区分、战略规划与决策用途"
+        }
+      ],
+      "project_inference": [
+        "每一项必须记录证据类型、来源、负责人和复核日期。",
+        "结论必须写成一个优先战略含义，而不是重复四象限清单。",
+        "若缺少来源，则把该项标为 to_verify。"
+      ],
+      "rights_note": "SWOT 是通用框架名；本次未核验到特殊复用许可。"
     },
     {
       "path": "strategy-toolkit/landscape-map.html",
@@ -46,7 +59,7 @@
         "至少一条可追溯事实或明确标记的假设",
         "负责人和复核日期"
       ],
-      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "method": "用二维竞争格局图或感知图定位竞争者、替代者和自家供给，并找出簇群与空白。",
       "deliverable": "有假设、依据和责任人的战略结论",
       "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
       "evidence_requirement": [
@@ -60,8 +73,25 @@
       "downstream": [
         "strategy-toolkit/business-model-canvas.html"
       ],
-      "validation_level": "smoke",
-      "review_status": "draft"
+      "validation_level": "fixture",
+      "review_status": "draft",
+      "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#competitive-landscape-map",
+      "method_sources": [
+        {
+          "url": "https://pressbooks.lib.vt.edu/strategicmanagement/chapter/3-5-mapping-strategic-groups/",
+          "support": "战略群组图的轴选择、最接近竞争者和机会空白"
+        },
+        {
+          "url": "https://wsu.pressbooks.pub/mktg360/chapter/6-9/",
+          "support": "感知图是二维图，展示产品相对竞争者的位置"
+        }
+      ],
+      "project_inference": [
+        "轴名必须写清单位与方向。",
+        "页面必须区分 competitor、substitute 和 own offer。",
+        "至少提供 3 个可比较对象；否则写 non-applicable reason。"
+      ],
+      "rights_note": "VT 页面为 CC BY-NC-SA；保留署名，不把组合工具说成官方标准。"
     },
     {
       "path": "strategy-toolkit/business-model-canvas.html",
@@ -76,7 +106,7 @@
         "至少一条可追溯事实或明确标记的假设",
         "负责人和复核日期"
       ],
-      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "method": "按九个构件描述、设计并质疑商业模式，把价值、客户、渠道、关系、资源、活动、伙伴、收入和成本放在同一页。",
       "deliverable": "有假设、依据和责任人的战略结论",
       "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
       "evidence_requirement": [
@@ -90,8 +120,25 @@
       "downstream": [
         "strategy-toolkit/value-proposition.html"
       ],
-      "validation_level": "smoke",
-      "review_status": "draft"
+      "validation_level": "fixture",
+      "review_status": "draft",
+      "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#business-model-canvas",
+      "method_sources": [
+        {
+          "url": "https://www.strategyzer.com/library/what-is-a-business-model",
+          "support": "商业模式是组织如何赚钱的表示法，9 个 building blocks"
+        },
+        {
+          "url": "https://www.strategyzer.com/library/the-business-model-canvas",
+          "support": "画布是用于描述、设计、挑战、发明和调整商业模式的工具"
+        }
+      ],
+      "project_inference": [
+        "每个块都要记录假设和依赖。",
+        "收入和成本必须注明单位或经济口径。",
+        "跨块矛盾必须显式暴露，不可静默抹平。"
+      ],
+      "rights_note": "Business Model Canvas 为 Strategyzer 品牌名；仅作方法引用，不主张拥有权。"
     },
     {
       "path": "strategy-toolkit/value-proposition.html",
@@ -106,7 +153,7 @@
         "至少一条可追溯事实或明确标记的假设",
         "负责人和复核日期"
       ],
-      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "method": "先写 customer jobs、pains 和 gains，再写产品与服务、pain relievers 和 gain creators，最后检查 fit。",
       "deliverable": "有假设、依据和责任人的战略结论",
       "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
       "evidence_requirement": [
@@ -120,8 +167,25 @@
       "downstream": [
         "strategy-toolkit/okr-cascade.html"
       ],
-      "validation_level": "smoke",
-      "review_status": "draft"
+      "validation_level": "fixture",
+      "review_status": "draft",
+      "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#value-proposition-canvas",
+      "method_sources": [
+        {
+          "url": "https://www.strategyzer.com/library/the-value-proposition-canvas",
+          "support": "jobs/pains/gains、产品与服务、pain relievers、gain creators、product-market fit"
+        },
+        {
+          "url": "https://www.strategyzer.com/value-proposition",
+          "support": "value proposition canvas 是 business model canvas 的 plug-in"
+        }
+      ],
+      "project_inference": [
+        "customer jobs、pains 和 gains 必须排序。",
+        "每个产品响应必须映射到一个具体客户项。",
+        "必须保留至少一个未解决 mismatch 作为风险输入。"
+      ],
+      "rights_note": "Value Proposition Canvas 为 Strategyzer 品牌名；本次未核验到可复用许可。"
     },
     {
       "path": "strategy-toolkit/okr-cascade.html",
@@ -136,7 +200,7 @@
         "至少一条可追溯事实或明确标记的假设",
         "负责人和复核日期"
       ],
-      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "method": "先定 qualitative objective，再用可量化 key results 跟踪进展，并把 OKR 作为对齐机制而不是任务清单。",
       "deliverable": "有假设、依据和责任人的战略结论",
       "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
       "evidence_requirement": [
@@ -150,8 +214,25 @@
       "downstream": [
         "strategy-toolkit/strategic-roadmap.html"
       ],
-      "validation_level": "smoke",
-      "review_status": "draft"
+      "validation_level": "fixture",
+      "review_status": "draft",
+      "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#okr-cascade",
+      "method_sources": [
+        {
+          "url": "https://rework.withgoogle.com/intl/en/guides/set-goals-with-okrs",
+          "support": "Objectives 要有雄心，Key Results 要可度量且描述结果而不是活动"
+        },
+        {
+          "url": "https://www.atlassian.com/agile/agile-at-scale/okr",
+          "support": "OKR 用于围绕可衡量目标和结果做对齐"
+        }
+      ],
+      "project_inference": [
+        "每个 objective 必须有 baseline、target、unit、due date、owner 和 data source。",
+        "activity-only KRs 无效。",
+        "每个 objective 必须回链到所选战略，而不是泛泛的愿望。"
+      ],
+      "rights_note": "OKR 为通用管理框架名；按来源描述方法，不绑定单一供应商。"
     },
     {
       "path": "strategy-toolkit/strategic-roadmap.html",
@@ -166,7 +247,7 @@
         "至少一条可追溯事实或明确标记的假设",
         "负责人和复核日期"
       ],
-      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "method": "把愿景、方向、优先级和进展按时间展开成计划，并随优先级变化定期更新。",
       "deliverable": "有假设、依据和责任人的战略结论",
       "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
       "evidence_requirement": [
@@ -178,8 +259,21 @@
         "strategy-toolkit/okr-cascade.html"
       ],
       "downstream": [],
-      "validation_level": "smoke",
-      "review_status": "draft"
+      "validation_level": "fixture",
+      "review_status": "draft",
+      "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#strategic-roadmap",
+      "method_sources": [
+        {
+          "url": "https://www.atlassian.com/agile/product-management/product-roadmaps",
+          "support": "roadmap 展示 vision、direction、priorities 和 progress over time，并随优先级变化更新"
+        }
+      ],
+      "project_inference": [
+        "每个 initiative 都要有 outcome link、owner、dependency、start/end window。",
+        "每个已承诺 initiative 必须映射到一个 OKR key result。",
+        "dependency cycles 视为错误并必须命名。"
+      ],
+      "rights_note": "Roadmap 为通用规划术语；此处以 Atlassian 页面作为方法说明来源。"
     },
     {
       "path": "customer-toolkit/user-persona.html",

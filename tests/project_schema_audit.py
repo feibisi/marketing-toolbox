@@ -13,7 +13,7 @@ assert schema["properties"]["schemaVersion"]["const"] == 2
 assert set(schema["properties"]["stage"]["enum"]) == {"discovery", "strategy", "execution", "measurement"}
 evidence = schema["$defs"]["evidence"]
 evidence_required = set(evidence["required"])
-assert {"statement", "kind", "source", "status", "toolPath"} <= evidence_required
+assert {"statement", "kind", "source", "status", "toolPath", "fieldKey"} <= evidence_required
 assert set(evidence["properties"]["kind"]["enum"]) == {"fact", "assumption", "to_verify"}
 assert set(evidence["properties"]["status"]["enum"]) == {"draft", "confirmed", "rejected", "needs_review"}
 store = (ROOT / "shared/js/project-store.js").read_text(encoding="utf-8")

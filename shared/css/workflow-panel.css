@@ -1,0 +1,40 @@
+.workflow-panel-shell {
+    width: min(1080px, calc(100% - 32px));
+    margin: 28px auto 80px;
+    color: var(--color-text-primary);
+}
+
+.workflow-panel-card {
+    padding: 28px;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 12px;
+    background: var(--color-bg-white);
+    box-shadow: var(--shadow-md);
+}
+
+.workflow-panel-card h2,
+.workflow-panel-card h3 { margin: 0 0 12px; }
+.workflow-panel-card form,
+.workflow-upstream { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-border-medium); }
+.workflow-panel-card label { display: grid; gap: 6px; margin: 12px 0; font-weight: 600; }
+.workflow-panel-card input,
+.workflow-panel-card select,
+.workflow-panel-card textarea { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid var(--border-sem-input-hover); border-radius: 6px; font: inherit; }
+.workflow-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+.workflow-button { display: inline-block; padding: 10px 16px; border: 0; border-radius: 6px; background: var(--color-brand-blue); color: var(--color-bg-white); font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+.workflow-evidence-item { grid-template-columns: auto 1fr !important; align-items: start; padding: 10px; border: 1px solid var(--color-border-medium); border-radius: 6px; }
+.workflow-evidence-item input { width: auto; margin-top: 4px; }
+.workflow-evidence-item small { display: block; margin-top: 4px; color: var(--color-text-secondary); font-weight: 400; }
+.workflow-kicker { color: var(--color-brand-blue); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.workflow-empty { color: var(--color-text-secondary); }
+.workflow-risk { padding: 10px; background: var(--color-semantic-alert-bg); }
+
+@media (max-width: 640px) {
+    .workflow-panel-shell { width: calc(100% - 20px); }
+    .workflow-panel-card { padding: 18px; }
+    .workflow-form-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+    .workflow-panel-shell { display: none !important; }
+}

@@ -32,6 +32,7 @@
 
     <!-- Icons -->
     <script src="../shared/vendor/lucide.min.js"></script>
+    <link rel="stylesheet" href="../shared/css/workflow-panel.css">
 </head>
 
 <body>
@@ -252,6 +253,10 @@
         </footer>
     </main>
 
+    <section class="workflow-panel-shell" data-evidence-panel data-workflow-panel data-workflow-id="strategy-alignment" data-tool-path="strategy-toolkit/landscape-map.html" data-upstream-path="strategy-toolkit/swot-analysis.html" data-downstream-path="strategy-toolkit/business-model-canvas.html" aria-label="证据与工作流交接"></section>
+
+    <script src="../shared/js/project-store.js"></script>
+    <script src="../shared/js/workflow-store.js"></script>
     <script src="../shared/js/core.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -264,6 +269,7 @@
             });
         });
     </script>
+    <script src="../shared/js/workflow-panel.js"></script>
 </body>
 
 </html>

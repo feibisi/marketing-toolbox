@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../shared/css/canvas.css">
     <!-- Tool-specific -->
     <link rel="stylesheet" href="assets/css/okr-cascade.css">
+    <link rel="stylesheet" href="../shared/css/workflow-panel.css">
 </head>
 
 <body>
@@ -163,12 +164,17 @@
 
     </main>
 
+    <section class="workflow-panel-shell" data-evidence-panel data-workflow-panel data-workflow-id="strategy-alignment" data-tool-path="strategy-toolkit/okr-cascade.html" data-upstream-path="strategy-toolkit/value-proposition.html" data-downstream-path="strategy-toolkit/strategic-roadmap.html" aria-label="证据与工作流交接"></section>
+
+    <script src="../shared/js/project-store.js"></script>
+    <script src="../shared/js/workflow-store.js"></script>
     <script src="../shared/js/core.js"></script>
     <script src="assets/js/okr-cascade.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize generic app logic
-            new ModiqiApp('okr_cascade_v1');
+            window.modiqiApp = new ModiqiApp('okr_cascade_v1');
+            window.restoreOkrListState();
             lucide.createIcons({
                 attrs: {
                     class: "icon",
@@ -177,6 +183,7 @@
             });
         });
     </script>
+    <script src="../shared/js/workflow-panel.js"></script>
 </body>
 
 </html>

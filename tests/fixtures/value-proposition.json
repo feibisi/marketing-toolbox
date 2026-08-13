@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "workflowId": "strategy-alignment",
+  "toolPath": "strategy-toolkit/value-proposition.html",
+  "provenance": {
+    "classification": "illustrative_synthetic",
+    "realCustomerSamples": 0,
+    "disclosure": "This is an illustrative synthetic fixture for deterministic rule testing. It contains zero real customer, order, revenue or production samples; cited public pages exercise traceability only."
+  },
+  "cases": [
+    {
+      "id": "valid",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "jobs": [
+          {
+            "id": "job-1",
+            "statement": "Decide which acquisition channels merit investment",
+            "rank": 1
+          }
+        ],
+        "pains": [
+          {
+            "id": "pain-1",
+            "statement": "Metrics are spread across several tools",
+            "rank": 1
+          }
+        ],
+        "gains": [
+          {
+            "id": "gain-1",
+            "statement": "A prioritised measurement plan with owners",
+            "rank": 1
+          }
+        ],
+        "responses": [
+          {
+            "id": "response-1",
+            "statement": "Facilitated channel evidence review",
+            "mapsTo": "pain-1"
+          },
+          {
+            "id": "response-2",
+            "statement": "Prioritised 90-day measurement plan",
+            "mapsTo": "gain-1"
+          }
+        ],
+        "fitLinks": [
+          {
+            "responseId": "response-1",
+            "customerItemId": "pain-1",
+            "evidenceId": "ev-oecd-digitalisation"
+          }
+        ],
+        "chosenPromise": "Leave the workshop with an owned 90-day measurement plan.",
+        "unresolvedMismatch": "No real willingness-to-pay sample exists; pricing fit remains unverified."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": true,
+        "workflowIssueCodes": []
+      }
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "customerSegment": "Independent retailers",
+        "jobs": [
+          {
+            "id": "job-1",
+            "statement": "Decide which acquisition channels merit investment",
+            "rank": 1
+          }
+        ],
+        "pains": [
+          {
+            "id": "pain-1",
+            "statement": "Metrics are spread across several tools",
+            "rank": 1
+          }
+        ],
+        "gains": [
+          {
+            "id": "gain-1",
+            "statement": "A prioritised measurement plan with owners",
+            "rank": 1
+          }
+        ],
+        "responses": [
+          {
+            "id": "response-1",
+            "statement": "Facilitated channel evidence review",
+            "mapsTo": "pain-1"
+          },
+          {
+            "id": "response-2",
+            "statement": "Prioritised 90-day measurement plan",
+            "mapsTo": "gain-1"
+          }
+        ],
+        "fitLinks": [
+          {
+            "responseId": "response-1",
+            "customerItemId": "pain-1",
+            "evidenceId": "ev-oecd-digitalisation"
+          }
+        ],
+        "chosenPromise": "Leave the workshop with an owned 90-day measurement plan.",
+        "unresolvedMismatch": "No real willingness-to-pay sample exists; pricing fit remains unverified."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "segment_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "missing-source",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "jobs": [
+          {
+            "id": "job-1",
+            "statement": "Decide which acquisition channels merit investment",
+            "rank": 1
+          }
+        ],
+        "pains": [
+          {
+            "id": "pain-1",
+            "statement": "Metrics are spread across several tools",
+            "rank": 1
+          }
+        ],
+        "gains": [
+          {
+            "id": "gain-1",
+            "statement": "A prioritised measurement plan with owners",
+            "rank": 1
+          }
+        ],
+        "responses": [
+          {
+            "id": "response-1",
+            "statement": "Facilitated channel evidence review",
+            "mapsTo": "pain-1"
+          },
+          {
+            "id": "response-2",
+            "statement": "Prioritised 90-day measurement plan",
+            "mapsTo": "gain-1"
+          }
+        ],
+        "fitLinks": [
+          {
+            "responseId": "response-1",
+            "customerItemId": "pain-1",
+            "evidenceId": "ev-oecd-digitalisation"
+          }
+        ],
+        "chosenPromise": "Leave the workshop with an owned 90-day measurement plan.",
+        "unresolvedMismatch": "No real willingness-to-pay sample exists; pricing fit remains unverified."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "missing_source"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-cycle",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "jobs": [
+          {
+            "id": "job-1",
+            "statement": "Decide which acquisition channels merit investment",
+            "rank": 1
+          }
+        ],
+        "pains": [
+          {
+            "id": "pain-1",
+            "statement": "Metrics are spread across several tools",
+            "rank": 1
+          }
+        ],
+        "gains": [
+          {
+            "id": "gain-1",
+            "statement": "A prioritised measurement plan with owners",
+            "rank": 1
+          }
+        ],
+        "responses": [
+          {
+            "id": "response-1",
+            "statement": "Facilitated channel evidence review",
+            "mapsTo": "pain-1"
+          },
+          {
+            "id": "response-2",
+            "statement": "Prioritised 90-day measurement plan",
+            "mapsTo": "gain-1"
+          }
+        ],
+        "fitLinks": [
+          {
+            "responseId": "response-1",
+            "customerItemId": "pain-1",
+            "evidenceId": "ev-oecd-digitalisation"
+          }
+        ],
+        "chosenPromise": "Leave the workshop with an owned 90-day measurement plan.",
+        "unresolvedMismatch": "No real willingness-to-pay sample exists; pricing fit remains unverified."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "roadmap_dependency_cycle"
+        ]
+      }
+    }
+  ]
+}

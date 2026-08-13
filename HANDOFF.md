@@ -194,3 +194,31 @@ FeiCode repository          BLOCKED: missing write:organization scope
 
 - Documentation records only credential scope, reference and rotation state; it contains no token.
 - No FeiCode permission, credential, website, DNS, VM, deployment or production service was changed in this documentation task.
+## [CX] 2026-08-13 Workflow 01 fixture implementation
+
+### Result
+
+- Upgraded the six Strategy Alignment tools with a shared, versioned, project-scoped evidence and handoff panel. Upstream content is a candidate only and requires explicit user adoption; it never silently overwrites a canvas.
+- Extended evidence provenance with an optional field key, while keeping project schema v2 and the local-first/no-login boundary.
+- Added six page-level illustrative fixture sets covering valid, contradiction, missing-source and roadmap dependency-cycle scenarios, plus deterministic business-rule checks.
+- Fixed OKR dynamic objective persistence by exposing the page app instance and restoring the saved objective container before recalculating scores.
+- Workflow 01 readiness advanced to six `fixture`; the other 24 core tools remain `smoke`; no tool is `release`.
+
+### Verification
+
+```text
+npm run test:quality             PASS
+- fixture audit                  6 tools / 4 illustrative scenarios / 0 real customer samples
+- JavaScript                     212 samples
+- static                         165 pages / 1644 refs / 850 controls
+- Playwright                     191 passed
+- layout                         318 clear / 0 high / 0 blocker
+gitleaks dir                     PASS
+CSS                              0 errors; existing warning baseline remains
+```
+
+### Boundary
+
+- Deterministic illustrative fixtures verify rules and failure detection; they are not real business validation. `real_customer_samples=0`, so business release remains BLOCKED.
+- Method contracts remain `review_status=draft`; domain review, real samples, export/import regression, Firefox/Safari and assistive-technology verification are still required.
+- No website, deployment, DNS, VM, provider, credential, permission or cluster-service change was made.

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "workflowId": "strategy-alignment",
+  "toolPath": "strategy-toolkit/okr-cascade.html",
+  "provenance": {
+    "classification": "illustrative_synthetic",
+    "realCustomerSamples": 0,
+    "disclosure": "This is an illustrative synthetic fixture for deterministic rule testing. It contains zero real customer, order, revenue or production samples; cited public pages exercise traceability only."
+  },
+  "cases": [
+    {
+      "id": "valid",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "objective": "Make the illustrative measurement workshop a credible decision aid for the selected segment.",
+        "strategyLink": "Validate the narrow workshop before recurring delivery.",
+        "keyResults": [
+          {
+            "id": "kr-1",
+            "statement": "Raise documented plan completion rate",
+            "kind": "outcome",
+            "baseline": 0,
+            "target": 80,
+            "unit": "percent of illustrative acceptance runs",
+            "dueDate": "2026-10-31",
+            "owner": "Illustrative product owner",
+            "source": "Acceptance-run register"
+          },
+          {
+            "id": "kr-2",
+            "statement": "Reduce unresolved evidence gaps",
+            "kind": "outcome",
+            "baseline": 6,
+            "target": 2,
+            "unit": "gaps per illustrative run",
+            "dueDate": "2026-11-30",
+            "owner": "Illustrative research owner",
+            "source": "Evidence review register"
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": true,
+        "workflowIssueCodes": []
+      }
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "objective": "Make the illustrative measurement workshop a credible decision aid for the selected segment.",
+        "strategyLink": "Validate the narrow workshop before recurring delivery.",
+        "keyResults": [
+          {
+            "id": "kr-1",
+            "statement": "Raise documented plan completion rate",
+            "kind": "outcome",
+            "baseline": 0,
+            "target": 80,
+            "unit": "percent of illustrative acceptance runs",
+            "dueDate": "2026-10-31",
+            "owner": "Illustrative product owner",
+            "source": "Acceptance-run register"
+          },
+          {
+            "id": "kr-2",
+            "statement": "Reduce unresolved evidence gaps",
+            "kind": "outcome",
+            "baseline": 6,
+            "target": 2,
+            "unit": "gaps per illustrative run",
+            "dueDate": "2026-11-30",
+            "owner": "Illustrative research owner",
+            "source": "Evidence review register"
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "segment_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "missing-source",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "objective": "Make the illustrative measurement workshop a credible decision aid for the selected segment.",
+        "strategyLink": "Validate the narrow workshop before recurring delivery.",
+        "keyResults": [
+          {
+            "id": "kr-1",
+            "statement": "Raise documented plan completion rate",
+            "kind": "outcome",
+            "baseline": 0,
+            "target": 80,
+            "unit": "percent of illustrative acceptance runs",
+            "dueDate": "2026-10-31",
+            "owner": "Illustrative product owner",
+            "source": "Acceptance-run register"
+          },
+          {
+            "id": "kr-2",
+            "statement": "Reduce unresolved evidence gaps",
+            "kind": "outcome",
+            "baseline": 6,
+            "target": 2,
+            "unit": "gaps per illustrative run",
+            "dueDate": "2026-11-30",
+            "owner": "Illustrative research owner",
+            "source": "Evidence review register"
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "missing_source"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-cycle",
+      "input": {
+        "customerSegment": "Regional accounting firms",
+        "objective": "Make the illustrative measurement workshop a credible decision aid for the selected segment.",
+        "strategyLink": "Validate the narrow workshop before recurring delivery.",
+        "keyResults": [
+          {
+            "id": "kr-1",
+            "statement": "Raise documented plan completion rate",
+            "kind": "outcome",
+            "baseline": 0,
+            "target": 80,
+            "unit": "percent of illustrative acceptance runs",
+            "dueDate": "2026-10-31",
+            "owner": "Illustrative product owner",
+            "source": "Acceptance-run register"
+          },
+          {
+            "id": "kr-2",
+            "statement": "Reduce unresolved evidence gaps",
+            "kind": "outcome",
+            "baseline": 6,
+            "target": 2,
+            "unit": "gaps per illustrative run",
+            "dueDate": "2026-11-30",
+            "owner": "Illustrative research owner",
+            "source": "Evidence review register"
+          }
+        ]
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "roadmap_dependency_cycle"
+        ]
+      }
+    }
+  ]
+}

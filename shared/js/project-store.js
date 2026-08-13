@@ -35,6 +35,7 @@
             reviewDate: /^\d{4}-\d{2}-\d{2}$/.test(item.reviewDate || '') ? item.reviewDate : '',
             status: EVIDENCE_STATUSES.has(item.status) ? item.status : 'draft',
             toolPath: text(item.toolPath, 240),
+            fieldKey: text(item.fieldKey, 120),
             createdAt,
             updatedAt: iso(item.updatedAt, createdAt),
         };

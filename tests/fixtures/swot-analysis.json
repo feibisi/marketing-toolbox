@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "workflowId": "strategy-alignment",
+  "toolPath": "strategy-toolkit/swot-analysis.html",
+  "provenance": {
+    "classification": "illustrative_synthetic",
+    "realCustomerSamples": 0,
+    "disclosure": "This is an illustrative synthetic fixture for deterministic rule testing. It contains zero real customer, order, revenue or production samples; cited public pages exercise traceability only."
+  },
+  "cases": [
+    {
+      "id": "valid",
+      "input": {
+        "quadrants": {
+          "strengths": [
+            {
+              "id": "ev-23976669",
+              "statement": "The illustrative service can be delivered with a repeatable workshop format.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "weaknesses": [
+            {
+              "id": "ev-28741410",
+              "statement": "The illustrative team has no validated customer acquisition baseline.",
+              "kind": "to_verify",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "opportunities": [
+            {
+              "id": "ev-69293756",
+              "statement": "OECD materials describe continuing SME digitalisation needs.",
+              "kind": "fact",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "threats": [
+            {
+              "id": "ev-41106842",
+              "statement": "The illustrative offer competes with agencies, software and internal teams.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ]
+        },
+        "prioritizedImplication": "Validate a narrow measurement workshop before adding recurring delivery."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": true,
+        "workflowIssueCodes": []
+      }
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "quadrants": {
+          "strengths": [
+            {
+              "id": "ev-23976669",
+              "statement": "The illustrative service can be delivered with a repeatable workshop format.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "weaknesses": [
+            {
+              "id": "ev-28741410",
+              "statement": "The illustrative team has no validated customer acquisition baseline.",
+              "kind": "to_verify",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "opportunities": [
+            {
+              "id": "ev-69293756",
+              "statement": "OECD materials describe continuing SME digitalisation needs.",
+              "kind": "fact",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "threats": [
+            {
+              "id": "ev-41106842",
+              "statement": "The illustrative offer competes with agencies, software and internal teams.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ]
+        },
+        "prioritizedImplication": "Validate a narrow measurement workshop before adding recurring delivery."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "segment_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "missing-source",
+      "input": {
+        "quadrants": {
+          "strengths": [
+            {
+              "id": "ev-23976669",
+              "statement": "The illustrative service can be delivered with a repeatable workshop format.",
+              "kind": "assumption",
+              "source": "",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "weaknesses": [
+            {
+              "id": "ev-28741410",
+              "statement": "The illustrative team has no validated customer acquisition baseline.",
+              "kind": "to_verify",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "opportunities": [
+            {
+              "id": "ev-69293756",
+              "statement": "OECD materials describe continuing SME digitalisation needs.",
+              "kind": "fact",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "threats": [
+            {
+              "id": "ev-41106842",
+              "statement": "The illustrative offer competes with agencies, software and internal teams.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ]
+        },
+        "prioritizedImplication": "Validate a narrow measurement workshop before adding recurring delivery."
+      },
+      "expected": {
+        "toolComplete": false,
+        "toolIssueCodes": [
+          "missing_source"
+        ],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "missing_source"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-cycle",
+      "input": {
+        "quadrants": {
+          "strengths": [
+            {
+              "id": "ev-23976669",
+              "statement": "The illustrative service can be delivered with a repeatable workshop format.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "weaknesses": [
+            {
+              "id": "ev-28741410",
+              "statement": "The illustrative team has no validated customer acquisition baseline.",
+              "kind": "to_verify",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "opportunities": [
+            {
+              "id": "ev-69293756",
+              "statement": "OECD materials describe continuing SME digitalisation needs.",
+              "kind": "fact",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ],
+          "threats": [
+            {
+              "id": "ev-41106842",
+              "statement": "The illustrative offer competes with agencies, software and internal teams.",
+              "kind": "assumption",
+              "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+              "sourceGapReason": "",
+              "owner": "Illustrative strategy owner",
+              "reviewDate": "2026-09-30"
+            }
+          ]
+        },
+        "prioritizedImplication": "Validate a narrow measurement workshop before adding recurring delivery."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "roadmap_dependency_cycle"
+        ]
+      }
+    }
+  ]
+}

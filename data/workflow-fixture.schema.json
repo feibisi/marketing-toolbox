@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://modiqi.com/schemas/marketing-toolbox/workflow-fixture.schema.json",
+  "title": "Marketing Toolbox deterministic workflow fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "workflowId",
+    "toolPath",
+    "provenance",
+    "cases"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "workflowId": {
+      "const": "strategy-alignment"
+    },
+    "toolPath": {
+      "type": "string",
+      "pattern": "^strategy-toolkit/.+\\.html$"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "realCustomerSamples",
+        "disclosure"
+      ],
+      "properties": {
+        "classification": {
+          "const": "illustrative_synthetic"
+        },
+        "realCustomerSamples": {
+          "const": 0
+        },
+        "disclosure": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "toolComplete",
+        "toolIssueCodes",
+        "workflowComplete",
+        "workflowIssueCodes"
+      ],
+      "properties": {
+        "toolComplete": {
+          "type": "boolean"
+        },
+        "toolIssueCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "workflowComplete": {
+          "type": "boolean"
+        },
+        "workflowIssueCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "input",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "valid",
+            "contradiction",
+            "missing-source",
+            "roadmap-cycle"
+          ]
+        },
+        "input": {
+          "type": "object"
+        },
+        "expected": {
+          "$ref": "#/$defs/expectation"
+        }
+      }
+    }
+  }
+}

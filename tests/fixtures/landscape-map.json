@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "workflowId": "strategy-alignment",
+  "toolPath": "strategy-toolkit/landscape-map.html",
+  "provenance": {
+    "classification": "illustrative_synthetic",
+    "realCustomerSamples": 0,
+    "disclosure": "This is an illustrative synthetic fixture for deterministic rule testing. It contains zero real customer, order, revenue or production samples; cited public pages exercise traceability only."
+  },
+  "cases": [
+    {
+      "id": "valid",
+      "input": {
+        "axes": {
+          "x": {
+            "label": "Implementation support",
+            "unit": "ordinal score 1-5",
+            "direction": "low to high"
+          },
+          "y": {
+            "label": "Monthly commitment",
+            "unit": "illustrative EUR/month band",
+            "direction": "low to high"
+          }
+        },
+        "alternatives": [
+          {
+            "id": "alt-agency",
+            "name": "Full-service agency",
+            "type": "competitor",
+            "x": 5,
+            "y": 5,
+            "source": "https://single-market-economy.ec.europa.eu/smes/sme-strategy-and-sme-friendly-business-conditions/sme-performance-review_en",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-software",
+            "name": "Self-service analytics software",
+            "type": "substitute",
+            "x": 1,
+            "y": 2,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-workshop",
+            "name": "Illustrative measurement workshop",
+            "type": "own_offer",
+            "x": 3,
+            "y": 1,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          }
+        ],
+        "defensibleGap": "A fixed-scope workshop could sit between self-service software and retained agency delivery; this remains an assumption."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": true,
+        "workflowIssueCodes": []
+      }
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "axes": {
+          "x": {
+            "label": "Implementation support",
+            "unit": "ordinal score 1-5",
+            "direction": "low to high"
+          },
+          "y": {
+            "label": "Monthly commitment",
+            "unit": "illustrative EUR/month band",
+            "direction": "low to high"
+          }
+        },
+        "alternatives": [
+          {
+            "id": "alt-agency",
+            "name": "Full-service agency",
+            "type": "competitor",
+            "x": 5,
+            "y": 5,
+            "source": "https://single-market-economy.ec.europa.eu/smes/sme-strategy-and-sme-friendly-business-conditions/sme-performance-review_en",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-software",
+            "name": "Self-service analytics software",
+            "type": "substitute",
+            "x": 1,
+            "y": 2,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-workshop",
+            "name": "Illustrative measurement workshop",
+            "type": "own_offer",
+            "x": 3,
+            "y": 1,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          }
+        ],
+        "defensibleGap": "A fixed-scope workshop could sit between self-service software and retained agency delivery; this remains an assumption."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "segment_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "missing-source",
+      "input": {
+        "axes": {
+          "x": {
+            "label": "Implementation support",
+            "unit": "ordinal score 1-5",
+            "direction": "low to high"
+          },
+          "y": {
+            "label": "Monthly commitment",
+            "unit": "illustrative EUR/month band",
+            "direction": "low to high"
+          }
+        },
+        "alternatives": [
+          {
+            "id": "alt-agency",
+            "name": "Full-service agency",
+            "type": "competitor",
+            "x": 5,
+            "y": 5,
+            "source": "",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-software",
+            "name": "Self-service analytics software",
+            "type": "substitute",
+            "x": 1,
+            "y": 2,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-workshop",
+            "name": "Illustrative measurement workshop",
+            "type": "own_offer",
+            "x": 3,
+            "y": 1,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          }
+        ],
+        "defensibleGap": "A fixed-scope workshop could sit between self-service software and retained agency delivery; this remains an assumption."
+      },
+      "expected": {
+        "toolComplete": false,
+        "toolIssueCodes": [
+          "missing_source"
+        ],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "missing_source"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-cycle",
+      "input": {
+        "axes": {
+          "x": {
+            "label": "Implementation support",
+            "unit": "ordinal score 1-5",
+            "direction": "low to high"
+          },
+          "y": {
+            "label": "Monthly commitment",
+            "unit": "illustrative EUR/month band",
+            "direction": "low to high"
+          }
+        },
+        "alternatives": [
+          {
+            "id": "alt-agency",
+            "name": "Full-service agency",
+            "type": "competitor",
+            "x": 5,
+            "y": 5,
+            "source": "https://single-market-economy.ec.europa.eu/smes/sme-strategy-and-sme-friendly-business-conditions/sme-performance-review_en",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-software",
+            "name": "Self-service analytics software",
+            "type": "substitute",
+            "x": 1,
+            "y": 2,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          },
+          {
+            "id": "alt-workshop",
+            "name": "Illustrative measurement workshop",
+            "type": "own_offer",
+            "x": 3,
+            "y": 1,
+            "source": "https://www.oecd.org/en/topics/sub-issues/digitalisation-of-smes.html",
+            "sourceGapReason": ""
+          }
+        ],
+        "defensibleGap": "A fixed-scope workshop could sit between self-service software and retained agency delivery; this remains an assumption."
+      },
+      "expected": {
+        "toolComplete": true,
+        "toolIssueCodes": [],
+        "workflowComplete": false,
+        "workflowIssueCodes": [
+          "roadmap_dependency_cycle"
+        ]
+      }
+    }
+  ]
+}
