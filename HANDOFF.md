@@ -242,3 +242,35 @@ CSS                              0 errors; existing warning baseline remains
 - FeiCode then acknowledged `main` update `4d2f205..59868e5`. Local `main` and its push-updated `origin/main` tracking ref match `59868e5`; public repository metadata still reports `default_branch=main`.
 - Independent post-push `ls-remote`/branch-API SHA readback is SKIP for now because FeiCode SSH/TLS handshakes repeatedly time out after the successful push. Do not describe that independent readback as PASS until a later clean check returns the SHA.
 - Real-sample execution has not started: `real_customer_samples=0`. The Modiqi VM is production but already held by another tracked takeover, so this task did not enter it or read customer/marketing data. Candidate portfolio projects and illustrative fixtures are not substitutes for authorized real customer samples.
+
+## [CX] 2026-08-13 Workflow 01 internal operating pilot
+
+### Result
+
+- Added `data/pilots/workflow01-marketing-toolbox-internal.json`, one real internal product-planning run covering all six Strategy Alignment tools. It uses repository and governance facts for the Marketing Toolbox itself and contains no customer or personal data.
+- Added `tests/workflow01_internal_pilot_audit.py` and the `check:workflow01-internal-pilot` quality-gate command. The audit checks all six written method contracts, cross-tool segment consistency, organization identity and the gated decision.
+- Updated the Workflow 01 specification, roadmap and project facts to record the current readiness accurately: 24 `smoke`, 6 `contract`, 0 `fixture`, 0 `reviewed`, 0 `release`.
+- Decision remains `continue_with_gates`: deepen Workflow 01 behavior before expanding supported tools or starting Workflow 02 business implementation.
+
+### Verification
+
+```text
+npm run check:workflow01-internal-pilot  PASS (1 internal project / 6 tools)
+npm run test:quality                     PASS
+- customer samples                      0
+- customer data                         0
+- domain review                         BLOCKED (pending)
+- business release                      BLOCKED
+- JavaScript                            212 samples
+- static                                165 pages / 1645 refs / 850 controls
+- CSS                                   0 errors / 715 existing warnings
+- Playwright                            193 passed
+- layout                                318 clear / 0 high / 0 blocker
+gitleaks dir                             PASS
+```
+
+### Boundary
+
+- The internal pilot proves that one coherent internal decision can be represented by the six written contracts. It does not prove page-level method behavior, customer demand, willingness to pay, domain approval or release readiness.
+- `real_customer_samples=0`; no readiness level was promoted. The next technical batch remains SWOT plus landscape behavior-level validation, while authorized sample intake is a separate Modiqi business gate.
+- Work is on local branch `codex/workflow01-internal-pilot`. No website, deployment, DNS, VM, provider, credential, permission or cluster-service change was made.

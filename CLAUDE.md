@@ -12,7 +12,7 @@
 - `data/workflows.json`：6 条工作流，覆盖 30 个不同核心工具。
 - `data/marketing-catalog.json`：主站公开目录候选，30 个完整资源页、114 个目录条目和 6 个工作流入口均为 `planned`。
 - 项目上下文 schema v2，包含事实、假设、待核验和来源要求。
-- 当前 readiness：30 个核心工具处于 `smoke`，0 个处于 `release`。
+- 当前 readiness：24 个核心工具处于 `smoke`、6 个处于 `contract`，`fixture`、`reviewed` 和 `release` 均为 0。
 
 ## 主要入口
 
@@ -37,10 +37,10 @@ npm run lint:css
 
 ## 已知状态
 
-- 最近 `npm run test:quality` 记录为 PASS，187 个 Playwright 测试通过，布局 318/318 clear。
+- 最近完整 `npm run test:quality` 记录为 PASS：Workflow 01 内部运行审计纳入门禁，193 个 Playwright 测试通过，布局 318/318 clear。
 - 仍有 715 个 CSS design-token 基线警告。
 - 业务公式断言、完整打印/导出交互、Safari、Firefox、移动端和真实辅助技术测试未完成。
-- 30 个核心工具的 contract method 仍是待领域复核的草案占位。
+- 30 个核心工具合同均为 `draft`；Workflow 01 的 6 个工具已有来源依据并达到 `contract`，其余 24 个仍为 `smoke`，领域复核尚未完成。
 - 本目录是独立 Git 仓库；FeiCode 远端为 `Modiqi-com/marketing-toolbox`，默认分支 `main`。首次推送已核验 local/remote SHA 一致；仓库发布不等于网站部署或产品 release。
 - `origin` 的批准形式为 `ssh://git@feicode.com/Modiqi-com/marketing-toolbox.git`；SSH principal 为 `wapuu`，已验证仓库 permission 为 `owner`。这些是 2026-08-13 的单仓证据，使用前仍需实时复核。
 

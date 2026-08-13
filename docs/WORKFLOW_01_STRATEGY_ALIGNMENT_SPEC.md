@@ -1,7 +1,7 @@
 # Workflow 01 — Strategy alignment implementation spec
 
 > [CX] Draft started: 2026-08-13  
-> Status: implementation input; source basis drafted, fixtures still require domain review.
+> Status: six tools at `contract`; illustrative fixtures and one internal operating pilot exist, but behavior-level method coverage, domain review and customer samples remain incomplete.
 
 ## Outcome
 
@@ -35,15 +35,15 @@ The short `method` text in `data/core-tool-contracts.json` should stay operation
 
 Each tool must read project schema v2 without copying sensitive fields. New evidence records use `fact`, `assumption`, or `to_verify`, require a source or explicit source-gap explanation, and write the creating tool path. Upstream handoff values remain editable and must retain their provenance.
 
-## Business fixtures to add
+## Business fixtures and operating evidence
 
 1. **Valid sample:** a small B2B service with sourced market evidence, one explicit assumption, aligned OKRs, and a dependency-safe roadmap.
 2. **Contradiction sample:** a value proposition targets one segment while the business model and OKR target another; the workflow must flag, not silently accept, the mismatch.
 3. **Incomplete-evidence sample:** SWOT and landscape claims have no source; the workflow must remain below reviewed/release readiness.
 4. **Roadmap-cycle sample:** initiative A depends on B and B depends on A; completion must fail with the cycle named.
 
-Expected outcomes must be encoded in fixture JSON and asserted in browser or deterministic module tests before any of these six tools advances to `fixture`.
+The four illustrative scenarios are encoded in `tests/fixtures/` and checked by `tests/workflow01_fixture_audit.py`. They validate the written rule contract, not page behavior. The internal operating record in `data/pilots/workflow01-marketing-toolbox-internal.json` applies all six contracts to one real internal product decision and is checked by `tests/workflow01_internal_pilot_audit.py`; it contains zero customer samples and has pending domain review. Page or deterministic shared-module behavior must produce the expected valid and boundary outcomes before any tool advances to `fixture`.
 
-## First implementation batch
+## Current implementation sequence
 
-Begin with shared evidence attachment and workflow handoff primitives, then upgrade SWOT and landscape map together. Do not clone custom evidence logic into six pages. After those two pages pass valid and missing-source fixtures, continue in table order.
+Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. The next batch is behavior-level rule enforcement for SWOT and landscape map together, followed by the remaining tools in table order. Do not clone validation logic into six pages, and do not promote readiness based only on the internal pilot or Python fixture audit.

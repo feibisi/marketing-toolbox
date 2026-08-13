@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "pilotId": "workflow01-marketing-toolbox-internal-2026-08-13",
+  "workflowId": "strategy-alignment",
+  "project": {
+    "name": "Marketing Toolbox internal product strategy",
+    "classification": "internal_operational",
+    "businessOwnerCompanyId": "co-modiqi",
+    "brandId": "brand-modiqi",
+    "customerSample": false,
+    "customerDataIncluded": false,
+    "domainReviewStatus": "pending",
+    "disclosure": "This is a real internal product-planning run using repository and governance facts. It is not a customer case, willingness-to-pay test, domain review, or release approval."
+  },
+  "tools": {
+    "strategy-toolkit/swot-analysis.html": {
+      "quadrants": {
+        "strengths": [
+          {
+            "id": "ev-internal-product-surface",
+            "statement": "The repository has 144 tool pages, including 30 core tools arranged into six workflows.",
+            "kind": "fact",
+            "source": "https://feicode.com/Modiqi-com/marketing-toolbox/src/commit/59868e5a108ccf413be8d17d140f20c1651d2344/data/tools.json",
+            "sourceGapReason": "",
+            "owner": "Modiqi product operations",
+            "reviewDate": "2026-08-13"
+          }
+        ],
+        "weaknesses": [
+          {
+            "id": "ev-internal-readiness",
+            "statement": "Six core tools have source-backed method bases and contract readiness; no core tool has fixture, reviewed, or release readiness.",
+            "kind": "fact",
+            "source": "https://feicode.com/Modiqi-com/marketing-toolbox/src/commit/59868e5a108ccf413be8d17d140f20c1651d2344/data/core-readiness.json",
+            "sourceGapReason": "",
+            "owner": "Modiqi product operations",
+            "reviewDate": "2026-08-13"
+          }
+        ],
+        "opportunities": [
+          {
+            "id": "ev-internal-growth-boundary",
+            "statement": "The approved content architecture can connect WordPress problem and workflow pages to the independent toolbox without sharing project data.",
+            "kind": "fact",
+            "source": "https://feicode.com/Modiqi-com/marketing-toolbox/src/commit/59868e5a108ccf413be8d17d140f20c1651d2344/docs/MODIQI_COM_GROWTH_AND_CONTENT_SYSTEM.md",
+            "sourceGapReason": "",
+            "owner": "Modiqi product operations",
+            "reviewDate": "2026-08-13"
+          }
+        ],
+        "threats": [
+          {
+            "id": "ev-internal-demand-gap",
+            "statement": "A large page catalog may create maintenance cost without proving recurring user demand or willingness to pay.",
+            "kind": "assumption",
+            "source": "",
+            "sourceGapReason": "No authorized customer-use or willingness-to-pay sample exists; this risk is an internal planning inference.",
+            "owner": "Modiqi product operations",
+            "reviewDate": "2026-09-30"
+          }
+        ]
+      },
+      "prioritizedImplication": "Stop expanding the catalog; prove one complete evidence-led workflow with authorized use before promoting readiness or building the next workflow."
+    },
+    "strategy-toolkit/landscape-map.html": {
+      "axes": {
+        "x": {
+          "label": "Workflow continuity",
+          "unit": "internal ordinal score 1-5",
+          "direction": "isolated page to linked project workflow"
+        },
+        "y": {
+          "label": "Evidence governance",
+          "unit": "internal ordinal score 1-5",
+          "direction": "untracked claims to sourced reviewable evidence"
+        }
+      },
+      "alternatives": [
+        {
+          "id": "alt-isolated-pages",
+          "name": "Existing isolated canvas pages",
+          "type": "substitute",
+          "x": 1,
+          "y": 1,
+          "source": "",
+          "sourceGapReason": "Internal comparison archetype derived from the repository's pre-workflow page behavior; not a market-share claim."
+        },
+        {
+          "id": "alt-generic-whiteboard",
+          "name": "Generic whiteboard or spreadsheet templates",
+          "type": "competitor",
+          "x": 2,
+          "y": 1,
+          "source": "",
+          "sourceGapReason": "Internal substitute hypothesis; named vendors and market positions have not been researched or reviewed."
+        },
+        {
+          "id": "alt-marketing-toolbox",
+          "name": "Marketing Toolbox evidence-led workflow",
+          "type": "own_offer",
+          "x": 4,
+          "y": 4,
+          "source": "https://feicode.com/Modiqi-com/marketing-toolbox/src/commit/59868e5a108ccf413be8d17d140f20c1651d2344/shared/js/workflow-panel.js",
+          "sourceGapReason": ""
+        }
+      ],
+      "defensibleGap": "A local-first workflow that retains provenance and explicit handoffs may be more reviewable than isolated templates, but customer preference and competitive differentiation remain unverified."
+    },
+    "strategy-toolkit/business-model-canvas.html": {
+      "customerSegment": "Marketing consultants and small in-house marketing teams handling evidence-sensitive planning",
+      "blocks": {
+        "partners": [
+          "Modiqi domain reviewers",
+          "WenPai approved software delivery team"
+        ],
+        "activities": [
+          "Maintain core workflow methods",
+          "Run evidence-led project reviews",
+          "Publish problem-led WordPress content"
+        ],
+        "resources": [
+          "Thirty core tools",
+          "Six workflow contracts",
+          "Local project and evidence model",
+          "Quality and layout gates"
+        ],
+        "valuePropositions": [
+          "Turn fragmented planning canvases into a local, traceable and printable project workflow"
+        ],
+        "relationships": [
+          "Self-service use with optional reviewed project service"
+        ],
+        "channels": [
+          "modiqi.com problem articles",
+          "workflow resource pages",
+          "direct project referrals"
+        ],
+        "customerSegments": [
+          "Marketing consultants",
+          "Small in-house marketing teams"
+        ],
+        "costStructure": [
+          {
+            "item": "Method and software maintenance",
+            "basis": "review and engineering hours per supported workflow"
+          }
+        ],
+        "revenueStreams": [
+          {
+            "item": "Candidate reviewed strategy project",
+            "basis": "fixed scope per approved project; price not yet approved"
+          }
+        ]
+      },
+      "dependencies": [
+        "Authorized project samples",
+        "Named domain reviewer",
+        "Approved service scope and pricing"
+      ],
+      "contradictions": [
+        "The current 144-page breadth conflicts with the decision to support only 30 core tools deeply."
+      ],
+      "riskiestAssumption": "The selected users will value provenance and workflow continuity enough to complete a multi-step planning process or purchase review support."
+    },
+    "strategy-toolkit/value-proposition.html": {
+      "customerSegment": "Marketing consultants and small in-house marketing teams handling evidence-sensitive planning",
+      "jobs": [
+        {
+          "id": "job-1",
+          "statement": "Turn research and assumptions into an owned marketing plan",
+          "rank": 1
+        },
+        {
+          "id": "job-2",
+          "statement": "Explain and review why a strategic conclusion was reached",
+          "rank": 2
+        }
+      ],
+      "pains": [
+        {
+          "id": "pain-1",
+          "statement": "Conclusions lose their sources when copied between isolated canvases",
+          "rank": 1
+        },
+        {
+          "id": "pain-2",
+          "statement": "A large template library does not show which method to use next",
+          "rank": 2
+        }
+      ],
+      "gains": [
+        {
+          "id": "gain-1",
+          "statement": "A printable plan with explicit owners, sources, review dates and unresolved risks",
+          "rank": 1
+        }
+      ],
+      "responses": [
+        {
+          "id": "response-1",
+          "statement": "Project-scoped evidence and explicit handoff adoption",
+          "mapsTo": "pain-1"
+        },
+        {
+          "id": "response-2",
+          "statement": "Six ordered workflows with a supported core-tool tier",
+          "mapsTo": "pain-2"
+        },
+        {
+          "id": "response-3",
+          "statement": "Reviewable local outputs without automatic project-data transmission",
+          "mapsTo": "gain-1"
+        }
+      ],
+      "fitLinks": [
+        {
+          "responseId": "response-1",
+          "customerItemId": "pain-1",
+          "evidenceId": "ev-internal-readiness"
+        }
+      ],
+      "chosenPromise": "Move from a strategic question to a locally retained, sourced and reviewable plan without being forced into an account or cloud workspace.",
+      "unresolvedMismatch": "No authorized customer run proves that users can complete the six-step workflow or prefer it to their current templates."
+    },
+    "strategy-toolkit/okr-cascade.html": {
+      "customerSegment": "Marketing consultants and small in-house marketing teams handling evidence-sensitive planning",
+      "objective": "Make Strategy Alignment a credible, reviewable workflow before expanding the supported product surface.",
+      "strategyLink": "Prove one evidence-led workflow with authorized use before promoting readiness or starting Workflow 02.",
+      "keyResults": [
+        {
+          "id": "kr-method-coverage",
+          "statement": "Increase core Strategy Alignment tools with page or deterministic-module method-rule assertions",
+          "kind": "outcome",
+          "baseline": 0,
+          "target": 6,
+          "unit": "tools with behavior-level method assertions",
+          "dueDate": "2026-09-30",
+          "owner": "WenPai technical delivery owner, to be named",
+          "source": "tests and data/core-readiness.json"
+        },
+        {
+          "id": "kr-authorized-runs",
+          "statement": "Complete end-to-end runs using authorized, sanitised project samples",
+          "kind": "outcome",
+          "baseline": 0,
+          "target": 1,
+          "unit": "domain-reviewed authorized project runs",
+          "dueDate": "2026-10-31",
+          "owner": "Modiqi business owner, to be named",
+          "source": "future authorized pilot register; no qualifying sample exists today"
+        }
+      ]
+    },
+    "strategy-toolkit/strategic-roadmap.html": {
+      "initiatives": [
+        {
+          "id": "initiative-method-runtime",
+          "name": "Connect method rules to page or deterministic shared-module behavior",
+          "outcomeLink": "kr-method-coverage",
+          "owner": "WenPai technical delivery owner, to be named",
+          "dependencies": [],
+          "startDate": "2026-08-14",
+          "endDate": "2026-09-30",
+          "decisionGate": "Do not mark a tool fixture until its actual behavior produces the expected valid and boundary outcomes."
+        },
+        {
+          "id": "initiative-sample-intake",
+          "name": "Approve and sanitise one real project sample",
+          "outcomeLink": "kr-authorized-runs",
+          "owner": "Modiqi business owner, to be named",
+          "dependencies": [],
+          "startDate": "2026-08-14",
+          "endDate": "2026-09-30",
+          "decisionGate": "Stop if authorization, purpose, sanitisation owner or retention boundary is missing."
+        },
+        {
+          "id": "initiative-domain-run",
+          "name": "Run and review all six Strategy Alignment tools",
+          "outcomeLink": "kr-authorized-runs",
+          "owner": "Modiqi domain reviewer, to be named",
+          "dependencies": [
+            "initiative-method-runtime",
+            "initiative-sample-intake"
+          ],
+          "startDate": "2026-10-01",
+          "endDate": "2026-10-31",
+          "decisionGate": "Workflow 02 business implementation remains blocked until the run and review evidence are recorded."
+        }
+      ]
+    }
+  },
+  "decision": {
+    "status": "continue_with_gates",
+    "summary": "Continue hardening Workflow 01, but do not expand the supported workflow surface or claim customer validation.",
+    "blocks": [
+      "No authorized customer sample",
+      "No named domain reviewer",
+      "No behavior-level assertion for every method rule",
+      "No approved service price or willingness-to-pay evidence"
+    ]
+  }
+}
