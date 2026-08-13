@@ -339,3 +339,10 @@ git diff --check                 PASS
 
 - Four `fixture` tools have deterministic page/module assertions; none has a named domain reviewer or real customer sample. Business release remains BLOCKED.
 - Desktop and mobile screenshots for both changed pages were inspected after the full layout audit. No website, deployment, production VM, DNS, provider, credential or permission was changed.
+
+## [CX] 2026-08-13 Workflow 01 second batch merged to main
+
+- FeiCode transport recovered. Feature branch `codex/workflow01-internal-pilot` was pushed and independently read back at `8f7d844f966338384d14eab08867e6980b26e6f0`.
+- Remote `main` was read at `59868e5a108ccf413be8d17d140f20c1651d2344`, confirmed as an ancestor, then local `main` was fast-forwarded and pushed without force.
+- Independent post-push readback confirmed local HEAD = remote `refs/heads/main` = `8f7d844f966338384d14eab08867e6980b26e6f0`; remote HEAD resolves to `refs/heads/main`.
+- This is source merge evidence only. It is not a website deployment, product release, domain review or customer validation.
