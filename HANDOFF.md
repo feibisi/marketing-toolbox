@@ -181,3 +181,16 @@ FeiCode repository          BLOCKED: missing write:organization scope
 ### Boundary
 
 - This is repository publication evidence, not a website deployment or product release. No website, DNS, VM service or cluster configuration was changed by this task.
+
+## [CX] 2026-08-13 FeiCode documentation hardening
+
+### Result
+
+- Added `docs/FEICODE_REPOSITORY_OPERATIONS.md` as the project-level source for repository identity, SSH principal, permission evidence, daily collaboration, credential-incident boundaries and separate API/SSH/Git/permission verification.
+- Updated project startup, governance, README and release checklist so future agents do not reuse the initial-push script for ordinary pushes or confuse repository publication with deployment/release.
+- Parent workspace now contains `docs/operations/feicode-repository-runbook.md` and a reusable repository-request template covering organization identity, Board/VM controls, minimum permissions, rotation, empty-repository semantics and the first-push handoff.
+
+### Boundary
+
+- Documentation records only credential scope, reference and rotation state; it contains no token.
+- No FeiCode permission, credential, website, DNS, VM, deployment or production service was changed in this documentation task.

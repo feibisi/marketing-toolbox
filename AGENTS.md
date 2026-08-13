@@ -5,6 +5,7 @@
 ## 启动
 
 - 先读 `../CLAUDE.md`、本目录 `CLAUDE.md`、`HANDOFF.md`、`docs/FUNCTION_AUDIT_2026-08-13.md` 和当前相关产品文档。
+- 涉及 FeiCode remote、权限、凭据、分支或发布证据时，先读 `docs/FEICODE_REPOSITORY_OPERATIONS.md`；组织级建仓与轮换流程以 `../docs/operations/feicode-repository-runbook.md` 为工作区真源。
 - 以 `data/tools.json`、`data/workflows.json`、`data/core-tool-contracts.json` 和生成的 readiness 数据为机器清单。
 
 ## 变更
@@ -25,4 +26,4 @@
 
 - 本地质量门槛 PASS 不等于正式发布。
 - 部署、域名、公开站点和第三方资源变更需要独立授权及可回滚发布证据。
-
+- 日常 Git 只使用无凭据 SSH remote；不得把 PAT 放入 remote、命令参数、日志或诊断输出。仓库发布、网站部署和产品 release 是三项独立事实。

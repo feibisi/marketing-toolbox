@@ -77,9 +77,11 @@
 
 版本号、Git 标签、FeiCode Release、合并或本地门禁各自是不同事实。缺少实际目标环境验证时只能写“候选”，不能写“已上线”。
 
-### 首次推送验证
+### FeiCode 仓库生命周期
 
-组织所有者创建空的公开仓库并授权写入后，运行：
+首次推送已经完成；以后不得把 `scripts/push_feicode_initial.sh` 当作日常 push 包装器。仓库身份、SSH principal、权限证据、凭据事故处理和日常协作边界统一见 [`FEICODE_REPOSITORY_OPERATIONS.md`](FEICODE_REPOSITORY_OPERATIONS.md)。
+
+只有在全新的、尚未推送的同名空仓库恢复场景中，才可运行：
 
 ```bash
 scripts/push_feicode_initial.sh

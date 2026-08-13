@@ -20,6 +20,7 @@
 - [ ] 已确认备份、版本号、回滚目录或上一版本
 - [ ] 已获得部署授权
 - [ ] DNS、证书、生产配置和权限变更另行审批
+- [ ] 已按 `docs/FEICODE_REPOSITORY_OPERATIONS.md` 区分源码仓库、候选版本、FeiCode Release 和网站部署证据
 
 ## 发布后
 

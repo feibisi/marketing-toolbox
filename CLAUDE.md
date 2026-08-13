@@ -22,6 +22,7 @@
 - `workflows.html`：工作流进度。
 - `docs/PRODUCT_VISION_AND_DEVELOPMENT_DIRECTION.md`：产品方向。
 - `docs/CORE_TOOL_STANDARD.md`：核心工具完成标准。
+- `docs/FEICODE_REPOSITORY_OPERATIONS.md`：远端身份、权限、协作与验证边界。
 - `HANDOFF.md`：最近交接和验证结果。
 
 ## 命令
@@ -41,6 +42,7 @@ npm run lint:css
 - 业务公式断言、完整打印/导出交互、Safari、Firefox、移动端和真实辅助技术测试未完成。
 - 30 个核心工具的 contract method 仍是待领域复核的草案占位。
 - 本目录是独立 Git 仓库；FeiCode 远端为 `Modiqi-com/marketing-toolbox`，默认分支 `main`。首次推送已核验 local/remote SHA 一致；仓库发布不等于网站部署或产品 release。
+- `origin` 的批准形式为 `ssh://git@feicode.com/Modiqi-com/marketing-toolbox.git`；SSH principal 为 `wapuu`，已验证仓库 permission 为 `owner`。这些是 2026-08-13 的单仓证据，使用前仍需实时复核。
 
 ## 数据边界
 
