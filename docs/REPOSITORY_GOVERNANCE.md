@@ -77,6 +77,18 @@
 
 版本号、Git 标签、FeiCode Release、合并或本地门禁各自是不同事实。缺少实际目标环境验证时只能写“候选”，不能写“已上线”。
 
+### 首次推送验证
+
+组织所有者创建空的公开仓库并授权写入后，运行：
+
+```bash
+scripts/push_feicode_initial.sh
+```
+
+脚本只接受无凭据的 `ssh://git@feicode.com/Modiqi-com/marketing-toolbox.git`，先验证仓库身份、公开可见性、工作区清洁和秘密扫描，再推送 `main`，最后逐项核对远端 SHA、默认分支与非空状态。它通过 `GIT_CONFIG_GLOBAL=/dev/null` 隔离全局 URL rewrite，避免全局凭据被展开到诊断输出。
+
+仓库不存在、可见性不符、远端不是 `main` 或 SHA 不一致时均失败关闭；不得把 SSH 认证成功当作建仓或推送成功。
+
 ## 6. 质量与债务
 
 `npm run test:quality` 是合并前的统一自动化门禁。业务公式、真实样本、Safari/其他浏览器、打印审阅和内容方法来源需按改动另行补充。零真实样本不构成业务 `PASS`。
