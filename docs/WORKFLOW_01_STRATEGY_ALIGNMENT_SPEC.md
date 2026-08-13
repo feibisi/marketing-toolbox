@@ -1,7 +1,7 @@
 # Workflow 01 — Strategy alignment implementation spec
 
 > [CX] Draft started: 2026-08-13  
-> Status: SWOT and landscape map at `fixture`; four remaining tools at `contract`. Domain review and customer samples remain incomplete.
+> Status: SWOT, landscape map, business model and value proposition at `fixture`; OKR and roadmap remain at `contract`. Domain review and customer samples remain incomplete.
 
 ## Outcome
 
@@ -46,4 +46,4 @@ The four illustrative scenarios are encoded in `tests/fixtures/` and checked by 
 
 ## Current implementation sequence
 
-Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. SWOT and landscape map now use one shared browser rule module, reproduce valid and missing-source fixture outcomes, and block invalid handoffs in the actual pages. Continue with business model and value proposition together, then OKR and roadmap. Do not clone validation logic into six pages, and do not promote readiness based only on the internal pilot or Python fixture audit.
+Shared evidence attachment and explicit workflow handoff primitives are implemented across all six pages. SWOT, landscape map, business model and value proposition now use one shared browser rule module and block invalid handoffs in the actual pages. Business model rejects prompt-only blocks and missing economic bases; value proposition requires ranked customer items, response mappings, fit evidence and segment consistency with the upstream model. Continue with OKR and roadmap together. Do not clone validation logic into six pages, and do not promote readiness based only on the internal pilot or Python fixture audit.

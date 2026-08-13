@@ -4,12 +4,19 @@
     const TOOL_PATHS = Object.freeze({
         swot: 'strategy-toolkit/swot-analysis.html',
         landscape: 'strategy-toolkit/landscape-map.html',
+        businessModel: 'strategy-toolkit/business-model-canvas.html',
+        valueProposition: 'strategy-toolkit/value-proposition.html',
     });
     const EVIDENCE_KINDS = new Set(['fact', 'assumption', 'to_verify']);
     const ALTERNATIVE_TYPES = new Set(['competitor', 'substitute', 'own_offer']);
     const SWOT_QUADRANTS = ['strengths', 'weaknesses', 'opportunities', 'threats'];
     const LANDSCAPE_ALTERNATIVES = ['us', 'leader', 'challenger', 'niche', 'follower', 'startup'];
     const PLACEHOLDER_CONCLUSIONS = new Set(['核心结论 key takeaway', '核心结论']);
+    const PLACEHOLDER_FRAGMENTS = [
+        '关键供应商', '生产制造', '实体资产', '我们为客户解决什么问题', '专属服务', '线上商城',
+        '我们为谁创造价值', '最重要的固有成本', '客户愿意为什么付费', '列出你的所有产品功能',
+        '如何帮助客户实现愿望', '如何减轻客户的痛苦', '客户试图完成什么工作', '客户想要什么结果', '风险与障碍',
+    ];
     const MESSAGES = Object.freeze({
         missing_quadrant: 'SWOT 每个适用象限至少需要一条已关联证据。',
         missing_statement: '证据陈述不能为空。',
@@ -25,6 +32,16 @@
         missing_own_offer: '竞争格局图至少需要一个 own offer。',
         missing_comparator: '竞争格局图至少需要一个 competitor 或 substitute。',
         missing_gap: '竞争格局图需要写明可辩护的空白或定位结论。',
+        missing_bmc_block: '商业模式画布九个区块都需要填写具体内容。',
+        missing_economic_basis: '成本结构和收入来源都需要填写计量或计价口径。',
+        missing_customer_segment: '需要明确一个客户细分。',
+        missing_riskiest_assumption: '需要明确当前风险最高的商业假设。',
+        unranked_customer_item: '客户任务、痛点和获益都需要稳定 ID 与优先级。',
+        unmapped_response: '每个痛点缓释或获益创造响应都必须映射到客户项。',
+        missing_fit_evidence: '至少一条 FIT 关系需要关联证据 ID。',
+        missing_promise: '需要选择一个可验证的价值承诺。',
+        missing_mismatch: '需要记录尚未解决的价值匹配缺口。',
+        segment_mismatch: '价值主张的客户细分必须与上游商业模式画布一致，或先返回上游修订。',
     });
 
     function text(value) {
@@ -33,6 +50,11 @@
 
     function hasSource(item) {
         return Boolean(text(item?.source) || text(item?.sourceGapReason));
+    }
+
+    function meaningful(value) {
+        const normalized = text(value).replace(/\s+/g, ' ');
+        return Boolean(normalized) && !PLACEHOLDER_FRAGMENTS.some(fragment => normalized.includes(fragment));
     }
 
     function validPosition(value) {
@@ -101,9 +123,62 @@
         return unique(issues);
     }
 
+    function populatedList(value) {
+        return Array.isArray(value) && value.length > 0 && value.every(item => {
+            const statement = typeof item === 'string' ? item : item?.item || item?.statement;
+            return meaningful(statement);
+        });
+    }
+
+    function validateBusinessModel(input) {
+        const issues = [];
+        const blocks = input?.blocks || {};
+        const required = ['partners', 'activities', 'resources', 'valuePropositions', 'relationships', 'channels', 'customerSegments', 'costStructure', 'revenueStreams'];
+        if (required.some(key => !populatedList(blocks[key]))) issues.push(issue('missing_bmc_block'));
+        ['costStructure', 'revenueStreams'].forEach(key => {
+            if ((blocks[key] || []).some(item => !text(item?.basis))) issues.push(issue('missing_economic_basis'));
+        });
+        if (!text(input?.customerSegment)) issues.push(issue('missing_customer_segment'));
+        if (!text(input?.riskiestAssumption)) issues.push(issue('missing_riskiest_assumption'));
+        return unique(issues);
+    }
+
+    function validateValueProposition(input) {
+        const issues = [];
+        if (!text(input?.customerSegment)) issues.push(issue('missing_customer_segment'));
+        const customerIds = new Set();
+        ['jobs', 'pains', 'gains'].forEach(key => {
+            const items = input?.[key];
+            if (!Array.isArray(items) || !items.length) {
+                issues.push(issue('unranked_customer_item'));
+                return;
+            }
+            items.forEach(item => {
+                if (!text(item?.id) || !meaningful(item?.statement) || !Number.isInteger(Number(item?.rank)) || Number(item.rank) < 1) {
+                    issues.push(issue('unranked_customer_item'));
+                } else {
+                    customerIds.add(item.id);
+                }
+            });
+        });
+        const responses = Array.isArray(input?.responses) ? input.responses : [];
+        if (!responses.length || responses.some(item => !meaningful(item?.statement) || !customerIds.has(item?.mapsTo))) {
+            issues.push(issue('unmapped_response'));
+        }
+        const links = Array.isArray(input?.fitLinks) ? input.fitLinks : [];
+        if (!links.some(item => text(item?.evidenceId) && customerIds.has(item?.customerItemId))) {
+            issues.push(issue('missing_fit_evidence'));
+        }
+        if (!text(input?.chosenPromise)) issues.push(issue('missing_promise'));
+        if (!text(input?.unresolvedMismatch)) issues.push(issue('missing_mismatch'));
+        return unique(issues);
+    }
+
     function validateStructured(toolPath, input) {
         if (toolPath === TOOL_PATHS.swot) return validateSwot(input);
         if (toolPath === TOOL_PATHS.landscape) return validateLandscape(input);
+        if (toolPath === TOOL_PATHS.businessModel) return validateBusinessModel(input);
+        if (toolPath === TOOL_PATHS.valueProposition) return validateValueProposition(input);
         return [];
     }
 
@@ -136,9 +211,59 @@
         };
     }
 
-    function validateHandoff({ toolPath, snapshot, evidence, summary }) {
+    function item(statement) {
+        return [{ item: text(statement) }];
+    }
+
+    function businessModelFromPage({ snapshot }) {
+        return {
+            customerSegment: snapshot.bmc_customer_segment,
+            blocks: {
+                partners: item(snapshot.bmc_partners),
+                activities: item(snapshot.bmc_activities),
+                resources: item(snapshot.bmc_resources),
+                valuePropositions: item(snapshot.bmc_value),
+                relationships: item(snapshot.bmc_relationships),
+                channels: item(snapshot.bmc_channels),
+                customerSegments: item(snapshot.bmc_segments),
+                costStructure: [{ item: text(snapshot.bmc_costs), basis: text(snapshot.bmc_cost_basis) }],
+                revenueStreams: [{ item: text(snapshot.bmc_revenue), basis: text(snapshot.bmc_revenue_basis) }],
+            },
+            dependencies: text(snapshot.bmc_dependencies) ? [snapshot.bmc_dependencies] : [],
+            contradictions: text(snapshot.bmc_contradictions) ? [snapshot.bmc_contradictions] : [],
+            riskiestAssumption: snapshot.bmc_riskiest_assumption,
+        };
+    }
+
+    function valuePropositionFromPage({ snapshot }) {
+        const jobId = text(snapshot.vpc_job_id);
+        const painId = text(snapshot.vpc_pain_id);
+        const gainId = text(snapshot.vpc_gain_id);
+        return {
+            customerSegment: snapshot.customer_segment,
+            jobs: [{ id: jobId, statement: text(snapshot.customer_jobs), rank: Number(snapshot.vpc_job_rank) }],
+            pains: [{ id: painId, statement: text(snapshot.customer_pains), rank: Number(snapshot.vpc_pain_rank) }],
+            gains: [{ id: gainId, statement: text(snapshot.customer_gains), rank: Number(snapshot.vpc_gain_rank) }],
+            responses: [
+                { id: 'response-pain', statement: text(snapshot.pain_relievers), mapsTo: snapshot.vpc_pain_response_target },
+                { id: 'response-gain', statement: text(snapshot.gain_creators), mapsTo: snapshot.vpc_gain_response_target },
+            ],
+            fitLinks: [{ responseId: 'response-pain', customerItemId: snapshot.vpc_fit_customer_item, evidenceId: snapshot.vpc_fit_evidence_id }],
+            chosenPromise: snapshot.vpc_chosen_promise,
+            unresolvedMismatch: snapshot.vpc_unresolved_mismatch,
+        };
+    }
+
+    function validateHandoff({ toolPath, snapshot, evidence, summary, upstreamHandoff }) {
         if (toolPath === TOOL_PATHS.swot) return validateSwot(swotFromPage({ snapshot, evidence }));
         if (toolPath === TOOL_PATHS.landscape) return validateLandscape(landscapeFromPage({ snapshot, summary }));
+        if (toolPath === TOOL_PATHS.businessModel) return validateBusinessModel(businessModelFromPage({ snapshot }));
+        if (toolPath === TOOL_PATHS.valueProposition) {
+            const issues = validateValueProposition(valuePropositionFromPage({ snapshot }));
+            const upstreamSegment = text(upstreamHandoff?.snapshot?.bmc_customer_segment);
+            if (upstreamSegment && upstreamSegment !== text(snapshot.customer_segment)) issues.push(issue('segment_mismatch'));
+            return unique(issues);
+        }
         return [];
     }
 

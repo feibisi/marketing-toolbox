@@ -120,7 +120,7 @@
       "downstream": [
         "strategy-toolkit/value-proposition.html"
       ],
-      "validation_level": "contract",
+      "validation_level": "fixture",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#business-model-canvas",
       "method_sources": [
@@ -167,7 +167,7 @@
       "downstream": [
         "strategy-toolkit/okr-cascade.html"
       ],
-      "validation_level": "contract",
+      "validation_level": "fixture",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#value-proposition-canvas",
       "method_sources": [

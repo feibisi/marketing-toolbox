@@ -158,6 +158,52 @@ body:not(.theme-dark).color-mode .bmc-channels {
     background-color: var(--color-semantic-neutral);
 }
 
+.bmc-method-record {
+    margin-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-sem-outer);
+    padding-top: var(--spacing-md);
+}
+
+.bmc-method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-md);
+}
+
+.bmc-method-grid label {
+    display: grid;
+    gap: var(--spacing-xs);
+    min-width: 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.bmc-method-grid input,
+.bmc-method-grid textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm);
+    font: inherit;
+    font-weight: var(--font-weight-normal);
+    resize: vertical;
+}
+
+@media screen and (min-width: 769px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        min-height: 210mm;
+        overflow: visible;
+    }
+
+    .bmc-container {
+        min-height: 620px;
+        flex: none;
+    }
+}
+
 /* Mobile composition: the desktop 5-column board becomes a readable sequence. */
 @media screen and (max-width: 768px) {
     main.paper-a3 {
@@ -196,5 +242,9 @@ body:not(.theme-dark).color-mode .bmc-channels {
         min-height: 7rem;
         overflow: visible;
         overflow-wrap: anywhere;
+    }
+
+    .bmc-method-grid {
+        grid-template-columns: minmax(0, 1fr);
     }
 }

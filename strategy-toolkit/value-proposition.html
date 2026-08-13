@@ -165,6 +165,27 @@
                 </div>
             </div>
         </div>
+
+        <section class="vpc-fit-record" aria-labelledby="vpc-fit-title">
+            <h2 class="section-title" id="vpc-fit-title"><i data-lucide="link"></i> 匹配验证 <span class="en-sub">(Fit Validation)</span></h2>
+            <p class="vpc-fit-help">为优先客户项提供稳定 ID 与排序，将响应明确映射到客户项，并关联证据。</p>
+            <div class="vpc-priority-grid">
+                <label>任务 ID<input type="text" value="job-1" data-save-key="vpc_job_id"></label>
+                <label>任务优先级<input type="number" min="1" value="1" data-save-key="vpc_job_rank"></label>
+                <label>痛点 ID<input type="text" value="pain-1" data-save-key="vpc_pain_id"></label>
+                <label>痛点优先级<input type="number" min="1" value="1" data-save-key="vpc_pain_rank"></label>
+                <label>获益 ID<input type="text" value="gain-1" data-save-key="vpc_gain_id"></label>
+                <label>获益优先级<input type="number" min="1" value="1" data-save-key="vpc_gain_rank"></label>
+            </div>
+            <div class="vpc-fit-grid">
+                <label>痛点缓释映射到<select data-save-key="vpc_pain_response_target"><option value="pain-1">pain-1</option><option value="job-1">job-1</option><option value="gain-1">gain-1</option></select></label>
+                <label>获益创造映射到<select data-save-key="vpc_gain_response_target"><option value="gain-1">gain-1</option><option value="job-1">job-1</option><option value="pain-1">pain-1</option></select></label>
+                <label>FIT 关联客户项<select data-save-key="vpc_fit_customer_item"><option value="pain-1">pain-1</option><option value="gain-1">gain-1</option><option value="job-1">job-1</option></select></label>
+                <label>FIT 证据 ID<input type="text" data-save-key="vpc_fit_evidence_id" placeholder="例如：ev-interview-01"></label>
+                <label class="vpc-wide">选择的价值承诺<textarea rows="2" data-save-key="vpc_chosen_promise" placeholder="写明客户完成后可验证的结果"></textarea></label>
+                <label class="vpc-wide">尚未解决的匹配缺口<textarea rows="2" data-save-key="vpc_unresolved_mismatch" placeholder="写明仍缺少的证据或未覆盖需求"></textarea></label>
+            </div>
+        </section>
         <!-- Footer -->
         <footer class="modiqi-footer">
             <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
@@ -177,6 +198,7 @@
 
     <script src="../shared/js/project-store.js"></script>
     <script src="../shared/js/workflow-store.js"></script>
+    <script src="../shared/js/workflow01-rules.js"></script>
     <script src="../shared/js/core.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

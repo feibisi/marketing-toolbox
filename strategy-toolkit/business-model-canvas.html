@@ -189,6 +189,18 @@
                 </div>
             </div>
         </div>
+
+        <section class="bmc-method-record" aria-labelledby="bmc-method-title">
+            <h2 class="section-title" id="bmc-method-title"><i data-lucide="list-checks"></i> 商业模式验证 <span class="en-sub">(Model Validation)</span></h2>
+            <div class="bmc-method-grid">
+                <label>目标客户细分<input type="text" data-save-key="bmc_customer_segment" placeholder="与客户细分区块一致的单一目标细分"></label>
+                <label>关键依赖<textarea rows="2" data-save-key="bmc_dependencies" placeholder="例如：获授权的匿名渠道数据"></textarea></label>
+                <label>成本计量口径<input type="text" data-save-key="bmc_cost_basis" placeholder="例如：每次工作坊所需工时"></label>
+                <label>收入计价口径<input type="text" data-save-key="bmc_revenue_basis" placeholder="例如：每个完成项目的固定费用"></label>
+                <label>已发现的矛盾<textarea rows="2" data-save-key="bmc_contradictions" placeholder="没有已知矛盾时写明尚未发现及待验证范围"></textarea></label>
+                <label>风险最高的假设<textarea rows="2" data-save-key="bmc_riskiest_assumption" placeholder="写明最可能推翻当前模式的一个假设"></textarea></label>
+            </div>
+        </section>
         <!-- Footer -->
         <footer class="modiqi-footer">
             <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
@@ -201,6 +213,7 @@
 
     <script src="../shared/js/project-store.js"></script>
     <script src="../shared/js/workflow-store.js"></script>
+    <script src="../shared/js/workflow01-rules.js"></script>
     <script src="../shared/js/core.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

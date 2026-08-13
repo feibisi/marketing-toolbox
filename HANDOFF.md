@@ -311,3 +311,31 @@ git diff --check                 PASS
 - Read-only SSH checks timed out during banner exchange on port 2222; a longer SSH push was closed by the server; anonymous HTTPS/TLS and an authenticated HTTPS push using the existing `0600` credential reference both failed before repository negotiation. No credential value was printed or copied.
 - Because neither current remote `main` nor the feature-branch SHA could be independently read, no local or remote merge was performed. Resume only after FeiCode transport recovers, then push the feature branch, verify its SHA, verify remote `main`, fast-forward merge, push `main`, and independently read back `main`.
 - This is a repository transport BLOCKED result, not a source-test failure. No production VM, website, DNS, provider, credential, permission or deployment was changed.
+
+## [CX] 2026-08-13 Workflow 01 second behavior batch
+
+### Result
+
+- Business Model Canvas now rejects prompt-only or missing nine-block content, requires one target segment, explicit cost/revenue bases and the riskiest assumption, and records dependencies and contradictions.
+- Value Proposition Canvas now records stable customer-item IDs and ranks, response mappings, fit evidence, a chosen promise and unresolved mismatch. A handoff is blocked when its customer segment conflicts with the upstream business model.
+- The stale `value_proposition_v2` example was migrated to current `value_proposition_v4` storage keys and now includes the new fit fields and an explicit no-customer-evidence disclosure.
+- Readiness is now 24 `smoke`, 2 `contract`, 4 `fixture`, 0 `reviewed`, 0 `release`. OKR and Strategic Roadmap are the remaining Workflow 01 contract-level tools.
+
+### Verification
+
+```text
+npm run test:quality             PASS
+- JavaScript                     214 samples
+- static                         165 pages / 1650 refs / 896 controls
+- Playwright                     198 passed
+- layout                         318 clear / 0 high / 0 blocker
+- CSS                            0 errors / 715 existing warnings
+- customer samples               0
+gitleaks dir .                    PASS
+git diff --check                 PASS
+```
+
+### Boundary
+
+- Four `fixture` tools have deterministic page/module assertions; none has a named domain reviewer or real customer sample. Business release remains BLOCKED.
+- Desktop and mobile screenshots for both changed pages were inspected after the full layout audit. No website, deployment, production VM, DNS, provider, credential or permission was changed.

@@ -109,14 +109,26 @@ const MODIQI_EXAMPLES = {
     // ============================================
     // Value Proposition Canvas Example: "Tesla Model S"
     // ============================================
-    'value_proposition_v2': {
-        "modiqi_value_proposition_v2_product_name": "Tesla Model S",
-        "modiqi_value_proposition_v2_customer_segment": "高净值环保意识人群",
-        "modiqi_value_proposition_v2_products_services": "<ul><li>高性能电动轿车</li><li>超级充电网络</li><li>8年电池质保</li></ul>",
-        "modiqi_value_proposition_v2_gain_creators": "<ul><li>0-100加速 3秒以内</li><li>Autopilot 自动辅助驾驶</li><li>OTA 远程升级，车辆常用常新</li><li>极简科技感内饰</li></ul>",
-        "modiqi_value_proposition_v2_pain_relievers": "<ul><li>遍布全国的超级充电站网络</li><li>超过 600km 的超长续航</li><li>家用充电桩安装服务</li><li>极低的日常保养成本</li></ul>",
-        "modiqi_value_proposition_v2_customer_jobs": "<ul><li>日常通勤 (Commute)</li><li>偶尔的长途旅行</li><li>展现个人对科技/环保的品味</li><li>安全地接送家人</li></ul>",
-        "modiqi_value_proposition_v2_customer_gains": "<ul><li>获得极佳的驾驶乐趣</li><li>被视为科技先锋/环保人士</li><li>节省昂贵的燃油费</li><li>安静、平顺的乘坐体验</li></ul>",
-        "modiqi_value_proposition_v2_customer_pains": "<ul><li>里程焦虑 (怕半路没电)</li><li>充电时间过长</li><li>电池寿命与更换成本</li><li>车辆安全性担忧</li></ul>"
+    'value_proposition_v4': {
+        "modiqi_value_proposition_v4_product_name": "Tesla Model S",
+        "modiqi_value_proposition_v4_customer_segment": "高净值环保意识人群",
+        "modiqi_value_proposition_v4_products_services": "<ul><li>高性能电动轿车</li><li>超级充电网络</li><li>8年电池质保</li></ul>",
+        "modiqi_value_proposition_v4_gain_creators": "<ul><li>0-100加速 3秒以内</li><li>Autopilot 自动辅助驾驶</li><li>OTA 远程升级，车辆常用常新</li><li>极简科技感内饰</li></ul>",
+        "modiqi_value_proposition_v4_pain_relievers": "<ul><li>遍布全国的超级充电站网络</li><li>超过 600km 的超长续航</li><li>家用充电桩安装服务</li><li>极低的日常保养成本</li></ul>",
+        "modiqi_value_proposition_v4_customer_jobs": "<ul><li>日常通勤 (Commute)</li><li>偶尔的长途旅行</li><li>展现个人对科技/环保的品味</li><li>安全地接送家人</li></ul>",
+        "modiqi_value_proposition_v4_customer_gains": "<ul><li>获得极佳的驾驶乐趣</li><li>被视为科技先锋/环保人士</li><li>节省昂贵的燃油费</li><li>安静、平顺的乘坐体验</li></ul>",
+        "modiqi_value_proposition_v4_customer_pains": "<ul><li>里程焦虑 (怕半路没电)</li><li>充电时间过长</li><li>电池寿命与更换成本</li><li>车辆安全性担忧</li></ul>",
+        "modiqi_value_proposition_v4_vpc_job_id": "job-1",
+        "modiqi_value_proposition_v4_vpc_job_rank": "1",
+        "modiqi_value_proposition_v4_vpc_pain_id": "pain-1",
+        "modiqi_value_proposition_v4_vpc_pain_rank": "1",
+        "modiqi_value_proposition_v4_vpc_gain_id": "gain-1",
+        "modiqi_value_proposition_v4_vpc_gain_rank": "1",
+        "modiqi_value_proposition_v4_vpc_pain_response_target": "pain-1",
+        "modiqi_value_proposition_v4_vpc_gain_response_target": "gain-1",
+        "modiqi_value_proposition_v4_vpc_fit_customer_item": "pain-1",
+        "modiqi_value_proposition_v4_vpc_fit_evidence_id": "example-public-spec",
+        "modiqi_value_proposition_v4_vpc_chosen_promise": "通过高性能电动车与充电网络降低出行焦虑，同时提供可验证的驾驶体验。",
+        "modiqi_value_proposition_v4_vpc_unresolved_mismatch": "该演示没有真实客户访谈或购买证据，支付意愿与长期使用体验仍待验证。"
     }
 };

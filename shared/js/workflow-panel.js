@@ -142,11 +142,13 @@
         const selected = project.evidence.filter(item => evidenceIds.includes(item.id));
         if (selected.some(item => !item.source || !item.owner || !item.reviewDate)) issues.push('关联证据缺少来源、负责人或复核日期。');
         const pageSnapshot = snapshot();
+        const upstreamHandoff = upstreamPath ? window.ModiqiWorkflowStore.get(project.id, workflowId, upstreamPath) : null;
         const methodIssues = window.ModiqiWorkflow01Rules?.validateHandoff({
             toolPath,
             snapshot: pageSnapshot,
             evidence: selected,
             summary: values.summary,
+            upstreamHandoff,
         }) || [];
         issues.push(...methodIssues.map(item => item.message));
         const status = root.querySelector('[data-handoff-status]');

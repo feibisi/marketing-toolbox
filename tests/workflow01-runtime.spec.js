@@ -102,7 +102,7 @@ test('landscape method fields drive positions and block handoff until axes and s
 test('shared Workflow 01 rules reproduce valid and missing-source fixture outcomes', async ({ page }) => {
     await page.goto('/strategy-toolkit/landscape-map.html');
     const result = await page.evaluate(async () => {
-        const paths = ['swot-analysis', 'landscape-map'];
+        const paths = ['swot-analysis', 'landscape-map', 'business-model-canvas', 'value-proposition'];
         const output = {};
         for (const stem of paths) {
             const fixture = await fetch(`/tests/fixtures/${stem}.json`).then(response => response.json());
@@ -118,7 +118,96 @@ test('shared Workflow 01 rules reproduce valid and missing-source fixture outcom
     expect(result).toEqual({
         'swot-analysis': { valid: [], 'missing-source': ['missing_source'] },
         'landscape-map': { valid: [], 'missing-source': ['missing_source'] },
+        'business-model-canvas': { valid: [], 'missing-source': [] },
+        'value-proposition': { valid: [], 'missing-source': [] },
     });
+});
+
+test('business model canvas blocks handoff without nine blocks and economic bases', async ({ page }) => {
+    await seedProject(page);
+    await page.goto('/strategy-toolkit/business-model-canvas.html');
+    const panel = page.locator('[data-workflow-panel]');
+    await addEvidence(panel, 'bmc_value', 'The model remains an illustrative internal hypothesis.');
+    const handoff = panel.locator('[data-handoff-form]');
+    await handoff.locator('[name="evidenceIds"]').check();
+    await handoff.locator('[name="summary"]').fill('Test a fixed-scope planning workshop for one segment.');
+    await handoff.locator('[name="reviewDate"]').fill('2026-08-20');
+    await page.locator('[data-save-key="bmc_value"]').fill('');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('九个区块');
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('计量或计价口径');
+
+    const blocks = {
+        bmc_partners: 'Illustrative implementation partner',
+        bmc_activities: 'Run a planning workshop',
+        bmc_resources: 'Reusable diagnostic worksheet',
+        bmc_value: 'A reviewed 90-day plan',
+        bmc_relationships: 'Workshop plus review',
+        bmc_channels: 'Professional association webinar',
+        bmc_segments: 'Regional accounting firms',
+        bmc_costs: 'Facilitator time',
+        bmc_revenue: 'Workshop fee',
+    };
+    for (const [key, value] of Object.entries(blocks)) await page.locator(`[data-save-key="${key}"]`).fill(value);
+    await page.locator('[data-save-key="bmc_customer_segment"]').fill('Regional accounting firms');
+    await page.locator('[data-save-key="bmc_cost_basis"]').fill('hours per workshop');
+    await page.locator('[data-save-key="bmc_revenue_basis"]').fill('fee per completed workshop');
+    await page.locator('[data-save-key="bmc_riskiest_assumption"]').fill('The segment will pay before requesting execution support.');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('交接已保存');
+});
+
+test('value proposition canvas requires ranked customer items, mappings, and fit evidence', async ({ page }) => {
+    await seedProject(page);
+    await page.goto('/strategy-toolkit/business-model-canvas.html');
+    await page.evaluate(projectId => window.ModiqiWorkflowStore.save({
+        projectId,
+        workflowId: 'strategy-alignment',
+        sourceTool: 'strategy-toolkit/business-model-canvas.html',
+        targetTool: 'strategy-toolkit/value-proposition.html',
+        summary: 'Illustrative upstream model',
+        owner: 'Strategy Owner',
+        reviewDate: '2026-08-20',
+        evidenceIds: ['ev-upstream-illustrative'],
+        snapshot: { bmc_customer_segment: 'Regional accounting firms' },
+        status: 'ready',
+    }), project.id);
+    await page.goto('/strategy-toolkit/value-proposition.html');
+    const panel = page.locator('[data-workflow-panel]');
+    await addEvidence(panel, 'customer_pains', 'Customer priorities are illustrative and require domain review.');
+    const handoff = panel.locator('[data-handoff-form]');
+    await handoff.locator('[name="evidenceIds"]').check();
+    await handoff.locator('[name="summary"]').fill('Validate the chosen promise against the top pain.');
+    await handoff.locator('[name="reviewDate"]').fill('2026-08-20');
+    await page.locator('[data-save-key="customer_jobs"]').fill('');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('稳定 ID 与优先级');
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('FIT 关系');
+
+    await page.locator('[data-save-key="customer_segment"]').fill('Independent retailers');
+    await page.locator('[data-save-key="customer_jobs"]').fill('Decide which acquisition channels merit investment');
+    await page.locator('[data-save-key="customer_pains"]').fill('Metrics are spread across several tools');
+    await page.locator('[data-save-key="customer_gains"]').fill('A prioritised measurement plan with owners');
+    await page.locator('[data-save-key="pain_relievers"]').fill('Facilitated channel evidence review');
+    await page.locator('[data-save-key="gain_creators"]').fill('Prioritised 90-day measurement plan');
+    await page.locator('[data-save-key="vpc_fit_evidence_id"]').fill('ev-illustrative-01');
+    await page.locator('[data-save-key="vpc_chosen_promise"]').fill('Leave the workshop with an owned 90-day plan.');
+    await page.locator('[data-save-key="vpc_unresolved_mismatch"]').fill('Willingness to pay remains unverified.');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('客户细分必须与上游');
+    await page.locator('[data-save-key="customer_segment"]').fill('Regional accounting firms');
+    await handoff.locator('button[type="submit"]').click();
+    await expect(handoff.locator('[data-handoff-status]')).toContainText('交接已保存');
+});
+
+test('value proposition v4 example loads the current storage keys', async ({ page }) => {
+    await page.goto('/strategy-toolkit/value-proposition.html');
+    page.once('dialog', dialog => dialog.accept());
+    await page.locator('button[title="加载范例 (Load Example)"]').evaluate(button => button.click());
+    await page.waitForLoadState('domcontentloaded');
+    await expect(page.locator('[data-save-key="product_name"]')).toHaveValue('Tesla Model S');
+    await expect(page.locator('[data-save-key="vpc_fit_evidence_id"]')).toHaveValue('example-public-spec');
+    await expect(page.locator('[data-save-key="vpc_unresolved_mismatch"]')).toHaveValue(/没有真实客户访谈/);
 });
 
 test('handoff completion is blocked without evidence, owner, and review date', async ({ page }) => {
