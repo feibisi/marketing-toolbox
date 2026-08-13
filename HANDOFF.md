@@ -373,3 +373,10 @@ Desktop and mobile screenshots for both changed pages were inspected. The first 
 
 - Six `fixture` tools mean deterministic contract and page behavior, not domain approval or customer validation.
 - A named domain reviewer and one to three authorized, sanitised project samples are still absent. `reviewed`, business release and Workflow 02 implementation remain BLOCKED.
+
+## [CX] 2026-08-14 Workflow 01 final fixture batch merged to main
+
+- Feature branch `codex/workflow01-final-fixtures` was pushed and independently read back at `2860594d59f6698dd22b585998ad9ff53387c924`.
+- Remote `main` was independently read at `bfa95c9c792b183f972978fcba6086c99aeae84f`, confirmed as an ancestor, then local `main` was fast-forwarded and pushed without force.
+- Independent post-push readback confirmed local HEAD = remote `refs/heads/main` = `2860594d59f6698dd22b585998ad9ff53387c924`; remote HEAD resolves to `refs/heads/main`.
+- This is source merge evidence only. It is not a website deployment, product release, domain review or customer validation.
