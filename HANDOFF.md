@@ -168,3 +168,16 @@ FeiCode repository          BLOCKED: missing write:organization scope
 
 - Three consecutive publication checks ended at the same external condition: public FeiCode API returns 404 for `Modiqi-com/marketing-toolbox`, and credential-isolated SSH `ls-remote` cannot find or access the repository.
 - Local preparation is complete and clean; no further safe local change can create the required organization repository. Resume after the old credential is revoked and the organization repository/write authority exists.
+
+## [CX] 2026-08-13 FeiCode repository created and first push verified
+
+### Result
+
+- The external Linuxjoy/FeiCode task revoked and rotated the exposed `wapuu` PAT without storing it in this repository, created the public `Modiqi-com/marketing-toolbox` repository, set `main` as default and verified `wapuu` owner permission.
+- The fail-closed publication gate pushed local `main` for the first time. Git verification matched local and remote SHA `597068a46841e7f58ad21d59d2b2d9525d2227bd`, and remote HEAD resolved to `refs/heads/main`.
+- FeiCode public API returned `full_name=Modiqi-com/marketing-toolbox`, `private=false`, `default_branch=main`, and `empty=false` after repository state converged.
+- The publication script now retries the final public API check for bounded eventual consistency; it still fails closed if the repository does not converge.
+
+### Boundary
+
+- This is repository publication evidence, not a website deployment or product release. No website, DNS, VM service or cluster configuration was changed by this task.

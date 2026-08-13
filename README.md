@@ -1,5 +1,7 @@
 # Modiqi Marketing Toolbox
 
+FeiCode：<https://feicode.com/Modiqi-com/marketing-toolbox>
+
 Modiqi Marketing Toolbox 是莫蒂奇长期维护的独立营销项目工作台。它面向营销顾问、品牌团队和中小企业负责人，以 144 个浏览器工具、30 个核心工具和 6 条工作流支持从诊断、决策到项目交付的过程。
 
 项目采用 local-first 静态 Web 架构：无需账户或服务端数据库，用户数据默认保存在当前浏览器，可由用户主动导出或打印。`modiqi.com` WordPress 主站负责内容、获客、品牌说明和服务转化，不是本工具箱的运行依赖；主站不可读取工具箱画布数据，工具箱也必须在主站不可用时独立运行。

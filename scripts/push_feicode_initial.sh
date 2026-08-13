@@ -69,13 +69,26 @@ fi
 python3 - "$API_URL" "$local_sha" <<'PY'
 import json
 import sys
+import time
 import urllib.request
 
-with urllib.request.urlopen(sys.argv[1], timeout=20) as response:
-    repository = json.load(response)
-if repository.get("default_branch") != "main":
-    raise SystemExit("FAIL: FeiCode API does not report main as default branch")
-if repository.get("empty") is not False:
-    raise SystemExit("FAIL: FeiCode still reports an empty repository")
+repository = None
+for attempt in range(6):
+    request = urllib.request.Request(
+        sys.argv[1], headers={"Cache-Control": "no-cache"}
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        repository = json.load(response)
+    if (
+        repository.get("default_branch") == "main"
+        and repository.get("empty") is False
+    ):
+        break
+    if attempt < 5:
+        time.sleep(2)
+else:
+    raise SystemExit(
+        "FAIL: FeiCode API did not converge to main/non-empty after push"
+    )
 print(f"PASS: FeiCode main verified at {sys.argv[2]}")
 PY

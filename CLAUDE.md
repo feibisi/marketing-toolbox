@@ -40,7 +40,7 @@ npm run lint:css
 - 仍有 715 个 CSS design-token 基线警告。
 - 业务公式断言、完整打印/导出交互、Safari、Firefox、移动端和真实辅助技术测试未完成。
 - 30 个核心工具的 contract method 仍是待领域复核的草案占位。
-- 本目录已初始化为独立 Git 仓库，`main` 首次提交为 `844ab37`；FeiCode 远端仓库尚未创建，不能写成已推送或已发布。
+- 本目录是独立 Git 仓库；FeiCode 远端为 `Modiqi-com/marketing-toolbox`，默认分支 `main`。首次推送已核验 local/remote SHA 一致；仓库发布不等于网站部署或产品 release。
 
 ## 数据边界
 
