@@ -304,3 +304,10 @@ git diff --check                 PASS
 - The two `fixture` ratings mean deterministic page/module behavior is now asserted for those two tools only. They do not mean domain review, customer validation, deployment or product release.
 - `real_customer_samples=0`, the named domain reviewer is still absent, and business release remains BLOCKED. No production VM, website, DNS, provider, credential or permission was changed.
 - The next behavior batch is Business Model Canvas plus Value Proposition Canvas; the feature branch remains unmerged pending review.
+
+## [CX] 2026-08-13 Workflow 01 merge attempt blocked
+
+- User authorized pushing and merging the first behavior batch. The feature branch remains local at `18ed419a905ecfaa33f0e91a422bbf59d19f31f1`, two commits ahead of the last verified remote tracking ref `16d1f7e87b325f10a211d382cffe8f54ddcb345d`.
+- Read-only SSH checks timed out during banner exchange on port 2222; a longer SSH push was closed by the server; anonymous HTTPS/TLS and an authenticated HTTPS push using the existing `0600` credential reference both failed before repository negotiation. No credential value was printed or copied.
+- Because neither current remote `main` nor the feature-branch SHA could be independently read, no local or remote merge was performed. Resume only after FeiCode transport recovers, then push the feature branch, verify its SHA, verify remote `main`, fast-forward merge, push `main`, and independently read back `main`.
+- This is a repository transport BLOCKED result, not a source-test failure. No production VM, website, DNS, provider, credential, permission or deployment was changed.
