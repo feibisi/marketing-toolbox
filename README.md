@@ -55,6 +55,7 @@ npm run test:quality
 - 导出的 JSON、图片和 PDF 可能包含业务资料，应由使用者按项目数据管理。
 - 不得在工具、提交、日志、测试夹具或截图中保存密码、API 密钥、客户个人信息或生产导出。
 - WordPress 主站与工具箱只允许通过公开、版本化的目录和链接契约协作，不共享登录态、业务数据库或本地画布存储。
+- 主站候选入口由 [`data/marketing-catalog.json`](data/marketing-catalog.json) 生成；全部条目当前为规划状态，不构成已发布声明。模型见 [`docs/CONTENT_DATA_MODEL.md`](docs/CONTENT_DATA_MODEL.md)。
 - 发现安全问题时不要公开披露利用细节，按 [`SECURITY.md`](SECURITY.md) 处理。
 
 项目数据模型见 [`docs/PROJECT_DATA_MODEL.md`](docs/PROJECT_DATA_MODEL.md)，架构见 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)。
@@ -81,6 +82,8 @@ marketing-toolbox/
 - 贡献流程：[`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 仓库治理：[`docs/REPOSITORY_GOVERNANCE.md`](docs/REPOSITORY_GOVERNANCE.md)
 - 长期路线：[`docs/ROADMAP.md`](docs/ROADMAP.md)
+- 长期项目章程：[`docs/LONG_TERM_PROJECT_CHARTER.md`](docs/LONG_TERM_PROJECT_CHARTER.md)
+- 主站增长体系：[`docs/MODIQI_COM_GROWTH_AND_CONTENT_SYSTEM.md`](docs/MODIQI_COM_GROWTH_AND_CONTENT_SYSTEM.md)
 - 发布检查：[`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md)
 - 版本变更：[`CHANGELOG.md`](CHANGELOG.md)
 

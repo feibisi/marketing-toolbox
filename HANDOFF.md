@@ -132,3 +132,33 @@ npm run test:quality        PASS including fresh layout audit
 - Geometry PASS is not business-method, accessibility, cross-browser or release PASS; readiness remains 30 `smoke`, 0 `release`.
 - Tablet, browser-scale variants, Firefox/Safari, physical devices and assistive technology remain unverified.
 - No deployment, VM, DNS, provider, credential, permission or cluster-service write was performed.
+
+## [CX] 2026-08-13 Long-term project and repository foundation
+
+### Result
+
+- Recorded the independent long-term product charter, technical maintenance model, `modiqi.com` WordPress acquisition/content boundary, repository governance and roadmap.
+- Added the generated public catalog contract: 144 planned tool entries split into 30 authoritative resources and 114 directory entries, plus 6 planned workflow hubs. It contains no canvas or customer data and makes 0 published-page claims.
+- Added `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, root `CHANGELOG.md`, `.editorconfig`, `.gitignore` and a gitleaks configuration.
+- Initialized an independent `main` repository and created local commit `844ab37a6c8db4997cb10f439fde865ab67dd38e` with 438 files.
+- FeiCode organization `Modiqi-com` exists, but `Modiqi-com/marketing-toolbox` was not created: the current API credential returned HTTP 403 because it lacks `write:organization`; organization push-to-create is disabled. No remote commit exists.
+
+### Verification
+
+```text
+npm run test:quality        PASS
+- marketing catalog         144 tools / 30 authoritative / 114 directory / 6 workflows / 0 published claims
+- JavaScript                209 samples
+- static                    165 pages / 1614 refs / 850 controls
+- CSS                       0 errors / 715 warnings
+- Playwright                187 passed
+- layout                    318 clear / 0 high / 0 blocker
+gitleaks --no-git           PASS after reviewed localStorage-key false-positive allowlist
+local branch                main @ 844ab37
+FeiCode repository          BLOCKED: missing write:organization scope
+```
+
+### Security action required
+
+- A pre-existing FeiCode credential was exposed in one local Git diagnostic transcript because a verbose environment flag was set to the string `0`, which Git interpreted as enabled. The credential value was not written to this repository and the repository gitleaks scan is clean, but the credential must be revoked/rotated before any further FeiCode use.
+- Resume only with a replacement credential carrying the minimum `write:organization` and repository-write scopes, or after an organization owner creates the empty repository and grants push access.

@@ -10,6 +10,7 @@
 
 - `data/tools.json`：144 个工具页面，其中 30 个核心工具。
 - `data/workflows.json`：6 条工作流，覆盖 30 个不同核心工具。
+- `data/marketing-catalog.json`：主站公开目录候选，30 个完整资源页、114 个目录条目和 6 个工作流入口均为 `planned`。
 - 项目上下文 schema v2，包含事实、假设、待核验和来源要求。
 - 当前 readiness：30 个核心工具处于 `smoke`，0 个处于 `release`。
 
@@ -35,15 +36,14 @@ npm run lint:css
 
 ## 已知状态
 
-- 最近 `npm run test:quality` 记录为 PASS，154 个 Playwright 测试通过。
+- 最近 `npm run test:quality` 记录为 PASS，187 个 Playwright 测试通过，布局 318/318 clear。
 - 仍有 715 个 CSS design-token 基线警告。
 - 业务公式断言、完整打印/导出交互、Safari、Firefox、移动端和真实辅助技术测试未完成。
 - 30 个核心工具的 contract method 仍是待领域复核的草案占位。
-- 本目录不是已确认的独立 Git 仓库，没有提交、分支或正式发布证据。
+- 本目录已初始化为独立 Git 仓库，`main` 首次提交为 `844ab37`；FeiCode 远端仓库尚未创建，不能写成已推送或已发布。
 
 ## 数据边界
 
 - 浏览器本地存储用于项目上下文和工作流进度。
 - 工具箱不承担跨飞、鹏追、鲨仓、橙黑或可追的业务系统职责。
 - 工具箱质量门槛和其他五个产品的商业验证互不替代。
-
