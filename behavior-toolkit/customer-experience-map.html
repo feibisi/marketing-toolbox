@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户体验地图 (Customer Experience Map)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="全方位可视化客户旅程与体验痛点">
+    <meta name="keywords" content="Customer Journey Map, CX, User Experience, Service Design">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/customer-experience-map.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户体验地图</h1>
+                <span class="english-subtitle">Customer Experience Map</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>画像 <span class="en-sub">(Persona)</span></label>
+                    <input type="text" class="meta-input" placeholder="Primary User" data-save-key="meta_persona" aria-label="Primary User">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="map-container">
+
+                <!-- Header Row: Stages -->
+                <div class="map-row row-stages">
+                    <div class="row-label">Journey Stage</div>
+                    <div class="stage-cell" contenteditable="true" data-placeholder="1. Awareness"
+                        data-save-key="cx_stage_1"></div>
+                    <div class="divider-arrow"><i data-lucide="arrow-right"></i></div>
+                    <div class="stage-cell" contenteditable="true" data-placeholder="2. Consideration"
+                        data-save-key="cx_stage_2"></div>
+                    <div class="divider-arrow"><i data-lucide="arrow-right"></i></div>
+                    <div class="stage-cell" contenteditable="true" data-placeholder="3. Decision"
+                        data-save-key="cx_stage_3"></div>
+                    <div class="divider-arrow"><i data-lucide="arrow-right"></i></div>
+                    <div class="stage-cell" contenteditable="true" data-placeholder="4. Service"
+                        data-save-key="cx_stage_4"></div>
+                    <div class="divider-arrow"><i data-lucide="arrow-right"></i></div>
+                    <div class="stage-cell" contenteditable="true" data-placeholder="5. Loyalty"
+                        data-save-key="cx_stage_5"></div>
+                </div>
+
+                <!-- Doing -->
+                <div class="map-row row-doing">
+                    <div class="row-label">
+                        <i data-lucide="footprints"></i> Actions
+                        <span class="cn-label">行为</span>
+                    </div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="User actions..."
+                        data-save-key="cx_act_1"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="User actions..."
+                        data-save-key="cx_act_2"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="User actions..."
+                        data-save-key="cx_act_3"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="User actions..."
+                        data-save-key="cx_act_4"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="User actions..."
+                        data-save-key="cx_act_5"></div>
+                </div>
+
+                <!-- Thinking -->
+                <div class="map-row row-thinking">
+                    <div class="row-label">
+                        <i data-lucide="brain-circuit"></i> Thinking
+                        <span class="cn-label">思考</span>
+                    </div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Queries/Thoughts..."
+                        data-save-key="cx_think_1"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Queries/Thoughts..."
+                        data-save-key="cx_think_2"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Queries/Thoughts..."
+                        data-save-key="cx_think_3"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Queries/Thoughts..."
+                        data-save-key="cx_think_4"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Queries/Thoughts..."
+                        data-save-key="cx_think_5"></div>
+                </div>
+
+                <!-- Feeling (Interactive Curve ?) For now, text description + emoji support -->
+                <div class="map-row row-feeling">
+                    <div class="row-label">
+                        <i data-lucide="heart"></i> Feeling
+                        <span class="cn-label">情感</span>
+                    </div>
+                    <div class="content-cell text-center" contenteditable="true" data-placeholder="😐"
+                        data-save-key="cx_feel_1"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell text-center" contenteditable="true" data-placeholder="🤔"
+                        data-save-key="cx_feel_2"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell text-center" contenteditable="true" data-placeholder="🤩"
+                        data-save-key="cx_feel_3"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell text-center" contenteditable="true" data-placeholder="🙂"
+                        data-save-key="cx_feel_4"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell text-center" contenteditable="true" data-placeholder="🥰"
+                        data-save-key="cx_feel_5"></div>
+                </div>
+
+                <!-- Pain Points -->
+                <div class="map-row row-pain">
+                    <div class="row-label">
+                        <i data-lucide="alert-circle"></i> Pain Points
+                        <span class="cn-label">痛点</span>
+                    </div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Frustrations..."
+                        data-save-key="cx_pain_1"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Frustrations..."
+                        data-save-key="cx_pain_2"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Frustrations..."
+                        data-save-key="cx_pain_3"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Frustrations..."
+                        data-save-key="cx_pain_4"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Frustrations..."
+                        data-save-key="cx_pain_5"></div>
+                </div>
+
+                <!-- Opportunities -->
+                <div class="map-row row-opp">
+                    <div class="row-label">
+                        <i data-lucide="lightbulb"></i> Opportunities
+                        <span class="cn-label">机会</span>
+                    </div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Ideas..."
+                        data-save-key="cx_opp_1"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Ideas..."
+                        data-save-key="cx_opp_2"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Ideas..."
+                        data-save-key="cx_opp_3"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Ideas..."
+                        data-save-key="cx_opp_4"></div>
+                    <div class="spacer"></div>
+                    <div class="content-cell" contenteditable="true" data-placeholder="Ideas..."
+                        data-save-key="cx_opp_5"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('customer_experience_map_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

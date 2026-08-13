@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKR 目标设定 (Objectives & Key Results)</title>
+    <meta name="description" content="OKR目标管理工具，帮助您设定目标(Objectives)和关键结果(Key Results)，追踪进度。">
+    <meta name="keywords" content="OKR,目标管理,关键结果,目标设定,绩效管理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OKR 目标设定 - Modiqi Workbench">
+    <meta property="og:description" content="设定目标和关键结果，追踪进度。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/okr-template.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>OKR 目标设定</h1>
+                <span class="english-subtitle">Objectives & Key Results</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>周期 <span class="en-sub">(Period)</span></label>
+                    <input type="text" class="meta-input" placeholder="2025 Q1" data-save-key="meta_period" aria-label="2025 Q1">
+                </div>
+                <div class="meta-group">
+                    <label>负责人 <span class="en-sub">(Owner)</span></label>
+                    <input type="text" class="meta-input" placeholder="团队/个人" data-save-key="meta_owner" aria-label="团队/个人">
+                </div>
+            </div>
+        </header>
+
+        <div class="okr-container">
+            <!-- Objective 1 -->
+            <div class="okr-objective">
+                <div class="obj-header">
+                    <div class="obj-number">O1</div>
+                    <div class="obj-title" contenteditable="true" data-save-key="obj1_title">提升产品核心体验，达到行业领先水平</div>
+                    <div class="obj-label">目标 <span class="en-sub">(Objective)</span></div>
+                </div>
+                <div class="kr-header">
+                    <div>#</div>
+                    <div>关键结果 <span class="en-sub">(Key Result)</span></div>
+                    <div>目标值 <span class="en-sub">(Target)</span></div>
+                    <div>进度%</div>
+                </div>
+                <div class="kr-list">
+                    <div class="kr-row">
+                        <div class="kr-number">KR1</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj1_kr1">用户满意度评分达到 4.5/5.0</div>
+                        <div class="kr-target" contenteditable="true">4.5</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                    <div class="kr-row">
+                        <div class="kr-number">KR2</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj1_kr2">核心功能加载时间降低至 1 秒内</div>
+                        <div class="kr-target" contenteditable="true">&lt;1s</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                    <div class="kr-row">
+                        <div class="kr-number">KR3</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj1_kr3">Bug 数量减少 50%</div>
+                        <div class="kr-target" contenteditable="true">-50%</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 2 -->
+            <div class="okr-objective">
+                <div class="obj-header">
+                    <div class="obj-number">O2</div>
+                    <div class="obj-title" contenteditable="true" data-save-key="obj2_title">扩大市场份额，实现业务增长</div>
+                    <div class="obj-label">目标 <span class="en-sub">(Objective)</span></div>
+                </div>
+                <div class="kr-header">
+                    <div>#</div>
+                    <div>关键结果 <span class="en-sub">(Key Result)</span></div>
+                    <div>目标值 <span class="en-sub">(Target)</span></div>
+                    <div>进度%</div>
+                </div>
+                <div class="kr-list">
+                    <div class="kr-row">
+                        <div class="kr-number">KR1</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj2_kr1">月活跃用户增长至 10 万</div>
+                        <div class="kr-target" contenteditable="true">100K</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                    <div class="kr-row">
+                        <div class="kr-number">KR2</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj2_kr2">付费转化率提升至 5%</div>
+                        <div class="kr-target" contenteditable="true">5%</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                    <div class="kr-row">
+                        <div class="kr-number">KR3</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj2_kr3">签约 3 个战略合作伙伴</div>
+                        <div class="kr-target" contenteditable="true">3</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 3 -->
+            <div class="okr-objective">
+                <div class="obj-header">
+                    <div class="obj-number">O3</div>
+                    <div class="obj-title" contenteditable="true" data-save-key="obj3_title">打造高效协作团队</div>
+                    <div class="obj-label">目标 <span class="en-sub">(Objective)</span></div>
+                </div>
+                <div class="kr-header">
+                    <div>#</div>
+                    <div>关键结果 <span class="en-sub">(Key Result)</span></div>
+                    <div>目标值 <span class="en-sub">(Target)</span></div>
+                    <div>进度%</div>
+                </div>
+                <div class="kr-list">
+                    <div class="kr-row">
+                        <div class="kr-number">KR1</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj3_kr1">员工 eNPS 达到 50+</div>
+                        <div class="kr-target" contenteditable="true">50</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                    <div class="kr-row">
+                        <div class="kr-number">KR2</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj3_kr2">完成 100% 季度 1:1 沟通</div>
+                        <div class="kr-target" contenteditable="true">100%</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                    <div class="kr-row">
+                        <div class="kr-number">KR3</div>
+                        <div class="kr-content" contenteditable="true" data-save-key="obj3_kr3">开展 4 次团队建设活动</div>
+                        <div class="kr-target" contenteditable="true">4</div>
+                        <div class="kr-progress"><input type="number" value="0" min="0" max="100" aria-label="Input field">%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('okr_template_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

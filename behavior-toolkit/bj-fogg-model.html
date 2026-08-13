@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJ Fogg 行为模型 (Behavior Model)</title>
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/bj-fogg-model.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>BJ Fogg 行为模型</h1>
+                <span class="english-subtitle">BJ Fogg Behavior Model (B=MAP)</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>目标行为 <span class="en-sub">(Target Behavior)</span></label>
+                    <input type="text" class="meta-input" placeholder="例如: 用户注册、点击购买" data-save-key="target_behavior" aria-label="用户注册、点击购买">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="fogg-container">
+
+            <!-- Left: Chart Visualization -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <h3>行为可视化 <span class="en-sub">(Behavior Visualization)</span></h3>
+                        <p>拖动圆点调整动机(Y轴)与能力(X轴)</p>
+                    </div>
+                    <div id="result-badge" class="result-badge result-fail">
+                        触发失败 (Triggers Fail)
+                    </div>
+                </div>
+
+                <div class="behavior-chart" id="behavior-chart">
+                    <!-- Axis Labels -->
+                    <div class="axis-y-label">动机 Motivation</div>
+                    <div class="axis-x-label">能力 Ability (Ease of doing)</div>
+
+                    <!-- Axis Markers -->
+                    <div class="axis-marker y-high">High</div>
+                    <div class="axis-marker y-low">Low</div>
+                    <div class="axis-marker x-hard">Hard</div>
+                    <div class="axis-marker x-easy">Easy</div>
+
+                    <!-- Action Curve (SVG) -->
+                    <svg class="action-curve" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <!-- Curve formula: y = 100/x approx -->
+                        <path d="M 5,0 Q 5,95 100,95" class="curve-path" vector-effect="non-scaling-stroke"></path>
+                    </svg>
+
+                    <!-- Zones -->
+                    <div class="zone-label zone-success">触发成功区<br>(Triggers Succeed)</div>
+                    <div class="zone-label zone-fail">触发失败区<br>(Triggers Fail)</div>
+
+                    <!-- Draggable Dot -->
+                    <div id="behavior-dot" class="behavior-dot" style="left: 20%; bottom: 20%;"></div>
+                </div>
+            </div>
+
+            <!-- Right: Analysis Panel -->
+            <div class="analysis-section">
+
+                <!-- Motivation Analysis -->
+                <div class="analysis-card">
+                    <div class="card-title">
+                        <i data-lucide="zap" class="icon"></i>
+                        动机分析 (Motivation)
+                    </div>
+                    <div class="factor-group">
+                        <div class="factor-item">
+                            <span class="factor-label">感觉 (Sensation)</span>
+                            <div class="factor-toggle">
+                                <button class="toggle-btn" onclick="toggleFactor(this, 'pleasure')" type="button">快乐</button>
+                                <button class="toggle-btn" onclick="toggleFactor(this, 'pain')" type="button">痛苦</button>
+                            </div>
+                        </div>
+                        <div class="factor-item">
+                            <span class="factor-label">预期 (Anticipation)</span>
+                            <div class="factor-toggle">
+                                <button class="toggle-btn" onclick="toggleFactor(this, 'hope')" type="button">希望</button>
+                                <button class="toggle-btn" onclick="toggleFactor(this, 'fear')" type="button">恐惧</button>
+                            </div>
+                        </div>
+                        <div class="factor-item">
+                            <span class="factor-label">归属 (Belonging)</span>
+                            <div class="factor-toggle">
+                                <button class="toggle-btn" onclick="toggleFactor(this, 'acceptance')" type="button">认同</button>
+                                <button class="toggle-btn" onclick="toggleFactor(this, 'rejection')" type="button">排斥</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-area" style="margin-top: 10px;">
+                        <textarea class="prompt-input" placeholder="描述核心动机..." data-save-key="motivation_desc"
+                            style="height: 60px;" aria-label="描述核心动机..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Ability Analysis -->
+                <div class="analysis-card">
+                    <div class="card-title">
+                        <i data-lucide="activity" class="icon"></i>
+                        能力与阻碍 (Ability / Simplicity)
+                    </div>
+                    <div class="factor-group">
+                        <div class="factor-item">
+                            <span class="factor-label">时间 (Time)</span>
+                            <input type="range" class="ability-range" min="1" max="5" value="3"
+                                onchange="updateAbility()" aria-label="Input field">
+                        </div>
+                        <div class="factor-item">
+                            <span class="factor-label">金钱 (Money)</span>
+                            <input type="range" class="ability-range" min="1" max="5" value="3"
+                                onchange="updateAbility()" aria-label="Input field">
+                        </div>
+                        <div class="factor-item">
+                            <span class="factor-label">体力 (Physical)</span>
+                            <input type="range" class="ability-range" min="1" max="5" value="3"
+                                onchange="updateAbility()" aria-label="Input field">
+                        </div>
+                        <div class="factor-item">
+                            <span class="factor-label">脑力 (Brain Frames)</span>
+                            <input type="range" class="ability-range" min="1" max="5" value="3"
+                                onchange="updateAbility()" aria-label="Input field">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Design -->
+                <div class="analysis-card">
+                    <div class="card-title">
+                        <i data-lucide="bell" class="icon"></i>
+                        触发器设计 (Prompt)
+                    </div>
+                    <textarea class="prompt-input" placeholder="设计触发机制（如：弹窗、邮件、通知）..."
+                        data-save-key="prompt_design" aria-label="设计触发机制（如：弹窗、邮件、通知）..."></textarea>
+
+                    <div style="margin-top: 10px; font-size: 12px; color: var(--color-text-tertiary);">
+                        * 只有当行为点位于曲线右上方时，触发器才有效。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('bj_fogg_model');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            initDraggable();
+        });
+
+        // Draggable Logic for the Dot
+        function initDraggable() {
+            const dot = document.getElementById('behavior-dot');
+            const chart = document.getElementById('behavior-chart');
+            const badge = document.getElementById('result-badge');
+            let isDragging = false;
+
+            chart.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                moveDot(e);
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) moveDot(e);
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                savePosition();
+            });
+
+            function moveDot(e) {
+                const rect = chart.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                // Clamp
+                x = Math.max(0, Math.min(x, rect.width));
+                y = Math.max(0, Math.min(y, rect.height));
+
+                // Convert to percentage for display
+                const xPct = (x / rect.width) * 100;
+                // Y axis is inverted in DOM (0 is top), but for graph logic 0 is bottom
+                // Visual position:
+                dot.style.left = xPct + '%';
+                dot.style.top = (y / rect.height * 100) + '%';
+                // Remove bottom to avoid conflict
+                dot.style.bottom = 'auto';
+
+                // Calculate Logic (B=MAP)
+                // Normalize to 0-100 scale where 0,0 is bottom-left
+                const normX = xPct;
+                const normY = 100 - (y / rect.height * 100);
+
+                checkSuccess(normX, normY);
+
+                // Store temporarily
+                dot.dataset.x = normX;
+                dot.dataset.y = normY;
+            }
+
+            function checkSuccess(motivation, ability) {
+                // Approximate Fogg Curve: Ability * Motivation > Threshold
+                // Let's us a simple hyperbola-like logic: y > 2500 / (x + 10) - 20 (just heuristic)
+                // Or simplified: M + A > 100 AND M*A > 1500?
+                // Visual curve in SVG is drawn from (5,0) to (5,95) to (100,95) via Q.
+                // It looks like a curve where X*Y = Constant.
+
+                // Let's use a simpler heuristic that matches the visual curve:
+                // If Ability (X) is high, Motivation (Y) can be lower.
+
+                const threshold = 2000;
+                const score = (motivation + 10) * (ability + 10);
+
+                if (score > threshold) {
+                    badge.className = 'result-badge result-success';
+                    badge.innerHTML = '触发成功 (Triggers Succeed)<br><span style="font-size:12px;font-weight:normal">B = M x A x P ✅</span>';
+                } else {
+                    badge.className = 'result-badge result-fail';
+                    badge.innerHTML = '触发失败 (Triggers Fail)<br><span style="font-size:12px;font-weight:normal">缺少动机或能力 ❌</span>';
+                }
+            }
+
+            // Restore position from local storage
+            const savedPos = localStorage.getItem('modiqi_bj_fogg_model_dot_pos');
+            if (savedPos) {
+                const pos = JSON.parse(savedPos);
+                dot.style.left = pos.left;
+                dot.style.top = pos.top;
+                dot.style.bottom = 'auto';
+
+                // Re-check logic
+                const rect = chart.getBoundingClientRect();
+                const xPct = parseFloat(pos.left);
+                const yPct = parseFloat(pos.top);
+                const normX = xPct;
+                const normY = 100 - yPct;
+                checkSuccess(normX, normY);
+            }
+        }
+
+        function savePosition() {
+            const dot = document.getElementById('behavior-dot');
+            const pos = {
+                left: dot.style.left,
+                top: dot.style.top
+            };
+            localStorage.setItem('modiqi_bj_fogg_model_dot_pos', JSON.stringify(pos));
+        }
+
+        function toggleFactor(btn, factor) {
+            btn.classList.toggle('active');
+            // Save state
+            const parent = btn.parentElement;
+            const idx = Array.from(parent.children).indexOf(btn);
+            const key = `factor_${factor}`;
+            localStorage.setItem('modiqi_bj_fogg_model_' + key, btn.classList.contains('active'));
+        }
+
+        function updateAbility() {
+            // Optional: Adjust dot X position based on sliders? 
+            // For now, let's keep them independent for flexibility.
+        }
+    </script>
+</body>
+
+</html>

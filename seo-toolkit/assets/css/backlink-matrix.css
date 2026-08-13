@@ -1,0 +1,278 @@
+/* Backlink Matrix Layout */
+.matrix-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* 1. Input / List Sidebar */
+.prospect-sidebar {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border-right: 1px solid var(--border-sem-inner);
+    padding-right: var(--spacing-lg);
+}
+
+.add-prospect-form {
+    background: var(--color-bg-paper);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.prospect-input {
+    border: 1px solid var(--border-sem-input);
+    padding: 8px;
+    border-radius: 0;
+    font-size: 12px;
+}
+
+.matrix-btn {
+    background: var(--color-brand-primary);
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.matrix-btn:hover {
+    background: var(--color-brand-dark);
+}
+
+.prospect-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.prospect-card {
+    background: var(--color-bg-subtle);
+    padding: 10px;
+    border-radius: 0;
+    cursor: grab;
+    border: 1px solid transparent;
+}
+
+.prospect-card:hover {
+    border-color: var(--color-brand-primary);
+}
+
+.prospect-card:active {
+    cursor: grabbing;
+}
+
+.p-name {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.p-meta {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 2. The Matrix */
+.matrix-area {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--spacing-md);
+    position: relative;
+    padding: 30px;
+    /* Space for axis labels */
+    background: var(--color-bg-paper);
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+}
+
+/* Axis Labels */
+.axis-label {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.axis-y-top {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.axis-y-bottom {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.axis-x-left {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.axis-x-right {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Quadrants */
+.quadrant {
+    border: 1px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    position: relative;
+}
+
+.quadrant:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.q-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--border-sem-inner);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    text-align: center;
+}
+
+.q-sub {
+    font-size: 10px;
+    display: block;
+    font-weight: normal;
+    margin-top: 4px;
+}
+
+/* Quadrant Colors/Meanings */
+/* 
+   TL: High Auth, Low Rel (Mass Media)
+   TR: High Auth, High Rel (Gold Mine)
+   BL: Low Auth, Low Rel (Ignore)
+   BR: Low Auth, High Rel (Niche Blogs)
+*/
+
+.quadrant-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+}
+
+.node-chip {
+    padding: 4px 8px;
+    background: white;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: 10px;
+    box-shadow: var(--shadow-sm);
+    cursor: grab;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.node-chip i {
+    width: 10px;
+    height: 10px;
+    color: var(--color-text-tertiary);
+}
+
+/* Dark Mode */
+body.theme-dark .matrix-area,
+body.theme-dark .add-prospect-form {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .prospect-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.theme-dark .node-chip {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .matrix-container {
+        flex-direction: column;
+    }
+
+    .prospect-sidebar {
+        width: 100%;
+        padding-right: 0;
+        border-right: 0;
+    }
+
+    .matrix-area {
+        width: 100%;
+        min-height: 640px;
+        padding: 28px 20px;
+    }
+
+    .axis-label {
+        letter-spacing: 0;
+    }
+}

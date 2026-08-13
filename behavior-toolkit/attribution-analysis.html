@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渠道归因分析 (Attribution Analysis)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="渠道归因分析工具 - 对比多种归因模型，分析各营销渠道对转化的贡献度，优化预算分配决策">
+    <meta name="keywords" content="渠道归因,Attribution Analysis,首次触点,末次触点,线性归因,时间衰减,ROI分析,Modiqi">
+    <meta name="author" content="Modiqi Digital Consulting">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="渠道归因分析 - Modiqi Omnichannel Toolkit">
+    <meta property="og:description" content="对比多种归因模型，分析各营销渠道对转化的贡献度">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Font Preloading -->
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/attribution-analysis.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>渠道归因分析</h1>
+                <span class="english-subtitle">Attribution Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>分析周期 <span class="en-sub">(Period)</span></label>
+                    <input type="text" class="meta-input" placeholder="最近30天" data-save-key="meta_period" aria-label="最近30天">
+                </div>
+                <div class="meta-group">
+                    <label>转化目标 <span class="en-sub">(Goal)</span></label>
+                    <input type="text" class="meta-input" placeholder="购买" data-save-key="meta_goal" aria-label="购买">
+                </div>
+            </div>
+        </header>
+
+        <!-- Attribution Models -->
+        <div class="models-section">
+            <h2 class="section-title"><i data-lucide="git-branch"></i> 归因模型对比</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>首次触点</h3>
+                        <span class="model-tag">First-Touch</span>
+                    </div>
+                    <div class="model-visual">
+                        <div class="touch-point active">A</div>
+                        <div class="touch-point">B</div>
+                        <div class="touch-point">C</div>
+                        <div class="conversion">✓</div>
+                    </div>
+                    <p class="model-desc">100%归因于首次接触渠道</p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>末次触点</h3>
+                        <span class="model-tag">Last-Touch</span>
+                    </div>
+                    <div class="model-visual">
+                        <div class="touch-point">A</div>
+                        <div class="touch-point">B</div>
+                        <div class="touch-point active">C</div>
+                        <div class="conversion">✓</div>
+                    </div>
+                    <p class="model-desc">100%归因于最后接触渠道</p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>线性归因</h3>
+                        <span class="model-tag">Linear</span>
+                    </div>
+                    <div class="model-visual">
+                        <div class="touch-point equal">A</div>
+                        <div class="touch-point equal">B</div>
+                        <div class="touch-point equal">C</div>
+                        <div class="conversion">✓</div>
+                    </div>
+                    <p class="model-desc">平均分配给所有触点</p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>时间衰减</h3>
+                        <span class="model-tag">Time-Decay</span>
+                    </div>
+                    <div class="model-visual">
+                        <div class="touch-point low">A</div>
+                        <div class="touch-point medium">B</div>
+                        <div class="touch-point high">C</div>
+                        <div class="conversion">✓</div>
+                    </div>
+                    <p class="model-desc">越接近转化权重越高</p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>位置归因</h3>
+                        <span class="model-tag">Position-Based</span>
+                    </div>
+                    <div class="model-visual">
+                        <div class="touch-point high">A</div>
+                        <div class="touch-point low">B</div>
+                        <div class="touch-point high">C</div>
+                        <div class="conversion">✓</div>
+                    </div>
+                    <p class="model-desc">首末各40%,中间20%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attribution Comparison Table -->
+        <div class="comparison-section">
+            <h2 class="section-title"><i data-lucide="bar-chart-3"></i> 渠道贡献对比</h2>
+            <table class="attribution-table">
+                <thead>
+                    <tr>
+                        <th>渠道</th>
+                        <th>首次触点</th>
+                        <th>末次触点</th>
+                        <th>线性归因</th>
+                        <th>时间衰减</th>
+                        <th>位置归因</th>
+                        <th>投入成本</th>
+                        <th>ROI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="channel-cell">
+                            <i data-lucide="search"></i>
+                            <span>搜索广告</span>
+                        </td>
+                        <td><span class="value">45</span></td>
+                        <td><span class="value">28</span></td>
+                        <td><span class="value">35</span></td>
+                        <td><span class="value">32</span></td>
+                        <td><span class="value">38</span></td>
+                        <td><span class="cost">¥50,000</span></td>
+                        <td><span class="roi positive">3.2x</span></td>
+                    </tr>
+                    <tr>
+                        <td class="channel-cell">
+                            <i data-lucide="share-2"></i>
+                            <span>社交媒体</span>
+                        </td>
+                        <td><span class="value">30</span></td>
+                        <td><span class="value">15</span></td>
+                        <td><span class="value">22</span></td>
+                        <td><span class="value">18</span></td>
+                        <td><span class="value">25</span></td>
+                        <td><span class="cost">¥30,000</span></td>
+                        <td><span class="roi positive">2.8x</span></td>
+                    </tr>
+                    <tr>
+                        <td class="channel-cell">
+                            <i data-lucide="mail"></i>
+                            <span>邮件营销</span>
+                        </td>
+                        <td><span class="value">8</span></td>
+                        <td><span class="value">35</span></td>
+                        <td><span class="value">20</span></td>
+                        <td><span class="value">28</span></td>
+                        <td><span class="value">18</span></td>
+                        <td><span class="cost">¥10,000</span></td>
+                        <td><span class="roi positive">4.5x</span></td>
+                    </tr>
+                    <tr>
+                        <td class="channel-cell">
+                            <i data-lucide="monitor"></i>
+                            <span>展示广告</span>
+                        </td>
+                        <td><span class="value">12</span></td>
+                        <td><span class="value">8</span></td>
+                        <td><span class="value">10</span></td>
+                        <td><span class="value">9</span></td>
+                        <td><span class="value">11</span></td>
+                        <td><span class="cost">¥40,000</span></td>
+                        <td><span class="roi negative">1.2x</span></td>
+                    </tr>
+                    <tr>
+                        <td class="channel-cell">
+                            <i data-lucide="smartphone"></i>
+                            <span>移动应用</span>
+                        </td>
+                        <td><span class="value">5</span></td>
+                        <td><span class="value">14</span></td>
+                        <td><span class="value">13</span></td>
+                        <td><span class="value">13</span></td>
+                        <td><span class="value">8</span></td>
+                        <td><span class="cost">¥20,000</span></td>
+                        <td><span class="roi positive">2.1x</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Conversion Path Example -->
+        <div class="path-section">
+            <h2 class="section-title"><i data-lucide="route"></i> 典型转化路径示例</h2>
+            <div class="path-examples">
+                <div class="path-item">
+                    <div class="path-flow">
+                        <div class="path-step">
+                            <i data-lucide="search"></i>
+                            <span>搜索广告</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="path-step">
+                            <i data-lucide="share-2"></i>
+                            <span>社交媒体</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="path-step">
+                            <i data-lucide="mail"></i>
+                            <span>邮件营销</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="path-result">
+                            <i data-lucide="check-circle"></i>
+                            <span>转化</span>
+                        </div>
+                    </div>
+                    <div class="path-meta">
+                        <span class="path-count">156次</span>
+                        <span class="path-value">¥234,000</span>
+                    </div>
+                </div>
+
+                <div class="path-item">
+                    <div class="path-flow">
+                        <div class="path-step">
+                            <i data-lucide="share-2"></i>
+                            <span>社交媒体</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="path-step">
+                            <i data-lucide="search"></i>
+                            <span>搜索广告</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="path-result">
+                            <i data-lucide="check-circle"></i>
+                            <span>转化</span>
+                        </div>
+                    </div>
+                    <div class="path-meta">
+                        <span class="path-count">89次</span>
+                        <span class="path-value">¥133,500</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('attribution_analysis_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

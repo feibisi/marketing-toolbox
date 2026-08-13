@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务蓝图 (Service Blueprint)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/service-blueprint.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/vendor/sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>服务蓝图</h1>
+                <span class="english-subtitle">Service Blueprint (Optimization)</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>服务场景</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Hotel Check-in" aria-label="Hotel Check in">
+                </div>
+            </div>
+        </header>
+
+        <div class="blueprint-container">
+
+            <!-- 1. Timeline Header -->
+            <div class="stage-header-row">
+                <div class="stage-col"><input class="stage-input" value="1. 知晓 (Awareness)" aria-label="Input field"></div>
+                <div class="stage-col"><input class="stage-input" value="2. 加入 (Join)" aria-label="Input field"></div>
+                <div class="stage-col"><input class="stage-input" value="3. 使用 (Use)" aria-label="Input field"></div>
+                <div class="stage-col"><input class="stage-input" value="4. 离开 (Leave)" aria-label="Input field"></div>
+                <div class="stage-col"><input class="stage-input" value="5. 延续 (Extend)" aria-label="Input field"></div>
+            </div>
+
+            <!-- 2. Lanes -->
+
+            <!-- Lane 1: Physical Evidence (Top Layer) -->
+            <div class="swimlane-row lane-customer">
+                <div class="lane-label">
+                    <div class="label-title">有形展示</div>
+                    <div class="label-desc">Physical Evidence</div>
+                </div>
+                <div class="lane-content" id="row_evidence">
+                    <div class="flow-cell" id="c1_ev"></div>
+                    <div class="flow-cell" id="c2_ev"></div>
+                    <div class="flow-cell" id="c3_ev"></div>
+                    <div class="flow-cell" id="c4_ev"></div>
+                    <div class="flow-cell" id="c5_ev"></div>
+                </div>
+            </div>
+
+            <!-- Lane 2: Customer Actions -->
+            <div class="swimlane-row lane-customer line-of-interaction">
+                <div class="lane-label">
+                    <div class="label-title">用户行为</div>
+                    <div class="label-desc">Customer Actions</div>
+                </div>
+                <div class="lane-content" id="row_customer">
+                    <div class="flow-cell" id="c1_cust"></div>
+                    <div class="flow-cell" id="c2_cust"></div>
+                    <div class="flow-cell" id="c3_cust"></div>
+                    <div class="flow-cell" id="c4_cust"></div>
+                    <div class="flow-cell" id="c5_cust"></div>
+                </div>
+            </div>
+
+            <!-- Lane 3: Frontstage (Visible) -->
+            <div class="swimlane-row lane-visible line-of-visibility">
+                <div class="lane-label">
+                    <div class="label-title">前台互动</div>
+                    <div class="label-desc">Frontstage (Visible)</div>
+                </div>
+                <div class="lane-content" id="row_front">
+                    <div class="flow-cell" id="c1_front"></div>
+                    <div class="flow-cell" id="c2_front"></div>
+                    <div class="flow-cell" id="c3_front"></div>
+                    <div class="flow-cell" id="c4_front"></div>
+                    <div class="flow-cell" id="c5_front"></div>
+                </div>
+            </div>
+
+            <!-- Lane 4: Backstage (Invisible) -->
+            <div class="swimlane-row lane-invisible line-of-internal">
+                <div class="lane-label">
+                    <div class="label-title">后台活动</div>
+                    <div class="label-desc">Backstage (Invisible)</div>
+                </div>
+                <div class="lane-content" id="row_back">
+                    <div class="flow-cell" id="c1_back"></div>
+                    <div class="flow-cell" id="c2_back"></div>
+                    <div class="flow-cell" id="c3_back"></div>
+                    <div class="flow-cell" id="c4_back"></div>
+                    <div class="flow-cell" id="c5_back"></div>
+                </div>
+            </div>
+
+            <!-- Lane 5: Support Processes -->
+            <div class="swimlane-row lane-support">
+                <div class="lane-label">
+                    <div class="label-title">支持过程</div>
+                    <div class="label-desc">Support Processes</div>
+                </div>
+                <div class="lane-content" id="row_support">
+                    <div class="flow-cell" id="c1_sup"></div>
+                    <div class="flow-cell" id="c2_sup"></div>
+                    <div class="flow-cell" id="c3_sup"></div>
+                    <div class="flow-cell" id="c4_sup"></div>
+                    <div class="flow-cell" id="c5_sup"></div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('service_blueprint');
+            lucide.createIcons();
+
+            // Init Cells
+            document.querySelectorAll('.flow-cell').forEach(cell => {
+                // Add 'Add' button to every cell
+                const btn = document.createElement('button');
+                btn.className = 'add-card-btn no-print';
+                btn.innerText = '+ Action';
+                btn.onclick = () => addCard(cell);
+                cell.appendChild(btn);
+
+                // Sortable
+                new Sortable(cell, {
+                    group: 'shared',
+                    animation: 150,
+                    draggable: '.action-card',
+                    filter: '.add-card-btn'
+                });
+            });
+
+            // Seed data
+            setTimeout(() => {
+                addCard(document.getElementById('c1_ev'), 'Social Ad', '#fff');
+                addCard(document.getElementById('c1_cust'), 'Clicks Link');
+                addCard(document.getElementById('c2_front'), 'Welcome Msg');
+                addCard(document.getElementById('c2_back'), 'CRM Update Trigger');
+                addCard(document.getElementById('c2_sup'), 'Database Sync');
+            }, 500);
+        });
+
+        function addCard(container, text = '', bg = '') {
+            const card = document.createElement('div');
+            card.className = 'action-card';
+            if (bg) card.style.background = bg;
+
+            const textarea = document.createElement('textarea');
+            textarea.className = 'card-text';
+            textarea.rows = 2;
+            textarea.placeholder = 'Describe action...';
+            textarea.value = text;
+
+            // Delete btn
+            const delBtn = document.createElement('button');
+            delBtn.className = 'no-print';
+            delBtn.style.position = 'absolute';
+            delBtn.style.top = '2px';
+            delBtn.style.right = '2px';
+            delBtn.style.border = 'none';
+            delBtn.style.background = 'none';
+            delBtn.style.opacity = '0.5';
+            delBtn.style.cursor = 'pointer';
+            delBtn.innerHTML = '×';
+            delBtn.onclick = () => card.remove();
+
+            card.appendChild(delBtn);
+            card.appendChild(textarea);
+
+            // Insert before the Add button
+            container.insertBefore(card, container.lastElementChild);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌原型轮 (Brand Archetypes)</title>
+    <meta name="description" content="品牌原型工具，基于荣格心理学的12种品牌人格，帮助您定义品牌核心个性与情感连接。">
+    <meta name="keywords" content="品牌原型,Brand Archetypes,品牌定位,品牌人格,营销策略">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="品牌原型轮 - Modiqi Workbench">
+    <meta property="og:description" content="定义品牌核心个性与情感连接。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/brand-archetypes.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌原型轮</h1>
+                <span class="english-subtitle">Brand Archetypes Wheel</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="品牌名称" data-save-key="meta_brand" aria-label="品牌名称">
+                </div>
+                <div class="meta-group">
+                    <label>核心原型 <span class="en-sub">(Archetype)</span></label>
+                    <input type="text" class="meta-input" placeholder="待选择" data-save-key="meta_core" aria-label="待选择">
+                </div>
+            </div>
+        </header>
+
+        <div class="archetype-grid">
+            <!-- Row 1: Independence Group (Yellow) -->
+            <!-- 1. Innocent -->
+            <div class="archetype-cell" data-group="independence">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="smile"></i></div>
+                    <div class="arch-title">
+                        <h4>天真者</h4>
+                        <span>The Innocent</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">快乐、信任、纯真、乐观</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_innocent">
+                        追求简单纯粹的幸福，相信世界本质是美好的。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Coca-Cola, Dove, Innocent Drinks</div>
+                </div>
+            </div>
+
+            <!-- 2. Explorer -->
+            <div class="archetype-cell" data-group="independence">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="compass"></i></div>
+                    <div class="arch-title">
+                        <h4>探险家</h4>
+                        <span>The Explorer</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">自由、冒险、发现、真实</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_explorer">
+                        渴望通过探索世界发现自我，追求独立与突破。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Jeep, The North Face, Patagonia</div>
+                </div>
+            </div>
+
+            <!-- 3. Sage -->
+            <div class="archetype-cell" data-group="independence">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="book-open"></i></div>
+                    <div class="arch-title">
+                        <h4>智者</h4>
+                        <span>The Sage</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">智慧、真理、专业、洞察</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_sage">
+                        相信真理能让人自由，通过知识和分析帮助世界。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Google, BBC, TED, McKinsey</div>
+                </div>
+            </div>
+
+            <!-- Row 1 continued: Mastery Group (Red) -->
+            <!-- 4. Hero -->
+            <div class="archetype-cell" data-group="mastery">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="sword"></i></div>
+                    <div class="arch-title">
+                        <h4>英雄</h4>
+                        <span>The Hero</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">勇气、胜利、精通、改变</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_hero">
+                        通过勇敢行动证明价值，追求卓越和成就。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Nike, BMW, FedEx, Duracell</div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <!-- 5. Outlaw -->
+            <div class="archetype-cell" data-group="mastery">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="flame"></i></div>
+                    <div class="arch-title">
+                        <h4>反叛者</h4>
+                        <span>The Outlaw</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">颠覆、革命、解放、非主流</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_outlaw">
+                        打破规则和常规，挑战现状，追求彻底的自由。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Harley-Davidson, Virgin, Diesel</div>
+                </div>
+            </div>
+
+            <!-- 6. Magician -->
+            <div class="archetype-cell" data-group="mastery">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="wand-2"></i></div>
+                    <div class="arch-title">
+                        <h4>魔法师</h4>
+                        <span>The Magician</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">愿景、转化、奇迹、创新</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_magician">
+                        了解宇宙运作规律，让梦想成真，创造变革。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Disney, Tesla, Dyson, Apple</div>
+                </div>
+            </div>
+
+            <!-- 7. Everyman -->
+            <div class="archetype-cell" data-group="belonging">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="users"></i></div>
+                    <div class="arch-title">
+                        <h4>凡夫俗子</h4>
+                        <span>The Everyman</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">平凡、务实、友善、归属</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_everyman">
+                        寻求融入与连接，强调平等、朴实和可信赖。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> IKEA, Levi's, Target, eBay</div>
+                </div>
+            </div>
+
+            <!-- 8. Lover -->
+            <div class="archetype-cell" data-group="belonging">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="heart"></i></div>
+                    <div class="arch-title">
+                        <h4>情人</h4>
+                        <span>The Lover</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">亲密、激情、愉悦、感性</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_lover">
+                        追求亲密关系和感官愉悦，强调魅力与审美。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Chanel, Godiva, Victoria's Secret</div>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <!-- 9. Jester -->
+            <div class="archetype-cell" data-group="belonging">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="party-popper"></i></div>
+                    <div class="arch-title">
+                        <h4>娱乐家</h4>
+                        <span>The Jester</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">幽默、轻松、乐趣、活在当下</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_jester">
+                        活在当下，享受乐趣，用幽默打破沉闷。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> M&M's, Old Spice, Pepsi</div>
+                </div>
+            </div>
+
+            <!-- 10. Creator -->
+            <div class="archetype-cell" data-group="stability">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="palette"></i></div>
+                    <div class="arch-title">
+                        <h4>创造者</h4>
+                        <span>The Creator</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">创新、想象、表达、完美</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_creator">
+                        从无到有创造价值，强调自我表达与愿景实现。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Lego, Adobe, Crayola</div>
+                </div>
+            </div>
+
+            <!-- 11. Ruler -->
+            <div class="archetype-cell" data-group="stability">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="crown"></i></div>
+                    <div class="arch-title">
+                        <h4>统治者</h4>
+                        <span>The Ruler</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">控制、权威、地位、秩序</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_ruler">
+                        创造繁荣有序的环境，强调领导力和高端定位。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Rolex, Mercedes-Benz, American Express</div>
+                </div>
+            </div>
+
+            <!-- 12. Caregiver -->
+            <div class="archetype-cell" data-group="stability">
+                <div class="arch-header">
+                    <div class="arch-icon"><i data-lucide="heart-handshake"></i></div>
+                    <div class="arch-title">
+                        <h4>照顾者</h4>
+                        <span>The Caregiver</span>
+                    </div>
+                </div>
+                <div class="arch-content">
+                    <div class="arch-keywords">服务、利他、保护、同情</div>
+                    <div class="arch-desc" contenteditable="true" data-save-key="arch_caregiver">
+                        保护他人免受伤害，强调同情心和家庭感。
+                    </div>
+                    <div class="arch-examples"><strong>案例:</strong> Volvo, Johnson & Johnson, UNICEF</div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_archetypes_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

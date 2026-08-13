@@ -1,0 +1,609 @@
+/* Social Media Channel Matrix - Redesigned */
+/* 社媒渠道矩阵样式 - 重新设计 */
+
+/* ========================================
+   主布局容器 - Sidebar + Main
+   ======================================== */
+.matrix-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--spacing-lg);
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   左侧边栏
+   ======================================== */
+.matrix-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.sidebar-card {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.sidebar-card h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.sidebar-card h3 .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   概览统计
+   ======================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.stat-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.stat-label {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: 2px;
+}
+
+/* ========================================
+   操作按钮
+   ======================================== */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    border-color: var(--border-sem-input-hover);
+    background: var(--color-bg-hover);
+}
+
+.action-btn .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   策略摘要卡片
+   ======================================== */
+.summary-card {
+    background: var(--color-bg-warm-light);
+}
+
+.summary-content {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+}
+
+.summary-content p {
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.summary-content:focus {
+    background: var(--color-focus-bg);
+    outline: none;
+}
+
+/* ========================================
+   右侧主内容区
+   ======================================== */
+.matrix-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* ========================================
+   渠道卡片网格
+   ======================================== */
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.channel-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    overflow: hidden;
+}
+
+
+/* ========================================
+   渠道卡片头部
+   ======================================== */
+.channel-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.channel-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.channel-icon .icon {
+    width: 16px;
+    height: 16px;
+    color: white;
+}
+
+/* 平台图标 - 统一中性色 */
+.channel-icon {
+    background: var(--color-bg-muted);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.channel-icon .icon {
+    color: var(--color-text-primary);
+}
+
+.channel-title {
+    flex: 1;
+    min-width: 0;
+}
+
+.name-cn {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.name-en {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+/* 优先级徽章 */
+.priority-badge {
+    padding: 2px 8px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    border: 1px solid var(--border-sem-input);
+    background: var(--color-bg-paper);
+    cursor: pointer;
+}
+
+/* 优先级徽章 - 统一样式 */
+.priority-high .priority-badge,
+.priority-medium .priority-badge,
+.priority-low .priority-badge {
+    background: var(--color-bg-paper);
+    color: var(--color-text-primary);
+    border-color: var(--border-sem-input);
+}
+
+/* 移除按钮 */
+.remove-channel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+    opacity: 0;
+}
+
+.channel-card:hover .remove-channel-btn {
+    opacity: 1;
+}
+
+.remove-channel-btn:hover {
+    background: var(--color-bg-muted);
+    color: var(--color-text-primary);
+}
+
+.remove-channel-btn .icon {
+    width: 12px;
+    height: 12px;
+}
+
+/* ========================================
+   渠道卡片内容
+   ======================================== */
+.channel-body {
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.channel-field {
+    margin-bottom: var(--spacing-xs);
+}
+
+.channel-field label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 2px;
+}
+
+.channel-field label .icon {
+    width: 12px;
+    height: 12px;
+}
+
+.field-content {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-normal);
+    padding: 2px 4px;
+    border: 1px solid transparent;
+}
+
+.field-content:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.field-content:focus {
+    outline: none;
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.channel-row {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.channel-field.half {
+    flex: 1;
+}
+
+/* ========================================
+   策略卡片行
+   ======================================== */
+.strategy-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.strategy-card {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.card-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.card-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.card-content {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.card-content:focus {
+    background: var(--color-focus-bg);
+}
+
+.card-content ul {
+    margin: 0;
+    padding-left: var(--spacing-md);
+}
+
+.card-content li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .sidebar-card {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .stat-item {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .quick-add-btn {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .summary-card {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .channel-card {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .channel-header {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .channel-icon.douyin {
+    background: #333;
+}
+
+body.theme-dark .strategy-card {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .priority-badge {
+    background: var(--color-bg-paper);
+}
+
+/* ========================================
+   彩色模式支持
+   ======================================== */
+body.color-mode .remove-channel-btn:hover {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-error);
+}
+
+body:not(.theme-dark).color-mode .stats-grid .stat-item:nth-child(2) {
+    background-color: var(--color-bg-danger-subtle);
+}
+
+body:not(.theme-dark).color-mode .stats-grid .stat-item:nth-child(3) {
+    background-color: var(--color-semantic-alert-bg);
+}
+
+body:not(.theme-dark).color-mode .stats-grid .stat-item:nth-child(4) {
+    background-color: var(--color-bg-muted);
+}
+
+body:not(.theme-dark).color-mode .channel-card.priority-high {
+    background: var(--color-semantic-pain);
+}
+
+body:not(.theme-dark).color-mode .channel-card.priority-medium {
+    background: var(--color-semantic-alert-bg);
+}
+
+body:not(.theme-dark).color-mode .channel-card.priority-low {
+    background: var(--color-bg-muted);
+}
+
+body:not(.theme-dark).color-mode .priority-high .priority-badge {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+body:not(.theme-dark).color-mode .priority-medium .priority-badge {
+    background: var(--color-semantic-alert-bg);
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+body:not(.theme-dark).color-mode .priority-low .priority-badge {
+    background: var(--color-bg-muted);
+    color: var(--color-text-tertiary);
+    border-color: var(--color-text-tertiary);
+}
+
+body:not(.theme-dark).color-mode .channel-icon.wechat {
+    background: #07c160;
+}
+
+body:not(.theme-dark).color-mode .channel-icon.douyin {
+    background: #000000;
+}
+
+body:not(.theme-dark).color-mode .channel-icon.xiaohongshu {
+    background: #fe2c55;
+}
+
+body:not(.theme-dark).color-mode .channel-icon.weibo {
+    background: #e6162d;
+}
+
+body:not(.theme-dark).color-mode .channel-icon.bilibili {
+    background: #00a1d6;
+}
+
+body:not(.theme-dark).color-mode .channel-icon.linkedin {
+    background: #0077b5;
+}
+
+body:not(.theme-dark).color-mode .channel-icon {
+    border-color: transparent;
+}
+
+body:not(.theme-dark).color-mode .channel-icon .icon {
+    color: white;
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .matrix-layout {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .channel-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .quick-add-btn,
+    .remove-channel-btn {
+        display: none;
+    }
+
+    .channel-icon,
+    .priority-badge {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .priority-high,
+    .priority-medium,
+    .priority-low {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1200px) {
+    .matrix-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .matrix-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-card {
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .channel-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .strategy-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .matrix-sidebar,
+    .channel-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sidebar-card {
+        min-width: 0;
+    }
+
+    .channel-card,
+    .card-content {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}

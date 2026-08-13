@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://modiqi.com/schemas/marketing-toolbox-catalog-v1.json",
+  "title": "Modiqi Marketing Toolbox public catalog contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_from",
+    "contract_scope",
+    "main_site",
+    "toolbox",
+    "tools",
+    "workflows"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "generated_from": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2
+    },
+    "contract_scope": { "const": "public-catalog-only" },
+    "main_site": {
+      "type": "object",
+      "required": ["origin", "role"],
+      "properties": {
+        "origin": { "const": "https://modiqi.com" },
+        "role": { "const": "acquisition-content-and-service-conversion" }
+      },
+      "additionalProperties": false
+    },
+    "toolbox": {
+      "type": "object",
+      "required": ["runtime_origin", "role"],
+      "properties": {
+        "runtime_origin": { "type": ["string", "null"] },
+        "role": { "const": "independent-local-first-application" }
+      },
+      "additionalProperties": false
+    },
+    "tools": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/tool" }
+    },
+    "workflows": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/workflow" }
+    }
+  },
+  "$defs": {
+    "publicationStatus": {
+      "enum": ["planned", "draft", "review", "approved", "published", "retired"]
+    },
+    "tool": {
+      "type": "object",
+      "required": [
+        "tool_id",
+        "title",
+        "module",
+        "tier",
+        "tool_path",
+        "workflow_ids",
+        "resource_level",
+        "main_site_path",
+        "publication_status",
+        "review_status"
+      ],
+      "properties": {
+        "tool_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "module": { "type": "string", "minLength": 1 },
+        "tier": { "enum": ["core", "library"] },
+        "tool_path": { "type": "string", "pattern": "\\.html$" },
+        "workflow_ids": { "type": "array", "items": { "type": "string" } },
+        "resource_level": { "enum": ["authoritative", "directory"] },
+        "main_site_path": { "type": "string", "pattern": "^/tools/.+/$" },
+        "publication_status": { "$ref": "#/$defs/publicationStatus" },
+        "review_status": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "workflow": {
+      "type": "object",
+      "required": [
+        "workflow_id",
+        "title",
+        "description",
+        "main_site_path",
+        "tool_ids",
+        "publication_status",
+        "review_status"
+      ],
+      "properties": {
+        "workflow_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "main_site_path": { "type": "string", "pattern": "^/workflows/.+/$" },
+        "tool_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "publication_status": { "$ref": "#/$defs/publicationStatus" },
+        "review_status": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

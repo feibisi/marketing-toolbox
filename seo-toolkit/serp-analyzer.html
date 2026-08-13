@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERP 竞争格局分析 (SERP Competitive Analysis)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/serp-analyzer.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>SERP 竞争格局分析</h1>
+                <span class="english-subtitle">SERP Competitive Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>分析日期</label>
+                    <input type="date" class="meta-input" aria-label="Input field">
+                </div>
+            </div>
+        </header>
+
+        <div class="serp-container">
+
+            <!-- 1. Query Input -->
+            <div class="search-bar-section no-print">
+                <div class="google-input-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" class="google-input" id="keywordInput"
+                        placeholder="输入目标关键词分析 (e.g., enterprise crm software)" value="best project management tools" aria-label="输入目标关键词分析 (e.g., enterprise crm software)">
+                </div>
+                <button class="analyze-btn" onclick="analyzeSerp()" type="button">Analyze SERP</button>
+            </div>
+
+            <!-- 2. Dashboard -->
+            <div class="serp-dashboard">
+
+                <!-- Simulated Google Results -->
+                <div class="serp-list" id="serpList">
+                    <!-- Results injected here -->
+                </div>
+
+                <!-- Sidebar Metrics -->
+                <div class="metrics-sidebar">
+
+                    <!-- KD Score -->
+                    <div class="metric-card">
+                        <div class="metric-title">Keyword Difficulty</div>
+                        <div class="metric-big-num" style="color:var(--color-warning);" id="kdScore">68</div>
+                        <div class="metric-sub">Hard: You need high-quality backlinks</div>
+                    </div>
+
+                    <!-- Volume -->
+                    <div class="metric-card">
+                        <div class="metric-title">Search Volume</div>
+                        <div class="metric-big-num">2,400</div>
+                        <div class="metric-sub">Global: 12K</div>
+                    </div>
+
+                    <!-- SERP Features -->
+                    <div class="metric-card">
+                        <div class="metric-title">SERP Features</div>
+                        <div class="feature-grid">
+                            <div class="feature-box active">Ads (Top)</div>
+                            <div class="feature-box active">People Also Ask</div>
+                            <div class="feature-box">Video Carousel</div>
+                            <div class="feature-box active">Featured Snippet</div>
+                            <div class="feature-box">Local Pack</div>
+                            <div class="feature-box">Reviews</div>
+                        </div>
+                    </div>
+
+                    <!-- Opportunity -->
+                    <div class="metric-card">
+                        <div class="metric-title">Opportunity</div>
+                        <p style="font-size:12px; line-height:1.5;">Top 3 results have average DA 45. A comprehensive
+                            guide with video content could rank.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('serp_analyzer');
+            lucide.createIcons();
+
+            // Sim initial load
+            analyzeSerp();
+        });
+
+        const MOCK_RESULTS = [
+            { title: "10 Best Project Management Tools for 2026", url: "www.example.com › blog › best-pm-tools", desc: "Compare the top project management software features, pricing, and reviews. Find the best tool for your team.", da: "DA 85", diff: "diff-hard", status: "Hard" },
+            { title: "Project Management Software: Top Rated Systems", url: "www.capterra.com › project-management", desc: "Browse the highest ranked Project Management software on Capterra. Read verified reviews from real users.", da: "DA 92", diff: "diff-hard", status: "Hard" },
+            { title: "The Ultimate Guide to Project Management", url: "www.wrike.com › guide", desc: "Learn everything about project management methodologies, tools, and best practices in our comprehensive guide.", da: "DA 78", diff: "diff-med", status: "Med" },
+            { title: "Simple PM Tools for Small Business", url: "www.clickup.com › blog › small-business", desc: "Why small businesses need agile tools. See how ClickUp helps teams move faster.", da: "DA 65", diff: "diff-med", status: "Med" },
+            { title: "Top 5 Free Project Management Apps", url: "zapier.com › blog › free-project-management", desc: "Looking for free alternatives? Here are the 5 best free apps that don't skimp on features.", da: "DA 88", diff: "diff-hard", status: "Hard" }
+        ];
+
+        function analyzeSerp() {
+            const list = document.getElementById('serpList');
+            list.innerHTML = '';
+
+            // Inject Ad
+            list.innerHTML += `
+               <div class="result-item" style="border-left: 3px solid #fbbc04;">
+                    <div class="result-url" style="color:#202124; font-weight:bold;">Ad · www.monday.com/</div>
+                    <div class="result-title">Monday.com™ Official Site | Work Without Limits</div>
+                    <div class="result-desc">Automate your workflow. Manage your projects. Collaborate in real-time. Start Free Trial.</div>
+                </div>
+            `;
+
+            // Inject Snippet
+            list.innerHTML += `
+               <div class="result-item" style="border: 1px solid #dadce0; padding:16px;">
+                    <div class="result-desc" style="font-size:16px; margin-bottom:12px;">
+                        <b>Top Project Management Tools:</b><br>
+                        1. Monday.com<br>
+                        2. ClickUp<br>
+                        3. Asana<br>
+                        4. Jira<br>
+                        5. Trello
+                    </div>
+                    <div class="result-url">www.example.com › blog › best-pm-tools</div>
+                    <div class="result-title" style="font-size:16px;">10 Best Project Management Tools for 2026</div>
+                </div>
+            `;
+
+
+            // Inject Organics
+            MOCK_RESULTS.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'result-item';
+                div.innerHTML = `
+                    <div class="result-url">
+                        ${item.url} 
+                        <span class="difficulty-tag ${item.diff}">${item.da}</span>
+                    </div>
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-desc">${item.desc}</div>
+                `;
+                list.appendChild(div);
+            });
+        }
+    </script>
+</body>
+
+</html>

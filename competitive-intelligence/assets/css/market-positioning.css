@@ -1,0 +1,576 @@
+/* Market Positioning Analysis Styles */
+
+/* Vertical Space Management - Override paper-a3 flex layout */
+.paper-a3 {
+    display: grid;
+    grid-template-rows: auto auto 1.8fr auto auto auto;
+    grid-template-areas:
+        "header"
+        "positioning"
+        "main"
+        "advantages"
+        "strategy"
+        "footer";
+    gap: 0;
+}
+
+.paper-a3 > .canvas-header {
+    grid-area: header;
+}
+
+.paper-a3 > .positioning-statement {
+    grid-area: positioning;
+}
+
+.paper-a3 > .analysis-grid {
+    grid-area: main;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.paper-a3 > .advantages-section {
+    grid-area: advantages;
+    flex-shrink: 0;
+}
+
+.paper-a3 > .strategy-section {
+    grid-area: strategy;
+    flex-shrink: 0;
+}
+
+.paper-a3 > .modiqi-footer {
+    grid-area: footer;
+}
+
+/* Positioning Statement - Compact */
+.positioning-statement {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.positioning-statement h2 {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.statement-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.statement-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.statement-item label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.statement-item textarea {
+    min-height: 40px;
+    padding: 0.25rem;
+    font-size: 0.6rem;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* 统一 Focus 样式 (Focus-within 风格) */
+.statement-item textarea:focus,
+.brand span:focus,
+.value-content:focus,
+.advantage-card .card-content:focus,
+.strategy-card h4:focus,
+.strategy-card p:focus {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -2px;
+    background: var(--color-focus-bg);
+    border-radius: 0;
+}
+
+/* Analysis Grid */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.perceptual-section,
+.value-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+.perceptual-section h3,
+.value-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 0.75rem 0;
+}
+
+.perceptual-section h3 i,
+.value-section h3 i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+}
+
+/* Perceptual Map */
+.perceptual-map {
+    position: relative;
+}
+
+.map-canvas {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: var(--color-bg-subtle);
+    /* 移除渐变 */
+    border: 1px solid var(--color-border-medium);
+    /* 统一边框风格 */
+    border-radius: 0;
+}
+
+.axis {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.axis.vertical {
+    flex-direction: column;
+    left: 0.5rem;
+    top: 1rem;
+    bottom: 1rem;
+}
+
+.axis.horizontal {
+    flex-direction: row;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
+}
+
+.quadrant-line {
+    position: absolute;
+    background: var(--color-border-light);
+    /* 更微妙的分隔线 */
+}
+
+.quadrant-line.v {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    /* 更细 */
+}
+
+.quadrant-line.h {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+
+.brand {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 0.3rem 0.6rem;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 0;
+    /* Changed from 20px circle to square */
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    cursor: move;
+    /* 移除 shadow 和 transition */
+    box-shadow: none;
+    transition: none;
+}
+
+/* 移除 hover 放大 */
+.brand:hover {
+    transform: translate(-50%, -50%);
+    /* 保持居中 */
+    border-width: 2px;
+    /* 唯一反馈：边框加粗 */
+    box-shadow: none;
+}
+
+.brand.us {
+    border: 2px solid var(--color-text-primary);
+    /* 使用深色边框强调 */
+    background: var(--color-bg-white);
+    color: var(--color-text-primary);
+    z-index: 10;
+}
+
+/* Value Proposition */
+.value-canvas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.value-item {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: 0.75rem;
+}
+
+.value-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.value-header i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+}
+
+.value-header strong {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+/* Value Content - Editable Block */
+.value-content {
+    outline: none;
+}
+
+.value-content:focus {
+    background-color: var(--color-focus-bg);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+.value-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.value-content li {
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+    padding-left: 1rem;
+    position: relative;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.value-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0.25rem;
+    color: var(--color-text-tertiary);
+    font-weight: 700;
+}
+
+/* Advantages Section */
+.advantages-section {
+    margin-bottom: 1.5rem;
+}
+
+.advantages-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border-medium);
+}
+
+.advantages-section h2 i {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-secondary);
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+/* SWOT 卡片样式: Monochrome First */
+.advantage-card {
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: 0.75rem;
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+}
+
+/* Color Mode: 语义化背景色 */
+body.color-mode .advantage-card.strengths {
+    background: var(--color-semantic-strength);
+    border-color: transparent;
+}
+
+body.color-mode .advantage-card.weaknesses {
+    background: var(--color-semantic-weakness);
+    border-color: transparent;
+}
+
+body.color-mode .advantage-card.opportunities {
+    background: var(--color-semantic-opportunity);
+    border-color: transparent;
+}
+
+body.color-mode .advantage-card.threats {
+    background: var(--color-semantic-threat);
+    border-color: transparent;
+}
+
+.advantage-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* 极淡的分隔线 */
+}
+
+.advantage-card .card-header i {
+    width: 16px;
+    height: 16px;
+    /* 强制单色图标，不再使用红绿灯色 */
+    color: var(--color-text-primary);
+}
+
+.advantage-card .card-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Card Content - Editable Block */
+.advantage-card .card-content {
+    outline: none;
+}
+
+.advantage-card .card-content:focus {
+    background-color: var(--color-focus-bg);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+.advantage-card .card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.advantage-card .card-content li {
+    font-size: var(--font-size-xs);
+    line-height: 1;
+    color: var(--color-text-secondary);
+    padding-left: 0.75rem;
+    position: relative;
+}
+
+.advantage-card .card-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-text-tertiary);
+}
+
+/* Remove old advantage-list styles */
+
+/* Strategy Section - Compact Design */
+.strategy-section {
+    margin-bottom: 0.5rem;
+}
+
+.strategy-section h2 {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 0.5rem 0;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--color-border-medium);
+}
+
+.strategy-cards {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.strategy-card {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+.strategy-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: transparent;
+    border: none;
+}
+
+.strategy-icon i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+}
+
+.strategy-content {
+    flex: 1;
+}
+
+.strategy-card h4 {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 0.125rem 0;
+    padding: 0;
+}
+
+.strategy-card p {
+    font-size: 0.6rem;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+    margin: 0;
+    padding: 0;
+}
+
+/* Print Optimization */
+@media print {
+
+    /* Force Grid Layouts */
+    .analysis-grid,
+    .advantages-grid,
+    .strategy-cards {
+        display: grid !important;
+        break-inside: avoid;
+    }
+
+    .analysis-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .advantages-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    .strategy-cards {
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+
+    /* Hide Backgrounds & Shadows */
+    .advantage-card,
+    .strategy-card,
+    .value-item,
+    .perceptual-section,
+    .value-section,
+    .positioning-statement {
+        background: white !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+
+    /* Semantic Colors to Grayscale */
+    .advantage-card.strengths,
+    .advantage-card.weaknesses,
+    .advantage-card.opportunities,
+    .advantage-card.threats {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Ensure Text Contrast */
+    h2,
+    h3,
+    h4,
+    label,
+    strong {
+        color: #000 !important;
+    }
+
+    p,
+    li,
+    span {
+        color: #333 !important;
+    }
+
+    /* Borders */
+    .card-header,
+    .strategy-section h2,
+    .advantages-section h2 {
+        border-bottom-color: #000 !important;
+    }
+
+    /* Hide decorative elements if needed */
+    .desk-background {
+        display: none !important;
+    }
+
+    /* Adjust Map for Print */
+    .map-canvas {
+        background: white !important;
+        border: 1px solid #000 !important;
+    }
+
+    .brand {
+        border: 1px solid #000 !important;
+        background: white !important;
+    }
+
+    .brand.us {
+        border-width: 2px !important;
+    }
+}

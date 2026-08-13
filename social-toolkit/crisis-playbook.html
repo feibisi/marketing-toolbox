@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>危机应对清单 (Crisis Playbook)</title>
+    <meta name="description" content="危机应对清单工具，帮助您系统处理社交媒体危机，包含风险评估、响应清单和声明草拟。">
+    <meta name="keywords" content="危机公关,危机管理,社交媒体,舆情应对,公关处理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="危机应对清单 - Modiqi Workbench">
+    <meta property="og:description" content="系统处理社交媒体危机，包含风险评估、响应清单和声明草拟。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/crisis-playbook.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a4">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>危机应对清单</h1>
+                <span class="english-subtitle">Crisis Playbook</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>等级评估 <span class="en-sub">(Level)</span></label>
+                    <select class="meta-select warning-level" id="crisisLevel" data-save-key="crisis_level" aria-label="crisis level">
+                        <option value="low">🟡 Level 1: 低风险</option>
+                        <option value="medium">🟠 Level 2: 中风险</option>
+                        <option value="high">🔴 Level 3: 高风险</option>
+                    </select>
+                </div>
+                <div class="meta-group">
+                    <label>负责人 <span class="en-sub">(Owner)</span></label>
+                    <input type="text" class="meta-input" placeholder="Name" data-save-key="owner_name" aria-label="Name">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="crisis-layout">
+
+            <!-- Section 1: Assessment (Top) -->
+            <section class="card-section assessment-section">
+                <div class="section-title">
+                    <i data-lucide="alert-triangle" class="icon"></i>
+                    <h3>风险评估 (Initial Assessment)</h3>
+                </div>
+                <div class="assessment-grid">
+                    <div class="assessment-item">
+                        <label>事件描述 (What Happened)</label>
+                        <div class="text-input" contenteditable="true" data-placeholder="简述核心争议点、起因..."></div>
+                    </div>
+                    <div class="assessment-item">
+                        <label>扩散渠道 (Channels)</label>
+                        <div class="text-input" contenteditable="true" data-placeholder="微博、小红书、微信群..."></div>
+                    </div>
+                    <div class="assessment-item">
+                        <label>关键影响者 (Key Voices)</label>
+                        <div class="text-input" contenteditable="true" data-placeholder="KOL、媒体、竞品..."></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Response Steps (Middle) -->
+            <section class="card-section checklist-section">
+                <div class="section-title">
+                    <i data-lucide="check-square" class="icon"></i>
+                    <h3>响应清单 (Response Checklist)</h3>
+                </div>
+                <div class="checklist-grid">
+                    <!-- 1 Hour -->
+                    <div class="checklist-col">
+                        <h4 class="col-title time-urgent">🔴 1小时内 (Golden Hour)</h4>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">确认事实真相与内部核查</span>
+                        </div>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">暂停所有推广/定时发布</span>
+                        </div>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">成立紧急应对小组</span>
+                        </div>
+                    </div>
+
+                    <!-- 24 Hours -->
+                    <div class="checklist-col">
+                        <h4 class="col-title time-mid">🟠 24小时内 (Response)</h4>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">发布官方声明/道歉信</span>
+                        </div>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">联系关键KOL进行沟通</span>
+                        </div>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">实施SEO压制/关键词净化</span>
+                        </div>
+                    </div>
+
+                    <!-- Ongoing -->
+                    <div class="checklist-col">
+                        <h4 class="col-title time-long">🟢 后续跟进 (Follow-up)</h4>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">持续舆情监测 (72小时)</span>
+                        </div>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">兑现承诺/补偿措施落地</span>
+                        </div>
+                        <div class="check-item" data-state="unchecked">
+                            <div class="checkbox"></div>
+                            <span contenteditable="true">复盘总结与流程优化</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Statement Draft (Bottom) -->
+            <section class="card-section statement-section">
+                <div class="section-title">
+                    <i data-lucide="file-edit" class="icon"></i>
+                    <h3>声明草拟 (Statement Draft)</h3>
+                </div>
+                <div class="draft-container">
+                    <div class="draft-guidelines">
+                        <span>✅ 3A原则: Attitude (态度诚恳), Action (行动迅速), Accountability (勇于担责)</span>
+                        <span>❌ 避免: 推卸责任、情绪化反击、删除负面评论 (除非违规)</span>
+                    </div>
+                    <div class="draft-editor" contenteditable="true"
+                        data-placeholder="在此起草回应文案...&#10;&#10;1. 承认问题&#10;2. 表达歉意&#10;3. 说明原因 (非借口)&#10;4. 解决方案&#10;5. 后续承诺">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+
+            // Custom checkbox logic for this page
+            const app = new ModiqiApp('crisis-playbook');
+
+            document.querySelectorAll('.check-item').forEach(item => {
+                item.querySelector('.checkbox').addEventListener('click', function (e) {
+                    e.stopPropagation(); // Prevent text edit focus
+                    const currentState = item.getAttribute('data-state');
+                    const newState = currentState === 'checked' ? 'unchecked' : 'checked';
+                    item.setAttribute('data-state', newState);
+
+                    // Manually trigger save since this isn't an input event
+                    app.saveData();
+                });
+            });
+
+            // Crisis Level Color Change
+            const levelSelect = document.getElementById('crisisLevel');
+            levelSelect.addEventListener('change', function () {
+                const colors = {
+                    'low': 'var(--color-bg-paper)',
+                    'medium': '#fff7ed', // bg-orange-50 equivalent
+                    'high': '#fef2f2'   // bg-red-50 equivalent
+                };
+                // Subtle background hint could be added here if desired, 
+                // but for now we just let the select itself indicate level.
+                // Or change the select background itself more visibly?
+            });
+        });
+    </script>
+</body>
+
+</html>

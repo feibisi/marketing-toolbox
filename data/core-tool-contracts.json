@@ -1,0 +1,885 @@
+{
+  "schema_version": 1,
+  "generated_from": [
+    "data/tools.json",
+    "data/workflows.json"
+  ],
+  "contracts": [
+    {
+      "path": "strategy-toolkit/swot-analysis.html",
+      "tool_id": "strategy-toolkit:swot-analysis",
+      "title": "SWOT 分析 (SWOT Analysis)",
+      "workflow_id": "strategy-alignment",
+      "workflow_order": 1,
+      "business_question": "哪些内部和外部证据会影响当前战略选择？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [],
+      "downstream": [
+        "strategy-toolkit/landscape-map.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/landscape-map.html",
+      "tool_id": "strategy-toolkit:landscape-map",
+      "title": "竞争格局地图 (Competitive Landscape Map)",
+      "workflow_id": "strategy-alignment",
+      "workflow_order": 2,
+      "business_question": "竞争者、替代方案和空白机会如何分布？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/swot-analysis.html"
+      ],
+      "downstream": [
+        "strategy-toolkit/business-model-canvas.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/business-model-canvas.html",
+      "tool_id": "strategy-toolkit:business-model-canvas",
+      "title": "商业模式画布 (Business Model Canvas)",
+      "workflow_id": "strategy-alignment",
+      "workflow_order": 3,
+      "business_question": "业务如何为特定客户创造、交付并获取价值？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/landscape-map.html"
+      ],
+      "downstream": [
+        "strategy-toolkit/value-proposition.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/value-proposition.html",
+      "tool_id": "strategy-toolkit:value-proposition",
+      "title": "价值主张画布 (Value Proposition Canvas)",
+      "workflow_id": "strategy-alignment",
+      "workflow_order": 4,
+      "business_question": "客户任务、痛点和收益如何对应产品价值与证据？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/business-model-canvas.html"
+      ],
+      "downstream": [
+        "strategy-toolkit/okr-cascade.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/okr-cascade.html",
+      "tool_id": "strategy-toolkit:okr-cascade",
+      "title": "OKR 战略级联地图 (OKR Strategy Cascade Map)",
+      "workflow_id": "strategy-alignment",
+      "workflow_order": 5,
+      "business_question": "战略目标如何拆成有指标、有负责人且相互对齐的结果？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/value-proposition.html"
+      ],
+      "downstream": [
+        "strategy-toolkit/strategic-roadmap.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/strategic-roadmap.html",
+      "tool_id": "strategy-toolkit:strategic-roadmap",
+      "title": "战略路线图 (Strategic Roadmap)",
+      "workflow_id": "strategy-alignment",
+      "workflow_order": 6,
+      "business_question": "战略举措应按什么顺序、依赖和里程碑推进？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/okr-cascade.html"
+      ],
+      "downstream": [],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "customer-toolkit/user-persona.html",
+      "tool_id": "customer-toolkit:user-persona",
+      "title": "用户画像卡 (User Persona Card)",
+      "workflow_id": "audience-positioning",
+      "workflow_order": 1,
+      "business_question": "基于哪些证据可以描述一个可用于决策的目标用户群？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "带来源的目标用户档案",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [],
+      "downstream": [
+        "behavior-toolkit/empathy-map.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "behavior-toolkit/empathy-map.html",
+      "tool_id": "behavior-toolkit:empathy-map",
+      "title": "同理心地图 (Empathy Map)",
+      "workflow_id": "audience-positioning",
+      "workflow_order": 2,
+      "business_question": "基于现有证据，目标用户如何看、听、想、说和行动？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "带证据的用户行为结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "customer-toolkit/user-persona.html"
+      ],
+      "downstream": [
+        "behavior-toolkit/customer-journey.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "behavior-toolkit/customer-journey.html",
+      "tool_id": "behavior-toolkit:customer-journey",
+      "title": "客户旅程地图 (Customer Journey Map)",
+      "workflow_id": "audience-positioning",
+      "workflow_order": 3,
+      "business_question": "目标客户在各阶段经历了什么、在哪里受阻、应改善什么？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "带证据的用户行为结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "behavior-toolkit/empathy-map.html"
+      ],
+      "downstream": [
+        "strategy-toolkit/stp-canvas.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/stp-canvas.html",
+      "tool_id": "strategy-toolkit:stp-canvas",
+      "title": "STP 战略画布 (STP Strategy Canvas)",
+      "workflow_id": "audience-positioning",
+      "workflow_order": 4,
+      "business_question": "市场如何细分，应选择哪些目标群体并如何定位？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "behavior-toolkit/customer-journey.html"
+      ],
+      "downstream": [
+        "brand-toolkit/jtbd-canvas.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "brand-toolkit/jtbd-canvas.html",
+      "tool_id": "brand-toolkit:jtbd-canvas",
+      "title": "JTBD 画布 - Modiqi Brand Workbench",
+      "workflow_id": "audience-positioning",
+      "workflow_order": 5,
+      "business_question": "客户在什么情境下试图完成什么任务，现有替代为何不足？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可评审的品牌决策资产",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/stp-canvas.html"
+      ],
+      "downstream": [
+        "brand-toolkit/brand-positioning-map.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "brand-toolkit/brand-positioning-map.html",
+      "tool_id": "brand-toolkit:brand-positioning-map",
+      "title": "品牌定位图 (Brand Positioning Map)",
+      "workflow_id": "audience-positioning",
+      "workflow_order": 6,
+      "business_question": "品牌与主要替代方案在关键购买维度上处于什么位置？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可评审的品牌决策资产",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "brand-toolkit/jtbd-canvas.html"
+      ],
+      "downstream": [],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "brand-toolkit/positioning-statement.html",
+      "tool_id": "brand-toolkit:positioning-statement",
+      "title": "定位陈述生成器 (Positioning Statement)",
+      "workflow_id": "brand-narrative",
+      "workflow_order": 1,
+      "business_question": "如何用受众、品类、价值、差异和证据形成可检验定位？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可评审的品牌决策资产",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [],
+      "downstream": [
+        "brand-toolkit/brand-messaging.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "brand-toolkit/brand-messaging.html",
+      "tool_id": "brand-toolkit:brand-messaging",
+      "title": "品牌信息框架 (Brand Messaging Framework)",
+      "workflow_id": "brand-narrative",
+      "workflow_order": 2,
+      "business_question": "定位应如何转化为分层、一致且可复用的品牌信息？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可评审的品牌决策资产",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "brand-toolkit/positioning-statement.html"
+      ],
+      "downstream": [
+        "brand-toolkit/brand-story.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "brand-toolkit/brand-story.html",
+      "tool_id": "brand-toolkit:brand-story",
+      "title": "品牌故事模板 (Brand Story Template)",
+      "workflow_id": "brand-narrative",
+      "workflow_order": 3,
+      "business_question": "品牌如何以客户为主角讲清冲突、选择与结果？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可评审的品牌决策资产",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "brand-toolkit/brand-messaging.html"
+      ],
+      "downstream": [
+        "brand-toolkit/tone-voice.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "brand-toolkit/tone-voice.html",
+      "tool_id": "brand-toolkit:tone-voice",
+      "title": "品牌语调均衡器 (Tone of Voice Equalizer)",
+      "workflow_id": "brand-narrative",
+      "workflow_order": 4,
+      "business_question": "品牌在不同场景中的表达特征和边界是什么？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可评审的品牌决策资产",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "brand-toolkit/brand-story.html"
+      ],
+      "downstream": [],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "content-toolkit/content-audit.html",
+      "tool_id": "content-toolkit:content-audit",
+      "title": "内容盘点工具 (Content Audit Tracker)",
+      "workflow_id": "content-operations",
+      "workflow_order": 1,
+      "business_question": "现有内容应保留、更新、合并、重定向还是删除？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有负责人和指标的内容决策",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [],
+      "downstream": [
+        "content-toolkit/content-strategy-canvas.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "content-toolkit/content-strategy-canvas.html",
+      "tool_id": "content-toolkit:content-strategy-canvas",
+      "title": "内容战略画布 (Content Strategy Canvas)",
+      "workflow_id": "content-operations",
+      "workflow_order": 2,
+      "business_question": "内容应服务谁、解决什么问题、通过什么主题和渠道实现目标？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有负责人和指标的内容决策",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "content-toolkit/content-audit.html"
+      ],
+      "downstream": [
+        "content-toolkit/content-calendar.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "content-toolkit/content-calendar.html",
+      "tool_id": "content-toolkit:content-calendar",
+      "title": "内容日历 (Content Calendar)",
+      "workflow_id": "content-operations",
+      "workflow_order": 3,
+      "business_question": "内容主题、渠道、负责人和发布时间如何形成可执行排期？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有负责人和指标的内容决策",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "content-toolkit/content-strategy-canvas.html"
+      ],
+      "downstream": [
+        "content-toolkit/content-performance.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "content-toolkit/content-performance.html",
+      "tool_id": "content-toolkit:content-performance",
+      "title": "内容效果分析 (Content Performance)",
+      "workflow_id": "content-operations",
+      "workflow_order": 4,
+      "business_question": "哪些内容贡献了目标结果，哪些需要停止或改进？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有负责人和指标的内容决策",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "content-toolkit/content-calendar.html"
+      ],
+      "downstream": [
+        "seo-toolkit/technical-seo-audit.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "seo-toolkit/technical-seo-audit.html",
+      "tool_id": "seo-toolkit:technical-seo-audit",
+      "title": "技术 SEO 审计 (Technical SEO Audit)",
+      "workflow_id": "content-operations",
+      "workflow_order": 5,
+      "business_question": "哪些技术问题正在阻碍抓取、索引、体验或搜索表现？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "按严重度和负责人排序的修复清单",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "content-toolkit/content-performance.html"
+      ],
+      "downstream": [],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "strategy-toolkit/gtm-strategy.html",
+      "tool_id": "strategy-toolkit:gtm-strategy",
+      "title": "GTM 策略画布 (Go-to-Market Strategy Canvas)",
+      "workflow_id": "go-to-market",
+      "workflow_order": 1,
+      "business_question": "产品通过哪些受众、价值、渠道和阶段进入市场？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "有假设、依据和责任人的战略结论",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [],
+      "downstream": [
+        "social-toolkit/utm-builder.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "social-toolkit/utm-builder.html",
+      "tool_id": "social-toolkit:utm-builder",
+      "title": "UTM 链接构建器 (Campaign URL Builder)",
+      "workflow_id": "go-to-market",
+      "workflow_order": 2,
+      "business_question": "如何生成命名一致、可归因且可追溯的活动链接？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "遵循命名规则的可追踪活动链接",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "strategy-toolkit/gtm-strategy.html"
+      ],
+      "downstream": [
+        "sales-toolkit/lead-scoring.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "sales-toolkit/lead-scoring.html",
+      "tool_id": "sales-toolkit:lead-scoring",
+      "title": "客户评分卡 (Lead Scoring Card)",
+      "workflow_id": "go-to-market",
+      "workflow_order": 3,
+      "business_question": "哪些可观察条件能够一致地判断线索优先级？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可执行的销售优先级或报价",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "social-toolkit/utm-builder.html"
+      ],
+      "downstream": [
+        "sales-toolkit/quote-calculator.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "sales-toolkit/quote-calculator.html",
+      "tool_id": "sales-toolkit:quote-calculator",
+      "title": "报价计算器 (Quote Calculator)",
+      "workflow_id": "go-to-market",
+      "workflow_order": 4,
+      "business_question": "在成本、范围、税费和利润约束下应如何形成报价？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可执行的销售优先级或报价",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "sales-toolkit/lead-scoring.html"
+      ],
+      "downstream": [],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "analytics-toolkit/measurement-plan.html",
+      "tool_id": "analytics-toolkit:measurement-plan",
+      "title": "数字营销评估计划 (Measurement Plan)",
+      "workflow_id": "measurement-growth",
+      "workflow_order": 1,
+      "business_question": "业务目标应如何映射为事件、指标、口径和责任人？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可复核的衡量、实验或财务结果",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [],
+      "downstream": [
+        "analytics-toolkit/kpi-dashboard.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "analytics-toolkit/kpi-dashboard.html",
+      "tool_id": "analytics-toolkit:kpi-dashboard",
+      "title": "KPI 仪表盘 (KPI Dashboard)",
+      "workflow_id": "measurement-growth",
+      "workflow_order": 2,
+      "business_question": "哪些指标能持续反映当前营销目标的进展和异常？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可复核的衡量、实验或财务结果",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "analytics-toolkit/measurement-plan.html"
+      ],
+      "downstream": [
+        "analytics-toolkit/funnel-diagnosis.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "analytics-toolkit/funnel-diagnosis.html",
+      "tool_id": "analytics-toolkit:funnel-diagnosis",
+      "title": "漏斗诊断卡 (Funnel Diagnosis)",
+      "workflow_id": "measurement-growth",
+      "workflow_order": 3,
+      "business_question": "漏斗的主要损失发生在哪里，优先验证什么原因？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可复核的衡量、实验或财务结果",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "analytics-toolkit/kpi-dashboard.html"
+      ],
+      "downstream": [
+        "analytics-toolkit/ab-test-planner.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "analytics-toolkit/ab-test-planner.html",
+      "tool_id": "analytics-toolkit:ab-test-planner",
+      "title": "A/B 测试规划器 (A/B Test Planner)",
+      "workflow_id": "measurement-growth",
+      "workflow_order": 4,
+      "business_question": "怎样以可检验假设设计一个统计口径明确的营销实验？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可复核的衡量、实验或财务结果",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "analytics-toolkit/funnel-diagnosis.html"
+      ],
+      "downstream": [
+        "analytics-toolkit/roi-calculator.html"
+      ],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    },
+    {
+      "path": "analytics-toolkit/roi-calculator.html",
+      "tool_id": "analytics-toolkit:roi-calculator",
+      "title": "ROI 计算器 (Marketing ROI Calculator)",
+      "workflow_id": "measurement-growth",
+      "workflow_order": 5,
+      "business_question": "在明确成本与收益口径后，营销投入的回报是多少？",
+      "non_applicable_when": "缺少必要输入且无法明确标记为假设时，不应用该工具产生确定性结论。",
+      "required_inputs": [
+        "项目目标与范围",
+        "至少一条可追溯事实或明确标记的假设",
+        "负责人和复核日期"
+      ],
+      "method": "现有页面方法待领域负责人复核并补充可执行说明。",
+      "deliverable": "可复核的衡量、实验或财务结果",
+      "completion_rule": "必填区域完成；关键结论已标记证据状态；来源或来源缺失说明、负责人和复核日期齐全。",
+      "evidence_requirement": [
+        "fact",
+        "assumption",
+        "to_verify"
+      ],
+      "upstream": [
+        "analytics-toolkit/ab-test-planner.html"
+      ],
+      "downstream": [],
+      "validation_level": "smoke",
+      "review_status": "draft"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 工作流构建器 (AI Workflow Builder)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ai-workflow.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3 landscape">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>AI 工作流构建器</h1>
+                <span class="english-subtitle">AI Workflow Builder</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>流程名称</label>
+                    <input type="text" class="meta-input" placeholder="e.g. SEO Content Gen" data-save-key="meta_title" aria-label="SEO Content Gen">
+                </div>
+                <div class="meta-group">
+                    <label>所有者</label>
+                    <input type="text" class="meta-input" placeholder="Owner" data-save-key="meta_owner" aria-label="Owner">
+                </div>
+            </div>
+        </header>
+
+        <div class="workflow-container">
+
+            <div class="swimlane-grid">
+
+                <!-- Lane 1: Input / Context -->
+                <div class="lane-col lane-input" id="lane1">
+                    <div class="lane-header">
+                        <i data-lucide="database" class="lane-icon"></i>
+                        <span>数据源 (Data Source)</span>
+                    </div>
+                    <!-- Cards will be injected here -->
+                    <button class="add-card-btn no-print" onclick="addCard('lane1')" type="button">+ 添加数据源</button>
+                </div>
+
+                <!-- Lane 2: AI Processing -->
+                <div class="lane-col lane-ai" id="lane2">
+                    <div class="lane-header">
+                        <i data-lucide="sparkles" class="lane-icon"></i>
+                        <span>AI 处理 (Processing)</span>
+                    </div>
+                    <button class="add-card-btn no-print" onclick="addCard('lane2')" type="button">+ 添加模型动作</button>
+                </div>
+
+                <!-- Lane 3: Human Loop -->
+                <div class="lane-col lane-human" id="lane3">
+                    <div class="lane-header">
+                        <i data-lucide="user-check" class="lane-icon"></i>
+                        <span>人工审核 (Human Loop)</span>
+                    </div>
+                    <button class="add-card-btn no-print" onclick="addCard('lane3')" type="button">+ 添加审核节点</button>
+                </div>
+
+                <!-- Lane 4: Output -->
+                <div class="lane-col lane-output" id="lane4">
+                    <div class="lane-header">
+                        <i data-lucide="upload-cloud" class="lane-icon"></i>
+                        <span>输出交付 (Output)</span>
+                    </div>
+                    <button class="add-card-btn no-print" onclick="addCard('lane4')" type="button">+ 添加输出目标</button>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ai_workflow_builder');
+            lucide.createIcons();
+
+            // Initial Demo Content if empty (handled by ModiqiApp persistence usually, but we can seed if new)
+            // Just simulate some items
+            setTimeout(() => {
+                if (document.querySelectorAll('.flow-card').length === 0) {
+                    seedDemo();
+                }
+            }, 500);
+        });
+
+        function createCardHTML(title = 'New Node', desc = 'Description...', id) {
+            return `
+                <div class="flow-card" id="${id}">
+                    <div class="card-header-row">
+                        <input class="card-title" value="${title}" data-save-key="${id}_title" aria-label="${id} title">
+                        <button class="no-print" style="border:none;background:none;cursor:pointer;" onclick="this.closest('.flow-card').remove();" title="Remove" type="button">
+                            <i data-lucide="x" style="width:12px;color:var(--color-text-tertiary);"></i>
+                        </button>
+                    </div>
+                    <textarea class="card-content" data-save-key="${id}_desc" aria-label="${id} desc">${desc}</textarea>
+                </div>
+            `;
+        }
+
+        function addCard(laneId, title, desc) {
+            const lane = document.getElementById(laneId);
+            const btn = lane.querySelector('.add-card-btn');
+            const uniqueId = 'card_' + Date.now() + Math.random().toString(36).substr(2, 5);
+
+            const div = document.createElement('div');
+            // Inserting before button
+            div.innerHTML = createCardHTML(title || 'New Node', desc || '详细描述...', uniqueId);
+            const card = div.firstElementChild;
+
+            lane.insertBefore(card, btn);
+            lucide.createIcons();
+        }
+
+        function seedDemo() {
+            addCard('lane1', '用户评论数据', '从CSV导入上月用户评论');
+            addCard('lane2', '情感分析 (GPT-4)', 'Prompt: 分析评论情感倾向 (正/负/中)');
+            addCard('lane2', '关键词提取', '提取主要投诉点');
+            addCard('lane3', '人工抽检', '复核置信度低于80%的条目');
+            addCard('lane4', '生成报告', '导出为 PDF 发送至 Slack');
+        }
+    </script>
+</body>
+
+</html>

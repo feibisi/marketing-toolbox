@@ -1,0 +1,435 @@
+/* KPI Dashboard - Design System Aligned */
+/* KPI 仪表盘样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-sm);
+    /* Compact gap */
+    position: relative;
+    z-index: 1;
+    padding-bottom: 2px;
+}
+
+/* ========================================
+   Metric Cards Row
+   ======================================== */
+.metrics-row {
+    display: flex;
+    gap: var(--spacing-sm);
+    /* Compact gap */
+}
+
+.metric-card {
+    flex: 1;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    /* Compact padding */
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 90px;
+    /* Reduced from 120px */
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-brand-blue);
+}
+
+.metric-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+}
+
+.metric-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+}
+
+.trend {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: 2px 6px;
+    border-radius: 0;
+}
+
+.trend.up {
+    color: var(--color-semantic-growth);
+    background: var(--color-semantic-growth-bg);
+}
+
+.trend.down {
+    color: var(--color-semantic-danger);
+    background: var(--color-bg-danger-subtle);
+}
+
+.trend.neutral {
+    color: var(--color-text-secondary);
+    background: var(--color-bg-subtle);
+}
+
+.trend-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.metric-value {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    /* Reduced from 28px */
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.metric-sub {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+}
+
+/* ========================================
+   Middle Section (Charts & Breakdown)
+   ======================================== */
+.middle-section {
+    display: flex;
+    gap: var(--spacing-sm);
+    /* Compact gap */
+    flex: 1.5;
+    /* Allow shrinking */
+}
+
+/* Chart Section */
+.chart-section {
+    flex: 1.5;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    /* Compact padding */
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    /* Compact margin */
+}
+
+.section-title .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.section-title h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.button-group {
+    display: flex;
+    gap: 4px;
+    background: var(--color-bg-subtle);
+    padding: 2px;
+    border-radius: 0;
+}
+
+.toggle-btn {
+    border: none;
+    background: transparent;
+    font-size: var(--font-size-xs);
+    padding: 4px 8px;
+    border-radius: 0;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+}
+
+.toggle-btn.active {
+    background: var(--color-bg-white);
+    color: var(--color-brand-blue);
+    box-shadow: var(--shadow-sm);
+    font-weight: bold;
+}
+
+.chart-container {
+    flex: 1;
+    position: relative;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: var(--color-bg-white);
+    padding: var(--spacing-sm);
+    /* Compact padding */
+    overflow: hidden;
+}
+
+.x-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 0 10px;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+}
+
+/* Breakdown Section */
+.breakdown-section {
+    flex: 1;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    /* Compact padding */
+    display: flex;
+    flex-direction: column;
+}
+
+.data-table-container {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+}
+
+.data-table th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 2px solid var(--border-sem-inner);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: bold;
+}
+
+.data-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border-sem-inner);
+    color: var(--color-text-primary);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================
+   Action Items (Bottom)
+   ======================================== */
+.actions-section {
+    flex: 0 0 auto;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    /* Compact padding */
+}
+
+.action-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    /* Compact gap */
+}
+
+.action-item {
+    background: var(--color-bg-subtle);
+    padding: 8px 12px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex: 1;
+    min-width: 200px;
+}
+
+.action-check {
+    accent-color: var(--color-brand-blue);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.action-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    flex: 1;
+    outline: none;
+}
+
+.action-text.ghost {
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    cursor: text;
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .metric-card,
+body.theme-dark .chart-section,
+body.theme-dark .breakdown-section,
+body.theme-dark .actions-section {
+    background: var(--color-bg-subtle);
+    border-color: var(--border-sem-inner);
+}
+
+body.theme-dark .chart-container {
+    background: var(--color-bg-paper);
+    border-color: var(--border-sem-inner);
+}
+
+body.theme-dark svg line {
+    stroke: var(--border-sem-inner);
+}
+
+body.theme-dark .trend.neutral {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .button-group {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .toggle-btn.active {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .action-item {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .dashboard-layout {
+        gap: var(--spacing-sm);
+    }
+
+    .metric-card,
+    .chart-section,
+    .breakdown-section {
+        border-color: #000;
+    }
+
+    .trend {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .chart-container {
+        border: 1px solid #ccc;
+    }
+}
+
+/* Mobile dashboard: stack dense panels and allow every editable region to
+   grow, while preserving the compact landscape composition for print. */
+@media screen and (max-width: 768px) {
+    body.desk-background {
+        position: static;
+        width: auto;
+        height: auto;
+        z-index: auto;
+        pointer-events: auto;
+    }
+
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md) var(--spacing-md) 88px;
+    }
+
+    #canvas.paper-a3 {
+        flex: none;
+        width: 100%;
+        max-width: none;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .dashboard-layout,
+    .dashboard-layout * {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-layout {
+        flex: none;
+    }
+
+    .metrics-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .middle-section {
+        flex: none;
+        flex-direction: column;
+    }
+
+    .chart-section,
+    .breakdown-section {
+        flex: none;
+    }
+
+    .chart-container {
+        min-height: 280px;
+        overflow: visible;
+    }
+
+    .section-title {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .data-table-container {
+        overflow: visible;
+    }
+
+    .data-table {
+        table-layout: fixed;
+        font-size: var(--font-size-xs);
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: var(--spacing-xs);
+        overflow-wrap: anywhere;
+    }
+
+    .action-list {
+        flex-direction: column;
+    }
+
+    .action-item {
+        width: 100%;
+        min-width: 0;
+    }
+}

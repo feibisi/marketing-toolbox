@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户画像卡 (User Persona Card)</title>
+    <meta name="description" content="用户画像卡工具，帮助您创建典型用户档案，深入了解目标用户的需求、痛点和行为特征。">
+    <meta name="keywords" content="用户画像,用户研究,目标用户,UX设计,人物角色">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="用户画像卡 - Modiqi Workbench">
+    <meta property="og:description" content="创建典型用户档案，深入了解目标用户的需求、痛点和行为特征。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/user-persona.css">
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/vendor/html2canvas.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header Section -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>用户画像卡</h1>
+                <span class="english-subtitle">USER PERSONA CARD</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>人物角色 <span class="en-sub">(Persona)</span></label>
+                    <input type="text" class="meta-input" placeholder="初级产品经理" data-save-key="persona_type"
+                        data-strategic-id="target_audience_type" aria-label="初级产品经理">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Persona Layout -->
+        <div class="persona-layout">
+            <!-- Left: Avatar & Basic Info -->
+            <div class="persona-sidebar">
+                <div class="avatar-section">
+                    <div class="avatar-wrapper">
+                        <img src="https://cn.cravatar.com/avatar/60f1c4f099fc44da2978d9107535f58e?s=200&d=mp"
+                            alt="User Avatar" class="persona-avatar" id="avatarImg">
+                        <a href="https://cravatar.com" target="_blank" rel="noopener noreferrer" class="cravatar-icon-link" id="cravatarLink"
+                            title="前往 Cravatar 设置头像">
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                    <div class="avatar-hint">
+                        <input type="email" placeholder="输入邮箱获取头像" class="email-input" id="emailInput" aria-label="输入邮箱获取头像">
+                    </div>
+                </div>
+
+                <div class="persona-identity">
+                    <h2 contenteditable="true" data-save-key="persona_name" class="persona-name">张三</h2>
+                    <div contenteditable="true" data-save-key="persona_role" class="persona-role">产品经理 · 28岁 · 上海</div>
+                </div>
+
+                <div class="quote-section">
+                    <div class="quote-icon">"</div>
+                    <div contenteditable="true" data-save-key="persona_quote" class="persona-quote">
+                        我希望能够更高效地处理日常任务，腾出时间进行战略思考。
+                    </div>
+                </div>
+
+                <div class="basic-info-section">
+                    <h3>
+                        <i data-lucide="clipboard-list"></i>
+                        基本信息 <span class="en-sub">(Basic Info)</span>
+                    </h3>
+                    <div class="info-grid" contenteditable="true" data-save-key="basic_info">
+                        <div class="info-row"><span class="info-label">年龄 <span class="en-sub">(Age)</span></span><span
+                                class="info-value">28 岁</span>
+                        </div>
+                        <div class="info-row"><span class="info-label">职业 <span class="en-sub">(Role)</span></span><span
+                                class="info-value">产品经理</span>
+                        </div>
+                        <div class="info-row"><span class="info-label">学历 <span class="en-sub">(Edu)</span></span><span
+                                class="info-value">硕士</span></div>
+                        <div class="info-row"><span class="info-label">收入 <span class="en-sub">(Inc)</span></span><span
+                                class="info-value">30-50K</span>
+                        </div>
+                        <div class="info-row"><span class="info-label">家庭 <span class="en-sub">(Fam)</span></span><span
+                                class="info-value">未婚</span></div>
+                        <div class="info-row"><span class="info-label">城市 <span class="en-sub">(City)</span></span><span
+                                class="info-value">上海</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Details Grid -->
+            <div class="persona-main">
+                <!-- Row 1: Personality & Channels -->
+                <div class="detail-row">
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="smile"></i>
+                            个性特征 <span class="en-sub">(Personality)</span>
+                        </h3>
+                        <div class="traits-container">
+                            <div class="trait-slider">
+                                <span>内向 <span class="en-sub">(Introvert)</span></span>
+                                <input type="range" class="trait-range" min="0" max="100" value="35"
+                                    data-save-key="trait_introvert" aria-label="trait introvert">
+                                <span>外向 <span class="en-sub">(Extrovert)</span></span>
+                            </div>
+                            <div class="trait-slider">
+                                <span>感性 <span class="en-sub">(Emotional)</span></span>
+                                <input type="range" class="trait-range" min="0" max="100" value="70"
+                                    data-save-key="trait_emotional" aria-label="trait emotional">
+                                <span>理性 <span class="en-sub">(Rational)</span></span>
+                            </div>
+                            <div class="trait-slider">
+                                <span>保守 <span class="en-sub">(Conservative)</span></span>
+                                <input type="range" class="trait-range" min="0" max="100" value="25"
+                                    data-save-key="trait_conservative" aria-label="trait conservative">
+                                <span>创新 <span class="en-sub">(Innovative)</span></span>
+                            </div>
+                            <div class="trait-slider">
+                                <span>被动 <span class="en-sub">(Passive)</span></span>
+                                <input type="range" class="trait-range" min="0" max="100" value="60"
+                                    data-save-key="trait_passive" aria-label="trait passive">
+                                <span>主动 <span class="en-sub">(Active)</span></span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="monitor"></i>
+                            常用渠道 <span class="en-sub">(Channels)</span>
+                        </h3>
+                        <div class="channels-grid" contenteditable="true" data-save-key="channels"
+                            data-strategic-id="marketing_channels">
+                            <span class="channel-tag">微信</span>
+                            <span class="channel-tag">抖音</span>
+                            <span class="channel-tag">小红书</span>
+                            <span class="channel-tag">知乎</span>
+                            <span class="channel-tag">B站</span>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Row 2: Goals & Frustrations -->
+                <div class="detail-row">
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="target"></i>
+                            核心目标 <span class="en-sub">(Goals)</span>
+                        </h3>
+                        <div class="content-area" contenteditable="true" data-save-key="goals"
+                            data-strategic-id="customer_goals">
+                            <ul>
+                                <li>提升团队协作效率，减少沟通成本</li>
+                                <li>按时交付高质量的产品原型</li>
+                                <li>获得晋升，成为高级产品经理</li>
+                                <li>建立个人在行业内的影响力</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="anchor"></i>
+                            痛点挫折 <span class="en-sub">(Frustrations)</span>
+                        </h3>
+                        <div class="content-area" contenteditable="true" data-save-key="frustrations"
+                            data-strategic-id="customer_pains">
+                            <ul>
+                                <li>工具碎片化，信息经常丢失或不同步</li>
+                                <li>每天花费大量时间在重复性工作上</li>
+                                <li>无法快速获得用户反馈数据</li>
+                                <li>跨部门协作困难，决策流程长</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Row 3: Bio & Brands -->
+                <div class="detail-row">
+                    <section class="detail-card bio-card">
+                        <h3>
+                            <i data-lucide="file-text"></i>
+                            个人简介 <span class="en-sub">(Bio)</span>
+                        </h3>
+                        <div class="content-area" contenteditable="true" data-save-key="bio">
+                            <p>张三在互联网行业工作了5年，对新兴技术充满热情。他工作努力，但经常感到被琐事淹没。他喜欢尝试新的效率工具，但如果上手太难就会很快放弃。他重视工作与生活的平衡，周末喜欢健身和阅读。
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="detail-card brands-card">
+                        <h3>
+                            <i data-lucide="heart"></i>
+                            喜爱品牌 <span class="en-sub">(Brands)</span>
+                        </h3>
+                        <div class="brands-list" contenteditable="true" data-save-key="brands">
+                            <span class="brand-tag">Apple</span>
+                            <span class="brand-tag">Notion</span>
+                            <span class="brand-tag">Figma</span>
+                            <span class="brand-tag">耐克</span>
+                            <span class="brand-tag">星巴克</span>
+                            <span class="brand-tag">特斯拉</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+
+    </main>
+
+    <script src="../shared/js/md5.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('persona_v2');
+
+            // Cravatar integration
+            const emailInput = document.getElementById('emailInput');
+            const avatarImg = document.getElementById('avatarImg');
+
+            const cravatarLink = document.getElementById('cravatarLink');
+
+            // Load saved email
+            const savedEmail = localStorage.getItem('modiqi_persona_v2_email');
+            if (savedEmail) {
+                emailInput.value = savedEmail;
+                updateAvatar(savedEmail);
+            } else {
+                updateAvatar(null);
+            }
+
+            emailInput.addEventListener('input', () => {
+                const email = emailInput.value.trim();
+                localStorage.setItem('modiqi_persona_v2_email', email);
+                updateAvatar(email);
+            });
+
+            function updateAvatar(email) {
+                if (email) {
+                    const hash = md5(email.toLowerCase());
+                    avatarImg.src = `https://cn.cravatar.com/avatar/${hash}?s=200&d=mp`;
+                    // Hide link if user has set an email (presumed non-default or they exist)
+                    // But if they want to edit, they can go to site. 
+                    // Per user request: "if default avatar... link to cravatar"
+                    cravatarLink.style.display = 'none';
+                } else {
+                    // Default placeholder
+                    avatarImg.src = "https://cn.cravatar.com/avatar/60f1c4f099fc44da2978d9107535f58e?s=200&d=mp";
+                    cravatarLink.style.display = 'flex';
+                }
+            }
+
+            // Initialize Lucide Icons
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

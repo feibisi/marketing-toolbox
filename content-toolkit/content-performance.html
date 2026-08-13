@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容效果分析 (Content Performance)</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-performance.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容效果分析</h1>
+                <span class="english-subtitle">Content Performance</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>时间范围 <span class="en-sub">(Period)</span></label>
+                    <input type="text" class="meta-input" placeholder="最近30天" data-save-key="meta_period" aria-label="最近30天">
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i data-lucide="eye"></i>
+                </div>
+                <div class="kpi-content">
+                    <span class="kpi-label">总浏览量</span>
+                    <span class="kpi-value" contenteditable="true">125,430</span>
+                    <span class="kpi-change positive">+12.5%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i data-lucide="users"></i>
+                </div>
+                <div class="kpi-content">
+                    <span class="kpi-label">独立访客</span>
+                    <span class="kpi-value" contenteditable="true">45,280</span>
+                    <span class="kpi-change positive">+8.3%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i data-lucide="clock"></i>
+                </div>
+                <div class="kpi-content">
+                    <span class="kpi-label">平均停留时间</span>
+                    <span class="kpi-value" contenteditable="true">3:42</span>
+                    <span class="kpi-change positive">+15.2%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i data-lucide="share-2"></i>
+                </div>
+                <div class="kpi-content">
+                    <span class="kpi-label">社交分享</span>
+                    <span class="kpi-value" contenteditable="true">2,340</span>
+                    <span class="kpi-change negative">-3.1%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Table -->
+        <div class="performance-container">
+            <h2><i data-lucide="bar-chart-3"></i> 内容表现排行</h2>
+            <table class="performance-table">
+                <thead>
+                    <tr>
+                        <th class="col-title">内容标题</th>
+                        <th class="col-type">类型</th>
+                        <th class="col-date">发布日期</th>
+                        <th class="col-metric">浏览量</th>
+                        <th class="col-metric">互动率</th>
+                        <th class="col-metric">转化率</th>
+                        <th class="col-score">评分</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="content-title" contenteditable="true">如何提升团队协作效率的10个技巧</td>
+                        <td><span class="badge blog">博客</span></td>
+                        <td>2024-01-15</td>
+                        <td class="metric-value">12,450</td>
+                        <td class="metric-value">8.5%</td>
+                        <td class="metric-value">3.2%</td>
+                        <td><span class="score high">9.2</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-title" contenteditable="true">产品功能演示视频</td>
+                        <td><span class="badge video">视频</span></td>
+                        <td>2024-01-18</td>
+                        <td class="metric-value">8,920</td>
+                        <td class="metric-value">12.3%</td>
+                        <td class="metric-value">5.1%</td>
+                        <td><span class="score high">8.8</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-title" contenteditable="true">客户成功案例:某科技公司的数字化转型</td>
+                        <td><span class="badge blog">博客</span></td>
+                        <td>2024-01-20</td>
+                        <td class="metric-value">7,650</td>
+                        <td class="metric-value">6.8%</td>
+                        <td class="metric-value">4.3%</td>
+                        <td><span class="score medium">7.5</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-title" contenteditable="true">2024年行业趋势白皮书</td>
+                        <td><span class="badge whitepaper">白皮书</span></td>
+                        <td>2024-01-22</td>
+                        <td class="metric-value">5,430</td>
+                        <td class="metric-value">15.2%</td>
+                        <td class="metric-value">8.7%</td>
+                        <td><span class="score high">9.5</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-title" contenteditable="true">产品更新公告</td>
+                        <td><span class="badge email">邮件</span></td>
+                        <td>2024-01-25</td>
+                        <td class="metric-value">18,200</td>
+                        <td class="metric-value">4.2%</td>
+                        <td class="metric-value">2.1%</td>
+                        <td><span class="score medium">6.8</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-title" contenteditable="true">用户故事分享</td>
+                        <td><span class="badge social">社交</span></td>
+                        <td>2024-01-28</td>
+                        <td class="metric-value">3,280</td>
+                        <td class="metric-value">9.5%</td>
+                        <td class="metric-value">1.8%</td>
+                        <td><span class="score low">5.2</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Content Type Analysis -->
+        <div class="type-analysis compact">
+            <h3><i data-lucide="pie-chart"></i> 内容类型分析</h3>
+            <div class="type-grid">
+                <div class="type-card">
+                    <span class="badge blog">博客</span>
+                    <div class="type-stats">
+                        <span class="stat-label">平均浏览</span>
+                        <span class="stat-value">8,450</span>
+                    </div>
+                    <div class="type-stats">
+                        <span class="stat-label">互动率</span>
+                        <span class="stat-value">7.2%</span>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <span class="badge video">视频</span>
+                    <div class="type-stats">
+                        <span class="stat-label">平均浏览</span>
+                        <span class="stat-value">12,300</span>
+                    </div>
+                    <div class="type-stats">
+                        <span class="stat-label">互动率</span>
+                        <span class="stat-value">11.8%</span>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <span class="badge whitepaper">白皮书</span>
+                    <div class="type-stats">
+                        <span class="stat-label">平均浏览</span>
+                        <span class="stat-value">6,200</span>
+                    </div>
+                    <div class="type-stats">
+                        <span class="stat-label">互动率</span>
+                        <span class="stat-value">14.5%</span>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <span class="badge email">邮件</span>
+                    <div class="type-stats">
+                        <span class="stat-label">平均浏览</span>
+                        <span class="stat-value">15,600</span>
+                    </div>
+                    <div class="type-stats">
+                        <span class="stat-label">互动率</span>
+                        <span class="stat-value">5.3%</span>
+                    </div>
+                </div>
+                <div class="type-card">
+                    <span class="badge social">社交</span>
+                    <div class="type-stats">
+                        <span class="stat-label">平均浏览</span>
+                        <span class="stat-value">4,100</span>
+                    </div>
+                    <div class="type-stats">
+                        <span class="stat-label">互动率</span>
+                        <span class="stat-value">9.8%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_performance_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

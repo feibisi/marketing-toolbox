@@ -1,0 +1,230 @@
+/* Attribution Model Tool Layout */
+.attribution-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* 1. Input Section: Journey Editor */
+.journey-editor {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.journey-list {
+    display: flex;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    min-height: 100px;
+    align-items: center;
+}
+
+.touchpoint-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    min-width: 80px;
+    cursor: pointer;
+}
+
+.tp-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-bg-subtle);
+    border: 2px solid var(--border-sem-input);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+}
+
+.touchpoint-node:hover .tp-circle {
+    border-color: var(--color-brand-primary);
+    background: var(--color-bg-hover);
+    color: var(--color-brand-primary);
+}
+
+.tp-line {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    /* Connects to next */
+    height: 2px;
+    background: var(--border-sem-input);
+    z-index: -1;
+    display: none;
+    /* Handled via flex gap roughly, or pseudo elements? Layout is flex row. */
+}
+
+.touchpoint-node:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    /* circle width */
+    width: 20px;
+    /* gap width effectively */
+    height: 2px;
+    background: var(--border-sem-input);
+}
+
+.tp-name {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-text-primary);
+    max-width: 80px;
+}
+
+.tp-days {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+}
+
+.add-tp-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px dashed var(--border-sem-dashed);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+}
+
+.add-tp-btn:hover {
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+}
+
+/* 2. Comparison Dashboard */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    flex: 1;
+}
+
+.model-panel {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.model-select {
+    padding: 4px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+.result-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    flex: 1;
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.row-label {
+    width: 80px;
+    text-align: right;
+    color: var(--color-text-secondary);
+}
+
+.row-bar-track {
+    flex: 1;
+    height: 12px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.row-bar-fill {
+    height: 100%;
+    background: var(--color-brand-blue);
+}
+
+.row-value {
+    width: 60px;
+    font-family: var(--font-mono);
+    font-weight: bold;
+}
+
+/* Dark Mode */
+body.theme-dark .journey-editor,
+body.theme-dark .model-panel {
+    background: var(--color-bg-muted);
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .attribution-container { flex: none; }
+    .comparison-grid { grid-template-columns: minmax(0, 1fr); }
+    .journey-list { width: 100%; }
+    .panel-header, .result-row { flex-wrap: wrap; }
+    .row-label { width: 64px; }
+}

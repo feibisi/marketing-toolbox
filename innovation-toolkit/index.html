@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品创新工作台 - Modiqi Workbench</title>
+    <meta name="description" content="产品创新工作台 - 包含创新雄心矩阵、Kano模型、设计思维、PMF验证等9个产品创新工具">
+    <meta name="keywords" content="产品创新,创新矩阵,Kano模型,设计思维,PMF,用户故事地图,服务蓝图,SCAMPER,蓝海战略,六顶思考帽">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="产品创新工作台 - Modiqi Workbench">
+    <meta property="og:description" content="包含创新雄心矩阵、Kano模型、设计思维、PMF验证等9个产品创新工具">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">产品创新工作台</h1>
+                    <span class="version-tag">9 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Product Innovation Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Workbench Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Innovation Ambition Matrix -->
+            <a href="innovation-ambition-matrix.html" class="tool-card">
+                <i data-lucide="grid-3x3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">矩阵</div>
+                    <!-- Matrix SVG -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Core -->
+                        <rect x="10" y="80" width="60" height="50" fill="#cbd5e1" stroke="none" />
+                        <!-- Adjacent -->
+                        <path d="M70 80 L140 80 L140 130 L70 130 Z M10 30 L60 30 L60 80 L10 80 Z" fill="#e2e8f0" />
+                        <!-- Transformational -->
+                        <path d="M140 30 L190 30 L190 130 L140 130 Z M70 10 L140 10 L140 30 L70 30 Z" fill="#f1f5f9" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">创新雄心矩阵 <span class="en-sub">(Innovation Matrix)</span></h3>
+                    <p class="tool-desc">规划核心、邻近和转型创新投资组合。</p>
+                </div>
+            </a>
+
+            <!-- 2. Kano Model -->
+            <a href="kano-model.html" class="tool-card">
+                <i data-lucide="trending-up" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">模型</div>
+                    <!-- Kano SVG -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <!-- Axes -->
+                        <line x1="20" y1="70" x2="180" y2="70" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="100" y1="20" x2="100" y2="120" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Curves -->
+                        <path d="M30 110 Q 100 80 170 30" stroke="#94a3b8" stroke-width="2" fill="none" />
+                        <!-- Attractive -->
+                        <path d="M30 120 L 170 20" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"
+                            fill="none" /> <!-- Linear -->
+                        <path d="M30 60 Q 100 110 170 115" stroke="#94a3b8" stroke-width="2" fill="none" />
+                        <!-- Must-be -->
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">Kano 模型 <span class="en-sub">(Kano Model)</span></h3>
+                    <p class="tool-desc">基于客户满意度进行功能需求分类与排序。</p>
+                </div>
+            </a>
+
+            <!-- 3. Design Thinking Canvas -->
+            <a href="design-thinking-canvas.html" class="tool-card">
+                <i data-lucide="lightbulb" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">画布</div>
+                    <!-- 5 Steps SVG -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <circle cx="30" cy="70" r="15" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <circle cx="65" cy="70" r="15" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <circle cx="100" cy="70" r="15" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <circle cx="135" cy="70" r="15" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <circle cx="170" cy="70" r="15" fill="#f1f5f9" stroke="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">设计思维画布 <span class="en-sub">(Design Thinking)</span></h3>
+                    <p class="tool-desc">共情、定义、构思、原型、测试五步法。</p>
+                </div>
+            </a>
+
+            <!-- 4. PMF Engine -->
+            <a href="pmf-engine.html" class="tool-card">
+                <i data-lucide="activity" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">验证</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <!-- Arc Meter -->
+                        <path d="M 50 100 A 50 50 0 0 1 150 100" fill="none" stroke="#e2e8f0" stroke-width="15"
+                            stroke-linecap="round" />
+                        <path d="M 50 100 A 50 50 0 0 1 100 50" fill="none" stroke="#10b981" stroke-width="15"
+                            stroke-linecap="round" />
+                        <text x="100" y="95" text-anchor="middle" font-size="20" font-weight="bold"
+                            fill="#1e293b">40%</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">PMF 验证引擎 <span class="en-sub">(PMF Engine)</span></h3>
+                    <p class="tool-desc">Sean Ellis 40% 黄金标准验证计算器。</p>
+                </div>
+            </a>
+
+            <!-- 5. User Story Map -->
+            <a href="user-story-map.html" class="tool-card">
+                <i data-lucide="map" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">敏捷</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <!-- Backbone -->
+                        <rect x="20" y="20" width="40" height="20" rx="2" fill="#3b82f6" />
+                        <rect x="80" y="20" width="40" height="20" rx="2" fill="#3b82f6" />
+                        <rect x="140" y="20" width="40" height="20" rx="2" fill="#3b82f6" />
+                        <line x1="20" y1="50" x2="180" y2="50" stroke="#cbd5e1" />
+                        <!-- Stories -->
+                        <rect x="20" y="60" width="40" height="15" rx="2" fill="#cbd5e1" />
+                        <rect x="20" y="80" width="40" height="15" rx="2" fill="#e2e8f0" />
+                        <rect x="80" y="60" width="40" height="15" rx="2" fill="#cbd5e1" />
+                        <rect x="140" y="60" width="40" height="15" rx="2" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">用户故事地图 <span class="en-sub">(User Story Map)</span></h3>
+                    <p class="tool-desc">可视化规划产品发布路径与优先级。</p>
+                </div>
+            </a>
+
+            <!-- 6. Service Blueprint (Link to Behavior Toolkit) -->
+            <a href="../behavior-toolkit/service-blueprint.html" class="tool-card">
+                <i data-lucide="git-merge" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">流程</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="20" y1="40" x2="180" y2="40" stroke="#cbd5e1" stroke-dasharray="4 2" />
+                        <line x1="20" y1="70" x2="180" y2="70" stroke="#cbd5e1" stroke-dasharray="4 2" />
+                        <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-dasharray="4 2" />
+                        <rect x="30" y="25" width="30" height="10" rx="2" fill="#e2e8f0" />
+                        <rect x="70" y="25" width="30" height="10" rx="2" fill="#e2e8f0" />
+
+                        <rect x="50" y="55" width="30" height="10" rx="2" fill="#f1f5f9" stroke="#94a3b8" />
+                        <rect x="110" y="55" width="30" height="10" rx="2" fill="#f1f5f9" stroke="#94a3b8" />
+
+                        <rect x="50" y="85" width="30" height="10" rx="2" fill="#cbd5e1" />
+                        <rect x="90" y="115" width="30" height="10" rx="2" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">服务蓝图 <span class="en-sub">(Blueprint)</span></h3>
+                    <p class="tool-desc">可视化前后台服务全流程。</p>
+                </div>
+            </a>
+
+            <!-- 7. SCAMPER Ideation -->
+            <a href="scamper-canvas.html" class="tool-card">
+                <i data-lucide="lightbulb" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">创意</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Grid 4x2 -->
+                        <rect x="20" y="20" width="35" height="45" rx="2" fill="#fee2e2" />
+                        <rect x="65" y="20" width="35" height="45" rx="2" fill="#ffedd5" />
+                        <rect x="110" y="20" width="35" height="45" rx="2" fill="#fef9c3" />
+                        <rect x="155" y="20" width="35" height="45" rx="2" fill="#dcfce7" />
+
+                        <rect x="20" y="75" width="35" height="45" rx="2" fill="#cffafe" />
+                        <rect x="65" y="75" width="35" height="45" rx="2" fill="#dbeafe" />
+                        <rect x="110" y="75" width="35" height="45" rx="2" fill="#f3e8ff" />
+                        <rect x="155" y="75" width="35" height="45" rx="2" fill="#f1f5f9" stroke="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">SCAMPER 创意法 <span class="en-sub">(SCAMPER)</span></h3>
+                    <p class="tool-desc">经典的七步创新思维工具。</p>
+                </div>
+            </a>
+
+            <!-- 8. Blue Ocean Strategy -->
+            <a href="blue-ocean-strategy.html" class="tool-card">
+                <i data-lucide="waves" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">蓝海</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Chart Axes -->
+                        <line x1="20" y1="120" x2="180" y2="120" stroke="#cbd5e1" />
+
+                        <!-- Curve 1 -->
+                        <polyline points="20,80 60,60 100,90 140,50 180,70" fill="none" stroke="#cbd5e1"
+                            stroke-width="2" stroke-dasharray="4" />
+
+                        <!-- Curve 2 -->
+                        <polyline points="20,100 60,100 100,50 140,100 180,30" fill="none" stroke="#3b82f6"
+                            stroke-width="3" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">蓝海战略画布 <span class="en-sub">(Blue Ocean)</span></h3>
+                    <p class="tool-desc">绘制价值曲线，寻找无人竞争的市场空间。</p>
+                </div>
+            </a>
+
+            <!-- 9. Six Thinking Hats -->
+            <a href="six-thinking-hats.html" class="tool-card">
+                <i data-lucide="crown" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">思维</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 3x2 Grid of Hats -->
+                        <rect x="25" y="30" width="40" height="25" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="80" y="30" width="40" height="25" rx="4" fill="#fee2e2" stroke="#fca5a5" />
+                        <rect x="135" y="30" width="40" height="25" rx="4" fill="#f1f5f9" stroke="#64748b" />
+
+                        <rect x="25" y="70" width="40" height="25" rx="4" fill="#fef9c3" stroke="#fde047" />
+                        <rect x="80" y="70" width="40" height="25" rx="4" fill="#dcfce7" stroke="#86efac" />
+                        <rect x="135" y="70" width="40" height="25" rx="4" fill="#dbeafe" stroke="#93c5fd" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">六顶思考帽 <span class="en-sub">(Six Hats)</span></h3>
+                    <p class="tool-desc">全方位的团队思维协作框架。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

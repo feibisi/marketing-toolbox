@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema 结构化数据生成器 (Schema Markup Generator)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/schema-generator.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>Schema 生成器</h1>
+                <span class="english-subtitle">JSON-LD Markup Generator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>Schema 类型</label>
+                    <select class="meta-input" id="schemaType" onchange="renderForm()" aria-label="schemaType">
+                        <option value="article">Article (文章)</option>
+                        <option value="faq">FAQ Page (问答)</option>
+                        <option value="local">Local Business (商家)</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="schema-container">
+
+            <!-- Left: Form -->
+            <div class="col-input" id="formContainer">
+                <!-- Form dynamically rendered here -->
+            </div>
+
+            <!-- Right: Preview -->
+            <div class="col-preview">
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        JSON-LD Preview
+                        <button class="copy-btn" onclick="copyCode()" title="Copy Code" type="button">
+                            <i data-lucide="copy" style="width:14px;height:14px;"></i>
+                        </button>
+                    </div>
+                    <textarea class="code-content" id="codeOutput" readonly aria-label="codeOutput"></textarea>
+                </div>
+                <div style="font-size:10px; color:var(--color-text-tertiary); line-height:1.4;">
+                    <i data-lucide="info"
+                        style="width:10px;height:10px;display:inline-block;vertical-align:middle;"></i>
+                    Wait 24h for Google to re-crawl. Validate using Rich Results Test.
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('schema_generator');
+            lucide.createIcons();
+            renderForm(); // Initial render
+        });
+
+        // Schema Templates
+        const forms = {
+            article: `
+                <div class="form-card">
+                    <div class="input-group">
+                        <label>Headline (标题)</label>
+                        <input type="text" class="input-control" id="artHeadline" oninput="updateCode()" placeholder="e.g. 10 Tips for Better SEO" aria-label="10 Tips for Better SEO">
+                    </div>
+                    <div class="input-group">
+                        <label>Image URL (图片链接)</label>
+                        <input type="text" class="input-control" id="artImage" oninput="updateCode()" placeholder="https://example.com/image.jpg" aria-label="https://example.com/image.jpg">
+                    </div>
+                    <div class="input-group">
+                        <label>Author Name (作者)</label>
+                        <input type="text" class="input-control" id="artAuthor" oninput="updateCode()" placeholder="John Doe" aria-label="John Doe">
+                    </div>
+                    <div class="input-group">
+                         <label>Memeber of Organization (组织 - Optional)</label>
+                         <input type="text" class="input-control" id="artOrg" oninput="updateCode()" placeholder="Modiqi Inc." aria-label="Modiqi Inc.">
+                    </div>
+                </div>
+            `,
+            local: `
+                 <div class="form-card">
+                    <div class="input-group">
+                        <label>Business Name (商家名称)</label>
+                        <input type="text" class="input-control" id="locName" oninput="updateCode()" placeholder="Modiqi Coffee" aria-label="Modiqi Coffee">
+                    </div>
+                    <div class="input-group">
+                        <label>Image URL (图片链接)</label>
+                        <input type="text" class="input-control" id="locImage" oninput="updateCode()" placeholder="https://example.com/store.jpg" aria-label="https://example.com/store.jpg">
+                    </div>
+                    <div class="input-group">
+                        <label>Telephone (电话)</label>
+                        <input type="text" class="input-control" id="locPhone" oninput="updateCode()" placeholder="+86 123 4567 8900" aria-label="+86 123 4567 8900">
+                    </div>
+                    <div class="input-group">
+                        <label>Address (地址)</label>
+                        <input type="text" class="input-control" id="locAddress" oninput="updateCode()" placeholder="123 Innovation Road" aria-label="123 Innovation Road">
+                    </div>
+                </div>
+            `,
+            faq: `
+                <div class="form-card">
+                    <div class="input-group" style="display:flex;justify-content:space-between;">
+                        <label>Questions & Answers</label>
+                        <button class="audit-btn" onclick="addFaqItem()" style="padding:2px 8px;font-size:10px;" type="button">Add Item</button>
+                    </div>
+                    <div id="faqList">
+                        <!-- Items injected here -->
+                    </div>
+                </div>
+            `
+        };
+
+        function renderForm() {
+            const type = document.getElementById('schemaType').value;
+            const container = document.getElementById('formContainer');
+            container.innerHTML = forms[type];
+
+            if (type === 'faq') {
+                addFaqItem(); // Add one by default
+            }
+            updateCode();
+        }
+
+        function addFaqItem() {
+            const list = document.getElementById('faqList');
+            const item = document.createElement('div');
+            item.className = 'faq-item';
+            item.innerHTML = `
+                <div class="input-group">
+                    <input type="text" class="input-control faq-q" oninput="updateCode()" placeholder="Question?" aria-label="Question?">
+                </div>
+                <div class="input-group">
+                    <textarea class="input-control faq-a" oninput="updateCode()" placeholder="Answer..." rows="2" aria-label="Answer..."></textarea>
+                </div>
+                <span class="remove-faq" onclick="this.parentElement.remove(); updateCode();" role="button" tabindex="0">Remove</span>
+            `;
+            list.appendChild(item);
+        }
+
+        function updateCode() {
+            const type = document.getElementById('schemaType').value;
+            let data = {};
+
+            if (type === 'article') {
+                data = {
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": document.getElementById('artHeadline')?.value || "",
+                    "image": [document.getElementById('artImage')?.value || ""],
+                    "author": [{
+                        "@type": "Person",
+                        "name": document.getElementById('artAuthor')?.value || ""
+                    }],
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": document.getElementById('artOrg')?.value || ""
+                    }
+                };
+            } else if (type === 'local') {
+                data = {
+                    "@context": "https://schema.org",
+                    "@type": "LocalBusiness",
+                    "name": document.getElementById('locName')?.value || "",
+                    "image": document.getElementById('locImage')?.value || "",
+                    "telephone": document.getElementById('locPhone')?.value || "",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": document.getElementById('locAddress')?.value || ""
+                    }
+                };
+            } else if (type === 'faq') {
+                const faqs = [];
+                document.querySelectorAll('.faq-item').forEach(el => {
+                    const q = el.querySelector('.faq-q').value;
+                    const a = el.querySelector('.faq-a').value;
+                    if (q) {
+                        faqs.push({
+                            "@type": "Question",
+                            "name": q,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": a
+                            }
+                        });
+                    }
+                });
+                data = {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": faqs
+                };
+            }
+
+            document.getElementById('codeOutput').value = '<script type="application/ld+json">\n' + JSON.stringify(data, null, 2) + '\n<\/script>';
+        }
+
+        function copyCode() {
+            const code = document.getElementById('codeOutput');
+            code.select();
+            document.execCommand('copy');
+            alert('Code copied to clipboard!');
+        }
+    </script>
+</body>
+
+</html>

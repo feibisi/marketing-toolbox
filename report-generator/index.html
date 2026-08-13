@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战略咨询全案报告 | Modiqi Report Generator</title>
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="assets/css/report.css">
+</head>
+
+<body class="report-body">
+
+    <!-- Toolbar (No Print) -->
+    <div class="report-toolbar no-print">
+        <div class="toolbar-left">
+            <a href="../navigator.html" class="btn-back"><i data-lucide="arrow-left"></i> 返回中控台</a>
+            <span class="divider">|</span>
+            <span class="status-text" id="statusText">正在加载数据...</span>
+        </div>
+        <div class="toolbar-right">
+            <button class="btn-action" onclick="window.print()" type="button"><i data-lucide="printer"></i> 打印/另存为PDF</button>
+        </div>
+    </div>
+
+    <!-- The Report Document (A4 Pages) -->
+    <main class="report-container">
+
+        <!-- Page 1: Cover -->
+        <section class="page page-cover">
+            <div class="cover-content">
+                <div class="brand-logo">MODIQI CONSULTING</div>
+                <h1 class="report-title" id="coverTitle">数字化转型战略咨询方案</h1>
+                <div class="report-subtitle">Digital Transformation Strategy Report</div>
+
+                <div class="cover-meta">
+                    <div class="meta-item">
+                        <label>客户 Client</label>
+                        <div id="coverClientName">[未命名客户]</div>
+                    </div>
+                    <div class="meta-item">
+                        <label>日期 Date</label>
+                        <div id="coverDate">2026-01-01</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cover-footer">CONFIDENTIAL</div>
+        </section>
+
+        <!-- Page 2: Executive Summary (SWOT & Pains) -->
+        <section class="page page-layout-standard">
+            <header class="page-header">
+                <h2>01. 现状洞察与诊断</h2>
+                <span class="pg-num">Page 02</span>
+            </header>
+
+            <div class="content-block">
+                <h3>战略 SWOT 分析</h3>
+                <p class="section-intro">基于对企业内外部环境的综合扫描，我们识别出以下核心要素：</p>
+                <div class="swot-grid-display" id="swotContainer">
+                    <!-- Dynamic Content -->
+                    <div class="empty-state">暂无 SWOT 数据，请先使用 SWOT 分析工具。</div>
+                </div>
+            </div>
+
+            <div class="content-block mt-lg">
+                <h3>核心用户痛点</h3>
+                <div class="pains-list" id="painsContainer">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 3: Brand Strategy (Archetype & Identity) -->
+        <section class="page page-layout-standard">
+            <header class="page-header">
+                <h2>02. 品牌顶层设计</h2>
+                <span class="pg-num">Page 03</span>
+            </header>
+
+            <div class="content-block">
+                <h3>品牌人格原型 (Brand Archetype)</h3>
+                <div class="archetype-showcase" id="archetypeContainer">
+                    <!-- Dynamic Archetype Card -->
+                </div>
+            </div>
+
+            <div class="content-block mt-lg">
+                <h3>品牌与受众定位</h3>
+                <div class="two-col-grid" id="positioningContainer">
+                    <!-- Dynamic Data -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 4: Execution Roadmap (Objectives) -->
+        <section class="page page-layout-standard">
+            <header class="page-header">
+                <h2>03. 战略实施路线图</h2>
+                <span class="pg-num">Page 04</span>
+            </header>
+
+            <div class="content-block">
+                <h3>年度战略目标 (OKR 核心摘要)</h3>
+                <div class="okr-list-display" id="okrContainer">
+                    <!-- Dynamic OKRs -->
+                </div>
+            </div>
+
+            <div class="content-block mt-lg">
+                <h3>关键举措建议</h3>
+                <div class="initiatives-grid" id="initiativesContainer">
+                    <!-- Generated based on tools used -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Back Cover -->
+        <section class="page page-cover back-cover">
+            <div class="center-content">
+                <h2>Let's Make It Happen.</h2>
+                <p>Modiqi Digital Consulting</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="assets/js/report-core.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

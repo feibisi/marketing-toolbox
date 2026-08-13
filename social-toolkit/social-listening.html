@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交舆情看板 (Social Listening Dashboard)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/social-listening.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>社交舆情看板</h1>
+                <span class="english-subtitle">Social Listening Dashboard</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>关键词</label>
+                    <input type="text" class="meta-input" placeholder="Brand Name, Competitors..."
+                        data-save-key="track_keywords" aria-label="Brand Name, Competitors...">
+                </div>
+                <div class="meta-group">
+                    <label>时间范围</label>
+                    <input type="text" class="meta-input" placeholder="Last 30 Days" readonly aria-label="Last 30 Days">
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+
+            <!-- Top Metrics Row -->
+            <div class="metric-row">
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Total Mentions</span>
+                        <div class="metric-value">12,450</div>
+                        <div class="metric-trend trend-up">
+                            <i data-lucide="arrow-up" style="width:10px;"></i> 12%
+                        </div>
+                    </div>
+                    <i data-lucide="message-square" class="icon" style="color:var(--color-text-tertiary);"></i>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Social Reach</span>
+                        <div class="metric-value">2.4M</div>
+                        <div class="metric-trend trend-up">
+                            <i data-lucide="arrow-up" style="width:10px;"></i> 5%
+                        </div>
+                    </div>
+                    <i data-lucide="share-2" class="icon" style="color:var(--color-text-tertiary);"></i>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Sentiment Score</span>
+                        <div class="metric-value">78</div>
+                        <div class="metric-trend trend-down">
+                            <i data-lucide="arrow-down" style="width:10px;"></i> 2pts
+                        </div>
+                    </div>
+                    <i data-lucide="smile" class="icon" style="color:var(--color-text-tertiary);"></i>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Share of Voice</span>
+                        <div class="metric-value">35%</div>
+                        <div class="metric-trend trend-up">
+                            <i data-lucide="arrow-up" style="width:10px;"></i> 3%
+                        </div>
+                    </div>
+                    <i data-lucide="pie-chart" class="icon" style="color:var(--color-text-tertiary);"></i>
+                </div>
+            </div>
+
+            <!-- Left Column: Charts -->
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--spacing-md); grid-row: 2;">
+                <!-- Sentiment -->
+                <div class="dash-card">
+                    <div class="card-header">
+                        <div class="card-title"><i data-lucide="smile" style="width:16px;"></i> 情感分布 (Sentiment)</div>
+                    </div>
+                    <div class="sentiment-chart-container">
+                        <!-- Simple Donut SVG -->
+                        <svg viewBox="0 0 100 100" width="120" height="120">
+                            <!-- Circle base -->
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="15" />
+                            <!-- Positive segment (60%) approx -->
+                            <path d="M50 10 A 40 40 0 1 1 50 90" fill="none" stroke="#10b981" stroke-width="15"
+                                stroke-dasharray="125 251" />
+                            <!-- Negative segment (10%) -->
+                            <path d="M50 90 A 40 40 0 0 1 25 80" fill="none" stroke="#ef4444" stroke-width="15" />
+                        </svg>
+                    </div>
+                    <div class="sentiment-legend">
+                        <div class="legend-item"><span class="dot dot-pos"></span> Pos (65%)</div>
+                        <div class="legend-item"><span class="dot dot-neu"></span> Neu (25%)</div>
+                        <div class="legend-item"><span class="dot dot-neg"></span> Neg (10%)</div>
+                    </div>
+                </div>
+
+                <!-- Share of Voice -->
+                <div class="dash-card">
+                    <div class="card-header">
+                        <div class="card-title"><i data-lucide="users" style="width:16px;"></i> 品牌声量 (SOV)</div>
+                    </div>
+                    <div class="sov-bar-group">
+                        <div class="sov-item">
+                            <div class="sov-label-row">
+                                <span>My Brand</span>
+                                <span>35%</span>
+                            </div>
+                            <div class="sov-track">
+                                <div class="sov-fill" style="width:35%;"></div>
+                            </div>
+                        </div>
+                        <div class="sov-item">
+                            <div class="sov-label-row">
+                                <span>Competitor A</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="sov-track">
+                                <div class="sov-fill" style="width:45%; background:#94a3b8;"></div>
+                            </div>
+                        </div>
+                        <div class="sov-item">
+                            <div class="sov-label-row">
+                                <span>Competitor B</span>
+                                <span>20%</span>
+                            </div>
+                            <div class="sov-track">
+                                <div class="sov-fill" style="width:20%; background:#cbd5e1;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topics Cloud (Span 2) -->
+                <div class="dash-card" style="grid-column: span 2;">
+                    <div class="card-header">
+                        <div class="card-title"><i data-lucide="hash" style="width:16px;"></i> 热门话题 (Hot Topics)</div>
+                    </div>
+                    <div class="topic-cloud">
+                        <div class="topic-tag topic-hot">#新品发布</div>
+                        <div class="topic-tag topic-hot">#以及质量问题</div>
+                        <div class="topic-tag topic-warm">#性价比</div>
+                        <div class="topic-tag topic-warm">#客服态度</div>
+                        <div class="topic-tag">双十一</div>
+                        <div class="topic-tag">包装设计</div>
+                        <div class="topic-tag">物流速度</div>
+                        <div class="topic-tag">使用教程</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Feed -->
+            <div class="dash-card" style="grid-row:2; height:100%;">
+                <div class="card-header">
+                    <div class="card-title"><i data-lucide="list" style="width:16px;"></i> 最新提及 (Feed)</div>
+                </div>
+
+                <div class="mentions-list">
+                    <!-- Item 1 -->
+                    <div class="mention-item">
+                        <div class="mention-avatar">U1</div>
+                        <div class="mention-content">
+                            <div class="mention-header">
+                                <span class="mention-user">用户 A</span>
+                                <span class="mention-platform">Weibo</span>
+                            </div>
+                            <div class="mention-text">刚刚收到新品，包装真的太好看了！但是物流稍微慢了一点点...</div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="mention-item">
+                        <div class="mention-avatar">K</div>
+                        <div class="mention-content">
+                            <div class="mention-header">
+                                <span class="mention-user">TechKOL</span>
+                                <span class="mention-platform">RED</span>
+                            </div>
+                            <div class="mention-text">深度评测：与竞品对比，这款产品的核心优势在于续航。</div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="mention-item">
+                        <div class="mention-avatar">U2</div>
+                        <div class="mention-content">
+                            <div class="mention-header">
+                                <span class="mention-user">User123</span>
+                                <span class="mention-platform">Twitter</span>
+                            </div>
+                            <div class="mention-text">Customer service response time is amazing. 👏</div>
+                        </div>
+                    </div>
+                    <!-- Faux Scroll -->
+                    <div class="mention-item">
+                        <div class="mention-avatar">...</div>
+                        <div class="mention-content">
+                            <div class="mention-text" style="font-style:italic; color:#94a3b8;">更多数据加载中...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('social_listening_dash');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO 主题簇映射器 (Topic Cluster Mapper)</title>
+    <meta name="description" content="可视化构建 SEO 话题集群，规划支柱页面与卫星内容的内部链接策略。">
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/topic-cluster.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>SEO 主题簇映射器</h1>
+                <span class="english-subtitle">Topic Cluster Strategy Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>核心主题 (Core Topic)</label>
+                    <input type="text" class="meta-input" id="coreTopicInput" placeholder="e.g. 数字营销转型"
+                        value="Digital Transformation" aria-label="数字营销转型">
+                </div>
+            </div>
+        </header>
+
+        <!-- Visualization Inteface -->
+        <div class="mapper-container">
+            <!-- Sidebar: Controls -->
+            <aside class="mapper-sidebar">
+                <div class="control-panel">
+                    <h3>添加内容节点</h3>
+                    <div class="node-form">
+                        <input type="text" id="subTopicInput" placeholder="输入子话题关键词..." aria-label="输入子话题关键词...">
+                        <select id="nodeTypeSelect" aria-label="nodeTypeSelect">
+                            <option value="cluster">支柱文章 (Cluster Content)</option>
+                            <option value="support" selected>支持文章 (Blog Post)</option>
+                            <option value="landing">转化页 (Landing Page)</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" onclick="addNode()" type="button">
+                            <i data-lucide="plus"></i> 添加
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-panel">
+                    <h3>结构统计</h3>
+                    <div class="stat-row">
+                        <span>总页面数:</span>
+                        <span id="statTotal">1</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>链接深度:</span>
+                        <span id="statDepth">2 层</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>关键词覆盖:</span>
+                        <span id="statKeywords">1</span>
+                    </div>
+                </div>
+
+                <div class="legend-panel">
+                    <div class="legend-item"><span class="dot type-pillar"></span> 核心支柱 (Pillar)</div>
+                    <div class="legend-item"><span class="dot type-cluster"></span> 深度长文 (Cluster)</div>
+                    <div class="legend-item"><span class="dot type-support"></span> 博客文章 (Blog)</div>
+                    <div class="legend-item"><span class="dot type-landing"></span> 转化页 (LP)</div>
+                </div>
+            </aside>
+
+            <!-- Main Canvas -->
+            <div class="mapper-stage" id="mapperStage">
+                <!-- SVG Lines Layer -->
+                <svg class="connections-layer" id="connectionSvg">
+                    <!-- Lines drawn by JS -->
+                </svg>
+
+                <!-- Nodes Layer -->
+                <div class="nodes-layer" id="nodesLayer">
+                    <!-- Core Pillar Node (Fixed Center) -->
+                    <div class="node node-pillar" id="node-core" style="left: 50%; top: 50%;" data-id="core">
+                        <i data-lucide="crosshair"></i>
+                        <span class="node-label">Core Topic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/topic-cluster.js"></script>
+    <script>
+        const app = new ModiqiApp('topic_cluster_v1');
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

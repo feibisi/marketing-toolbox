@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ============================================
+    TEMPLATE INSTRUCTIONS (模板使用说明)
+    ============================================
+
+    开发新工具时,请全局替换以下占位符:
+
+    1. {{TOOL_NAME_CN}}        → 工具中文名称 (例如: "关键词研究工具")
+    2. {{TOOL_NAME_EN}}        → 工具英文名称 (例如: "Keyword Research Tool")
+    3. {{TOOL_ID}}             → 工具唯一ID (例如: "keyword_research_v1")
+    4. {{TOOL_DESCRIPTION}}    → 工具简短描述 (例如: "帮助您发现和分析SEO关键词")
+    5. {{TOOL_KEYWORDS}}       → SEO关键词 (例如: "关键词研究,SEO,搜索优化")
+    6. {{TOOLKIT_NAME}}        → 所属工作台 (例如: "seo-toolkit")
+
+    AI指令:
+    - 当用户要求创建新工具时,读取此模板
+    - 询问用户以上6个占位符的值
+    - 执行全局替换,生成新的HTML文件
+    - 同时创建对应的CSS文件: {{TOOLKIT_NAME}}/assets/css/{{TOOL_ID}}.css
+
+    重要设计原则:
+    - **默认单色设计**: 使用黑白灰色调，方便打印
+    - **彩色模式可选**: 用户可通过工具栏开启 color-mode
+    - **边框优先**: 使用 --border-sem-outer 和 --border-sem-inner 定义结构
+    - **背景透明或浅灰**: 使用 transparent 或 var(--color-bg-subtle)
+
+    ============================================
+    -->
+
+    <title>{{TOOL_NAME_CN}} ({{TOOL_NAME_EN}})</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{TOOL_DESCRIPTION}}">
+    <meta name="keywords" content="{{TOOL_KEYWORDS}}">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{TOOL_NAME_CN}} - Modiqi Workbench">
+    <meta property="og:description" content="{{TOOL_DESCRIPTION}}">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts - Preload for Performance -->
+
+    <!-- Lucide Icons -->
+    <script src="../vendor/lucide.min.js"></script>
+
+    <!--
+    ============================================
+    MODIQI DESIGN SYSTEM - 样式加载顺序
+    ============================================
+    重要: 必须按以下顺序加载CSS,否则样式可能错乱
+
+    1. tokens.css      - 设计令牌 (颜色、字体、间距等)
+    2. base.css        - 基础样式和CSS Reset
+    3. components.css  - 可复用组件 (按钮、卡片、输入框等)
+    4. canvas.css      - 画布布局 (A3/A4纸张容器)
+    5. [tool].css      - 工具特定样式 (仅限本工具独有的样式)
+    ============================================
+    -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+
+    <!-- Tool-specific styles (工具特定样式) -->
+    <link rel="stylesheet" href="assets/css/{{TOOL_ID}}.css">
+</head>
+
+<body>
+    <!--
+    ============================================
+    桌面背景层
+    ============================================
+    提供暖色调木桌纹理背景
+    支持主题切换: 经典/白板/暗色
+    ============================================
+    -->
+    <div class="desk-background"></div>
+
+    <!--
+    ============================================
+    A3 横向画布 (1400px max-width, 420:297 aspect ratio)
+    ============================================
+    适用场景:
+    - 复杂的矩阵型工具 (如 SWOT、Business Model Canvas)
+    - 需要大量信息展示的工具
+    - 横向流程图
+
+    可用空间: ~1400px × ~990px (扣除padding后)
+    ============================================
+    -->
+    <main class="paper-a3">
+
+        <!--
+        ============================================
+        画布头部 (Canvas Header)
+        ============================================
+        标准结构:
+        - 左侧: 工具标题 (中英文)
+        - 右侧: Meta信息 (项目、日期等)
+
+        自动功能:
+        - Meta输入框使用 data-save-key 自动保存到localStorage
+        - 标题下方可选显示副标题或说明文字
+        ============================================
+        -->
+        <header class="canvas-header">
+            <!-- 标题组 -->
+            <div class="title-group">
+                <!--
+                注意: 标题旁边不添加图标
+                图标仅在内容区块的 section-header 中使用
+                保持头部简洁专业
+                -->
+                <h1>{{TOOL_NAME_CN}}</h1>
+                <span class="english-subtitle">{{TOOL_NAME_EN}}</span>
+            </div>
+
+            <!-- Meta信息组 -->
+            <div class="meta-info">
+                <!-- 项目名称字段 -->
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input
+                        type="text"
+                        class="meta-input"
+                        placeholder="我的项目"
+                        data-save-key="meta_project"
+                        aria-label="项目名称"
+                    >
+                </div>
+
+                <!-- 日期字段 -->
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input
+                        type="date"
+                        class="meta-input"
+                        data-save-key="meta_date"
+                        aria-label="日期"
+                    >
+                </div>
+
+                <!--
+                可选: 添加更多Meta字段
+                常用字段示例:
+                - 负责人 (Owner)
+                - 版本 (Version)
+                - 状态 (Status)
+                - 优先级 (Priority)
+                -->
+            </div>
+        </header>
+
+        <!--
+        ============================================
+        工具内容区域 (Tool Content Area)
+        ============================================
+        在这里添加工具的主要功能界面
+
+        设计建议:
+        1. 使用栅格布局 (CSS Grid 或 Flexbox)
+        2. 分块组织内容,每块有明确的标题
+        3. 使用设计系统提供的组件类名
+        4. 可编辑区域添加 contenteditable="true" 和 data-save-key
+
+        常用布局模式:
+        - 2x2矩阵: .grid { display: grid; grid-template-columns: 1fr 1fr; }
+        - 左右分栏: .flex { display: flex; gap: var(--spacing-lg); }
+        - 垂直堆叠: .flex-col { display: flex; flex-direction: column; }
+
+        示例组件:
+        - 卡片: <div class="card">...</div>
+        - 按钮: <button class="btn btn-primary">...</button>
+        - 输入框: <input class="input" type="text">
+        - 徽章: <span class="badge">NEW</span>
+        ============================================
+        -->
+        <div class="tool-content">
+
+            <!-- 示例: 2x2网格布局 -->
+            <div class="tool-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg);">
+
+                <!-- 区块 1 -->
+                <div class="tool-section">
+                    <div class="section-header">
+                        <i data-lucide="layout"></i>
+                        <h2>区块标题 1 <span class="en-sub">(Section 1)</span></h2>
+                    </div>
+                    <div class="section-content" contenteditable="true" data-save-key="section_1">
+                        <!-- 可编辑内容 -->
+                        <p>点击此处开始编辑...</p>
+                        <ul>
+                            <li>列表项 1</li>
+                            <li>列表项 2</li>
+                            <li>列表项 3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 区块 2 -->
+                <div class="tool-section">
+                    <div class="section-header">
+                        <i data-lucide="layers"></i>
+                        <h2>区块标题 2 <span class="en-sub">(Section 2)</span></h2>
+                    </div>
+                    <div class="section-content" contenteditable="true" data-save-key="section_2">
+                        <p>点击此处开始编辑...</p>
+                    </div>
+                </div>
+
+                <!-- 区块 3 -->
+                <div class="tool-section">
+                    <div class="section-header">
+                        <i data-lucide="list"></i>
+                        <h2>区块标题 3 <span class="en-sub">(Section 3)</span></h2>
+                    </div>
+                    <div class="section-content" contenteditable="true" data-save-key="section_3">
+                        <p>点击此处开始编辑...</p>
+                    </div>
+                </div>
+
+                <!-- 区块 4 -->
+                <div class="tool-section">
+                    <div class="section-header">
+                        <i data-lucide="check-square"></i>
+                        <h2>区块标题 4 <span class="en-sub">(Section 4)</span></h2>
+                    </div>
+                    <div class="section-content" contenteditable="true" data-save-key="section_4">
+                        <p>点击此处开始编辑...</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--
+            删除以上示例代码,根据工具需求自定义布局
+            参考现有工具:
+            - SWOT分析: strategy-toolkit/swot-analysis.html
+            - 用户画像: strategy-toolkit/user-persona.html
+            - KPI仪表盘: analytics-toolkit/kpi-dashboard.html
+            -->
+
+        </div>
+
+    </main>
+
+    <!--
+    ============================================
+    MODIQI CORE LIBRARY - 核心JavaScript库
+    ============================================
+    提供以下功能:
+    - 自动保存 (AutoSave): 所有带 data-save-key 的元素自动保存到localStorage
+    - 主题切换 (Theme): 经典/白板/暗色主题
+    - 工具栏 (Toolbar): 导出PDF、导出图片、撤销重做等
+    - 历史记录 (History): Ctrl+Z 撤销, Ctrl+Shift+Z 重做
+    - 品牌注入 (Branding): 自动添加Modiqi品牌标识
+    ============================================
+    -->
+    <script src="../shared/js/core.js"></script>
+
+    <!--
+    ============================================
+    工具初始化脚本
+    ============================================
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化ModiqiApp
+            // 参数: toolId - 工具唯一标识符,用于localStorage key
+            // 格式建议: {工具名}_{版本} 例如: keyword_research_v1
+            new ModiqiApp('{{TOOL_ID}}');
+
+            // 初始化Lucide图标
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",          // 添加icon类名
+                    'stroke-width': 2       // 默认描边宽度
+                }
+            });
+
+            // 可选: 添加工具特定的初始化逻辑
+            // 例如: 图表渲染、数据验证、事件监听等
+
+            // 示例: 自动填充今天的日期
+            const dateInput = document.querySelector('[data-save-key="meta_date"]');
+            if (dateInput && !dateInput.value) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+
+            console.log('{{TOOL_NAME_CN}} 已初始化');
+        });
+    </script>
+
+    <!--
+    ============================================
+    可选: 工具特定JavaScript
+    ============================================
+    如果工具需要复杂交互逻辑,创建独立的JS文件:
+    <script src="assets/js/{{TOOL_ID}}.js"></script>
+
+    常见需求:
+    - 表单验证
+    - 数据计算 (ROI、转化率等)
+    - 图表渲染 (Chart.js, D3.js等)
+    - API调用
+    - 实时预览
+    ============================================
+    -->
+
+</body>
+
+</html>

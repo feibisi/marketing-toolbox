@@ -1,0 +1,217 @@
+/* RFM Analysis Styles */
+
+.rfm-dashboard {
+    height: 100%;
+    margin-bottom: var(--spacing-xl);
+}
+
+.rfm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    height: 100%;
+}
+
+.rfm-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+.rfm-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.card-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+}
+
+.card-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+}
+
+.metric-val {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.card-action {
+    flex: 1;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-subtle);
+    padding: 8px;
+    border-radius: 0;
+    outline: none;
+    line-height: 1.5;
+}
+
+/* Card Variants (Colors based on Value) */
+
+/* Champions & Loyal (Green/Emerald) */
+.card-champion {
+    border-top: 4px solid var(--color-semantic-profit);
+}
+
+.card-champion .card-icon {
+    color: var(--color-semantic-profit);
+}
+
+.card-loyal {
+    border-top: 4px solid var(--color-semantic-opportunity);
+}
+
+.card-loyal .card-icon {
+    color: var(--color-semantic-opportunity);
+}
+
+/* Potential & New (Yellow/Amber/Blue) */
+.card-potential {
+    border-top: 4px solid var(--color-semantic-alert);
+}
+
+.card-potential .card-icon {
+    color: var(--color-semantic-alert);
+}
+
+.card-new {
+    border-top: 4px solid var(--color-brand-blue);
+}
+
+.card-new .card-icon {
+    color: var(--color-brand-blue);
+}
+
+/* Promising (Purple) */
+.card-promising {
+    border-top: 4px solid var(--color-semantic-highlight);
+}
+
+.card-promising .card-icon {
+    color: var(--color-semantic-highlight);
+}
+
+/* Attention (Orange) */
+.card-attention {
+    border-top: 4px solid var(--color-semantic-warning);
+}
+
+.card-attention .card-icon {
+    color: var(--color-semantic-warning);
+}
+
+/* At Risk & Lost (Red/Gray) */
+.card-risk {
+    border-top: 4px solid var(--color-semantic-danger);
+}
+
+.card-risk .card-icon {
+    color: var(--color-semantic-danger);
+}
+
+.card-cantlose {
+    border-top: 4px solid var(--color-semantic-danger-dark);
+}
+
+.card-cantlose .card-icon {
+    color: var(--color-semantic-danger-dark);
+}
+
+.card-lost {
+    border-top: 4px solid var(--color-text-tertiary);
+}
+
+.card-lost .card-icon {
+    color: var(--color-text-tertiary);
+}
+
+
+/* Print */
+@media print {
+    .rfm-grid {
+        gap: 8px;
+    }
+
+    .rfm-card {
+        border: 1px solid var(--border-sem-outer);
+        box-shadow: none;
+    }
+
+    .card-action {
+        border: 1px dashed var(--border-sem-dashed);
+    }
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .rfm-dashboard, .rfm-grid { height: auto; }
+    .rfm-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+    .rfm-card { min-width: 0; }
+}

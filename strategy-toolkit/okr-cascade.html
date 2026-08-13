@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKR 战略级联地图 (OKR Strategy Cascade Map)</title>
+    <meta name="description" content="OKR战略级联工具，帮助企业将高层愿景拆解为可执行的目标与关键结果。">
+    <meta name="keywords" content="OKR,目标管理,战略执行,KPI,绩效管理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OKR Cascade Map - Modiqi Workbench">
+    <meta property="og:description" content="将高层愿景拆解为可执行的目标与关键结果。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific -->
+    <link rel="stylesheet" href="assets/css/okr-cascade.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>OKR 战略级联地图</h1>
+                <span class="english-subtitle">OKR Strategy Cascade Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>周期 <span class="en-sub">(Cycle)</span></label>
+                    <input type="text" class="meta-input" placeholder="2025 Q1" data-save-key="meta_cycle" aria-label="2025 Q1">
+                </div>
+                <div class="meta-group">
+                    <label>负责人 <span class="en-sub">(Owner)</span></label>
+                    <input type="text" class="meta-input" data-save-key="meta_owner" aria-label="owner">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Cascade Container -->
+        <div class="cascade-container">
+            <!-- Level 1: Vision/Mission -->
+            <section class="level-vision">
+                <div class="section-header">
+                    <div class="header-left">
+                        <i data-lucide="flag"></i>
+                        <h2>愿景与使命 <span class="en-sub">(Vision & Mission)</span></h2>
+                    </div>
+                    <div class="vision-overall-score" id="visionScore">
+                        <span class="score-label">总合信心指数</span>
+                        <span class="score-value">--%</span>
+                    </div>
+                </div>
+                <div class="vision-box" contenteditable="true" data-save-key="vision_statement">
+                    在此输入公司的长期愿景或年度战略主题...
+                </div>
+            </section>
+
+            <!-- Level 2: Objectives (Dynamic List) -->
+            <section class="level-objectives">
+                <div class="section-header">
+                    <i data-lucide="target"></i>
+                    <h2>战略目标 <span class="en-sub">(Objectives)</span></h2>
+                </div>
+
+                <div class="list-body" id="objectiveList" data-save-key="objectives_html">
+                    <!-- Objective 1 -->
+                    <div class="objective-card">
+                        <div class="obj-header">
+                            <span class="obj-label">O1</span>
+                            <div class="obj-input" contenteditable="true" data-placeholder="输入目标...">提升产品在企业级市场的市场份额
+                            </div>
+                            <div class="obj-score-tag">
+                                <span class="score-val">--%</span>
+                            </div>
+                            <button class="btn-add-kr" title="添加关键结果" type="button"><i data-lucide="plus"></i></button>
+                            <button class="delete-item-btn" title="删除目标" type="button"><i data-lucide="x"></i></button>
+                        </div>
+
+                        <div class="kr-list">
+                            <div class="kr-item">
+                                <span class="kr-label">KR</span>
+                                <div class="kr-input" contenteditable="true">企业级客户签约数达到 50 家</div>
+                                <div class="kr-score" title="信心 (Confidence)">
+                                    <i data-lucide="gauge"></i>
+                                    <input type="number" min="0" max="10" value="5" class="score-input" aria-label="Input field">
+                                    <span>/10</span>
+                                </div>
+                                <button class="delete-item-btn" type="button"><i data-lucide="x"></i></button>
+                            </div>
+                            <div class="kr-item">
+                                <span class="kr-label">KR</span>
+                                <div class="kr-input" contenteditable="true">企业版 ARR 增长 200%</div>
+                                <div class="kr-score" title="信心 (Confidence)">
+                                    <i data-lucide="gauge"></i>
+                                    <input type="number" min="0" max="10" value="5" class="score-input" aria-label="Input field">
+                                    <span>/10</span>
+                                </div>
+                                <button class="delete-item-btn" type="button"><i data-lucide="x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Objective 2 -->
+                    <div class="objective-card">
+                        <div class="obj-header">
+                            <span class="obj-label">O2</span>
+                            <div class="obj-input" contenteditable="true" data-placeholder="输入目标...">打造卓越的产品体验</div>
+                            <div class="obj-score-tag">
+                                <span class="score-val">--%</span>
+                            </div>
+                            <button class="btn-add-kr" title="添加关键结果" type="button"><i data-lucide="plus"></i></button>
+                            <button class="delete-item-btn" title="删除目标" type="button"><i data-lucide="x"></i></button>
+                        </div>
+
+                        <div class="kr-list">
+                            <div class="kr-item">
+                                <span class="kr-label">KR</span>
+                                <div class="kr-input" contenteditable="true">产品 NPS 达到 60+</div>
+                                <div class="kr-score" title="信心 (Confidence)">
+                                    <i data-lucide="gauge"></i>
+                                    <input type="number" min="0" max="10" value="6" class="score-input" aria-label="Input field">
+                                    <span>/10</span>
+                                </div>
+                                <button class="delete-item-btn" type="button"><i data-lucide="x"></i></button>
+                            </div>
+                            <div class="kr-item">
+                                <span class="kr-label">KR</span>
+                                <div class="kr-input" contenteditable="true">核心功能使用率提升 40%</div>
+                                <div class="kr-score" title="信心 (Confidence)">
+                                    <i data-lucide="gauge"></i>
+                                    <input type="number" min="0" max="10" value="7" class="score-input" aria-label="Input field">
+                                    <span>/10</span>
+                                </div>
+                                <button class="delete-item-btn" type="button"><i data-lucide="x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-add-item" onclick="addObjective()" type="button">
+                    <i data-lucide="plus-circle"></i>
+                </button>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/okr-cascade.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize generic app logic
+            new ModiqiApp('okr_cascade_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

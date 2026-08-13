@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户细分引擎 (Segmentation Engine) - Modiqi Workbench</title>
+    <meta name="description" content="客户细分引擎 - 基于RFM、生命周期、行为聚类等模型进行客户分群和营销策略规划">
+    <meta name="keywords" content="客户细分,RFM模型,生命周期,行为聚类,客户分群,营销策略,CDP">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="客户细分引擎 - Modiqi Workbench">
+    <meta property="og:description" content="基于RFM、生命周期、行为聚类等模型进行客户分群和营销策略规划">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/segmentation-engine.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户细分引擎</h1>
+                <span class="english-subtitle">Customer Segmentation Engine</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>模型 <span class="en-sub">(Model)</span></label>
+                    <select class="meta-input" data-save-key="meta_model" aria-label="model">
+                        <option value="rfm">RFM 模型</option>
+                        <option value="lifecycle">生命周期阶段</option>
+                        <option value="behavioral">行为聚类</option>
+                        <option value="value">价值分层</option>
+                    </select>
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content: 2 Column Layout -->
+        <div class="segmentation-layout">
+
+            <!-- Left: Segmentation Criteria -->
+            <section class="criteria-panel">
+                <div class="section-header">
+                    <h3>细分维度 <span class="en-sub">(Criteria)</span></h3>
+                </div>
+
+                <div class="criteria-group">
+                    <div class="criteria-title">
+                        <i data-lucide="activity"></i>
+                        <span>行为维度 <span class="en-sub">(Behavioral)</span></span>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="purchase-freq" checked data-save-key="criteria_purchase_freq">
+                        <label for="purchase-freq">购买频率 (Purchase Frequency)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="engagement" checked data-save-key="criteria_engagement">
+                        <label for="engagement">互动程度 (Engagement Level)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="channel-pref" data-save-key="criteria_channel">
+                        <label for="channel-pref">渠道偏好 (Channel Preference)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="product-cat" data-save-key="criteria_category">
+                        <label for="product-cat">类别偏好 (Category Affinity)</label>
+                    </div>
+                </div>
+
+                <div class="criteria-group">
+                    <div class="criteria-title">
+                        <i data-lucide="dollar-sign"></i>
+                        <span>价值维度 <span class="en-sub">(Value-Based)</span></span>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="ltv" checked data-save-key="criteria_ltv">
+                        <label for="ltv">生命周期价值 (LTV)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="aov" data-save-key="criteria_aov">
+                        <label for="aov">平均订单价值 (AOV)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="margin" data-save-key="criteria_margin">
+                        <label for="margin">利润贡献 (Profit Margin)</label>
+                    </div>
+                </div>
+
+                <div class="criteria-group">
+                    <div class="criteria-title">
+                        <i data-lucide="users"></i>
+                        <span>人口统计 <span class="en-sub">(Demographic)</span></span>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="age" data-save-key="criteria_age">
+                        <label for="age">年龄段 (Age Group)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="location" data-save-key="criteria_location">
+                        <label for="location">地理位置 (Location)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="industry" data-save-key="criteria_industry">
+                        <label for="industry">行业 (Industry) - B2B</label>
+                    </div>
+                </div>
+
+                <div class="criteria-group">
+                    <div class="criteria-title">
+                        <i data-lucide="clock"></i>
+                        <span>生命周期 <span class="en-sub">(Lifecycle)</span></span>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="tenure" checked data-save-key="criteria_tenure">
+                        <label for="tenure">客户年龄 (Customer Tenure)</label>
+                    </div>
+                    <div class="criteria-item">
+                        <input type="checkbox" id="stage" data-save-key="criteria_stage">
+                        <label for="stage">生命周期阶段 (Lifecycle Stage)</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center/Right: Segment Matrix -->
+            <section class="segment-matrix">
+                <div class="section-header">
+                    <h3>客户细分矩阵 <span class="en-sub">(Segment Matrix)</span></h3>
+                    <div class="matrix-legend">
+                        <span class="legend-item"><span class="dot vip"></span>VIP</span>
+                        <span class="legend-item"><span class="dot active"></span>活跃</span>
+                        <span class="legend-item"><span class="dot risk"></span>风险</span>
+                        <span class="legend-item"><span class="dot lost"></span>流失</span>
+                    </div>
+                </div>
+
+                <div class="matrix-grid">
+                    <!-- VIP Segments -->
+                    <div class="segment-card vip">
+                        <div class="segment-header">
+                            <i data-lucide="crown"></i>
+                            <h4 contenteditable="true" data-save-key="seg_vip_name">超级VIP</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_vip_count">2,450</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true" data-save-key="seg_vip_pct">8.5%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_vip_desc">
+                            高频购买，高客单价，强互动
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">专属服务</span>
+                            <span class="action-tag">优先权益</span>
+                        </div>
+                    </div>
+
+                    <div class="segment-card vip">
+                        <div class="segment-header">
+                            <i data-lucide="star"></i>
+                            <h4 contenteditable="true" data-save-key="seg_loyal_name">忠诚客户</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_loyal_count">5,820</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_loyal_pct">20.3%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_loyal_desc">
+                            稳定复购，中高客单价
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">会员升级</span>
+                            <span class="action-tag">交叉销售</span>
+                        </div>
+                    </div>
+
+                    <!-- Active Segments -->
+                    <div class="segment-card active">
+                        <div class="segment-header">
+                            <i data-lucide="zap"></i>
+                            <h4 contenteditable="true" data-save-key="seg_new_name">活跃新客</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_new_count">8,340</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true" data-save-key="seg_new_pct">29.1%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_new_desc">
+                            近期注册，有购买行为
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">新手引导</span>
+                            <span class="action-tag">首购激励</span>
+                        </div>
+                    </div>
+
+                    <div class="segment-card active">
+                        <div class="segment-header">
+                            <i data-lucide="trending-up"></i>
+                            <h4 contenteditable="true" data-save-key="seg_potential_name">潜力客户</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_potential_count">4,120</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_potential_pct">14.4%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_potential_desc">
+                            低频但高价值，有增长潜力
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">培育计划</span>
+                            <span class="action-tag">个性推荐</span>
+                        </div>
+                    </div>
+
+                    <!-- Risk Segments -->
+                    <div class="segment-card risk">
+                        <div class="segment-header">
+                            <i data-lucide="alert-triangle"></i>
+                            <h4 contenteditable="true" data-save-key="seg_risk_name">流失风险</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_risk_count">3,560</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_risk_pct">12.4%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_risk_desc">
+                            互动下降，购买频率降低
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">挽回活动</span>
+                            <span class="action-tag">专属优惠</span>
+                        </div>
+                    </div>
+
+                    <div class="segment-card risk">
+                        <div class="segment-header">
+                            <i data-lucide="pause"></i>
+                            <h4 contenteditable="true" data-save-key="seg_dormant_name">休眠客户</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_dormant_count">2,890</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_dormant_pct">10.1%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_dormant_desc">
+                            长期无互动，无购买
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">唤醒邮件</span>
+                            <span class="action-tag">重新激活</span>
+                        </div>
+                    </div>
+
+                    <!-- Lost Segment -->
+                    <div class="segment-card lost">
+                        <div class="segment-header">
+                            <i data-lucide="x-circle"></i>
+                            <h4 contenteditable="true" data-save-key="seg_lost_name">已流失</h4>
+                        </div>
+                        <div class="segment-stats">
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true"
+                                    data-save-key="seg_lost_count">1,520</span>
+                                <span class="stat-label">客户数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" contenteditable="true" data-save-key="seg_lost_pct">5.3%</span>
+                                <span class="stat-label">占比</span>
+                            </div>
+                        </div>
+                        <div class="segment-desc" contenteditable="true" data-save-key="seg_lost_desc">
+                            超过12个月无活动
+                        </div>
+                        <div class="segment-actions">
+                            <span class="action-tag">流失分析</span>
+                            <span class="action-tag">归档</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Bottom: Action Plan -->
+        <section class="action-plan">
+            <div class="section-header">
+                <h3>营销行动计划 <span class="en-sub">(Marketing Action Plan)</span></h3>
+            </div>
+            <div class="plan-grid">
+                <div class="plan-item">
+                    <strong>优先级1:</strong>
+                    <span contenteditable="true" data-save-key="action_p1">VIP客户专属活动 + 个性化推荐</span>
+                </div>
+                <div class="plan-item">
+                    <strong>优先级2:</strong>
+                    <span contenteditable="true" data-save-key="action_p2">流失风险客户挽回计划</span>
+                </div>
+                <div class="plan-item">
+                    <strong>优先级3:</strong>
+                    <span contenteditable="true" data-save-key="action_p3">活跃新客培育与转化</span>
+                </div>
+                <div class="plan-item">
+                    <strong>预算分配:</strong>
+                    <span contenteditable="true" data-save-key="action_budget">VIP 40% | 活跃 30% | 风险 20% | 其他 10%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <!-- Core JavaScript -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('segmentation_engine_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: 'icon',
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

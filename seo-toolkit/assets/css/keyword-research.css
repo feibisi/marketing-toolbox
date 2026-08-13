@@ -1,0 +1,206 @@
+/* ============================================
+   KEYWORD RESEARCH TOOL - 关键词研究工具
+   ============================================
+   设计原则: 单色/黑白灰设计 (方便打印)
+   彩色模式: 用户可通过工具栏开启 color-mode
+   ============================================ */
+
+/* Keyword Container */
+.keyword-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-sem-outer);
+}
+
+/* Header Row */
+.kw-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.8fr 0.8fr 0.8fr 0.8fr 1.5fr;
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.kw-header > div {
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.kw-header > div:last-child {
+    border-right: none;
+}
+
+/* Keyword Row */
+.kw-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.8fr 0.8fr 0.8fr 0.8fr 1.5fr;
+    border-bottom: 1px solid var(--border-sem-inner);
+    min-height: 42px;
+}
+
+.kw-row:last-child {
+    border-bottom: none;
+}
+
+/* Column Styles */
+.kw-row > div {
+    padding: 0.75rem 0.5rem;
+    outline: none;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.kw-row > div:last-child {
+    border-right: none;
+}
+
+/* Specific Column Styles */
+.col-kw {
+    font-weight: 500;
+    text-align: left;
+}
+
+.col-volume,
+.col-difficulty,
+.col-cpc,
+.col-intent,
+.col-priority {
+    text-align: center;
+    background: var(--color-bg-subtle);
+}
+
+.col-notes {
+    text-align: left;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+/* Focus State */
+.kw-row:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+.kw-row > div:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Empty Cell Placeholder */
+.kw-row > div:empty::before {
+    content: "-";
+    color: var(--color-text-placeholder);
+}
+
+/* ========================================
+   Color Mode Support (彩色模式)
+   ========================================
+   默认: 单色设计 (黑白灰)
+   开启彩色: body.color-mode
+   ======================================== */
+
+/* 难度列 - 彩色模式 */
+body:not(.theme-dark).color-mode .kw-row:nth-child(2) .col-difficulty,
+body:not(.theme-dark).color-mode .kw-row:nth-child(6) .col-difficulty,
+body:not(.theme-dark).color-mode .kw-row:nth-child(8) .col-difficulty {
+    /* 低难度 (< 50) */
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .kw-row:nth-child(3) .col-difficulty,
+body:not(.theme-dark).color-mode .kw-row:nth-child(5) .col-difficulty {
+    /* 中难度 (50-70) */
+    background-color: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .kw-row:nth-child(4) .col-difficulty {
+    /* 高难度 (> 70) */
+    background-color: var(--color-semantic-pain);
+}
+
+/* 优先级列 - 彩色模式 */
+body:not(.theme-dark).color-mode .kw-row .col-priority:not(:empty) {
+    background-color: var(--color-semantic-neutral);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .kw-header,
+    .kw-row {
+        font-size: 0.75rem;
+    }
+
+    .kw-header > div,
+    .kw-row > div {
+        padding: 0.6rem 0.4rem;
+    }
+}
+
+/* Print Optimization */
+@media print {
+    .keyword-container {
+        page-break-inside: avoid;
+    }
+
+    .kw-row {
+        page-break-inside: avoid;
+    }
+
+    .kw-row:focus-within {
+        background: transparent;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .keyword-container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .kw-header,
+    .kw-row {
+        width: 760px;
+        grid-template-columns: 2fr 1fr 0.8fr 0.8fr 0.8fr 0.8fr 1.5fr;
+    }
+}

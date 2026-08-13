@@ -1,0 +1,514 @@
+/* ========================================
+   Growth Experiment Board Styles
+   Modiqi Design System Compliant
+   ======================================== */
+
+/* Kanban Board Layout */
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Kanban Columns */
+.kanban-column {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Column Header */
+.column-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.column-header .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.column-header h3 {
+    flex: 1;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.column-header .count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--color-text-secondary);
+    color: var(--color-bg-white);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Experiment Cards */
+.experiment-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.experiment-card:last-child {
+    margin-bottom: 0;
+}
+
+.experiment-card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Card Header */
+.experiment-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-id {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+}
+
+/* Priority / Status / Result Tags */
+.priority,
+.status,
+.result {
+    padding: 0.15rem 0.4rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+}
+
+/* Result icon styling */
+.result-icon {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+/* Card Title */
+.card-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+    line-height: var(--line-height-snug);
+    outline: none;
+}
+
+.card-title:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Card Section */
+.card-section {
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-section strong {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.15rem;
+}
+
+.card-section p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    margin: 0;
+    outline: none;
+}
+
+.card-section p:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Metric Tag */
+.metric-tag {
+    display: inline-block;
+    padding: 0.15rem 0.4rem;
+    font-size: var(--font-size-xs);
+    background: var(--color-bg-muted);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-sem-inner);
+    outline: none;
+}
+
+.metric-tag:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Progress */
+.card-progress {
+    margin: var(--spacing-xs) 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--color-bg-muted);
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--color-text-secondary);
+}
+
+.progress-text {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    outline: none;
+}
+
+.progress-text:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Metrics Grid */
+.card-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs);
+    margin: var(--spacing-xs) 0;
+    padding: var(--spacing-xs);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.1rem;
+}
+
+.metric-value {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.metric-value:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Results Grid */
+.card-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xs);
+    margin: var(--spacing-xs) 0;
+    padding: var(--spacing-xs);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.result-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.1rem;
+}
+
+.result-value {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.result-value:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Learning Section */
+.card-learning {
+    margin: var(--spacing-xs) 0;
+    padding: var(--spacing-xs);
+    background: var(--color-bg-muted);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.card-learning strong {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.15rem;
+}
+
+.card-learning p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    margin: 0;
+    outline: none;
+}
+
+.card-learning p:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Card Meta */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-xs);
+    padding-top: var(--spacing-xs);
+    border-top: 1px dashed var(--border-sem-dashed);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.ice-score {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    outline: none;
+}
+
+.ice-score:focus {
+    background-color: var(--color-focus-bg);
+}
+
+.owner {
+    outline: none;
+}
+
+.owner:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Summary Stats */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.stat-card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+.stat-card .icon {
+    width: 28px;
+    height: 28px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    line-height: 1;
+    margin-bottom: 0.15rem;
+    outline: none;
+}
+
+.stat-value:focus {
+    background-color: var(--color-focus-bg);
+}
+
+.stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+
+/* Priority colors in color mode */
+body:not(.theme-dark).color-mode .priority.high {
+    background-color: var(--color-semantic-pain);
+    border-color: transparent;
+}
+
+body:not(.theme-dark).color-mode .priority.medium {
+    background-color: var(--color-semantic-threat);
+    border-color: transparent;
+}
+
+body:not(.theme-dark).color-mode .priority.low {
+    background-color: var(--color-bg-muted);
+    border-color: transparent;
+}
+
+body:not(.theme-dark).color-mode .status.running {
+    background-color: var(--color-semantic-threat);
+    border-color: transparent;
+}
+
+body:not(.theme-dark).color-mode .result.win {
+    background-color: var(--color-semantic-strength);
+    border-color: transparent;
+}
+
+body:not(.theme-dark).color-mode .metric-value.positive,
+body:not(.theme-dark).color-mode .result-value.win {
+    color: var(--color-success);
+}
+
+body:not(.theme-dark).color-mode .card-learning {
+    background-color: var(--color-semantic-threat);
+    border-color: transparent;
+}
+
+/* ========================================
+   Responsive Layout
+   ======================================== */
+@media (max-width: 1024px) {
+    .kanban-board {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .kanban-column {
+        min-height: auto;
+    }
+
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+
+    /* Force grid layout */
+    .kanban-board {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        flex-direction: unset !important;
+        gap: 8pt !important;
+    }
+
+    .kanban-column {
+        min-height: unset !important;
+        overflow: visible !important;
+        border-width: 0.5pt !important;
+    }
+
+    .experiment-card {
+        border-width: 0.5pt !important;
+        page-break-inside: avoid;
+    }
+
+    .summary-stats {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8pt !important;
+    }
+
+    .stat-card {
+        border-width: 0.5pt !important;
+    }
+
+    /* Hide interactive elements */
+    .progress-fill {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .kanban-board { grid-template-columns: minmax(0, 1fr); }
+    .kanban-column { min-height: 0; overflow: visible; }
+    .summary-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (min-width: 769px) {
+    .kanban-column { overflow: visible; }
+    main.paper-a3 { height: auto; min-height: 950px; aspect-ratio: auto; overflow: visible; }
+}

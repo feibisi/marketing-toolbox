@@ -1,0 +1,155 @@
+/* Negative Manager Layout */
+.manager-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    min-width: 0;
+}
+
+.col-header {
+    background: var(--color-bg-paper);
+    padding: 12px;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.col-count {
+    font-size: 12px;
+    background: var(--color-bg-subtle);
+    padding: 2px 6px;
+    border-radius: 0;
+}
+
+.col-desc {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+}
+
+/* Text Areas */
+.list-area {
+    flex: 1;
+    resize: none;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    background: white;
+}
+
+.list-area:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+}
+
+/* Middle Action Column */
+.action-column {
+    flex: 0 0 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.action-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+}
+
+.action-btn:hover {
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    background: var(--color-bg-subtle);
+    transform: translateY(-2px);
+}
+
+.action-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* Match Type Toggles in Middle */
+.match-type-group {
+    background: var(--color-bg-subtle);
+    padding: 8px;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+
+/* Dark Mode */
+body.theme-dark .list-area {
+    background: #0f172a;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+body.theme-dark .col-header {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.theme-dark .action-btn {
+    background: #1e293b;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+body.theme-dark .action-btn:hover {
+    background: #334155;
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .manager-container { flex-direction: column; min-height: 0; }
+    .column { width: 100%; min-height: 320px; }
+    .action-column { flex: none; width: 100%; }
+    .action-btn { flex-direction: row; justify-content: center; }
+}
+

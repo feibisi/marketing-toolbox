@@ -1,0 +1,223 @@
+/* Brand Architecture Styles */
+
+.tree-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xl);
+    min-height: 600px;
+}
+
+/* Level 1: Parent */
+.level-parent {
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.brand-node {
+    background: var(--color-bg-white);
+    border: 2px solid var(--color-text-primary);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    text-align: center;
+    min-width: 180px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+.node-parent {
+    border-width: 3px;
+    background: var(--color-bg-subtle);
+    min-width: 220px;
+}
+
+.node-icon {
+    color: var(--color-brand-blue);
+    margin-bottom: 4px;
+}
+
+.node-content {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 24px;
+}
+
+.node-content:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+/* Connectors */
+.tree-connector-vertical {
+    width: 2px;
+    height: 40px;
+    background: var(--color-text-secondary);
+    margin-bottom: 0;
+}
+
+/* Level 2: Children Container */
+.level-children {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+}
+
+/* Horizontal Line connecting children */
+.level-children::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    /* Adjust based on number of children */
+    right: 20%;
+    height: 2px;
+    background: var(--color-text-secondary);
+}
+
+/* Branches */
+.brand-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.tree-connector-top {
+    width: 2px;
+    height: 20px;
+    background: var(--color-text-secondary);
+    position: absolute;
+    top: -20px;
+}
+
+.node-child {
+    border-color: var(--color-text-secondary);
+    min-width: 160px;
+}
+
+.node-type {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin-bottom: 2px;
+}
+
+.tree-connector-bottom {
+    width: 2px;
+    height: 30px;
+    background: var(--color-text-secondary);
+}
+
+/* Level 3: Products */
+.level-products {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid var(--border-sem-inner);
+    padding-top: 8px;
+}
+
+.product-node {
+    font-size: 11px;
+    padding: 6px 12px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    min-width: 120px;
+    text-align: center;
+    outline: none;
+}
+
+.product-node:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+}
+
+/* Controls */
+.arch-controls {
+    margin-top: auto;
+    border-top: 1px solid var(--border-sem-outer);
+    padding-top: var(--spacing-md);
+}
+
+.control-tip {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Styling for Models via JS toggling classes on body/container */
+
+/* House of Brands: Distinct styling for each child */
+.model-house-of-brands .node-child {
+    border-style: solid;
+    border-width: 1px;
+    background: var(--color-bg-white);
+    box-shadow: none;
+}
+
+.model-house-of-brands .level-products .product-node {
+    border-radius: 0;
+}
+
+/* Branded House: Unified styling */
+.model-branded-house .node-child {
+    border-color: var(--color-brand-blue);
+    background: var(--color-focus-bg);
+    /* Use token instead of rgba */
+}
+
+.model-branded-house .product-node {
+    border-color: var(--color-brand-blue);
+}
+
+/* Print */
+@media print {
+    .tree-container {
+        min-height: auto;
+    }
+
+    .node-content:empty::before {
+        display: none;
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .architecture-tree, .brand-level, .level-children, .brand-branch, .level-products { flex-direction: column; align-items: stretch; gap: 12px; }
+    .brand-node, .product-node { width: 100%; min-width: 0; }
+    .connector-vertical, .connector-horizontal, .branch-connector { display: none; }
+}

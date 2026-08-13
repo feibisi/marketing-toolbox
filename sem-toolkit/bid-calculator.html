@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能竞价计算器 (Smart Bid Wizard)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/bid-calculator.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>智能竞价计算器</h1>
+                <span class="english-subtitle">ROAS & Max Bid Calculator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品/服务</label>
+                    <input type="text" class="meta-input" placeholder="SaaS Subscription" aria-label="SaaS Subscription">
+                </div>
+            </div>
+        </header>
+
+        <div class="calc-container">
+
+            <!-- Left: Inputs -->
+            <div class="input-panel">
+
+                <div class="input-group">
+                    <label class="input-label">Average Order Value (AOV)</label>
+                    <div class="input-field-wrapper">
+                        <span class="prefix">¥</span>
+                        <input type="number" class="calc-input" id="inAov" value="500" oninput="calculate()" aria-label="inAov">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        <span>Conversion Rate (CvR)</span>
+                        <span id="labelCvr">2.0%</span>
+                    </label>
+                    <div class="input-field-wrapper">
+                        <input type="number" class="calc-input has-suffix" id="inCvr" value="2.0" step="0.1"
+                            oninput="syncSlider('inCvr', 'slideCvr'); calculate()" aria-label="inCvr">
+                        <span class="suffix">%</span>
+                    </div>
+                    <input type="range" id="slideCvr" min="0.1" max="10" step="0.1" value="2.0"
+                        oninput="syncInput('slideCvr', 'inCvr'); calculate()" aria-label="slideCvr">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Target ROAS</label>
+                    <div class="input-field-wrapper">
+                        <input type="number" class="calc-input has-suffix" id="inRoas" value="4.0" step="0.5"
+                            oninput="calculate()" aria-label="inRoas">
+                        <span class="suffix">x</span>
+                    </div>
+                    <p class="helper-text" style="font-size:11px; color:var(--color-text-tertiary); margin-top:4px;">
+                        e.g. 4.0 means for every ¥1 spent, you want ¥4 revenue.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Right: Results -->
+            <div class="result-panel">
+
+                <div class="result-card">
+                    <div class="result-label">Max Allowable CPC</div>
+                    <div class="result-value" id="outMaxCpc">¥2.50</div>
+                    <div class="result-sub">To achieve 4.0x ROAS</div>
+
+                    <div style="margin-top:20px; font-size:12px; opacity:0.6;">
+                        Formula: (AOV * CvR) / Target ROAS
+                    </div>
+                </div>
+
+                <div class="break-even-card">
+                    <div>
+                        <div style="font-weight:bold; font-size:14px;">Break-Even CPC</div>
+                        <div style="font-size:11px; color:var(--color-text-tertiary);">(ROAS 1.0)</div>
+                    </div>
+                    <div style="font-weight:bold; font-size:24px; color:var(--color-text-secondary);" id="outBreakEven">
+                        ¥10.00
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('bid_calculator');
+            lucide.createIcons();
+            calculate();
+        });
+
+        function syncSlider(inputId, sliderId) {
+            document.getElementById(sliderId).value = document.getElementById(inputId).value;
+        }
+
+        function syncInput(sliderId, inputId) {
+            document.getElementById(inputId).value = document.getElementById(sliderId).value;
+        }
+
+        function calculate() {
+            const aov = parseFloat(document.getElementById('inAov').value) || 0;
+            const cvr = parseFloat(document.getElementById('inCvr').value) || 0;
+            const roas = parseFloat(document.getElementById('inRoas').value) || 1;
+
+            if (roas <= 0) return;
+
+            // Value Per Click = AOV * (CvR / 100)
+            const valuePerClick = aov * (cvr / 100);
+
+            // Max CPC = Value Per Click / ROAS
+            const maxCpc = valuePerClick / roas;
+
+            // Break Even = Value Per Click (ROAS = 1)
+            const breakEvenCpc = valuePerClick;
+
+            document.getElementById('outMaxCpc').innerText = '¥' + maxCpc.toFixed(2);
+            document.getElementById('outBreakEven').innerText = '¥' + breakEvenCpc.toFixed(2);
+            document.getElementById('labelCvr').innerText = cvr.toFixed(1) + '%';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社媒渠道矩阵 (Social Media Channel Matrix)</title>
+    <meta name="description" content="社交媒体渠道策略矩阵，帮助您评估和规划各平台的内容策略、受众定位和资源分配。">
+    <meta name="keywords" content="社交媒体,渠道策略,内容营销,平台分析,社媒运营">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="社媒渠道矩阵 - Modiqi Workbench">
+    <meta property="og:description" content="规划社交媒体多渠道策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/social-media-matrix.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>社媒渠道矩阵</h1>
+                <span class="english-subtitle">Social Media Channel Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="品牌名称" data-save-key="brand_name" aria-label="品牌名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout: Sidebar + Content -->
+        <div class="matrix-layout">
+            <!-- Left Sidebar -->
+            <div class="matrix-sidebar">
+                <!-- Channel Stats -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i data-lucide="bar-chart-3"></i>
+                        渠道概览 <span class="en-sub">(Overview)</span>
+                    </h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="totalChannels">6</span>
+                            <span class="stat-label">总渠道</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value stat-high" id="highPriority">2</span>
+                            <span class="stat-label">高优先</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value stat-medium" id="mediumPriority">2</span>
+                            <span class="stat-label">中优先</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value stat-low" id="lowPriority">2</span>
+                            <span class="stat-label">低优先</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Add -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i data-lucide="plus-circle"></i>
+                        渠道操作 <span class="en-sub">(Actions)</span>
+                    </h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="addChannelBtn" type="button">
+                            <i data-lucide="plus"></i> 添加渠道
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Strategy Summary -->
+                <div class="sidebar-card summary-card">
+                    <h3>
+                        <i data-lucide="target"></i>
+                        核心策略 <span class="en-sub">(Strategy)</span>
+                    </h3>
+                    <div class="summary-content" contenteditable="true" data-save-key="core_strategy">
+                        <p><strong>主攻平台:</strong> 微信 + 抖音</p>
+                        <p><strong>内容比例:</strong> 教育60% / 娱乐30% / 促销10%</p>
+                        <p><strong>核心目标:</strong> 品牌认知 + 用户增长</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Main Content -->
+            <div class="matrix-main">
+                <!-- Channel Cards Grid -->
+                <div class="channel-grid" id="channelGrid">
+                    <!-- WeChat -->
+                    <div class="channel-card priority-high" data-channel="wechat">
+                        <div class="channel-header">
+                            <div class="channel-icon wechat">
+                                <i data-lucide="message-circle"></i>
+                            </div>
+                            <div class="channel-title">
+                                <span class="name-cn">微信公众号</span>
+                                <span class="name-en">WeChat</span>
+                            </div>
+                            <select class="priority-badge" data-save-key="wechat_priority" aria-label="wechat priority">
+                                <option value="high" selected>高</option>
+                                <option value="medium">中</option>
+                                <option value="low">低</option>
+                            </select>
+                            <button class="remove-channel-btn" title="移除" type="button">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-field">
+                                <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="wechat_audience">
+                                    25-45岁职场人群</div>
+                            </div>
+                            <div class="channel-field">
+                                <label><i data-lucide="file-text"></i> 内容类型 <span
+                                        class="en-sub">(Content)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="wechat_content">
+                                    深度文章、行业洞察</div>
+                            </div>
+                            <div class="channel-row">
+                                <div class="channel-field half">
+                                    <label><i data-lucide="calendar"></i> 频率 <span
+                                            class="en-sub">(Frequency)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="wechat_frequency">
+                                        3次/周</div>
+                                </div>
+                                <div class="channel-field half">
+                                    <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="wechat_goal">品牌信任
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Douyin -->
+                    <div class="channel-card priority-high" data-channel="douyin">
+                        <div class="channel-header">
+                            <div class="channel-icon douyin">
+                                <i data-lucide="play-circle"></i>
+                            </div>
+                            <div class="channel-title">
+                                <span class="name-cn">抖音</span>
+                                <span class="name-en">Douyin</span>
+                            </div>
+                            <select class="priority-badge" data-save-key="douyin_priority" aria-label="douyin priority">
+                                <option value="high" selected>高</option>
+                                <option value="medium">中</option>
+                                <option value="low">低</option>
+                            </select>
+                            <button class="remove-channel-btn" title="移除" type="button">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-field">
+                                <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="douyin_audience">
+                                    18-35岁年轻用户</div>
+                            </div>
+                            <div class="channel-field">
+                                <label><i data-lucide="file-text"></i> 内容类型 <span
+                                        class="en-sub">(Content)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="douyin_content">短视频、挑战赛
+                                </div>
+                            </div>
+                            <div class="channel-row">
+                                <div class="channel-field half">
+                                    <label><i data-lucide="calendar"></i> 频率 <span
+                                            class="en-sub">(Frequency)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="douyin_frequency">
+                                        每日1-2条</div>
+                                </div>
+                                <div class="channel-field half">
+                                    <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="douyin_goal">曝光增长
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xiaohongshu -->
+                    <div class="channel-card priority-medium" data-channel="xiaohongshu">
+                        <div class="channel-header">
+                            <div class="channel-icon xiaohongshu">
+                                <i data-lucide="book-open"></i>
+                            </div>
+                            <div class="channel-title">
+                                <span class="name-cn">小红书</span>
+                                <span class="name-en">Xiaohongshu</span>
+                            </div>
+                            <select class="priority-badge" data-save-key="xhs_priority" aria-label="xhs priority">
+                                <option value="high">高</option>
+                                <option value="medium" selected>中</option>
+                                <option value="low">低</option>
+                            </select>
+                            <button class="remove-channel-btn" title="移除" type="button">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-field">
+                                <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="xhs_audience">
+                                    18-30岁女性用户</div>
+                            </div>
+                            <div class="channel-field">
+                                <label><i data-lucide="file-text"></i> 内容类型 <span
+                                        class="en-sub">(Content)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="xhs_content">种草笔记、教程
+                                </div>
+                            </div>
+                            <div class="channel-row">
+                                <div class="channel-field half">
+                                    <label><i data-lucide="calendar"></i> 频率 <span
+                                            class="en-sub">(Frequency)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="xhs_frequency">5次/周
+                                    </div>
+                                </div>
+                                <div class="channel-field half">
+                                    <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="xhs_goal">口碑转化
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weibo -->
+                    <div class="channel-card priority-medium" data-channel="weibo">
+                        <div class="channel-header">
+                            <div class="channel-icon weibo">
+                                <i data-lucide="at-sign"></i>
+                            </div>
+                            <div class="channel-title">
+                                <span class="name-cn">微博</span>
+                                <span class="name-en">Weibo</span>
+                            </div>
+                            <select class="priority-badge" data-save-key="weibo_priority" aria-label="weibo priority">
+                                <option value="high">高</option>
+                                <option value="medium" selected>中</option>
+                                <option value="low">低</option>
+                            </select>
+                            <button class="remove-channel-btn" title="移除" type="button">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-field">
+                                <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="weibo_audience">全年龄段大众
+                                </div>
+                            </div>
+                            <div class="channel-field">
+                                <label><i data-lucide="file-text"></i> 内容类型 <span
+                                        class="en-sub">(Content)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="weibo_content">热点话题、互动
+                                </div>
+                            </div>
+                            <div class="channel-row">
+                                <div class="channel-field half">
+                                    <label><i data-lucide="calendar"></i> 频率 <span
+                                            class="en-sub">(Frequency)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="weibo_frequency">
+                                        每日2-3条</div>
+                                </div>
+                                <div class="channel-field half">
+                                    <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="weibo_goal">声量热点
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bilibili -->
+                    <div class="channel-card priority-low" data-channel="bilibili">
+                        <div class="channel-header">
+                            <div class="channel-icon bilibili">
+                                <i data-lucide="tv"></i>
+                            </div>
+                            <div class="channel-title">
+                                <span class="name-cn">B站</span>
+                                <span class="name-en">Bilibili</span>
+                            </div>
+                            <select class="priority-badge" data-save-key="bili_priority" aria-label="bili priority">
+                                <option value="high">高</option>
+                                <option value="medium">中</option>
+                                <option value="low" selected>低</option>
+                            </select>
+                            <button class="remove-channel-btn" title="移除" type="button">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-field">
+                                <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="bili_audience">Z世代、二次元
+                                </div>
+                            </div>
+                            <div class="channel-field">
+                                <label><i data-lucide="file-text"></i> 内容类型 <span
+                                        class="en-sub">(Content)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="bili_content">中长视频、专业内容
+                                </div>
+                            </div>
+                            <div class="channel-row">
+                                <div class="channel-field half">
+                                    <label><i data-lucide="calendar"></i> 频率 <span
+                                            class="en-sub">(Frequency)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="bili_frequency">
+                                        2次/周</div>
+                                </div>
+                                <div class="channel-field half">
+                                    <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="bili_goal">粉丝粘性
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn -->
+                    <div class="channel-card priority-low" data-channel="linkedin">
+                        <div class="channel-header">
+                            <div class="channel-icon linkedin">
+                                <i data-lucide="briefcase-business"></i>
+                            </div>
+                            <div class="channel-title">
+                                <span class="name-cn">领英</span>
+                                <span class="name-en">LinkedIn</span>
+                            </div>
+                            <select class="priority-badge" data-save-key="linkedin_priority" aria-label="linkedin priority">
+                                <option value="high">高</option>
+                                <option value="medium">中</option>
+                                <option value="low" selected>低</option>
+                            </select>
+                            <button class="remove-channel-btn" title="移除" type="button">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-field">
+                                <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="linkedin_audience">
+                                    B2B决策者</div>
+                            </div>
+                            <div class="channel-field">
+                                <label><i data-lucide="file-text"></i> 内容类型 <span
+                                        class="en-sub">(Content)</span></label>
+                                <div class="field-content" contenteditable="true" data-save-key="linkedin_content">
+                                    行业报告、思想领导</div>
+                            </div>
+                            <div class="channel-row">
+                                <div class="channel-field half">
+                                    <label><i data-lucide="calendar"></i> 频率 <span
+                                            class="en-sub">(Frequency)</span></label>
+                                    <div class="field-content" contenteditable="true"
+                                        data-save-key="linkedin_frequency">2次/周</div>
+                                </div>
+                                <div class="channel-field half">
+                                    <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                    <div class="field-content" contenteditable="true" data-save-key="linkedin_goal">
+                                        B2B获客</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy Cards Row -->
+                <div class="strategy-row">
+                    <div class="strategy-card">
+                        <div class="card-header">
+                            <i data-lucide="layers"></i>
+                            <h3>内容支柱 <span class="en-sub">(Content Pillars)</span></h3>
+                        </div>
+                        <div class="card-content" contenteditable="true" data-save-key="content_pillars">
+                            <ul>
+                                <li><strong>教育型</strong>：行业知识、教程指南</li>
+                                <li><strong>娱乐型</strong>：趣味内容、挑战互动</li>
+                                <li><strong>启发型</strong>：案例故事、用户证言</li>
+                                <li><strong>促销型</strong>：产品推广、限时活动</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="strategy-card">
+                        <div class="card-header">
+                            <i data-lucide="zap"></i>
+                            <h3>关键行动 <span class="en-sub">(Key Actions)</span></h3>
+                        </div>
+                        <div class="card-content" contenteditable="true" data-save-key="key_actions">
+                            <ul>
+                                <li>建立统一品牌视觉风格指南</li>
+                                <li>制定月度内容日历</li>
+                                <li>设置跨平台内容复用机制</li>
+                                <li>建立数据追踪和复盘流程</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="strategy-card">
+                        <div class="card-header">
+                            <i data-lucide="bar-chart-2"></i>
+                            <h3>核心指标 <span class="en-sub">(KPIs)</span></h3>
+                        </div>
+                        <div class="card-content" contenteditable="true" data-save-key="kpis">
+                            <ul>
+                                <li><strong>粉丝增长</strong>：月增长率 10%+</li>
+                                <li><strong>互动率</strong>：平均 3%+</li>
+                                <li><strong>转化率</strong>：社媒导流转化 2%</li>
+                                <li><strong>品牌声量</strong>：SOV 提升 20%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('social_matrix_v2');
+            lucide.createIcons({
+                attrs: { class: "icon", 'stroke-width': 2 }
+            });
+
+            const channelGrid = document.getElementById('channelGrid');
+
+            // ========================================
+            // Priority Styling
+            // ========================================
+            function updatePriorityStyle(select) {
+                const card = select.closest('.channel-card');
+                card.classList.remove('priority-high', 'priority-medium', 'priority-low');
+                card.classList.add('priority-' + select.value);
+                updateStats();
+            }
+
+            document.querySelectorAll('.priority-badge').forEach(select => {
+                select.addEventListener('change', () => updatePriorityStyle(select));
+            });
+
+            // ========================================
+            // Remove Channel
+            // ========================================
+            function bindRemoveButtons() {
+                document.querySelectorAll('.remove-channel-btn').forEach(btn => {
+                    btn.onclick = function () {
+                        if (channelGrid.children.length > 1) {
+                            this.closest('.channel-card').remove();
+                            updateStats();
+                        }
+                    };
+                });
+            }
+            bindRemoveButtons();
+
+            // ========================================
+            // Add New Channel (Blank Template)
+            // ========================================
+            document.getElementById('addChannelBtn').addEventListener('click', addNewChannel);
+
+            function addNewChannel() {
+                const card = document.createElement('div');
+                card.className = 'channel-card priority-medium';
+                card.dataset.channel = 'custom';
+                card.innerHTML = `
+                    <div class="channel-header">
+                        <div class="channel-icon">
+                            <i data-lucide="share-2"></i>
+                        </div>
+                        <div class="channel-title">
+                            <span class="name-cn" contenteditable="true">新渠道</span>
+                            <span class="name-en" contenteditable="true">New Channel</span>
+                        </div>
+                        <select class="priority-badge" aria-label="Selection">
+                            <option value="high">高</option>
+                            <option value="medium" selected>中</option>
+                            <option value="low">低</option>
+                        </select>
+                        <button class="remove-channel-btn" title="移除" type="button">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
+                    <div class="channel-body">
+                        <div class="channel-field">
+                            <label><i data-lucide="users"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                            <div class="field-content" contenteditable="true">待填写目标受众...</div>
+                        </div>
+                        <div class="channel-field">
+                            <label><i data-lucide="file-text"></i> 内容类型 <span class="en-sub">(Content)</span></label>
+                            <div class="field-content" contenteditable="true">待填写内容类型...</div>
+                        </div>
+                        <div class="channel-row">
+                            <div class="channel-field half">
+                                <label><i data-lucide="calendar"></i> 频率 <span class="en-sub">(Frequency)</span></label>
+                                <div class="field-content" contenteditable="true">待定</div>
+                            </div>
+                            <div class="channel-field half">
+                                <label><i data-lucide="target"></i> 目标 <span class="en-sub">(Goal)</span></label>
+                                <div class="field-content" contenteditable="true">待定</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                channelGrid.appendChild(card);
+
+                // Re-init
+                lucide.createIcons({ attrs: { class: "icon", 'stroke-width': 2 } });
+                card.querySelector('.priority-badge').addEventListener('change', function () {
+                    updatePriorityStyle(this);
+                });
+                bindRemoveButtons();
+                updateStats();
+
+                // Focus on new channel name
+                card.querySelector('.name-cn').focus();
+            }
+
+            // ========================================
+            // Update Stats
+            // ========================================
+            function updateStats() {
+                const cards = channelGrid.querySelectorAll('.channel-card');
+                let high = 0, medium = 0, low = 0;
+
+                cards.forEach(card => {
+                    if (card.classList.contains('priority-high')) high++;
+                    else if (card.classList.contains('priority-medium')) medium++;
+                    else low++;
+                });
+
+                document.getElementById('totalChannels').textContent = cards.length;
+                document.getElementById('highPriority').textContent = high;
+                document.getElementById('mediumPriority').textContent = medium;
+                document.getElementById('lowPriority').textContent = low;
+            }
+
+            updateStats();
+        });
+    </script>
+</body>
+
+</html>

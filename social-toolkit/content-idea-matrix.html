@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容选题矩阵 (Content Idea Matrix)</title>
+    <meta name="description" content="内容选题矩阵工具，帮助您系统规划内容栏目与形式的组合，激发创意并优化内容策略。">
+    <meta name="keywords" content="内容选题,内容规划,内容矩阵,社交媒体,内容营销">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="内容选题矩阵 - Modiqi Workbench">
+    <meta property="og:description" content="系统规划内容栏目与形式的组合，激发创意并优化内容策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/content-idea-matrix.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容选题矩阵</h1>
+                <span class="english-subtitle">Content Idea Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>主题/战役 <span class="en-sub">(Campaign)</span></label>
+                    <input type="text" class="meta-input" value="Q1 内容规划" data-save-key="matrix_topic" aria-label="matrix topic">
+                </div>
+                <div class="meta-group">
+                    <label>负责人 <span class="en-sub">(Owner)</span></label>
+                    <input type="text" class="meta-input" data-save-key="matrix_owner" aria-label="matrix owner">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Month)</span></label>
+                    <input type="month" class="meta-input" data-save-key="matrix_date" aria-label="matrix date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="matrix-layout">
+
+            <!-- Top: Content Pillars -->
+            <section class="pillars-section">
+                <div class="section-label">
+                    <i data-lucide="columns" class="icon"></i>
+                    <span>核心栏目 (Content Pillars)</span>
+                </div>
+                <div class="pillars-container">
+                    <div class="pillar-card">
+                        <input type="text" class="pillar-title" placeholder="栏目 A: 干货/教育" value="知识科普 (Educate)" aria-label="栏目 A: 干货/教育">
+                        <div class="pillar-desc" contenteditable="true" data-placeholder="定义核心价值与受众痛点..."></div>
+                    </div>
+                    <div class="pillar-card">
+                        <input type="text" class="pillar-title" placeholder="栏目 B: 娱乐/互动" value="趣味互动 (Entertain)" aria-label="栏目 B: 娱乐/互动">
+                        <div class="pillar-desc" contenteditable="true" data-placeholder="定义核心价值与受众痛点..."></div>
+                    </div>
+                    <div class="pillar-card">
+                        <input type="text" class="pillar-title" placeholder="栏目 C: 品牌/故事" value="品牌故事 (Inspire)" aria-label="栏目 C: 品牌/故事">
+                        <div class="pillar-desc" contenteditable="true" data-placeholder="定义核心价值与受众痛点..."></div>
+                    </div>
+                    <div class="pillar-card">
+                        <input type="text" class="pillar-title" placeholder="栏目 D: 产品/转化" value="产品种草 (Promote)" aria-label="栏目 D: 产品/转化">
+                        <div class="pillar-desc" contenteditable="true" data-placeholder="定义核心价值与受众痛点..."></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Middle: The Matrix -->
+            <section class="grid-section">
+                <div class="matrix-grid">
+                    <!-- Header Row -->
+                    <div class="grid-header-cell empty"></div>
+                    <div class="grid-header-cell">
+                        <i data-lucide="video" class="header-icon"></i>
+                        <span>短视频 (Video)</span>
+                    </div>
+                    <div class="grid-header-cell">
+                        <i data-lucide="file-text" class="header-icon"></i>
+                        <span>图文/文章 (Article)</span>
+                    </div>
+                    <div class="grid-header-cell">
+                        <i data-lucide="image" class="header-icon"></i>
+                        <span>海报/梗图 (Image)</span>
+                    </div>
+                    <div class="grid-header-cell">
+                        <i data-lucide="mic" class="header-icon"></i>
+                        <span>直播/活动 (Live)</span>
+                    </div>
+
+                    <!-- Row 1: How-to -->
+                    <div class="grid-row-header">
+                        <span class="angle-label">教程/方法论<br><span class="en-sub">How-to</span></span>
+                    </div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="15秒小技巧..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="深度操作指南..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="步骤图/清单..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="专家在线答疑..."></div>
+
+                    <!-- Row 2: Trend/News -->
+                    <div class="grid-row-header">
+                        <span class="angle-label">热点/趋势<br><span class="en-sub">Trend</span></span>
+                    </div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="热点锐评..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="趋势分析报告..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="热梗海报..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="突发事件连线..."></div>
+
+                    <!-- Row 3: Case/Proof -->
+                    <div class="grid-row-header">
+                        <span class="angle-label">案例/证明<br><span class="en-sub">Proof</span></span>
+                    </div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="客户采访/证言..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="成功案例拆解..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="数据对比图..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="成果展示会..."></div>
+
+                    <!-- Row 4: Offer/Promo -->
+                    <div class="grid-row-header">
+                        <span class="angle-label">优惠/促销<br><span class="en-sub">Offer</span></span>
+                    </div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="限时折扣口播..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="产品详细参数..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="促销倒计时..."></div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="新品发布会..."></div>
+                </div>
+            </section>
+
+            <!-- Bottom: Strategy Notes -->
+            <section class="notes-section">
+                <div class="note-block">
+                    <div class="note-header">
+                        <i data-lucide="hash" class="note-icon"></i>
+                        <h3>话题标签策略 (Hashtags)</h3>
+                    </div>
+                    <div class="note-content" contenteditable="true" data-placeholder="#品牌词 #行业词 #流量词 #长尾词..."></div>
+                </div>
+                <div class="note-block">
+                    <div class="note-header">
+                        <i data-lucide="share-2" class="note-icon"></i>
+                        <h3>分发渠道重点 (Distribution)</h3>
+                    </div>
+                    <div class="note-content" contenteditable="true" data-placeholder="小红书：重图文审美； 抖音：黄金3秒； 公众号：深度价值...">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('content-idea-matrix');
+        });
+    </script>
+</body>
+
+</html>

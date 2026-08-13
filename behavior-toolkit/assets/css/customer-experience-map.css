@@ -1,0 +1,187 @@
+/* Customer Experience Map Styles */
+
+.map-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border-sem-outer);
+    height: 100%;
+    margin-bottom: var(--spacing-xl);
+}
+
+.map-row {
+    display: grid;
+    grid-template-columns: 120px repeat(5, 1fr 20px) 1fr;
+    /* Label, 5 stages with spacers */
+    /* Wait, spacing strategy needs to be aligned.
+       Let's simplify: 1 Label + 5 Stages. Spacers can be part of stage border or pseudo.
+       Better grid: 120px 1fr 1fr 1fr 1fr 1fr
+    */
+    grid-template-columns: 120px repeat(5, 1fr);
+}
+
+.row-label {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-md);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.row-label i {
+    margin-bottom: 4px;
+    color: var(--color-brand-blue);
+}
+
+.cn-label {
+    font-size: 10px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+}
+
+/* Header Row */
+.row-stages .row-label {
+    background: var(--color-brand-blue);
+    color: var(--color-bg-white);
+}
+
+.row-stages .row-label i {
+    color: var(--color-bg-white);
+}
+
+.stage-cell {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-right: 1px solid var(--border-sem-inner);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+/* Content Cells */
+.content-cell {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-right: 1px dashed var(--border-sem-inner);
+    font-size: 11px;
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 80px;
+}
+
+.content-cell:last-child {
+    border-right: none;
+}
+
+.content-cell:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+}
+
+/* Specific Row Styling */
+
+/* Actions */
+.row-doing .content-cell {
+    background: var(--color-bg-white);
+}
+
+/* Thinking */
+.row-thinking .content-cell {
+    background: var(--color-bg-subtle);
+    font-size: 10px;
+}
+
+/* Feeling */
+.row-feeling .content-cell {
+    background: var(--color-bg-white);
+    font-size: 24px;
+    /* Emoji size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+/* Pain Points */
+.row-pain .content-cell {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger);
+}
+
+/* Opportunities */
+.row-opp .content-cell {
+    background: var(--color-bg-success-subtle);
+    color: var(--color-semantic-growth);
+    border-bottom: none;
+}
+
+.row-opp .row-label {
+    border-bottom: none;
+}
+
+
+/* Spacers/Dividers (Visual only, handled via grid border-right above) */
+.divider-arrow {
+    display: none;
+    /* Simplification */
+}
+
+.spacer {
+    display: none;
+    /* Simplification */
+}
+
+/* Print */
+@media print {
+    .row-stages .row-label {
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .map-row {
+        page-break-inside: avoid;
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .experience-map, .map-row, .row-stages { display: grid; grid-template-columns: 1fr; height: auto; }
+    .row-label, .content-cell { width: 100%; min-height: 64px; }
+}

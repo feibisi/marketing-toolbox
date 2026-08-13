@@ -1,0 +1,80 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "plugins": [
+    "stylelint-declaration-strict-value"
+  ],
+  "ignoreFiles": [
+    "**/node_modules/**",
+    "**/shared/css/tokens.css",
+    "**/shared/css/base.css",
+    "**/shared/css/launcher.css",
+    "**/launcher.css",
+    "**/*.min.css"
+  ],
+  "rules": {
+    "comment-empty-line-before": null,
+    "no-empty-source": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "media-feature-range-notation": null,
+    "no-duplicate-selectors": null,
+    "block-no-empty": null,
+    "selector-not-notation": null,
+    "rule-empty-line-before": null,
+    "selector-id-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "declaration-block-single-line-max-declarations": null,
+    "shorthand-property-no-redundant-values": null,
+    "length-zero-no-unit": null,
+    "declaration-block-no-duplicate-properties": null,
+    "color-hex-length": null,
+    "declaration-block-no-shorthand-property-overrides": null,
+    "selector-pseudo-element-colon-notation": null,
+    "keyframes-name-pattern": null,
+    "value-keyword-case": null,
+    "font-family-name-quotes": null,
+    "declaration-empty-line-before": null,
+    "at-rule-no-unknown": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": true,
+    "color-no-hex": [
+      true,
+      {
+        "message": "禁止硬编码颜色值，请使用 var(--color-*) 设计令牌",
+        "severity": "warning"
+      }
+    ],
+    "declaration-property-value-disallowed-list": {
+      "transition": [
+        "/(?:^|,)\\s*all(?:\\s|$)/"
+      ]
+    },
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "/color$/",
+        "/^background/",
+        "/^border-color/",
+        "fill",
+        "stroke"
+      ],
+      {
+        "ignoreValues": [
+          "transparent",
+          "inherit",
+          "initial",
+          "unset",
+          "currentColor",
+          "none",
+          "/^var\\(/"
+        ],
+        "message": "请使用设计令牌变量: ${value}",
+        "disableFix": true,
+        "severity": "warning"
+      }
+    ]
+  }
+}

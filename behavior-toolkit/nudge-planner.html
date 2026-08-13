@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>助推理论策划器 (Nudge Theory Planner)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/nudge-planner.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>助推理论策划器</h1>
+                <span class="english-subtitle">Nudge Theory Planner (EAST Framework)</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>行为目标</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Increase Newsletter Signups" aria-label="Increase Newsletter Signups">
+                </div>
+            </div>
+        </header>
+
+        <div class="nudge-container">
+
+            <!-- Left Info -->
+            <div class="intro-col">
+                <div class="intro-card">
+                    <h3>什么是助推?</h3>
+                    <p>助推 (Nudge) 是一种在不限制选择自由的情况下，以可预测的方式改变人们行为的方法。</p>
+                </div>
+                <div class="intro-card">
+                    <h3>EAST 框架</h3>
+                    <p>英国行为洞察团队 (BIT) 开发的模型。要改变行为，让它变得：</p>
+                    <ul style="font-size:11px; padding-left:14px; margin-top:4px; color:var(--color-text-secondary);">
+                        <li>Easy (简单)</li>
+                        <li>Attractive (有吸引力)</li>
+                        <li>Social (社交性)</li>
+                        <li>Timely (及时)</li>
+                    </ul>
+                </div>
+                <div class="intro-card">
+                    <h3>使用指南</h3>
+                    <p>针对你的目标行为，在右侧四个维度中思考可能的干预措施。</p>
+                </div>
+            </div>
+
+            <!-- Right Grid -->
+            <div class="east-grid">
+
+                <!-- Easy -->
+                <div class="east-card card-easy">
+                    <div class="card-header">
+                        <div class="letter-circle">E</div>
+                        <div>
+                            <div class="card-title">Easy (简单)</div>
+                            <div class="card-subtitle">利用默认选项，减少阻力。</div>
+                        </div>
+                    </div>
+                    <div class="example-chips">
+                        <span class="chip">默认勾选</span>
+                        <span class="chip">简化表单</span>
+                        <span class="chip">自动填充</span>
+                    </div>
+                    <textarea class="intervention-input"
+                        placeholder="Plan: Make the desired action the easiest path..." aria-label="Plan: Make the desired action the easiest path..."></textarea>
+                </div>
+
+                <!-- Attractive -->
+                <div class="east-card card-attractive">
+                    <div class="card-header">
+                        <div class="letter-circle">A</div>
+                        <div>
+                            <div class="card-title">Attractive (吸引)</div>
+                            <div class="card-subtitle">吸引注意力，提供奖励。</div>
+                        </div>
+                    </div>
+                    <div class="example-chips">
+                        <span class="chip">个性化</span>
+                        <span class="chip">视觉突出</span>
+                        <span class="chip">即时奖励</span>
+                    </div>
+                    <textarea class="intervention-input"
+                        placeholder="Plan: Use bold colors or incentives..." aria-label="Plan: Use bold colors or incentives..."></textarea>
+                </div>
+
+                <!-- Social -->
+                <div class="east-card card-social">
+                    <div class="card-header">
+                        <div class="letter-circle">S</div>
+                        <div>
+                            <div class="card-title">Social (社交)</div>
+                            <div class="card-subtitle">展示其他人也在这么做。</div>
+                        </div>
+                    </div>
+                    <div class="example-chips">
+                        <span class="chip">社会认同</span>
+                        <span class="chip">承诺机制</span>
+                        <span class="chip">互惠原则</span>
+                    </div>
+                    <textarea class="intervention-input"
+                        placeholder="Plan: Show '90% of users chose this'..." aria-label="Plan: Show &#x27;90% of users chose this&#x27;..."></textarea>
+                </div>
+
+                <!-- Timely -->
+                <div class="east-card card-timely">
+                    <div class="card-header">
+                        <div class="letter-circle">T</div>
+                        <div>
+                            <div class="card-title">Timely (及时)</div>
+                            <div class="card-subtitle">在最关键的时刻提示。</div>
+                        </div>
+                    </div>
+                    <div class="example-chips">
+                        <span class="chip">关键时刻</span>
+                        <span class="chip">紧迫感</span>
+                        <span class="chip">制定计划</span>
+                    </div>
+                    <textarea class="intervention-input"
+                        placeholder="Plan: Prompt when intent is highest..." aria-label="Plan: Prompt when intent is highest..."></textarea>
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('nudge_planner');
+            lucide.createIcons();
+
+            // Chip click handler
+            document.querySelectorAll('.chip').forEach(chip => {
+                chip.addEventListener('click', function () {
+                    const textarea = this.parentElement.nextElementSibling;
+                    textarea.value += (textarea.value ? '\n- ' : '- ') + this.innerText;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

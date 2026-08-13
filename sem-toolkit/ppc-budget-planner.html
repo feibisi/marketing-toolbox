@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPC 预算规划器 (PPC Budget Planner)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="估算投入产出比与流量成本">
+    <meta name="keywords" content="PPC, Budget, CPC, ROAS, SEM, Paid Search">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ppc-budget-planner.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>PPC 预算规划器</h1>
+                <span class="english-subtitle">PPC Budget Planner</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的项目" data-save-key="meta_project" aria-label="我的项目">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <!-- Section 1: Inputs -->
+            <div class="tool-section input-section">
+                <div class="section-header">
+                    <i data-lucide="sliders"></i>
+                    <h2>基础参数 <span class="en-sub">(Campaign Inputs)</span></h2>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>总预算 <span class="en-sub">(Total Budget)</span></label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">¥</span>
+                            <input type="number" id="inputTotalBudget" class="input" value="10000"
+                                data-save-key="total_budget" aria-label="total budget">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>平均 CPC <span class="en-sub">(Avg CPC)</span></label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">¥</span>
+                            <input type="number" id="inputAvgCPC" class="input" value="5.5" step="0.1"
+                                data-save-key="avg_cpc" aria-label="avg cpc">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>转化率 <span class="en-sub">(Conv. Rate %)</span></label>
+                        <div class="input-wrapper">
+                            <span class="percent-symbol">%</span>
+                            <input type="number" id="inputConvRate" class="input" value="2.5" step="0.1"
+                                data-save-key="conv_rate" aria-label="conv rate">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>客单价 <span class="en-sub">(Avg Value)</span></label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">¥</span>
+                            <input type="number" id="inputAvgValue" class="input" value="500" data-save-key="avg_value" aria-label="avg value">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Key Metrics -->
+            <div class="tool-section metrics-section">
+                <div class="section-header">
+                    <i data-lucide="bar-chart-2"></i>
+                    <h2>预估结果 <span class="en-sub">(Estimated Outcomes)</span></h2>
+                </div>
+                <div class="metrics-grid">
+                    <div class="card metric-card">
+                        <div class="metric-label">预估点击量 <span class="en-sub">(Clicks)</span></div>
+                        <div class="metric-value" id="resClicks">0</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-label">预估线索 <span class="en-sub">(Leads)</span></div>
+                        <div class="metric-value" id="resLeads">0</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-label">获客成本 <span class="en-sub">(CPA)</span></div>
+                        <div class="metric-value" id="resCPA">¥0</div>
+                    </div>
+                    <div class="card metric-card highlight">
+                        <div class="metric-label">投产比 <span class="en-sub">(ROAS)</span></div>
+                        <div class="metric-value" id="resROAS">0.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Scenario Analysis -->
+            <div class="tool-section scenario-section">
+                <div class="section-header">
+                    <i data-lucide="git-branch"></i>
+                    <h2>情景分析 <span class="en-sub">(Scenario Analysis)</span></h2>
+                </div>
+                <div class="scenario-table-wrapper">
+                    <table class="scenario-table">
+                        <thead>
+                            <tr>
+                                <th>指标 (Metrics)</th>
+                                <th>保守 <span class="en-sub">(Conservative)</span><br><span class="scenario-sub">-20%
+                                        转化</span></th>
+                                <th class="base-metric">基准 <span class="en-sub">(Base)</span><br><span
+                                        class="scenario-sub">当前设定</span></th>
+                                <th>乐观 <span class="en-sub">(Aggressive)</span><br><span class="scenario-sub">+20%
+                                        转化</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>转化率 (CVR)</td>
+                                <td id="scenConCVR">0%</td>
+                                <td class="base-metric" id="scenBaseCVR">0%</td>
+                                <td id="scenAggCVR">0%</td>
+                            </tr>
+                            <tr>
+                                <td>线索量 (Leads)</td>
+                                <td id="scenConLeads">0</td>
+                                <td class="base-metric" id="scenBaseLeads">0</td>
+                                <td id="scenAggLeads">0</td>
+                            </tr>
+                            <tr>
+                                <td>获客成本 (CPA)</td>
+                                <td id="scenConCPA">¥0</td>
+                                <td class="base-metric" id="scenBaseCPA">¥0</td>
+                                <td id="scenAggCPA">¥0</td>
+                            </tr>
+                            <tr>
+                                <td>总收益 (Revenue)</td>
+                                <td id="scenConRev">¥0</td>
+                                <td class="base-metric" id="scenBaseRev">¥0</td>
+                                <td id="scenAggRev">¥0</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>ROAS</td>
+                                <td id="scenConROAS">0.0</td>
+                                <td class="base-metric" id="scenBaseROAS">0.0</td>
+                                <td id="scenAggROAS">0.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/ppc-budget-planner.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ppc_budget_planner_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // Date init
+            const dateInput = document.querySelector('[data-save-key="meta_date"]');
+            if (dateInput && !dateInput.value) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+        });
+    </script>
+</body>
+
+</html>

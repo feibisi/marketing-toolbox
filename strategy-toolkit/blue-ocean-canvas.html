@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝海战略画布 (Blue Ocean Strategy Canvas)</title>
+    <meta name="description" content="蓝海战略画布工具,帮助您识别新市场空间,通过消除-减少-提升-创造框架重构市场边界。">
+    <meta name="keywords" content="蓝海战略,Blue Ocean Strategy,战略画布,创新,市场空间">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="蓝海战略画布 - Modiqi Workbench">
+    <meta property="og:description" content="识别新市场空间,重构竞争边界。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/blue-ocean-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>蓝海战略画布</h1>
+                <span class="english-subtitle">Blue Ocean Strategy Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>公司/项目 <span class="en-sub">(Company)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的公司" data-save-key="meta_company" aria-label="我的公司">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Four Actions Framework -->
+        <div class="four-actions-grid">
+            <div class="action-block action-eliminate">
+                <div class="action-header">
+                    <i data-lucide="x-circle"></i>
+                    <h3>消除 <span class="en-sub">(Eliminate)</span></h3>
+                </div>
+                <div class="action-content" contenteditable="true" data-save-key="eliminate">
+                    <p>行业习以为常但可以消除的因素</p>
+                </div>
+            </div>
+
+            <div class="action-block action-reduce">
+                <div class="action-header">
+                    <i data-lucide="arrow-down-circle"></i>
+                    <h3>减少 <span class="en-sub">(Reduce)</span></h3>
+                </div>
+                <div class="action-content" contenteditable="true" data-save-key="reduce">
+                    <p>应降低到行业标准以下的因素</p>
+                </div>
+            </div>
+
+            <div class="action-block action-raise">
+                <div class="action-header">
+                    <i data-lucide="arrow-up-circle"></i>
+                    <h3>提升 <span class="en-sub">(Raise)</span></h3>
+                </div>
+                <div class="action-content" contenteditable="true" data-save-key="raise">
+                    <p>应提升到行业标准以上的因素</p>
+                </div>
+            </div>
+
+            <div class="action-block action-create">
+                <div class="action-header">
+                    <i data-lucide="plus-circle"></i>
+                    <h3>创造 <span class="en-sub">(Create)</span></h3>
+                </div>
+                <div class="action-content" contenteditable="true" data-save-key="create">
+                    <p>行业从未提供但应创造的因素</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy Canvas -->
+        <div class="strategy-canvas-section">
+            <h2 class="section-title">
+                <i data-lucide="trending-up"></i>
+                战略画布 <span class="en-sub">(Strategy Canvas)</span>
+            </h2>
+
+            <div class="canvas-factors">
+                <div class="factor-row" data-factor="1">
+                    <input type="text" class="factor-name" placeholder="竞争因素 1" value="价格" data-save-key="factor_1_name" aria-label="竞争因素 1">
+                    <input type="range" class="factor-slider red-ocean" min="0" max="10" value="8" data-save-key="factor_1_red" aria-label="factor 1 red">
+                    <span class="factor-value red-ocean-value">8</span>
+                    <input type="range" class="factor-slider blue-ocean" min="0" max="10" value="5" data-save-key="factor_1_blue" aria-label="factor 1 blue">
+                    <span class="factor-value blue-ocean-value">5</span>
+                </div>
+
+                <div class="factor-row" data-factor="2">
+                    <input type="text" class="factor-name" placeholder="竞争因素 2" value="功能" data-save-key="factor_2_name" aria-label="竞争因素 2">
+                    <input type="range" class="factor-slider red-ocean" min="0" max="10" value="7" data-save-key="factor_2_red" aria-label="factor 2 red">
+                    <span class="factor-value red-ocean-value">7</span>
+                    <input type="range" class="factor-slider blue-ocean" min="0" max="10" value="9" data-save-key="factor_2_blue" aria-label="factor 2 blue">
+                    <span class="factor-value blue-ocean-value">9</span>
+                </div>
+
+                <div class="factor-row" data-factor="3">
+                    <input type="text" class="factor-name" placeholder="竞争因素 3" value="服务" data-save-key="factor_3_name" aria-label="竞争因素 3">
+                    <input type="range" class="factor-slider red-ocean" min="0" max="10" value="6" data-save-key="factor_3_red" aria-label="factor 3 red">
+                    <span class="factor-value red-ocean-value">6</span>
+                    <input type="range" class="factor-slider blue-ocean" min="0" max="10" value="8" data-save-key="factor_3_blue" aria-label="factor 3 blue">
+                    <span class="factor-value blue-ocean-value">8</span>
+                </div>
+
+                <div class="factor-row" data-factor="4">
+                    <input type="text" class="factor-name" placeholder="竞争因素 4" value="品牌" data-save-key="factor_4_name" aria-label="竞争因素 4">
+                    <input type="range" class="factor-slider red-ocean" min="0" max="10" value="5" data-save-key="factor_4_red" aria-label="factor 4 red">
+                    <span class="factor-value red-ocean-value">5</span>
+                    <input type="range" class="factor-slider blue-ocean" min="0" max="10" value="7" data-save-key="factor_4_blue" aria-label="factor 4 blue">
+                    <span class="factor-value blue-ocean-value">7</span>
+                </div>
+
+                <div class="factor-row" data-factor="5">
+                    <input type="text" class="factor-name" placeholder="竞争因素 5" value="体验" data-save-key="factor_5_name" aria-label="竞争因素 5">
+                    <input type="range" class="factor-slider red-ocean" min="0" max="10" value="4" data-save-key="factor_5_red" aria-label="factor 5 red">
+                    <span class="factor-value red-ocean-value">4</span>
+                    <input type="range" class="factor-slider blue-ocean" min="0" max="10" value="9" data-save-key="factor_5_blue" aria-label="factor 5 blue">
+                    <span class="factor-value blue-ocean-value">9</span>
+                </div>
+            </div>
+
+            <div class="canvas-legend">
+                <div class="legend-item">
+                    <span class="legend-line red-ocean-line"></span>
+                    <span>红海(现有行业)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-line blue-ocean-line"></span>
+                    <span>蓝海(新战略)</span>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('blue_ocean_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // Update slider values display
+            document.querySelectorAll('.factor-slider').forEach(slider => {
+                slider.addEventListener('input', (e) => {
+                    const row = e.target.closest('.factor-row');
+                    const isRedOcean = e.target.classList.contains('red-ocean');
+                    const valueSpan = row.querySelector(isRedOcean ? '.red-ocean-value' : '.blue-ocean-value');
+                    valueSpan.textContent = e.target.value;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

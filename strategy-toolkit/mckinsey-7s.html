@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McKinsey 7S 模型 (McKinsey 7S Framework)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="分析组织效能的七个关键要素">
+    <meta name="keywords" content="McKinsey 7S, Strategy, Organization, Change Management">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/mckinsey-7s.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>McKinsey 7S 模型</h1>
+                <span class="english-subtitle">McKinsey 7S Framework</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>组织 <span class="en-sub">(Organization)</span></label>
+                    <input type="text" class="meta-input" placeholder="My Organization" data-save-key="meta_org" aria-label="My Organization">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="model-container">
+
+                <!-- Shared Values (Center) -->
+                <div class="element-node center-node">
+                    <div class="node-header">
+                        <i data-lucide="heart-handshake" class="node-icon"></i>
+                        <span class="node-title">共同价值观 <span class="en-sub">(Shared Values)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="核心信念与文化..."
+                        data-save-key="7s_values"></div>
+                </div>
+
+                <!-- Hard S (Top Trio) -->
+                <!-- Strategy -->
+                <div class="element-node pos-top-center">
+                    <div class="node-header">
+                        <i data-lucide="compass" class="node-icon"></i>
+                        <span class="node-title">战略 <span class="en-sub">(Strategy)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="竞争优势与计划..."
+                        data-save-key="7s_strategy"></div>
+                </div>
+
+                <!-- Structure -->
+                <div class="element-node pos-top-left">
+                    <div class="node-header">
+                        <i data-lucide="network" class="node-icon"></i>
+                        <span class="node-title">结构 <span class="en-sub">(Structure)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="汇报关系与层级..."
+                        data-save-key="7s_structure"></div>
+                </div>
+
+                <!-- Systems -->
+                <div class="element-node pos-top-right">
+                    <div class="node-header">
+                        <i data-lucide="settings" class="node-icon"></i>
+                        <span class="node-title">系统 <span class="en-sub">(Systems)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="流程与工具..."
+                        data-save-key="7s_systems"></div>
+                </div>
+
+                <!-- Soft S (Bottom Trio) -->
+                <!-- Style -->
+                <div class="element-node pos-bottom-left">
+                    <div class="node-header">
+                        <i data-lucide="user-check" class="node-icon"></i>
+                        <span class="node-title">风格 <span class="en-sub">(Style)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="领导风格与行为模式..."
+                        data-save-key="7s_style"></div>
+                </div>
+
+                <!-- Staff -->
+                <div class="element-node pos-bottom-center">
+                    <div class="node-header">
+                        <i data-lucide="users" class="node-icon"></i>
+                        <span class="node-title">人员 <span class="en-sub">(Staff)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="员工能力与人口统计..."
+                        data-save-key="7s_staff"></div>
+                </div>
+
+                <!-- Skills -->
+                <div class="element-node pos-bottom-right">
+                    <div class="node-header">
+                        <i data-lucide="award" class="node-icon"></i>
+                        <span class="node-title">技能 <span class="en-sub">(Skills)</span></span>
+                    </div>
+                    <div class="node-content" contenteditable="true" data-placeholder="核心竞争力..."
+                        data-save-key="7s_skills"></div>
+                </div>
+
+                <!-- Connectors (SVG) -->
+                <svg class="connectors-svg" viewBox="0 0 1000 700">
+                    <!-- Center to Outer Connections -->
+                    <line x1="500" y1="350" x2="500" y2="100" /> <!-- Center to Strategy -->
+                    <line x1="500" y1="350" x2="200" y2="250" /> <!-- Center to Structure -->
+                    <line x1="500" y1="350" x2="800" y2="250" /> <!-- Center to Systems -->
+                    <line x1="500" y1="350" x2="200" y2="550" /> <!-- Center to Style -->
+                    <line x1="500" y1="350" x2="500" y2="650" /> <!-- Center to Staff -->
+                    <line x1="500" y1="350" x2="800" y2="550" /> <!-- Center to Skills -->
+
+                    <!-- Inter-connections (Hexagon/Web) -->
+                    <line x1="500" y1="100" x2="200" y2="250" /> <!-- Strategy - Structure -->
+                    <line x1="200" y1="250" x2="200" y2="550" /> <!-- Structure - Style -->
+                    <line x1="200" y1="550" x2="500" y2="650" /> <!-- Style - Staff -->
+                    <line x1="500" y1="650" x2="800" y2="550" /> <!-- Staff - Skills -->
+                    <line x1="800" y1="550" x2="800" y2="250" /> <!-- Skills - Systems -->
+                    <line x1="800" y1="250" x2="500" y2="100" /> <!-- Systems - Strategy -->
+                </svg>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('mckinsey_7s_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

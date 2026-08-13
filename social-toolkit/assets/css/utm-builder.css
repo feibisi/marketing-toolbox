@@ -1,0 +1,293 @@
+/* UTM Builder Layout */
+
+/* Vertical Space Management */
+.paper-a3 {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    gap: 0;
+}
+
+.paper-a3 > .canvas-header {
+    grid-area: header;
+}
+
+.paper-a3 > .utm-container {
+    grid-area: main;
+    min-height: 0;
+}
+
+.paper-a3 > .modiqi-footer {
+    grid-area: footer;
+}
+
+.utm-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    overflow: hidden;
+}
+
+/* Left: Form */
+.col-builder {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+    padding-right: var(--spacing-sm);
+}
+
+.builder-group {
+    background: transparent;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+.input-label {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.375rem;
+}
+
+.input-label span {
+    color: var(--color-text-primary);
+}
+
+.builder-input {
+    width: 100%;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: 0.5rem;
+    font-size: var(--font-size-sm);
+    margin-bottom: 0.75rem;
+}
+
+.builder-input:focus {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -2px;
+    background: var(--color-focus-bg);
+    border-radius: 0;
+}
+
+.preset-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-bottom: 0.75rem;
+}
+
+.pill {
+    font-size: 0.625rem;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: 0.125rem 0.5rem;
+    cursor: pointer;
+}
+
+.pill:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-text-primary);
+}
+
+/* Right: Result & History */
+.col-result {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+}
+
+.result-card {
+    background: transparent;
+    border: 2px solid var(--color-border-strong);
+    border-radius: 0;
+    padding: var(--spacing-lg);
+}
+
+.result-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--font-size-sm);
+    word-break: break-all;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-left: 3px solid var(--color-text-primary);
+}
+
+.action-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.action-btn {
+    background: var(--color-text-primary);
+    color: var(--color-bg-white);
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.action-btn i {
+    width: 14px;
+    height: 14px;
+}
+
+.action-btn:hover {
+    background: var(--color-text-secondary);
+}
+
+.action-btn.secondary {
+    background: var(--color-bg-white);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-medium);
+}
+
+.action-btn.secondary:hover {
+    background: var(--color-bg-subtle);
+}
+
+/* Section Title */
+.section-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.section-title .en-sub {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    font-weight: 400;
+}
+
+/* History Container */
+.history-container {
+    background: transparent;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* History Table */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-xs);
+}
+
+.history-table th {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-border-medium);
+    color: var(--color-text-tertiary);
+    font-weight: 600;
+    background: var(--color-bg-subtle);
+}
+
+.history-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text-secondary);
+}
+
+.history-table tbody tr:hover td {
+    background: var(--color-bg-hover);
+}
+
+/* ========================================
+   Whiteboard Mode Support
+   ======================================== */
+body.theme-whiteboard .builder-group,
+body.theme-whiteboard .result-card,
+body.theme-whiteboard .history-container {
+    background: var(--color-bg-white);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .builder-group {
+    background: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .result-card {
+    background: var(--color-semantic-strength);
+    border-left: 4px solid var(--color-semantic-growth);
+}
+
+body:not(.theme-dark).color-mode .history-container {
+    background: var(--color-semantic-neutral);
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .paper-a3 {
+        display: flex;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .utm-container {
+        min-height: 0;
+        min-width: 0;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .col-builder,
+    .col-result {
+        flex: 0 1 auto;
+        width: 100%;
+        min-width: 0;
+        overflow: visible;
+        padding-right: 0;
+    }
+
+    .builder-group,
+    .result-card {
+        min-width: 0;
+        padding: var(--spacing-md);
+    }
+
+    .action-row {
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        flex: 1 1 140px;
+        justify-content: center;
+    }
+
+    .history-container {
+        overflow-x: auto;
+    }
+
+    .history-table {
+        min-width: 480px;
+    }
+}

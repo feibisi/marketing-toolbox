@@ -1,0 +1,280 @@
+/* Headline Optimizer Layout */
+.optimizer-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* 1. Input Section */
+.input-section {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.headline-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.headline-input {
+    width: 100%;
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+    font-family: var(--font-serif);
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-sem-input);
+    border-radius: 0;
+    background: var(--color-bg-input);
+    color: var(--color-text-primary);
+}
+
+.headline-input:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 4px var(--color-bg-highlight);
+}
+
+.input-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin-top: 8px;
+}
+
+/* 2. Analysis Dashboard */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-lg);
+    flex: 1;
+}
+
+/* Score Card (Left) */
+.score-card {
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--border-sem-inner);
+}
+
+.score-dial {
+    width: 120px;
+    height: 120px;
+    border-radius: 0;
+    border: 8px solid var(--color-bg-paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.score-label {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-tertiary);
+    font-weight: bold;
+}
+
+/* Metrics (Right) */
+.metrics-panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.metric-box {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+}
+
+.metric-value {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.metric-bar-track {
+    width: 100%;
+    height: 6px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+.metric-bar-fill {
+    height: 100%;
+    border-radius: 0;
+    background: var(--color-brand-primary);
+    width: 0%;
+}
+
+/* 3. Previews */
+.preview-section {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+.preview-tabs {
+    display: flex;
+    gap: var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-inner);
+    margin-bottom: var(--spacing-md);
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--color-brand-primary);
+    border-bottom-color: var(--color-brand-primary);
+}
+
+/* SERP Preview */
+.preview-card.serp {
+    padding: var(--spacing-md);
+    font-family: arial, sans-serif;
+    max-width: 600px;
+}
+
+.serp-url {
+    font-size: 14px;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.serp-title {
+    font-size: 20px;
+    color: var(--color-info);
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.serp-title:hover {
+    text-decoration: underline;
+}
+
+.serp-desc {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.58;
+}
+
+/* Social Preview */
+.preview-card.social {
+    border: 1px solid var(--color-border-light);
+    border-radius: 0;
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.social-image {
+    width: 100%;
+    height: 200px;
+    background: var(--color-bg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+.social-meta {
+    padding: 12px;
+    background: var(--color-bg-subtle);
+}
+
+.social-domain {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.social-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    line-height: 1.25;
+}
+
+.social-desc {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+/* Dark Mode */
+body.theme-dark .headline-input {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Semantic tokens handle dark mode automatically */
+@media screen and (max-width: 768px) {
+    .paper-a4 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .analysis-grid,
+    .metrics-panel {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .input-section,
+    .score-card,
+    .metric-box,
+    .preview-section {
+        min-width: 0;
+    }
+}

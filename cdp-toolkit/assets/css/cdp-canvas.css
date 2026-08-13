@@ -1,0 +1,538 @@
+/* CDP Canvas - Tool Specific Styles */
+/* Modiqi Design System Compliant - A3 Landscape */
+
+/* ========================================
+   Main Paper Content Layout
+   Uses CSS Grid for precise vertical distribution
+   ======================================== */
+
+/* Override paper-a3 flex layout for this tool */
+.paper-a3 {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "bottom"
+        "footer";
+}
+
+.paper-a3>.canvas-header {
+    grid-area: header;
+}
+
+.paper-a3>.cdp-layout {
+    grid-area: main;
+}
+
+.paper-a3>.bottom-section {
+    grid-area: bottom;
+}
+
+.paper-a3>.modiqi-footer {
+    grid-area: footer;
+}
+
+/* ========================================
+   Main Layout - Three Column Grid
+   ======================================== */
+.cdp-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: var(--spacing-lg);
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ========================================
+   Data Sources Column (Left)
+   ======================================== */
+.data-sources {
+    background: transparent;
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    flex-shrink: 0;
+}
+
+.section-header .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.section-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.source-category {
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.source-category:last-child {
+    margin-bottom: 0;
+}
+
+.source-category h4 {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.source-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin-bottom: 2px;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    font-size: var(--font-size-sm);
+    outline: none;
+}
+
+.source-item:last-child {
+    margin-bottom: 0;
+}
+
+.source-item:focus {
+    background-color: var(--color-focus-bg);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+.source-item .icon {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* ========================================
+   CDP Core Column (Center)
+   ======================================== */
+.cdp-core {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.core-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    flex-shrink: 0;
+}
+
+.core-header .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.core-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.capability-block {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.capability-block:last-child {
+    margin-bottom: 0;
+}
+
+.capability-block:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+.capability-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    flex-shrink: 0;
+}
+
+.capability-title .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.capability-title span {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.capability-notes {
+    flex: 1;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.capability-notes:focus {
+    background-color: var(--color-focus-bg);
+}
+
+.capability-notes ul {
+    margin: 0;
+    padding-left: 1em;
+}
+
+.capability-notes li {
+    margin-bottom: 2px;
+}
+
+/* ========================================
+   Activation Channels Column (Right)
+   ======================================== */
+.activation-channels {
+    background: transparent;
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.channel-category {
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.channel-category:last-child {
+    margin-bottom: 0;
+}
+
+.channel-category h4 {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin-bottom: 2px;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    font-size: var(--font-size-sm);
+    outline: none;
+}
+
+.channel-item:last-child {
+    margin-bottom: 0;
+}
+
+.channel-item:focus {
+    background-color: var(--color-focus-bg);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+.channel-item .icon {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* ========================================
+   Bottom Section: Governance & Metrics
+   ======================================== */
+.bottom-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.governance-box,
+.metrics-box {
+    background: transparent;
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+}
+
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.box-header .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.box-header h4 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-brand-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.governance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+}
+
+.governance-item {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.governance-item strong {
+    display: block;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+}
+
+.governance-item span {
+    color: var(--color-text-secondary);
+    outline: none;
+}
+
+.governance-item span:focus {
+    background-color: var(--color-focus-bg);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.metric-item {
+    text-align: center;
+}
+
+.metric-item label {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 2px;
+}
+
+.metric-item input {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-brand-primary);
+    border: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-white);
+}
+
+.metric-item input:focus {
+    outline: none;
+    background-color: var(--color-focus-bg);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (max-width: 1024px) {
+    .paper-a3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cdp-layout {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .data-sources,
+    .cdp-core,
+    .activation-channels {
+        min-height: 200px;
+        overflow: visible;
+    }
+
+    .bottom-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+
+    /* Force grid layout */
+    .paper-a3 {
+        display: grid !important;
+        grid-template-rows: auto 1fr auto auto !important;
+    }
+
+    .cdp-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1.5fr 1fr !important;
+        flex-direction: unset !important;
+        overflow: visible !important;
+    }
+
+    .data-sources,
+    .cdp-core,
+    .activation-channels {
+        min-height: unset !important;
+        overflow: visible !important;
+    }
+
+    .bottom-section {
+        display: grid !important;
+        grid-template-columns: 1.5fr 1fr !important;
+        flex-direction: unset !important;
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    /* Border adjustments for print */
+    .data-sources,
+    .cdp-core,
+    .activation-channels,
+    .governance-box,
+    .metrics-box {
+        border-width: 0.5pt;
+    }
+
+    .source-item,
+    .channel-item,
+    .capability-block {
+        border-width: 0.5pt;
+    }
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .data-sources {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .cdp-core {
+    background-color: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .activation-channels {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .governance-box {
+    background-color: var(--color-semantic-jobs);
+}
+
+body:not(.theme-dark).color-mode .metrics-box {
+    background-color: var(--color-semantic-neutral);
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}

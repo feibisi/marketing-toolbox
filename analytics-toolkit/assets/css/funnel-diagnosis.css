@@ -1,0 +1,484 @@
+/* Funnel Diagnosis - Design System Aligned */
+/* 漏斗诊断卡样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.diagnosis-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-sm);
+    overflow: hidden;
+    /* Keep to ensure no scrollbars, but content must fit */
+    padding-bottom: 2px;
+}
+
+/* ========================================
+   Header Styles (Standardized)
+   ======================================== */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-title .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-brand-blue);
+}
+
+.section-title h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   1. Funnel Section (Visual)
+   ======================================== */
+.funnel-section {
+    flex: 1.2;
+    /* Reduce flex share */
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.funnel-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    margin-top: 0;
+}
+
+/* Stages */
+.funnel-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    z-index: 2;
+}
+
+.stage-info {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.stage-name {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.stage-count {
+    display: block;
+    font-size: 10px;
+    color: var(--color-text-secondary);
+}
+
+.stage-bar {
+    width: 100%;
+    /* Override below for shape */
+    height: 50px;
+    /* Reduced from 80px */
+    background: var(--color-brand-blue);
+    border-radius: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Progressive Widths and Colors */
+.stage-1 .stage-bar {
+    width: 120px;
+    background: var(--color-brand-primary-dark);
+    /* Dark Blue */
+    opacity: 1;
+}
+
+.stage-2 .stage-bar {
+    width: 100px;
+    background: var(--color-brand-primary);
+    opacity: 0.9;
+}
+
+.stage-3 .stage-bar {
+    width: 80px;
+    background: var(--color-brand-primary-light);
+    opacity: 0.8;
+}
+
+.stage-4 .stage-bar {
+    width: 60px;
+    background: var(--color-brand-secondary);
+    opacity: 0.7;
+}
+
+/* Drop-off Connectors */
+.drop-off-connector {
+    width: 40px;
+    /* Reduced from 60px for tighter layout */
+    height: 2px;
+    background: var(--border-sem-inner);
+    margin: 0 -5px;
+    z-index: 1;
+    position: relative;
+    top: 25px;
+    /* Adjust alignment with bars */
+}
+
+.drop-off-info {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: var(--color-bg-subtle);
+    padding: 2px 6px;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drop-label {
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.drop-rate {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+}
+
+.drop-rate.error-highlight {
+    color: var(--color-semantic-danger);
+}
+
+.alert-icon {
+    width: 12px;
+    height: 12px;
+    color: var(--color-semantic-danger);
+    margin-top: 2px;
+}
+
+/* ========================================
+   2. Bottom Split (Diagnosis & Impact)
+   ======================================== */
+.bottom-split {
+    flex: 1;
+    /* Giving it equal share might still be too much if funnel is 1.2, but total height is fixed */
+    min-height: 0;
+    /* Important for flex children scrolling/fitting */
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.issues-panel,
+.impact-panel {
+    flex: 1;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.panel-header i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+}
+
+.panel-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Issues Checklist */
+.checklist-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.checklist-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checklist-group label {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--color-bg-subtle);
+    padding: 6px 8px;
+    border-radius: 0;
+}
+
+.check-item input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--color-brand-blue);
+}
+
+.check-item span {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+/* Impact Panel */
+.hypothesis-card {
+    background: var(--color-bg-info-subtle);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    border-radius: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hypo-label {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-info);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.hypo-content {
+    font-size: var(--font-size-sm);
+    color: #1e3a8a;
+    font-weight: 500;
+}
+
+.simulation-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sim-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    align-items: center;
+}
+
+.sim-row span:first-child {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.sim-val {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+.sim-row.highlight {
+    background: var(--color-bg-success-subtle);
+    border: 1px solid var(--color-semantic-growth-light);
+}
+
+.sim-row.highlight .sim-val {
+    color: var(--color-semantic-growth);
+}
+
+.sim-row.result {
+    background: var(--color-text-primary);
+    color: var(--color-bg-white);
+}
+
+.sim-row.result span:first-child {
+    color: var(--color-text-tertiary);
+}
+
+.sim-row.result .sim-val {
+    color: #fff;
+    font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .funnel-section,
+body.theme-dark .issues-panel,
+body.theme-dark .impact-panel {
+    background: var(--color-bg-subtle);
+    border-color: var(--border-sem-inner);
+}
+
+body.theme-dark .drop-off-info {
+    background: var(--color-bg-paper);
+    border-color: var(--border-sem-inner);
+}
+
+body.theme-dark .check-item {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .hypothesis-card {
+    background: rgba(30, 58, 138, 0.3);
+    border-color: rgba(30, 58, 138, 0.5);
+}
+
+body.theme-dark .hypo-label {
+    color: #93c5fd;
+}
+
+body.theme-dark .hypo-content {
+    color: #dbeafe;
+}
+
+body.theme-dark .sim-row {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .sim-row.highlight {
+    background: rgba(5, 150, 105, 0.2);
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+body.theme-dark .sim-row.highlight .sim-val {
+    color: #6ee7b7;
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .diagnosis-layout {
+        gap: var(--spacing-sm);
+    }
+
+    .funnel-stage .stage-bar {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .sim-row.highlight,
+    .hypothesis-card,
+    .sim-row.result {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* Recompose the horizontal funnel into a vertical diagnostic flow on phones. */
+@media screen and (max-width: 768px) {
+    body.desk-background {
+        position: static;
+        width: auto;
+        height: auto;
+        z-index: auto;
+        pointer-events: auto;
+    }
+
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md) var(--spacing-md) 88px;
+    }
+
+    #canvas.paper-a3 {
+        flex: none;
+        width: 100%;
+        max-width: none;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .diagnosis-layout {
+        flex: none;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .diagnosis-layout * {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .funnel-section {
+        flex: none;
+    }
+
+    .funnel-container {
+        flex: none;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .funnel-stage {
+        width: 100%;
+    }
+
+    .drop-off-connector {
+        top: auto;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        background: transparent;
+    }
+
+    .drop-off-info {
+        position: static;
+        transform: none;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .bottom-split {
+        flex: none;
+        min-height: 0;
+        flex-direction: column;
+    }
+
+    .issues-panel,
+    .impact-panel {
+        flex: none;
+    }
+
+    .checklist-container {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主题集群映射 (Topic Cluster Mapper)</title>
+    <meta name="description" content="规划 SEO 内容集群,建立支柱页面和子主题关系">
+    <meta name="keywords" content="主题集群,内容集群,支柱页面,SEO内容策略,内容规划">
+    <meta property="og:title" content="主题集群映射 - Modiqi Workbench">
+    <meta property="og:description" content="规划 SEO 内容集群,建立支柱页面和子主题关系">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/topic-cluster-mapper.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>主题集群映射</h1>
+                <span class="english-subtitle">Topic Cluster Mapper</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>网站 <span class="en-sub">(Website)</span></label>
+                    <input type="text" class="meta-input" placeholder="example.com" data-save-key="meta_website" aria-label="example.com">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+        <div class="tool-content">
+            <div class="cluster-container">
+                <div class="pillar-page">
+                    <div class="pillar-header">
+                        <i data-lucide="hexagon" class="icon"></i>
+                        <span>支柱页面 Pillar Page</span>
+                    </div>
+                    <div class="pillar-content" contenteditable="true" data-save-key="pillar_topic">数字营销完整指南</div>
+                    <div class="pillar-meta">
+                        <input type="text" class="meta-field" placeholder="目标关键词" data-save-key="pillar_keyword" aria-label="目标关键词">
+                        <input type="text" class="meta-field" placeholder="URL" data-save-key="pillar_url" aria-label="URL">
+                    </div>
+                </div>
+                <div class="cluster-grid">
+                    <div class="cluster-column">
+                        <div class="cluster-card">
+                            <div class="card-number">1</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic1">SEO 优化基础</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords1">关键词研究, 页面优化, 链接建设</div>
+                        </div>
+                        <div class="cluster-card">
+                            <div class="card-number">2</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic2">内容营销策略</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords2">内容规划, 博客写作, 内容分发</div>
+                        </div>
+                        <div class="cluster-card">
+                            <div class="card-number">3</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic3">社交媒体营销</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords3">平台选择, 内容策略, 社群运营</div>
+                        </div>
+                    </div>
+                    <div class="cluster-column">
+                        <div class="cluster-card">
+                            <div class="card-number">4</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic4">邮件营销技巧</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords4">列表建设, 邮件设计, 自动化</div>
+                        </div>
+                        <div class="cluster-card">
+                            <div class="card-number">5</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic5">付费广告投放</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords5">Google Ads, Facebook Ads, ROI</div>
+                        </div>
+                        <div class="cluster-card">
+                            <div class="card-number">6</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic6">数据分析与优化</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords6">Google Analytics, 转化追踪, A/B 测试</div>
+                        </div>
+                    </div>
+                    <div class="cluster-column">
+                        <div class="cluster-card">
+                            <div class="card-number">7</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic7">营销自动化工具</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords7">工具选择, 流程设计, 效率提升</div>
+                        </div>
+                        <div class="cluster-card">
+                            <div class="card-number">8</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic8">移动营销策略</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords8">移动优化, App 推广, 短信营销</div>
+                        </div>
+                        <div class="cluster-card">
+                            <div class="card-number">9</div>
+                            <div class="card-title" contenteditable="true" data-save-key="topic9">视频营销方法</div>
+                            <div class="card-keywords" contenteditable="true" data-save-key="keywords9">视频制作, YouTube SEO, 直播营销</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="strategy-section">
+                <div class="section-header">
+                    <i data-lucide="link" class="icon"></i>
+                    <h2>内链策略 <span class="en-sub">(Internal Linking Strategy)</span></h2>
+                </div>
+                <div class="strategy-content" contenteditable="true" data-save-key="linking_strategy">
+                    <p><strong>支柱页面:</strong> 提供主题的全面概述,链接到所有子主题页面</p>
+                    <p><strong>子主题页面:</strong> 深入探讨特定子主题,链接回支柱页面和相关子主题</p>
+                    <p><strong>锚文本:</strong> 使用描述性关键词作为锚文本,避免"点击这里"等通用文本</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        const app = new ModiqiApp({toolName: '主题集群映射', toolNameEn: 'Topic Cluster Mapper', saveKey: 'topic-cluster-mapper'});
+        lucide.createIcons();
+    </script>
+</body>
+</html>

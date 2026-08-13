@@ -1,0 +1,282 @@
+/* Google Ad Inspector Style */
+.ab-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+.variant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+.divider-vertical {
+    background: var(--border-sem-inner);
+    height: 100%;
+    width: 1px;
+    position: relative;
+}
+
+.vs-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    padding: 4px 8px;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    z-index: 2;
+}
+
+.variant-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid;
+}
+
+.col-a .col-header {
+    border-color: var(--color-brand-primary);
+}
+
+.col-b .col-header {
+    border-color: #f59e0b;
+}
+
+/* Orange for B */
+
+.variant-id {
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.col-a .variant-id {
+    color: var(--color-brand-primary);
+}
+
+.col-b .variant-id {
+    color: #f59e0b;
+}
+
+
+/* Ad Preview Card */
+.ad-preview-card {
+    background: white;
+    padding: 16px;
+    border-radius: 0;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-sem-inner);
+    font-family: Arial, sans-serif;
+    /* Google uses system fonts but Arial is safe fallback */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Google Search Ad Structure */
+.ad-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.ad-icon {
+    font-weight: bold;
+    color: #202124;
+    font-size: 12px;
+}
+
+.ad-display-url {
+    color: #202124;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ad-dots {
+    color: #5f6368;
+    margin-left: auto;
+}
+
+.ad-headline {
+    color: #1a0dab;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.ad-headline:hover {
+    text-decoration: underline;
+}
+
+.ad-description {
+    color: #4d5156;
+    font-size: 14px;
+    line-height: 1.58;
+}
+
+/* Input Form */
+.input-group {
+    background: var(--color-bg-subtle);
+    padding: 16px;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-input);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+}
+
+.char-count {
+    font-weight: normal;
+}
+
+.char-count.warning {
+    color: #f59e0b;
+}
+
+.char-count.error {
+    color: #ef4444;
+}
+
+.ad-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+}
+
+.ad-input:focus {
+    border-color: var(--color-brand-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+/* Experiment Settings */
+.metrics-box {
+    margin-top: auto;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 12px;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: var(--color-text-secondary);
+}
+
+.metric-val {
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+/* Winner Declaration */
+.winner-banner {
+    background: #dcfce7;
+    color: #166534;
+    padding: 8px;
+    text-align: center;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: bold;
+    display: none;
+    margin-top: 8px;
+}
+
+.col-a.winner .winner-banner,
+.col-b.winner .winner-banner {
+    display: block;
+}
+
+.col-b.winner .winner-banner {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Orange winning */
+
+
+/* Dark Mode */
+body.theme-dark .ad-preview-card {
+    background: #202124;
+    /* Google Dark Mode BG */
+    border-color: #3c4043;
+}
+
+body.theme-dark .ad-icon,
+body.theme-dark .ad-display-url {
+    color: #bdc1c6;
+}
+
+body.theme-dark .ad-headline {
+    color: #8ab4f8;
+}
+
+/* Google Dark Link Color */
+body.theme-dark .ad-description {
+    color: #bdc1c6;
+}
+
+body.theme-dark .input-group {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.theme-dark .ad-input {
+    background: #0f172a;
+    border-color: #334155;
+    color: white;
+}
+
+body.theme-dark .metrics-box {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .ab-container { min-height: 0; }
+    .variant-grid { grid-template-columns: 1fr; }
+    .divider-vertical { display: none; }
+    .variant-col { min-width: 0; }
+}
+

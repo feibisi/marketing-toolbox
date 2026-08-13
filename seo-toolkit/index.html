@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO优化工作台 - Modiqi Workbench</title>
+
+    <!-- Fonts -->
+
+    <!-- Meta -->
+    <meta property="og:title" content="SEO优化工作台 - Modiqi Workbench">
+    <meta property="og:description" content="搜索引擎优化全流程工具集合">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">SEO优化工作台</h1>
+                    <span class="version-tag">9 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Search Engine Optimization Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Keyword Research Tool -->
+            <a href="keyword-research.html" class="tool-card">
+                <i data-lucide="search" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">关键词</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <!-- Background -->
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Table Structure (A3 Canvas Representation) -->
+                        <!-- Header Row -->
+                        <rect x="10" y="15" width="180" height="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Column Headers (simplified) -->
+                        <rect x="10" y="15" width="50" height="20" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="60" y="15" width="30" height="20" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="90" y="15" width="25" height="20" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="115" y="15" width="25" height="20" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="140" y="15" width="25" height="20" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="165" y="15" width="25" height="20" fill="none" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Data Rows -->
+                        <rect x="10" y="35" width="180" height="18" fill="#fff" stroke="#e2e8f0" stroke-width="0.5" />
+                        <rect x="10" y="53" width="180" height="18" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="0.5" />
+                        <rect x="10" y="71" width="180" height="18" fill="#fff" stroke="#e2e8f0" stroke-width="0.5" />
+                        <rect x="10" y="89" width="180" height="18" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="0.5" />
+                        <rect x="10" y="107" width="180" height="18" fill="#fff" stroke="#e2e8f0" stroke-width="0.5" />
+
+                        <!-- Vertical Grid Lines -->
+                        <line x1="60" y1="35" x2="60" y2="125" stroke="#e2e8f0" stroke-width="0.5" />
+                        <line x1="90" y1="35" x2="90" y2="125" stroke="#e2e8f0" stroke-width="0.5" />
+                        <line x1="115" y1="35" x2="115" y2="125" stroke="#e2e8f0" stroke-width="0.5" />
+                        <line x1="140" y1="35" x2="140" y2="125" stroke="#e2e8f0" stroke-width="0.5" />
+                        <line x1="165" y1="35" x2="165" y2="125" stroke="#e2e8f0" stroke-width="0.5" />
+
+                        <!-- Sample Data Marks (text placeholders as rectangles) -->
+                        <rect x="14" y="40" width="38" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="14" y="45" width="28" height="2" rx="1" fill="#e2e8f0" />
+
+                        <rect x="64" y="41" width="18" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="94" y="41" width="14" height="3" rx="1" fill="#94a3b8" />
+                        <rect x="119" y="41" width="16" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="144" y="41" width="12" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="169" y="41" width="12" height="3" rx="1" fill="#cbd5e1" />
+
+                        <!-- Row 2 -->
+                        <rect x="14" y="58" width="35" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="64" y="59" width="16" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="94" y="59" width="14" height="3" rx="1" fill="#94a3b8" />
+
+                        <!-- Row 3 -->
+                        <rect x="14" y="76" width="32" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="64" y="77" width="18" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="94" y="77" width="14" height="3" rx="1" fill="#94a3b8" />
+
+                        <!-- Search Icon Overlay (top-right corner) -->
+                        <circle cx="175" cy="24" r="8" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+                        <line x1="181" y1="30" x2="186" y2="35" stroke="#94a3b8" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">关键词研究工具 <span class="en-sub">(Keyword Research)</span></h3>
+                    <p class="tool-desc">系统化研究SEO关键词，评估搜索量、难度与机会。</p>
+                </div>
+            </a>
+
+            <!-- 2. SEO Keyword Planner -->
+            <a href="seo-planner.html" class="tool-card">
+                <i data-lucide="list-checks" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">规划</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="20" y="20" width="160" height="100" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="30" width="80" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="120" y="30" width="50" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="30" y="45" width="70" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="120" y="45" width="50" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="30" y="60" width="75" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="120" y="60" width="50" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="30" y="75" width="65" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="120" y="75" width="50" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="30" y="90" width="80" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="120" y="90" width="50" height="8" rx="2" fill="#e2e8f0" />
+                        <circle cx="175" cy="30" r="3" fill="#94a3b8" />
+                        <circle cx="175" cy="45" r="3" fill="#94a3b8" />
+                        <circle cx="175" cy="60" r="3" fill="#64748b" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">SEO 关键词规划 <span class="en-sub">(SEO Keyword Planner)</span></h3>
+                    <p class="tool-desc">系统化关键词策略规划。</p>
+                </div>
+            </a>
+
+            <!-- 3. Keyword Intent Mapper -->
+            <a href="keyword-intent-mapper.html" class="tool-card">
+                <i data-lucide="brain-circuit" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">意图</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="70" r="30" fill="#f8fafc" stroke="#cbd5e1" />
+                        <circle cx="100" cy="70" r="15" fill="#e2e8f0" stroke="#94a3b8" />
+                        <path d="M100 40 L100 20" stroke="#cbd5e1" stroke-width="2" />
+                        <path d="M100 120 L100 100" stroke="#cbd5e1" stroke-width="2" />
+                        <path d="M70 70 L50 70" stroke="#cbd5e1" stroke-width="2" />
+                        <path d="M150 70 L130 70" stroke="#cbd5e1" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">搜索意图映射 <span class="en-sub">(Intent Mapper)</span></h3>
+                    <p class="tool-desc">识别关键词背后的用户搜索意图。</p>
+                </div>
+            </a>
+
+            <!-- 4. Technical SEO Audit -->
+            <a href="technical-seo-audit.html" class="tool-card">
+                <i data-lucide="file-code" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">技术</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="40" y="30" width="120" height="80" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <path d="M60 50 L140 50" stroke="#e2e8f0" stroke-width="2" />
+                        <path d="M60 70 L120 70" stroke="#e2e8f0" stroke-width="2" />
+                        <path d="M60 90 L100 90" stroke="#e2e8f0" stroke-width="2" />
+                        <circle cx="150" cy="100" r="12" fill="#22c55e" />
+                        <path d="M146 100 L149 103 L154 97" stroke="white" stroke-width="2" fill="none" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">技术 SEO 审计 <span class="en-sub">(Technical Audit)</span></h3>
+                    <p class="tool-desc">网站健康检查与技术问题诊断。</p>
+                </div>
+            </a>
+
+            <!-- 5. Topic Cluster Mapper -->
+            <a href="topic-cluster-mapper.html" class="tool-card">
+                <i data-lucide="network" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">内容</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="70" r="20" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="50" cy="40" r="10" fill="#f8fafc" stroke="#cbd5e1" />
+                        <circle cx="150" cy="40" r="10" fill="#f8fafc" stroke="#cbd5e1" />
+                        <circle cx="50" cy="100" r="10" fill="#f8fafc" stroke="#cbd5e1" />
+                        <circle cx="150" cy="100" r="10" fill="#f8fafc" stroke="#cbd5e1" />
+                        <line x1="100" y1="70" x2="50" y2="40" stroke="#e2e8f0" />
+                        <line x1="100" y1="70" x2="150" y2="40" stroke="#e2e8f0" />
+                        <line x1="100" y1="70" x2="50" y2="100" stroke="#e2e8f0" />
+                        <line x1="100" y1="70" x2="150" y2="100" stroke="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">主题集群映射 <span class="en-sub">(Topic Clusters)</span></h3>
+                    <p class="tool-desc">规划支柱页面与集群内容结构。</p>
+                </div>
+            </a>
+
+            <!-- 6. SERP Analyzer -->
+            <a href="serp-analyzer.html" class="tool-card">
+                <i data-lucide="search-check" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">竞争</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="140" height="15" rx="2" fill="#fef9c3" stroke="#fde047" />
+                        <rect x="30" y="55" width="140" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="85" width="140" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">SERP 竞争分析 <span class="en-sub">(SERP Analyzer)</span></h3>
+                    <p class="tool-desc">分析搜索结果页特征与竞争难度。</p>
+                </div>
+            </a>
+
+            <!-- 7. Backlink Matrix -->
+            <a href="backlink-matrix.html" class="tool-card">
+                <i data-lucide="link" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">外链</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="100" y1="20" x2="100" y2="120" stroke="#e2e8f0" stroke-width="2" />
+                        <line x1="40" y1="70" x2="160" y2="70" stroke="#e2e8f0" stroke-width="2" />
+                        <circle cx="140" cy="40" r="5" fill="#22c55e" />
+                        <circle cx="60" cy="40" r="5" fill="#cbd5e1" />
+                        <circle cx="60" cy="100" r="5" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">外链机会矩阵 <span class="en-sub">(Backlink Matrix)</span></h3>
+                    <p class="tool-desc">基于相关性与权威度评估外链机会。</p>
+                </div>
+            </a>
+
+            <!-- 8. Schema Generator -->
+            <a href="schema-generator.html" class="tool-card">
+                <i data-lucide="code" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">代码</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Code snippet visual -->
+                        <rect x="30" y="30" width="140" height="80" rx="4" fill="#1e293b" />
+                        <rect x="40" y="45" width="80" height="4" rx="2" fill="#64748b" />
+                        <rect x="40" y="55" width="60" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="40" y="65" width="40" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="40" y="75" width="90" height="4" rx="2" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">Schema 生成器 <span class="en-sub">(Schema Gen)</span></h3>
+                    <p class="tool-desc">生成 JSON-LD 结构化数据代码 (FAQ, Article)。</p>
+                </div>
+            </a>
+
+            <!-- 9. Core Web Vitals Simulator -->
+            <a href="core-vitals.html" class="tool-card">
+                <i data-lucide="gauge" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">体验</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Gauges -->
+                        <circle cx="50" cy="70" r="20" fill="none" stroke="#e2e8f0" stroke-width="4" />
+                        <circle cx="50" cy="70" r="20" fill="none" stroke="#22c55e" stroke-width="4"
+                            stroke-dasharray="80" stroke-dashoffset="20" />
+
+                        <circle cx="100" cy="70" r="20" fill="none" stroke="#e2e8f0" stroke-width="4" />
+                        <circle cx="100" cy="70" r="20" fill="none" stroke="#f59e0b" stroke-width="4"
+                            stroke-dasharray="80" stroke-dashoffset="40" />
+
+                        <circle cx="150" cy="70" r="20" fill="none" stroke="#e2e8f0" stroke-width="4" />
+                        <circle cx="150" cy="70" r="20" fill="none" stroke="#ef4444" stroke-width="4"
+                            stroke-dasharray="80" stroke-dashoffset="60" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">核心网页指标模拟器 <span class="en-sub">(Core Vitals)</span></h3>
+                    <p class="tool-desc">LCP, FID, CLS 指标诊断与优化清单。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+/* OKR Template - Tool Specific Styles */
+
+/* OKR Container */
+.okr-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-sem-outer);
+}
+
+/* Objective Block */
+.okr-objective {
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.okr-objective:last-child {
+    border-bottom: none;
+}
+
+/* Objective Header */
+.obj-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.obj-number {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.79rem;
+    border: 2px solid var(--border-sem-outer);
+    border-radius: 0;
+    flex-shrink: 0;
+}
+
+.obj-title {
+    flex: 1;
+    font-weight: 700;
+    font-size: 1rem;
+    outline: none;
+}
+
+.obj-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+/* Key Results List */
+.kr-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Key Result Row */
+.kr-row {
+    display: grid;
+    grid-template-columns: 40px 1fr 120px 80px;
+    border-bottom: 1px solid var(--border-sem-inner);
+    min-height: 42px;
+}
+
+.kr-row:last-child {
+    border-bottom: none;
+}
+
+/* KR Number */
+.kr-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border-right: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+}
+
+/* KR Content */
+.kr-content {
+    padding: 0.75rem;
+    outline: none;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+/* KR Target */
+.kr-target {
+    padding: 0.75rem;
+    outline: none;
+    font-size: 0.85rem;
+    text-align: center;
+    border-right: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+}
+
+/* KR Progress */
+.kr-progress {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kr-progress input[type="number"] {
+    width: 50px;
+    padding: 4px 6px;
+    border: 1px solid var(--border-sem-input-hover);
+    border-radius: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+/* Column Headers */
+.kr-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 120px 80px;
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.kr-header>div {
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.kr-header>div:last-child {
+    border-right: none;
+}
+
+.obj-header:focus-within,
+.kr-row:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .okr-objective:nth-child(1) .obj-header {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .okr-objective:nth-child(2) .obj-header {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .okr-objective:nth-child(3) .obj-header {
+    background-color: var(--color-semantic-highlight);
+}
+
+/* Optional: Slight tint for KR headers to match */
+body:not(.theme-dark).color-mode .okr-objective:nth-child(1) .kr-header,
+body:not(.theme-dark).color-mode .okr-objective:nth-child(1) .kr-number,
+body:not(.theme-dark).color-mode .okr-objective:nth-child(1) .kr-target,
+body:not(.theme-dark).color-mode .okr-objective:nth-child(1) .kr-progress input {
+    background-color: var(--color-bg-subtle-success);
+    /* Use specific semantic tint if available, or just neutral */
+}
+
+/* ========================================
+   Presentation Mode
+   ======================================== */
+body.presentation-mode .okr-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen {
+    .paper-a3 {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .kr-header {
+        display: none;
+    }
+
+    .kr-row {
+        grid-template-columns: 32px minmax(0, 1fr);
+    }
+
+    .kr-target,
+    .kr-progress {
+        grid-column: 2;
+        border-top: 1px solid var(--border-sem-inner);
+        border-right: 0;
+    }
+}

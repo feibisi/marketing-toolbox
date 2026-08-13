@@ -1,0 +1,1257 @@
+/* ============================================
+   MODIQI DESIGN SYSTEM - CANVAS
+   Canvas tool specific styles (A3/A4 paper, headers, toolbars)
+   Version: 1.0.0
+   ============================================ */
+
+/* ========================================
+   DESK BACKGROUND
+   ======================================== */
+
+.desk-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--color-bg-desk);
+    background-image: var(--texture-noise);
+}
+
+/* ========================================
+   CANVAS BODY LAYOUT
+   ======================================== */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    box-sizing: border-box;
+}
+
+/* ========================================
+   PAPER CONTAINERS
+   ======================================== */
+
+/* A3 Landscape Paper */
+.paper-a3 {
+    background-color: var(--color-bg-paper);
+    width: 100%;
+    max-width: var(--container-2xl);
+    aspect-ratio: var(--paper-a3-aspect);
+    box-shadow: var(--shadow-paper);
+    padding: var(--spacing-2xl);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Paper texture overlay */
+.paper-a3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--texture-noise-subtle);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* A4 Portrait Paper */
+.paper-a4 {
+    background-color: var(--color-bg-paper);
+    width: 100%;
+    max-width: 794px;
+    aspect-ratio: 1 / 1.414;
+    box-shadow: var(--shadow-paper);
+    padding: 48px 60px;
+    /* Top/Bottom 0.5in, Sides ~1.6cm (Space efficient) */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.paper-a4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--texture-noise-subtle);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* A4 Landscape Paper */
+.paper-a4.landscape {
+    max-width: 1123px;
+    aspect-ratio: 1.414 / 1;
+    padding: 48px 60px;
+    /* Consistent optimize margins */
+}
+
+/* ========================================
+   A4 COMPACT HEADER - Matching design system
+   ======================================== */
+.paper-a4 .canvas-header {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-brand-primary);
+    column-gap: var(--spacing-lg);
+    /* 2-Row Layout */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "title"
+        "meta";
+    row-gap: var(--spacing-sm);
+}
+
+.paper-a4 .canvas-header h1 {
+    font-size: var(--font-size-3xl);
+}
+
+.paper-a4 .english-subtitle {
+    font-size: var(--font-size-xs);
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.paper-a4 .title-group {
+    gap: var(--spacing-md);
+}
+
+.paper-a4 .meta-info {
+    gap: var(--spacing-lg);
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+.paper-a4 .meta-group label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.paper-a4 .meta-input {
+    font-size: var(--font-size-base);
+    width: 130px;
+}
+
+/* ========================================
+   A4 COMPACT FOOTER
+   ======================================== */
+.paper-a4 .canvas-footer,
+.paper-a4 .modiqi-footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+}
+
+.paper-a4 .footer-logo {
+    height: 28px;
+}
+
+/* ========================================
+   CANVAS HEADER
+   ======================================== */
+
+.canvas-header {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-brand-primary);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "title meta";
+    align-items: center;
+    column-gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+/* Title Group */
+.title-group {
+    grid-area: title;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.canvas-header h1 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    margin: 0;
+}
+
+.english-subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-widest);
+    color: var(--color-text-primary);
+    opacity: 0.65;
+    margin-top: 2px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Meta Info */
+.meta-info {
+    grid-area: meta;
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.meta-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.meta-group label {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+.meta-input {
+    border: none;
+    border-bottom: 1px dashed var(--color-border-medium);
+    background: transparent;
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    outline: none;
+    width: 140px;
+    font-family: inherit;
+    text-align: left;
+}
+
+.meta-input:focus {
+    border-bottom-color: var(--color-brand-primary);
+}
+
+/* ========================================
+   NUMERIC INPUT FIELDS
+   ======================================== */
+.metric-input,
+.number-input,
+.amount-input {
+    border: none;
+    border-bottom: 1px dashed var(--color-border-medium);
+    background: transparent;
+    outline: none;
+}
+
+.metric-input:hover,
+.number-input:hover,
+.amount-input:hover {
+    border-bottom-color: var(--color-border-dark);
+}
+
+.metric-input:focus,
+.number-input:focus,
+.amount-input:focus {
+    border-bottom-color: var(--color-brand-primary);
+}
+
+/* ========================================
+   CANVAS FOOTER
+   ======================================== */
+
+.canvas-footer,
+.modiqi-footer {
+    margin-top: auto;
+    /* 关键：确保 footer 始终在画布底部 */
+    padding-top: var(--spacing-lg);
+    border-top: 1px dashed var(--border-sem-dashed);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.6;
+}
+
+.footer-logo {
+    height: 32px;
+    width: auto;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-logo:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Toolbar Hidden Mode - Logo indicator */
+body.toolbar-hidden .footer-logo {
+    opacity: 1;
+    transform: scale(0.9);
+}
+
+/* Toolbar Hidden Mode - Hide toolbar with animation */
+body.toolbar-hidden .modiqi-toolbar {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: none;
+}
+
+/* ========================================
+   BRANDING
+   ======================================== */
+
+.modiqi-logo {
+    height: 40px;
+    width: auto;
+    margin-right: var(--spacing-md);
+}
+
+/* ========================================
+   FLOATING TOOLBAR
+   ======================================== */
+
+.modiqi-toolbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-white);
+    padding: var(--spacing-sm);
+    border: var(--border-width-thin) solid var(--color-border-light);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-lg);
+    z-index: var(--z-toolbar);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.modiqi-toolbar button {
+    background: transparent;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modiqi-toolbar .btn-mobile-toolbar {
+    display: flex;
+    flex: 0 0 40px;
+}
+
+/* Keep the canvas clear by default. Actions remain one click away and the
+   expanded strip preserves the original desktop layout. */
+body:not(.mobile-toolbar-expanded) .modiqi-toolbar {
+    right: 20px;
+    left: auto;
+    width: 48px;
+    padding: 3px;
+    overflow: hidden;
+    transform: none;
+}
+
+body:not(.mobile-toolbar-expanded) .modiqi-toolbar > :not(.btn-mobile-toolbar) {
+    display: none;
+}
+
+.modiqi-toolbar button:hover {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+.modiqi-toolbar button svg,
+.modiqi-toolbar button .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    display: block;
+}
+
+.modiqi-toolbar button.btn-reset:hover {
+    background: #fff1f0;
+    border-color: #ffa39e;
+    color: var(--color-brand-accent);
+}
+
+/* Toolbar Dividers */
+.toolbar-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--color-border-light);
+    margin: 0 var(--spacing-xs);
+}
+
+/* Button Active States */
+.modiqi-toolbar button.is-active {
+    background: var(--color-bg-paper);
+    color: var(--color-text-primary);
+    border-color: var(--color-brand-primary);
+}
+
+.modiqi-toolbar button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Enhanced Tooltips */
+.modiqi-toolbar button {
+    position: relative;
+}
+
+.modiqi-toolbar button::after {
+    content: attr(title);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1000;
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.modiqi-toolbar button::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.modiqi-toolbar button:hover::after,
+.modiqi-toolbar button:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tooltip transition */
+.modiqi-toolbar button::after,
+.modiqi-toolbar button::before {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* ========================================
+   COMMON GRID CELLS & CONTENT AREAS
+   ======================================== */
+
+.cell {
+    outline: none;
+}
+
+.cell:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Content Areas */
+.content-area,
+.card-content,
+.sec-content,
+.q-content,
+.f-content,
+.note-content,
+.zone-content {
+    outline: none;
+}
+
+.content-area:focus,
+.card-content:focus,
+.sec-content:focus,
+.q-content:focus,
+.f-content:focus,
+.note-content:focus,
+.zone-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   SECTION HEADERS (Common Pattern)
+   ======================================== */
+
+.section-header,
+.sec-header,
+.q-header,
+.f-header,
+.zone-header,
+.dim-label,
+.detail-label,
+.h2-header,
+.h3-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+}
+
+/* Section Header Icons */
+.section-header .icon,
+.sec-header .icon,
+.q-header .icon,
+.f-header .icon,
+.card-header .icon,
+.zone-header .icon,
+.insight-header .icon {
+    flex-shrink: 0;
+    color: var(--color-text-primary);
+}
+
+/* English Subtitle Pattern */
+.section-header .en-sub,
+.sec-header .en-sub,
+.q-header .en-sub,
+.f-header .en-sub,
+.card-header .en-sub,
+.zone-header .en-sub,
+.dim-label .en-sub,
+.detail-label .en-sub,
+.bmc-header .en-sub,
+.p-header .en-sub,
+.stage-name .en-sub,
+.obj-label .en-sub,
+.kr-header .en-sub,
+.day-header .en-sub,
+.threat-label .en-sub,
+.row-header .en-sub,
+h2 .en-sub,
+h3 .en-sub,
+h4 .en-sub,
+.meta-group .en-sub,
+.trait-label .en-sub,
+.pane-label .en-sub {
+    font-size: 0.65em;
+    font-weight: 400;
+    margin-left: var(--spacing-sm);
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    display: inline-block;
+    font-family: var(--font-sans);
+}
+
+/* ========================================
+   BULLET LISTS (Common Pattern)
+   ======================================== */
+
+/* ========================================
+   STANDARDIZED LISTS
+   ======================================== */
+
+.bullet-list,
+.card-content ul,
+.sec-content ul,
+.q-content ul,
+.f-content ul,
+.zone-content ul,
+.bmc-content ul,
+.note-content ul,
+.cell-content ul,
+.force-content ul,
+.p-answer ul,
+.detail-content ul,
+.insight-content ul,
+.dim-content ul,
+.cell ul,
+.content-area ul,
+.arch-desc ul,
+.arch-desc ol,
+.arch-content ul,
+.arch-content ol,
+.kr-content ul,
+.kr-content ol,
+.section-content ul,
+.section-content ol {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    margin: 0;
+}
+
+.bullet-list li,
+.card-content li,
+.sec-content li,
+.zone-content li,
+.q-content li,
+.f-content li,
+.bmc-content li,
+.note-content li,
+.cell-content li,
+.force-content li,
+.p-answer li,
+.detail-content li,
+.insight-content li,
+.dim-content li,
+.cell li,
+.content-area li,
+.arch-desc li,
+.arch-content li,
+.kr-content li,
+.section-content li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.25rem;
+    line-height: inherit;
+}
+
+.bullet-list li::before,
+.card-content li::before,
+.sec-content li::before,
+.zone-content li::before,
+.q-content li::before,
+.f-content li::before,
+.bmc-content li::before,
+.note-content li::before,
+.cell-content li::before,
+.force-content li::before,
+.p-answer li::before,
+.detail-content li::before,
+.insight-content li::before,
+.dim-content li::before,
+.cell li::before,
+.arch-desc li::before,
+.arch-content li::before,
+.kr-content li::before,
+.content-area li::before,
+.section-content li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-text-tertiary);
+    font-weight: normal;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+/* ========================================
+   THEME: WHITEBOARD
+   ======================================== */
+
+body.theme-whiteboard .paper-a3,
+body.theme-whiteboard .paper-a4 {
+    box-shadow: var(--shadow-md);
+}
+
+body.theme-whiteboard .paper-a3::before,
+body.theme-whiteboard .paper-a4::before {
+    display: none;
+}
+
+/* ========================================
+   THEME: DARK
+   ======================================== */
+
+body.theme-dark .paper-a3,
+body.theme-dark .paper-a4 {
+    /* Purely token driven now */
+    box-shadow: var(--shadow-paper);
+    border: none;
+}
+
+body.theme-dark .paper-a3::before,
+body.theme-dark .paper-a4::before {
+    opacity: 0.02;
+    mix-blend-mode: overlay;
+}
+
+body.theme-dark .canvas-header {
+    border-bottom-color: var(--color-text-primary);
+}
+
+body.theme-dark .modiqi-toolbar {
+    background-color: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .modiqi-toolbar button {
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .modiqi-toolbar button:hover {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-strong);
+}
+
+body.theme-dark .modiqi-footer,
+body.theme-dark .canvas-footer {
+    color: var(--color-text-secondary);
+    border-top-color: var(--border-sem-dashed);
+}
+
+body.theme-dark .meta-input {
+    border-bottom-color: var(--color-border-medium);
+}
+
+body.theme-dark .metric-input,
+body.theme-dark .number-input,
+body.theme-dark .amount-input {
+    border-bottom-color: var(--color-border-medium);
+}
+
+body.theme-dark .content-area:focus,
+body.theme-dark .card-content:focus,
+body.theme-dark .sec-content:focus,
+body.theme-dark .q-content:focus,
+body.theme-dark .f-content:focus,
+body.theme-dark .zone-content:focus,
+body.theme-dark .cell:focus {
+    background-color: var(--color-focus-bg);
+}
+
+body.theme-dark .section-header .icon,
+body.theme-dark .sec-header .icon,
+body.theme-dark .q-header .icon,
+body.theme-dark .f-header .icon,
+body.theme-dark .card-header .icon,
+body.theme-dark .zone-header .icon,
+body.theme-dark .insight-header .icon {
+    color: var(--color-text-secondary);
+}
+
+body.theme-dark .en-sub {
+    color: var(--color-text-tertiary);
+}
+
+body.theme-dark .footer-logo {
+    filter: invert(1) grayscale(1);
+}
+
+/* ========================================
+   ZOOM MODE (Large Screen Display)
+   ======================================== */
+
+body.is-zoomed {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-top: var(--spacing-xl);
+}
+
+/* Smooth zoom transition - always applied */
+main {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Zoom button active state indicator */
+.btn-zoom.is-active {
+    background-color: var(--color-brand-primary);
+    color: white;
+}
+
+/* ========================================
+   COLOR MODE - Semantic Background Colors
+   ======================================== */
+
+/* Color mode button active state */
+body:not(.theme-dark).color-mode .btn-color-mode {
+    background-color: var(--color-brand-primary);
+    color: white;
+}
+
+/* SWOT Analysis - 4 Quadrant Colors */
+body:not(.theme-dark).color-mode .swot-card.strength,
+body:not(.theme-dark).color-mode .swot-card:nth-child(1),
+body:not(.theme-dark).color-mode [data-quadrant="strength"] {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .swot-card.weakness,
+body:not(.theme-dark).color-mode .swot-card:nth-child(2),
+body:not(.theme-dark).color-mode [data-quadrant="weakness"] {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .swot-card.opportunity,
+body:not(.theme-dark).color-mode .swot-card:nth-child(3),
+body:not(.theme-dark).color-mode [data-quadrant="opportunity"] {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .swot-card.threat,
+body:not(.theme-dark).color-mode .swot-card:nth-child(4),
+body:not(.theme-dark).color-mode [data-quadrant="threat"] {
+    background-color: var(--color-semantic-threat);
+}
+
+/* Value Proposition Canvas */
+body:not(.theme-dark).color-mode .section-gains,
+body:not(.theme-dark).color-mode .section-gain-creators,
+body:not(.theme-dark).color-mode [data-section="gains"] {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .section-pains,
+body:not(.theme-dark).color-mode .section-pain-relievers,
+body:not(.theme-dark).color-mode [data-section="pains"] {
+    background-color: var(--color-semantic-pain);
+}
+
+body:not(.theme-dark).color-mode .section-jobs,
+body:not(.theme-dark).color-mode [data-section="jobs"] {
+    background-color: var(--color-semantic-jobs);
+}
+
+body:not(.theme-dark).color-mode .section-products,
+body:not(.theme-dark).color-mode [data-section="products"] {
+    background-color: var(--color-semantic-product);
+}
+
+/* Empathy Map */
+body:not(.theme-dark).color-mode .empathy-section.thinks,
+body:not(.theme-dark).color-mode [data-section="thinks"] {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .empathy-section.feels,
+body:not(.theme-dark).color-mode [data-section="feels"] {
+    background-color: var(--color-semantic-pain);
+}
+
+body:not(.theme-dark).color-mode .empathy-section.says,
+body:not(.theme-dark).color-mode [data-section="says"] {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .empathy-section.does,
+body:not(.theme-dark).color-mode [data-section="does"] {
+    background-color: var(--color-semantic-jobs);
+}
+
+/* Impact/Effort Matrix */
+body:not(.theme-dark).color-mode .quadrant-1,
+body:not(.theme-dark).color-mode [data-quadrant="quick-wins"] {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .quadrant-2,
+body:not(.theme-dark).color-mode [data-quadrant="major-projects"] {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .quadrant-3,
+body:not(.theme-dark).color-mode [data-quadrant="fill-ins"] {
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .quadrant-4,
+body:not(.theme-dark).color-mode [data-quadrant="thankless"] {
+    background-color: var(--color-semantic-threat);
+}
+
+/* General semantic classes */
+body:not(.theme-dark).color-mode .semantic-positive {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .semantic-negative {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .semantic-neutral {
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .semantic-highlight {
+    background-color: var(--color-semantic-opportunity);
+}
+
+/* Transition for smooth color change */
+/* Transition for smooth color change */
+body:not(.theme-dark).color-mode .swot-card,
+body:not(.theme-dark).color-mode .vpc-section,
+body:not(.theme-dark).color-mode .empathy-section,
+body:not(.theme-dark).color-mode [class*="quadrant"],
+body:not(.theme-dark).color-mode [class*="section-"] {}
+
+/* ========================================
+   PRESENTATION MODE
+   ======================================== */
+
+body.presentation-mode {
+    background: var(--color-brand-primary);
+}
+
+/* ========================================
+   PRESENTATION MODE (Fullscreen)
+   Only changes: dark background, hide toolbar/footer
+   Paper size and proportions stay UNCHANGED
+   ======================================== */
+
+body.presentation-mode {
+    background: var(--color-brand-primary) !important;
+}
+
+body.presentation-mode {
+    background: var(--color-brand-primary) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body.presentation-mode main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    max-height: 100%;
+    /* Ensure main doesn't force stretching */
+    width: 100%;
+    height: 100%;
+}
+
+/* Prevent paper distortion in presentation mode */
+body.presentation-mode .paper-a3,
+body.presentation-mode .paper-a4,
+body.presentation-mode .paper-a4-portrait {
+    flex-shrink: 0;
+    /* Don't shrink */
+    max-width: none;
+    /* Let zoom handle size */
+    max-height: none;
+    margin: auto;
+    /* Center in flex container if there's space */
+}
+
+/* Fix for flex: 1 grid containers collapsing in presentation mode */
+body.presentation-mode .paper-a3>*:not(.canvas-footer):not(.modiqi-footer),
+body.presentation-mode .paper-a4>*:not(.canvas-footer):not(.modiqi-footer) {
+    width: 100%;
+}
+
+body.presentation-mode .desk-background {
+    background-image: none !important;
+}
+
+
+/* 
+    Presentation Mode Toolbar Behavior:
+    1. Initially hidden (opacity 0, translated down)
+    2. Revealed on hover (opacity 1, translated up)
+    3. Trigger area defined by a larger invisible pseudo-element
+*/
+body.presentation-mode .modiqi-toolbar {
+    display: flex !important;
+    position: fixed;
+    bottom: 20px;
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 2000;
+    /* Ensure strictly above everything */
+}
+
+/* Expand the hit area to the bottom of the screen */
+body.presentation-mode .modiqi-toolbar::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    /* Extend to bottom edge */
+    left: -20px;
+    right: -20px;
+    top: -20px;
+    /* Extend slightly upwards */
+    background: transparent;
+    z-index: -1;
+}
+
+/* Show toolbar when hovering over it OR when hovering near the bottom edge */
+body.presentation-mode .modiqi-toolbar:hover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Create a bottom hover zone to trigger the toolbar */
+body.presentation-mode::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    /* Active zone height */
+    z-index: 1999;
+}
+
+/* When hovering the bottom zone, valid toolbar becomes visible if we could target it via sibling selector, 
+   but CSS can't select previous siblings. 
+   Instead, we rely on the toolbar's own expanded hit area or simply ensure the toolbar 
+   is placed where the user naturally goes. 
+   
+   Actually, the best way for CSS-only "dock reveal" is adjusting the toolbar itself.
+*/
+
+/* Revised: Toolbar sits at bottom, hidden by opacity/transform, but is the target itself */
+body.presentation-mode .modiqi-toolbar {
+    bottom: 10px;
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+
+    /* Ensure it captures mouse events even when hidden */
+    pointer-events: auto;
+
+    /* Visual tweak for dark mode */
+    background: rgba(40, 40, 40, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.presentation-mode .modiqi-toolbar button {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.presentation-mode .modiqi-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Reveal when hovering the bottom area of the viewport */
+/* Since we can't detect "hover bottom of body -> show child", we make the toolbar container HUGE invisible block at bottom */
+/* But that blocks clicks on content. */
+
+/* Alternative: Just make the toolbar triggerable by hovering IT, but it must be slightly visible or have a peek. */
+/* Let's try: Toolbar is hidden, but has a large invisible ::after that sits at the bottom edge. */
+
+body.presentation-mode .modiqi-toolbar {
+    transform: translateX(-50%) translateY(0);
+    /* Reset transform */
+    opacity: 0;
+    bottom: 20px;
+}
+
+body.presentation-mode .modiqi-toolbar:hover {
+    opacity: 1;
+}
+
+/* To make it easier to hit, add an invisible paddle */
+body.presentation-mode .modiqi-toolbar::after {
+    content: "";
+    position: absolute;
+    left: -50px;
+    right: -50px;
+    bottom: -40px;
+    /* Extend to screen bottom */
+    top: -20px;
+    z-index: -1;
+}
+
+body.presentation-mode .modiqi-footer {
+    display: none !important;
+}
+
+/* Simplified toolbar in presentation mode - hide unnecessary buttons */
+body.presentation-mode .modiqi-toolbar .btn-zoom,
+body.presentation-mode .modiqi-toolbar .btn-export-img,
+body.presentation-mode .modiqi-toolbar .btn-share,
+body.presentation-mode .modiqi-toolbar button[title*="导入"],
+body.presentation-mode .modiqi-toolbar button[title*="导出"],
+body.presentation-mode .modiqi-toolbar button[title*="Import"],
+body.presentation-mode .modiqi-toolbar button[title*="Export"] {
+    display: none !important;
+}
+
+/* Also hide dividers next to hidden buttons */
+body.presentation-mode .modiqi-toolbar .toolbar-divider:nth-child(3),
+body.presentation-mode .modiqi-toolbar .toolbar-divider:nth-child(6) {
+    display: none;
+}
+
+/* ========================================
+   PRINT STYLES - TRUE WYSIWYG
+   Preserve EXACT screen layout, fill page
+   ======================================== */
+
+@media print {
+
+    /* Preserve background colors and images */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide UI elements only */
+    .modiqi-toolbar,
+    .desk-background,
+    .modiqi-footer,
+    .no-print {
+        display: none !important;
+    }
+
+    /* Reset body */
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Main container - fill page */
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Paper - fill the entire page, keep flex layout */
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait {
+        box-shadow: none !important;
+        margin: 0 !important;
+        border: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        aspect-ratio: unset !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Ensure paper texture overlay doesn't print */
+    .paper-a3::before,
+    .paper-a4::before,
+    .paper-a4-portrait::before {
+        display: none !important;
+    }
+
+    /* Ensure contenteditable areas don't show focus rings */
+    [contenteditable] {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* @page rules - no margin to eliminate browser headers/footers */
+@page {
+    margin: 0;
+}
+
+/* Keep the action strip reachable on narrow screens. Complex canvases retain
+   their current paper layout until each core page receives a reviewed mobile
+   composition; this rule fixes toolbar overflow without hiding canvas debt. */
+@media screen and (max-width: 768px) {
+    .canvas-header,
+    .paper-a4 .canvas-header {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "title"
+            "meta";
+        align-items: start;
+        row-gap: var(--spacing-md);
+    }
+
+    .title-group,
+    .paper-a4 .title-group {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .canvas-header h1 {
+        overflow-wrap: anywhere;
+    }
+
+    .meta-info,
+    .paper-a4 .meta-info {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-sm);
+        justify-content: stretch;
+    }
+
+    .meta-group {
+        min-width: 0;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .meta-input,
+    .paper-a4 .meta-input {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .modiqi-toolbar {
+        right: var(--spacing-md);
+        left: var(--spacing-md);
+        width: auto;
+        max-width: calc(100vw - (2 * var(--spacing-md)));
+        transform: none;
+        justify-content: flex-start;
+        overflow-x: auto;
+        box-sizing: border-box;
+    }
+
+    body:not(.mobile-toolbar-expanded) .modiqi-toolbar {
+        right: var(--spacing-md);
+        left: auto;
+        width: 48px;
+        padding: 3px;
+        overflow: hidden;
+    }
+
+    body:not(.mobile-toolbar-expanded) .modiqi-toolbar > :not(.btn-mobile-toolbar) {
+        display: none;
+    }
+
+    .modiqi-toolbar button {
+        flex: 0 0 auto;
+    }
+
+    .toolbar-divider {
+        flex: 0 0 1px;
+    }
+}

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modiqi Digital Strategy Workbench (莫蒂奇数字化战略工作台)</title>
+    <!-- Fonts -->
+
+    <!-- Meta -->
+    <meta property="og:title" content="Modiqi Digital Strategy Workbench">
+    <meta property="og:description" content="The Digital Strategy Workbench for Professional Thinkers.">
+    <meta property="og:image" content="./modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Direction D: Blueprint/Drafting Style Overrides for Toolkit Launcher */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">数字化战略工作台</h1>
+                    <span class="version-tag">24 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">为专业思考者打造的数字化战略工作台</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <!-- Tool Grid (Virtual Desk) -->
+        <div class="launcher-grid">
+
+            <!-- 2. SWOT Analysis (Grid Visual) -->
+            <a href="swot-analysis.html" class="tool-card">
+                <i data-lucide="layout-grid" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">分析</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 4 Quadrants (Subtle Grays) -->
+                        <rect x="10" y="10" width="86" height="56" rx="2" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="1" />
+                        <rect x="104" y="10" width="86" height="56" rx="2" fill="#fff" stroke="#e2e8f0"
+                            stroke-width="1" />
+                        <rect x="10" y="74" width="86" height="56" rx="2" fill="#fff" stroke="#e2e8f0"
+                            stroke-width="1" />
+                        <rect x="104" y="74" width="86" height="56" rx="2" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="1" />
+
+                        <!-- Letters -->
+                        <text x="18" y="30" font-family="sans-serif" font-size="12" font-weight="bold"
+                            fill="#94a3b8">S</text>
+                        <text x="112" y="30" font-family="sans-serif" font-size="12" font-weight="bold"
+                            fill="#94a3b8">W</text>
+                        <text x="18" y="94" font-family="sans-serif" font-size="12" font-weight="bold"
+                            fill="#94a3b8">O</text>
+                        <text x="112" y="94" font-family="sans-serif" font-size="12" font-weight="bold"
+                            fill="#94a3b8">T</text>
+
+                        <!-- Skeuo Lines -->
+                        <rect x="18" y="36" width="60" height="2" rx="1" fill="#e2e8f0" />
+                        <rect x="18" y="42" width="40" height="2" rx="1" fill="#f1f5f9" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">SWOT 分析 <span class="en-sub">(SWOT Analysis)</span></h3>
+                    <p class="tool-desc">优势、劣势、机会与威胁分析。</p>
+                </div>
+            </a>
+
+            <!-- 4. Value Proposition (Split Match Visual) -->
+            <a href="value-proposition.html" class="tool-card">
+                <i data-lucide="layers" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">价值</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Square (Value Map) -->
+                        <rect x="25" y="30" width="80" height="80" fill="#fff" stroke="#94a3b8" stroke-width="1" />
+                        <line x1="25" y1="70" x2="105" y2="70" stroke="#cbd5e1" stroke-width="1" /> <!-- Horz -->
+                        <line x1="65" y1="30" x2="65" y2="110" stroke="#cbd5e1" stroke-width="1" /> <!-- Vert top -->
+
+                        <!-- Circle (Customer Profile) -->
+                        <circle cx="150" cy="70" r="40" fill="#fff" stroke="#94a3b8" stroke-width="1" />
+                        <path d="M150 70 L190 70" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M150 70 L130 104.6" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M150 70 L130 35.4" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Colors removed, pure structure -->
+                        <path d="M108 65 L102 70 L108 75" fill="none" stroke="#64748b" stroke-width="1.5" />
+                        <path d="M112 75 L118 70 L112 65" fill="none" stroke="#64748b" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">价值主张画布 <span class="en-sub">(Value Proposition)</span></h3>
+                    <p class="tool-desc">探索产品与市场的完美契合。</p>
+                </div>
+            </a>
+
+            <!-- 9. Lean Canvas (9-Box Grid Visual) -->
+            <a href="lean-canvas.html" class="tool-card">
+                <i data-lucide="columns-3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">创业</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Grid Lines -->
+                        <rect x="0" y="0" width="200" height="140" fill="none" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Vertical Divides (5 Cols) -->
+                        <line x1="40" y1="0" x2="40" y2="100" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="80" y1="0" x2="80" y2="100" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="120" y1="0" x2="120" y2="100" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="160" y1="0" x2="160" y2="100" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Horizontal Splits in mid cols -->
+                        <line x1="40" y1="50" x2="80" y2="50" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="120" y1="50" x2="160" y2="50" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Bottom Row Split -->
+                        <line x1="0" y1="100" x2="200" y2="100" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="100" x2="100" y2="140" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Feature: "Lean" diagonal cut or highlight -->
+                        <path d="M120 0 L160 50" stroke="#f1f5f9" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">精益画布 <span class="en-sub">(Lean Canvas)</span></h3>
+                    <p class="tool-desc">专为初创项目设计的一页商业计划。</p>
+                </div>
+            </a>
+
+            <!-- 10. Impact/Effort Matrix (2x2 Matrix Visual) -->
+            <a href="impact-effort-matrix.html" class="tool-card">
+                <i data-lucide="check-circle-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">决策</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Axes -->
+                        <line x1="20" y1="120" x2="180" y2="120" stroke="#cbd5e1" stroke-width="1.5"
+                            marker-end="url(#arrow)" />
+                        <line x1="20" y1="120" x2="20" y2="20" stroke="#cbd5e1" stroke-width="1.5"
+                            marker-end="url(#arrow)" />
+
+                        <!-- Quadrant Split -->
+                        <line x1="20" y1="70" x2="180" y2="70" stroke="#f1f5f9" stroke-width="1"
+                            stroke-dasharray="4 4" />
+                        <line x1="100" y1="20" x2="100" y2="120" stroke="#f1f5f9" stroke-width="1"
+                            stroke-dasharray="4 4" />
+
+                        <!-- Bubbles (Tasks) -->
+                        <circle cx="50" cy="50" r="12" fill="#e2e8f0" stroke="#94a3b8" /> <!-- Quick Win -->
+                        <circle cx="140" cy="40" r="16" fill="#f1f5f9" stroke="#cbd5e1" /> <!-- Major Project -->
+                        <circle cx="150" cy="100" r="10" fill="#f8fafc" stroke="#e2e8f0" /> <!-- Thankless -->
+                        <circle cx="60" cy="90" r="8" fill="#f8fafc" stroke="#e2e8f0" /> <!-- Fill-in -->
+
+                        <!-- Highlight -->
+                        <circle cx="50" cy="50" r="4" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">优先级矩阵 <span class="en-sub">(Priority Matrix)</span></h3>
+                    <p class="tool-desc">以价值与成本维度科学排定任务。</p>
+                </div>
+            </a>
+
+            <!-- 11. Stakeholder Radar -->
+            <a href="stakeholder-radar.html" class="tool-card">
+                <i data-lucide="users" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">变革</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Radar Grid -->
+                        <line x1="20" y1="70" x2="180" y2="70" stroke="#f1f5f9" stroke-width="2" />
+                        <line x1="100" y1="10" x2="100" y2="130" stroke="#f1f5f9" stroke-width="2" />
+                        <!-- Circles -->
+                        <circle cx="100" cy="70" r="30" fill="none" stroke="#e2e8f0" />
+                        <circle cx="100" cy="70" r="55" fill="none" stroke="#e2e8f0" />
+                        <!-- Nodes -->
+                        <circle cx="140" cy="30" r="4" fill="#22c55e" /> <!-- High P, High I -->
+                        <circle cx="60" cy="40" r="4" fill="#94a3b8" /> <!-- Low P, High I -->
+                        <circle cx="130" cy="110" r="4" fill="#ef4444" /> <!-- High P, Low I -->
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">利益相关者雷达 <span class="en-sub">(Stakeholder)</span></h3>
+                    <p class="tool-desc">可视化分析项目中的支持者与反对派。</p>
+                </div>
+            </a>
+
+            <!-- 13. Business Model Canvas (9-Box Visual) -->
+            <a href="business-model-canvas.html" class="tool-card">
+                <i data-lucide="layout-grid" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">商业</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- 9-box grid structure -->
+                        <rect x="5" y="5" width="35" height="90" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="45" y="5" width="35" height="42" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="45" y="52" width="35" height="43" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="85" y="5" width="50" height="90" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="140" y="5" width="25" height="42" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="140" y="52" width="25" height="43" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="170" y="5" width="25" height="90" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="5" y="100" width="75" height="35" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="85" y="100" width="110" height="35" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">商业模式画布 <span class="en-sub">(Business Model)</span></h3>
+                    <p class="tool-desc">九大要素构建完整商业模式。</p>
+                </div>
+            </a>
+
+            <!-- 14. OKR Template (List Visual) -->
+            <!-- 14. OKR Cascade Map (Cascade Visual) -->
+            <a href="okr-cascade.html" class="tool-card">
+                <i data-lucide="target" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">New</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Objective 1 -->
+                        <rect x="10" y="10" width="180" height="35" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="25" cy="27" r="8" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+                        <text x="25" y="31" text-anchor="middle" font-size="8" font-weight="bold"
+                            fill="#64748b">O1</text>
+                        <!-- KRs indent logic -->
+                        <rect x="50" y="55" width="140" height="20" fill="#fff" stroke="#e2e8f0" rx="1" />
+                        <rect x="50" y="80" width="140" height="20" fill="#fff" stroke="#e2e8f0" rx="1" />
+
+                        <!-- Connecting lines -->
+                        <path d="M25 45 V90 L50 90" stroke="#cbd5e1" fill="none" />
+                        <path d="M25 45 V65 L50 65" stroke="#cbd5e1" fill="none" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">OKR 战略级联地图 <span class="en-sub">(OKR Cascade)</span></h3>
+                    <p class="tool-desc">多层级目标拆解与信心指数追踪。</p>
+                </div>
+            </a>
+
+            <!-- 15. Porter's Five Forces (Cross Visual) -->
+            <a href="porters-five-forces.html" class="tool-card">
+                <i data-lucide="shield" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">行业</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Center -->
+                        <rect x="70" y="45" width="60" height="50" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Top -->
+                        <rect x="70" y="10" width="60" height="30" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="40" x2="100" y2="45" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Bottom -->
+                        <rect x="70" y="100" width="60" height="30" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="95" x2="100" y2="100" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Left -->
+                        <rect x="10" y="45" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="65" y1="70" x2="70" y2="70" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Right -->
+                        <rect x="135" y="45" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="130" y1="70" x2="135" y2="70" stroke="#cbd5e1" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">波特五力分析 <span class="en-sub">(Porter's Five Forces)</span></h3>
+                    <p class="tool-desc">行业竞争格局五种力量。</p>
+                </div>
+            </a>
+
+
+            <!-- 16. STP Strategy Canvas (Three Column Visual) -->
+            <a href="stp-canvas.html" class="tool-card">
+                <i data-lucide="sliders" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">定位</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Three Column Layout -->
+                        <rect x="5" y="10" width="58" height="120" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="71" y="10" width="58" height="120" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="137" y="10" width="58" height="120" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Arrows -->
+                        <path d="M65 70 L69 70" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)" />
+                        <path d="M131 70 L135 70" stroke="#cbd5e1" stroke-width="2" />
+
+                        <!-- S T P Labels -->
+                        <text x="34" y="30" text-anchor="middle" font-size="12" font-weight="bold"
+                            fill="#64748b">S</text>
+                        <text x="100" y="30" text-anchor="middle" font-size="12" font-weight="bold"
+                            fill="#64748b">T</text>
+                        <text x="166" y="30" text-anchor="middle" font-size="12" font-weight="bold"
+                            fill="#64748b">P</text>
+
+                        <!-- Segment boxes in S -->
+                        <rect x="12" y="40" width="22" height="18" rx="2" fill="#e2e8f0" />
+                        <rect x="38" y="40" width="22" height="18" rx="2" fill="#e2e8f0" />
+                        <rect x="12" y="62" width="22" height="18" rx="2" fill="#e2e8f0" />
+                        <rect x="38" y="62" width="22" height="18" rx="2" fill="#e2e8f0" />
+
+                        <!-- Target circle in T -->
+                        <circle cx="100" cy="70" r="25" fill="none" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="100" cy="70" r="12" fill="#e2e8f0" />
+
+                        <!-- Perceptual map in P -->
+                        <line x1="166" y1="45" x2="166" y2="95" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="145" y1="70" x2="187" y2="70" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="175" cy="55" r="4" fill="#64748b" />
+                        <circle cx="155" cy="80" r="3" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">STP 战略画布 <span class="en-sub">(STP Strategy)</span></h3>
+                    <p class="tool-desc">市场细分、目标选择与定位策略。</p>
+                </div>
+            </a>
+
+            <!-- 25. Ansoff Matrix -->
+            <a href="ansoff-matrix.html" class="tool-card">
+                <i data-lucide="grid-3x3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">增长</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 2x2 Matrix -->
+                        <rect x="30" y="20" width="65" height="45" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+                        <rect x="105" y="20" width="65" height="45" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="30" y="75" width="65" height="45" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="105" y="75" width="65" height="45" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+                        <!-- Labels -->
+                        <text x="62" y="47" text-anchor="middle" font-size="8" fill="#64748b">产品开发</text>
+                        <text x="137" y="47" text-anchor="middle" font-size="8" fill="#94a3b8">多元化</text>
+                        <text x="62" y="102" text-anchor="middle" font-size="8" fill="#94a3b8">市场渗透</text>
+                        <text x="137" y="102" text-anchor="middle" font-size="8" fill="#64748b">市场开发</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">Ansoff 增长矩阵 <span class="en-sub">(Ansoff Matrix)</span></h3>
+                    <p class="tool-desc">产品与市场增长战略选择。</p>
+                </div>
+            </a>
+
+            <!-- 26. BCG Matrix -->
+            <a href="bcg-matrix.html" class="tool-card">
+                <i data-lucide="pie-chart" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">组合</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 2x2 Matrix -->
+                        <rect x="30" y="15" width="65" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="105" y="15" width="65" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="30" y="75" width="65" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="105" y="75" width="65" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <!-- Icons -->
+                        <text x="62" y="45" text-anchor="middle" font-size="16" fill="#64748b">★</text>
+                        <text x="137" y="45" text-anchor="middle" font-size="16" fill="#94a3b8">?</text>
+                        <text x="62" y="105" text-anchor="middle" font-size="16" fill="#64748b">$</text>
+                        <text x="137" y="105" text-anchor="middle" font-size="16" fill="#cbd5e1">✕</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">BCG 矩阵 <span class="en-sub">(BCG Matrix)</span></h3>
+                    <p class="tool-desc">产品组合分析与资源配置。</p>
+                </div>
+            </a>
+
+            <!-- 27. Balanced Scorecard -->
+            <a href="balanced-scorecard.html" class="tool-card">
+                <i data-lucide="gauge" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">绩效</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 4 Quadrants -->
+                        <rect x="10" y="10" width="85" height="55" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="105" y="10" width="85" height="55" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="10" y="75" width="85" height="55" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="105" y="75" width="85" height="55" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <!-- Labels -->
+                        <text x="52" y="30" text-anchor="middle" font-size="8" font-weight="bold"
+                            fill="#64748b">财务</text>
+                        <text x="147" y="30" text-anchor="middle" font-size="8" font-weight="bold"
+                            fill="#64748b">客户</text>
+                        <text x="52" y="95" text-anchor="middle" font-size="8" font-weight="bold"
+                            fill="#64748b">流程</text>
+                        <text x="147" y="95" text-anchor="middle" font-size="8" font-weight="bold"
+                            fill="#64748b">学习</text>
+                        <!-- Progress bars -->
+                        <rect x="25" y="40" width="50" height="6" rx="3" fill="#e2e8f0" />
+                        <rect x="25" y="40" width="35" height="6" rx="3" fill="#94a3b8" />
+                        <rect x="120" y="40" width="50" height="6" rx="3" fill="#e2e8f0" />
+                        <rect x="120" y="40" width="40" height="6" rx="3" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">平衡计分卡 <span class="en-sub">(Balanced Scorecard)</span></h3>
+                    <p class="tool-desc">财务、客户、流程、学习四维绩效。</p>
+                </div>
+            </a>
+
+            <!-- 28. PESTEL Analysis -->
+            <a href="pestel-analysis.html" class="tool-card">
+                <i data-lucide="globe" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">环境</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 6 Cards Grid (2x3) -->
+                        <rect x="10" y="15" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="72" y="15" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="134" y="15" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="10" y="75" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="72" y="75" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="134" y="75" width="55" height="50" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <!-- Labels -->
+                        <text x="37" y="45" text-anchor="middle" font-size="8" fill="#64748b">P</text>
+                        <text x="99" y="45" text-anchor="middle" font-size="8" fill="#64748b">E</text>
+                        <text x="161" y="45" text-anchor="middle" font-size="8" fill="#64748b">S</text>
+                        <text x="37" y="105" text-anchor="middle" font-size="8" fill="#64748b">T</text>
+                        <text x="99" y="105" text-anchor="middle" font-size="8" fill="#64748b">E</text>
+                        <text x="161" y="105" text-anchor="middle" font-size="8" fill="#64748b">L</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">PESTEL 分析 <span class="en-sub">(PESTEL Analysis)</span></h3>
+                    <p class="tool-desc">宏观环境六维度分析框架。</p>
+                </div>
+            </a>
+
+            <!-- 29. McKinsey 7S -->
+            <a href="mckinsey-7s.html" class="tool-card">
+                <i data-lucide="hexagon" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">组织</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Center Circle -->
+                        <circle cx="100" cy="70" r="20" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+                        <text x="100" y="74" text-anchor="middle" font-size="8" fill="#64748b">价值观</text>
+                        <!-- 6 Outer Circles -->
+                        <circle cx="100" cy="25" r="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="145" cy="45" r="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="145" cy="95" r="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="100" cy="115" r="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="55" cy="95" r="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="55" cy="45" r="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <!-- Connecting Lines -->
+                        <line x1="100" y1="50" x2="100" y2="40" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="120" y1="70" x2="130" y2="70" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="80" y1="70" x2="70" y2="70" stroke="#cbd5e1" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">麦肯锡 7S <span class="en-sub">(McKinsey 7S)</span></h3>
+                    <p class="tool-desc">组织效能七要素分析框架。</p>
+                </div>
+            </a>
+
+            <!-- 31. OKR Template -->
+            <a href="okr-template.html" class="tool-card">
+                <i data-lucide="list-checks" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">目标</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Objective Block -->
+                        <rect x="15" y="15" width="170" height="25" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"
+                            rx="2" />
+                        <circle cx="30" cy="27" r="6" fill="#64748b" />
+                        <text x="30" y="30" text-anchor="middle" font-size="6" fill="#fff">O</text>
+                        <rect x="45" y="22" width="80" height="4" rx="2" fill="#94a3b8" />
+                        <!-- KR Rows -->
+                        <rect x="30" y="48" width="155" height="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="30" y="72" width="155" height="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <rect x="30" y="96" width="155" height="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"
+                            rx="2" />
+                        <!-- Progress bars -->
+                        <rect x="140" y="53" width="40" height="8" rx="4" fill="#e2e8f0" />
+                        <rect x="140" y="53" width="30" height="8" rx="4" fill="#94a3b8" />
+                        <rect x="140" y="77" width="40" height="8" rx="4" fill="#e2e8f0" />
+                        <rect x="140" y="77" width="20" height="8" rx="4" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">OKR 目标设定 <span class="en-sub">(OKR Template)</span></h3>
+                    <p class="tool-desc">目标与关键结果追踪模板。</p>
+                </div>
+            </a>
+
+
+
+            <!-- VRIO Framework -->
+            <a href="vrio-framework.html" class="tool-card">
+                <i data-lucide="shield-check" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">资源</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="10" y="15" width="180" height="20" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="10" y="35" width="180" height="18" fill="#fff" stroke="#e2e8f0" stroke-width="0.5" />
+                        <rect x="10" y="53" width="180" height="18" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="0.5" />
+                        <rect x="10" y="71" width="180" height="18" fill="#fff" stroke="#e2e8f0" stroke-width="0.5" />
+                        <line x1="60" y1="15" x2="60" y2="89" stroke="#e2e8f0" />
+                        <line x1="100" y1="15" x2="100" y2="89" stroke="#e2e8f0" />
+                        <line x1="140" y1="15" x2="140" y2="89" stroke="#e2e8f0" />
+                        <circle cx="80" cy="44" r="3" fill="#94a3b8" />
+                        <circle cx="120" cy="62" r="3" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">VRIO 框架 <span class="en-sub">(VRIO Framework)</span></h3>
+                    <p class="tool-desc">评估资源竞争优势的四维框架。</p>
+                </div>
+            </a>
+
+            <!-- Value Chain Analysis -->
+            <a href="value-chain.html" class="tool-card">
+                <i data-lucide="link" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">价值</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="10" y="15" width="35" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="50" y="15" width="35" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="90" y="15" width="35" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="130" y="15" width="35" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="10" y="65" width="35" height="40" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="50" y="65" width="35" height="40" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="90" y="65" width="35" height="40" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="130" y="65" width="35" height="40" fill="#fff" stroke="#e2e8f0" />
+                        <path d="M170 20 L185 70" stroke="#64748b" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">价值链分析 <span class="en-sub">(Value Chain)</span></h3>
+                    <p class="tool-desc">识别企业活动的价值创造环节。</p>
+                </div>
+            </a>
+
+            <!-- 8. GE-McKinsey Matrix -->
+            <a href="ge-mckinsey-matrix.html" class="tool-card">
+                <i data-lucide="grid" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">组合</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="none">
+                        <!-- 3x3 Grid -->
+                        <g stroke="#fff" stroke-width="2">
+                            <rect x="20" y="20" width="53" height="33" fill="#cbd5e1" />
+                            <rect x="73" y="20" width="53" height="33" fill="#cbd5e1" />
+                            <rect x="126" y="20" width="53" height="33" fill="#e2e8f0" />
+
+                            <rect x="20" y="53" width="53" height="33" fill="#cbd5e1" />
+                            <rect x="73" y="53" width="53" height="33" fill="#e2e8f0" />
+                            <rect x="126" y="53" width="53" height="33" fill="#f1f5f9" />
+
+                            <rect x="20" y="86" width="53" height="33" fill="#e2e8f0" />
+                            <rect x="73" y="86" width="53" height="33" fill="#f1f5f9" />
+                            <rect x="126" y="86" width="53" height="33" fill="#f1f5f9" />
+                        </g>
+                        <!-- Bubbles -->
+                        <circle cx="50" cy="40" r="10" fill="#3b82f6" opacity="0.8" />
+                        <circle cx="100" cy="60" r="8" fill="#3b82f6" opacity="0.6" />
+                        <circle cx="40" cy="90" r="6" fill="#3b82f6" opacity="0.4" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">GE-麦肯锡矩阵 <span class="en-sub">(GE Matrix)</span></h3>
+                    <p class="tool-desc">行业吸引力与业务竞争力的组合分析。</p>
+                </div>
+            </a>
+
+            <!-- Three Horizons Framework -->
+            <a href="three-horizons.html" class="tool-card">
+                <i data-lucide="layers-3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">增长</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <path d="M20 100 Q60 80 100 85 T180 90" stroke="#64748b" stroke-width="3" fill="none" />
+                        <path d="M20 110 Q60 95 100 100 T180 105" stroke="#94a3b8" stroke-width="3" fill="none" />
+                        <path d="M20 120 Q60 110 100 115 T180 120" stroke="#cbd5e1" stroke-width="3" fill="none" />
+                        <text x="30" y="95" font-size="10" fill="#64748b">H1</text>
+                        <text x="100" y="95" font-size="10" fill="#94a3b8">H2</text>
+                        <text x="160" y="95" font-size="10" fill="#cbd5e1">H3</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">三层地平线 <span class="en-sub">(Three Horizons)</span></h3>
+                    <p class="tool-desc">平衡当前、新兴和未来业务。</p>
+                </div>
+            </a>
+
+            <!-- Strategic Roadmap -->
+            <a href="strategic-roadmap.html" class="tool-card">
+                <i data-lucide="map" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">路线</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="20" y1="70" x2="180" y2="70" stroke="#e2e8f0" stroke-width="2" />
+                        <circle cx="50" cy="70" r="8" fill="#64748b" />
+                        <circle cx="90" cy="70" r="8" fill="#94a3b8" />
+                        <circle cx="130" cy="70" r="8" fill="#cbd5e1" />
+                        <circle cx="170" cy="70" r="8" fill="#e2e8f0" />
+                        <rect x="40" y="30" width="20" height="25" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="80" y="35" width="20" height="20" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="120" y="40" width="20" height="15" fill="#f8fafc" stroke="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">战略路线图 <span class="en-sub">(Strategic Roadmap)</span></h3>
+                    <p class="tool-desc">可视化战略目标与时间线。</p>
+                </div>
+            </a>
+
+            <!-- 21. Competitive Landscape Map -->
+            <a href="landscape-map.html" class="tool-card">
+                <i data-lucide="crosshair" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">竞争</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="100" y1="30" x2="100" y2="110" stroke="#e2e8f0" stroke-width="2" />
+                        <line x1="40" y1="70" x2="160" y2="70" stroke="#e2e8f0" stroke-width="2" />
+                        <circle cx="120" cy="50" r="10" fill="#3b82f6" opacity="0.7" />
+                        <circle cx="75" cy="55" r="8" fill="#10b981" opacity="0.7" />
+                        <circle cx="115" cy="85" r="7" fill="#f59e0b" opacity="0.7" />
+                        <circle cx="80" cy="90" r="6" fill="#ec4899" opacity="0.7" />
+                        <circle cx="105" cy="65" r="12" fill="#8b5cf6" opacity="0.7" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">竞争格局地图 <span class="en-sub">(Competitive Landscape)</span></h3>
+                    <p class="tool-desc">可视化竞争对手的市场位置。</p>
+                </div>
+            </a>
+
+            <!-- 22. Feature Comparison Matrix -->
+            <a href="feature-comparison.html" class="tool-card">
+                <i data-lucide="table" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">对比</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="140" height="80" fill="#f8fafc" stroke="#e2e8f0" />
+                        <line x1="30" y1="50" x2="170" y2="50" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="30" y1="70" x2="170" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="30" y1="90" x2="170" y2="90" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="80" y1="30" x2="80" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="125" y1="30" x2="125" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="102" cy="40" r="4" fill="#10b981" />
+                        <circle cx="147" cy="40" r="4" fill="#ef4444" />
+                        <circle cx="102" cy="60" r="4" fill="#10b981" />
+                        <circle cx="147" cy="60" r="4" fill="#10b981" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">功能对比矩阵 <span class="en-sub">(Feature Comparison)</span></h3>
+                    <p class="tool-desc">系统化对比产品功能差异。</p>
+                </div>
+            </a>
+
+            <!-- 23. Market Positioning Map -->
+            <a href="market-positioning.html" class="tool-card">
+                <i data-lucide="map-pin" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">定位</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="30" y1="110" x2="170" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="30" y1="30" x2="30" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="70" cy="80" r="6" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="120" cy="50" r="6" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="150" cy="90" r="6" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="90" cy="60" r="8" fill="#64748b" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">市场定位图 <span class="en-sub">(Market Positioning)</span></h3>
+                    <p class="tool-desc">分析品牌在市场中的相对位置。</p>
+                </div>
+            </a>
+
+            <!-- 24. GTM Strategy Canvas -->
+            <a href="gtm-strategy.html" class="tool-card">
+                <i data-lucide="rocket" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">New</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Top Row: 3 sections -->
+                        <rect x="10" y="15" width="55" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="72" y="15" width="55" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="134" y="15" width="55" height="40" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Middle Row: 3 sections -->
+                        <rect x="10" y="60" width="55" height="35" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="72" y="60" width="55" height="35" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <rect x="134" y="60" width="55" height="35" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Bottom Row: Timeline -->
+                        <line x1="20" y1="110" x2="180" y2="110" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="50" cy="110" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="90" cy="110" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="130" cy="110" r="6" fill="#64748b" />
+                        <circle cx="170" cy="110" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">GTM 策略画布 <span class="en-sub">(Go-to-Market)</span></h3>
+                    <p class="tool-desc">产品上市策略的系统化规划。</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme Toggle Functionality
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle Functionality
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load saved preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

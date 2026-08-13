@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海盗指标 AARRR - Modiqi Analytics Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/pirate-metrics.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>海盗指标 AARRR</h1>
+                <span class="english-subtitle">Pirate Metrics</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目</label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card metric-acquisition">
+                <div class="metric-header">
+                    <i data-lucide="users" class="icon"></i>
+                    <div class="metric-title">
+                        <h3>获客</h3>
+                        <p class="title-en">Acquisition</p>
+                    </div>
+                </div>
+                <div class="metric-values">
+                    <div class="value-field">
+                        <label>当前值</label>
+                        <input type="number" class="metric-input" data-metric="acquisition" data-type="current" data-save-key="acquisition_current" value="5000" aria-label="acquisition current">
+                    </div>
+                    <div class="value-field">
+                        <label>目标值</label>
+                        <input type="number" class="metric-input" data-metric="acquisition" data-type="target" data-save-key="acquisition_target" value="8000" aria-label="acquisition target">
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-progress="acquisition"></div>
+                </div>
+                <div class="completion-rate" data-rate="acquisition">62.5%</div>
+                <div class="strategy-field">
+                    <label>优化策略</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="acquisition_strategy">SEO优化、内容营销、社交媒体推广、付费广告投放</div>
+                </div>
+            </div>
+
+            <div class="metric-card metric-activation">
+                <div class="metric-header">
+                    <i data-lucide="user-check" class="icon"></i>
+                    <div class="metric-title">
+                        <h3>激活</h3>
+                        <p class="title-en">Activation</p>
+                    </div>
+                </div>
+                <div class="metric-values">
+                    <div class="value-field">
+                        <label>当前值</label>
+                        <input type="number" class="metric-input" data-metric="activation" data-type="current" data-save-key="activation_current" value="3500" aria-label="activation current">
+                    </div>
+                    <div class="value-field">
+                        <label>目标值</label>
+                        <input type="number" class="metric-input" data-metric="activation" data-type="target" data-save-key="activation_target" value="6000" aria-label="activation target">
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-progress="activation"></div>
+                </div>
+                <div class="completion-rate" data-rate="activation">58.3%</div>
+                <div class="strategy-field">
+                    <label>优化策略</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="activation_strategy">优化注册流程、新手引导、首次体验优化、欢迎邮件</div>
+                </div>
+            </div>
+
+            <div class="metric-card metric-retention">
+                <div class="metric-header">
+                    <i data-lucide="repeat" class="icon"></i>
+                    <div class="metric-title">
+                        <h3>留存</h3>
+                        <p class="title-en">Retention</p>
+                    </div>
+                </div>
+                <div class="metric-values">
+                    <div class="value-field">
+                        <label>当前值</label>
+                        <input type="number" class="metric-input" data-metric="retention" data-type="current" data-save-key="retention_current" value="1200" aria-label="retention current">
+                    </div>
+                    <div class="value-field">
+                        <label>目标值</label>
+                        <input type="number" class="metric-input" data-metric="retention" data-type="target" data-save-key="retention_target" value="2400" aria-label="retention target">
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-progress="retention"></div>
+                </div>
+                <div class="completion-rate" data-rate="retention">50.0%</div>
+                <div class="strategy-field">
+                    <label>优化策略</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="retention_strategy">推送通知、邮件营销、会员体系、定期活动</div>
+                </div>
+            </div>
+
+            <div class="metric-card metric-revenue">
+                <div class="metric-header">
+                    <i data-lucide="dollar-sign" class="icon"></i>
+                    <div class="metric-title">
+                        <h3>收入</h3>
+                        <p class="title-en">Revenue</p>
+                    </div>
+                </div>
+                <div class="metric-values">
+                    <div class="value-field">
+                        <label>当前值</label>
+                        <input type="number" class="metric-input" data-metric="revenue" data-type="current" data-save-key="revenue_current" value="50000" aria-label="revenue current">
+                    </div>
+                    <div class="value-field">
+                        <label>目标值</label>
+                        <input type="number" class="metric-input" data-metric="revenue" data-type="target" data-save-key="revenue_target" value="80000" aria-label="revenue target">
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-progress="revenue"></div>
+                </div>
+                <div class="completion-rate" data-rate="revenue">62.5%</div>
+                <div class="strategy-field">
+                    <label>优化策略</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="revenue_strategy">增值服务、订阅模式、交叉销售、提升客单价</div>
+                </div>
+            </div>
+
+            <div class="metric-card metric-referral">
+                <div class="metric-header">
+                    <i data-lucide="share-2" class="icon"></i>
+                    <div class="metric-title">
+                        <h3>推荐</h3>
+                        <p class="title-en">Referral</p>
+                    </div>
+                </div>
+                <div class="metric-values">
+                    <div class="value-field">
+                        <label>当前值</label>
+                        <input type="number" class="metric-input" data-metric="referral" data-type="current" data-save-key="referral_current" value="800" aria-label="referral current">
+                    </div>
+                    <div class="value-field">
+                        <label>目标值</label>
+                        <input type="number" class="metric-input" data-metric="referral" data-type="target" data-save-key="referral_target" value="1600" aria-label="referral target">
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-progress="referral"></div>
+                </div>
+                <div class="completion-rate" data-rate="referral">50.0%</div>
+                <div class="strategy-field">
+                    <label>优化策略</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="referral_strategy">推荐奖励、社交分享、口碑营销、病毒式传播</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="funnel-analysis">
+            <div class="analysis-header">
+                <i data-lucide="trending-up" class="icon"></i>
+                <h3>漏斗转化分析 Funnel Conversion Analysis</h3>
+            </div>
+            <div class="funnel-flow">
+                <div class="flow-item">
+                    <span class="flow-label">获客</span>
+                    <span class="flow-value" id="flow-acquisition">5,000</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item">
+                    <span class="flow-label">激活</span>
+                    <span class="flow-value" id="flow-activation">3,500</span>
+                    <span class="flow-rate" id="rate-activation">70.0%</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item">
+                    <span class="flow-label">留存</span>
+                    <span class="flow-value" id="flow-retention">1,200</span>
+                    <span class="flow-rate" id="rate-retention">34.3%</span>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('pirate_metrics');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function updateMetrics() {
+            document.querySelectorAll('.metric-card').forEach(card => {
+                const metric = card.querySelector('[data-metric]').dataset.metric;
+                const current = parseFloat(card.querySelector('[data-type="current"]').value) || 0;
+                const target = parseFloat(card.querySelector('[data-type="target"]').value) || 1;
+                const completion = Math.min((current / target * 100), 100);
+
+                const progressFill = card.querySelector(`[data-progress="${metric}"]`);
+                const rateDisplay = card.querySelector(`[data-rate="${metric}"]`);
+
+                progressFill.style.width = completion + '%';
+                rateDisplay.textContent = completion.toFixed(1) + '%';
+
+                progressFill.className = 'progress-fill';
+                if (completion < 50) progressFill.classList.add('progress-low');
+                else if (completion < 80) progressFill.classList.add('progress-medium');
+                else progressFill.classList.add('progress-high');
+            });
+
+            const acquisition = parseFloat(document.querySelector('[data-save-key="acquisition_current"]').value) || 0;
+            const activation = parseFloat(document.querySelector('[data-save-key="activation_current"]').value) || 0;
+            const retention = parseFloat(document.querySelector('[data-save-key="retention_current"]').value) || 0;
+
+            document.getElementById('flow-acquisition').textContent = acquisition.toLocaleString();
+            document.getElementById('flow-activation').textContent = activation.toLocaleString();
+            document.getElementById('flow-retention').textContent = retention.toLocaleString();
+
+            if (acquisition > 0) {
+                document.getElementById('rate-activation').textContent = (activation / acquisition * 100).toFixed(1) + '%';
+            } else {
+                document.getElementById('rate-activation').textContent = '0%';
+            }
+            if (activation > 0) {
+                document.getElementById('rate-retention').textContent = (retention / activation * 100).toFixed(1) + '%';
+            } else {
+                document.getElementById('rate-retention').textContent = '0%';
+            }
+        }
+
+        document.querySelectorAll('.metric-input').forEach(input => {
+            input.addEventListener('input', updateMetrics);
+        });
+
+        updateMetrics();
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* Competitive Battlecard - Design System Aligned */
+/* 竞品对比卡样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.battlecard-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   顶部：对比网格
+   ======================================== */
+.comparison-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.comparison-header {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 1px;
+    margin-bottom: 1px;
+}
+
+.header-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.header-cell.empty {
+    background: transparent;
+}
+
+.header-cell.us {
+    background: var(--color-semantic-growth);
+    color: white;
+}
+
+.header-cell.them {
+    background: var(--color-bg-muted);
+    color: var(--color-text-primary);
+}
+
+.header-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.comparison-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border-sem-inner);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    overflow: hidden;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 1px;
+}
+
+.row-label {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+}
+
+.cell-us,
+.cell-them {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 60px;
+}
+
+.cell-us {
+    border-left: 3px solid var(--color-semantic-growth);
+}
+
+.cell-them {
+    background: var(--color-bg-subtle);
+}
+
+.cell-us:empty::before,
+.cell-them:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+.cell-us:focus,
+.cell-them:focus {
+    background: var(--color-focus-bg);
+}
+
+/* ========================================
+   底部：策略卡片
+   ======================================== */
+.tactics-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.tactic-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.win-themes .card-header {
+    background: var(--color-semantic-growth-bg);
+}
+
+.objections .card-header {
+    background: var(--color-semantic-alert-bg);
+}
+
+.rebuttals .card-header {
+    background: var(--color-bg-warm-light);
+}
+
+.card-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-secondary);
+}
+
+.card-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.card-body {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.list-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.bullet {
+    width: 20px;
+    flex-shrink: 0;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+}
+
+.win-themes .bullet {
+    color: var(--color-semantic-growth);
+}
+
+.objections .bullet {
+    color: var(--color-semantic-alert);
+}
+
+.rebuttals .bullet {
+    color: var(--color-brand-blue);
+}
+
+.list-item div {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    outline: none;
+    padding-bottom: 4px;
+    min-height: 20px;
+}
+
+.list-item div:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .header-cell.them {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .row-label {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .cell-them {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .tactic-card {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .win-themes .card-header,
+body.theme-dark .objections .card-header,
+body.theme-dark .rebuttals .card-header {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+
+    .header-cell.us,
+    .cell-us,
+    .win-themes .card-header,
+    .objections .card-header,
+    .rebuttals .card-header {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+
+    .comparison-header,
+    .grid-row {
+        grid-template-columns: 1fr;
+    }
+
+    .tactics-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .comparison-grid { overflow: visible; }
+    .comparison-header, .grid-row, .tactics-section { grid-template-columns: 1fr; }
+    .header-cell.empty { display: none; }
+}
+

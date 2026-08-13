@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成交检查清单 (Closing Checklist)</title>
+    <meta name="description" content="成交检查清单工具，帮助销售人员确认成交前的关键要素，提高成交成功率。">
+    <meta name="keywords" content="成交清单,销售成交,销售流程,客户管理,销售技巧">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="成交检查清单 - Modiqi Workbench">
+    <meta property="og:description" content="确认成交前的关键要素，提高成交成功率。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/closing-checklist.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>成交检查清单</h1>
+                <span class="english-subtitle">Pre-Close Checklist</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>客户名称 <span class="en-sub">(Client)</span></label>
+                    <input type="text" class="meta-input" placeholder="Client Name" data-save-key="client_name" aria-label="Client Name">
+                </div>
+                <div class="meta-group">
+                    <label>合同金额 <span class="en-sub">(Value)</span></label>
+                    <input type="text" class="meta-input" placeholder="¥ Amount" data-save-key="deal_value" aria-label="¥ Amount">
+                </div>
+                <div class="meta-group">
+                    <label>预计成交 <span class="en-sub">(Target)</span></label>
+                    <input type="date" class="meta-input" data-save-key="target_date" aria-label="target date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="checklist-layout">
+
+            <!-- Column 1: Decision Maker -->
+            <section class="check-column">
+                <div class="column-header">
+                    <i data-lucide="user-check" class="header-icon"></i>
+                    <h2>决策人确认<br><span class="en-sub">Decision Maker</span></h2>
+                </div>
+                <div class="check-items">
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_dm_1">
+                        <span class="checkmark"></span>
+                        <span class="check-label">已确认最终决策人<br><span class="en-sub">Decision Maker
+                                Identified</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_dm_2">
+                        <span class="checkmark"></span>
+                        <span class="check-label">已与决策人直接沟通<br><span class="en-sub">Direct Communication</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_dm_3">
+                        <span class="checkmark"></span>
+                        <span class="check-label">了解决策流程和时间线<br><span class="en-sub">Process & Timeline</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_dm_4">
+                        <span class="checkmark"></span>
+                        <span class="check-label">已识别关键影响者<br><span class="en-sub">Influencers Mapped</span></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Column 2: Solution Fit -->
+            <section class="check-column">
+                <div class="column-header">
+                    <i data-lucide="file-check" class="header-icon"></i>
+                    <h2>需求与方案<br><span class="en-sub">Solution Fit</span></h2>
+                </div>
+                <div class="check-items">
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_sol_1">
+                        <span class="checkmark"></span>
+                        <span class="check-label">痛点已明确且客户认可<br><span class="en-sub">Pain Points Validated</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_sol_2">
+                        <span class="checkmark"></span>
+                        <span class="check-label">方案可满足核心需求<br><span class="en-sub">Solution Matches Needs</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_sol_3">
+                        <span class="checkmark"></span>
+                        <span class="check-label">已展示 Demo / 试用<br><span class="en-sub">Demo/Trial
+                                Completed</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_sol_4">
+                        <span class="checkmark"></span>
+                        <span class="check-label">客户有明确实施时间表<br><span class="en-sub">Timeline Agreed</span></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Column 3: Budget & Terms -->
+            <section class="check-column">
+                <div class="column-header">
+                    <i data-lucide="banknote" class="header-icon"></i>
+                    <h2>预算与商务<br><span class="en-sub">Budget & Terms</span></h2>
+                </div>
+                <div class="check-items">
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_bud_1">
+                        <span class="checkmark"></span>
+                        <span class="check-label">已确认预算范围<br><span class="en-sub">Budget Confirmed</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_bud_2">
+                        <span class="checkmark"></span>
+                        <span class="check-label">报价已提交无重大异议<br><span class="en-sub">Quote Accepted</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_bud_3">
+                        <span class="checkmark"></span>
+                        <span class="check-label">付款条款协商一致<br><span class="en-sub">Terms Agreed</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_bud_4">
+                        <span class="checkmark"></span>
+                        <span class="check-label">无竞品正在同步比价<br><span class="en-sub">No Active Competition</span></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Column 4: Risk & Compliance -->
+            <section class="check-column">
+                <div class="column-header">
+                    <i data-lucide="shield-check" class="header-icon"></i>
+                    <h2>风险与合规<br><span class="en-sub">Risk & Compliance</span></h2>
+                </div>
+                <div class="check-items">
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_risk_1">
+                        <span class="checkmark"></span>
+                        <span class="check-label">客户信用/资质已核实<br><span class="en-sub">Credit Check</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_risk_2">
+                        <span class="checkmark"></span>
+                        <span class="check-label">合同条款法务已审核<br><span class="en-sub">Legal Review</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_risk_3">
+                        <span class="checkmark"></span>
+                        <span class="check-label">无未解决技术/实施障碍<br><span class="en-sub">No Blockers</span></span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox" data-save-key="check_risk_4">
+                        <span class="checkmark"></span>
+                        <span class="check-label">合规与数据安全已确认<br><span class="en-sub">Security Approved</span></span>
+                    </label>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Sign-off Section -->
+        <div class="signoff-section">
+            <div class="signoff-status">
+                <span class="status-label">准备状态 (Readiness):</span>
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-progress"></span>
+                </div>
+                <span class="status-text" id="statusText">0 / 16</span>
+            </div>
+            <div class="signoff-notes">
+                <label>关键风险或注意事项 (Key Risks)</label>
+                <div class="notes-input" contenteditable="true" data-placeholder="记录可能影响成交的因素..."></div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            const app = new ModiqiApp('closing-checklist');
+
+            const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            const total = checkboxes.length;
+
+            function updateProgress() {
+                const checked = document.querySelectorAll('.check-item input:checked').length;
+                const percent = (checked / total) * 100;
+
+                statusIndicator.querySelector('.status-progress').style.width = percent + '%';
+                statusText.textContent = `${checked} / ${total}`;
+
+                // Color based on progress
+                const progress = statusIndicator.querySelector('.status-progress');
+                if (percent >= 100) {
+                    progress.style.background = 'var(--color-semantic-growth)';
+                } else if (percent >= 70) {
+                    progress.style.background = 'var(--color-brand-blue)';
+                } else if (percent >= 40) {
+                    progress.style.background = 'var(--color-semantic-alert)';
+                } else {
+                    progress.style.background = 'var(--color-semantic-danger)';
+                }
+
+                app.saveData();
+            }
+
+            checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
+            updateProgress(); // Initial
+        });
+    </script>
+</body>
+
+</html>

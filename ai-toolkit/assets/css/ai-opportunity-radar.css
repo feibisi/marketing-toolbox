@@ -1,0 +1,43 @@
+/* AI Opportunity Radar Styles */
+
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .radar-matrix, .matrix-body, .matrix-grid, .categories-grid { min-width: 0; }
+    .matrix-grid, .categories-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .matrix-body { display: block; }
+    .axis-label { position: static; }
+}
+
+@media screen and (min-width: 769px) {
+    main.paper-a3 { height: auto; min-height: 950px; aspect-ratio: auto; overflow: visible; }
+}

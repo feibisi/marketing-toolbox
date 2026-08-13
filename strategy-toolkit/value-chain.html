@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价值链分析 (Value Chain Analysis)</title>
+    <meta name="description" content="价值链分析工具,帮助您系统分析企业主要活动和支持活动,识别竞争优势来源。">
+    <meta name="keywords" content="价值链分析,Value Chain,波特价值链,竞争优势,战略分析">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="价值链分析 - Modiqi Workbench">
+    <meta property="og:description" content="系统分析企业活动,识别竞争优势来源。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/value-chain.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>价值链分析</h1>
+                <span class="english-subtitle">Value Chain Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>公司/项目 <span class="en-sub">(Company)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的公司" data-save-key="meta_company" aria-label="我的公司">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="value-chain-container">
+            <!-- Support Activities -->
+            <div class="support-activities">
+                <div class="activity-block support-infrastructure">
+                    <div class="activity-header">
+                        <i data-lucide="building"></i>
+                        <h3>企业基础设施 <span class="en-sub">(Infrastructure)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="infrastructure">
+                        <p>管理、财务、法务、质量管理</p>
+                    </div>
+                </div>
+
+                <div class="activity-block support-hrm">
+                    <div class="activity-header">
+                        <i data-lucide="users"></i>
+                        <h3>人力资源管理 <span class="en-sub">(Human Resources)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="hrm">
+                        <p>招聘、培训、薪酬、员工发展</p>
+                    </div>
+                </div>
+
+                <div class="activity-block support-technology">
+                    <div class="activity-header">
+                        <i data-lucide="cpu"></i>
+                        <h3>技术开发 <span class="en-sub">(Technology)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="technology">
+                        <p>研发、工艺改进、产品设计</p>
+                    </div>
+                </div>
+
+                <div class="activity-block support-procurement">
+                    <div class="activity-header">
+                        <i data-lucide="shopping-cart"></i>
+                        <h3>采购 <span class="en-sub">(Procurement)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="procurement">
+                        <p>原材料采购、供应商管理</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Activities -->
+            <div class="primary-activities">
+                <div class="activity-block primary-inbound">
+                    <div class="activity-header">
+                        <i data-lucide="package"></i>
+                        <h3>进货物流 <span class="en-sub">(Inbound)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="inbound">
+                        <p>接收、仓储、库存管理</p>
+                    </div>
+                </div>
+
+                <div class="activity-block primary-operations">
+                    <div class="activity-header">
+                        <i data-lucide="settings"></i>
+                        <h3>生产运营 <span class="en-sub">(Operations)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="operations">
+                        <p>加工、组装、测试、包装</p>
+                    </div>
+                </div>
+
+                <div class="activity-block primary-outbound">
+                    <div class="activity-header">
+                        <i data-lucide="truck"></i>
+                        <h3>出货物流 <span class="en-sub">(Outbound)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="outbound">
+                        <p>订单处理、配送、交付</p>
+                    </div>
+                </div>
+
+                <div class="activity-block primary-marketing">
+                    <div class="activity-header">
+                        <i data-lucide="megaphone"></i>
+                        <h3>市场营销 <span class="en-sub">(Marketing)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="marketing">
+                        <p>广告、促销、销售、定价</p>
+                    </div>
+                </div>
+
+                <div class="activity-block primary-service">
+                    <div class="activity-header">
+                        <i data-lucide="headphones"></i>
+                        <h3>售后服务 <span class="en-sub">(Service)</span></h3>
+                    </div>
+                    <div class="activity-content" contenteditable="true" data-save-key="service">
+                        <p>安装、维修、培训、升级</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Margin -->
+            <div class="margin-section">
+                <div class="margin-label">
+                    <i data-lucide="trending-up"></i>
+                    <span>利润 (Margin)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="analysis-section">
+            <h2 class="section-title">
+                <i data-lucide="lightbulb"></i>
+                价值链分析 <span class="en-sub">(Analysis)</span>
+            </h2>
+            <div class="analysis-content" contenteditable="true" data-save-key="analysis">
+                <p><strong>竞争优势来源:</strong> 识别哪些活动创造了最大价值</p>
+                <p><strong>成本驱动因素:</strong> 分析各环节的成本结构</p>
+                <p><strong>改进机会:</strong> 找出可以优化的环节</p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('value_chain_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

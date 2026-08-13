@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视觉识别清单 (Visual Identity Checklist)</title>
+    <meta name="description" content="视觉识别清单工具，帮助您系统整理品牌视觉元素，包括标志、色彩、字体和图像风格。">
+    <meta name="keywords" content="视觉识别,VI设计,品牌色彩,标志设计,品牌字体">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="视觉识别清单 - Modiqi Workbench">
+    <meta property="og:description" content="系统整理品牌视觉元素，包括标志、色彩、字体和图像风格。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/visual-identity.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>视觉识别清单</h1>
+                <span class="english-subtitle">Visual Identity Checklist</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" value="我的品牌" data-save-key="brand_name" aria-label="brand name">
+                </div>
+                <div class="meta-group">
+                    <label>设计师 <span class="en-sub">(Designer)</span></label>
+                    <input type="text" class="meta-input" data-save-key="meta_designer" aria-label="designer">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="vi-layout">
+
+            <div class="vi-column-left">
+                <!-- Logo Section -->
+                <section class="vi-section logo-section">
+                    <div class="section-header">
+                        <i data-lucide="image" class="icon"></i>
+                        <h2>标志规范 <span class="en-label">Logo Guidelines</span></h2>
+                    </div>
+                    <div class="logo-group">
+                        <div class="logo-box primary">
+                            <div class="upload-placeholder">
+                                <i data-lucide="upload-cloud" class="icon-lg"></i>
+                                <span>主标志 (Primary)</span>
+                            </div>
+                        </div>
+                        <div class="logo-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">最小尺寸</span>
+                                <div class="spec-input" contenteditable="true" data-placeholder="例如: 24px / 15mm"></div>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">安全空间</span>
+                                <div class="spec-input" contenteditable="true" data-placeholder="例如: 1x 'x-height'">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="logo-variants">
+                            <div class="logo-box small">
+                                <div class="variant-label">单色/反白</div>
+                            </div>
+                            <div class="logo-box small">
+                                <div class="variant-label">图标/Favicon</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Typography Section -->
+                <section class="vi-section typo-section">
+                    <div class="section-header">
+                        <i data-lucide="type" class="icon"></i>
+                        <h2>字体排印 <span class="en-label">Typography</span></h2>
+                    </div>
+                    <div class="typo-group">
+                        <div class="font-card primary">
+                            <i data-lucide="case-sensitive" class="font-icon"></i>
+                            <div class="font-details">
+                                <input type="text" class="font-name" placeholder="主字体名称 (Primary Font)" aria-label="主字体名称 (Primary Font)">
+                                <span class="font-usage">用于标题、强调文字</span>
+                                <div class="font-display">Aa Bb Cc 123</div>
+                            </div>
+                        </div>
+                        <div class="font-card secondary">
+                            <i data-lucide="align-left" class="font-icon"></i>
+                            <div class="font-details">
+                                <input type="text" class="font-name" placeholder="辅助字体名称 (Secondary Font)" aria-label="辅助字体名称 (Secondary Font)">
+                                <span class="font-usage">用于正文、说明文字</span>
+                                <div class="font-display body-text">Aa Bb Cc 123</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Imagery Style -->
+                <section class="vi-section visual-style-section">
+                    <div class="section-header">
+                        <i data-lucide="camera" class="icon"></i>
+                        <h2>图像风格 <span class="en-label">Visual Style</span></h2>
+                    </div>
+                    <div class="style-keywords">
+                        <div class="style-tag" contenteditable="true" data-placeholder="关键词 1"></div>
+                        <div class="style-tag" contenteditable="true" data-placeholder="关键词 2"></div>
+                        <div class="style-tag" contenteditable="true" data-placeholder="关键词 3"></div>
+                        <div class="style-tag" contenteditable="true" data-placeholder="关键词 4"></div>
+                    </div>
+                    <div class="mood-board">
+                        <div class="mood-item"></div>
+                        <div class="mood-item"></div>
+                        <div class="mood-item"></div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="vi-column-right">
+                <!-- Color Palette -->
+                <section class="vi-section color-section">
+                    <div class="section-header">
+                        <i data-lucide="palette" class="icon"></i>
+                        <h2>色彩体系 <span class="en-label">Color Palette</span></h2>
+                    </div>
+
+                    <div class="color-category">
+                        <h3>主色调 (Primary)</h3>
+                        <div class="color-grid">
+                            <div class="color-swatch main-color">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-brand-blue);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#3B82F6</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-brand-blue-dark);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#1D4ED8</div>
+                            </div>
+                            <div class="color-add">
+                                <i data-lucide="plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-category">
+                        <h3>辅助色 (Secondary)</h3>
+                        <div class="color-grid">
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-semantic-growth);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#10B981</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-semantic-alert);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#F59E0B</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-semantic-danger);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#EF4444</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-category">
+                        <h3>中性色 (Neutral)</h3>
+                        <div class="color-grid">
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-text-primary);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#1F2937</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-text-secondary);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#9CA3AF</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" contenteditable="true"
+                                    style="background-color: var(--color-bg-subtle);">
+                                </div>
+                                <div class="color-info" contenteditable="true">#F3F4F6</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Application Checklist -->
+                <section class="vi-section checklist-section">
+                    <div class="section-header">
+                        <i data-lucide="check-square" class="icon"></i>
+                        <h2>应用检查清单 <span class="en-label">Application Checklist</span></h2>
+                    </div>
+                    <div class="checklist-container">
+                        <div class="check-item">
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Logo 在浅色背景上的易读性</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check2">
+                            <label for="check2">Logo 在深色背景上的反白表现</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check3">
+                            <label for="check3">最小尺寸下的图标识别度 (Favicon)</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check4">
+                            <label for="check4">主色与辅助色的对比度 (无障碍标准)</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check5">
+                            <label for="check5">字体层级清晰 (H1, H2, 正文)</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check6">
+                            <label for="check6">图片风格一致性 (滤镜/色调)</label>
+                        </div>
+                        <div class="check-item add-new">
+                            <i data-lucide="plus" class="icon-sm"></i>
+                            <div contenteditable="true" data-placeholder="添加新检查项..." class="new-item-input"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('visual-identity');
+        });
+    </script>
+</body>
+
+</html>

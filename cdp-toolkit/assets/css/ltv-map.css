@@ -1,0 +1,528 @@
+/* ========================================
+   LTV Map Specific Styles
+   Modiqi Design System Compliant
+   - No border-radius (tool pages use sharp corners)
+   ======================================== */
+
+/* Override paper-a3 with Grid for vertical layout control */
+.paper-a3 {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+}
+
+.paper-a3>.canvas-header {
+    grid-area: header;
+}
+
+.paper-a3>.ltv-layout {
+    grid-area: main;
+    min-height: 0;
+}
+
+.paper-a3>.modiqi-footer {
+    grid-area: footer;
+}
+
+/* Main Layout */
+.ltv-layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: var(--spacing-md);
+}
+
+/* ========================================
+   LTV CURVE SECTION (Top)
+   ======================================== */
+
+.ltv-curve-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    /* No border-radius */
+    padding: var(--spacing-md);
+}
+
+.ltv-curve-section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.ltv-curve-section .section-header h3 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Metrics */
+.curve-metrics {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.metric-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius */
+}
+
+.metric-badge.highlight {
+    background: var(--color-bg-muted);
+    border-color: var(--color-text-tertiary);
+}
+
+/* Color mode: show colored highlight */
+body.color-mode .metric-badge.highlight {
+    background: var(--color-semantic-growth-bg);
+    border-color: var(--color-semantic-growth);
+}
+
+body.color-mode .metric-badge.highlight .metric-value {
+    color: var(--color-semantic-profit);
+}
+
+.metric-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 2px;
+}
+
+.metric-value {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+}
+
+/* Chart */
+.curve-chart {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius */
+    padding: var(--spacing-sm);
+}
+
+.curve-chart svg {
+    color: var(--color-text-primary);
+}
+
+/* Color mode: colored curve */
+body.color-mode .ltv-curve {
+    stroke: var(--color-brand-blue);
+}
+
+body.color-mode .data-points circle {
+    fill: var(--color-brand-blue);
+}
+
+/* ========================================
+   BOTTOM GRID (3 Columns)
+   ======================================== */
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    min-height: 0;
+}
+
+/* ========================================
+   SECTION HEADERS
+   ======================================== */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.section-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ========================================
+   COMPONENTS SECTION
+   ======================================== */
+
+.components-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    /* No border-radius */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.component-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius */
+}
+
+.component-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+}
+
+.component-label i {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-tertiary);
+}
+
+.component-input {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius */
+    text-align: right;
+    min-width: 90px;
+}
+
+.component-input:focus {
+    outline: none;
+    border-color: var(--color-text-secondary);
+}
+
+/* LTV Formula */
+.ltv-formula {
+    margin-top: auto;
+    padding: var(--spacing-sm);
+    background: var(--color-bg-muted);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius */
+}
+
+/* Color mode: highlighted formula */
+body.color-mode .ltv-formula {
+    background: rgba(78, 96, 159, 0.08);
+    border-color: var(--color-brand-blue);
+}
+
+.ltv-formula>strong {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.formula {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.formula-result {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.formula-result strong {
+    display: inline;
+    font-size: var(--font-size-lg);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+}
+
+body.color-mode .formula-result strong {
+    color: var(--color-brand-blue);
+}
+
+/* ========================================
+   DRIVERS SECTION
+   ======================================== */
+
+.drivers-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    /* No border-radius */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.driver-category {
+    margin-bottom: var(--spacing-sm);
+}
+
+.driver-category:last-child {
+    margin-bottom: 0;
+}
+
+.driver-category h4 {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--spacing-xs) 0;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border-sem-inner);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.driver-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    margin-bottom: 2px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-subtle);
+    /* No border-radius */
+    cursor: text;
+}
+
+.driver-item:hover {
+    background: var(--color-bg-muted);
+}
+
+.driver-item i {
+    width: 12px;
+    height: 12px;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* Color mode: green arrows */
+body.color-mode .driver-item i {
+    color: var(--color-semantic-growth);
+}
+
+/* ========================================
+   COMPARISON SECTION
+   ======================================== */
+
+.comparison-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    /* No border-radius */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-sm);
+    flex: 1;
+}
+
+.comparison-table thead {
+    background: var(--color-bg-subtle);
+}
+
+.comparison-table th {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    text-align: left;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.comparison-table td {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.comparison-table tbody tr:hover {
+    background: var(--color-bg-subtle);
+}
+
+/* Segment indicators (left border) - monochrome default */
+.segment-vip,
+.segment-active,
+.segment-normal,
+.segment-risk {
+    border-left: 3px solid var(--color-text-tertiary);
+}
+
+/* Color mode: colored segment borders */
+body.color-mode .segment-vip {
+    border-left-color: var(--color-brand-blue);
+}
+
+body.color-mode .segment-active {
+    border-left-color: var(--color-semantic-growth);
+}
+
+body.color-mode .segment-normal {
+    border-left-color: var(--color-text-tertiary);
+}
+
+body.color-mode .segment-risk {
+    border-left-color: var(--color-semantic-alert);
+}
+
+/* Ratio indicators - monochrome default */
+.ratio-good,
+.ratio-ok,
+.ratio-bad {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+/* Color mode: colored ratios */
+body.color-mode .ratio-good {
+    color: var(--color-semantic-profit);
+}
+
+body.color-mode .ratio-ok {
+    color: var(--color-semantic-alert);
+}
+
+body.color-mode .ratio-bad {
+    color: var(--color-semantic-danger);
+}
+
+/* Insight Box */
+.comparison-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-muted);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius */
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin-top: auto;
+}
+
+/* Color mode: yellow insight */
+body.color-mode .comparison-insight {
+    background: var(--color-semantic-alert-bg);
+    border-color: var(--color-semantic-alert);
+    color: var(--color-text-primary);
+}
+
+.comparison-insight i {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+body.color-mode .comparison-insight i {
+    color: var(--color-semantic-alert);
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .ltv-curve-section,
+    .components-section,
+    .drivers-section,
+    .comparison-section {
+        border-width: 0.5pt;
+    }
+
+    .component-item,
+    .driver-item {
+        border-width: 0.5pt;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        border-width: 0.5pt;
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+    .bottom-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .comparison-section {
+        grid-column: span 2;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen {
+    .paper-a3,
+    #canvas.paper-a3 {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}

@@ -1,0 +1,369 @@
+/* Engagement Strategy - Design System Aligned */
+/* 互动策略卡样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.engagement-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   顶部：参与金字塔 (Pyramid)
+   ======================================== */
+.pyramid-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 4px 12px;
+    background: var(--color-bg-warm-light);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    width: fit-content;
+    border: 1px solid var(--border-sem-inner);
+}
+
+.section-badge .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-brand-blue);
+}
+
+.pyramid-container {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Stack from bottom up visually, but HTML is top-down logic... wait, standard pyramid is widest at bottom. Flex col reverse makes first item at bottom. */
+    /* Let's stick to normal column and style widths */
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+}
+
+.pyramid-level {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+}
+
+.pyramid-level:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-sm);
+    z-index: 2;
+}
+
+/* Widths for pyramid effect */
+.level-1 {
+    width: 100%;
+    border-left: 4px solid var(--color-text-tertiary);
+}
+
+.level-2 {
+    width: 85%;
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+.level-3 {
+    width: 70%;
+    border-left: 4px solid var(--color-semantic-growth);
+}
+
+.level-4 {
+    width: 55%;
+    border-left: 4px solid var(--color-semantic-alert);
+}
+
+.level-5 {
+    width: 40%;
+    border-left: 4px solid var(--color-semantic-danger);
+    background: var(--color-bg-warm-light);
+}
+
+.level-label {
+    width: 120px;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.level-action {
+    width: 100px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+.level-input {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    outline: none;
+    min-width: 100px;
+}
+
+/* ========================================
+   中间：回复协议 (Protocol Grid)
+   ======================================== */
+.protocol-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.protocol-grid {
+    display: grid;
+    grid-template-columns: 140px 100px 120px 1fr;
+    gap: 1px;
+    background: var(--border-sem-inner);
+    /* Grid border color */
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.grid-header {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+}
+
+.grid-cell {
+    background: var(--color-bg-paper);
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    outline: none;
+}
+
+.grid-cell.center {
+    justify-content: center;
+    text-align: center;
+}
+
+.grid-cell.label-cell {
+    font-weight: var(--font-weight-bold);
+    gap: var(--spacing-xs);
+}
+
+.cell-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-tertiary);
+}
+
+.grid-cell.crisis {
+    background: var(--color-bg-danger-subtle);
+    /* Light red bg for crisis row specifically */
+    color: var(--color-semantic-danger);
+}
+
+body.theme-dark .grid-cell.crisis {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger-light);
+}
+
+.link-btn {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--color-brand-blue);
+    text-decoration: none;
+    padding: 2px 6px;
+    border: 1px solid var(--color-brand-blue);
+    border-radius: 0;
+}
+
+.link-btn:hover {
+    background: var(--color-brand-blue);
+    color: white;
+}
+
+/* ========================================
+   底部：社群仪式 (Rituals)
+   ======================================== */
+.rituals-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.rituals-container {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.ritual-card {
+    flex: 1;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.card-header-bar {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    text-transform: uppercase;
+}
+
+.card-header-bar.daily {
+    background: var(--color-brand-blue);
+}
+
+.card-header-bar.weekly {
+    background: var(--color-semantic-growth);
+}
+
+.card-header-bar.monthly {
+    background: var(--color-semantic-alert);
+}
+
+.card-content {
+    padding: var(--spacing-md);
+    min-height: 80px;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.card-content:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .pyramid-container {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .pyramid-level {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .level-5 {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .grid-header {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .section-badge {
+        background: var(--color-bg-subtle);
+        border: 1px solid var(--border-sem-outer);
+    }
+
+    .card-header-bar,
+    .pyramid-level {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .grid-cell.crisis {
+        background: var(--color-bg-danger-subtle) !important;
+        color: var(--color-semantic-danger) !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .protocol-grid {
+        grid-template-columns: 140px 80px 100px 1fr;
+        font-size: 12px;
+    }
+
+    .rituals-container {
+        flex-direction: column;
+    }
+
+    .pyramid-level {
+        width: 100% !important;
+        /* Flatten pyramid on mobile */
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .protocol-section {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .protocol-grid {
+        width: 680px;
+        overflow: visible;
+    }
+}

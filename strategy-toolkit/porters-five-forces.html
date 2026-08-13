@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>波特五力分析 (Porter's Five Forces)</title>
+    <meta name="description" content="波特五力分析工具，帮助您分析行业竞争格局：供应商议价能力、买家议价能力、新进入者威胁、替代品威胁和行业竞争。">
+    <meta name="keywords" content="波特五力,Porter Five Forces,行业分析,竞争分析,战略规划">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="波特五力分析 - Modiqi Workbench">
+    <meta property="og:description" content="分析行业竞争格局的五种力量。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/porters-five-forces.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>波特五力分析</h1>
+                <span class="english-subtitle">Porter's Five Forces</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>行业 <span class="en-sub">(Industry)</span></label>
+                    <input type="text" class="meta-input" placeholder="行业名称" data-save-key="meta_industry" aria-label="行业名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="forces-container">
+            <!-- Top-Left Corner (empty) -->
+            <div class="force-corner"></div>
+
+            <!-- Top - Threat of New Entrants -->
+            <div class="force-block force-top">
+                <div class="force-header">
+                    <i data-lucide="log-in"></i>
+                    新进入者威胁 <span class="en-sub">(Threat of New Entrants)</span>
+                </div>
+                <div class="force-content" contenteditable="true" data-save-key="force_entrants">
+                    <ul>
+                        <li>进入壁垒高低？</li>
+                        <li>规模经济要求？</li>
+                        <li>品牌忠诚度？</li>
+                        <li>资本需求？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Top-Right Corner (empty) -->
+            <div class="force-corner"></div>
+
+            <!-- Left - Bargaining Power of Suppliers -->
+            <div class="force-block force-left">
+                <div class="force-header">
+                    <i data-lucide="factory"></i>
+                    供应商议价能力 <span class="en-sub">(Supplier Power)</span>
+                </div>
+                <div class="force-content" contenteditable="true" data-save-key="force_suppliers">
+                    <ul>
+                        <li>供应商数量？</li>
+                        <li>替代供应商？</li>
+                        <li>转换成本？</li>
+                        <li>供应商前向整合？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Center - Industry Rivalry -->
+            <div class="force-block force-center">
+                <div class="force-header">
+                    <i data-lucide="swords"></i>
+                    行业内竞争 <span class="en-sub">(Industry Rivalry)</span>
+                </div>
+                <div class="force-content" contenteditable="true" data-save-key="force_rivalry">
+                    <ul>
+                        <li>竞争者数量与规模？</li>
+                        <li>行业增长率？</li>
+                        <li>产品差异化程度？</li>
+                        <li>退出壁垒？</li>
+                        <li>竞争激烈程度？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right - Bargaining Power of Buyers -->
+            <div class="force-block force-right">
+                <div class="force-header">
+                    <i data-lucide="shopping-cart"></i>
+                    买家议价能力 <span class="en-sub">(Buyer Power)</span>
+                </div>
+                <div class="force-content" contenteditable="true" data-save-key="force_buyers">
+                    <ul>
+                        <li>买家集中度？</li>
+                        <li>购买量？</li>
+                        <li>转换成本？</li>
+                        <li>买家后向整合？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom-Left Corner (empty) -->
+            <div class="force-corner"></div>
+
+            <!-- Bottom - Threat of Substitutes -->
+            <div class="force-block force-bottom">
+                <div class="force-header">
+                    <i data-lucide="replace"></i>
+                    替代品威胁 <span class="en-sub">(Threat of Substitutes)</span>
+                </div>
+                <div class="force-content" contenteditable="true" data-save-key="force_substitutes">
+                    <ul>
+                        <li>替代品可用性？</li>
+                        <li>性价比对比？</li>
+                        <li>转换成本？</li>
+                        <li>客户转换意愿？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom-Right Corner (empty) -->
+            <div class="force-corner"></div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('porters_five_forces_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

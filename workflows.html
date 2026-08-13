@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>营销工作流 | Modiqi Marketing Toolbox</title>
+  <link rel="stylesheet" href="shared/css/tokens.css">
+  <link rel="stylesheet" href="shared/css/base.css">
+  <link rel="stylesheet" href="shared/css/workspace.css">
+  <script src="shared/vendor/lucide.min.js"></script>
+</head>
+<body class="workspace-page">
+  <main class="workspace-shell">
+    <nav class="workspace-nav" aria-label="主要导航">
+      <a href="index.html"><i data-lucide="arrow-left"></i>全部工具</a>
+      <div class="workspace-nav-links">
+        <a href="project.html"><i data-lucide="folder-kanban"></i>项目设置</a>
+        <a href="navigator.html"><i data-lucide="layers"></i>战略视图</a>
+        <a href="docs/index.html"><i data-lucide="book-open"></i>文档</a>
+      </div>
+    </nav>
+    <header class="workspace-hero">
+      <p class="workspace-kicker">Supported workflows</p>
+      <h1>从问题出发，而不是从 144 个页面中猜工具</h1>
+      <p>六条工作流覆盖 30 个核心工具。完成状态保存在当前浏览器，可随项目 JSON 一起导出。</p>
+      <p id="projectSummary"></p>
+    </header>
+    <section id="workflowGrid" class="workspace-grid" aria-live="polite"></section>
+  </main>
+  <script src="shared/js/project-store.js"></script>
+  <script src="shared/js/workflows.js"></script>
+</body>
+</html>

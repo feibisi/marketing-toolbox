@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计思维画布 (Design Thinking Canvas)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="设计思维五步法工作画布：共情、定义、构思、原型、测试">
+    <meta name="keywords" content="Design Thinking, Empathize, Define, Ideate, Prototype, Test, Innovation">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/design-thinking-canvas.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>设计思维画布</h1>
+                <span class="english-subtitle">Design Thinking Canvas</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>挑战/问题 <span class="en-sub">(Challenge)</span></label>
+                    <input type="text" class="meta-input" placeholder="How might we..." data-save-key="meta_challenge" aria-label="How might we...">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="dt-canvas">
+
+                <!-- Stage 1: Empathize -->
+                <div class="dt-stage stage-empathize">
+                    <div class="stage-header">
+                        <div class="stage-num">01</div>
+                        <i data-lucide="heart" class="stage-icon"></i>
+                        <h3>共情 <br><span class="en-sub">Empathize</span></h3>
+                    </div>
+                    <div class="stage-body">
+                        <div class="prompt-box">
+                            <i data-lucide="help-circle" class="icon-xs"></i>
+                            用户是谁？他们的痛点是什么？
+                        </div>
+                        <div class="content-area" contenteditable="true"
+                            data-placeholder="- 用户访谈记录&#10;- 观察到的行为&#10;- 情感需求" data-save-key="dt_empathize"></div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Define -->
+                <div class="dt-stage stage-define">
+                    <div class="stage-header">
+                        <div class="stage-num">02</div>
+                        <i data-lucide="target" class="stage-icon"></i>
+                        <h3>定义 <br><span class="en-sub">Define</span></h3>
+                    </div>
+                    <div class="stage-body">
+                        <div class="prompt-box">
+                            <i data-lucide="help-circle" class="icon-xs"></i>
+                            我们需要解决的核心问题是...
+                        </div>
+                        <div class="content-area" contenteditable="true" data-placeholder="- 核心问题陈述 (POV)&#10;- 需求优先级"
+                            data-save-key="dt_define"></div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Ideate -->
+                <div class="dt-stage stage-ideate">
+                    <div class="stage-header">
+                        <div class="stage-num">03</div>
+                        <i data-lucide="lightbulb" class="stage-icon"></i>
+                        <h3>构思 <br><span class="en-sub">Ideate</span></h3>
+                    </div>
+                    <div class="stage-body">
+                        <div class="prompt-box">
+                            <i data-lucide="help-circle" class="icon-xs"></i>
+                            有哪些可能的解决方案？(量大优先)
+                        </div>
+                        <div class="content-area" contenteditable="true"
+                            data-placeholder="- 创意点子 A&#10;- 创意点子 B&#10;- 疯狂的想法..." data-save-key="dt_ideate"></div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: Prototype -->
+                <div class="dt-stage stage-prototype">
+                    <div class="stage-header">
+                        <div class="stage-num">04</div>
+                        <i data-lucide="box" class="stage-icon"></i>
+                        <h3>原型 <br><span class="en-sub">Prototype</span></h3>
+                    </div>
+                    <div class="stage-body">
+                        <div class="prompt-box">
+                            <i data-lucide="help-circle" class="icon-xs"></i>
+                            如何构建低保真模型来展示想法？
+                        </div>
+                        <div class="content-area" contenteditable="true"
+                            data-placeholder="- 原型方案描述&#10;- 关键功能草图&#10;- 故事板" data-save-key="dt_prototype"></div>
+                    </div>
+                </div>
+
+                <!-- Stage 5: Test -->
+                <div class="dt-stage stage-test">
+                    <div class="stage-header">
+                        <div class="stage-num">05</div>
+                        <i data-lucide="flask-conical" class="stage-icon"></i>
+                        <h3>测试 <br><span class="en-sub">Test</span></h3>
+                    </div>
+                    <div class="stage-body">
+                        <div class="prompt-box">
+                            <i data-lucide="help-circle" class="icon-xs"></i>
+                            用户反馈了什么？行得通吗？
+                        </div>
+                        <div class="content-area" contenteditable="true" data-placeholder="- 正面反馈&#10;- 改进建议&#10;- 疑问点"
+                            data-save-key="dt_test"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('design_thinking_canvas_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

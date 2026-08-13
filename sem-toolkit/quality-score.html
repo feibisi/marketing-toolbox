@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>质量度诊断卡 (Quality Score Diagnostic)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/quality-score.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>质量度诊断卡</h1>
+                <span class="english-subtitle">Quality Score Diagnostic</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>分析日期</label>
+                    <input type="date" class="meta-input" aria-label="Input field">
+                </div>
+            </div>
+        </header>
+
+        <div class="qs-container">
+
+            <!-- 1. Score Input -->
+            <div class="score-header">
+                <div>
+                    <label
+                        style="display:block; font-size:10px; color:var(--color-text-tertiary); margin-bottom:4px;">关键词
+                        (Keyword)</label>
+                    <input type="text" class="keyword-input" placeholder="输入低分关键词..." value="高端跑鞋" aria-label="输入低分关键词...">
+                </div>
+                <div class="score-display">
+                    <span style="font-weight:bold; color:var(--color-text-secondary);">当前得分:</span>
+                    <div class="score-circle low" id="finalScore">3</div>
+                    <select id="scoreSelect" style="margin-left:8px; padding:4px;"
+                        onchange="updateMainScore(this.value)" aria-label="scoreSelect">
+                        <option value="1">1/10</option>
+                        <option value="2">2/10</option>
+                        <option value="3" selected>3/10</option>
+                        <option value="4">4/10</option>
+                        <option value="5">5/10</option>
+                        <option value="6">6/10</option>
+                        <option value="7">7/10</option>
+                        <option value="8">8/10</option>
+                        <option value="9">9/10</option>
+                        <option value="10">10/10</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 2. Factors Grid -->
+            <div class="factors-grid">
+
+                <!-- Factor 1: CTR -->
+                <div class="factor-card">
+                    <div class="factor-title">
+                        <i data-lucide="mouse-pointer"></i> 预期点击率 (Exp. CTR)
+                    </div>
+                    <select class="factor-select" id="ctrSelect" onchange="updateRecs('ctr')" aria-label="ctrSelect">
+                        <option value="below">低于平均值 (Below Average)</option>
+                        <option value="avg">平均值 (Average)</option>
+                        <option value="above">高于平均值 (Above Average)</option>
+                    </select>
+                    <div class="status-badge status-below" id="ctrBadge">需重点优化</div>
+                    <div class="recommendation-list" id="ctrRecs">
+                        <!-- Injected -->
+                    </div>
+                </div>
+
+                <!-- Factor 2: Ad Relevance -->
+                <div class="factor-card">
+                    <div class="factor-title">
+                        <i data-lucide="align-left"></i> 广告相关性 (Ad Relevance)
+                    </div>
+                    <select class="factor-select" id="relSelect" onchange="updateRecs('rel')" aria-label="relSelect">
+                        <option value="below">低于平均值 (Below Average)</option>
+                        <option value="avg" selected>平均值 (Average)</option>
+                        <option value="above">高于平均值 (Above Average)</option>
+                    </select>
+                    <div class="status-badge status-avg" id="relBadge">保持现状</div>
+                    <div class="recommendation-list" id="relRecs">
+                        <!-- Injected -->
+                    </div>
+                </div>
+
+                <!-- Factor 3: Landing Page -->
+                <div class="factor-card">
+                    <div class="factor-title">
+                        <i data-lucide="layout"></i> 落地页体验 (Landing Page)
+                    </div>
+                    <select class="factor-select" id="lpSelect" onchange="updateRecs('lp')" aria-label="lpSelect">
+                        <option value="below" selected>低于平均值 (Below Average)</option>
+                        <option value="avg">平均值 (Average)</option>
+                        <option value="above">高于平均值 (Above Average)</option>
+                    </select>
+                    <div class="status-badge status-below" id="lpBadge">需重点优化</div>
+                    <div class="recommendation-list" id="lpRecs">
+                        <!-- Injected -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 3. Action Plan -->
+            <div class="action-plan">
+                <div class="plan-title">
+                    <i data-lucide="check-square"></i> 优化行动计划 (Action Plan)
+                </div>
+                <textarea class="plan-editor" placeholder="基于以上诊断，在此制定具体的优化步骤...
+1. 修改广告语，加入动态关键词插入
+2. 优化落地页首屏加载速度
+3. ..." aria-label="基于以上诊断，在此制定具体的优化步骤...
+1. 修改广告语，加入动态关键词插入
+2. 优化落地页首屏加载速度
+3. ..."></textarea>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        const RECS = {
+            ctr: {
+                below: ["检查关键词匹配方式是否过于宽泛", "在广告语中通过号召性用语(CTA)增强点击欲望", "使用否定词排除不相关流量", "测试不同的广告文案角度"],
+                avg: ["当前表现尚可，可尝试在标题中加入促销信息", "利用附加链接提升广告版面占比"],
+                above: ["表现优秀！保持当前策略，可尝试扩展相似受众"]
+            },
+            rel: {
+                below: ["确保广告标题包含核心关键词", "将关键词分组更细化，每个广告组只针对单一主题", "检查否定词是否误杀了精准流量"],
+                avg: ["相关性尚可，尝试在描述行中也自然插入关键词"],
+                above: ["相关性极高，继续保持关键词与文案的紧密对应"]
+            },
+            lp: {
+                below: ["检查页面加载速度（特别是移动端）", "确保落地页H1标题与广告关键词一致", "内容是否直接解决了用户搜索意图？", "提升页面导航的清晰度"],
+                avg: ["体验适中，尝试增加信任背书（评价、证书）", "优化表单填写流程"],
+                above: ["落地页体验优秀，可作为其他广告的参考模板"]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('quality_score_diag');
+            lucide.createIcons();
+
+            // Init
+            updateMainScore(3);
+            updateRecs('ctr');
+            updateRecs('rel');
+            updateRecs('lp');
+        });
+
+        function updateMainScore(val) {
+            const el = document.getElementById('finalScore');
+            el.innerText = val;
+            el.className = 'score-circle';
+            if (val >= 7) el.classList.add('high');
+            else if (val >= 5) el.classList.add('mid');
+            else el.classList.add('low');
+
+            // Find select
+            document.getElementById('scoreSelect').value = val;
+        }
+
+        function updateRecs(type) {
+            const select = document.getElementById(type + 'Select');
+            const badge = document.getElementById(type + 'Badge');
+            const list = document.getElementById(type + 'Recs');
+            const val = select.value;
+
+            // Update badge
+            badge.className = 'status-badge';
+            if (val === 'below') {
+                badge.classList.add('status-below');
+                badge.innerText = '需重点优化';
+            } else if (val === 'avg') {
+                badge.classList.add('status-avg');
+                badge.innerText = '有提升空间';
+            } else {
+                badge.classList.add('status-above');
+                badge.innerText = '表现优秀';
+            }
+
+            // Update list
+            list.innerHTML = '';
+            RECS[type][val].forEach(txt => {
+                const li = document.createElement('li');
+                li.innerText = txt;
+                list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+
+</html>

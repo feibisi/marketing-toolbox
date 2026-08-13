@@ -1,0 +1,314 @@
+/* Content Audit Layout */
+.audit-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* 1. Filter / Controls Bar */
+.audit-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-group {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.audit-btn {
+    padding: 8px 16px;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.audit-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+}
+
+.audit-btn.primary {
+    background: var(--color-brand-primary);
+    color: white;
+    border-color: var(--color-brand-primary);
+}
+
+.audit-btn.primary:hover {
+    background: var(--color-brand-dark);
+}
+
+/* 2. Inventory Grid */
+.audit-table-wrapper {
+    flex: 1;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: var(--color-bg-paper);
+    overflow: hidden;
+    /* For rounded corners */
+    display: flex;
+    flex-direction: column;
+}
+
+.audit-header-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 100px;
+    /* Content, Type, Status, Performance, Action */
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.5px;
+}
+
+.audit-list {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow-y: auto;
+    min-height: 200px;
+}
+
+.audit-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 100px;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-dashed);
+    align-items: center;
+}
+
+.audit-item:last-child {
+    border-bottom: none;
+}
+
+.audit-item:hover {
+    background: var(--color-bg-hover);
+}
+
+/* Item Columns */
+.col-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: var(--spacing-md);
+}
+
+.content-title {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.content-title:focus {
+    outline: none;
+    border-bottom: 1px dashed var(--color-border-medium);
+}
+
+.content-url {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-xs);
+    border: none;
+    background: transparent;
+}
+
+.col-type .type-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 0;
+    font-size: 10px;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-input);
+    color: var(--color-text-secondary);
+}
+
+.col-status select {
+    padding: 4px 8px;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-input);
+    font-size: 11px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    width: 100%;
+}
+
+.col-perf {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    display: flex;
+    flex-direction: column;
+}
+
+.col-action {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-select {
+    padding: 4px;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 11px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    appearance: none;
+    /* simple look */
+}
+
+/* Action States */
+.action-keep {
+    background: var(--color-semantic-growth-bg);
+    color: var(--color-semantic-profit);
+}
+
+.action-update {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger);
+}
+
+/* In audit, usually 'update' is red/urgent or yellow */
+.action-delete {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+    text-decoration: line-through;
+}
+
+.action-merge {
+    background: var(--color-bg-info-subtle);
+    color: var(--color-focus-border);
+}
+
+
+/* 3. Summary Footer */
+.audit-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 2px solid var(--border-sem-inner);
+}
+
+.summary-card {
+    text-align: center;
+}
+
+.summary-num {
+    font-size: var(--font-size-2xl);
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+.summary-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+/* Dark Mode */
+body.theme-dark .audit-controls,
+body.theme-dark .audit-table-wrapper {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .audit-header-row {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.theme-dark .audit-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Dark Mode overrides removed as semantic tokens handle them */
+
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .paper-a3 {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .audit-container,
+    .audit-table-wrapper,
+    .audit-list {
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .audit-controls,
+    .filter-group {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .audit-btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .audit-header-row {
+        display: none;
+    }
+
+    .audit-item {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-sm);
+        align-items: stretch;
+    }
+
+    .audit-item > div,
+    .content-title,
+    .content-url,
+    .col-status select,
+    .action-select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .col-content {
+        padding-right: 0;
+    }
+
+    .col-action {
+        justify-content: stretch;
+        gap: var(--spacing-xs);
+    }
+
+    .audit-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ============================================
+    TEMPLATE INSTRUCTIONS (模板使用说明)
+    ============================================
+
+    A4纵向画布 - 适用场景:
+    - 简单的表单型工具
+    - 线性流程的工作表
+    - 单列垂直布局的内容
+    - 需要打印为标准A4纸的工具
+
+    可用空间: ~794px × ~1123px (扣除padding后: ~674px × ~1027px)
+
+    开发新工具时,请全局替换以下占位符:
+
+    1. {{TOOL_NAME_CN}}        → 工具中文名称
+    2. {{TOOL_NAME_EN}}        → 工具英文名称
+    3. {{TOOL_ID}}             → 工具唯一ID
+    4. {{TOOL_DESCRIPTION}}    → 工具简短描述
+    5. {{TOOL_KEYWORDS}}       → SEO关键词
+    6. {{TOOLKIT_NAME}}        → 所属工作台
+
+    重要设计原则:
+    - **默认单色设计**: 使用黑白灰色调，方便打印
+    - **彩色模式可选**: 用户可通过工具栏开启 color-mode
+    - **垂直布局优先**: A4纵向空间有限，避免横向分栏
+    - **表单/清单/流程**: 适用于线性内容
+
+    ============================================
+    -->
+
+    <title>{{TOOL_NAME_CN}} ({{TOOL_NAME_EN}})</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{TOOL_DESCRIPTION}}">
+    <meta name="keywords" content="{{TOOL_KEYWORDS}}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{TOOL_NAME_CN}} - Modiqi Workbench">
+    <meta property="og:description" content="{{TOOL_DESCRIPTION}}">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Lucide Icons -->
+    <script src="../vendor/lucide.min.js"></script>
+
+    <!-- Modiqi Design System (按顺序加载) -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/{{TOOL_ID}}.css">
+</head>
+
+<body>
+    <!-- 桌面背景 -->
+    <div class="desk-background"></div>
+
+    <!--
+    ============================================
+    A4 纵向画布 (Portrait)
+    ============================================
+    尺寸: 794px × 1123px (1:1.414 比例)
+    Padding: 48px (top/bottom) × 60px (left/right)
+    内容区域: 674px × 1027px
+
+    适合:
+    - 垂直流程表单
+    - 清单/检查表
+    - 单列内容布局
+    - 需要打印的文档
+    ============================================
+    -->
+    <main class="paper-a4">
+
+        <!--
+        ============================================
+        A4画布专用头部 (紧凑版)
+        ============================================
+        相比A3头部更紧凑,节省垂直空间
+        - 标题字号较小 (font-size-3xl vs font-size-4xl)
+        - Meta字段更紧凑
+        ============================================
+        -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <!--
+                注意: 标题旁边不添加图标
+                图标仅在内容区块的 section-header 中使用
+                保持头部简洁专业
+                -->
+                <h1>{{TOOL_NAME_CN}}</h1>
+                <span class="english-subtitle">{{TOOL_NAME_EN}}</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的项目" data-save-key="meta_project">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date">
+                </div>
+            </div>
+        </header>
+
+        <!--
+        ============================================
+        工具内容区域 - 垂直布局
+        ============================================
+        建议使用垂直堆叠的区块,避免横向分栏(空间有限)
+
+        布局技巧:
+        - 使用 flex-direction: column
+        - 区块间使用 gap 或 margin-bottom
+        - 每个区块高度自适应内容
+        ============================================
+        -->
+        <div class="tool-content">
+
+            <!-- 示例: 垂直堆叠的表单区块 -->
+
+            <!-- 区块 1: 基本信息 -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="info"></i>
+                    <h2>基本信息 <span class="en-sub">(Basic Info)</span></h2>
+                </div>
+                <div class="section-content">
+                    <!-- 表单字段 -->
+                    <div class="form-group">
+                        <label for="field1">字段名称 1</label>
+                        <input
+                            type="text"
+                            id="field1"
+                            class="input"
+                            placeholder="请输入..."
+                            data-save-key="field_1"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="field2">字段名称 2</label>
+                        <textarea
+                            id="field2"
+                            class="input"
+                            rows="3"
+                            placeholder="请输入..."
+                            data-save-key="field_2"
+                        ></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 区块 2: 详细内容 -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="file-text"></i>
+                    <h2>详细内容 <span class="en-sub">(Details)</span></h2>
+                </div>
+                <div class="section-content" contenteditable="true" data-save-key="details">
+                    <p>点击此处开始编辑详细内容...</p>
+                    <ul>
+                        <li>列表项 1</li>
+                        <li>列表项 2</li>
+                        <li>列表项 3</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 区块 3: 行动计划 -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="check-circle"></i>
+                    <h2>行动计划 <span class="en-sub">(Action Plan)</span></h2>
+                </div>
+                <div class="section-content">
+                    <!-- 清单型内容 -->
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">任务 1</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">任务 2</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task3">
+                            <label for="task3">任务 3</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 区块 4: 备注 -->
+            <section class="form-section">
+                <div class="section-header">
+                    <i data-lucide="message-square"></i>
+                    <h2>备注 <span class="en-sub">(Notes)</span></h2>
+                </div>
+                <div class="section-content" contenteditable="true" data-save-key="notes">
+                    <p>添加备注...</p>
+                </div>
+            </section>
+
+            <!--
+            删除以上示例代码,根据工具需求自定义内容
+
+            A4纵向画布的设计建议:
+            1. 单列布局,避免并排元素过多
+            2. 使用折叠面板节省空间
+            3. 表单字段对齐一致
+            4. 留足垂直间距,避免拥挤感
+            5. 考虑打印效果(A4纸张大小)
+            -->
+
+        </div>
+
+        <!--
+        ============================================
+        画布底部 (可选)
+        ============================================
+        用于显示额外信息或操作按钮
+        ============================================
+        -->
+        <!-- <footer class="canvas-footer">
+            <div class="footer-content">
+                <p class="footer-note">注意事项或说明文字...</p>
+            </div>
+        </footer> -->
+
+    </main>
+
+    <!-- Modiqi Core Library -->
+    <script src="../shared/js/core.js"></script>
+
+    <!-- 工具初始化 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化ModiqiApp
+            new ModiqiApp('{{TOOL_ID}}');
+
+            // 初始化图标
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // 自动填充日期
+            const dateInput = document.querySelector('[data-save-key="meta_date"]');
+            if (dateInput && !dateInput.value) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+
+            // 可选: A4纵向画布特定的初始化逻辑
+            // 例如: 表单验证、字数统计等
+
+            console.log('{{TOOL_NAME_CN}} (A4纵向) 已初始化');
+        });
+    </script>
+
+    <!--
+    ============================================
+    样式建议 ({{TOOL_ID}}.css)
+    ============================================
+
+    A4纵向画布的CSS样式建议:
+
+    /* 表单区块 */
+    .form-section {
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 1px dashed var(--color-border-light);
+    }
+
+    .form-section:last-child {
+        border-bottom: none;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .section-header h2 {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-semibold);
+    }
+
+    .section-content {
+        padding-left: var(--spacing-lg);
+    }
+
+    /* 表单字段 */
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .form-group label {
+        display: block;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    /* 清单样式 */
+    .checklist-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) 0;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    /* 打印优化 */
+    @media print {
+        .form-section {
+            page-break-inside: avoid;
+        }
+    }
+
+    ============================================
+    -->
+
+</body>
+
+</html>

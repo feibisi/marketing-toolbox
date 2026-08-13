@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO 内容检查单 (Content SEO Checklist)</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-tools.css">
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body class="content-seo-page">
+    <div class="desk-background"></div>
+    <main class="paper-a4 portrait"> <!-- A4 Portrait -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>SEO 内容检查单</h1>
+                <span class="english-subtitle">On-Page SEO Checklist</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>页面URL</label>
+                    <input type="text" class="meta-input" placeholder="https://..." data-save-key="page_url" aria-label="https://...">
+                </div>
+                <div class="meta-group">
+                    <label>核心关键词</label>
+                    <input type="text" class="meta-input" data-save-key="target_keyword" aria-label="target keyword">
+                </div>
+            </div>
+        </header>
+
+        <div class="checklist-container" id="checklist-container">
+            <!-- Groups will be rendered by JS -->
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_seo_checklist');
+            lucide.createIcons();
+            renderChecklist();
+        });
+
+        const checklistData = [
+            {
+                title: "基础元数据 (Meta Tags)",
+                items: [
+                    "Title 标签包含核心关键词",
+                    "Title 长度适中 (50-60字符)",
+                    "Meta Description 吸引人且包含关键词",
+                    "URL 结构清晰，包含关键词"
+                ]
+            },
+            {
+                title: "内容质量 (Content Quality)",
+                items: [
+                    "文章字数充足 (建议 >800字)",
+                    "原创且有深度价值",
+                    "段落短小，易于阅读 (可读性)",
+                    "使用 H1, H2, H3 构建清晰层级",
+                    "核心关键词出现在第一段"
+                ]
+            },
+            {
+                title: "图片优化 (Images)",
+                items: [
+                    "所有图片都有 Alt 文本",
+                    "图片文件名包含关键词",
+                    "图片体积已压缩 (WebP/JPG)",
+                    "图片周围有相关文字说明"
+                ]
+            },
+            {
+                title: "链接策略 (Links)",
+                items: [
+                    "包含指向高权重网站的外部链接",
+                    "包含 2-3 个指向站内其他页面的内部链接",
+                    "检查并修复所有断链",
+                    "链接锚文本 (Anchor Text) 描述准确"
+                ]
+            },
+            {
+                title: "移动与体验 (UX & Tech)",
+                items: [
+                    "页面在移动端显示正常 (响应式)",
+                    "加载速度快 (< 2秒)",
+                    "没有侵入式弹窗",
+                    "字体大小和行距适合阅读"
+                ]
+            }
+        ];
+
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            checklistData.forEach((group, groupIndex) => {
+                const groupEl = document.createElement('div');
+                groupEl.className = 'checklist-group';
+
+                let itemsHtml = '';
+                group.items.forEach((item, itemIndex) => {
+                    const id = `check_${groupIndex}_${itemIndex}`;
+                    itemsHtml += `
+                        <div class="check-item">
+                            <input type="checkbox" id="${id}" data-save-key="${id}">
+                            <label for="${id}" class="check-label">${item}</label>
+                        </div>
+                    `;
+                });
+
+                groupEl.innerHTML = `
+                    <div class="group-title">
+                        <i data-lucide="check-square" style="width:18px;height:18px;"></i>
+                        ${group.title}
+                    </div>
+                    <div class="items-list">
+                        ${itemsHtml}
+                    </div>
+                `;
+                container.appendChild(groupEl);
+            });
+
+            // Re-run ModiqiApp auto-restore for the new checkboxes
+            // Since ModiqiApp runs on DOMContentLoaded, and we just added elements, 
+            // we might need to manually trigger restore or simple rely on users checking them.
+            // But core.js usually handles checkboxes via 'change' event delegation or specific listeners.
+            // Let's manually attach listeners for auto-save if core.js doesn't use delegation.
+            // Assuming core.js uses simple input acquisition on load.
+            // We'll manually restore state here for safety.
+
+            const prefix = 'modiqi_content_seo_checklist_';
+            container.querySelectorAll('input[type="checkbox"]').forEach(box => {
+                const key = box.getAttribute('data-save-key');
+                if (localStorage.getItem(prefix + key) === 'true') {
+                    box.checked = true;
+                }
+                box.addEventListener('change', () => {
+                    localStorage.setItem(prefix + key, box.checked);
+                });
+            });
+
+            lucide.createIcons();
+        }
+    </script>
+</body>
+
+</html>

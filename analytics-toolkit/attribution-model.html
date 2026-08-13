@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>归因模型分析器 (Attribution Modeler)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/attribution-model.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>归因模型分析器</h1>
+                <span class="english-subtitle">Attribution Modeler</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>转化价值</label>
+                    <input type="number" class="meta-input" value="1000" id="totalValue" oninput="recalc()" aria-label="totalValue">
+                </div>
+            </div>
+        </header>
+
+        <div class="attribution-container">
+
+            <!-- 1. Journey Editor -->
+            <div class="journey-editor">
+                <div class="section-title"
+                    style="margin-bottom:8px;font-weight:bold;color:var(--color-text-secondary);">
+                    <i data-lucide="map-pin" class="icon" style="width:16px;"></i> 用户触点路径 (User Journey)
+                </div>
+                <div class="journey-list" id="journeyList">
+                    <!-- Default Items -->
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+
+            <!-- 2. Comparisons -->
+            <div class="comparison-grid">
+
+                <!-- Model A -->
+                <div class="model-panel">
+                    <div class="panel-header">
+                        <span style="font-weight:bold;">Model A</span>
+                        <select class="model-select" id="modelA_select" onchange="recalc()" aria-label="modelA select">
+                            <option value="last_click">末次点击 (Last Click)</option>
+                            <option value="first_click">首次点击 (First Click)</option>
+                            <option value="linear">线性归因 (Linear)</option>
+                            <option value="time_decay">时间衰减 (Time Decay)</option>
+                            <option value="u_shaped">U型归因 (Position Based)</option>
+                        </select>
+                    </div>
+                    <div class="result-bars" id="modelA_results">
+                        <!-- Bars -->
+                    </div>
+                </div>
+
+                <!-- Model B -->
+                <div class="model-panel">
+                    <div class="panel-header">
+                        <span style="font-weight:bold;">Model B</span>
+                        <select class="model-select" id="modelB_select" onchange="recalc()" aria-label="modelB select">
+                            <option value="linear" selected>线性归因 (Linear)</option>
+                            <option value="last_click">末次点击 (Last Click)</option>
+                            <option value="first_click">首次点击 (First Click)</option>
+                            <option value="time_decay">时间衰减 (Time Decay)</option>
+                            <option value="u_shaped">U型归因 (Position Based)</option>
+                        </select>
+                    </div>
+                    <div class="result-bars" id="modelB_results">
+                        <!-- Bars -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        // State
+        let touchpoints = [
+            { id: 1, name: 'Google Ads', icon: 'search' },
+            { id: 2, name: 'Facebook', icon: 'facebook' },
+            { id: 3, name: 'Email', icon: 'mail' },
+            { id: 4, name: 'Direct', icon: 'mouse-pointer' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('attribution_modeler');
+            renderJourney();
+            recalc();
+        });
+
+        // 1. Render Journey
+        function renderJourney() {
+            const list = document.getElementById('journeyList');
+            list.innerHTML = '';
+
+            touchpoints.forEach((tp, index) => {
+                const node = document.createElement('div');
+                node.className = 'touchpoint-node';
+                node.innerHTML = `
+                    <div class="tp-circle"><i data-lucide="${tp.icon}"></i></div>
+                    <span class="tp-name" contenteditable="true" onblur="updateName(${index}, this.innerText)">${tp.name}</span>
+                `;
+                list.appendChild(node);
+            });
+
+            // Add Button
+            const addBtn = document.createElement('button');
+            addBtn.className = 'add-tp-btn';
+            addBtn.innerHTML = '<i data-lucide="plus"></i>';
+            addBtn.onclick = addTP;
+            list.appendChild(addBtn);
+
+            lucide.createIcons();
+        }
+
+        function addTP() {
+            touchpoints.push({ id: Date.now(), name: 'Channel', icon: 'mouse-pointer' });
+            renderJourney();
+            recalc();
+        }
+
+        function updateName(index, newName) {
+            touchpoints[index].name = newName;
+            recalc();
+        }
+
+        // 2. Logic
+        function recalc() {
+            const totalValue = parseFloat(document.getElementById('totalValue').value) || 0;
+            const modelA = document.getElementById('modelA_select').value;
+            const modelB = document.getElementById('modelB_select').value;
+
+            renderModelResults('modelA_results', modelA, totalValue);
+            renderModelResults('modelB_results', modelB, totalValue);
+        }
+
+        function renderModelResults(containerId, modelType, total) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            const breakdown = calculateAttribution(modelType, touchpoints.length, total);
+
+            touchpoints.forEach((tp, index) => {
+                const val = breakdown[index];
+                const pct = (val / total) * 100;
+
+                const row = document.createElement('div');
+                row.className = 'result-row';
+                row.innerHTML = `
+                    <div class="row-label">${tp.name}</div>
+                    <div class="row-bar-track">
+                        <div class="row-bar-fill" style="width:${pct}%;"></div>
+                    </div>
+                    <div class="row-value">¥${Math.round(val)}</div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function calculateAttribution(type, count, total) {
+            if (count === 0) return [];
+            let weights = new Array(count).fill(0);
+
+            if (type === 'last_click') {
+                weights[count - 1] = 1;
+            } else if (type === 'first_click') {
+                weights[0] = 1;
+            } else if (type === 'linear') {
+                weights.fill(1 / count);
+            } else if (type === 'time_decay') {
+                // Simple exponential decay visualization: 1, 2, 4, 8... normalized
+                let sum = 0;
+                for (let i = 0; i < count; i++) {
+                    const w = Math.pow(1.5, i); // Factor 1.5
+                    weights[i] = w;
+                    sum += w;
+                }
+                weights = weights.map(w => w / sum);
+            } else if (type === 'u_shaped') {
+                if (count === 1) weights = [1];
+                else if (count === 2) weights = [0.5, 0.5];
+                else {
+                    weights[0] = 0.4;
+                    weights[count - 1] = 0.4;
+                    const midVal = 0.2 / (count - 2);
+                    for (let i = 1; i < count - 1; i++) weights[i] = midVal;
+                }
+            }
+
+            return weights.map(w => w * total);
+        }
+
+    </script>
+</body>
+
+</html>

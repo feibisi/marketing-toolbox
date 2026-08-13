@@ -1,0 +1,327 @@
+/* Brand Touchpoint Map - Design System Aligned */
+/* 品牌触点地图样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.touchpoint-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   矩阵网格样式
+   ======================================== */
+.matrix-header,
+.matrix-row,
+.score-row {
+    display: grid;
+    grid-template-columns: 120px repeat(5, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.header-cell {
+    padding: var(--spacing-sm);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-bg-warm-light);
+    border-radius: 0;
+}
+
+.empty-corner {
+    background: transparent;
+}
+
+.stage-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.stage-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+/* ========================================
+   行与单元格样式
+   ======================================== */
+.row-header {
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    padding: var(--spacing-md) var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+}
+
+.online-row .row-header {
+    background: var(--color-semantic-tech-bg);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.offline-row .row-header {
+    background: var(--color-semantic-social-bg);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.row-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.row-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: var(--line-height-normal);
+}
+
+.row-header .en-label {
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+}
+
+.matrix-cell {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    min-height: 120px;
+    outline: none;
+}
+
+.matrix-cell:hover {
+    border-color: var(--color-brand-blue);
+    box-shadow: var(--shadow-sm);
+}
+
+.matrix-cell:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.matrix-cell:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    white-space: pre-line;
+}
+
+/* ========================================
+   评分区域样式
+   ======================================== */
+.score-section {
+    margin-top: var(--spacing-sm);
+}
+
+.score-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.score-header h3 {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.score-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-s);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    color: var(--border-sem-input);
+    cursor: pointer;
+}
+
+.star.active {
+    color: var(--color-semantic-growth);
+    /* Green */
+    fill: var(--color-semantic-growth);
+}
+
+.star:hover {
+    color: var(--color-semantic-growth-bg);
+}
+
+/* ========================================
+   分析卡片区域
+   ======================================== */
+.analysis-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.analysis-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.card-title span {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.icon-sm {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.card-content {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 60px;
+}
+
+.card-content:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .header-cell {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .matrix-cell,
+body.theme-dark .analysis-card {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .online-row .row-header {
+    background: var(--color-bg-info-subtle);
+    /* Blue tint */
+    /* Blue tint */
+}
+
+body.theme-dark .offline-row .row-header {
+    background: var(--color-bg-success-subtle);
+    /* Green tint */
+    /* Green tint */
+}
+
+body.theme-dark .score-cell {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .touchpoint-layout {
+        gap: var(--spacing-xs);
+    }
+
+    .matrix-cell {
+        min-height: 80px;
+    }
+
+    .rating-stars {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+
+    .matrix-header,
+    .matrix-row,
+    .score-row {
+        grid-template-columns: 80px repeat(5, 1fr);
+        overflow-x: auto;
+    }
+
+    .analysis-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .matrix-header, .matrix-row, .score-row { grid-template-columns: 1fr; overflow: visible; }
+    .touchpoint-layout { display: block; }
+    .analysis-section { grid-template-columns: 1fr; }
+}

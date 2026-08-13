@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漏斗诊断卡 (Funnel Diagnosis)</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/funnel-diagnosis.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body class="desk-background">
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <div class="title-content">
+                    <h1>漏斗诊断卡</h1>
+                    <div class="english-subtitle">FUNNEL DIAGNOSIS CARD</div>
+                </div>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>Target Segment (目标分群)</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Mobile User" aria-label="Mobile User">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="diagnosis-layout">
+
+            <!-- 1. Visual Funnel & Drop-off Analysis -->
+            <section class="funnel-section">
+                <div class="section-title">
+                    <i data-lucide="filter" class="icon"></i>
+                    <h3>Funnel Performance (漏斗表现)</h3>
+                </div>
+
+                <div class="funnel-container">
+                    <!-- Stage 1: Awareness -->
+                    <div class="funnel-stage stage-1">
+                        <div class="stage-info">
+                            <span class="stage-name" contenteditable="true">Landing Page</span>
+                            <span class="stage-count" contenteditable="true">100,000 Visitors</span>
+                        </div>
+                        <div class="stage-bar"></div>
+                    </div>
+
+                    <!-- Drop-off 1 -->
+                    <div class="drop-off-connector">
+                        <div class="drop-off-info">
+                            <span class="drop-label">Drop-off</span>
+                            <span class="drop-rate" contenteditable="true">60%</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2: Consideration -->
+                    <div class="funnel-stage stage-2">
+                        <div class="stage-info">
+                            <span class="stage-name" contenteditable="true">Product View</span>
+                            <span class="stage-count" contenteditable="true">40,000 Viewed</span>
+                        </div>
+                        <div class="stage-bar"></div>
+                    </div>
+
+                    <!-- Drop-off 2 -->
+                    <div class="drop-off-connector">
+                        <div class="drop-off-info">
+                            <span class="drop-label">Drop-off</span>
+                            <span class="drop-rate error-highlight" contenteditable="true">85%</span>
+                            <i data-lucide="alert-circle" class="alert-icon" title="High Drop-off!"></i>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3: Intent -->
+                    <div class="funnel-stage stage-3">
+                        <div class="stage-info">
+                            <span class="stage-name" contenteditable="true">Add to Cart</span>
+                            <span class="stage-count" contenteditable="true">6,000 Added</span>
+                        </div>
+                        <div class="stage-bar"></div>
+                    </div>
+
+                    <!-- Drop-off 3 -->
+                    <div class="drop-off-connector">
+                        <div class="drop-off-info">
+                            <span class="drop-label">Drop-off</span>
+                            <span class="drop-rate" contenteditable="true">70%</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4: Conversion -->
+                    <div class="funnel-stage stage-4">
+                        <div class="stage-info">
+                            <span class="stage-name" contenteditable="true">Purchase</span>
+                            <span class="stage-count" contenteditable="true">1,800 Sold</span>
+                        </div>
+                        <div class="stage-bar"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Diagnostic & Solutions (Split View) -->
+            <div class="bottom-split">
+
+                <!-- Left: Issues Checklist -->
+                <section class="issues-panel">
+                    <div class="panel-header">
+                        <i data-lucide="stethoscope"></i>
+                        <h3>Diagnosis Checklist (问题诊断)</h3>
+                    </div>
+                    <div class="checklist-container">
+                        <div class="checklist-group">
+                            <label>Design & UX Issues</label>
+                            <div class="check-item">
+                                <input type="checkbox" aria-label="Input field">
+                                <span contenteditable="true">Slow page load speed (>3s)</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" checked aria-label="Input field">
+                                <span contenteditable="true">Hidden/Unclear CTA button</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" aria-label="Input field">
+                                <span contenteditable="true">Broken layout on Mobile</span>
+                            </div>
+                        </div>
+                        <div class="checklist-group">
+                            <label>Content & Trust Issues</label>
+                            <div class="check-item">
+                                <input type="checkbox" aria-label="Input field">
+                                <span contenteditable="true">Lack of social proof/reviews</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" aria-label="Input field">
+                                <span contenteditable="true">Confusing pricing information</span>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" aria-label="Input field">
+                                <span contenteditable="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right: Impact Simulator -->
+                <section class="impact-panel">
+                    <div class="panel-header">
+                        <i data-lucide="zap"></i>
+                        <h3>Optimization Plan (优化方案)</h3>
+                    </div>
+
+                    <div class="hypothesis-card">
+                        <div class="hypo-label">Priority Fix (首要修复)</div>
+                        <div class="hypo-content" contenteditable="true">
+                            Fix the sticky CTA on Product Page for mobile users.
+                        </div>
+                    </div>
+
+                    <div class="simulation-box">
+                        <div class="sim-row">
+                            <span>Current Conv. Rate</span>
+                            <span class="sim-val">1.8%</span>
+                        </div>
+                        <div class="sim-row highlight">
+                            <span>Expected Uplift</span>
+                            <span class="sim-val" contenteditable="true">+0.4%</span>
+                        </div>
+                        <div class="sim-row result">
+                            <span>Projected Revenue</span>
+                            <span class="sim-val" contenteditable="true">¥250k / mo</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Floating Toolbar -->
+    <div class="modiqi-toolbar">
+        <a href="index.html" class="toolbar-btn" data-tooltip="返回工作台">
+            <i data-lucide="home"></i>
+        </a>
+        <button class="toolbar-btn" data-tooltip="放大" id="zoomIn" type="button">
+            <i data-lucide="zoom-in"></i>
+        </button>
+        <button class="toolbar-btn" data-tooltip="缩小" id="zoomOut" type="button">
+            <i data-lucide="zoom-out"></i>
+        </button>
+        <button class="toolbar-btn" data-tooltip="导出 PDF" onclick="window.print()" type="button">
+            <i data-lucide="download"></i>
+        </button>
+        <button class="toolbar-btn" data-tooltip="深色模式" id="themeToggle" type="button">
+            <i data-lucide="moon"></i>
+        </button>
+    </div>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/funnel-diagnosis.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('funnel-diagnosis');
+        });
+    </script>
+</body>
+
+</html>

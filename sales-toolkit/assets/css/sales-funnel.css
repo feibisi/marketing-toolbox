@@ -1,0 +1,492 @@
+/* Sales Funnel Dashboard - Design System Aligned */
+/* 销售漏斗可视化：追踪从线索到成交的转化过程 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.funnel-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   面板通用样式
+   ======================================== */
+.funnel-visual-pane,
+.funnel-metrics-pane {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-sem-outer);
+    background: var(--color-bg-paper);
+}
+
+.funnel-visual-pane {
+    flex: 1.1;
+}
+
+.funnel-metrics-pane {
+    flex: 0.9;
+}
+
+.pane-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.pane-header .icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-primary);
+}
+
+.pane-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ========================================
+   漏斗容器
+   ======================================== */
+.funnel-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+/* ========================================
+   漏斗阶段
+   ======================================== */
+.funnel-stage {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: var(--spacing-md);
+    align-items: center;
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.funnel-stage:hover {
+    background: var(--color-bg-hover);
+}
+
+.funnel-stage:focus-within {
+    background: var(--color-focus-bg);
+}
+
+/* 阶段进度条 */
+.stage-bar {
+    height: 32px;
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.stage-fill {
+    height: 100%;
+    border-radius: 0;
+}
+
+/* 不同阶段的颜色 - 默认单色 */
+[data-stage="leads"] .stage-fill {
+    background: var(--color-text-secondary);
+}
+
+[data-stage="mql"] .stage-fill {
+    background: var(--color-text-secondary);
+}
+
+[data-stage="sql"] .stage-fill {
+    background: var(--color-text-secondary);
+}
+
+[data-stage="proposal"] .stage-fill {
+    background: var(--color-text-secondary);
+}
+
+[data-stage="won"] .stage-fill {
+    background: var(--color-text-primary);
+}
+
+/* 阶段信息 */
+.stage-info {
+    min-width: 180px;
+}
+
+.stage-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stage-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.stage-name {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.stage-metrics {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-xs);
+}
+
+.metric-input {
+    width: 80px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid transparent;
+    border-radius: 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    background: transparent;
+    text-align: right;
+    outline: none;
+}
+
+.metric-input:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.metric-input:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.metric-unit {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+}
+
+/* 转化率 */
+.stage-conversion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.conv-arrow {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-tertiary);
+    line-height: 1;
+}
+
+.conv-rate {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-bg-warm-light);
+    border-radius: 0;
+}
+
+/* 整体转化率 */
+.overall-conversion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    background: var(--color-bg-warm-medium);
+    border: 2px solid var(--border-sem-outer);
+    border-radius: 0;
+}
+
+.overall-label {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.overall-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   KPI 卡片
+   ======================================== */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.kpi-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.kpi-card:focus-within {
+    background: var(--color-focus-bg);
+}
+
+.kpi-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-warm-light);
+    border-radius: 0;
+}
+
+.kpi-icon .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.kpi-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.kpi-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+/* ========================================
+   分析区块
+   ======================================== */
+.bottleneck-section,
+.optimization-section {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+}
+
+.bottleneck-section .section-header .icon {
+    color: var(--color-text-secondary);
+}
+
+.optimization-section .section-header .icon {
+    color: var(--color-text-secondary);
+}
+
+.section-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.bottleneck-content,
+.optimization-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.bottleneck-content:focus,
+.optimization-content:focus {
+    background: var(--color-focus-bg);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .funnel-visual-pane,
+body.theme-dark .funnel-metrics-pane {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .funnel-stage {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .stage-bar {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .kpi-card,
+body.theme-dark .bottleneck-section,
+body.theme-dark .optimization-section {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .kpi-icon {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .conv-rate {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .overall-conversion {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   色彩模式
+   ======================================== */
+body.color-mode .pane-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode [data-stage="leads"] .stage-fill {
+    background: var(--color-info);
+}
+
+body.color-mode [data-stage="leads"] .stage-header .icon {
+    color: var(--color-info);
+}
+
+body.color-mode [data-stage="mql"] .stage-fill {
+    background: var(--color-brand-blue);
+}
+
+body.color-mode [data-stage="mql"] .stage-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode [data-stage="sql"] .stage-fill {
+    background: var(--color-brand-blue-dark);
+}
+
+body.color-mode [data-stage="sql"] .stage-header .icon {
+    color: var(--color-brand-blue-dark);
+}
+
+body.color-mode [data-stage="proposal"] .stage-fill {
+    background: var(--color-warning);
+}
+
+body.color-mode [data-stage="proposal"] .stage-header .icon {
+    color: var(--color-warning);
+}
+
+body.color-mode [data-stage="won"] .stage-fill {
+    background: var(--color-success);
+}
+
+body.color-mode [data-stage="won"] .stage-header .icon {
+    color: var(--color-success);
+}
+
+body.color-mode .conv-rate {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode .overall-value {
+    color: var(--color-success);
+}
+
+body.color-mode .kpi-icon .icon {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode .bottleneck-section .section-header .icon {
+    color: var(--color-warning);
+}
+
+body.color-mode .optimization-section .section-header .icon {
+    color: var(--color-success);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .funnel-layout {
+        flex-direction: row !important;
+    }
+
+    .stage-fill {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .funnel-stage:hover {
+        background: transparent;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .funnel-layout {
+        flex-direction: column;
+    }
+
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .funnel-layout { flex-direction: column; }
+    .funnel-stage { grid-template-columns: 1fr; }
+    .stage-info { min-width: 0; }
+    .stage-conversion { width: 100%; }
+    .kpi-grid { grid-template-columns: 1fr; }
+}
+

@@ -1,0 +1,302 @@
+/* Brand Positioning Map Styles */
+
+.map-layout {
+    display: flex;
+    height: 100%;
+    gap: var(--spacing-md);
+}
+
+/* Sidebar */
+.map-controls {
+    width: 250px;
+    background: var(--color-bg-subtle);
+    border-right: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.control-group label {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.axis-inputs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.axis-label {
+    width: 80px;
+    font-size: var(--font-size-xs);
+    border: 1px solid var(--border-sem-inner);
+    padding: 4px;
+    border-radius: 0;
+}
+
+.arrow {
+    color: var(--color-text-tertiary);
+    font-size: 12px;
+}
+
+.control-divider {
+    border: none;
+    border-top: 1px dashed var(--border-sem-dashed);
+    margin: 0;
+}
+
+.add-brand-row {
+    display: flex;
+    gap: 4px;
+}
+
+.input-sm {
+    flex: 1;
+    font-size: 11px;
+    padding: 4px;
+}
+
+.select-sm {
+    font-size: 11px;
+    width: 70px;
+}
+
+.btn-icon {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-brand-blue);
+    color: var(--color-bg-white);
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.tips-box {
+    margin-top: auto;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.icon-xs {
+    width: 14px;
+    height: 14px;
+}
+
+/* Map Area */
+.map-container {
+    flex: 1;
+    background: var(--color-bg-white);
+    position: relative;
+    border: 1px solid var(--border-sem-outer);
+    overflow: hidden;
+}
+
+/* Grid Lines */
+.grid-line {
+    position: absolute;
+    background: var(--color-brand-blue);
+    opacity: 0.2;
+}
+
+.x-axis {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+}
+
+.y-axis {
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 1px;
+}
+
+/* Map Labels */
+.map-label {
+    position: absolute;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    font-weight: bold;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px 4px;
+}
+
+.label-top {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.label-bottom {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.label-left {
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    text-align: left;
+}
+
+.label-right {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
+/* Markers */
+.brand-marker {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: grab;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+.brand-marker:active {
+    cursor: grabbing;
+}
+
+.marker-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-bg-white);
+    border: 2px solid var(--color-text-secondary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.marker-label {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    background: var(--color-bg-white);
+    padding: 2px 4px;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    white-space: nowrap;
+}
+
+/* Marker Types */
+/* Competitor (Default) */
+.type-competitor .marker-dot {
+    background: var(--color-text-secondary);
+    border-color: var(--color-bg-white);
+}
+
+/* Us (Star/Special) */
+.type-us .marker-dot {
+    background: var(--color-brand-blue);
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--color-bg-white);
+    box-shadow: 0 0 0 2px var(--color-brand-blue);
+}
+
+.type-us .marker-label {
+    color: var(--color-brand-blue);
+}
+
+/* Target (Ideal) */
+.type-target .marker-dot {
+    background: transparent;
+    border: 2px dashed var(--color-semantic-growth);
+    width: 20px;
+    height: 20px;
+}
+
+.type-target .marker-label {
+    color: var(--color-semantic-growth);
+}
+
+/* Print */
+@media print {
+    .map-controls {
+        display: none !important;
+    }
+
+    .map-container {
+        border: 2px solid var(--color-text-primary);
+        height: 100%;
+    }
+
+    .map-layout {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        flex: none;
+    }
+
+    .map-layout {
+        height: auto;
+        min-width: 0;
+        flex-direction: column;
+    }
+
+    .map-controls {
+        width: auto;
+        min-width: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--border-sem-outer);
+    }
+
+    .axis-inputs {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    }
+
+    .axis-label,
+    .input-sm {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .add-brand-row {
+        flex-wrap: wrap;
+    }
+
+    .add-brand-row .input-sm {
+        flex: 1 1 100%;
+    }
+
+    .map-container {
+        flex: none;
+        width: 100%;
+        height: 420px;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}

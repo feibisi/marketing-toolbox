@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌信息框架 (Brand Messaging Framework)</title>
+    <meta name="description" content="品牌信息框架工具，帮助您构建统一的品牌信息体系，包括核心信息、信息支柱和受众定制。">
+    <meta name="keywords" content="品牌信息,品牌定位,价值主张,品牌语调,营销信息">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="品牌信息框架 - Modiqi Workbench">
+    <meta property="og:description" content="构建统一的品牌信息体系，包括核心信息、信息支柱和受众定制。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/brand-messaging.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌信息框架</h1>
+                <span class="english-subtitle">Brand Messaging Framework</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" value="我的品牌" data-save-key="brand_name" aria-label="brand name">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+                <div class="meta-group">
+                    <label>版本 <span class="en-sub">(Version)</span></label>
+                    <input type="text" class="meta-input" value="v1.0" data-save-key="meta_version" aria-label="version">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="messaging-layout">
+
+            <!-- Core Message Section -->
+            <section class="core-message-section">
+                <div class="section-header">
+                    <i data-lucide="star" class="icon"></i>
+                    <h2>核心信息 <span class="en-label">Core Message</span></h2>
+                </div>
+                <div class="core-content">
+                    <div class="tagline-block">
+                        <label>品牌宣言 / Tagline</label>
+                        <div class="tagline-input" contenteditable="true" data-placeholder="一句话定义品牌核心价值...">
+                        </div>
+                    </div>
+                    <div class="value-prop-block">
+                        <label>价值主张 / Value Proposition</label>
+                        <div class="value-prop-input" contenteditable="true"
+                            data-placeholder="我们为 [目标客户] 提供 [解决方案]，帮助他们 [获得收益]，不同于 [竞争对手]，我们的独特之处在于 [差异化优势]。">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Message Pillars -->
+            <section class="pillars-section">
+                <div class="section-header">
+                    <i data-lucide="columns" class="icon"></i>
+                    <h2>信息支柱 <span class="en-label">Message Pillars</span></h2>
+                </div>
+                <div class="pillars-grid">
+                    <!-- Pillar 1 -->
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <span class="pillar-number">01</span>
+                            <input type="text" class="pillar-title" placeholder="支柱名称" aria-label="支柱名称">
+                        </div>
+                        <div class="pillar-content">
+                            <div class="pillar-field">
+                                <label>核心论点</label>
+                                <div contenteditable="true" data-placeholder="主要信息论点..."></div>
+                            </div>
+                            <div class="pillar-field">
+                                <label>支撑证据</label>
+                                <div contenteditable="true" data-placeholder="• 证据1&#10;• 证据2&#10;• 证据3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <span class="pillar-number">02</span>
+                            <input type="text" class="pillar-title" placeholder="支柱名称" aria-label="支柱名称">
+                        </div>
+                        <div class="pillar-content">
+                            <div class="pillar-field">
+                                <label>核心论点</label>
+                                <div contenteditable="true" data-placeholder="主要信息论点..."></div>
+                            </div>
+                            <div class="pillar-field">
+                                <label>支撑证据</label>
+                                <div contenteditable="true" data-placeholder="• 证据1&#10;• 证据2&#10;• 证据3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <span class="pillar-number">03</span>
+                            <input type="text" class="pillar-title" placeholder="支柱名称" aria-label="支柱名称">
+                        </div>
+                        <div class="pillar-content">
+                            <div class="pillar-field">
+                                <label>核心论点</label>
+                                <div contenteditable="true" data-placeholder="主要信息论点..."></div>
+                            </div>
+                            <div class="pillar-field">
+                                <label>支撑证据</label>
+                                <div contenteditable="true" data-placeholder="• 证据1&#10;• 证据2&#10;• 证据3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audience Messages -->
+            <section class="audience-section">
+                <div class="section-header">
+                    <i data-lucide="users" class="icon"></i>
+                    <h2>受众信息定制 <span class="en-label">Audience-Specific Messaging</span></h2>
+                </div>
+                <div class="audience-grid">
+                    <!-- Audience 1 -->
+                    <div class="audience-card">
+                        <div class="audience-header">
+                            <i data-lucide="user" class="icon"></i>
+                            <input type="text" class="audience-name" placeholder="受众群体 1" aria-label="受众群体 1">
+                        </div>
+                        <div class="audience-content">
+                            <div class="audience-field">
+                                <label>核心痛点</label>
+                                <div contenteditable="true" data-placeholder="这类受众面临的主要问题..."></div>
+                            </div>
+                            <div class="audience-field">
+                                <label>定制信息</label>
+                                <div contenteditable="true" data-placeholder="针对该受众的核心信息..."></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audience 2 -->
+                    <div class="audience-card">
+                        <div class="audience-header">
+                            <i data-lucide="user" class="icon"></i>
+                            <input type="text" class="audience-name" placeholder="受众群体 2" aria-label="受众群体 2">
+                        </div>
+                        <div class="audience-content">
+                            <div class="audience-field">
+                                <label>核心痛点</label>
+                                <div contenteditable="true" data-placeholder="这类受众面临的主要问题..."></div>
+                            </div>
+                            <div class="audience-field">
+                                <label>定制信息</label>
+                                <div contenteditable="true" data-placeholder="针对该受众的核心信息..."></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audience 3 -->
+                    <div class="audience-card">
+                        <div class="audience-header">
+                            <i data-lucide="user" class="icon"></i>
+                            <input type="text" class="audience-name" placeholder="受众群体 3" aria-label="受众群体 3">
+                        </div>
+                        <div class="audience-content">
+                            <div class="audience-field">
+                                <label>核心痛点</label>
+                                <div contenteditable="true" data-placeholder="这类受众面临的主要问题..."></div>
+                            </div>
+                            <div class="audience-field">
+                                <label>定制信息</label>
+                                <div contenteditable="true" data-placeholder="针对该受众的核心信息..."></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tone & Voice -->
+            <section class="tone-section">
+                <div class="section-header">
+                    <i data-lucide="mic" class="icon"></i>
+                    <h2>语调与风格 <span class="en-label">Tone & Voice</span></h2>
+                </div>
+                <div class="tone-grid">
+                    <div class="tone-card">
+                        <div class="tone-scale">
+                            <span class="scale-label left">正式</span>
+                            <div class="scale-bar">
+                                <input type="range" min="0" max="100" value="50" class="tone-slider" aria-label="Input field">
+                            </div>
+                            <span class="scale-label right">随意</span>
+                        </div>
+                    </div>
+                    <div class="tone-card">
+                        <div class="tone-scale">
+                            <span class="scale-label left">严肃</span>
+                            <div class="scale-bar">
+                                <input type="range" min="0" max="100" value="50" class="tone-slider" aria-label="Input field">
+                            </div>
+                            <span class="scale-label right">幽默</span>
+                        </div>
+                    </div>
+                    <div class="tone-card">
+                        <div class="tone-scale">
+                            <span class="scale-label left">权威</span>
+                            <div class="scale-bar">
+                                <input type="range" min="0" max="100" value="50" class="tone-slider" aria-label="Input field">
+                            </div>
+                            <span class="scale-label right">亲切</span>
+                        </div>
+                    </div>
+                    <div class="tone-keywords">
+                        <label>品牌关键词</label>
+                        <div class="keywords-input" contenteditable="true" data-placeholder="专业、创新、可靠、温暖..."></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('brand-messaging');
+        });
+    </script>
+</body>
+
+</html>

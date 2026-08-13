@@ -1,0 +1,38 @@
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .paper-a3 {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .strategy-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        min-height: 0;
+    }
+
+    .strategy-grid .span-row,
+    .strategy-grid .span-col {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .strategy-grid .canvas-card {
+        min-width: 0;
+        min-height: 180px;
+    }
+
+    .strategy-grid .input-area {
+        min-height: 120px;
+        resize: vertical;
+    }
+}

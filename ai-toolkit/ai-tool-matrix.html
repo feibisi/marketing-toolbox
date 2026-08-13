@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 工具选型矩阵 (AI Tool Selection Matrix)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ai-tool-matrix.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/vendor/sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>AI 工具选型矩阵</h1>
+                <span class="english-subtitle">AI Tool Selection Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>更新日期</label>
+                    <input type="text" class="meta-input" value="2026 Q1" aria-label="Input field">
+                </div>
+            </div>
+        </header>
+
+        <div class="matrix-scroll-wrapper" style="overflow-x:auto;">
+            <table class="matrix-container">
+                <thead>
+                    <tr>
+                        <th class="matrix-header-cell"
+                            style="width:150px; background:transparent; border-top:none; border-left:none;"></th>
+                        <th class="matrix-header-cell">
+                            <i data-lucide="file-text" class="header-icon"></i>
+                            文本生成 <span class="en-sub">(Text)</span>
+                        </th>
+                        <th class="matrix-header-cell">
+                            <i data-lucide="image" class="header-icon"></i>
+                            图像创作 <span class="en-sub">(Image)</span>
+                        </th>
+                        <th class="matrix-header-cell">
+                            <i data-lucide="video" class="header-icon"></i>
+                            视频/音频 <span class="en-sub">(Video/Audio)</span>
+                        </th>
+                        <th class="matrix-header-cell">
+                            <i data-lucide="code" class="header-icon"></i>
+                            代码/数据 <span class="en-sub">(Code/Data)</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1: Enterprise / Logic -->
+                    <tr>
+                        <td class="matrix-row-header">
+                            <div>逻辑与推理</div>
+                            <div style="font-size:10px; font-weight:normal; margin-top:4px;">Logic & Reasoning (High
+                                Complexity)</div>
+                        </td>
+                        <td class="matrix-cell" id="c_text_logic">
+                            <div class="tool-chip recommended">
+                                <div class="chip-header">
+                                    <span class="chip-name">GPT-4 Turbo</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Best strictly logical reasoning and instruction following.</div>
+                            </div>
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Claude 3.5 Sonnet</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Excellent nuance and large context window.</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_image_logic">
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">DALL-E 3</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Reasoning-based image generation (via ChatGPT).</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_video_logic"></td>
+                        <td class="matrix-cell" id="c_code_logic">
+                            <div class="tool-chip recommended">
+                                <div class="chip-header">
+                                    <span class="chip-name">GitHub Copilot</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Enterprise standard for code completion.</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: Creative / Drafting -->
+                    <tr>
+                        <td class="matrix-row-header">
+                            <div>创意与草稿</div>
+                            <div style="font-size:10px; font-weight:normal; margin-top:4px;">Creative & Drafting
+                                (Speed/Variety)</div>
+                        </td>
+                        <td class="matrix-cell" id="c_text_creative">
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Gemini Pro</span>
+                                    <span class="chip-Badge">Free</span>
+                                </div>
+                                <div class="chip-desc">Fast, integrated with Google Workspace.</div>
+                            </div>
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Jasper</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Marketing-specific templates and brand voice.</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_image_creative">
+                            <div class="tool-chip recommended">
+                                <div class="chip-header">
+                                    <span class="chip-name">Midjourney v6</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Highest artistic quality and stylization.</div>
+                            </div>
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Adobe Firefly</span>
+                                    <span class="chip-Badge">Free/Paid</span>
+                                </div>
+                                <div class="chip-desc">Safe for commercial use, integrated in PS.</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_video_creative">
+                            <div class="tool-chip recommended">
+                                <div class="chip-header">
+                                    <span class="chip-name">Runway Gen-2</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">Text-to-video, style transfer.</div>
+                            </div>
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Suno / Udio</span>
+                                    <span class="chip-Badge">Paid</span>
+                                </div>
+                                <div class="chip-desc">High fidelity music generation.</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_code_creative">
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Cursor</span>
+                                    <span class="chip-Badge">Free/Paid</span>
+                                </div>
+                                <div class="chip-desc">IDE built for AI pair programming.</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: Open Source / Privacy -->
+                    <tr>
+                        <td class="matrix-row-header">
+                            <div>开源与私有化</div>
+                            <div style="font-size:10px; font-weight:normal; margin-top:4px;">Open Source / Privacy
+                                (Local Run)</div>
+                        </td>
+                        <td class="matrix-cell" id="c_text_open">
+                            <div class="tool-chip recommended">
+                                <div class="chip-header">
+                                    <span class="chip-name">Llama 3</span>
+                                    <span class="chip-Badge">Open</span>
+                                </div>
+                                <div class="chip-desc">State-of-the-art open weights model.</div>
+                            </div>
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Mistral 7B</span>
+                                    <span class="chip-Badge">Open</span>
+                                </div>
+                                <div class="chip-desc">High efficiency for local deployment.</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_image_open">
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Stable Diffusion XL</span>
+                                    <span class="chip-Badge">Open</span>
+                                </div>
+                                <div class="chip-desc">Fully controllable locally.</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_video_open">
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">Whisper</span>
+                                    <span class="chip-Badge">Open</span>
+                                </div>
+                                <div class="chip-desc">Best-in-class speech-to-text (OpenAI open source).</div>
+                            </div>
+                        </td>
+                        <td class="matrix-cell" id="c_code_open">
+                            <div class="tool-chip">
+                                <div class="chip-header">
+                                    <span class="chip-name">CodeLlama</span>
+                                    <span class="chip-Badge">Open</span>
+                                </div>
+                                <div class="chip-desc">Specialized coding model.</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Button (Meta) -->
+        <div class="add-btn-wrapper no-print" style="text-align:right; margin-top:10px;">
+            <button class="btn btn-primary btn-sm" onclick="alert('Feature to add custom tool coming soon!')" type="button">+ Add
+                Custom Tool</button>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ai_tool_matrix');
+            lucide.createIcons();
+
+            // Enable Drag and Drop (Reordering) within cells
+            document.querySelectorAll('.matrix-cell').forEach(cell => {
+                new Sortable(cell, {
+                    group: 'shared',
+                    animation: 150
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

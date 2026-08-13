@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌语调均衡器 (Tone of Voice Equalizer)</title>
+    <meta name="description" content="通过 5 个关键维度定义品牌的声音个性，自动生成品牌语调指南。">
+    <meta name="keywords" content="Brand Voice,Tone of Voice,品牌个性,营销工具">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tone of Voice Equalizer - Modiqi Workbench">
+    <meta property="og:description" content="定义品牌声音个性的均衡器工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific -->
+    <link rel="stylesheet" href="assets/css/brand-voice.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌语调均衡器</h1>
+                <span class="english-subtitle">Tone of Voice Equalizer</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌名称 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" data-save-key="meta_brand_name" aria-label="brand name">
+                </div>
+            </div>
+        </header>
+
+        <div class="voice-container">
+            <!-- Left: Equalizer Controls -->
+            <section class="equalizer-section">
+                <div class="section-header">
+                    <i data-lucide="sliders-horizontal"></i>
+                    <h2>语调维度设定 <span class="en-sub">(Dimensions)</span></h2>
+                </div>
+
+                <div class="slider-group">
+                    <!-- 1. Humor -->
+                    <div class="slider-item">
+                        <div class="slider-labels">
+                            <span class="label-left">幽默风趣 (Funny)</span>
+                            <span class="label-right">严肃认真 (Serious)</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="voice-slider" id="sliderHumor"
+                            data-save-key="voice_humor" aria-label="voice humor">
+                        <div class="slider-val-display" id="displayHumor">Neutral</div>
+                    </div>
+
+                    <!-- 2. Formality -->
+                    <div class="slider-item">
+                        <div class="slider-labels">
+                            <span class="label-left">正式规范 (Formal)</span>
+                            <span class="label-right">随性自然 (Casual)</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="voice-slider" id="sliderFormal"
+                            data-save-key="voice_formal" aria-label="voice formal">
+                        <div class="slider-val-display" id="displayFormal">Neutral</div>
+                    </div>
+
+                    <!-- 3. Respect -->
+                    <div class="slider-item">
+                        <div class="slider-labels">
+                            <span class="label-left">恭敬礼貌 (Respectful)</span>
+                            <span class="label-right">大胆反叛 (Irreverent)</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="voice-slider" id="sliderRespect"
+                            data-save-key="voice_respect" aria-label="voice respect">
+                        <div class="slider-val-display" id="displayRespect">Neutral</div>
+                    </div>
+
+                    <!-- 4. Energy -->
+                    <div class="slider-item">
+                        <div class="slider-labels">
+                            <span class="label-left">热情洋溢 (Enthusiastic)</span>
+                            <span class="label-right">实事求是 (Matter-of-fact)</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="voice-slider" id="sliderEnergy"
+                            data-save-key="voice_energy" aria-label="voice energy">
+                        <div class="slider-val-display" id="displayEnergy">Neutral</div>
+                    </div>
+
+                    <!-- 5. Tradition -->
+                    <div class="slider-item">
+                        <div class="slider-labels">
+                            <span class="label-left">经典传统 (Traditional)</span>
+                            <span class="label-right">前卫创新 (Innovative)</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="voice-slider" id="sliderTradition"
+                            data-save-key="voice_tradition" aria-label="voice tradition">
+                        <div class="slider-val-display" id="displayTradition">Neutral</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Output & Keywords -->
+            <section class="output-section">
+                <!-- Generated Statement -->
+                <div class="card statement-card">
+                    <div class="card-header">
+                        <i data-lucide="message-circle"></i>
+                        <h3>语调画像陈述 <span class="en-sub">(Voice Persona Statement)</span></h3>
+                    </div>
+                    <div class="card-content">
+                        <p id="voiceStatement" class="dynamic-statement">
+                            调整左侧滑块以生成品牌语调描述...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Keywords Pool -->
+                <div class="card keywords-card">
+                    <div class="card-header">
+                        <i data-lucide="tag"></i>
+                        <h3>建议关键词 <span class="en-sub">(Recommended Adjectives)</span></h3>
+                    </div>
+                    <div class="card-content" id="keywordPool">
+                        <span class="tag-placeholder">Waiting for input...</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/brand-voice.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_voice_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

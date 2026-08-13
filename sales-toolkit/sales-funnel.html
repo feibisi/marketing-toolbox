@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销售漏斗仪表盘 (Sales Funnel Dashboard)</title>
+    <meta name="description" content="销售漏斗可视化工具，追踪潜在客户从线索到成交的转化全过程，优化销售流程效率。">
+    <meta name="keywords" content="销售漏斗,转化率,销售管理,Pipeline,线索管理,销售效率">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="销售漏斗仪表盘 - Modiqi Workbench">
+    <meta property="og:description" content="可视化追踪销售转化全过程。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/sales-funnel.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>销售漏斗仪表盘</h1>
+                <span class="english-subtitle">Sales Funnel Dashboard</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="核心产品" data-save-key="product_name" aria-label="核心产品">
+                </div>
+                <div class="meta-group">
+                    <label>周期 <span class="en-sub">(Period)</span></label>
+                    <input type="text" class="meta-input" placeholder="Q1 2025" data-save-key="period" aria-label="Q1 2025">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="funnel-layout">
+            <!-- 左侧：漏斗可视化 -->
+            <div class="funnel-visual-pane">
+                <div class="pane-header">
+                    <i data-lucide="filter"></i>
+                    <h2>销售漏斗 <span class="en-sub">(Sales Funnel)</span></h2>
+                </div>
+
+                <div class="funnel-container">
+                    <!-- 线索 Leads -->
+                    <div class="funnel-stage" data-stage="leads">
+                        <div class="stage-bar">
+                            <div class="stage-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-header">
+                                <i data-lucide="users"></i>
+                                <span class="stage-name">线索 <span class="en-sub">(Leads)</span></span>
+                            </div>
+                            <div class="stage-metrics">
+                                <input type="text" class="metric-input stage-count" placeholder="0"
+                                    data-save-key="stage1_count" aria-label="0">
+                                <span class="metric-unit">人</span>
+                            </div>
+                        </div>
+                        <div class="stage-conversion">
+                            <span class="conv-arrow">↓</span>
+                            <span class="conv-rate" id="conv1">50%</span>
+                        </div>
+                    </div>
+
+                    <!-- MQL -->
+                    <div class="funnel-stage" data-stage="mql">
+                        <div class="stage-bar">
+                            <div class="stage-fill" style="width: 50%;"></div>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-header">
+                                <i data-lucide="user-check"></i>
+                                <span class="stage-name">MQL <span class="en-sub">(Marketing Qualified)</span></span>
+                            </div>
+                            <div class="stage-metrics">
+                                <input type="text" class="metric-input stage-count" placeholder="0"
+                                    data-save-key="stage2_count" aria-label="0">
+                                <span class="metric-unit">人</span>
+                            </div>
+                        </div>
+                        <div class="stage-conversion">
+                            <span class="conv-arrow">↓</span>
+                            <span class="conv-rate" id="conv2">40%</span>
+                        </div>
+                    </div>
+
+                    <!-- SQL -->
+                    <div class="funnel-stage" data-stage="sql">
+                        <div class="stage-bar">
+                            <div class="stage-fill" style="width: 20%;"></div>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-header">
+                                <i data-lucide="phone"></i>
+                                <span class="stage-name">SQL <span class="en-sub">(Sales Qualified)</span></span>
+                            </div>
+                            <div class="stage-metrics">
+                                <input type="text" class="metric-input stage-count" placeholder="0"
+                                    data-save-key="stage3_count" aria-label="0">
+                                <span class="metric-unit">人</span>
+                            </div>
+                        </div>
+                        <div class="stage-conversion">
+                            <span class="conv-arrow">↓</span>
+                            <span class="conv-rate" id="conv3">50%</span>
+                        </div>
+                    </div>
+
+                    <!-- 报价 Proposal -->
+                    <div class="funnel-stage" data-stage="proposal">
+                        <div class="stage-bar">
+                            <div class="stage-fill" style="width: 10%;"></div>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-header">
+                                <i data-lucide="file-text"></i>
+                                <span class="stage-name">报价 <span class="en-sub">(Proposal)</span></span>
+                            </div>
+                            <div class="stage-metrics">
+                                <input type="text" class="metric-input stage-count" placeholder="0"
+                                    data-save-key="stage4_count" aria-label="0">
+                                <span class="metric-unit">人</span>
+                            </div>
+                        </div>
+                        <div class="stage-conversion">
+                            <span class="conv-arrow">↓</span>
+                            <span class="conv-rate" id="conv4">30%</span>
+                        </div>
+                    </div>
+
+                    <!-- 成交 Won -->
+                    <div class="funnel-stage" data-stage="won">
+                        <div class="stage-bar">
+                            <div class="stage-fill" style="width: 3%;"></div>
+                        </div>
+                        <div class="stage-info">
+                            <div class="stage-header">
+                                <i data-lucide="trophy"></i>
+                                <span class="stage-name">成交 <span class="en-sub">(Won)</span></span>
+                            </div>
+                            <div class="stage-metrics">
+                                <input type="text" class="metric-input stage-count" placeholder="0"
+                                    data-save-key="stage5_count" aria-label="0">
+                                <span class="metric-unit">人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 整体转化率 -->
+                <div class="overall-conversion">
+                    <span class="overall-label">整体转化率 <span class="en-sub">(Overall Rate)</span></span>
+                    <span class="overall-value" id="overallRate">3.0%</span>
+                </div>
+            </div>
+
+            <!-- 右侧：指标面板 -->
+            <div class="funnel-metrics-pane">
+                <div class="pane-header">
+                    <i data-lucide="bar-chart-2"></i>
+                    <h2>关键指标 <span class="en-sub">(Key Metrics)</span></h2>
+                </div>
+
+                <!-- KPI 卡片 -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i data-lucide="dollar-sign"></i></div>
+                        <div class="kpi-content">
+                            <span class="kpi-label">预计成交额</span>
+                            <span class="kpi-value" contenteditable="true" data-save-key="kpi_revenue">¥450,000</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i data-lucide="user"></i></div>
+                        <div class="kpi-content">
+                            <span class="kpi-label">客单价</span>
+                            <span class="kpi-value" contenteditable="true" data-save-key="kpi_aov">¥15,000</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i data-lucide="clock"></i></div>
+                        <div class="kpi-content">
+                            <span class="kpi-label">平均成交周期</span>
+                            <span class="kpi-value" contenteditable="true" data-save-key="kpi_cycle">45 天</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon"><i data-lucide="trending-up"></i></div>
+                        <div class="kpi-content">
+                            <span class="kpi-label">获客成本 (CAC)</span>
+                            <span class="kpi-value" contenteditable="true" data-save-key="kpi_cac">¥800</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 瓶颈分析 -->
+                <div class="bottleneck-section">
+                    <div class="section-header">
+                        <i data-lucide="alert-triangle"></i>
+                        <h3>瓶颈分析 <span class="en-sub">(Bottleneck Analysis)</span></h3>
+                    </div>
+                    <div class="bottleneck-content" contenteditable="true" data-save-key="bottleneck">
+                        <ul>
+                            <li>哪个阶段的转化率最低？</li>
+                            <li>是什么原因导致客户流失？</li>
+                            <li>需要优化哪些环节？</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 优化建议 -->
+                <div class="optimization-section">
+                    <div class="section-header">
+                        <i data-lucide="lightbulb"></i>
+                        <h3>优化行动 <span class="en-sub">(Action Items)</span></h3>
+                    </div>
+                    <div class="optimization-content" contenteditable="true" data-save-key="actions">
+                        <ul>
+                            <li>如何提高线索质量？</li>
+                            <li>需要改进哪些销售流程？</li>
+                            <li>可以采取什么具体行动？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('sales_funnel_v1');
+            lucide.createIcons({
+                attrs: { class: "icon", 'stroke-width': 2 }
+            });
+
+            // 设置示例数据
+            const stageInputs = document.querySelectorAll('.stage-count');
+            stageInputs[0].value = '1000';
+            stageInputs[1].value = '500';
+            stageInputs[2].value = '200';
+            stageInputs[3].value = '100';
+            stageInputs[4].value = '30';
+
+            // Funnel calculation logic
+            function updateFunnel() {
+                const counts = Array.from(stageInputs).map(input => parseFloat(input.value) || 0);
+                const maxCount = counts[0] || 1;
+
+                // Update bar widths
+                const stages = document.querySelectorAll('.funnel-stage');
+                stages.forEach((stage, i) => {
+                    const percent = (counts[i] / maxCount * 100).toFixed(0);
+                    stage.querySelector('.stage-fill').style.width = percent + '%';
+                });
+
+                // Update conversion rates
+                for (let i = 0; i < counts.length - 1; i++) {
+                    const rate = counts[i] > 0 ? (counts[i + 1] / counts[i] * 100).toFixed(0) : 0;
+                    document.getElementById('conv' + (i + 1)).textContent = rate + '%';
+                }
+
+                // Overall conversion
+                const overallRate = counts[0] > 0 ? (counts[counts.length - 1] / counts[0] * 100).toFixed(1) : 0;
+                document.getElementById('overallRate').textContent = overallRate + '%';
+            }
+
+            stageInputs.forEach(input => {
+                input.addEventListener('input', updateFunnel);
+            });
+
+            updateFunnel();
+        });
+    </script>
+</body>
+
+</html>

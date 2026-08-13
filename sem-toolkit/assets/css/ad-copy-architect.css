@@ -1,0 +1,291 @@
+/* Ad Copy Architect Styles */
+
+/* Platform Tabs */
+.platform-tabs {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-sem-inner);
+    padding-bottom: var(--spacing-sm);
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+}
+
+.tab-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.tab-btn.active {
+    background: var(--color-bg-white);
+    border-color: var(--border-sem-outer);
+    color: var(--color-brand-blue);
+    /* Use brand color for active state only */
+    font-weight: var(--font-weight-bold);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Editor Section */
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+}
+
+.counter {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+}
+
+.counter.limit-near {
+    color: var(--color-warning);
+}
+
+.counter.limit-reached {
+    color: var(--color-error);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Preview Section */
+.ad-preview-container {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-xl);
+    border-radius: 0;
+    border: 1px dashed var(--border-sem-dashed);
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+}
+
+/* Google Ad Style */
+.google-ad {
+    background: #fff;
+    padding: var(--spacing-md);
+    border-radius: 0;
+    /* Google uses larger radius now */
+    width: 600px;
+    /* Standard width */
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ad-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.ad-badge {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    font-size: 12px;
+}
+
+.ad-url {
+    color: var(--color-text-tertiary);
+    /* Google uses faint grey/black */
+    font-size: 12px;
+}
+
+.ad-headline {
+    color: #1a0dab;
+    /* Google Blue - specific brand color allowed for accuracy? Or stick to Monochrome? */
+    /* Design System says Monochrome First. Let's use link color or dark grey */
+    color: var(--color-brand-blue);
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+/* Adjust for Color Mode/Monochrome */
+body:not(.color-mode) .ad-headline {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+}
+
+.ad-desc {
+    color: #4d5156;
+    /* Google grey */
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+body:not(.color-mode) .ad-desc {
+    color: var(--color-text-secondary);
+}
+
+/* Facebook Ad Style */
+.fb-ad {
+    background: #fff;
+    width: 360px;
+    /* Mobile width */
+    max-width: 100%;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.fb-header {
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.fb-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-subtle);
+    border-radius: 50%;
+}
+
+.fb-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fb-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.fb-sub {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.fb-text {
+    padding: 0 12px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.fb-media-placeholder {
+    width: 100%;
+    height: 188px;
+    /* ~1.91:1 ratio */
+    background: var(--color-bg-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    font-size: 12px;
+    gap: 5px;
+}
+
+.fb-footer {
+    padding: 12px;
+    background: #f0f2f5;
+    /* Light grey footer */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fb-meta {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.fb-url {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.fb-headline {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.2;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fb-desc {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fb-cta {
+    background: #e4e6eb;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: #050505;
+}
+
+/* Checklist */
+.checklist-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist-section li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    display: flex;
+    align-items: flex-start;
+}
+
+.checklist-section li::before {
+    content: "□";
+    margin-right: var(--spacing-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text-tertiary);
+}
+
+/* Print */
+@media print {
+    .platform-tabs {
+        display: none !important;
+    }
+
+    .ad-preview-container {
+        border: 2px solid #000;
+        background: #fff !important;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+}
+
+/* Allow the complete architect to determine its paper height. */
+@media screen {
+    .paper-a4 { height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; }
+}
+
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a4 { width: 100%; max-width: none; padding: var(--spacing-lg); box-sizing: border-box; }
+    .platform-tabs { flex-wrap: wrap; }
+    .tab-btn { flex: 1 1 120px; }
+    .ad-preview-container { min-width: 0; overflow: visible; }
+    .google-ad { width: 100%; box-sizing: border-box; }
+}
+

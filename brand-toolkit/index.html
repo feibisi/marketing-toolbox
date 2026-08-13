@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌建设工作台 - Modiqi Workbench</title>
+    <meta name="description" content="品牌建设工作台 - 包含品牌原型轮盘、品牌架构、品牌本质轮、品牌信息框架等15个品牌建设工具">
+    <meta name="keywords" content="品牌建设,品牌原型,品牌架构,品牌定位,品牌故事,JTBD,感知地图,视觉识别,品牌棱镜,品牌命名">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="品牌建设工作台 - Modiqi Workbench">
+    <meta property="og:description" content="包含品牌原型轮盘、品牌架构、品牌本质轮、品牌信息框架等15个品牌建设工具">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">品牌建设工作台</h1>
+                    <span class="version-tag">15 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Brand Building Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Brand Archetype Wheel -->
+            <a href="brand-archetype-wheel.html" class="tool-card">
+                <i data-lucide="compass" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">原型</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="70" r="45" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="100" cy="70" r="30" fill="none" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="100" cy="70" r="15" fill="none" stroke="#94a3b8" stroke-width="1" />
+                        <line x1="100" y1="25" x2="100" y2="115" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="55" y1="70" x2="145" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌原型轮盘 <span class="en-sub">(Brand Archetype Wheel)</span></h3>
+                    <p class="tool-desc">识别品牌的核心人格原型。</p>
+                </div>
+            </a>
+
+            <!-- 2. Brand Architecture -->
+            <a href="brand-architecture.html" class="tool-card">
+                <i data-lucide="layers" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">架构</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="70" y="20" width="60" height="20" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="40" y="55" width="50" height="18" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="110" y="55" width="50" height="18" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="25" y="90" width="40" height="15" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="80" y="90" width="40" height="15" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="135" y="90" width="40" height="15" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <line x1="100" y1="40" x2="65" y2="55" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="100" y1="40" x2="135" y2="55" stroke="#cbd5e1" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌架构 <span class="en-sub">(Brand Architecture)</span></h3>
+                    <p class="tool-desc">规划品牌组合与层级关系。</p>
+                </div>
+            </a>
+
+            <!-- 3. Brand Essence Wheel -->
+            <a href="brand-essence-wheel.html" class="tool-card">
+                <i data-lucide="target" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">本质</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="70" r="50" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="100" cy="70" r="35" fill="none" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="100" cy="70" r="20" fill="none" stroke="#94a3b8" stroke-width="1" />
+                        <circle cx="100" cy="70" r="8" fill="#64748b" />
+                        <line x1="100" y1="20" x2="100" y2="50" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="90" x2="100" y2="120" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="50" y1="70" x2="65" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="135" y1="70" x2="150" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌本质轮 <span class="en-sub">(Brand Essence Wheel)</span></h3>
+                    <p class="tool-desc">提炼品牌的核心价值与本质。</p>
+                </div>
+            </a>
+
+            <!-- 4. Brand Messaging -->
+            <a href="brand-messaging.html" class="tool-card">
+                <i data-lucide="message-square" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">信息</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="140" height="80" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="45" y="45" width="80" height="6" rx="2" fill="#cbd5e1" />
+                        <rect x="45" y="60" width="110" height="4" rx="2" fill="#e2e8f0" />
+                        <rect x="45" y="70" width="100" height="4" rx="2" fill="#e2e8f0" />
+                        <rect x="45" y="80" width="90" height="4" rx="2" fill="#e2e8f0" />
+                        <rect x="45" y="95" width="60" height="8" rx="2" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌信息框架 <span class="en-sub">(Brand Messaging)</span></h3>
+                    <p class="tool-desc">构建一致的品牌沟通话术。</p>
+                </div>
+            </a>
+
+            <!-- 5. Brand Positioning Map -->
+            <a href="brand-positioning-map.html" class="tool-card">
+                <i data-lucide="map-pin" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">定位</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="30" y1="110" x2="170" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="30" y1="30" x2="30" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="70" cy="80" r="6" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="120" cy="50" r="6" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="150" cy="90" r="6" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="90" cy="60" r="8" fill="#64748b" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌定位图 <span class="en-sub">(Brand Positioning Map)</span></h3>
+                    <p class="tool-desc">可视化品牌在市场中的位置。</p>
+                </div>
+            </a>
+
+            <!-- 6. Brand Story -->
+            <a href="brand-story.html" class="tool-card">
+                <i data-lucide="book-open" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">故事</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="40" y="30" width="120" height="80" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <line x1="100" y1="30" x2="100" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="50" y="45" width="40" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="50" y="55" width="35" height="3" rx="1" fill="#e2e8f0" />
+                        <rect x="50" y="63" width="38" height="3" rx="1" fill="#e2e8f0" />
+                        <rect x="110" y="45" width="40" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="110" y="55" width="35" height="3" rx="1" fill="#e2e8f0" />
+                        <rect x="110" y="63" width="38" height="3" rx="1" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌故事 <span class="en-sub">(Brand Story)</span></h3>
+                    <p class="tool-desc">讲述品牌的起源与使命。</p>
+                </div>
+            </a>
+
+            <!-- 7. JTBD Canvas -->
+            <a href="jtbd-canvas.html" class="tool-card">
+                <i data-lucide="briefcase" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">任务</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="20" y="30" width="70" height="80" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="110" y="30" width="70" height="80" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="55" cy="60" r="12" fill="#e2e8f0" />
+                        <rect x="30" y="85" width="50" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="30" y="95" width="40" height="3" rx="1" fill="#e2e8f0" />
+                        <path d="M90 70 L110 70" stroke="#94a3b8" stroke-width="2" />
+                        <path d="M105 65 L110 70 L105 75" stroke="#94a3b8" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">用户任务画布 <span class="en-sub">(JTBD Canvas)</span></h3>
+                    <p class="tool-desc">理解用户要完成的核心任务。</p>
+                </div>
+            </a>
+
+            <!-- 8. Perceptual Map -->
+            <a href="perceptual-map.html" class="tool-card">
+                <i data-lucide="grid-3x3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">感知</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="140" height="80" fill="#f8fafc" stroke="#e2e8f0" />
+                        <line x1="100" y1="30" x2="100" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="30" y1="70" x2="170" y2="70" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="70" cy="50" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="130" cy="60" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="110" cy="90" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                        <circle cx="60" cy="85" r="5" fill="#e2e8f0" stroke="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">感知地图 <span class="en-sub">(Perceptual Map)</span></h3>
+                    <p class="tool-desc">分析用户对品牌的感知维度。</p>
+                </div>
+            </a>
+
+            <!-- 9. Positioning Statement -->
+            <a href="positioning-statement.html" class="tool-card">
+                <i data-lucide="align-left" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">陈述</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="35" width="140" height="70" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="45" y="50" width="100" height="6" rx="2" fill="#64748b" />
+                        <rect x="45" y="65" width="110" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="45" y="75" width="105" height="4" rx="2" fill="#e2e8f0" />
+                        <rect x="45" y="85" width="95" height="4" rx="2" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">定位陈述 <span class="en-sub">(Positioning Statement)</span></h3>
+                    <p class="tool-desc">撰写清晰的品牌定位声明。</p>
+                </div>
+            </a>
+
+            <!-- 10. Tone & Voice -->
+            <a href="tone-voice.html" class="tool-card">
+                <i data-lucide="volume-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">语调</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="40" y="40" width="120" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <path d="M60 70 Q80 50 100 70 T140 70" fill="none" stroke="#94a3b8" stroke-width="2" />
+                        <circle cx="60" cy="70" r="4" fill="#cbd5e1" />
+                        <circle cx="100" cy="70" r="4" fill="#cbd5e1" />
+                        <circle cx="140" cy="70" r="4" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">语调与声音 <span class="en-sub">(Tone & Voice)</span></h3>
+                    <p class="tool-desc">定义品牌的沟通风格。</p>
+                </div>
+            </a>
+
+            <!-- 11. Touchpoint Map -->
+            <a href="touchpoint-map.html" class="tool-card">
+                <i data-lucide="radio" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">触点</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="70" r="15" fill="#64748b" />
+                        <circle cx="60" cy="50" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="140" cy="50" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="60" cy="90" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="140" cy="90" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <line x1="85" y1="70" x2="68" y2="55" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="115" y1="70" x2="132" y2="55" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="85" y1="70" x2="68" y2="85" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="115" y1="70" x2="132" y2="85" stroke="#cbd5e1" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">触点地图 <span class="en-sub">(Touchpoint Map)</span></h3>
+                    <p class="tool-desc">识别品牌与用户的所有接触点。</p>
+                </div>
+            </a>
+
+            <!-- 12. Visual Identity -->
+            <a href="visual-identity.html" class="tool-card">
+                <i data-lucide="palette" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">视觉</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="50" height="50" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="90" y="30" width="50" height="50" rx="4" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <rect x="150" y="30" width="20" height="50" rx="4" fill="#cbd5e1" />
+                        <rect x="30" y="90" width="140" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="40" y="97" width="60" height="6" rx="2" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">视觉识别系统 <span class="en-sub">(Visual Identity)</span></h3>
+                    <p class="tool-desc">设计品牌的视觉元素规范。</p>
+                </div>
+            </a>
+
+            <!-- 13. Brand Prism -->
+            <a href="brand-prism.html" class="tool-card">
+                <i data-lucide="hexagon" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">棱镜</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <polygon points="100,30 140,55 140,95 100,120 60,95 60,55" fill="#f8fafc" stroke="#cbd5e1"
+                            stroke-width="1" />
+                        <polygon points="100,50 125,62 125,88 100,100 75,88 75,62" fill="#fff" stroke="#94a3b8"
+                            stroke-width="1" />
+                        <line x1="100" y1="30" x2="100" y2="50" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="140" y1="55" x2="125" y2="62" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="140" y1="95" x2="125" y2="88" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="120" x2="100" y2="100" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="60" y1="95" x2="75" y2="88" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="60" y1="55" x2="75" y2="62" stroke="#e2e8f0" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌棱镜模型 <span class="en-sub">(Brand Prism)</span></h3>
+                    <p class="tool-desc">六维度品牌识别系统构建。</p>
+                </div>
+            </a>
+
+            <!-- 14. Brand Archetypes -->
+            <a href="brand-archetypes.html" class="tool-card">
+                <i data-lucide="users" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">原型</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="70" r="50" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="100" cy="70" r="35" fill="none" stroke="#cbd5e1" stroke-width="1" />
+                        <circle cx="100" cy="70" r="20" fill="none" stroke="#94a3b8" stroke-width="1" />
+                        <circle cx="100" cy="20" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="143" cy="35" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="150" cy="70" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="143" cy="105" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="100" cy="120" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="57" cy="105" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="50" cy="70" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="57" cy="35" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌原型轮 <span class="en-sub">(Brand Archetypes)</span></h3>
+                    <p class="tool-desc">12种品牌人格与情感连接。</p>
+                </div>
+            </a>
+
+            <!-- 15. Brand Naming Canvas -->
+            <a href="brand-naming.html" class="tool-card">
+                <i data-lucide="pen-tool" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">命名</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="140" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="60" width="65" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="105" y="60" width="65" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="90" width="140" height="25" rx="2" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <text x="100" y="106" text-anchor="middle" font-size="12" font-weight="bold"
+                            fill="#64748b">NAME</text>
+                        <circle cx="150" cy="102" r="6" fill="#dcfce7" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">品牌命名画布 <span class="en-sub">(Brand Naming)</span></h3>
+                    <p class="tool-desc">从创意发散到最终决策的系统化流程。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

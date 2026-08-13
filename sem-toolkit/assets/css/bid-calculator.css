@@ -1,0 +1,170 @@
+/* Bid Calculator Layout */
+.calc-container {
+    display: flex;
+    gap: 40px;
+    flex: 1;
+    min-height: 0;
+    align-items: center;
+    /* Vertically center for impact */
+    padding: 0 40px;
+}
+
+.input-panel {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-paper);
+    padding: 30px;
+    border-radius: 0;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-field-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.prefix {
+    position: absolute;
+    left: 12px;
+    color: var(--color-text-tertiary);
+    font-weight: bold;
+}
+
+.suffix {
+    position: absolute;
+    right: 12px;
+    color: var(--color-text-tertiary);
+    font-weight: bold;
+}
+
+.calc-input {
+    width: 100%;
+    padding: 12px 12px 12px 30px;
+    /* Space for prefix */
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+.calc-input.has-suffix {
+    padding-right: 30px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 8px;
+    accent-color: var(--color-brand-primary);
+}
+
+
+/* Result Panel */
+.result-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    justify-content: center;
+}
+
+.result-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 0;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #22c55e, #3b82f6);
+}
+
+.result-label {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.result-value {
+    font-size: 72px;
+    font-weight: 800;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.result-sub {
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.break-even-card {
+    background: var(--color-bg-subtle);
+    padding: 20px;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px dashed var(--border-sem-dashed);
+}
+
+
+/* Dark Mode */
+body.theme-dark .input-panel {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: none;
+}
+
+body.theme-dark .calc-input {
+    background: #0f172a;
+    border-color: #334155;
+    color: white;
+}
+
+body.theme-dark .break-even-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .calc-container { flex-direction: column; min-height: 0; }
+    .input-panel, .result-panel { width: 100%; box-sizing: border-box; }
+    .result-value { font-size: clamp(2.5rem, 15vw, 4.5rem); overflow-wrap: anywhere; }
+}
+

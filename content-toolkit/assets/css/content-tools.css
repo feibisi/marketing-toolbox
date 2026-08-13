@@ -1,0 +1,200 @@
+/* Shared styles for simple content tools */
+
+/* Canvas Layout */
+.canvas-grid {
+    display: grid;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+.canvas-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    color: var(--color-text-secondary);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+}
+
+.card-header .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.input-area {
+    flex: 1;
+    width: 100%;
+    border: none;
+    resize: none;
+    background: transparent;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+/* Specific Grid for Strategy Canvas */
+.strategy-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.span-row {
+    grid-row: span 2;
+}
+
+.span-col {
+    grid-column: span 2;
+}
+
+/* Matrix Table for Distribution */
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    flex: 1;
+}
+
+.matrix-table th,
+.matrix-table td {
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    text-align: left;
+    vertical-align: top;
+}
+
+.matrix-table th {
+    background: var(--color-bg-subtle);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: bold;
+}
+
+.matrix-cell-content {
+    width: 100%;
+    min-height: 80px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: var(--font-size-sm);
+    resize: vertical;
+}
+
+/* Checklist Styles */
+.checklist-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+}
+
+.checklist-group {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+/* Mobile reading compositions for the two table/checklist pages using this file. */
+@media screen and (max-width: 768px) {
+    .content-distribution-page .paper-a3,
+    .content-seo-page .paper-a4 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .content-distribution-page .matrix-table,
+    .content-distribution-page .matrix-table tbody,
+    .content-distribution-page .matrix-table tr,
+    .content-distribution-page .matrix-table th,
+    .content-distribution-page .matrix-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .content-distribution-page .matrix-table thead {
+        display: none;
+    }
+
+    .content-distribution-page .matrix-table tr {
+        margin-bottom: var(--spacing-md);
+        border: 1px solid var(--border-sem-inner);
+    }
+
+    .content-distribution-page .matrix-table th,
+    .content-distribution-page .matrix-table td {
+        border: 0;
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+
+    .content-distribution-page .matrix-table td::before {
+        display: block;
+        margin-bottom: var(--spacing-xs);
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+    }
+
+    .content-distribution-page .matrix-table td:nth-child(2)::before { content: "自有渠道 / Owned"; }
+    .content-distribution-page .matrix-table td:nth-child(3)::before { content: "付费渠道 / Paid"; }
+    .content-distribution-page .matrix-table td:nth-child(4)::before { content: "赢得渠道 / Earned"; }
+
+    .content-seo-page .checklist-container {
+        grid-template-columns: minmax(0, 1fr);
+        overflow: visible;
+    }
+}
+
+.group-title {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--border-sem-dashed);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--color-bg-subtle);
+}
+
+.check-item input[type="checkbox"] {
+    margin-top: 4px;
+}
+
+.check-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    flex: 1;
+}
+
+/* Dark Mode */
+body.theme-dark .canvas-card,
+body.theme-dark .checklist-group {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .matrix-table th {
+    background: var(--color-bg-subtle);
+}

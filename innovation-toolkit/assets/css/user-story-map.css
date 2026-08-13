@@ -1,0 +1,189 @@
+/* User Story Map Layout */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: var(--color-bg-subtle);
+}
+
+.map-scroll-area {
+    flex: 1;
+    overflow: auto;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Backbone (User Activities) */
+.backbone-row {
+    display: flex;
+    gap: var(--spacing-lg);
+    /* Groups of tasks */
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-brand-primary);
+    min-width: max-content;
+}
+
+.activity-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    padding: var(--spacing-sm);
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+    min-width: 200px;
+}
+
+.activity-card {
+    background: var(--color-brand-blue);
+    color: white;
+    padding: var(--spacing-sm);
+    border-radius: 0;
+    font-weight: bold;
+    font-size: var(--font-size-md);
+    border: none;
+    outline: none;
+    resize: none;
+    height: auto;
+    min-height: 40px;
+    overflow: hidden;
+}
+
+.activity-card::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.task-row {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.task-card {
+    background: var(--color-brand-light);
+    color: var(--color-brand-dark);
+    padding: 8px;
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--color-brand-blue-light);
+    width: 100px;
+    min-height: 60px;
+}
+
+/* Releases (Swimlanes) */
+.release-swimlane {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.5);
+    border-top: 2px dashed var(--border-sem-dashed);
+    min-width: max-content;
+}
+
+.release-header {
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.release-stories {
+    display: flex;
+    gap: var(--spacing-lg);
+    /* align with backbone groups potentially, but flex is easier */
+}
+
+.story-group-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+    /* Match activity width */
+}
+
+.story-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    padding: 8px;
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    min-height: 60px;
+    box-shadow: var(--shadow-sm);
+    cursor: grab;
+}
+
+.story-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-sem-input-hover);
+}
+
+.story-card:active {
+    cursor: grabbing;
+}
+
+/* Controls */
+.add-btn {
+    background: transparent;
+    border: 1px dashed var(--border-sem-dashed);
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    border-radius: 0;
+    padding: 4px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.add-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+/* Dark Mode */
+body.theme-dark .map-container {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .activity-group,
+body.theme-dark .story-card {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .release-swimlane {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .map-container,
+    .map-scroll-area {
+        height: auto;
+        overflow: visible;
+    }
+
+    .backbone-row,
+    .release-stories {
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .activity-group,
+    .release-swimlane,
+    .story-group-column {
+        width: 100%;
+        min-width: 0;
+    }
+}

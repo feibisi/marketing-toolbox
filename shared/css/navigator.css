@@ -1,0 +1,276 @@
+:root {
+    --nav-bg: var(--color-bg-main);
+    --layer-spacing: 40px;
+}
+
+.navigator-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    min-height: 100vh;
+}
+
+.navigator-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.navigator-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.navigator-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 5-Layer Stack Visualization */
+.strategy-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--layer-spacing);
+    position: relative;
+}
+
+/* Central Connector Line */
+.strategy-stack::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-border-subtle);
+    z-index: 0;
+}
+
+.layer-node {
+    display: grid;
+    grid-template-columns: 1fr 320px 1fr;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Layer Core Node */
+.layer-core {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-main);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.layer-node:hover .layer-core {
+    border-color: var(--color-text-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.layer-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-subtle);
+    border-radius: 50%;
+    color: var(--color-text-primary);
+}
+
+.layer-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--color-text-primary);
+}
+
+.layer-label {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Toolkit Tags/Links */
+.layer-toolkits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.left-side {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.right-side {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.toolkit-bubble {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.toolkit-bubble:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+}
+
+.layer-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-tertiary);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .layer-node {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .strategy-stack::before {
+        display: none;
+    }
+
+    .left-side,
+    .right-side {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* Dark Mode Adjustments */
+/* Package Builder Panel */
+.package-builder {
+    position: fixed;
+    right: 40px;
+    top: 150px;
+    width: 280px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-main);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    padding: 24px;
+    z-index: 100;
+    transition: color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.package-builder:hover {
+    transform: scale(1.02);
+}
+
+.package-builder h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-serif);
+}
+
+.package-builder h3 i {
+    color: var(--color-brand-primary);
+}
+
+.tool-check-list {
+    margin-bottom: 24px;
+}
+
+.tool-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.tool-check-item i.status-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-tertiary);
+}
+
+.tool-check-item.completed {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.tool-check-item.completed i.status-icon {
+    color: var(--color-brand-primary);
+}
+
+.btn-generate-report {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: var(--color-brand-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s, opacity 0.2s;
+    cursor: pointer;
+}
+
+.btn-generate-report:hover {
+    background: var(--color-text-primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.package-progress {
+    height: 4px;
+    background: var(--color-bg-subtle);
+    border-radius: 2px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background: var(--color-brand-primary);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+@media (max-width: 1400px) {
+    .package-builder {
+        position: static;
+        width: 100%;
+        margin-top: 40px;
+        box-shadow: none;
+    }
+}
+
+body.theme-dark .layer-core {
+    background: rgba(255, 255, 255, 0.03);
+}

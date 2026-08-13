@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标题测试实验室 (Subject Line Tester)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="优化邮件打开率与送达率">
+    <meta name="keywords" content="Email Subject Line, Open Rate, Email Marketing, Spam Trigger">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/subject-line-tester.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Portrait Canvas -->
+    <main class="paper-a4">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>标题测试实验室</h1>
+                <span class="english-subtitle">Subject Line Tester</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="Campaign Name" data-save-key="meta_project" aria-label="Campaign Name">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <!-- Input Section -->
+            <div class="tool-section input-section">
+                <div class="section-header">
+                    <i data-lucide="edit-3"></i>
+                    <h2>标题撰写 <span class="en-sub">(Composition)</span></h2>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label>邮件标题 <span class="en-sub">(Subject Line)</span></label>
+                        <span class="counter" id="countSubject">0/60</span>
+                    </div>
+                    <input type="text" id="inputSubject" class="input" placeholder="输入引人入胜的标题..."
+                        data-save-key="email_subject" aria-label="输入引人入胜的标题...">
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label>预览文本 <span class="en-sub">(Preheader Text)</span></label>
+                        <span class="counter" id="countPreheader">0/100</span>
+                    </div>
+                    <textarea id="inputPreheader" class="input" rows="2" placeholder="补充标题的摘要内容..."
+                        data-save-key="email_preheader" aria-label="补充标题的摘要内容..."></textarea>
+                </div>
+            </div>
+
+            <!-- Score & Analysis -->
+            <div class="analysis-grid">
+
+                <!-- Score Card -->
+                <div class="score-card">
+                    <div class="score-circle" id="scoreCircle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" id="scorePath" stroke-dasharray="0, 100"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage" id="scoreText">0</text>
+                        </svg>
+                    </div>
+                    <div class="score-label">质量评分 (Score)</div>
+                </div>
+
+                <!-- Analysis List -->
+                <div class="analysis-details">
+                    <h3>分析结果 <span class="en-sub">(Insights)</span></h3>
+                    <ul class="insight-list" id="insightList">
+                        <li class="status-neutral">请输入标题以获取分析...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Preview -->
+            <div class="tool-section preview-section">
+                <div class="section-header">
+                    <i data-lucide="smartphone"></i>
+                    <h2>移动端预览 <span class="en-sub">(Mobile Preview)</span></h2>
+                </div>
+
+                <div class="iphone-mockup">
+                    <div class="iphone-screen">
+                        <!-- Top Bar -->
+                        <div class="app-header">
+                            <div class="app-back"><i data-lucide="chevron-left"></i> Inbox</div>
+                            <div class="app-title">Edit</div>
+                        </div>
+
+                        <!-- Email Item -->
+                        <div class="email-item">
+                            <div class="email-avatar">M</div>
+                            <div class="email-content">
+                                <div class="email-row-1">
+                                    <span class="sender-name">Modiqi Brand</span>
+                                    <span class="email-time">Now</span>
+                                </div>
+                                <div class="email-subject" id="viewSubject">Subject Line</div>
+                                <div class="email-preheader" id="viewPreheader">Preheader text appears here...</div>
+                            </div>
+                            <div class="email-meta">
+                                <i data-lucide="star"></i>
+                            </div>
+                        </div>
+
+                        <!-- Filler items -->
+                        <div class="email-item filler">
+                            <div class="email-avatar" style="background:#e2e8f0">A</div>
+                            <div class="email-content">
+                                <div class="email-line line-short"></div>
+                                <div class="email-line line-med"></div>
+                            </div>
+                        </div>
+                        <div class="email-item filler">
+                            <div class="email-avatar" style="background:#e2e8f0">B</div>
+                            <div class="email-content">
+                                <div class="email-line line-short"></div>
+                                <div class="email-line line-med"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/subject-line-tester.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('subject_line_tester_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

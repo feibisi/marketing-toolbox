@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT 分析 (SWOT Analysis)</title>
+    <meta name="description" content="SWOT分析工具，帮助您系统评估优势、劣势、机会和威胁，制定战略决策。">
+    <meta name="keywords" content="SWOT分析,战略规划,优势劣势,机会威胁,商业分析">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SWOT 分析 - Modiqi Workbench">
+    <meta property="og:description" content="系统评估优势、劣势、机会和威胁，制定战略决策。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/swot-analysis.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>SWOT 分析</h1>
+                <span class="english-subtitle">SWOT Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的战略分析" data-save-key="meta_project" aria-label="我的战略分析">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="swot-grid">
+            <!-- Strengths -->
+            <div class="swot-card area-s">
+                <div class="card-header">
+                    <i data-lucide="trending-up"></i>
+                    <h2>优势 <span class="en-sub">(Strengths)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="strengths"
+                    data-strategic-id="swot_strengths">
+                    <ul>
+                        <li>我们做得好的地方是什么？</li>
+                        <li>我们要利用哪些独特的资源？</li>
+                        <li>别人认为我们的优势在哪里？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Weaknesses -->
+            <div class="swot-card area-w">
+                <div class="card-header">
+                    <i data-lucide="alert-circle"></i>
+                    <h2>劣势 <span class="en-sub">(Weaknesses)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="weaknesses"
+                    data-strategic-id="swot_weaknesses">
+                    <ul>
+                        <li>我们需要改进什么？</li>
+                        <li>我们缺乏什么资源？</li>
+                        <li>别人认为我们的劣势在哪里？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Opportunities -->
+            <div class="swot-card area-o">
+                <div class="card-header">
+                    <i data-lucide="lightbulb"></i>
+                    <h2>机会 <span class="en-sub">(Opportunities)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="opportunities"
+                    data-strategic-id="swot_opportunities">
+                    <ul>
+                        <li>有什么开放的机会？</li>
+                        <li>我们可以利用什么趋势？</li>
+                        <li>如何将优势转化为机会？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Threats -->
+            <div class="swot-card area-t">
+                <div class="card-header">
+                    <i data-lucide="alert-triangle"></i>
+                    <h2>威胁 <span class="en-sub">(Threats)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="threats"
+                    data-strategic-id="swot_threats">
+                    <ul>
+                        <li>有哪些威胁会对我们造成伤害？</li>
+                        <li>我们的竞争对手在做什么？</li>
+                        <li>我们的弱点会让我们面临什么威胁？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Center Circle -->
+            <div class="center-circle">
+                <div class="circle-content" contenteditable="true" data-save-key="conclusion"
+                    data-strategic-id="swot_conclusion">
+                    核心结论<br><span class="en-sub">Key Takeaway</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = new ModiqiApp('swot_analysis_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+            app.setupStrategicClipboard();
+        });
+    </script>
+</body>
+
+</html>

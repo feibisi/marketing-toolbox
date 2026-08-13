@@ -1,0 +1,215 @@
+/* Schema Generator Layout */
+.schema-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Left Column: Input Form */
+.col-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+    padding-right: var(--spacing-md);
+}
+
+.form-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 16px;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+}
+
+.input-control {
+    width: 100%;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: 8px;
+    font-size: 13px;
+    background: var(--color-bg-subtle);
+}
+
+.input-control:focus {
+    background: white;
+    border-color: var(--color-brand-primary);
+    outline: none;
+}
+
+/* FAQ Item Style */
+.faq-item {
+    border-left: 2px solid var(--border-sem-inner);
+    padding-left: 12px;
+    margin-bottom: 12px;
+}
+
+.remove-faq {
+    color: var(--color-error);
+    font-size: 10px;
+    cursor: pointer;
+    text-align: right;
+    display: block;
+}
+
+/* Right Column: Code Preview */
+.col-preview {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border-left: 1px solid var(--border-sem-inner);
+    padding-left: var(--spacing-md);
+}
+
+.code-wrapper {
+    flex: 1;
+    background: #1e293b;
+    border-radius: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.code-content {
+    flex: 1;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    resize: none;
+}
+
+.code-content:focus {
+    outline: none;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 0;
+    padding: 6px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode */
+body.theme-dark .form-card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.theme-dark .input-control {
+    background: #0f172a;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+body.theme-dark .input-control:focus {
+    background: #1e293b;
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .schema-container {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .col-input,
+    .col-preview,
+    .code-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .col-input {
+        padding-right: 0;
+    }
+
+    .col-preview {
+        flex-basis: auto;
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .code-content {
+        min-height: 320px;
+    }
+}

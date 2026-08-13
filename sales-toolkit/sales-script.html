@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销售话术构建器 (Sales Script Builder)</title>
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool Specific -->
+    <link rel="stylesheet" href="assets/css/script.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>销售话术构建器</h1>
+                <span class="english-subtitle">Sales Script Builder</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>话术目标 (Goal)</label>
+                    <input type="text" class="meta-input" value="Cold Call Requesting Demo" data-save-key="script_goal" aria-label="script goal">
+                </div>
+                <div class="meta-group">
+                    <label>目标客户 (Target)</label>
+                    <input type="text" class="meta-input" value="Marketing Directors" data-save-key="script_target" aria-label="script target">
+                </div>
+            </div>
+        </header>
+
+        <!-- Scenario Presets -->
+        <div class="scenario-presets no-print">
+            <span class="label">话术场景预设:</span>
+            <button class="preset-pill" onclick="loadScenario('cold_call')" type="button">电销开场 (Cold Call)</button>
+            <button class="preset-pill" onclick="loadScenario('objection')" type="button">异议处理 (Objections)</button>
+            <button class="preset-pill" onclick="loadScenario('closing')" type="button">深度成交 (Closing)</button>
+            <span class="toolbar-divider">|</span>
+            <button class="preset-pill btn-primary" onclick="startSimulation()" type="button"><i data-lucide="play-circle"></i> 演练模式
+                (Simulate)</button>
+            <button class="preset-pill btn-secondary" onclick="importPersonaRisks()"
+                title="Import Pains from Persona" type="button"><i data-lucide="download-cloud"></i> 导入痛点</button>
+            <button class="preset-pill btn-secondary" id="btnCopyAll" type="button"><i data-lucide="copy"></i> 合并复制</button>
+        </div>
+
+        <!-- Script Flow Container -->
+        <div class="script-flow" id="scriptFlow">
+
+            <!-- Default Modules -->
+
+            <!-- Module 1: Intro -->
+            <section class="script-module type-intro">
+                <div class="module-header">
+                    <div class="module-label"><i data-lucide="mic"></i> 开场白 (Opening)</div>
+                    <div class="module-actions no-print">
+                        <button class="btn-icon" title="Move Up" onclick="moveModuleUp(this)" type="button"><i
+                                data-lucide="arrow-up"></i></button>
+                        <button class="btn-icon" title="Move Down" onclick="moveModuleDown(this)" type="button"><i
+                                data-lucide="arrow-down"></i></button>
+                        <button class="btn-icon btn-delete" title="Delete" onclick="deleteModule(this)" type="button"><i
+                                data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+                <div class="module-content" contenteditable="true">
+                    <p><strong>(Greet):</strong> Hi [Name], this is [My Name] from Modiqi.</p>
+                    <p><strong>(Hook):</strong> I'm calling because I saw your recent post about [Topic]...</p>
+                    <p><strong>(Permission):</strong> Do you have 30 seconds to hear how we help teams like yours?</p>
+                </div>
+            </section>
+
+            <!-- Module 2: Qualification -->
+            <section class="script-module type-qualify">
+                <div class="module-header">
+                    <div class="module-label"><i data-lucide="check-circle-2"></i> 资格确认 (Qualifying)</div>
+                    <div class="module-actions no-print">
+                        <button class="btn-icon" onclick="moveModuleUp(this)" type="button"><i data-lucide="arrow-up"></i></button>
+                        <button class="btn-icon" onclick="moveModuleDown(this)" type="button"><i
+                                data-lucide="arrow-down"></i></button>
+                        <button class="btn-icon btn-delete" onclick="deleteModule(this)" type="button"><i
+                                data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+                <div class="module-content">
+                    <ul class="checklist-content">
+                        <li><input type="checkbox" aria-label="Input field"> <span contenteditable="true">Currently using a CRM?</span></li>
+                        <li><input type="checkbox" aria-label="Input field"> <span contenteditable="true">Team size > 10?</span></li>
+                        <li><input type="checkbox" aria-label="Input field"> <span contenteditable="true">Decision maker for budget?</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Module 3: Value Prop -->
+            <section class="script-module type-value">
+                <div class="module-header">
+                    <div class="module-label"><i data-lucide="zap"></i> 价值主张 (Value Prop)</div>
+                    <div class="module-actions no-print">
+                        <button class="btn-icon" onclick="moveModuleUp(this)" type="button"><i data-lucide="arrow-up"></i></button>
+                        <button class="btn-icon" onclick="moveModuleDown(this)" type="button"><i
+                                data-lucide="arrow-down"></i></button>
+                        <button class="btn-icon btn-delete" onclick="deleteModule(this)" type="button"><i
+                                data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+                <div class="module-content" contenteditable="true">
+                    <p>We help agencies automate their reporting workflows.</p>
+                    <ul>
+                        <li>Save 10 hours per week per consultant.</li>
+                        <li>Deliver beautiful, interactive client dashboards.</li>
+                        <li>Pricing starts at just ¥2,980/month.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Module 4: Closing -->
+            <section class="script-module type-closing">
+                <div class="module-header">
+                    <div class="module-label"><i data-lucide="log-out"></i> 缔结 (Closing)</div>
+                    <div class="module-actions no-print">
+                        <button class="btn-icon" onclick="moveModuleUp(this)" type="button"><i data-lucide="arrow-up"></i></button>
+                        <button class="btn-icon" onclick="moveModuleDown(this)" type="button"><i
+                                data-lucide="arrow-down"></i></button>
+                        <button class="btn-icon btn-delete" onclick="deleteModule(this)" type="button"><i
+                                data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+                <div class="module-content" contenteditable="true">
+                    <p><strong>(Ask):</strong> Does next Tuesday at 2 PM work for a quick demo?<br>If not, what's the
+                        best way to get on your calendar?</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Float Actions -->
+        <div class="float-actions no-print">
+            <button class="btn btn-primary" onclick="showAddMenu()" type="button">
+                <i data-lucide="plus"></i> Add Module
+            </button>
+            <div id="addMenu" class="add-menu hidden">
+                <div class="menu-item" onclick="addModule('intro')" role="button" tabindex="0"><i data-lucide="mic"></i> Opening</div>
+                <div class="menu-item" onclick="addModule('qualify')" role="button" tabindex="0"><i data-lucide="check-circle-2"></i> Qualifying
+                </div>
+                <div class="menu-item" onclick="addModule('value')" role="button" tabindex="0"><i data-lucide="zap"></i> Value Prop</div>
+                <div class="menu-item" onclick="addModule('objection')" role="button" tabindex="0"><i data-lucide="shield-alert"></i> Objection
+                </div>
+                <div class="menu-item" onclick="addModule('closing')" role="button" tabindex="0"><i data-lucide="log-out"></i> Closing</div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Simulation Overlay (Teleprompter Mode) -->
+    <div id="simulationOverlay" class="simulation-overlay hidden">
+        <div class="sim-header">
+            <span class="sim-brand">Modiqi Sales Simulator</span>
+            <button class="btn-close-sim" onclick="endSimulation()" type="button"><i data-lucide="x"></i> 退出演练 (Esc)</button>
+        </div>
+
+        <div class="sim-progress-bar">
+            <div class="progress-fill" id="simProgress" style="width: 0%"></div>
+        </div>
+
+        <div class="sim-stage">
+            <button class="nav-btn prev" onclick="prevSlide()" title="Previous (Left Arrow)" type="button"><i
+                    data-lucide="chevron-left"></i></button>
+
+            <div class="sim-card-container">
+                <div class="sim-card active">
+                    <div class="sim-label" id="simLabel">Step Label</div>
+                    <div class="sim-content" id="simContent">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-btn next" onclick="nextSlide()" title="Next (Right Arrow, Space)" type="button"><i
+                    data-lucide="chevron-right"></i></button>
+        </div>
+
+        <div class="sim-footer">
+            <div class="sim-controls">
+                <span class="step-counter" id="simCounter">1 / 5</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="copyToast" class="toast hidden">话术已合并复制到剪贴板</div>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('sales_script_v1');
+            lucide.createIcons();
+
+            document.getElementById('btnCopyAll').addEventListener('click', () => {
+                const modules = document.querySelectorAll('.module-content');
+                let fullText = "";
+                modules.forEach(m => {
+                    fullText += m.innerText.trim() + "\n\n";
+                });
+                navigator.clipboard.writeText(fullText.trim());
+                showToast();
+            });
+        });
+
+        function showToast() {
+            const toast = document.getElementById('copyToast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2000);
+        }
+    </script>
+</body>
+
+</html>

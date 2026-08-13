@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容复用引擎 (Content Repurposing Engine)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="将长内容裂变为多渠道分发格式">
+    <meta name="keywords" content="Content Marketing, Repurposing, Social Media, AI Prompt">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-repurposing-engine.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容复用引擎</h1>
+                <span class="english-subtitle">Content Repurposing Engine</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="Campaign Name" data-save-key="meta_project" aria-label="Campaign Name">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="engine-layout">
+
+                <!-- SOURCE COLUMN -->
+                <div class="source-column">
+                    <div class="column-header source-header">
+                        <i data-lucide="database"></i>
+                        <h2>核心素材 <span class="en-sub">(Source Content)</span></h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label>主题/标题</label>
+                        <input type="text" id="inputSourceTitle" class="input" placeholder="文章标题..."
+                            data-save-key="source_title" aria-label="文章标题...">
+                    </div>
+
+                    <div class="form-group flex-grow">
+                        <label>内容原文 (粘贴此处)</label>
+                        <textarea id="inputSourceText" class="input source-text-area" placeholder="在此粘贴长文章、报告摘要或视频脚本..."
+                            data-save-key="source_text" aria-label="在此粘贴长文章、报告摘要或视频脚本..."></textarea>
+                    </div>
+
+                    <div class="source-stats">
+                        <span id="wordCount">0 words</span>
+                    </div>
+                </div>
+
+                <!-- CHANNELS GRID -->
+                <div class="channels-column">
+                    <div class="column-header">
+                        <i data-lucide="share-2"></i>
+                        <h2>分发渠道 <span class="en-sub">(Distribution Channels)</span></h2>
+                    </div>
+
+                    <div class="channels-grid">
+
+                        <!-- LinkedIn -->
+                        <div class="channel-card">
+                            <div class="card-top">
+                                <i data-lucide="briefcase-business"></i>
+                                <h3>LinkedIn Post</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="prompt-section">
+                                    <button class="btn-gen-prompt" data-channel="linkedin" type="button">生成 Prompt</button>
+                                </div>
+                                <div class="result-section" contenteditable="true" data-save-key="res_linkedin">
+                                    <p class="placeholder">点击生成，粘贴 AI 结果...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Twitter/X -->
+                        <div class="channel-card">
+                            <div class="card-top">
+                                <i data-lucide="message-circle"></i>
+                                <h3>Twitter Thread</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="prompt-section">
+                                    <button class="btn-gen-prompt" data-channel="twitter" type="button">生成 Prompt</button>
+                                </div>
+                                <div class="result-section" contenteditable="true" data-save-key="res_twitter">
+                                    <p class="placeholder">点击生成，粘贴 AI 结果...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="channel-card">
+                            <div class="card-top">
+                                <i data-lucide="mail"></i>
+                                <h3>Newsletter</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="prompt-section">
+                                    <button class="btn-gen-prompt" data-channel="newsletter" type="button">生成 Prompt</button>
+                                </div>
+                                <div class="result-section" contenteditable="true" data-save-key="res_newsletter">
+                                    <p class="placeholder">点击生成，粘贴 AI 结果...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Script -->
+                        <div class="channel-card">
+                            <div class="card-top">
+                                <i data-lucide="video"></i>
+                                <h3>Short Video Script</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="prompt-section">
+                                    <button class="btn-gen-prompt" data-channel="video" type="button">生成 Prompt</button>
+                                </div>
+                                <div class="result-section" contenteditable="true" data-save-key="res_video">
+                                    <p class="placeholder">点击生成，粘贴 AI 结果...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Prompt Modal (Simple overlay) -->
+    <div id="promptOverlay" class="overlay hidden">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h3>复制 Prompt并发送给 AI</h3>
+                <button id="btnCloseOverlay" type="button"><i data-lucide="x"></i></button>
+            </div>
+            <textarea id="overlayPromptText" class="input code-area" readonly aria-label="overlayPromptText"></textarea>
+            <button id="btnCopyOverlay" class="btn-copy" type="button">复制 Prompt</button>
+        </div>
+    </div>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/content-repurposing-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_repurpose_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

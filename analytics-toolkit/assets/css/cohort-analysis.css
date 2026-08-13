@@ -1,0 +1,360 @@
+/* Cohort Analysis - Design System Aligned */
+/* 队列分析表样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.cohort-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-md);
+    overflow: hidden;
+    /* Prevent page spill */
+}
+
+/* ========================================
+   Meta Controls
+   ======================================== */
+.meta-data {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-item label {
+    font-size: 10px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.clean-select {
+    border: none;
+    background: transparent;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-blue);
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+/* ========================================
+   The Cohort Table (Section 1)
+   ======================================== */
+.table-container {
+    flex: 1;
+    overflow: auto;
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    background: var(--color-bg-paper);
+}
+
+.cohort-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.cohort-table th,
+.cohort-table td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.cohort-table th:last-child,
+.cohort-table td:last-child {
+    border-right: none;
+}
+
+.cohort-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Header Styling */
+.cohort-table th {
+    background: var(--color-bg-subtle);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.cohort-col {
+    width: 140px;
+    text-align: left !important;
+    padding-left: 16px !important;
+}
+
+.size-col {
+    width: 60px;
+    background: var(--color-bg-subtle);
+    /* Slightly darker than header */
+}
+
+/* First Column Styling */
+.cohort-table td:first-child {
+    text-align: left;
+    padding-left: 16px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-paper);
+}
+
+.cohort-table td:nth-child(2) {
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+/* Heatmap Classes */
+.heat-100 {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-paper) !important;
+}
+
+.heat-50 {
+    background-color: var(--color-text-secondary);
+    color: var(--color-bg-paper) !important;
+}
+
+.heat-40 {
+    background-color: var(--color-text-tertiary);
+    color: var(--color-bg-paper) !important;
+}
+
+.heat-30 {
+    background-color: var(--border-sem-inner);
+    color: var(--color-text-primary) !important;
+}
+
+.heat-20 {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-text-primary) !important;
+}
+
+.heat-10 {
+    background-color: var(--color-bg-paper);
+    color: var(--color-text-secondary) !important;
+}
+
+/* Color Mode Overrides */
+body.color-mode .heat-100 {
+    background-color: var(--color-brand-blue-dark);
+}
+
+body.color-mode .heat-50 {
+    background-color: var(--color-brand-blue);
+}
+
+body.color-mode .heat-40 {
+    background-color: var(--color-archetype-stability);
+}
+
+body.color-mode .heat-30 {
+    background-color: var(--color-info);
+    color: white !important;
+}
+
+body.color-mode .heat-20 {
+    background-color: var(--color-bg-info-subtle);
+}
+
+body.color-mode .heat-10 {
+    background-color: var(--color-focus-bg);
+}
+
+/* Editable cells focus */
+[contenteditable]:focus {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: -2px;
+}
+
+/* ========================================
+   Analysis Split (Section 2)
+   ======================================== */
+.analysis-split {
+    height: 180px;
+    /* Fixed height for bottom section */
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.chart-panel,
+.insights-panel {
+    flex: 1;
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-secondary);
+}
+
+.panel-header i {
+    width: 16px;
+    height: 16px;
+}
+
+.panel-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Chart Area */
+.chart-area {
+    flex: 1;
+    width: 100%;
+    position: relative;
+}
+
+/* Insights Area */
+.insights-panel {
+    gap: var(--spacing-sm);
+    overflow-y: auto;
+}
+
+.insight-input-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+}
+
+.text-area-like {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    min-height: 2.8em;
+}
+
+.action-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.action-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: var(--font-size-sm);
+}
+
+.action-list input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--color-brand-blue);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .table-container {
+    border-color: var(--border-sem-inner);
+}
+
+body.theme-dark .cohort-table td:first-child,
+body.theme-dark .size-col,
+body.theme-dark .cohort-table th {
+    background: var(--color-bg-subtle);
+}
+
+/* Adjust Heatmap colors for Dark Mode to ensure text contrast */
+body.theme-dark .heat-30,
+body.theme-dark .heat-20,
+body.theme-dark .heat-10 {
+    color: var(--color-text-primary) !important;
+}
+
+body.theme-dark .heat-100 {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-desk) !important;
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .cohort-table th {
+        position: static;
+        /* Remove sticky for print */
+        background: var(--color-bg-subtle) !important;
+    }
+
+    .heat-100,
+    .heat-50,
+    .heat-40,
+    .heat-30,
+    .heat-20 {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .table-container {
+        overflow: visible;
+        border: 1px solid var(--border-sem-outer);
+    }
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    #canvas { overflow: visible; }
+    .cohort-layout { overflow: visible; }
+    .table-container { width: 100%; overflow-x: auto; }
+    .cohort-table { min-width: 560px; }
+    .analysis-split { height: auto; display: flex; flex-direction: column; }
+    .chart-panel, .insights-panel { width: 100%; min-height: 220px; overflow: visible; }
+}
+
+@media screen and (min-width: 769px) {
+    .cohort-layout { overflow: visible; }
+}

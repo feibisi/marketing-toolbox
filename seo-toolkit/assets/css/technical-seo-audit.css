@@ -1,0 +1,324 @@
+/* Technical SEO Audit Styles */
+/* 技术 SEO 审计样式 */
+
+/* ========================================
+   审计区块
+   ======================================== */
+
+/* This checklist is longer than one A4 sheet. Keep it as a continuous paper
+   on screen and let print paginate it rather than cropping the lower audit
+   sections at the shared fixed A4 aspect-ratio boundary. */
+.paper-a4 {
+    aspect-ratio: auto;
+    min-height: 1123px;
+    height: auto;
+    overflow: visible;
+}
+
+.paper-a4 > .canvas-header,
+.paper-a4 > .tool-content,
+.paper-a4 > .modiqi-footer {
+    flex-shrink: 0;
+}
+
+.audit-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.audit-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.audit-section .section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.audit-section .section-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.audit-section .section-header .en-sub {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   审计项目列表
+   ======================================== */
+.audit-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.audit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.audit-item:hover {
+    background: var(--color-bg-hover);
+}
+
+/* ========================================
+   状态按钮组
+   ======================================== */
+.item-status {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.status-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+}
+
+.status-btn:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.status-btn .icon {
+    width: 14px;
+    height: 14px;
+}
+
+/* 默认单色状态 */
+.status-btn.active {
+    background: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+    color: var(--color-bg-paper);
+}
+
+/* ========================================
+   项目内容
+   ======================================== */
+.item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+}
+
+.item-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.item-value {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    outline: none;
+}
+
+.item-value:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.item-value:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+/* ========================================
+   总结区域
+   ======================================== */
+.summary-section {
+    margin-top: var(--spacing-lg);
+}
+
+.summary-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.summary-section .section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.summary-section .section-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.summary-content {
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.summary-content:focus {
+    background: var(--color-focus-bg);
+}
+
+.summary-content p {
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.summary-content ul {
+    margin: 0;
+    padding-left: var(--spacing-md);
+}
+
+.summary-content li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ========================================
+   彩色模式支持
+   ======================================== */
+body:not(.theme-dark).color-mode .status-btn.status-pass.active {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
+}
+
+body:not(.theme-dark).color-mode .status-btn.status-warning.active {
+    background: var(--color-warning);
+    border-color: var(--color-warning);
+    color: white;
+}
+
+body:not(.theme-dark).color-mode .status-btn.status-fail.active {
+    background: var(--color-error);
+    border-color: var(--color-error);
+    color: white;
+}
+
+body:not(.theme-dark).color-mode .audit-section .section-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .summary-section .section-header .icon {
+    color: var(--color-brand-blue);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .audit-item {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .audit-item:hover {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .status-btn {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .item-value {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .summary-content {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+
+    html,
+    body {
+        height: auto !important;
+    }
+
+    main.paper-a4 {
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    .canvas-header,
+    .audit-section,
+    .summary-section,
+    .audit-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Chromium may shrink children of a paginated column flexbox to fill the
+       remaining page fragment. Use normal block flow so every checklist row
+       keeps its full editable height in the PDF. */
+    .audit-items {
+        display: block;
+    }
+
+    .audit-item {
+        flex-shrink: 0;
+    }
+
+    .audit-item + .audit-item {
+        margin-top: var(--spacing-sm);
+    }
+
+    .status-btn:not(.active) {
+        display: none;
+    }
+
+    .status-btn.active {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .item-value {
+        border-style: dashed;
+    }
+}

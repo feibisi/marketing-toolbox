@@ -1,0 +1,185 @@
+/* Objection Handling Matrix Styles */
+
+/* Framework Bar */
+.framework-bar {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-md);
+    border-radius: 0;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    border: 1px dashed var(--border-sem-dashed);
+}
+
+.fw-label {
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.fw-step {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.step-num {
+    font-weight: bold;
+    color: var(--color-brand-blue);
+    font-size: 1.2em;
+}
+
+.fw-arrow {
+    color: var(--color-text-tertiary);
+}
+
+/* Matrix Table */
+.matrix-container {
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.matrix-table th,
+.matrix-table td {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-sem-inner);
+    vertical-align: top;
+    font-size: var(--font-size-sm);
+}
+
+.matrix-table th {
+    background: var(--color-bg-warm-medium);
+    font-family: var(--font-serif);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+}
+
+/* Column Widths */
+.col-category {
+    width: 140px;
+}
+
+.col-objection {
+    width: 15%;
+}
+
+.col-empathy {
+    width: 22%;
+}
+
+.col-reframe {
+    width: 30%;
+}
+
+/* Widest */
+.col-proof {
+    width: 18%;
+}
+
+/* Cells */
+.cell-category {
+    background: var(--color-bg-subtle);
+    vertical-align: middle;
+}
+
+.cell-input {
+    background: var(--color-bg-white);
+    outline: none;
+    line-height: 1.5;
+}
+
+.cell-input:focus {
+    background: var(--color-focus-bg);
+}
+
+/* Badges */
+.cat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.icon-sm {
+    width: 14px;
+    height: 14px;
+}
+
+.badge-price {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger);
+}
+
+.badge-comp {
+    background: var(--color-bg-info-subtle);
+    color: var(--color-info);
+}
+
+.badge-need {
+    background: var(--color-semantic-alert-bg);
+    color: var(--color-semantic-alert);
+}
+
+.badge-auth {
+    background: var(--color-semantic-reflection-bg);
+    color: var(--color-semantic-reflection);
+}
+
+.badge-time {
+    background: var(--color-bg-muted);
+    color: var(--color-text-secondary);
+}
+
+/* Print */
+@media print {
+    .framework-bar {
+        border: 1px solid #000;
+        background: transparent;
+    }
+
+    .matrix-table th {
+        background: #f0f0f0 !important;
+        border-bottom: 2px solid #000;
+    }
+
+    .cell-input {
+        border-color: #000;
+        background: transparent !important;
+    }
+
+    .cat-badge {
+        background: transparent !important;
+        color: #000 !important;
+        border: 1px solid #000;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .framework-bar { flex-wrap: wrap; }
+    .matrix-container { width: 100%; overflow-x: auto; }
+    .matrix-table { min-width: 920px; }
+}
+
+
+@media screen and (max-width: 768px) {
+    .matrix-container {
+        overflow: auto;
+    }
+}

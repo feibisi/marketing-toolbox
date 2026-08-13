@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO 关键词规划表 (SEO Keyword Planner)</title>
+    <meta name="description" content="SEO关键词研究和规划工具，帮助您组织和优化网站关键词策略。">
+    <meta name="keywords" content="SEO,关键词研究,搜索优化,内容策略,排名优化">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SEO 关键词规划表 - Modiqi Workbench">
+    <meta property="og:description" content="系统规划SEO关键词策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/seo-planner.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>SEO 关键词规划表</h1>
+                <span class="english-subtitle">SEO Keyword Planner</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>网站 <span class="en-sub">(Website)</span></label>
+                    <input type="text" class="meta-input" placeholder="example.com" data-save-key="website" aria-label="example.com">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout: Sidebar + Content -->
+        <div class="seo-layout">
+            <!-- Left Sidebar -->
+            <div class="seo-sidebar">
+                <!-- Overview Stats -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i data-lucide="bar-chart-3"></i>
+                        概览 <span class="en-sub">(Overview)</span>
+                    </h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="totalKeywords">4</span>
+                            <span class="stat-label">总关键词</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value stat-success" id="rankedKeywords">2</span>
+                            <span class="stat-label">已排名</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value stat-warning" id="pendingKeywords">2</span>
+                            <span class="stat-label">待优化</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="avgVolume">2.1K</span>
+                            <span class="stat-label">平均搜索量</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keyword Groups -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i data-lucide="folder"></i>
+                        关键词组 <span class="en-sub">(Groups)</span>
+                    </h3>
+                    <div class="keyword-groups" id="keywordGroups">
+                        <div class="group-tag active" data-group="all">
+                            <i data-lucide="list"></i>
+                            <span>全部</span>
+                            <span class="group-count">4</span>
+                        </div>
+                        <div class="group-tag" data-group="brand">
+                            <i data-lucide="award"></i>
+                            <span>品牌词</span>
+                            <span class="group-count">1</span>
+                        </div>
+                        <div class="group-tag" data-group="product">
+                            <i data-lucide="package"></i>
+                            <span>产品词</span>
+                            <span class="group-count">2</span>
+                        </div>
+                        <div class="group-tag" data-group="longtail">
+                            <i data-lucide="search"></i>
+                            <span>长尾词</span>
+                            <span class="group-count">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Tips -->
+                <div class="sidebar-card tips-card">
+                    <h3>
+                        <i data-lucide="lightbulb"></i>
+                        优化建议 <span class="en-sub">(Tips)</span>
+                    </h3>
+                    <div class="tips-content">
+                        <ul>
+                            <li>优先优化<strong>低难度+高搜索量</strong>关键词</li>
+                            <li>排名 11-20 位的词最容易提升</li>
+                            <li>每个页面聚焦 1 个核心关键词</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Main Content -->
+            <div class="seo-main">
+                <!-- Keyword Table Section -->
+                <div class="keyword-table-section">
+                    <div class="table-header">
+                        <div class="table-title">
+                            <i data-lucide="key"></i>
+                            <h2>关键词列表 <span class="en-sub">(Keyword List)</span></h2>
+                        </div>
+                        <button class="add-keyword-btn" id="addKeywordBtn" type="button">
+                            <i data-lucide="plus"></i>
+                            添加关键词
+                        </button>
+                    </div>
+
+                    <table class="keyword-table">
+                        <thead>
+                            <tr>
+                                <th class="col-keyword">关键词 <span class="en-sub">(Keyword)</span></th>
+                                <th class="col-group">分组</th>
+                                <th class="col-volume">搜索量 <span class="en-sub">(Vol)</span></th>
+                                <th class="col-difficulty">难度 <span class="en-sub">(KD)</span></th>
+                                <th class="col-intent">意图 <span class="en-sub">(Intent)</span></th>
+                                <th class="col-current">当前</th>
+                                <th class="col-target">目标</th>
+                                <th class="col-page">目标页面 <span class="en-sub">(Page)</span></th>
+                                <th class="col-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="keywordTableBody">
+                            <tr data-group="brand">
+                                <td><input type="text" class="cell-input keyword-cell" value="数字营销策略"
+                                        data-save-key="kw1_keyword" aria-label="kw1 keyword"></td>
+                                <td>
+                                    <select class="group-select" data-save-key="kw1_group" aria-label="kw1 group">
+                                        <option value="brand" selected>品牌词</option>
+                                        <option value="product">产品词</option>
+                                        <option value="longtail">长尾词</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input volume-input" value="2,400"
+                                        data-save-key="kw1_volume" aria-label="kw1 volume"></td>
+                                <td>
+                                    <select class="difficulty-select" data-save-key="kw1_difficulty" aria-label="kw1 difficulty">
+                                        <option value="low">低</option>
+                                        <option value="medium" selected>中</option>
+                                        <option value="high">高</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="intent-select" data-save-key="kw1_intent" aria-label="kw1 intent">
+                                        <option value="informational" selected>信息</option>
+                                        <option value="commercial">商业</option>
+                                        <option value="transactional">交易</option>
+                                        <option value="navigational">导航</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input rank-input" value="12"
+                                        data-save-key="kw1_current" aria-label="kw1 current"></td>
+                                <td><input type="text" class="cell-input rank-input" value="3"
+                                        data-save-key="kw1_target" aria-label="kw1 target"></td>
+                                <td><input type="text" class="cell-input page-input" value="/blog/digital-strategy"
+                                        data-save-key="kw1_page" aria-label="kw1 page"></td>
+                                <td>
+                                    <button class="remove-row-btn" title="删除" type="button">
+                                        <i data-lucide="x"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-group="product">
+                                <td><input type="text" class="cell-input keyword-cell" value="品牌建设方法"
+                                        data-save-key="kw2_keyword" aria-label="kw2 keyword"></td>
+                                <td>
+                                    <select class="group-select" data-save-key="kw2_group" aria-label="kw2 group">
+                                        <option value="brand">品牌词</option>
+                                        <option value="product" selected>产品词</option>
+                                        <option value="longtail">长尾词</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input volume-input" value="1,800"
+                                        data-save-key="kw2_volume" aria-label="kw2 volume"></td>
+                                <td>
+                                    <select class="difficulty-select" data-save-key="kw2_difficulty" aria-label="kw2 difficulty">
+                                        <option value="low" selected>低</option>
+                                        <option value="medium">中</option>
+                                        <option value="high">高</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="intent-select" data-save-key="kw2_intent" aria-label="kw2 intent">
+                                        <option value="informational" selected>信息</option>
+                                        <option value="commercial">商业</option>
+                                        <option value="transactional">交易</option>
+                                        <option value="navigational">导航</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input rank-input" value="25"
+                                        data-save-key="kw2_current" aria-label="kw2 current"></td>
+                                <td><input type="text" class="cell-input rank-input" value="5"
+                                        data-save-key="kw2_target" aria-label="kw2 target"></td>
+                                <td><input type="text" class="cell-input page-input" value="/services/branding"
+                                        data-save-key="kw2_page" aria-label="kw2 page"></td>
+                                <td>
+                                    <button class="remove-row-btn" title="删除" type="button">
+                                        <i data-lucide="x"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-group="product">
+                                <td><input type="text" class="cell-input keyword-cell" value="用户画像模板"
+                                        data-save-key="kw3_keyword" aria-label="kw3 keyword"></td>
+                                <td>
+                                    <select class="group-select" data-save-key="kw3_group" aria-label="kw3 group">
+                                        <option value="brand">品牌词</option>
+                                        <option value="product" selected>产品词</option>
+                                        <option value="longtail">长尾词</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input volume-input" value="890"
+                                        data-save-key="kw3_volume" aria-label="kw3 volume"></td>
+                                <td>
+                                    <select class="difficulty-select" data-save-key="kw3_difficulty" aria-label="kw3 difficulty">
+                                        <option value="low" selected>低</option>
+                                        <option value="medium">中</option>
+                                        <option value="high">高</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="intent-select" data-save-key="kw3_intent" aria-label="kw3 intent">
+                                        <option value="informational">信息</option>
+                                        <option value="commercial" selected>商业</option>
+                                        <option value="transactional">交易</option>
+                                        <option value="navigational">导航</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input rank-input" value="--"
+                                        data-save-key="kw3_current" aria-label="kw3 current"></td>
+                                <td><input type="text" class="cell-input rank-input" value="10"
+                                        data-save-key="kw3_target" aria-label="kw3 target"></td>
+                                <td><input type="text" class="cell-input page-input" value="/tools/persona-template"
+                                        data-save-key="kw3_page" aria-label="kw3 page"></td>
+                                <td>
+                                    <button class="remove-row-btn" title="删除" type="button">
+                                        <i data-lucide="x"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-group="longtail">
+                                <td><input type="text" class="cell-input keyword-cell" value="SWOT分析工具"
+                                        data-save-key="kw4_keyword" aria-label="kw4 keyword"></td>
+                                <td>
+                                    <select class="group-select" data-save-key="kw4_group" aria-label="kw4 group">
+                                        <option value="brand">品牌词</option>
+                                        <option value="product">产品词</option>
+                                        <option value="longtail" selected>长尾词</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input volume-input" value="3,200"
+                                        data-save-key="kw4_volume" aria-label="kw4 volume"></td>
+                                <td>
+                                    <select class="difficulty-select" data-save-key="kw4_difficulty" aria-label="kw4 difficulty">
+                                        <option value="low">低</option>
+                                        <option value="medium">中</option>
+                                        <option value="high" selected>高</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="intent-select" data-save-key="kw4_intent" aria-label="kw4 intent">
+                                        <option value="informational">信息</option>
+                                        <option value="commercial">商业</option>
+                                        <option value="transactional" selected>交易</option>
+                                        <option value="navigational">导航</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="cell-input rank-input" value="8"
+                                        data-save-key="kw4_current" aria-label="kw4 current"></td>
+                                <td><input type="text" class="cell-input rank-input" value="1"
+                                        data-save-key="kw4_target" aria-label="kw4 target"></td>
+                                <td><input type="text" class="cell-input page-input" value="/tools/swot-analysis"
+                                        data-save-key="kw4_page" aria-label="kw4 page"></td>
+                                <td>
+                                    <button class="remove-row-btn" title="删除" type="button">
+                                        <i data-lucide="x"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Analysis Cards -->
+                <div class="analysis-row">
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <i data-lucide="trending-up"></i>
+                            <h3>快速获胜 <span class="en-sub">(Quick Wins)</span></h3>
+                        </div>
+                        <div class="card-content" contenteditable="true" data-save-key="quick_wins">
+                            <ul>
+                                <li>低难度 + 高搜索量关键词优先优化</li>
+                                <li>排名在 11-20 位的关键词可快速提升</li>
+                                <li>已有内容页面进行 On-Page 优化</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <i data-lucide="file-plus"></i>
+                            <h3>内容缺口 <span class="en-sub">(Content Gaps)</span></h3>
+                        </div>
+                        <div class="card-content" contenteditable="true" data-save-key="content_gaps">
+                            <ul>
+                                <li>缺少针对"商业模式画布"的专题页</li>
+                                <li>需要增加更多教程类内容</li>
+                                <li>可开发工具对比类文章</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <i data-lucide="calendar"></i>
+                            <h3>行动计划 <span class="en-sub">(Action Plan)</span></h3>
+                        </div>
+                        <div class="card-content" contenteditable="true" data-save-key="action_plan">
+                            <ul>
+                                <li><strong>本周</strong>：优化高优先级页面 Meta 标签</li>
+                                <li><strong>本月</strong>：创建 3 篇新内容页面</li>
+                                <li><strong>本季度</strong>：建立 10 个高质量外链</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('seo_planner_v2');
+            lucide.createIcons({
+                attrs: { class: "icon", 'stroke-width': 2 }
+            });
+
+            // ========================================
+            // Difficulty Styling
+            // ========================================
+            function updateDifficultyStyle(select) {
+                select.className = 'difficulty-select difficulty-' + select.value;
+            }
+
+            document.querySelectorAll('.difficulty-select').forEach(select => {
+                updateDifficultyStyle(select);
+                select.addEventListener('change', () => updateDifficultyStyle(select));
+            });
+
+            // ========================================
+            // Intent Styling
+            // ========================================
+            function updateIntentStyle(select) {
+                select.className = 'intent-select intent-' + select.value;
+            }
+
+            document.querySelectorAll('.intent-select').forEach(select => {
+                updateIntentStyle(select);
+                select.addEventListener('change', () => updateIntentStyle(select));
+            });
+
+            // ========================================
+            // Group Filtering
+            // ========================================
+            const groupTags = document.querySelectorAll('.group-tag');
+            const tableBody = document.getElementById('keywordTableBody');
+
+            groupTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    // Update active state
+                    groupTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+
+                    // Filter table rows
+                    const group = tag.dataset.group;
+                    tableBody.querySelectorAll('tr').forEach(row => {
+                        if (group === 'all' || row.dataset.group === group) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // ========================================
+            // Add New Keyword Row
+            // ========================================
+            const addBtn = document.getElementById('addKeywordBtn');
+            const MAX_KEYWORDS = 14;
+            let keywordCounter = 4;
+
+
+            function updateKeywordLimit() {
+                const currentCount = tableBody.children.length;
+                if (currentCount >= MAX_KEYWORDS) {
+                    addBtn.style.display = 'none';
+                } else {
+                    addBtn.style.display = 'flex';
+                }
+            }
+
+            addBtn.addEventListener('click', () => {
+                const currentCount = tableBody.children.length;
+                if (currentCount >= MAX_KEYWORDS) return;
+
+                keywordCounter++;
+                const newRow = document.createElement('tr');
+                newRow.dataset.group = 'product';
+                newRow.innerHTML = `
+                    <td><input type="text" class="cell-input keyword-cell" value="新关键词" data-save-key="kw${keywordCounter}_keyword" aria-label="kw${keywordCounter} keyword"></td>
+                    <td>
+                        <select class="group-select" data-save-key="kw${keywordCounter}_group" aria-label="kw${keywordCounter} group">
+                            <option value="brand">品牌词</option>
+                            <option value="product" selected>产品词</option>
+                            <option value="longtail">长尾词</option>
+                        </select>
+                    </td>
+                    <td><input type="text" class="cell-input volume-input" value="0" data-save-key="kw${keywordCounter}_volume" aria-label="kw${keywordCounter} volume"></td>
+                    <td>
+                        <select class="difficulty-select" data-save-key="kw${keywordCounter}_difficulty" aria-label="kw${keywordCounter} difficulty">
+                            <option value="low" selected>低</option>
+                            <option value="medium">中</option>
+                            <option value="high">高</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="intent-select" data-save-key="kw${keywordCounter}_intent" aria-label="kw${keywordCounter} intent">
+                            <option value="informational" selected>信息</option>
+                            <option value="commercial">商业</option>
+                            <option value="transactional">交易</option>
+                            <option value="navigational">导航</option>
+                        </select>
+                    </td>
+                    <td><input type="text" class="cell-input rank-input" value="--" data-save-key="kw${keywordCounter}_current" aria-label="kw${keywordCounter} current"></td>
+                    <td><input type="text" class="cell-input rank-input" value="10" data-save-key="kw${keywordCounter}_target" aria-label="kw${keywordCounter} target"></td>
+                    <td><input type="text" class="cell-input page-input" value="/new-page" data-save-key="kw${keywordCounter}_page" aria-label="kw${keywordCounter} page"></td>
+                    <td>
+                        <button class="remove-row-btn" title="删除" type="button">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(newRow);
+
+                // Re-initialize icons and styles
+                lucide.createIcons({ attrs: { class: "icon", 'stroke-width': 2 } });
+                newRow.querySelectorAll('.difficulty-select').forEach(updateDifficultyStyle);
+                newRow.querySelectorAll('.intent-select').forEach(updateIntentStyle);
+                bindRemoveButtons();
+                updateKeywordLimit();
+                updateStats();
+            });
+
+            // ========================================
+            // Remove Row
+            // ========================================
+            function bindRemoveButtons() {
+                document.querySelectorAll('.remove-row-btn').forEach(btn => {
+                    btn.onclick = function () {
+                        if (tableBody.children.length > 1) {
+                            this.closest('tr').remove();
+                            updateKeywordLimit();
+                            updateStats();
+                        }
+                    };
+                });
+            }
+            bindRemoveButtons();
+
+            // Initial keyword limit check
+            updateKeywordLimit();
+
+            // ========================================
+            // Update Stats
+            // ========================================
+            function updateStats() {
+                const rows = tableBody.querySelectorAll('tr');
+                const total = rows.length;
+                let ranked = 0;
+                let pending = 0;
+                let totalVolume = 0;
+
+                rows.forEach(row => {
+                    const currentRank = row.querySelector('.rank-input')?.value;
+                    if (currentRank && currentRank !== '--' && !isNaN(parseInt(currentRank))) {
+                        ranked++;
+                    } else {
+                        pending++;
+                    }
+
+                    const volumeInput = row.querySelector('.volume-input');
+                    if (volumeInput) {
+                        const vol = parseInt(volumeInput.value.replace(/,/g, '')) || 0;
+                        totalVolume += vol;
+                    }
+                });
+
+                document.getElementById('totalKeywords').textContent = total;
+                document.getElementById('rankedKeywords').textContent = ranked;
+                document.getElementById('pendingKeywords').textContent = pending;
+
+                const avgVol = total > 0 ? Math.round(totalVolume / total) : 0;
+                document.getElementById('avgVolume').textContent = avgVol >= 1000 ? (avgVol / 1000).toFixed(1) + 'K' : avgVol;
+
+                // Update group counts
+                const groups = { all: total, brand: 0, product: 0, longtail: 0 };
+                rows.forEach(row => {
+                    const groupSelect = row.querySelector('.group-select');
+                    if (groupSelect) {
+                        groups[groupSelect.value] = (groups[groupSelect.value] || 0) + 1;
+                    }
+                });
+                document.querySelectorAll('.group-tag').forEach(tag => {
+                    const count = tag.querySelector('.group-count');
+                    if (count) count.textContent = groups[tag.dataset.group] || 0;
+                });
+            }
+
+            // Update stats on group change
+            tableBody.addEventListener('change', (e) => {
+                if (e.target.classList.contains('group-select')) {
+                    e.target.closest('tr').dataset.group = e.target.value;
+                    updateStats();
+                }
+            });
+
+            // Initial stats update
+            updateStats();
+        });
+    </script>
+</body>
+
+</html>

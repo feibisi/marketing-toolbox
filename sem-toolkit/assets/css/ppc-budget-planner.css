@@ -1,0 +1,202 @@
+/* PPC Budget Planner Styles */
+
+/* Input Grid */
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol,
+.percent-symbol {
+    position: absolute;
+    left: var(--spacing-sm);
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    pointer-events: none;
+}
+
+.percent-symbol {
+    left: auto;
+    right: var(--spacing-sm);
+}
+
+.input-wrapper input {
+    width: 100%;
+}
+
+.input-wrapper .currency-symbol+input {
+    padding-left: var(--spacing-lg);
+    /* Make room for symbol */
+}
+
+/* Metrics Grid */
+.metrics-section {
+    margin-top: var(--spacing-xl);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.metric-card {
+    background: var(--color-bg-white);
+    text-align: center;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-sem-outer);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.metric-card.highlight {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-strong);
+}
+
+.metric-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.metric-value {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* Scenario Table */
+.scenario-section {
+    margin-top: var(--spacing-xl);
+}
+
+.scenario-table-wrapper {
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.scenario-table th,
+.scenario-table td {
+    padding: var(--spacing-md);
+    text-align: center;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.scenario-table th:first-child,
+.scenario-table td:first-child {
+    text-align: left;
+    padding-left: var(--spacing-lg);
+    font-weight: var(--font-weight-bold);
+    width: 25%;
+    border-right: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+}
+
+.scenario-table th {
+    background: var(--color-bg-warm-medium);
+    font-family: var(--font-serif);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    vertical-align: top;
+}
+
+.scenario-sub {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    font-weight: normal;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Highlight Base Column */
+.base-metric {
+    background: var(--color-bg-subtle);
+    border-left: 2px solid var(--border-sem-inner);
+    border-right: 2px solid var(--border-sem-inner);
+}
+
+.scenario-table th.base-metric {
+    background: var(--color-bg-warm-dark);
+}
+
+/* Highlight ROAS Row */
+.highlight-row td {
+    font-weight: var(--font-weight-bold);
+    background: var(--color-bg-subtle);
+    border-top: 2px solid var(--border-sem-inner);
+}
+
+.highlight-row td:first-child {
+    background: var(--color-bg-warm-medium);
+}
+
+/* Print Optimization */
+@media print {
+
+    .metrics-section,
+    .scenario-section {
+        margin-top: var(--spacing-lg);
+        /* Compacter vertical space */
+    }
+
+    .metric-card.highlight {
+        background: transparent !important;
+        border: 3px solid #000 !important;
+    }
+
+    .base-metric {
+        background: transparent !important;
+        border-left: 2px solid #000;
+        border-right: 2px solid #000;
+    }
+
+    .highlight-row td {
+        background: transparent !important;
+        border-top: 2px solid #000;
+        font-weight: 800;
+    }
+
+    .scenario-table th {
+        background: transparent !important;
+        border-bottom: 2px solid #000 !important;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .input-grid, .metrics-grid { grid-template-columns: 1fr; }
+    .scenario-table-wrapper { width: 100%; overflow-x: auto; }
+    .scenario-table { min-width: 680px; }
+}
+

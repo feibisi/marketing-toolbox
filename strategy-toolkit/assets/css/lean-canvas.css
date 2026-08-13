@@ -1,0 +1,282 @@
+/* Lean Canvas - Tool Specific Styles */
+/* Clean monochromatic design for A3 print */
+
+.meta-input {
+    width: 160px;
+}
+
+.iteration-input {
+    width: 50px;
+    text-align: center;
+}
+
+/* Lean Canvas Grid Layout - Based on Ash Maurya's Layout */
+.lean-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 2fr 2fr 1.2fr;
+    flex: 1;
+    gap: 0;
+    /* Floating Card Gap */
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+    z-index: 1;
+    /* Slight padding to prevent shadow clipping */
+}
+
+/* Grid Area Assignments (Unchanged) */
+.area-problem {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.area-solution {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+}
+
+.area-metrics {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+}
+
+.area-uvp {
+    grid-column: 5 / span 2;
+    grid-row: 1 / span 2;
+    background-color: var(--color-focus-bg);
+}
+
+.area-advantage {
+    grid-column: 7 / span 2;
+    grid-row: 1;
+}
+
+.area-channels {
+    grid-column: 7 / span 2;
+    grid-row: 2;
+}
+
+.area-customers {
+    grid-column: 9 / span 2;
+    grid-row: 1 / span 2;
+    border-right: none;
+}
+
+.area-costs {
+    grid-column: 1 / span 5;
+    grid-row: 3;
+    border-bottom: none;
+}
+
+.area-revenue {
+    grid-column: 6 / span 5;
+    grid-row: 3;
+    border-bottom: none;
+    border-right: none;
+}
+
+/* General Card Styles */
+.lean-card {
+    border-right: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+.lean-card:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+}
+
+.lean-card:focus-within {
+    box-shadow: none;
+    background-color: var(--color-focus-bg);
+}
+
+.lean-card .card-header {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.lean-card .card-header .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.lean-card .card-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Card Content */
+.lean-card .card-content {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    outline: none;
+    overflow-y: auto;
+}
+
+/* Card Footer */
+.card-footer {
+    border-top: 1px dashed var(--border-sem-dashed);
+    padding: 0.4rem 0.75rem;
+}
+
+.footer-content {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    outline: none;
+    line-height: 1.3;
+}
+
+.footer-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* UVP Special Styling */
+.uvp-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.uvp-statement {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    color: var(--color-brand-primary);
+    padding: 0.75rem;
+    border: 2px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    background: var(--color-bg-subtle);
+}
+
+/* Hint Text */
+.hint-text {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 0.4rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1100px) {
+    .lean-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .lean-card {
+        min-height: 120px;
+    }
+}
+
+/* Print Styles - Force Grid Layout */
+@media print {
+
+    /* Override responsive - force grid layout */
+    .lean-grid {
+        display: grid !important;
+        grid-template-columns: repeat(10, 1fr) !important;
+        grid-template-rows: 2fr 2fr 1.2fr !important;
+        flex-direction: unset !important;
+        gap: 0 !important;
+        border: 1px solid #000;
+    }
+
+    .lean-card {
+        border: 1px solid #000;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        min-height: unset !important;
+    }
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .area-problem {
+    background-color: var(--color-semantic-pain);
+}
+
+body:not(.theme-dark).color-mode .area-solution {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .area-uvp {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .area-advantage {
+    background-color: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .area-customers {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .area-costs {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .area-revenue {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .area-metrics,
+body:not(.theme-dark).color-mode .area-channels {
+    background-color: var(--color-semantic-neutral);
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lean-grid {
+        height: auto;
+        min-height: 0;
+    }
+
+    .lean-card,
+    .lean-card .card-content,
+    .footer-content {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}

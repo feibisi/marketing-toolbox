@@ -1,0 +1,354 @@
+/* Pirate Metrics Layout */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+    align-content: start;
+}
+
+.metric-card {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 2px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.metric-header .icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.metric-title h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.title-en {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin: 2px 0 0 0;
+}
+
+.metric-values {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.value-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.value-field label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-input {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-lg);
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+.metric-input:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.metric-input:focus {
+    outline: none;
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    overflow: hidden;
+    margin: var(--spacing-xs) 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--color-text-tertiary);
+    border-radius: 0;
+}
+
+.completion-rate {
+    font-size: var(--font-size-lg);
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+.strategy-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.strategy-field label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.editable-field {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-relaxed);
+    min-height: 60px;
+}
+
+.editable-field:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.editable-field:focus {
+    outline: none;
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+/* Funnel Analysis */
+.funnel-analysis {
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    flex-shrink: 0;
+}
+
+.analysis-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.analysis-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.analysis-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.funnel-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.flow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.flow-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+.flow-value {
+    font-size: var(--font-size-xl);
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.flow-rate {
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text-tertiary);
+}
+
+.flow-arrow {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-tertiary);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Dark Theme */
+body.theme-dark .metric-card {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .funnel-analysis {
+    background: var(--color-bg-muted);
+}
+
+/* Color Mode */
+body:not(.theme-dark).color-mode .metric-acquisition {
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-acquisition .metric-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-activation {
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-activation .metric-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-retention {
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-retention .metric-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-revenue {
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-revenue .metric-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-referral {
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .metric-referral .metric-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .progress-fill.progress-low {
+    background: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .progress-fill.progress-medium {
+    background: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .progress-fill.progress-high {
+    background: var(--color-brand-blue);
+}
+
+/* Print Styles */
+@media print {
+    .metrics-grid {
+        gap: var(--spacing-sm);
+    }
+
+    .funnel-analysis {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .funnel-flow {
+        flex-direction: column;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+}
+
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .metrics-grid { grid-template-columns: minmax(0, 1fr); }
+    .metric-card { min-width: 0; }
+    .funnel-flow { flex-direction: column; align-items: stretch; }
+    .flow-arrow { transform: rotate(90deg); align-self: center; }
+}
+
+@media screen and (min-width: 769px) {
+    main.paper-a3 { height: auto; min-height: 950px; aspect-ratio: auto; overflow: visible; }
+    .metrics-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}

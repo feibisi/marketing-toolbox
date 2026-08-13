@@ -1,0 +1,258 @@
+/* SWOT Analysis - Tool Specific Styles */
+
+/* SWOT Grid Layout */
+.swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    flex: 1;
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+    z-index: 1;
+}
+
+.swot-card {
+    padding: 8%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-sem-inner);
+    background: transparent;
+}
+
+.swot-card:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+}
+
+.swot-card:focus-within {
+    background-color: var(--color-focus-bg);
+    box-shadow: none;
+}
+
+.center-circle:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Quadrant Border Overrides */
+.area-s {
+    border-top: none;
+    border-left: none;
+}
+
+.area-w {
+    border-top: none;
+    border-right: none;
+}
+
+.area-o {
+    border-bottom: none;
+    border-left: none;
+}
+
+.area-t {
+    border-bottom: none;
+    border-right: none;
+}
+
+/* Card Header */
+/* Card Header */
+.swot-card .card-header {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.5rem;
+}
+
+.swot-card .card-header .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+}
+
+.swot-card .card-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Card Content */
+.swot-card .card-content {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-brand-primary);
+    outline: none;
+    padding: 1em;
+}
+
+.swot-card .card-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+
+
+/* Center Circle */
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.circle-content {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-brand-primary);
+    outline: none;
+    padding: 1rem;
+    line-height: 1.3;
+}
+
+.circle-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .swot-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .swot-card {
+        border: 1px solid var(--border-sem-inner);
+        min-height: 200px;
+        border-top: none;
+    }
+
+    .swot-card:first-child {
+        border-top: 1px solid var(--border-sem-inner);
+    }
+
+    .center-circle {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 1rem auto;
+        border: 1px solid var(--border-sem-outer);
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Mobile is an interactive document, not a scaled A3 preview. Keep the print
+   composition below, but let the four quadrants become readable sections. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md) var(--spacing-md) 88px;
+    }
+
+    .paper-a3 {
+        width: 100%;
+        max-width: none;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .swot-grid {
+        flex: none;
+    }
+
+    .swot-card {
+        min-height: 0;
+        padding: var(--spacing-lg);
+    }
+
+    .swot-card .card-content {
+        min-height: 144px;
+        padding: var(--spacing-sm);
+    }
+
+    .center-circle {
+        flex: 0 0 104px;
+        width: 104px;
+        height: 104px;
+    }
+}
+
+/* Print Styles - Force 2x2 Grid Layout */
+@media print {
+
+    /* Override responsive styles - force grid layout */
+    .swot-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 1fr 1fr !important;
+        flex-direction: unset !important;
+    }
+
+    .swot-card {
+        border-width: 0.5pt;
+        min-height: unset !important;
+        border-top: unset !important;
+    }
+
+    .center-circle {
+        border-width: 1pt;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+    }
+}
+
+/* Presentation Mode Fix */
+body.presentation-mode .swot-grid {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .area-s {
+    /* Strengths */
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .area-w {
+    /* Weaknesses */
+    background-color: var(--color-semantic-pain);
+    /* or --color-semantic-weakness */
+}
+
+body:not(.theme-dark).color-mode .area-o {
+    /* Opportunities */
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .area-t {
+    /* Threats */
+    background-color: var(--color-semantic-threat);
+}
+
+body:not(.theme-dark).color-mode .center-circle {
+    background-color: var(--color-semantic-neutral);
+}

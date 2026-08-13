@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容再利用引擎 (Content Repurposing Engine)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-repurposing.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容再利用引擎</h1>
+                <span class="english-subtitle">Content Repurposing & Remix Engine</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>原始内容类型</label>
+                    <select class="meta-input" aria-label="Selection">
+                        <option>长篇文章 (Blog)</option>
+                        <option>行业白皮书</option>
+                        <option>演讲/直播录音</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="repurpose-flow-viz">
+            <div class="flow-node active">
+                <i data-lucide="file-text"></i>
+                <span>Hero Content</span>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-node">
+                <i data-lucide="scissors"></i>
+                <span>Granularize</span>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-node">
+                <i data-lucide="share-2"></i>
+                <span>Social Remix</span>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-node">
+                <i data-lucide="trending-up"></i>
+                <span>Scale Assets</span>
+            </div>
+        </div>
+
+        <div class="repurpose-container">
+            <!-- 1. Source Input -->
+            <div class="col-source">
+                <div class="pane-header-sub">
+                    <i data-lucide="database"></i>
+                    <h3>原始内容 <span class="en-sub">Source</span></h3>
+                </div>
+                <textarea class="source-area" id="sourceText" data-save-key="repurpose_source"
+                    placeholder="在此粘贴长篇文章、演讲稿或视频脚本内容..." aria-label="在此粘贴长篇文章、演讲稿或视频脚本内容..."></textarea>
+                <div class="source-footer">
+                    <span id="wordCount">0 字符</span>
+                    <button class="btn-ghost btn-sm" onclick="clearSource()" type="button"><i data-lucide="trash-2"></i> 清空</button>
+                </div>
+            </div>
+
+            <!-- 2. Generation Controls -->
+            <div class="col-controls">
+                <div class="pane-header-sub">
+                    <i data-lucide="component"></i>
+                    <h3>分发模板 <span class="en-sub">Templates</span></h3>
+                </div>
+
+                <div class="template-group">
+                    <button class="template-btn" onclick="generateAsset('linkedin')" type="button">
+                        <i data-lucide="briefcase-business"></i> LinkedIn 深度帖
+                    </button>
+                    <button class="template-btn" onclick="generateAsset('twitter')" type="button">
+                        <i data-lucide="message-circle"></i> X (Twitter) 线程
+                    </button>
+                    <button class="template-btn" onclick="generateAsset('email')" type="button">
+                        <i data-lucide="mail"></i> 邮件简报 Newsletter
+                    </button>
+                    <button class="template-btn" onclick="generateAsset('shorts')" type="button">
+                        <i data-lucide="video"></i> 短视频脚本 (9:16)
+                    </button>
+                    <button class="template-btn" onclick="generateAsset('xiaohongshu')" type="button">
+                        <i data-lucide="camera"></i> 小红书图文文案
+                    </button>
+                </div>
+
+                <button class="template-btn btn-automation" onclick="autoGenerateAll()" type="button">
+                    <i data-lucide="zap"></i> 一键 1->N 分发
+                </button>
+            </div>
+
+            <!-- 3. Output Stream -->
+            <div class="col-output">
+                <div class="pane-header-sub">
+                    <i data-lucide="sparkles"></i>
+                    <h3>生成内容资产 <span class="en-sub">Generated Assets</span></h3>
+                </div>
+                <div id="outputStream" class="output-stream-inner">
+                    <!-- Cards will appear here -->
+                    <div class="empty-state">
+                        <i data-lucide="layout-template"></i>
+                        <p>请选择模板或点击一键分发生成资产</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+    <style>
+        @media print {
+
+            .desk-background,
+            .canvas-header,
+            .col-controls {
+                display: none !important;
+            }
+
+            .paper-a4.landscape {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+                height: auto;
+                box-shadow: none;
+                border: none;
+                background: white;
+            }
+
+            .repurpose-container {
+                display: block;
+            }
+
+            .col-source,
+            .col-output {
+                width: 100%;
+                border: none;
+                overflow: visible;
+                display: block;
+            }
+
+            .output-stream-inner {
+                max-height: none;
+                overflow: visible;
+                display: block;
+            }
+
+            .output-card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            .output-content {
+                border: none;
+                resize: none;
+                white-space: pre-wrap;
+            }
+
+            .action-icon {
+                display: none;
+            }
+
+            .repurpose-flow-viz {
+                border-bottom: 2px solid #000;
+                margin-bottom: 20px;
+            }
+
+            .flow-line {
+                background: #000;
+            }
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_repurposing');
+            lucide.createIcons();
+
+            document.getElementById('sourceText').addEventListener('input', function () {
+                const text = this.value.trim();
+                const charCount = text.length;
+                document.getElementById('wordCount').innerText = text ? `${charCount} 字符` : '0 字符';
+            });
+        });
+
+        function clearSource() {
+            if (confirm('确定要清空输入区吗？')) {
+                document.getElementById('sourceText').value = '';
+                document.getElementById('wordCount').innerText = '0 字符';
+            }
+        }
+
+        async function autoGenerateAll() {
+            const types = ['linkedin', 'twitter', 'email', 'shorts', 'xiaohongshu'];
+            for (const type of types) {
+                generateAsset(type);
+                await new Promise(r => setTimeout(r, 200)); // Visual delay
+            }
+        }
+
+        function generateAsset(type) {
+            const source = document.getElementById('sourceText').value.trim();
+            if (!source && !confirm("输入区为空。是否使用演示文本生成？")) return;
+
+            const dummy = "数字化营销正在通过 AI 实现范式转移。品牌不再仅仅依靠流量，而是依靠深度的内容洞察和自动化分发。未来的竞争是内容的颗粒化竞争，即将一个核心观点转化为适应不同渠道的 N 个触点。";
+            const text = source || dummy;
+
+            const stream = document.getElementById('outputStream');
+            const emptyState = stream.querySelector('.empty-state');
+            if (emptyState) emptyState.remove();
+
+            let title, content, icon;
+
+            switch (type) {
+                case 'linkedin':
+                    title = 'LinkedIn 深度帖';
+                    icon = 'linkedin';
+                    content = `🚀 深度思考：数字化转型的下一步是什么？\n\n最近在思考一个观点：${text.substring(0, 80)}...\n\n💡 我的 3 个核心洞察：\n1. 内容不再是消耗品，而是资产。\n2. 颗粒化分发是效率的终极解法。\n3. AI 将从“工具”变为“协作伙伴”。\n\n👇 你对这个方向怎么看？欢迎在评论区垂直交流。\n\n#数字化转型 #市场营销 #AI应用 #莫蒂奇`;
+                    break;
+                case 'twitter':
+                    title = 'X (Twitter) 线程';
+                    icon = 'twitter';
+                    content = `1/5 🧵 为什么 90% 的内容策略都失效了？\n\n${text.substring(0, 60)}...\n\n2/5\n问题在于：你只做了内容，没做资产化。一个 Hero Content 需要被拆解为 10+ 个触点。\n\n3/5\n数据证明，颗粒化分发可以将触达率提升 300% 以上。\n\n4/5\n具体的执行路径：[提取金句] -> [场景化改编] -> [平台适配]。\n\n5/5\n想要了解更多？关注我，获取数字化咨询手册。🚀`;
+                    break;
+                case 'email':
+                    title = '邮件简报 Newsletter';
+                    icon = 'mail';
+                    content = `主题：【莫蒂奇周刊】关于“内容颗粒化”的实操手册\n\n你好，首席增长官：\n\n今天想和你聊聊这个话题：${text.substring(0, 40)}...\n\n很多客户问我如何平衡产量和质量，我的回答永远是：重复利用你的 Hero Content。\n\n这里有 3 个开箱即用的建议：\n- 重新包装核心观点\n- 跨平台语言转换\n- 时间轴式持续分发\n\n点击下方链接查看完整案例。\n\n顺颂商祺，\n莫蒂奇咨询团队`;
+                    break;
+                case 'shorts':
+                    title = '短视频脚本 (9:16)';
+                    icon = 'video';
+                    content = `【0:00-0:03】黄金 3 秒（钩子）：\n“为什么你的内容没人看？因为你做错了一件事！”\n\n【0:03-0:30】干货拆解：\n“很多人觉得要不停写新东西。大错特错！其实你应该把一个好观点，像切蛋糕一样切成 N 块。”\n比如：${text.substring(0, 50)}...\n\n【0:30-0:45】行动号召：\n“关注我，教你用一个观点搞定全网流量。”`;
+                    break;
+                case 'xiaohongshu':
+                    title = '小红书图文文案';
+                    icon = 'camera';
+                    content = `标题：绝了！这套“内容分发”逻辑建议全员收藏！😭\n\n家人们谁懂啊！今天终于把内容焦虑治好了！✨\n\n核心逻辑就是这一句话：${text.substring(0, 50)}...\n\n✅ 3 步走避坑指南：\n1️⃣ 建立 Hero Content 基座\n2️⃣ 自动化分发建模\n3️⃣ 跨平台数据反馈\n\n图片记得放一张莫蒂奇的画布截图，质感拉满！📸\n\n#内容创业 #职场提升 #运营干货 #莫蒂奇工作台 #宝藏好物`;
+                    break;
+            }
+
+            const card = document.createElement('div');
+            card.className = 'output-card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="card-title"><i data-lucide="${icon}"></i> ${title}</div>
+                    <div class="card-actions">
+                        <i data-lucide="copy" class="action-icon" title="复制" onclick="copyText(this)" role="button" tabindex="0"></i>
+                        <i data-lucide="trash-2" class="action-icon" title="删除" onclick="this.closest('.output-card').remove()" role="button" tabindex="0"></i>
+                    </div>
+                </div>
+                <textarea class="output-content" oninput="autoResize(this)" aria-label="Notes">${content}</textarea>
+            `;
+
+            stream.prepend(card);
+            lucide.createIcons();
+
+            // Auto resize new textarea
+            setTimeout(() => {
+                const ta = card.querySelector('textarea');
+                autoResize(ta);
+            }, 10);
+        }
+
+        function autoResize(el) {
+            el.style.height = 'auto';
+            el.style.height = el.scrollHeight + 'px';
+        }
+
+        async function copyText(btn) {
+            const text = btn.closest('.output-card').querySelector('textarea').value;
+            try {
+                await navigator.clipboard.writeText(text);
+                const originalIcon = btn.getAttribute('data-lucide');
+                btn.setAttribute('data-lucide', 'check');
+                lucide.createIcons();
+
+                setTimeout(() => {
+                    btn.setAttribute('data-lucide', 'copy');
+                    lucide.createIcons();
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+    </script>
+</body>
+
+</html>

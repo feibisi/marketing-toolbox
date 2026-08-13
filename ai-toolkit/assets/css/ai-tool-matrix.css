@@ -1,0 +1,191 @@
+/* Tool Matrix Layout */
+.matrix-container {
+    display: table;
+    /* Using table for easier alignment in this matrix style */
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-lg);
+    background: white;
+    box-shadow: var(--shadow-sm);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.matrix-header-cell {
+    background: var(--color-bg-paper);
+    padding: 16px;
+    border-bottom: 2px solid var(--border-sem-inner);
+    border-right: 1px solid var(--border-sem-inner);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    text-align: center;
+    width: 20%;
+    /* 5 columns roughly */
+    position: relative;
+    vertical-align: middle;
+}
+
+.matrix-row-header {
+    background: var(--color-bg-subtle);
+    padding: 16px;
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-right: 2px solid var(--border-sem-inner);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    text-align: left;
+    width: 200px;
+}
+
+.matrix-cell {
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-right: 1px solid var(--border-sem-inner);
+    padding: 12px;
+    vertical-align: top;
+    height: 150px;
+}
+
+.matrix-cell:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Tool Chip */
+.tool-chip {
+    display: block;
+    background: white;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-chip:hover {
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.tool-chip.recommended {
+    border-left: 3px solid var(--color-semantic-growth);
+}
+
+.chip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.chip-name {
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--color-text-primary);
+}
+
+.chip-Badge {
+    font-size: 9px;
+    padding: 2px 4px;
+    border-radius: 0;
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+}
+
+.chip-desc {
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    line-height: 1.3;
+}
+
+/* Category Icons in Headers */
+.header-icon {
+    display: block;
+    margin: 0 auto 8px;
+    color: var(--color-brand-primary);
+}
+
+/* Modal or Sidebar for Details (optional, keeping it simple with popover on hover or just text) */
+
+
+/* Dark Mode */
+body.theme-dark .matrix-container {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .matrix-header-cell {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .matrix-row-header {
+    background: var(--color-bg-desk);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-secondary);
+}
+
+body.theme-dark .matrix-cell {
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .matrix-cell:hover {
+    background: var(--color-bg-hover);
+}
+
+body.theme-dark .tool-chip {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .tool-chip:hover {
+    border-color: var(--color-brand-primary);
+    background: var(--color-bg-hover);
+}
+
+body.theme-dark .chip-name {
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .chip-Badge {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-tertiary);
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .matrix-container { width: 100%; table-layout: fixed; overflow: visible; }
+    .matrix-container th, .matrix-container td { min-width: 0; padding: 4px; overflow-wrap: anywhere; }
+    .matrix-row-header { width: 62px; }
+    .tool-chip { min-width: 0; overflow: visible; }
+    .chip-header { flex-wrap: wrap; }
+}

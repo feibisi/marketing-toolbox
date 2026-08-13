@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户画像卡 (User Persona Card)</title>
+    <meta name="description" content="构建精准的目标用户画像，明确用户痛点、目标与行为特征">
+    <meta name="keywords" content="用户画像, Persona, 目标受众, 客户分析, 痛点分析">
+    <meta property="og:title" content="用户画像卡 - Modiqi Workbench">
+    <meta property="og:description" content="构建精准的目标用户画像">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/user-persona.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4-portrait">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>用户画像卡</h1>
+                <span class="english-subtitle">User Persona Card</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>细分市场 (Segment)</label>
+                    <input type="text" class="meta-input" placeholder="e.g. 一线城市白领" data-save-key="meta_segment"
+                        data-strategic-id="target_audience_segment" aria-label="一线城市白领">
+                </div>
+                <div class="meta-group">
+                    <label>日期 (Date)</label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="persona-layout">
+            <!-- Sidebar: Profile -->
+            <aside class="persona-sidebar">
+                <div class="avatar-placeholder">
+                    <div class="avatar-circle">
+                        <i data-lucide="user" class="icon-avatar"></i>
+                    </div>
+                </div>
+
+                <div class="profile-field name-field">
+                    <input type="text" placeholder="姓名 (Name)" class="input-ghost big-name" data-save-key="persona_name"
+                        data-strategic-id="target_audience_name" aria-label="姓名 (Name)">
+                </div>
+
+                <div class="profile-field">
+                    <input type="text" placeholder="职位 title" class="input-ghost text-center"
+                        data-save-key="persona_job" data-strategic-id="target_audience_job" aria-label="职位 title">
+                </div>
+
+                <div class="demographics-card">
+                    <h3>基本信息 Demographics</h3>
+                    <div class="demo-row">
+                        <label>年龄</label>
+                        <input type="text" placeholder="25-35岁" data-save-key="demo_age" aria-label="25 35岁">
+                    </div>
+                    <div class="demo-row">
+                        <label>学历</label>
+                        <input type="text" placeholder="本科及以上" data-save-key="demo_edu" aria-label="本科及以上">
+                    </div>
+                    <div class="demo-row">
+                        <label>收入</label>
+                        <input type="text" placeholder="年薪 30w+" data-save-key="demo_income" aria-label="年薪 30w+">
+                    </div>
+                    <div class="demo-row">
+                        <label>家庭</label>
+                        <input type="text" placeholder="已婚育" data-save-key="demo_family" aria-label="已婚育">
+                    </div>
+                </div>
+
+                <div class="archetype-tags">
+                    <h3>性格标签 Archetypes</h3>
+                    <div class="tags-input" contenteditable="true" data-save-key="persona_tags">
+                        <span class="tag">#追求效率</span>
+                        <span class="tag">#理性消费</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="persona-main">
+                <!-- Bio Quote -->
+                <section class="section-quote">
+                    <i data-lucide="quote" class="quote-icon"></i>
+                    <div class="quote-content" contenteditable="true" data-save-key="persona_quote"
+                        placeholder="在此输入用户的典型语录或内心独白...">
+                        “我不在乎功能有多少，我只关心它能不能帮我准时下班。”
+                    </div>
+                </section>
+
+                <!-- Bio -->
+                <section class="section-bio">
+                    <h3><i data-lucide="file-text"></i> 用户简介 (Bio)</h3>
+                    <div class="editable-area" contenteditable="true" data-save-key="persona_bio">
+                        <p>在这个快节奏的行业工作了5年，是团队的中坚力量。每天需要处理大量的信息和决策，因此对工具的效率要求极高。讨厌繁琐的流程，喜欢直观、简洁的解决方案。</p>
+                    </div>
+                </section>
+
+                <!-- Goals vs Pains Grid -->
+                <div class="gp-grid">
+                    <section class="section-goals">
+                        <h3><i data-lucide="target"></i> 核心目标 (Goals)</h3>
+                        <ul class="bullet-list" contenteditable="true" data-save-key="persona_goals"
+                            data-strategic-id="customer_goals">
+                            <li>提升团队协作效率</li>
+                            <li>减少重复性工作</li>
+                            <li>获得职业晋升</li>
+                        </ul>
+                    </section>
+
+                    <section class="section-pains">
+                        <h3><i data-lucide="frown"></i> 痛点与挫折 (Pains)</h3>
+                        <ul class="bullet-list" contenteditable="true" data-save-key="persona_pains"
+                            data-strategic-id="customer_pains">
+                            <li>现有工具学习成本太高</li>
+                            <li>数据分散，难以整合</li>
+                            <li>经常加班处理琐事</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- Motivation & Channels -->
+                <div class="bottom-grid">
+                    <section class="section-motivation">
+                        <h3><i data-lucide="zap"></i> 决策驱动力 (Motivations)</h3>
+                        <div class="slider-group">
+                            <div class="slider-row">
+                                <span>价格导向</span>
+                                <input type="range" class="range-slider" min="0" max="100" value="30"
+                                    data-save-key="m_price" aria-label="m price">
+                                <span>价值导向</span>
+                            </div>
+                            <div class="slider-row">
+                                <span>逻辑决策</span>
+                                <input type="range" class="range-slider" min="0" max="100" value="80"
+                                    data-save-key="m_logic" aria-label="m logic">
+                                <span>情感决策</span>
+                            </div>
+                            <div class="slider-row">
+                                <span>个人需求</span>
+                                <input type="range" class="range-slider" min="0" max="100" value="40"
+                                    data-save-key="m_social" aria-label="m social">
+                                <span>社交认同</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section-brands">
+                        <h3><i data-lucide="shopping-bag"></i> 喜欢的品牌 / 渠道</h3>
+                        <div class="brands-area" contenteditable="true" data-save-key="persona_brands">
+                            Apple, Notion, Tesla, Lululemon
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        const app = new ModiqiApp('user_persona_v1');
+        lucide.createIcons();
+
+        // Sync sliders
+        document.querySelectorAll('.range-slider').forEach(el => {
+            el.addEventListener('input', (e) => {
+                // Could add visual feedback here
+            });
+        });
+
+        // Setup Clipboard Sync
+        app.setupStrategicClipboard();
+    </script>
+</body>
+
+</html>

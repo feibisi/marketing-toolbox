@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能体工牌 (AI Agent ID Card)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ai-agent-card.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 portrait">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>AI 智能体定义卡</h1>
+                <span class="english-subtitle">AI Agent Job Description</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>创建者</label>
+                    <input type="text" class="meta-input" placeholder="Modiqi Team" aria-label="Modiqi Team">
+                </div>
+            </div>
+        </header>
+
+        <div class="agent-card-container">
+
+            <div class="id-card">
+                <div class="lanyard-hole"></div>
+                <div class="card-header-bg">
+                    <div class="company-logo">MODIQI WORKBENCH</div>
+                    <div class="agent-avatar-wrapper">
+                        <!-- Click to change would require JS/File input, simplified here -->
+                        <div class="agent-avatar">
+                            <i data-lucide="bot"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="identity-section">
+                        <input type="text" class="agent-name" value="Data Analyst Alpha" placeholder="Agent Name" aria-label="Agent Name">
+                        <input type="text" class="agent-role" value="Digital Marketing Department"
+                            placeholder="Department / Role" aria-label="Department / Role">
+                    </div>
+
+                    <div class="attributes-grid">
+
+                        <!-- Core Function -->
+                        <div class="attr-box" style="grid-column: span 2;">
+                            <div class="attr-label"><i data-lucide="zap"></i> Prime Directive (主要职责)</div>
+                            <textarea class="attr-content"
+                                rows="2" aria-label="Notes">Analyze weekly campaign performance data and generate actionable insights for the optimization team.</textarea>
+                        </div>
+
+                        <!-- Personality -->
+                        <div class="attr-box">
+                            <div class="attr-label"><i data-lucide="smile"></i> Personality (性格)</div>
+                            <div class="tags-container" id="personalityTags">
+                                <span class="tag" contenteditable="true">Analytical</span>
+                                <span class="tag" contenteditable="true">Objective</span>
+                                <span class="tag" contenteditable="true">Concise</span>
+                            </div>
+                        </div>
+
+                        <!-- Tools -->
+                        <div class="attr-box">
+                            <div class="attr-label"><i data-lucide="wrench"></i> Tools Access (工具权限)</div>
+                            <div class="tags-container" id="toolTags">
+                                <span class="tag access" contenteditable="true">Google Analytics</span>
+                                <span class="tag access" contenteditable="true">CRM Database</span>
+                                <span class="tag access" contenteditable="true">Code Interpreter</span>
+                            </div>
+                        </div>
+
+                        <!-- Restrictions / Ethics -->
+                        <div class="attr-box">
+                            <div class="attr-label"><i data-lucide="shield-alert"></i> Restrictions (限制)</div>
+                            <textarea class="attr-content" rows="3" aria-label="Notes">• Do not access PII (Personally Identifiable Information).
+• Verify all statistical significance > 95%.
+• Do not hallucinate metrics.</textarea>
+                        </div>
+
+                        <!-- Tech Specs -->
+                        <div class="attr-box">
+                            <div class="attr-label"><i data-lucide="cpu"></i> Model Base (基模型)</div>
+                            <div class="tags-container">
+                                <span class="tag model" contenteditable="true">GPT-4 Turbo</span>
+                                <span class="tag model" contenteditable="true">Temp: 0.2</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="barcode"></div>
+                    <div class="id-number">ID: AGENT-2026-X89-B</div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ai_agent_card');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

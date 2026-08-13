@@ -1,0 +1,244 @@
+/* PMF Engine Layout */
+.pmf-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Score Section */
+.score-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    background: var(--color-bg-paper);
+    border: 2px solid var(--border-sem-inner);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.score-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    z-index: 1;
+}
+
+.score-title {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.score-value-group {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+}
+
+.score-value {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.score-unit {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+}
+
+.score-status {
+    padding: 4px 12px;
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+}
+
+.status-success {
+    background: var(--color-bg-success-subtle);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+}
+
+.status-warning {
+    background: var(--color-bg-warning-subtle);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+}
+
+.status-initial {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-tertiary);
+    border: 1px solid var(--border-sem-inner);
+}
+
+/* Meter Visual */
+.pmf-meter-container {
+    width: 200px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.pmf-meter-arc {
+    width: 200px;
+    height: 200px;
+    border-radius: 0;
+    border: 20px solid var(--color-bg-subtle);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    /* Hide bottom half roughly */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(135deg);
+    /* Base rot */
+    box-sizing: border-box;
+}
+
+.pmf-meter-fill {
+    width: 200px;
+    height: 200px;
+    border-radius: 0;
+    border: 20px solid var(--color-brand-primary);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    /* Hide some parts */
+    border-left-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(135deg);
+    /* Start */
+    box-sizing: border-box;
+    /* By default 0 progress is rotate(135deg) hidden? No, need simpler SVG for meter */
+}
+
+/* Switching to SVG for meter in HTML, easier to control */
+
+
+/* Data Input Section */
+.data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.data-panel {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    padding: var(--spacing-md);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-content {
+    padding: var(--spacing-md);
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Survey Response Row */
+.response-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+}
+
+.response-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    flex: 1;
+}
+
+.response-input {
+    width: 80px;
+    padding: 4px 8px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    text-align: right;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+}
+
+/* Analysis */
+.analysis-text {
+    width: 100%;
+    height: 100px;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    resize: none;
+    font-size: var(--font-size-sm);
+    background: transparent;
+    color: var(--color-text-primary);
+}
+
+.benchmark-info {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+/* Dark Mode */
+body.theme-dark .score-card,
+body.theme-dark .data-panel {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .response-row {
+    background: var(--color-bg-subtle);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a4 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .score-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        overflow: visible;
+    }
+
+    .pmf-meter-container,
+    .pmf-meter-arc,
+    .pmf-meter-fill {
+        max-width: 100%;
+    }
+
+    .data-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .panel-content {
+        overflow: visible;
+    }
+}

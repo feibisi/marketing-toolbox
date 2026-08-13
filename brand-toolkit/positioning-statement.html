@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位陈述生成器 (Positioning Statement)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="通过填空模板快速生成专业的品牌定位陈述">
+    <meta name="keywords" content="Brand Positioning, Positioning Statement, Brand Strategy, Marketing">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/positioning-statement.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Portrait Canvas -->
+    <main class="paper-a4">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>定位陈述生成器</h1>
+                <span class="english-subtitle">Positioning Statement Generator</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="Modiqi" data-save-key="meta_brand" aria-label="Modiqi">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="instruction-box">
+                <p>填写下方的要素，生成清晰的品牌定位陈述 (Fill in the blanks below).</p>
+            </div>
+
+            <div class="template-container">
+
+                <!-- Field 1: Target Audience -->
+                <div class="template-row">
+                    <div class="field-label">For <span class="cn-label">(对于)</span></div>
+                    <div class="field-input-wrapper">
+                        <div class="editable-field" contenteditable="true" data-placeholder="目标客户群 (Target Audience)"
+                            data-save-key="pos_target"></div>
+                        <div class="field-hint">e.g. 忙碌的职场父母</div>
+                    </div>
+                </div>
+
+                <!-- Field 2: Need -->
+                <div class="template-row">
+                    <div class="field-label">Who <span class="cn-label">(谁有需求)</span></div>
+                    <div class="field-input-wrapper">
+                        <div class="editable-field" contenteditable="true" data-placeholder="迫切的需求或痛点 (Core Need)"
+                            data-save-key="pos_need"></div>
+                        <div class="field-hint">e.g. 需要快速准备健康晚餐</div>
+                    </div>
+                </div>
+
+                <!-- Field 3: Brand -->
+                <div class="template-row">
+                    <div class="field-label">The <span class="cn-label">(品牌是)</span></div>
+                    <div class="field-input-wrapper">
+                        <div class="editable-field" contenteditable="true" data-placeholder="产品类别 (Category)"
+                            data-save-key="pos_category"></div>
+                        <div class="field-hint">e.g. 预制菜配送服务</div>
+                    </div>
+                </div>
+
+                <!-- Field 4: Benefit -->
+                <div class="template-row">
+                    <div class="field-label">That <span class="cn-label">(提供)</span></div>
+                    <div class="field-input-wrapper">
+                        <div class="editable-field" contenteditable="true" data-placeholder="核心利益/承诺 (Key Benefit)"
+                            data-save-key="pos_benefit"></div>
+                        <div class="field-hint">e.g. 15分钟内上桌的营养美食</div>
+                    </div>
+                </div>
+
+                <!-- Field 5: Competitor -->
+                <div class="template-row">
+                    <div class="field-label">Unlike <span class="cn-label">(不同于)</span></div>
+                    <div class="field-input-wrapper">
+                        <div class="editable-field" contenteditable="true" data-placeholder="主要竞争对手 (Competitor)"
+                            data-save-key="pos_comp"></div>
+                        <div class="field-hint">e.g. 传统外卖或冷冻食品</div>
+                    </div>
+                </div>
+
+                <!-- Field 6: Differentiator -->
+                <div class="template-row">
+                    <div class="field-label">Our Product <span class="cn-label">(我们)</span></div>
+                    <div class="field-input-wrapper">
+                        <div class="editable-field" contenteditable="true" data-placeholder="差异化优势 (Differentiator)"
+                            data-save-key="pos_diff"></div>
+                        <div class="field-hint">e.g. 只有我们提供米其林大厨设计的食谱</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Live Preview -->
+            <div class="preview-section">
+                <div class="section-title"><i data-lucide="eye"></i> 完整陈述 (Statement Preview)</div>
+                <blockquote class="statement-preview" id="statementPreview">
+                    请填写上方内容以生成定位陈述...
+                </blockquote>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/positioning-statement.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('positioning_statement_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

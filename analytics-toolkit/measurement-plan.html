@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字营销评估计划 (Measurement Plan)</title>
+    <meta name="description" content="将商业目标转化为可衡量的数字营销指标 (KPI)。">
+    <meta name="keywords" content="Measurement Plan,KPI,Analytics,数据分析,指标体系">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Measurement Plan - Modiqi Workbench">
+    <meta property="og:description" content="构建数字营销指标体系。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific -->
+    <link rel="stylesheet" href="assets/css/measurement-plan.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>数字营销评估计划</h1>
+                <span class="english-subtitle">Measurement Planning Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" data-save-key="meta_project" aria-label="project">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Matrix Table -->
+        <div class="measurement-matrix">
+            <!-- Header Row -->
+            <div class="matrix-header">
+                <div class="col col-objective">
+                    <i data-lucide="flag" class="header-icon"></i>
+                    商业目标
+                    <span class="sub">Business Objective</span>
+                </div>
+                <div class="col col-strategy">
+                    <i data-lucide="git-merge" class="header-icon"></i>
+                    营销策略
+                    <span class="sub">Marketing Strategy</span>
+                </div>
+                <div class="col col-kpi">
+                    <i data-lucide="bar-chart-2" class="header-icon"></i>
+                    核心指标 (KPI)
+                    <span class="sub">Key Metrics</span>
+                </div>
+                <div class="col col-segment">
+                    <i data-lucide="layers" class="header-icon"></i>
+                    细分维度
+                    <span class="sub">Segments / Dimensions</span>
+                </div>
+                <!-- Actions column is implicit for delete buttons -->
+            </div>
+
+            <!-- Dynamic List Body -->
+            <div class="list-body" id="planRows" data-save-key="plan_rows_html">
+                <!-- Example Row -->
+                <div class="matrix-row">
+                    <div class="col col-objective" contenteditable="true">提升品牌知名度</div>
+                    <div class="col col-strategy" contenteditable="true">通过社交媒体扩频</div>
+                    <div class="col col-kpi" contenteditable="true">
+                        <ul>
+                            <li>曝光量 (Impressions)</li>
+                            <li>粉丝净增数</li>
+                        </ul>
+                    </div>
+                    <div class="col col-segment" contenteditable="true">
+                        <ul>
+                            <li>按渠道 (微信/小红书)</li>
+                            <li>按内容类型</li>
+                        </ul>
+                    </div>
+                    <button class="delete-item-btn" type="button"><i data-lucide="trash-2"></i></button>
+                </div>
+            </div>
+
+            <!-- Add Button -->
+            <button class="btn-add-item" id="btnAddRow" type="button">
+                <i data-lucide="plus-circle"></i>
+                <span>添加评估维度 (Add Measurement Row)</span>
+            </button>
+        </div>
+
+        <!-- Technical Implementation Notes -->
+        <section class="tech-notes">
+            <div class="section-header">
+                <i data-lucide="code"></i>
+                <h2>技术实施备注 <span class="en-sub">(Technical Implementation Notes)</span></h2>
+            </div>
+            <div class="note-box" contenteditable="true" data-save-key="tech_notes">
+                <ul>
+                    <li>GA4 需要配置自定义维度...</li>
+                    <li>CRM 数据回传需开发 API 接口...</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/measurement-plan.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('measurement_plan_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

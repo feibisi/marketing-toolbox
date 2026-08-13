@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户旅程地图 (Customer Journey Map)</title>
+    <meta name="description" content="全生命周期触点与情绪曲线分析，识别关键时刻 (MOT)">
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/customer-journey.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户旅程地图</h1>
+                <span class="english-subtitle">Customer Journey Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>画像 (Persona)</label>
+                    <div class="input-with-btn">
+                        <input type="text" class="meta-input" placeholder="e.g. 职场白领" data-save-key="meta_persona"
+                            data-strategic-id="target_audience_type" aria-label="职场白领">
+                        <button class="btn-icon-small" onclick="importPersonaData()" title="Import from Persona Tool" type="button"><i
+                                data-lucide="download-cloud"></i></button>
+                    </div>
+                </div>
+                <div class="meta-group">
+                    <label>目标 (Goal)</label>
+                    <input type="text" class="meta-input" data-save-key="meta_goal" aria-label="goal">
+                </div>
+            </div>
+        </header>
+
+        <div class="journey-grid">
+            <!-- Header Row: Stages -->
+            <div class="journey-header">
+                <div class="lane-label">阶段 Stages</div>
+                <div class="stage-col">
+                    <h3>1. 认知 (Awareness)</h3>
+                    <div class="stage-desc" contenteditable="true">发现问题 / 寻找方案</div>
+                </div>
+                <div class="stage-col">
+                    <h3>2. 考量 (Consideration)</h3>
+                    <div class="stage-desc" contenteditable="true">对比竞品 / 研究细节</div>
+                </div>
+                <div class="stage-col">
+                    <h3>3. 决策 (Decision)</h3>
+                    <div class="stage-desc" contenteditable="true">购买 / 签约 / 支付</div>
+                </div>
+                <div class="stage-col">
+                    <h3>4. 留存 (Retention)</h3>
+                    <div class="stage-desc" contenteditable="true">使用体验 / 寻求支持</div>
+                </div>
+                <div class="stage-col">
+                    <h3>5. 推荐 (Advocacy)</h3>
+                    <div class="stage-desc" contenteditable="true">复购 / 口碑传播</div>
+                </div>
+            </div>
+
+            <!-- Lane 1: Doing (Actions) -->
+            <div class="journey-lane lane-doing">
+                <div class="lane-label">行为 Actions<br><span class="sub-label">用户在做什么？</span></div>
+                <div class="lane-cell" contenteditable="true" data-save-key="act_1">
+                    <ul>
+                        <li>搜索关键词</li>
+                        <li>阅读行业文章</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="act_2">
+                    <ul>
+                        <li>查看官网案例</li>
+                        <li>下载白皮书</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="act_3">
+                    <ul>
+                        <li>联系销售演示</li>
+                        <li>谈判价格</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="act_4">
+                    <ul>
+                        <li>Onboarding培训</li>
+                        <li>遇到第一个Bug</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="act_5">
+                    <ul>
+                        <li>填写NPS调研</li>
+                        <li>介绍给朋友</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lane 2: Thinking (Thoughts) -->
+            <div class="journey-lane lane-thinking">
+                <div class="lane-label">想法 Thinking<br><span class="sub-label">用户在想什么？</span></div>
+                <div class="lane-cell bubble-bg" contenteditable="true" data-save-key="think_1">
+                    “这事情太麻烦了，有没有工具能自动处理？”
+                </div>
+                <div class="lane-cell bubble-bg" contenteditable="true" data-save-key="think_2">
+                    “Modiqi 看起来不错，但价格是不是有点贵？”
+                </div>
+                <div class="lane-cell bubble-bg" contenteditable="true" data-save-key="think_3">
+                    “如果售后支持跟不上的话，我就麻烦了。”
+                </div>
+                <div class="lane-cell bubble-bg" contenteditable="true" data-save-key="think_4">
+                    “这个功能藏得太深了，怎么用？”
+                </div>
+                <div class="lane-cell bubble-bg" contenteditable="true" data-save-key="think_5">
+                    “这就是我想要的效率神器！”
+                </div>
+            </div>
+
+            <!-- Lane 3: Feeling (Emotion Curve) -->
+            <div class="journey-lane lane-feeling">
+                <div class="lane-label">情绪 Feeling<br><span class="sub-label">情绪高低起伏</span></div>
+                <!-- Visual Curve Placeholder (could be interactive SVG later) -->
+                <div class="chart-cell-wrapper">
+                    <svg viewBox="0 0 1000 100" class="emotion-curve">
+                        <path d="M50 80 Q150 70 250 50 T450 60 T650 30 T850 40" fill="none" class="curve-path" />
+                        <!-- Points -->
+                        <circle cx="50" cy="80" r="6" class="curve-point p1" />
+                        <circle cx="250" cy="50" r="6" class="curve-point p2" />
+                        <circle cx="450" cy="60" r="6" class="curve-point p3" />
+                        <circle cx="650" cy="30" r="6" class="curve-point p4" />
+                        <circle cx="850" cy="40" r="6" class="curve-point p5" />
+                    </svg>
+
+                    <!-- Emoji Sliders for simple interaction -->
+                    <div class="emoji-controls">
+                        <div class="emoji-slider-box"><input type="range" min="1" max="10" value="3" class="e-slider"
+                                oninput="updateCurve(0, this.value)" aria-label="Input field"></div>
+                        <div class="emoji-slider-box"><input type="range" min="1" max="10" value="6" class="e-slider"
+                                oninput="updateCurve(1, this.value)" aria-label="Input field"></div>
+                        <div class="emoji-slider-box"><input type="range" min="1" max="10" value="5" class="e-slider"
+                                oninput="updateCurve(2, this.value)" aria-label="Input field"></div>
+                        <div class="emoji-slider-box"><input type="range" min="1" max="10" value="8" class="e-slider"
+                                oninput="updateCurve(3, this.value)" aria-label="Input field"></div>
+                        <div class="emoji-slider-box"><input type="range" min="1" max="10" value="9" class="e-slider"
+                                oninput="updateCurve(4, this.value)" aria-label="Input field"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lane 4: Touchpoints -->
+            <div class="journey-lane lane-touchpoints">
+                <div class="lane-label">触点 Touchpoints<br><span class="sub-label">平台与媒介</span></div>
+                <div class="lane-cell" contenteditable="true" data-save-key="touch_1">
+                    Google搜索<br>微信公众号
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="touch_2">
+                    官网落地页<br>白皮书PDF
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="touch_3">
+                    Zoom演示<br>报价单邮件
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="touch_4">
+                    SaaS后台<br>帮助中心
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="touch_5">
+                    月度账单<br>客户社群
+                </div>
+            </div>
+
+            <!-- Lane 5: Opportunities (Pain -> Gain) -->
+            <div class="journey-lane lane-opps">
+                <div class="lane-label">机会 Opportunities<br><span class="sub-label">如何优化体验？</span></div>
+                <div class="lane-cell" contenteditable="true" data-save-key="opp_1">
+                    <ul>
+                        <li>优化SEO长尾词覆盖</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="opp_2">
+                    <ul>
+                        <li>增加竞品对比表格</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="opp_3">
+                    <ul>
+                        <li>提供自助报价计算器</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="opp_4">
+                    <ul>
+                        <li>增加新手指引弹窗</li>
+                    </ul>
+                </div>
+                <div class="lane-cell" contenteditable="true" data-save-key="opp_5">
+                    <ul>
+                        <li>建立推荐奖励机制</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/customer-journey.js"></script>
+    <script>
+        const app = new ModiqiApp('customer_journey_v1');
+        lucide.createIcons();
+        app.setupStrategicClipboard();
+
+        function importPersonaData() {
+            const clipboard = JSON.parse(localStorage.getItem('modiqi_strategic_clipboard') || '{}');
+
+            // Import Pains to Thinking/Action area of 'Awareness'
+            if (clipboard.customer_pains) {
+                const painList = clipboard.customer_pains; // It's usually HTML (ul/li)
+                // Just append to thinking 1 for now as a starting point
+                const cell = document.querySelector('[data-save-key="think_1"]');
+                if (cell) {
+                    // Extract text from list items if possible, or just append raw
+                    cell.innerHTML += `<br><strong>[Persona Pain]:</strong> ${painList}`;
+                }
+            }
+            alert('Data imported from Persona!');
+        }
+    </script>
+</body>
+
+</html>

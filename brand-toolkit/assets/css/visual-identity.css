@@ -1,0 +1,536 @@
+/* Visual Identity Checklist - Design System Aligned */
+/* 视觉识别清单样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.vi-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.vi-column-left,
+.vi-column-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-lg);
+}
+
+/* ========================================
+   通用区块样式
+   ======================================== */
+.vi-section {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.section-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.section-header .en-label {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-left: var(--spacing-sm);
+}
+
+/* ========================================
+   Logo Section
+   ======================================== */
+.logo-group {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 0.8fr;
+    gap: var(--spacing-md);
+    height: 180px;
+}
+
+.logo-box {
+    background: var(--color-bg-subtle);
+    border: 1px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.logo-box:hover {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-hover);
+}
+
+.logo-box.primary {
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.logo-box.small {
+    flex: 1;
+    flex-direction: column;
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text-tertiary);
+}
+
+.variant-label {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-subtle-alpha);
+    /* Was rgba white */
+}
+
+.logo-variants {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.logo-specs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+}
+
+.spec-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.spec-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
+.spec-input {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.spec-input:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-bg-paper);
+}
+
+/* ========================================
+   Typography Section
+   ======================================== */
+.typo-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.font-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.font-icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-tertiary);
+    margin-top: var(--spacing-xs);
+}
+
+.font-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.font-name {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.font-usage {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.font-display {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    color: var(--color-text-primary);
+    padding-top: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    border-top: 1px dashed var(--border-sem-dashed);
+}
+
+.font-display.body-text {
+    font-size: 16px;
+    line-height: var(--line-height-relaxed);
+}
+
+/* ========================================
+   Visual Style Section
+   ======================================== */
+.visual-style-section {
+    flex: 1;
+}
+
+.style-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.style-tag {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    min-width: 80px;
+    text-align: center;
+    outline: none;
+}
+
+.style-tag:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.mood-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    flex: 1;
+    min-height: 120px;
+}
+
+.mood-item {
+    background: var(--color-bg-subtle);
+    border: 1px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.mood-item:hover {
+    background: var(--color-bg-hover);
+}
+
+/* ========================================
+   Color Palette Section
+   ======================================== */
+.color-section {
+    background: var(--color-bg-warm-light);
+}
+
+.color-category h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.color-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.color-preview {
+    height: 60px;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+    box-shadow: var(--shadow-sm);
+    outline: none;
+}
+
+.color-preview:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.color-info {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: center;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.color-add {
+    height: 60px;
+    border: 1px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+}
+
+.color-add:hover {
+    border-color: var(--color-brand-blue);
+    color: var(--color-brand-blue);
+    background: var(--color-bg-paper);
+}
+
+/* ========================================
+   Checklist Section
+   ======================================== */
+.checklist-section {
+    flex: 1;
+}
+
+.checklist-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+}
+
+.check-item:hover {
+    background: var(--color-bg-hover);
+}
+
+.check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-brand-blue);
+    cursor: pointer;
+}
+
+.check-item label {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    user-select: none;
+}
+
+.check-item input:checked+label {
+    text-decoration: line-through;
+    color: var(--color-text-tertiary);
+}
+
+.check-item.add-new {
+    background: transparent;
+    border: 1px dashed var(--border-sem-dashed);
+    color: var(--color-text-tertiary);
+    cursor: text;
+}
+
+.new-item-input {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.new-item-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .vi-section {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .logo-box:hover {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .logo-box.primary {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .variant-label {
+    background: var(--color-overlay-dark);
+    /* Was rgba 0.5 black */
+    color: var(--color-text-secondary);
+}
+
+body.theme-dark .font-card {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .style-tag {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .check-item {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .check-item:hover {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .color-section {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .color-preview {
+    border-color: var(--border-sem-inner);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .vi-layout {
+        gap: var(--spacing-md);
+    }
+
+    .logo-box,
+    .font-card,
+    .mood-item,
+    .check-item {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .color-preview {
+        border: 1px solid var(--color-text-tertiary);
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .vi-layout {
+        flex-direction: column;
+    }
+
+    .logo-group {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .logo-box {
+        min-height: 120px;
+    }
+
+    .color-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vi-layout { display: block; }
+    .logo-group, .color-grid, .font-grid, .mood-grid, .checklist-grid { grid-template-columns: 1fr; height: auto; }
+}
+
+@media screen and (min-width: 769px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        height: auto !important;
+        min-height: var(--paper-min-height, 0) !important;
+        overflow: visible !important;
+    }
+}

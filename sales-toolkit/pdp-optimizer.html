@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电商详情页优化器 (PDP Optimizer)</title>
+    <meta name="description" content="商品详情页的结构化审查与优化建议工具，提升转化率和用户体验。">
+    <meta name="keywords" content="电商,详情页,PDP,转化率,商品页优化">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="电商详情页优化器 - Modiqi Workbench">
+    <meta property="og:description" content="商品详情页优化与转化提升工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/pdp-optimizer.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>电商详情页优化器</h1>
+                <span class="english-subtitle">Product Detail Page Optimizer</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>商品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="商品名称" data-save-key="product_name" aria-label="商品名称">
+                </div>
+                <div class="meta-group">
+                    <label>平台 <span class="en-sub">(Platform)</span></label>
+                    <select class="meta-input" data-save-key="platform" aria-label="platform">
+                        <option value="tmall">天猫</option>
+                        <option value="jd">京东</option>
+                        <option value="taobao">淘宝</option>
+                        <option value="pdd">拼多多</option>
+                        <option value="douyin">抖音商城</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Canvas Grid -->
+        <div class="pdp-canvas">
+            <!-- Row 1: 页面结构 + 转化要素检查 -->
+            <div class="pdp-row row-top">
+                <!-- 页面结构预览 -->
+                <div class="pdp-section structure-section" data-section="structure">
+                    <div class="section-header">
+                        <i data-lucide="layout"></i>
+                        <h3>页面结构审查 <span class="en-sub">(Page Structure)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="page-preview">
+                            <div class="preview-item" data-element="hero">
+                                <div class="preview-icon"><i data-lucide="image"></i></div>
+                                <span>主图区域</span>
+                            </div>
+                            <div class="preview-item" data-element="title">
+                                <div class="preview-icon"><i data-lucide="type"></i></div>
+                                <span>标题区域</span>
+                            </div>
+                            <div class="preview-item" data-element="price">
+                                <div class="preview-icon"><i data-lucide="tag"></i></div>
+                                <span>价格区域</span>
+                            </div>
+                            <div class="preview-item" data-element="sku">
+                                <div class="preview-icon"><i data-lucide="palette"></i></div>
+                                <span>SKU 选择</span>
+                            </div>
+                            <div class="preview-item" data-element="cta">
+                                <div class="preview-icon"><i data-lucide="shopping-cart"></i></div>
+                                <span>购买按钮</span>
+                            </div>
+                            <div class="preview-item" data-element="details">
+                                <div class="preview-icon"><i data-lucide="file-text"></i></div>
+                                <span>详情描述</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 转化要素检查 -->
+                <div class="pdp-section checklist-section" data-section="checklist">
+                    <div class="section-header">
+                        <i data-lucide="check-square"></i>
+                        <h3>转化要素检查 <span class="en-sub">(Conversion Checklist)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="checklist-grid">
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_images" data-points="15">
+                                <span class="check-label">主图质量 (5张+)</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_video" data-points="10">
+                                <span class="check-label">视频展示</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_price" data-points="10">
+                                <span class="check-label">价格锚定</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_promo" data-points="10">
+                                <span class="check-label">促销信息</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_trust" data-points="15">
+                                <span class="check-label">信任徽章</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_reviews" data-points="15">
+                                <span class="check-label">用户评价</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_qa" data-points="10">
+                                <span class="check-label">问答模块</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_related" data-points="5">
+                                <span class="check-label">关联推荐</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_shipping" data-points="5">
+                                <span class="check-label">物流信息</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" data-save-key="check_service" data-points="5">
+                                <span class="check-label">售后保障</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 优化得分 -->
+                <div class="pdp-section score-section" data-section="score">
+                    <div class="section-header">
+                        <i data-lucide="gauge"></i>
+                        <h3>优化得分 <span class="en-sub">(Score)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="score-display">
+                            <div class="score-ring">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="8" />
+                                    <circle id="scoreRing" cx="50" cy="50" r="45" fill="none" stroke="#3b82f6"
+                                        stroke-width="8" stroke-linecap="round" stroke-dasharray="283"
+                                        stroke-dashoffset="70" transform="rotate(-90 50 50)" />
+                                </svg>
+                                <div class="score-value">
+                                    <span id="scoreNumber">75</span>
+                                    <span class="score-max">/100</span>
+                                </div>
+                            </div>
+                            <div class="score-label" id="scoreLabel">良好</div>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="breakdown-item">
+                                <span>视觉呈现</span>
+                                <span id="visualScore">25/25</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>信息完整</span>
+                                <span id="infoScore">20/30</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>信任构建</span>
+                                <span id="trustScore">30/30</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>转化引导</span>
+                                <span id="conversionScore">0/15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 标题优化 + 卖点提炼 -->
+            <div class="pdp-row row-middle">
+                <!-- 标题优化 -->
+                <div class="pdp-section" data-section="title">
+                    <div class="section-header">
+                        <i data-lucide="type"></i>
+                        <h3>标题优化 <span class="en-sub">(Title Optimization)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>当前标题 <span class="en-sub">(Current Title)</span></label>
+                            <textarea class="field-textarea" rows="2" data-save-key="current_title"
+                                placeholder="粘贴当前商品标题..." aria-label="粘贴当前商品标题..."></textarea>
+                            <div class="char-count">
+                                <span id="titleLength">0</span>/60 字符
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>关键词布局 <span class="en-sub">(Keywords)</span></label>
+                            <div class="keyword-tags" id="keywordTags">
+                                <input type="text" class="keyword-input" placeholder="+ 添加关键词" data-save-key="keywords" aria-label="+ 添加关键词">
+                            </div>
+                        </div>
+                        <div class="title-tips">
+                            <div class="tip-item">
+                                <i data-lucide="check"></i> 品牌词放前面
+                            </div>
+                            <div class="tip-item">
+                                <i data-lucide="check"></i> 核心品类词必备
+                            </div>
+                            <div class="tip-item">
+                                <i data-lucide="check"></i> 属性词适度
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卖点提炼 -->
+                <div class="pdp-section" data-section="usp">
+                    <div class="section-header">
+                        <i data-lucide="star"></i>
+                        <h3>卖点提炼 <span class="en-sub">(USP Extraction)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="usp-list">
+                            <div class="usp-item">
+                                <div class="usp-number">1</div>
+                                <div class="usp-content" contenteditable="true" data-save-key="usp_1">核心卖点：产品的最大优势
+                                </div>
+                            </div>
+                            <div class="usp-item">
+                                <div class="usp-number">2</div>
+                                <div class="usp-content" contenteditable="true" data-save-key="usp_2">差异化卖点：区别于竞品
+                                </div>
+                            </div>
+                            <div class="usp-item">
+                                <div class="usp-number">3</div>
+                                <div class="usp-content" contenteditable="true" data-save-key="usp_3">情感卖点：打动用户的点
+                                </div>
+                            </div>
+                        </div>
+                        <div class="usp-framework">
+                            <div class="framework-title">FAB 公式</div>
+                            <div class="framework-grid">
+                                <div class="framework-item">
+                                    <span class="framework-label">F</span>
+                                    <div class="framework-content" contenteditable="true" data-save-key="fab_f">特性
+                                        (Feature)</div>
+                                </div>
+                                <div class="framework-item">
+                                    <span class="framework-label">A</span>
+                                    <div class="framework-content" contenteditable="true" data-save-key="fab_a">优势
+                                        (Advantage)</div>
+                                </div>
+                                <div class="framework-item">
+                                    <span class="framework-label">B</span>
+                                    <div class="framework-content" contenteditable="true" data-save-key="fab_b">利益
+                                        (Benefit)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主图优化 -->
+                <div class="pdp-section" data-section="images">
+                    <div class="section-header">
+                        <i data-lucide="image"></i>
+                        <h3>主图规划 <span class="en-sub">(Image Planning)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="image-slots">
+                            <div class="image-slot main">
+                                <div class="slot-number">1</div>
+                                <div class="slot-label">白底主图</div>
+                                <div class="slot-desc" contenteditable="true" data-save-key="img_1">产品正面 + 核心卖点
+                                </div>
+                            </div>
+                            <div class="image-slot">
+                                <div class="slot-number">2</div>
+                                <div class="slot-label">场景图</div>
+                                <div class="slot-desc" contenteditable="true" data-save-key="img_2">使用场景展示</div>
+                            </div>
+                            <div class="image-slot">
+                                <div class="slot-number">3</div>
+                                <div class="slot-label">细节图</div>
+                                <div class="slot-desc" contenteditable="true" data-save-key="img_3">材质/工艺特写</div>
+                            </div>
+                            <div class="image-slot">
+                                <div class="slot-number">4</div>
+                                <div class="slot-label">对比图</div>
+                                <div class="slot-desc" contenteditable="true" data-save-key="img_4">规格/效果对比</div>
+                            </div>
+                            <div class="image-slot">
+                                <div class="slot-number">5</div>
+                                <div class="slot-label">信任图</div>
+                                <div class="slot-desc" contenteditable="true" data-save-key="img_5">证书/荣誉/评价</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: A/B 测试建议 -->
+            <div class="pdp-row row-ab">
+                <div class="pdp-section full-width" data-section="ab">
+                    <div class="section-header">
+                        <i data-lucide="split"></i>
+                        <h3>A/B 测试建议 <span class="en-sub">(A/B Test Recommendations)</span></h3>
+                    </div>
+                    <div class="ab-grid">
+                        <div class="ab-card">
+                            <div class="ab-header">
+                                <span class="ab-label">版本 A (当前)</span>
+                            </div>
+                            <div class="ab-content" contenteditable="true" data-save-key="ab_version_a">
+                                当前页面配置描述...</div>
+                        </div>
+                        <div class="ab-vs">VS</div>
+                        <div class="ab-card">
+                            <div class="ab-header">
+                                <span class="ab-label">版本 B (测试)</span>
+                            </div>
+                            <div class="ab-content" contenteditable="true" data-save-key="ab_version_b">
+                                优化后页面配置描述...</div>
+                        </div>
+                        <div class="ab-metrics">
+                            <div class="metric-item">
+                                <span class="metric-label">测试指标</span>
+                                <span class="metric-value" contenteditable="true" data-save-key="ab_metric">加购率</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">预期提升</span>
+                                <span class="metric-value highlight" contenteditable="true"
+                                    data-save-key="ab_lift">+15%</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">测试周期</span>
+                                <span class="metric-value" contenteditable="true" data-save-key="ab_duration">7天</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: 优化行动项 -->
+            <div class="pdp-row row-actions">
+                <div class="pdp-section full-width" data-section="actions">
+                    <div class="section-header">
+                        <i data-lucide="list-todo"></i>
+                        <h3>优化行动项 <span class="en-sub">(Action Items)</span></h3>
+                    </div>
+                    <div class="actions-grid">
+                        <div class="action-card priority-high">
+                            <div class="action-priority">高优先级</div>
+                            <div class="action-content" contenteditable="true" data-save-key="action_high">
+                                <ul>
+                                    <li>补充视频展示</li>
+                                    <li>增加信任徽章</li>
+                                    <li>优化主图 5 张</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="action-card priority-medium">
+                            <div class="action-priority">中优先级</div>
+                            <div class="action-content" contenteditable="true" data-save-key="action_medium">
+                                <ul>
+                                    <li>增加问答模块</li>
+                                    <li>优化标题关键词</li>
+                                    <li>补充规格对比</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="action-card priority-low">
+                            <div class="action-priority">低优先级</div>
+                            <div class="action-content" contenteditable="true" data-save-key="action_low">
+                                <ul>
+                                    <li>增加关联推荐</li>
+                                    <li>优化详情页排版</li>
+                                    <li>添加品牌故事</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('pdp_optimizer');
+            lucide.createIcons({
+                attrs: { class: 'icon', 'stroke-width': 2 }
+            });
+
+            // Score calculation
+            function updateScore() {
+                const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+                let total = 0;
+                let maxScore = 0;
+
+                checkboxes.forEach(cb => {
+                    const points = parseInt(cb.dataset.points) || 0;
+                    maxScore += points;
+                    if (cb.checked) total += points;
+                });
+
+                const percentage = maxScore > 0 ? Math.round((total / maxScore) * 100) : 0;
+
+                // Update score display
+                document.getElementById('scoreNumber').textContent = percentage;
+
+                // Update ring
+                const ring = document.getElementById('scoreRing');
+                const circumference = 283;
+                const offset = circumference - (circumference * percentage / 100);
+                ring.style.strokeDashoffset = offset;
+
+                // Update color and label based on score
+                let color, label;
+                if (percentage >= 90) {
+                    color = '#10b981'; label = '优秀';
+                } else if (percentage >= 70) {
+                    color = '#3b82f6'; label = '良好';
+                } else if (percentage >= 50) {
+                    color = '#f59e0b'; label = '待改进';
+                } else {
+                    color = '#ef4444'; label = '需优化';
+                }
+
+                ring.style.stroke = color;
+                document.getElementById('scoreLabel').textContent = label;
+                document.getElementById('scoreLabel').style.color = color;
+            }
+
+            // Listen for checkbox changes
+            document.querySelectorAll('.check-item input').forEach(cb => {
+                cb.addEventListener('change', updateScore);
+            });
+
+            // Title length counter
+            const titleInput = document.querySelector('[data-save-key="current_title"]');
+            if (titleInput) {
+                titleInput.addEventListener('input', () => {
+                    document.getElementById('titleLength').textContent = titleInput.value.length;
+                });
+            }
+
+            // Initial score calculation
+            updateScore();
+        });
+    </script>
+</body>
+
+</html>

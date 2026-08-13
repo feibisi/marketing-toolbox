@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上瘾模型 (Hook Model)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="设计养成用户习惯的产品循环">
+    <meta name="keywords" content="Hook Model, Habits, Product Design, User Retention">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/hook-model.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Portrait Canvas -->
+    <main class="paper-a4">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>上瘾模型</h1>
+                <span class="english-subtitle">The Hook Model</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="App Name" data-save-key="meta_product" aria-label="App Name">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+            <div class="hook-engine-wrapper">
+                <!-- SVG Cycle Overlay -->
+                <svg class="cycle-svg" viewBox="0 0 600 600">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-tertiary)" opacity="0.5" />
+                        </marker>
+                    </defs>
+                    <path class="cycle-path" d="M 300,80 A 220,220 0 1,1 299,80" fill="none"
+                        stroke="var(--color-border-main)" stroke-width="1" stroke-dasharray="8,8" />
+                </svg>
+
+                <div class="hook-cycle-container">
+                    <!-- Center Core -->
+                    <div class="cycle-center">
+                        <div class="center-content">
+                            <span class="label">HABIT</span>
+                            <div class="core-score" id="habitScore">75</div>
+                            <span class="sub">INDEX</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 1: Trigger -->
+                    <div class="hook-node node-trig" style="top: -20px; left: 50%; transform: translateX(-50%);">
+                        <div class="node-header">
+                            <i data-lucide="zap" class="node-icon-main"></i>
+                            <h3>1. 触发 <span class="en-sub">Trigger</span></h3>
+                        </div>
+                        <div class="node-body">
+                            <div class="input-block">
+                                <label>外部 (External)</label>
+                                <div class="editable-area" contenteditable="true" data-placeholder="邮件、Push、广告..."
+                                    data-save-key="hook_trig_ext"></div>
+                            </div>
+                            <div class="input-block">
+                                <label>内部 (Internal)</label>
+                                <div class="editable-area" contenteditable="true" data-placeholder="孤独、无聊、恐惧..."
+                                    data-save-key="hook_trig_int"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2: Action -->
+                    <div class="hook-node node-action" style="top: 50%; right: -40px; transform: translateY(-50%);">
+                        <div class="node-header">
+                            <i data-lucide="mouse-pointer-2" class="node-icon-main"></i>
+                            <h3>2. 行动 <span class="en-sub">Action</span></h3>
+                        </div>
+                        <div class="node-body">
+                            <div class="editable-area" contenteditable="true" data-placeholder="用户所做的最简单行为..."
+                                data-save-key="hook_action"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3: Variable Reward -->
+                    <div class="hook-node node-reward" style="bottom: -20px; left: 50%; transform: translateX(-50%);">
+                        <div class="node-header">
+                            <i data-lucide="gift" class="node-icon-main"></i>
+                            <h3>3. 多变酬赏 <span class="en-sub">Variable Reward</span></h3>
+                        </div>
+                        <div class="node-body">
+                            <div class="editable-area" contenteditable="true" data-placeholder="不可预测的正面回馈 (社交/猎取/自我)..."
+                                data-save-key="hook_reward"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4: Investment -->
+                    <div class="hook-node node-invest" style="top: 50%; left: -40px; transform: translateY(-50%);">
+                        <div class="node-header">
+                            <i data-lucide="hammer" class="node-icon-main"></i>
+                            <h3>4. 投入 <span class="en-sub">Investment</span></h3>
+                        </div>
+                        <div class="node-body">
+                            <div class="editable-area" contenteditable="true" data-placeholder="用户投入的时间/数据/金钱..."
+                                data-save-key="hook_invest"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Panel -->
+            <div class="analysis-panel">
+                <div class="panel-section">
+                    <h4>强度评估 <span class="en-sub">Hook Strength</span></h4>
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <label>触发频率</label>
+                            <input type="range" min="0" max="100" value="70" class="score-slider"
+                                oninput="updateScore()" aria-label="Input field">
+                        </div>
+                        <div class="score-item">
+                            <label>行动门槛</label>
+                            <input type="range" min="0" max="100" value="80" class="score-slider"
+                                oninput="updateScore()" aria-label="Input field">
+                        </div>
+                        <div class="score-item">
+                            <label>酬赏变异度</label>
+                            <input type="range" min="0" max="100" value="60" class="score-slider"
+                                oninput="updateScore()" aria-label="Input field">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('hook_model_v1');
+            lucide.createIcons();
+            updateScore();
+        });
+
+        function updateScore() {
+            const sliders = document.querySelectorAll('.score-slider');
+            let total = 0;
+            sliders.forEach(s => total += parseInt(s.value));
+            const avg = Math.round(total / sliders.length);
+
+            const scoreEl = document.getElementById('habitScore');
+            scoreEl.innerText = avg;
+
+            // Color based on score
+            if (avg > 80) scoreEl.style.color = 'var(--color-success)';
+            else if (avg > 50) scoreEl.style.color = 'var(--color-brand-primary)';
+            else scoreEl.style.color = 'var(--color-error)';
+        }
+    </script>
+</body>
+
+</html>

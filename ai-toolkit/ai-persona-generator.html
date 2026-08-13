@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 用户画像生成器 (AI Persona Generator)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="利用 AI 快速丰富用户画像细节，生成高质量 Prompt">
+    <meta name="keywords" content="AI, Persona, Prompt Engineering, User Research, Marketing">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ai-persona-generator.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>AI 用户画像生成器</h1>
+                <span class="english-subtitle">AI Persona Generator</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="New Project" data-save-key="meta_project" aria-label="New Project">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="split-layout">
+                <!-- Left Panel: Configuration -->
+                <div class="panel-config">
+                    <div class="section-header">
+                        <i data-lucide="sliders"></i>
+                        <h2>参数配置 <span class="en-sub">(Params)</span></h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label>目标产品 <span class="en-sub">(Product/Service)</span></label>
+                        <input type="text" id="inputProduct" class="input" placeholder="e.g. 智能咖啡机"
+                            data-save-key="param_product" aria-label="智能咖啡机">
+                    </div>
+
+                    <div class="form-group">
+                        <label>目标受众 <span class="en-sub">(Target Audience)</span></label>
+                        <input type="text" id="inputAudience" class="input" placeholder="e.g. 忙碌的上班族"
+                            data-save-key="param_audience" aria-label="忙碌的上班族">
+                    </div>
+
+                    <div class="form-group">
+                        <label>关键特征 <span class="en-sub">(Key Characteristics)</span></label>
+                        <textarea id="inputTraits" class="input" rows="3" placeholder="e.g. 追求效率，注重生活品质，预算充足"
+                            data-save-key="param_traits" aria-label="追求效率，注重生活品质，预算充足"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>生成模型 <span class="en-sub">(AI Model Style)</span></label>
+                        <select id="inputStyle" class="input" data-save-key="param_style" aria-label="style">
+                            <option value="detailed">深度心理分析 (Detailed Psychographics)</option>
+                            <option value="story">故事化叙述 (Storytelling)</option>
+                            <option value="data">数据化列表 (Data-driven)</option>
+                        </select>
+                    </div>
+
+                    <div class="prompt-preview-box">
+                        <div class="box-header">
+                            <label>AI 提示词 <span class="en-sub">(Generated Prompt)</span></label>
+                            <button id="btnCopy" class="btn-icon" title="复制" type="button"><i data-lucide="copy"></i></button>
+                        </div>
+                        <textarea id="promptOutput" class="input code-area" readonly aria-label="promptOutput"></textarea>
+                        <p class="hint">复制此提示词发送给 ChatGPT / Claude</p>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Result Canvas -->
+                <div class="panel-result">
+                    <div class="section-header">
+                        <i data-lucide="user"></i>
+                        <h2>画像画布 <span class="en-sub">(Persona Canvas)</span></h2>
+                    </div>
+
+                    <div class="persona-card">
+                        <div class="persona-header">
+                            <div class="avatar-placeholder">
+                                <i data-lucide="camera"></i>
+                            </div>
+                            <div class="persona-basic-info">
+                                <h3 contenteditable="true" data-save-key="persona_name">姓名 (Name)</h3>
+                                <div class="basic-tags" contenteditable="true" data-save-key="persona_tags">年龄 | 职业 | 城市
+                                </div>
+                                <div class="quote" contenteditable="true" data-save-key="persona_quote">
+                                    "在这里输入用户的核心座右铭..."</div>
+                            </div>
+                        </div>
+
+                        <div class="persona-body">
+                            <div class="grid-2">
+                                <div class="info-block">
+                                    <h4>痛点 <span class="en-sub">(Pain Points)</span></h4>
+                                    <div class="editable-list" contenteditable="true" data-save-key="persona_pains">
+                                        <ul>
+                                            <li>痛点 1...</li>
+                                            <li>痛点 2...</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="info-block">
+                                    <h4>核心需求 <span class="en-sub">(Needs)</span></h4>
+                                    <div class="editable-list" contenteditable="true" data-save-key="persona_needs">
+                                        <ul>
+                                            <li>需求 1...</li>
+                                            <li>需求 2...</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-block">
+                                <h4>行为与动机 <span class="en-sub">(Behavior & Motivation)</span></h4>
+                                <div class="editable-area" contenteditable="true" data-save-key="persona_behavior">
+                                    <p>描述用户的购买决策过程、日常习惯等...</p>
+                                </div>
+                            </div>
+
+                            <div class="info-block">
+                                <h4>对产品的看法 <span class="en-sub">(Reception)</span></h4>
+                                <div class="editable-area" contenteditable="true" data-save-key="persona_reception">
+                                    <p>用户如何看待我们的解决方案...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/ai-persona-generator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ai_persona_gen_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

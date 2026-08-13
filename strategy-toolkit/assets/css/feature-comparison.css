@@ -1,0 +1,482 @@
+/* Feature Comparison Matrix Styles */
+
+/* Vertical Space Management - Override paper-a3 flex layout */
+.paper-a3 {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "legend"
+        "footer";
+    gap: 0;
+}
+
+.paper-a3 > .canvas-header {
+    grid-area: header;
+}
+
+.paper-a3 > .comparison-container {
+    grid-area: main;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.paper-a3 > .legend-section {
+    grid-area: legend;
+    flex-shrink: 0;
+}
+
+.paper-a3 > .modiqi-footer {
+    grid-area: footer;
+}
+
+.comparison-container {
+    position: relative;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    overflow-x: auto;
+}
+
+/* Add Competitor Button - Floating */
+.btn-add-competitor {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.btn-add-competitor:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+    border-color: var(--color-text-primary);
+}
+
+.btn-add-competitor i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Delete Column Button */
+.btn-delete-col {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.col-competitor {
+    position: relative;
+}
+
+.col-competitor:hover .btn-delete-col {
+    opacity: 1;
+}
+
+.btn-delete-col:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+}
+
+/* Add Feature Button */
+.btn-add-feature {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.btn-add-feature:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+}
+
+/* Delete Row Button */
+.action-cell {
+    width: 40px;
+    text-align: center;
+    padding: 0.5rem;
+    border-left: 1px solid var(--color-border-light);
+}
+
+.btn-delete-row {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+tr:hover .btn-delete-row {
+    opacity: 1;
+}
+
+.btn-delete-row:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+}
+
+.comparison-matrix {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-matrix thead {
+    background: var(--color-bg-subtle);
+}
+
+.comparison-matrix th {
+    padding: 0.75rem 0.5rem;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid var(--color-border-medium);
+    vertical-align: top;
+    color: var(--color-text-primary);
+}
+
+.col-feature {
+    text-align: left !important;
+    width: 200px;
+    position: sticky;
+    left: 0;
+    background: var(--color-bg-subtle);
+    z-index: 10;
+    border-right: 1px solid var(--color-border-light);
+}
+
+.col-competitor {
+    width: 150px;
+}
+
+.col-competitor.us {
+    background: var(--color-bg-warm-light);
+    border-left: 2px solid var(--color-border-medium);
+    border-right: 2px solid var(--color-border-medium);
+}
+
+.competitor-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.competitor-header .badge {
+    padding: 0.2rem 0.5rem;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    border-radius: 0;
+    background: var(--color-bg-warm-medium);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.competitor-header .badge.us-badge {
+    background: var(--color-text-primary);
+    color: var(--color-bg-white);
+}
+
+.competitor-header .name {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    padding: 0.25rem;
+}
+
+/* 统一 Focus 样式 (Focus-within 风格) */
+.competitor-header .name:focus,
+.feature-name:focus {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -2px;
+    background: var(--color-focus-bg);
+    border-radius: 0;
+}
+
+.competitor-header .price {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.comparison-matrix tbody tr {
+    border-bottom: 1px solid var(--color-bg-subtle);
+}
+
+/* 纸张风格：移除 Hover 背景变化 */
+.comparison-matrix tbody tr:hover {
+    background: transparent;
+}
+
+.category-row {
+    background: var(--color-bg-subtle);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    border-top: 2px solid var(--color-border-medium);
+}
+
+.category-header i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+}
+
+.feature-name {
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    position: sticky;
+    left: 0;
+    background: var(--color-bg-white);
+    border-right: 1px solid var(--color-border-light);
+}
+
+/* Support Icons - Monochrome First */
+.support {
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+}
+
+.support i {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+}
+
+/* Color Mode: Use subtle background colors, NOT icon colors */
+body.color-mode .support.full {
+    background: var(--color-semantic-strength);
+}
+
+body.color-mode .support.partial {
+    background: var(--color-semantic-weakness);
+}
+
+body.color-mode .support.none {
+    background: var(--color-bg-subtle);
+}
+
+/* Legend icons remain monochrome */
+.legend-item i {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-secondary);
+}
+
+.score-row {
+    background: var(--color-bg-subtle);
+    border-top: 2px solid var(--color-border-medium);
+    font-weight: 600;
+}
+
+.score-label {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-primary);
+    position: sticky;
+    left: 0;
+    background: var(--color-bg-subtle);
+    border-right: 1px solid var(--color-border-light);
+}
+
+.score-value {
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+}
+
+.score-value.us {
+    background: var(--color-bg-warm-light);
+}
+
+.score {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    background: var(--color-bg-white);
+    border: 2px solid var(--color-text-primary);
+    border-radius: 0;
+}
+
+/* Legend */
+.legend-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+}
+
+.legend-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 0.75rem 0;
+}
+
+.legend-section h3 i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+}
+
+.legend-items {
+    display: flex;
+    gap: 2rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.legend-item i {
+    width: 18px;
+    height: 18px;
+}
+
+/* ========================================
+   SCROLLBAR & INTERACTIVITY
+   ======================================== */
+
+.comparison-container::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.comparison-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.comparison-container::-webkit-scrollbar-thumb {
+    background: var(--color-border-medium);
+    border-radius: 0;
+}
+
+.comparison-container::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-tertiary);
+}
+
+/* 交互提示 */
+.support {
+    cursor: pointer;
+}
+
+.support:hover {
+    background-color: var(--color-bg-hover);
+}
+
+/* Print Optimization */
+@media print {
+    .comparison-container {
+        overflow: visible !important;
+        border: none;
+        padding: 0;
+    }
+
+    /* 确保打印时不需要滚动 */
+    .comparison-matrix {
+        width: 100%;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen {
+    .paper-a3 {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .paper-a3 > .comparison-container {
+        overflow-y: visible;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comparison-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .comparison-matrix {
+        min-width: 760px;
+    }
+}

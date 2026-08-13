@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三层地平线框架 (Three Horizons Framework)</title>
+    <meta name="description" content="三层地平线框架工具,帮助您平衡当前业务、新兴业务和未来机会的战略规划。">
+    <meta name="keywords" content="三层地平线,Three Horizons,战略规划,创新管理,业务组合">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="三层地平线框架 - Modiqi Workbench">
+    <meta property="og:description" content="平衡当前、新兴和未来业务的战略规划。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/three-horizons.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>三层地平线框架</h1>
+                <span class="english-subtitle">Three Horizons Framework</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>公司/项目 <span class="en-sub">(Company)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的公司" data-save-key="meta_company" aria-label="我的公司">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="horizons-container">
+            <div class="horizons-table-wrapper">
+                <table class="horizons-table">
+                    <thead>
+                        <tr class="horizons-header">
+                            <th class="horizon-name-col">地平线 <span class="en-sub">(Horizon)</span></th>
+                            <th>业务描述 <span class="en-sub">(Business)</span></th>
+                            <th>时间框架 <span class="en-sub">(Timeframe)</span></th>
+                            <th>关键行动 <span class="en-sub">(Actions)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="horizon-row horizon-1">
+                            <td class="horizon-name">
+                                <div class="horizon-icon">
+                                    <i data-lucide="building-2"></i>
+                                </div>
+                                <div class="horizon-info">
+                                    <strong>地平线 1</strong>
+                                    <span class="horizon-subtitle">扩展和防御核心业务</span>
+                                </div>
+                            </td>
+                            <td contenteditable="true" data-save-key="h1_business">当前核心业务和主要收入来源</td>
+                            <td contenteditable="true" data-save-key="h1_timeframe">0-12个月</td>
+                            <td contenteditable="true" data-save-key="h1_actions">优化现有产品和服务<br>提升运营效率<br>保持市场份额</td>
+                        </tr>
+                        <tr class="horizon-row horizon-2">
+                            <td class="horizon-name">
+                                <div class="horizon-icon">
+                                    <i data-lucide="rocket"></i>
+                                </div>
+                                <div class="horizon-info">
+                                    <strong>地平线 2</strong>
+                                    <span class="horizon-subtitle">培育新兴业务</span>
+                                </div>
+                            </td>
+                            <td contenteditable="true" data-save-key="h2_business">正在成长的新业务和市场机会</td>
+                            <td contenteditable="true" data-save-key="h2_timeframe">1-3年</td>
+                            <td contenteditable="true" data-save-key="h2_actions">扩展到相邻市场<br>开发新产品线<br>建立新的能力</td>
+                        </tr>
+                        <tr class="horizon-row horizon-3">
+                            <td class="horizon-name">
+                                <div class="horizon-icon">
+                                    <i data-lucide="sparkles"></i>
+                                </div>
+                                <div class="horizon-info">
+                                    <strong>地平线 3</strong>
+                                    <span class="horizon-subtitle">创造未来选择</span>
+                                </div>
+                            </td>
+                            <td contenteditable="true" data-save-key="h3_business">探索性项目和长期机会</td>
+                            <td contenteditable="true" data-save-key="h3_timeframe">3-5年+</td>
+                            <td contenteditable="true" data-save-key="h3_actions">研究新兴技术<br>试验新商业模式<br>建立战略合作</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resource Allocation -->
+            <div class="allocation-section">
+            <h2 class="section-title">
+                <i data-lucide="pie-chart"></i>
+                资源分配建议 <span class="en-sub">(Resource Allocation)</span>
+            </h2>
+            <div class="allocation-grid">
+                <div class="allocation-item">
+                    <div class="allocation-label">地平线 1</div>
+                    <div class="allocation-bar">
+                        <div class="allocation-fill h1-fill" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+                <div class="allocation-item">
+                    <div class="allocation-label">地平线 2</div>
+                    <div class="allocation-bar">
+                        <div class="allocation-fill h2-fill" style="width: 20%;">20%</div>
+                    </div>
+                </div>
+                <div class="allocation-item">
+                    <div class="allocation-label">地平线 3</div>
+                    <div class="allocation-bar">
+                        <div class="allocation-fill h3-fill" style="width: 10%;">10%</div>
+                    </div>
+                </div>
+            </div>
+            <p class="allocation-note">典型资源分配比例: 70% (H1) / 20% (H2) / 10% (H3)</p>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('three_horizons_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRIO 框架 (VRIO Framework)</title>
+    <meta name="description" content="VRIO框架工具，帮助您评估资源和能力的价值、稀缺性、难以模仿性和组织能力，识别持续竞争优势。">
+    <meta name="keywords" content="VRIO框架,资源分析,竞争优势,战略分析,核心能力">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="VRIO 框架 - Modiqi Workbench">
+    <meta property="og:description" content="评估资源和能力，识别持续竞争优势。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/vrio-framework.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>VRIO 框架</h1>
+                <span class="english-subtitle">VRIO Framework</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>公司/项目 <span class="en-sub">(Company)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的公司" data-save-key="meta_company" aria-label="我的公司">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="vrio-container">
+            <!-- VRIO Header -->
+            <div class="vrio-header">
+                <div class="vrio-col col-resource">
+                    <i data-lucide="box"></i>
+                    <h3>资源/能力<br><span class="en-sub">Resource</span></h3>
+                </div>
+                <div class="vrio-col col-value">
+                    <i data-lucide="trending-up"></i>
+                    <h3>有价值?<br><span class="en-sub">Valuable?</span></h3>
+                </div>
+                <div class="vrio-col col-rarity">
+                    <i data-lucide="gem"></i>
+                    <h3>稀缺?<br><span class="en-sub">Rare?</span></h3>
+                </div>
+                <div class="vrio-col col-imitability">
+                    <i data-lucide="shield"></i>
+                    <h3>难模仿?<br><span class="en-sub">Inimitable?</span></h3>
+                </div>
+                <div class="vrio-col col-organization">
+                    <i data-lucide="users"></i>
+                    <h3>有组织?<br><span class="en-sub">Organized?</span></h3>
+                </div>
+                <div class="vrio-col col-result">
+                    <i data-lucide="target"></i>
+                    <h3>竞争优势<br><span class="en-sub">Advantage</span></h3>
+                </div>
+                <div class="vrio-col col-action">
+                    <i data-lucide="settings"></i>
+                    <h3>操作<br><span class="en-sub">Action</span></h3>
+                </div>
+            </div>
+
+            <!-- VRIO Rows Container -->
+            <div id="vrioRowsContainer"></div>
+
+            <!-- Add Row Button -->
+            <button id="addRowBtn" class="add-row-btn" type="button">
+                <i data-lucide="plus-circle"></i>
+                <span>添加资源</span>
+            </button>
+        </div>
+
+        <!-- Legend -->
+        <div class="vrio-legend">
+            <h3>竞争优势类型 <span class="en-sub">(Competitive Advantage Types)</span></h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="legend-badge badge-disadvantage">竞争劣势</span>
+                    <span class="legend-desc">V=否</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge badge-parity">竞争均势</span>
+                    <span class="legend-desc">V=是, R=否</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge badge-temporary">暂时优势</span>
+                    <span class="legend-desc">V=是, R=是, I=否</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge badge-sustained">持续优势</span>
+                    <span class="legend-desc">V=是, R=是, I=是, O=是</span>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = new ModiqiApp('vrio_framework_v1');
+            lucide.createIcons({ attrs: { class: "icon", 'stroke-width': 2 } });
+
+            const container = document.getElementById('vrioRowsContainer');
+            const addBtn = document.getElementById('addRowBtn');
+            const MAX_ROWS = 12;
+            let rowCounter = 0;
+
+            const defaultResources = ['品牌声誉', '专利技术', '人才团队', '供应链网络', '客户数据', '企业文化'];
+
+            function calculateVRIO(row) {
+                const checkboxes = document.querySelectorAll(`[data-row="${row}"]`);
+                const v = checkboxes[0]?.checked;
+                const r = checkboxes[1]?.checked;
+                const i = checkboxes[2]?.checked;
+                const o = checkboxes[3]?.checked;
+                const resultCell = document.querySelector(`[data-result="${row}"]`);
+
+                let result = '', className = '';
+                if (!v) {
+                    result = '竞争劣势'; className = 'result-disadvantage';
+                } else if (v && !r) {
+                    result = '竞争均势'; className = 'result-parity';
+                } else if (v && r && !i) {
+                    result = '暂时优势'; className = 'result-temporary';
+                } else if (v && r && i && !o) {
+                    result = '暂时优势'; className = 'result-temporary';
+                } else if (v && r && i && o) {
+                    result = '持续优势'; className = 'result-sustained';
+                }
+
+                resultCell.textContent = result;
+                resultCell.className = 'vrio-cell cell-result ' + className;
+            }
+
+            function createRow(resource = '') {
+                rowCounter++;
+                const row = document.createElement('div');
+                row.className = 'vrio-row';
+                row.dataset.row = rowCounter;
+                row.innerHTML = `
+                    <div class="vrio-cell cell-resource" contenteditable="true" data-save-key="resource_${rowCounter}">${resource}</div>
+                    <div class="vrio-cell cell-checkbox"><input type="checkbox" data-save-key="value_${rowCounter}" data-row="${rowCounter}" class="vrio-checkbox" aria-label="value ${rowCounter}"></div>
+                    <div class="vrio-cell cell-checkbox"><input type="checkbox" data-save-key="rarity_${rowCounter}" data-row="${rowCounter}" class="vrio-checkbox" aria-label="rarity ${rowCounter}"></div>
+                    <div class="vrio-cell cell-checkbox"><input type="checkbox" data-save-key="imitability_${rowCounter}" data-row="${rowCounter}" class="vrio-checkbox" aria-label="imitability ${rowCounter}"></div>
+                    <div class="vrio-cell cell-checkbox"><input type="checkbox" data-save-key="organization_${rowCounter}" data-row="${rowCounter}" class="vrio-checkbox" aria-label="organization ${rowCounter}"></div>
+                    <div class="vrio-cell cell-result" data-result="${rowCounter}">-</div>
+                    <div class="vrio-cell cell-action">
+                        <button class="delete-row-btn" data-row="${rowCounter}" title="删除此行" type="button">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(row);
+                lucide.createIcons();
+
+                row.querySelectorAll('.vrio-checkbox').forEach(cb => {
+                    cb.addEventListener('change', () => calculateVRIO(rowCounter));
+                });
+
+                row.querySelector('.delete-row-btn').addEventListener('click', function() {
+                    if (container.children.length > 1) {
+                        row.remove();
+                        updateAddButton();
+                    }
+                });
+
+                calculateVRIO(rowCounter);
+                updateAddButton();
+            }
+
+            function updateAddButton() {
+                addBtn.style.display = container.children.length >= MAX_ROWS ? 'none' : 'flex';
+            }
+
+            addBtn.addEventListener('click', () => createRow());
+
+            // Initialize with default rows
+            defaultResources.forEach(res => createRow(res));
+        });
+    </script>
+</body>
+
+</html>

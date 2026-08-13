@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键词研究工具 (Keyword Research Tool)</title>
+    <meta name="description" content="系统化研究和分析SEO关键词，评估搜索量、竞争度、商业价值">
+    <meta name="keywords" content="关键词研究,SEO关键词,搜索量分析,关键词难度,长尾关键词">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="关键词研究工具 - Modiqi Workbench">
+    <meta property="og:description" content="系统化研究和分析SEO关键词，评估搜索量、竞争度、商业价值">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/keyword-research.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>关键词研究工具</h1>
+                <span class="english-subtitle">Keyword Research Tool</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="meta_project" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="keyword-container">
+            <!-- Table Header -->
+            <div class="kw-header">
+                <div class="col-kw">关键词 <span class="en-sub">(Keyword)</span></div>
+                <div class="col-volume">搜索量 <span class="en-sub">(Volume)</span></div>
+                <div class="col-difficulty">难度 <span class="en-sub">(Difficulty)</span></div>
+                <div class="col-cpc">CPC <span class="en-sub">(Cost)</span></div>
+                <div class="col-intent">意图 <span class="en-sub">(Intent)</span></div>
+                <div class="col-priority">优先级 <span class="en-sub">(Priority)</span></div>
+                <div class="col-notes">备注 <span class="en-sub">(Notes)</span></div>
+            </div>
+
+            <!-- Keyword Rows -->
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_1_keyword">数字营销工具</div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_1_volume">12,000/月</div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_1_difficulty">65</div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_1_cpc">¥8.5</div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_1_intent">商业</div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_1_priority">高</div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_1_notes">核心词</div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_2_keyword">营销自动化平台</div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_2_volume">8,500/月</div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_2_difficulty">78</div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_2_cpc">¥12.3</div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_2_intent">交易</div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_2_priority">中</div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_2_notes">竞争激烈</div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_3_keyword">免费营销工具推荐</div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_3_volume">5,200/月</div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_3_difficulty">42</div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_3_cpc">¥3.2</div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_3_intent">信息</div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_3_priority">高</div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_3_notes">长尾词</div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_4_keyword">社交媒体营销策略</div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_4_volume">9,800/月</div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_4_difficulty">58</div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_4_cpc">¥6.8</div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_4_intent">信息</div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_4_priority">中</div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_4_notes">内容营销</div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_5_keyword">电商运营工作台</div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_5_volume">3,600/月</div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_5_difficulty">35</div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_5_cpc">¥4.5</div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_5_intent">商业</div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_5_priority">高</div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_5_notes">精准长尾</div>
+            </div>
+
+            <!-- Empty rows for user input -->
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_6_keyword"></div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_6_volume"></div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_6_difficulty"></div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_6_cpc"></div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_6_intent"></div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_6_priority"></div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_6_notes"></div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_7_keyword"></div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_7_volume"></div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_7_difficulty"></div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_7_cpc"></div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_7_intent"></div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_7_priority"></div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_7_notes"></div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_8_keyword"></div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_8_volume"></div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_8_difficulty"></div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_8_cpc"></div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_8_intent"></div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_8_priority"></div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_8_notes"></div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_9_keyword"></div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_9_volume"></div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_9_difficulty"></div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_9_cpc"></div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_9_intent"></div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_9_priority"></div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_9_notes"></div>
+            </div>
+
+            <div class="kw-row">
+                <div class="col-kw" contenteditable="true" data-save-key="kw_10_keyword"></div>
+                <div class="col-volume" contenteditable="true" data-save-key="kw_10_volume"></div>
+                <div class="col-difficulty" contenteditable="true" data-save-key="kw_10_difficulty"></div>
+                <div class="col-cpc" contenteditable="true" data-save-key="kw_10_cpc"></div>
+                <div class="col-intent" contenteditable="true" data-save-key="kw_10_intent"></div>
+                <div class="col-priority" contenteditable="true" data-save-key="kw_10_priority"></div>
+                <div class="col-notes" contenteditable="true" data-save-key="kw_10_notes"></div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('keyword_research_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精益画布 (Lean Canvas)</title>
+    <meta name="description" content="精益画布工具，帮助创业者快速验证商业创意，聚焦于问题、解决方案与独特价值主张。">
+    <meta name="keywords" content="精益画布,精益创业,商业模式,创业验证,MVP">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="精益画布 - Modiqi Workbench">
+    <meta property="og:description" content="快速验证商业创意，聚焦于问题、解决方案与独特价值主张。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/lean-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>精益画布</h1>
+                <span class="english-subtitle">Lean Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的创业想法" data-save-key="meta_project" aria-label="我的创业想法">
+                </div>
+                <div class="meta-group">
+                    <label>迭代 <span class="en-sub">(Iteration)</span></label>
+                    <input type="text" class="meta-input iteration-input" value="v1.0" data-save-key="meta_iteration" aria-label="iteration">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="lean-grid">
+            <!-- Problem -->
+            <div class="lean-card area-problem">
+                <div class="card-header">
+                    <i data-lucide="circle-alert"></i>
+                    <h2>问题 <span class="en-sub">(Problem)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <div class="sub-section">
+                        <div class="sub-label">Top 3 问题</div>
+                        <ul>
+                            <li>客户最痛的问题是什么？</li>
+                            <li>第二个痛点...</li>
+                            <li>第三个痛点...</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-section">
+                        <span class="footer-label">现有替代方案</span>
+                        <div class="footer-content" contenteditable="true">客户目前如何解决这些问题？</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solution -->
+            <div class="lean-card area-solution">
+                <div class="card-header">
+                    <i data-lucide="lightbulb"></i>
+                    <h2>解决方案 <span class="en-sub">(Solution)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <div class="sub-section">
+                        <div class="sub-label">Top 3 功能</div>
+                        <ul>
+                            <li>解决问题 1 的功能...</li>
+                            <li>解决问题 2 的功能...</li>
+                            <li>解决问题 3 的功能...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="lean-card area-metrics">
+                <div class="card-header">
+                    <i data-lucide="activity"></i>
+                    <h2>关键指标 <span class="en-sub">(Key Metrics)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>衡量成功的关键数字...</li>
+                        <li>用户活跃度指标...</li>
+                        <li>转化率指标...</li>
+                        <li>收入指标...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Unique Value Proposition -->
+            <div class="lean-card area-uvp">
+                <div class="card-header">
+                    <i data-lucide="gift"></i>
+                    <h2>独特价值主张 <span class="en-sub">(UVP)</span></h2>
+                </div>
+                <div class="card-content uvp-content" contenteditable="true">
+                    <div class="uvp-statement">
+                        一句清晰、引人注目的陈述，说明为什么你与众不同、值得关注
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-section">
+                        <span class="footer-label">高层次概念</span>
+                        <div class="footer-content" contenteditable="true">X 行业的 Y（类比知名产品）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unfair Advantage -->
+            <div class="lean-card area-advantage">
+                <div class="card-header">
+                    <i data-lucide="shield"></i>
+                    <h2>门槛优势 <span class="en-sub">(Unfair Advantage)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <p class="hint-text">无法被轻易复制或购买的竞争壁垒</p>
+                    <ul>
+                        <li>内部信息/专业知识</li>
+                        <li>独特的团队/专家网络</li>
+                        <li>个人权威/品牌</li>
+                        <li>网络效应/社区</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Channels -->
+            <div class="lean-card area-channels">
+                <div class="card-header">
+                    <i data-lucide="share-2"></i>
+                    <h2>渠道 <span class="en-sub">(Channels)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>如何触达目标客户？</li>
+                        <li>免费渠道...</li>
+                        <li>付费渠道...</li>
+                        <li>口碑/推荐...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Customer Segments -->
+            <div class="lean-card area-customers">
+                <div class="card-header">
+                    <i data-lucide="users"></i>
+                    <h2>客户群体 <span class="en-sub">(Customer Segments)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <div class="sub-section">
+                        <div class="sub-label">目标客户</div>
+                        <ul>
+                            <li>谁最需要这个解决方案？</li>
+                            <li>客户画像描述...</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-section">
+                        <span class="footer-label">早期采用者</span>
+                        <div class="footer-content" contenteditable="true">最可能首先购买的人群特征...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Structure -->
+            <div class="lean-card area-costs">
+                <div class="card-header">
+                    <i data-lucide="wallet"></i>
+                    <h2>成本结构 <span class="en-sub">(Cost Structure)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>客户获取成本 (CAC)...</li>
+                        <li>分销成本...</li>
+                        <li>托管/运营成本...</li>
+                        <li>人力成本...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Revenue Streams -->
+            <div class="lean-card area-revenue">
+                <div class="card-header">
+                    <i data-lucide="credit-card"></i>
+                    <h2>收入来源 <span class="en-sub">(Revenue Streams)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>收费模式（订阅/一次性/分成）...</li>
+                        <li>客户生命周期价值 (LTV)...</li>
+                        <li>毛利率...</li>
+                        <li>定价策略...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('lean_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

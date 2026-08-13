@@ -1,0 +1,283 @@
+/* Brand Naming Canvas Layout */
+.naming-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Section Styling */
+.section-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-sem-dashed);
+}
+
+.section-title {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 1. IDEATION LAB */
+.ideation-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.name-category {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cat-title {
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.name-input-list {
+    min-height: 100px;
+    background: var(--color-bg-paper);
+    border: 1px dashed var(--border-sem-input);
+    border-radius: 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mini-name-tag {
+    font-size: var(--font-size-sm);
+    padding: 4px 8px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+    cursor: grab;
+}
+
+/* 2. EVALUATION MATRIX */
+.eval-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.eval-table th {
+    text-align: left;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-sem-input);
+}
+
+.eval-table td {
+    padding: 8px;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.name-cell {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    width: 25%;
+}
+
+.score-input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    text-align: center;
+}
+
+.total-score {
+    font-weight: bold;
+    font-family: var(--font-mono);
+}
+
+.domain-check {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 0;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-available {
+    background: var(--color-bg-success-subtle);
+    color: var(--color-semantic-profit);
+}
+
+.status-taken {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger);
+}
+
+.status-unknown {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+}
+
+/* 3. FINAL PODIUM */
+.podium-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    height: 200px;
+}
+
+.podium-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+}
+
+.podium-box {
+    width: 100%;
+    background: linear-gradient(to bottom, var(--color-bg-subtle), var(--color-bg-paper));
+    border: 1px solid var(--border-sem-inner);
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+}
+
+.step-1 {
+    height: 120px;
+    border-color: var(--color-warning);
+    background: var(--color-semantic-alert-bg);
+}
+
+.step-2 {
+    height: 80px;
+    border-color: var(--color-text-tertiary);
+    background: var(--color-bg-subtle);
+}
+
+.step-3 {
+    height: 50px;
+    border-color: var(--color-brand-accent);
+    background: var(--color-bg-danger-subtle);
+}
+
+.ranking-name {
+    margin-bottom: 8px;
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    text-align: center;
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.rank-1 {
+    font-size: 20px;
+}
+
+/* Utilities */
+.cat-desc {
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+}
+
+.input-tall {
+    height: 80px;
+}
+
+.name-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+/* Dark Mode */
+body.theme-dark .section-card {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .name-input-list,
+body.theme-dark .name-category {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .naming-layout, .naming-inputs, .name-input-list { display: block; }
+    .name-category { width: 100%; margin-bottom: 12px; }
+    #eval-table { display: block; width: 100%; overflow-x: auto; }
+    .ranking-podium { flex-wrap: wrap; height: auto; }
+}
+
+@media screen and (min-width: 769px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        height: auto !important;
+        min-height: var(--paper-min-height, 0) !important;
+        overflow: visible !important;
+    }
+}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>营销预算规划器 (Marketing Budget Planner)</title>
+    <meta name="description" content="全年营销预算的规划、分配与追踪工具，涵盖渠道分配、季度规划和 ROI 追踪。">
+    <meta name="keywords" content="营销预算,预算规划,ROI,渠道分配,营销投资">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="营销预算规划器 - Modiqi Workbench">
+    <meta property="og:description" content="营销预算规划与 ROI 追踪工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/budget-planner.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>营销预算规划器</h1>
+                <span class="english-subtitle">Marketing Budget Planner</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>年度 <span class="en-sub">(Year)</span></label>
+                    <input type="text" class="meta-input" placeholder="2026" data-save-key="budget_year" aria-label="2026">
+                </div>
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="品牌名称" data-save-key="brand_name" aria-label="品牌名称">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Canvas Grid -->
+        <div class="budget-canvas">
+            <!-- Row 1: 预算总览 + 渠道分配 -->
+            <div class="budget-row row-top">
+                <!-- 预算总览 -->
+                <div class="budget-section overview-section" data-section="overview">
+                    <div class="section-header">
+                        <i data-lucide="wallet"></i>
+                        <h3>预算总览 <span class="en-sub">(Budget Overview)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="budget-ring">
+                            <div class="ring-outer">
+                                <div class="ring-inner">
+                                    <div class="ring-label">年度预算</div>
+                                    <div class="ring-value" id="totalBudget" contenteditable="true"
+                                        data-save-key="total_budget">¥1,000,000</div>
+                                </div>
+                            </div>
+                            <div class="ring-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">已分配</span>
+                                    <span class="stat-value" id="allocatedBudget">¥950,000</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">剩余</span>
+                                    <span class="stat-value" id="remainingBudget">¥50,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="usage-bar">
+                            <div class="usage-label">使用进度</div>
+                            <div class="usage-track">
+                                <div class="usage-fill" id="usageFill" style="width: 45%"></div>
+                            </div>
+                            <div class="usage-stats">
+                                <span id="usedAmount">¥450,000</span>
+                                <span id="usagePercent">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 渠道分配 -->
+                <div class="budget-section channels-section" data-section="channels">
+                    <div class="section-header">
+                        <i data-lucide="pie-chart"></i>
+                        <h3>渠道分配 <span class="en-sub">(Channel Allocation)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="channel-list" id="channelList">
+                            <div class="channel-row" data-channel="brand">
+                                <div class="channel-bar-container">
+                                    <div class="channel-name">
+                                        <i data-lucide="megaphone"></i>
+                                        <span>品牌广告</span>
+                                    </div>
+                                    <div class="channel-bar">
+                                        <div class="bar-fill" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <div class="channel-values">
+                                    <input type="text" class="channel-percent" value="35"
+                                        data-save-key="channel_brand_pct" aria-label="channel brand pct">%
+                                    <span class="channel-amount">¥350,000</span>
+                                </div>
+                            </div>
+                            <div class="channel-row" data-channel="performance">
+                                <div class="channel-bar-container">
+                                    <div class="channel-name">
+                                        <i data-lucide="target"></i>
+                                        <span>效果广告</span>
+                                    </div>
+                                    <div class="channel-bar">
+                                        <div class="bar-fill" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <div class="channel-values">
+                                    <input type="text" class="channel-percent" value="25"
+                                        data-save-key="channel_perf_pct" aria-label="channel perf pct">%
+                                    <span class="channel-amount">¥250,000</span>
+                                </div>
+                            </div>
+                            <div class="channel-row" data-channel="content">
+                                <div class="channel-bar-container">
+                                    <div class="channel-name">
+                                        <i data-lucide="file-text"></i>
+                                        <span>内容营销</span>
+                                    </div>
+                                    <div class="channel-bar">
+                                        <div class="bar-fill" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                                <div class="channel-values">
+                                    <input type="text" class="channel-percent" value="20"
+                                        data-save-key="channel_content_pct" aria-label="channel content pct">%
+                                    <span class="channel-amount">¥200,000</span>
+                                </div>
+                            </div>
+                            <div class="channel-row" data-channel="events">
+                                <div class="channel-bar-container">
+                                    <div class="channel-name">
+                                        <i data-lucide="calendar"></i>
+                                        <span>活动会议</span>
+                                    </div>
+                                    <div class="channel-bar">
+                                        <div class="bar-fill" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                                <div class="channel-values">
+                                    <input type="text" class="channel-percent" value="10"
+                                        data-save-key="channel_events_pct" aria-label="channel events pct">%
+                                    <span class="channel-amount">¥100,000</span>
+                                </div>
+                            </div>
+                            <div class="channel-row" data-channel="tools">
+                                <div class="channel-bar-container">
+                                    <div class="channel-name">
+                                        <i data-lucide="wrench"></i>
+                                        <span>工具平台</span>
+                                    </div>
+                                    <div class="channel-bar">
+                                        <div class="bar-fill" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                                <div class="channel-values">
+                                    <input type="text" class="channel-percent" value="5"
+                                        data-save-key="channel_tools_pct" aria-label="channel tools pct">%
+                                    <span class="channel-amount">¥50,000</span>
+                                </div>
+                            </div>
+                            <div class="channel-row" data-channel="other">
+                                <div class="channel-bar-container">
+                                    <div class="channel-name">
+                                        <i data-lucide="more-horizontal"></i>
+                                        <span>其他</span>
+                                    </div>
+                                    <div class="channel-bar">
+                                        <div class="bar-fill" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                                <div class="channel-values">
+                                    <input type="text" class="channel-percent" value="5"
+                                        data-save-key="channel_other_pct" aria-label="channel other pct">%
+                                    <span class="channel-amount">¥50,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="channel-total">
+                            <span>合计</span>
+                            <span id="totalPercent">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 季度分配 -->
+            <div class="budget-row row-quarterly">
+                <div class="budget-section full-width" data-section="quarterly">
+                    <div class="section-header">
+                        <i data-lucide="calendar-days"></i>
+                        <h3>季度分配 <span class="en-sub">(Quarterly Allocation)</span></h3>
+                    </div>
+                    <div class="quarterly-grid">
+                        <div class="quarter-card" data-quarter="q1">
+                            <div class="quarter-header">Q1</div>
+                            <div class="quarter-amount" contenteditable="true" data-save-key="q1_amount">¥200,000</div>
+                            <div class="quarter-percent">20%</div>
+                            <div class="quarter-bar">
+                                <div class="bar-fill" style="width: 20%"></div>
+                            </div>
+                            <div class="quarter-focus" contenteditable="true" data-save-key="q1_focus">品牌预热、春节营销
+                            </div>
+                        </div>
+                        <div class="quarter-card" data-quarter="q2">
+                            <div class="quarter-header">Q2</div>
+                            <div class="quarter-amount" contenteditable="true" data-save-key="q2_amount">¥250,000</div>
+                            <div class="quarter-percent">25%</div>
+                            <div class="quarter-bar">
+                                <div class="bar-fill" style="width: 25%"></div>
+                            </div>
+                            <div class="quarter-focus" contenteditable="true" data-save-key="q2_focus">618活动、产品发布
+                            </div>
+                        </div>
+                        <div class="quarter-card" data-quarter="q3">
+                            <div class="quarter-header">Q3</div>
+                            <div class="quarter-amount" contenteditable="true" data-save-key="q3_amount">¥250,000</div>
+                            <div class="quarter-percent">25%</div>
+                            <div class="quarter-bar">
+                                <div class="bar-fill" style="width: 25%"></div>
+                            </div>
+                            <div class="quarter-focus" contenteditable="true" data-save-key="q3_focus">内容积累、私域运营
+                            </div>
+                        </div>
+                        <div class="quarter-card highlight" data-quarter="q4">
+                            <div class="quarter-header">Q4</div>
+                            <div class="quarter-amount" contenteditable="true" data-save-key="q4_amount">¥300,000</div>
+                            <div class="quarter-percent">30%</div>
+                            <div class="quarter-bar">
+                                <div class="bar-fill" style="width: 30%"></div>
+                            </div>
+                            <div class="quarter-focus" contenteditable="true" data-save-key="q4_focus">双11、年终冲刺</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: ROI 追踪 -->
+            <div class="budget-row row-roi">
+                <div class="budget-section full-width" data-section="roi">
+                    <div class="section-header">
+                        <i data-lucide="trending-up"></i>
+                        <h3>ROI 追踪 <span class="en-sub">(ROI Tracking)</span></h3>
+                    </div>
+                    <div class="roi-table">
+                        <div class="roi-header">
+                            <span class="col-channel">渠道</span>
+                            <span class="col-invest">投入</span>
+                            <span class="col-return">产出</span>
+                            <span class="col-roi">ROI</span>
+                            <span class="col-status">状态</span>
+                        </div>
+                        <div class="roi-row" data-status="success">
+                            <span class="col-channel">
+                                <i data-lucide="megaphone"></i> 品牌广告
+                            </span>
+                            <span class="col-invest" contenteditable="true" data-save-key="roi_brand_invest">¥150,000
+                            </span>
+                            <span class="col-return" contenteditable="true" data-save-key="roi_brand_return">¥300,000
+                            </span>
+                            <span class="col-roi">2.0x</span>
+                            <span class="col-status">
+                                <span class="status-badge success">达标</span>
+                            </span>
+                        </div>
+                        <div class="roi-row" data-status="excellent">
+                            <span class="col-channel">
+                                <i data-lucide="target"></i> 效果广告
+                            </span>
+                            <span class="col-invest" contenteditable="true" data-save-key="roi_perf_invest">¥100,000
+                            </span>
+                            <span class="col-return" contenteditable="true" data-save-key="roi_perf_return">¥450,000
+                            </span>
+                            <span class="col-roi">4.5x</span>
+                            <span class="col-status">
+                                <span class="status-badge excellent">超预期</span>
+                            </span>
+                        </div>
+                        <div class="roi-row" data-status="warning">
+                            <span class="col-channel">
+                                <i data-lucide="file-text"></i> 内容营销
+                            </span>
+                            <span class="col-invest" contenteditable="true" data-save-key="roi_content_invest">¥80,000
+                            </span>
+                            <span class="col-return" contenteditable="true" data-save-key="roi_content_return">¥120,000
+                            </span>
+                            <span class="col-roi">1.5x</span>
+                            <span class="col-status">
+                                <span class="status-badge warning">需优化</span>
+                            </span>
+                        </div>
+                        <div class="roi-row" data-status="success">
+                            <span class="col-channel">
+                                <i data-lucide="calendar"></i> 活动会议
+                            </span>
+                            <span class="col-invest" contenteditable="true" data-save-key="roi_events_invest">¥50,000
+                            </span>
+                            <span class="col-return" contenteditable="true" data-save-key="roi_events_return">¥150,000
+                            </span>
+                            <span class="col-roi">3.0x</span>
+                            <span class="col-status">
+                                <span class="status-badge success">达标</span>
+                            </span>
+                        </div>
+                        <div class="roi-footer">
+                            <span class="col-channel"><strong>合计</strong></span>
+                            <span class="col-invest"><strong id="totalInvest">¥380,000</strong></span>
+                            <span class="col-return"><strong id="totalReturn">¥1,020,000</strong></span>
+                            <span class="col-roi"><strong id="avgRoi">2.7x</strong></span>
+                            <span class="col-status"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: 预警与建议 -->
+            <div class="budget-row row-alerts">
+                <div class="budget-section full-width" data-section="alerts">
+                    <div class="section-header">
+                        <i data-lucide="bell"></i>
+                        <h3>预算预警与建议 <span class="en-sub">(Alerts & Recommendations)</span></h3>
+                    </div>
+                    <div class="alerts-grid">
+                        <div class="alert-card warning">
+                            <div class="alert-icon"><i data-lucide="alert-triangle"></i></div>
+                            <div class="alert-content">
+                                <div class="alert-title">效果广告超支预警</div>
+                                <div class="alert-desc" contenteditable="true" data-save-key="alert_1">
+                                    当前月度支出超预算 12%，建议控制 SEM 竞价</div>
+                            </div>
+                        </div>
+                        <div class="alert-card suggestion">
+                            <div class="alert-icon"><i data-lucide="lightbulb"></i></div>
+                            <div class="alert-content">
+                                <div class="alert-title">预算优化建议</div>
+                                <div class="alert-desc" contenteditable="true" data-save-key="alert_2">
+                                    内容营销 ROI 偏低，建议从品牌广告调拨 ¥30K 加强 SEO</div>
+                            </div>
+                        </div>
+                        <div class="alert-card info">
+                            <div class="alert-icon"><i data-lucide="info"></i></div>
+                            <div class="alert-content">
+                                <div class="alert-title">Q4 预算提醒</div>
+                                <div class="alert-desc" contenteditable="true" data-save-key="alert_3">
+                                    双11期间预留 ¥100K 应急预算，确保活动执行</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('budget_planner');
+            lucide.createIcons({
+                attrs: { class: 'icon', 'stroke-width': 2 }
+            });
+
+            // Calculate and update ROI
+            function updateROI() {
+                const rows = document.querySelectorAll('.roi-row');
+                let totalInvest = 0;
+                let totalReturn = 0;
+
+                rows.forEach(row => {
+                    const investEl = row.querySelector('.col-invest');
+                    const returnEl = row.querySelector('.col-return');
+                    const roiEl = row.querySelector('.col-roi');
+
+                    const invest = parseFloat(investEl.textContent.replace(/[¥,]/g, '')) || 0;
+                    const ret = parseFloat(returnEl.textContent.replace(/[¥,]/g, '')) || 0;
+
+                    totalInvest += invest;
+                    totalReturn += ret;
+
+                    const roi = invest > 0 ? (ret / invest).toFixed(1) : 0;
+                    roiEl.textContent = roi + 'x';
+                });
+
+                document.getElementById('totalInvest').textContent = '¥' + totalInvest.toLocaleString();
+                document.getElementById('totalReturn').textContent = '¥' + totalReturn.toLocaleString();
+                document.getElementById('avgRoi').textContent = totalInvest > 0 ? (totalReturn / totalInvest).toFixed(1) + 'x' : '0x';
+            }
+
+            // Listen for changes in ROI table
+            document.querySelectorAll('.roi-row [contenteditable]').forEach(el => {
+                el.addEventListener('blur', updateROI);
+            });
+
+            updateROI();
+        });
+    </script>
+</body>
+
+</html>

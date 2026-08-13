@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场定位分析 (Market Positioning Analysis)</title>
+    <meta name="description" content="市场定位分析工具，帮助您明确目标市场、价值主张和竞争优势，制定差异化策略。">
+    <meta name="keywords" content="市场定位,竞争分析,价值主张,差异化策略,感知地图">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="市场定位分析 - Modiqi Workbench">
+    <meta property="og:description" content="明确目标市场、价值主张和竞争优势，制定差异化策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/market-positioning.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>市场定位分析</h1>
+                <span class="english-subtitle">Market Positioning Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>市场 <span class="en-sub">(Market)</span></label>
+                    <input type="text" class="meta-input" placeholder="企业SaaS" data-save-key="meta_market" aria-label="企业SaaS">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Positioning Statement -->
+        <div class="positioning-statement">
+            <h2>定位宣言 <span class="en-sub">(Positioning Statement)</span></h2>
+            <div class="statement-grid">
+                <div class="statement-item">
+                    <label>目标客户:</label>
+                    <textarea placeholder="描述目标客户群..."
+                        data-save-key="pos_target" aria-label="描述目标客户群...">中小型企业,需要高效协作工具的团队</textarea>
+                </div>
+                <div class="statement-item">
+                    <label>产品类别:</label>
+                    <textarea placeholder="产品所属类别..."
+                        data-save-key="pos_category" aria-label="产品所属类别...">云端协作管理平台</textarea>
+                </div>
+                <div class="statement-item">
+                    <label>核心利益:</label>
+                    <textarea placeholder="提供的核心价值..."
+                        data-save-key="pos_benefit" aria-label="提供的核心价值...">提升团队协作效率,降低沟通成本</textarea>
+                </div>
+                <div class="statement-item">
+                    <label>差异化优势:</label>
+                    <textarea placeholder="与竞品的差异..."
+                        data-save-key="pos_diff" aria-label="与竞品的差异...">AI驱动的智能工作流,极简用户体验</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perceptual Map & Value Proposition -->
+        <div class="analysis-grid">
+            <!-- Perceptual Map -->
+            <div class="perceptual-section">
+                <h3>感知地图 <span class="en-sub">(Perceptual Map)</span></h3>
+                <div class="perceptual-map">
+                    <div class="map-canvas">
+                        <!-- Axes -->
+                        <div class="axis vertical">
+                            <span class="axis-label top">创新</span>
+                            <span class="axis-label bottom">传统</span>
+                        </div>
+                        <div class="axis horizontal">
+                            <span class="axis-label left">低价</span>
+                            <span class="axis-label right">高价</span>
+                        </div>
+
+                        <!-- Quadrant lines -->
+                        <div class="quadrant-line v"></div>
+                        <div class="quadrant-line h"></div>
+
+                        <!-- Brands -->
+                        <div class="brand us" style="left: 55%; top: 30%;">
+                            <span contenteditable="true" data-save-key="brand_us_label">我们</span>
+                        </div>
+                        <div class="brand" style="left: 70%; top: 25%;">
+                            <span contenteditable="true" data-save-key="brand_comp_a_label">竞品A</span>
+                        </div>
+                        <div class="brand" style="left: 45%; top: 50%;">
+                            <span contenteditable="true" data-save-key="brand_comp_b_label">竞品B</span>
+                        </div>
+                        <div class="brand" style="left: 30%; top: 65%;">
+                            <span contenteditable="true" data-save-key="brand_comp_c_label">竞品C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Proposition -->
+            <div class="value-section">
+                <h3>价值主张 <span class="en-sub">(Value Proposition)</span></h3>
+                <div class="value-canvas">
+                    <div class="value-item">
+                        <div class="value-header">
+                            <i data-lucide="check-square"></i>
+                            <strong>我们提供</strong>
+                        </div>
+                        <div class="value-content" contenteditable="true" data-save-key="value_us">
+                            <ul>
+                                <li>AI智能助手,自动化重复工作</li>
+                                <li>直观界面,零学习成本</li>
+                                <li>灵活定价,按需付费</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-header">
+                            <i data-lucide="users"></i>
+                            <strong>客户获得</strong>
+                        </div>
+                        <div class="value-content" contenteditable="true" data-save-key="value_cust">
+                            <ul>
+                                <li>效率提升40%</li>
+                                <li>沟通成本降低60%</li>
+                                <li>快速上手,即刻见效</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Advantages -->
+        <div class="advantages-section">
+            <h2>竞争优势与劣势</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card strengths">
+                    <div class="card-header">
+                        <i data-lucide="trending-up"></i>
+                        <h3>优势 <span class="en-sub">(Strengths)</span></h3>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-save-key="swot_strengths">
+                        <ul>
+                            <li>技术领先:AI驱动的智能功能</li>
+                            <li>用户体验:简洁直观的界面设计</li>
+                            <li>快速迭代:每月发布新功能</li>
+                            <li>客户服务:7×24小时响应</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="advantage-card weaknesses">
+                    <div class="card-header">
+                        <i data-lucide="trending-down"></i>
+                        <h3>劣势 <span class="en-sub">(Weaknesses)</span></h3>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-save-key="swot_weaknesses">
+                        <ul>
+                            <li>品牌知名度:市场认知度较低</li>
+                            <li>生态系统:第三方集成较少</li>
+                            <li>企业客户:大客户案例不足</li>
+                            <li>国际化:仅支持中英文</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="advantage-card opportunities">
+                    <div class="card-header">
+                        <i data-lucide="lightbulb"></i>
+                        <h3>机会 <span class="en-sub">(Opportunities)</span></h3>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-save-key="swot_opportunities">
+                        <ul>
+                            <li>市场增长:远程办公需求激增</li>
+                            <li>技术趋势:AI应用快速普及</li>
+                            <li>政策支持:数字化转型补贴</li>
+                            <li>细分市场:垂直行业定制化</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="advantage-card threats">
+                    <div class="card-header">
+                        <i data-lucide="alert-triangle"></i>
+                        <h3>威胁 <span class="en-sub">(Threats)</span></h3>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-save-key="swot_threats">
+                        <ul>
+                            <li>价格战:竞品降价抢占市场</li>
+                            <li>巨头进入:大厂推出类似产品</li>
+                            <li>用户习惯:切换成本较高</li>
+                            <li>经济环境:企业缩减IT预算</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Differentiation Strategy -->
+        <div class="strategy-section">
+            <h2>差异化策略</h2>
+            <div class="strategy-cards">
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h4 contenteditable="true" data-save-key="diff_prod_title">产品差异化</h4>
+                        <p contenteditable="true" data-save-key="diff_prod_desc">AI智能助手,自动化工作流,持续创新</p>
+                    </div>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h4 contenteditable="true" data-save-key="diff_serv_title">服务差异化</h4>
+                        <p contenteditable="true" data-save-key="diff_serv_desc">专属客户成功经理,定制化培训,快速响应</p>
+                    </div>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i data-lucide="dollar-sign"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h4 contenteditable="true" data-save-key="diff_price_title">定价差异化</h4>
+                        <p contenteditable="true" data-save-key="diff_price_desc">灵活按需付费,无隐藏费用,透明定价</p>
+                    </div>
+                </div>
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="strategy-content">
+                        <h4 contenteditable="true" data-save-key="diff_brand_title">品牌差异化</h4>
+                        <p contenteditable="true" data-save-key="diff_brand_desc">年轻活力,用户至上,开放透明的企业文化</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('market_positioning_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modiqi 设计系统文档 - Design System Documentation</title>
+
+    <meta name="description" content="Modiqi数字营销工作台设计系统完整文档,包含颜色、字体、组件等所有设计令牌和使用示例">
+
+    <!-- Fonts -->
+
+    <!-- Icons -->
+    <script src="../vendor/lucide.min.js"></script>
+
+    <!-- Modiqi Design System -->
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+
+    <style>
+        /* ============================================
+           DESIGN GUIDE SPECIFIC STYLES
+           ============================================ */
+
+        body {
+            background: var(--color-bg-desk-alt);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Header */
+        .guide-header {
+            background: var(--color-brand-primary);
+            color: white;
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: var(--z-sticky);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .guide-header h1 {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--spacing-sm);
+            color: white;
+        }
+
+        .guide-header p {
+            font-size: var(--font-size-lg);
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            margin-top: var(--spacing-md);
+        }
+
+        /* Navigation */
+        .guide-nav {
+            background: var(--color-bg-white);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-bottom: 1px solid var(--color-border-light);
+            position: sticky;
+            top: 140px;
+            z-index: var(--z-sticky);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: var(--color-bg-subtle);
+        }
+
+        .nav-link.active {
+            background: var(--color-brand-primary);
+            color: white;
+        }
+
+        /* Container */
+        .guide-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl);
+        }
+
+        /* Section */
+        .guide-section {
+            background: var(--color-bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-title {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--color-brand-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wider);
+            margin-top: var(--spacing-xs);
+        }
+
+        .section-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .color-swatch {
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .color-preview {
+            height: 100px;
+            position: relative;
+        }
+
+        .color-info {
+            padding: var(--spacing-md);
+            background: var(--color-bg-subtle);
+        }
+
+        .color-name {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+        }
+
+        .color-value {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .copy-indicator {
+            position: absolute;
+            top: var(--spacing-xs);
+            right: var(--spacing-xs);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-xs);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .color-swatch:hover .copy-indicator {
+            opacity: 1;
+        }
+
+        /* Typography */
+        .type-scale-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .type-sample {
+            border: 1px solid var(--color-border-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+        }
+
+        .type-label {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wider);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-mono);
+        }
+
+        /* Component Examples */
+        .component-grid {
+            display: grid;
+            gap: var(--spacing-2xl);
+        }
+
+        .component-example {
+            border: 1px solid var(--color-border-light);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-subtle);
+        }
+
+        .component-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .component-preview {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .component-code {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .copy-code-btn {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .copy-code-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Spacing Grid */
+        .spacing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .spacing-sample {
+            text-align: center;
+        }
+
+        .spacing-box {
+            background: var(--color-brand-blue);
+            margin: 0 auto var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+
+        .spacing-label {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .spacing-value {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+
+        /* Footer */
+        .guide-footer {
+            background: var(--color-brand-primary);
+            color: white;
+            padding: var(--spacing-2xl);
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .guide-footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .guide-footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Code Highlight */
+        .hljs-tag {
+            color: #569cd6;
+        }
+
+        .hljs-attr {
+            color: #9cdcfe;
+        }
+
+        .hljs-string {
+            color: #ce9178;
+        }
+
+        .hljs-name {
+            color: #4ec9b0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <h1>🎨 Modiqi 设计系统</h1>
+        <p class="brand-subtitle">Design System Documentation</p>
+        <span class="version-badge">Version 2.0.0</span>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="guide-nav">
+        <div class="nav-links">
+            <a href="#colors" class="nav-link active">颜色</a>
+            <a href="#typography" class="nav-link">字体</a>
+            <a href="#spacing" class="nav-link">间距</a>
+            <a href="#components" class="nav-link">组件</a>
+            <a href="#icons" class="nav-link">图标</a>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="guide-container">
+
+        <!-- Colors Section -->
+        <section id="colors" class="guide-section">
+            <h2 class="section-title">
+                <i data-lucide="palette"></i>
+                颜色系统
+                <span class="section-subtitle">Color System</span>
+            </h2>
+            <p class="section-description">
+                Modiqi设计系统使用语义化的颜色令牌,确保一致性和可维护性。点击色块可复制CSS变量名。
+            </p>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg);">品牌色</h3>
+            <div class="color-grid">
+                <div class="color-swatch" onclick="copyToClipboard('--color-brand-primary')">
+                    <div class="color-preview" style="background: var(--color-brand-primary);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-brand-primary</div>
+                        <div class="color-value">#1a1a1a</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-brand-blue')">
+                    <div class="color-preview" style="background: var(--color-brand-blue);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-brand-blue</div>
+                        <div class="color-value">#4e609f</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-brand-accent')">
+                    <div class="color-preview" style="background: var(--color-brand-accent);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-brand-accent</div>
+                        <div class="color-value">#d32f2f</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg);">背景色</h3>
+            <div class="color-grid">
+                <div class="color-swatch" onclick="copyToClipboard('--color-bg-white')">
+                    <div class="color-preview" style="background: var(--color-bg-white); border: 1px solid var(--color-border-light);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-bg-white</div>
+                        <div class="color-value">#ffffff</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-bg-paper')">
+                    <div class="color-preview" style="background: var(--color-bg-paper);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-bg-paper</div>
+                        <div class="color-value">#fdfbf7</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-bg-desk')">
+                    <div class="color-preview" style="background: var(--color-bg-desk);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-bg-desk</div>
+                        <div class="color-value">#e3dad3</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-bg-subtle')">
+                    <div class="color-preview" style="background: var(--color-bg-subtle);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-bg-subtle</div>
+                        <div class="color-value">#f8f6f3</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg);">文本色</h3>
+            <div class="color-grid">
+                <div class="color-swatch" onclick="copyToClipboard('--color-text-primary')">
+                    <div class="color-preview" style="background: var(--color-text-primary);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-text-primary</div>
+                        <div class="color-value">#1a1a1a</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-text-secondary')">
+                    <div class="color-preview" style="background: var(--color-text-secondary);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-text-secondary</div>
+                        <div class="color-value">#666666</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-text-muted')">
+                    <div class="color-preview" style="background: var(--color-text-muted);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-text-muted</div>
+                        <div class="color-value">#999999</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg);">状态色</h3>
+            <div class="color-grid">
+                <div class="color-swatch" onclick="copyToClipboard('--color-success')">
+                    <div class="color-preview" style="background: var(--color-success);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-success</div>
+                        <div class="color-value">#52c41a</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-warning')">
+                    <div class="color-preview" style="background: var(--color-warning);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-warning</div>
+                        <div class="color-value">#faad14</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-error')">
+                    <div class="color-preview" style="background: var(--color-error);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-error</div>
+                        <div class="color-value">#ff4d4f</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch" onclick="copyToClipboard('--color-info')">
+                    <div class="color-preview" style="background: var(--color-info);">
+                        <span class="copy-indicator">点击复制</span>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">--color-info</div>
+                        <div class="color-value">#1890ff</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section id="typography" class="guide-section">
+            <h2 class="section-title">
+                <i data-lucide="type"></i>
+                字体系统
+                <span class="section-subtitle">Typography System</span>
+            </h2>
+            <p class="section-description">
+                字体系统基于1.25x (大三度音程) 比例,确保视觉层次清晰。
+            </p>
+
+            <div class="type-scale-list">
+                <div class="type-sample">
+                    <div class="type-label">--font-size-4xl (35.2px)</div>
+                    <div style="font-family: var(--font-serif); font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold);">
+                        A3画布主标题 (H1)
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">--font-size-3xl (27.2px)</div>
+                    <div style="font-family: var(--font-serif); font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold);">
+                        A4画布主标题 (H1)
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">--font-size-2xl (24px)</div>
+                    <div style="font-family: var(--font-serif); font-size: var(--font-size-2xl); font-weight: var(--font-weight-semibold);">
+                        二级标题 (H2)
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">--font-size-xl (20px)</div>
+                    <div style="font-family: var(--font-sans); font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold);">
+                        三级标题 (H3) / 卡片标题
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">--font-size-base (14.4px)</div>
+                    <div style="font-family: var(--font-sans); font-size: var(--font-size-base);">
+                        基准字号 - 正文、输入框、按钮
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">--font-size-sm (12px)</div>
+                    <div style="font-family: var(--font-sans); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                        小号文字 - 标签、辅助文字
+                    </div>
+                </div>
+
+                <div class="type-sample">
+                    <div class="type-label">--font-size-xs (10.4px)</div>
+                    <div style="font-family: var(--font-sans); font-size: var(--font-size-xs); color: var(--color-text-muted);">
+                        微型文字 - 角标、超小说明
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing Section -->
+        <section id="spacing" class="guide-section">
+            <h2 class="section-title">
+                <i data-lucide="ruler"></i>
+                间距系统
+                <span class="section-subtitle">Spacing System</span>
+            </h2>
+            <p class="section-description">
+                间距系统基于8pt网格,确保视觉节奏一致。
+            </p>
+
+            <div class="spacing-grid">
+                <div class="spacing-sample">
+                    <div class="spacing-box" style="width: 4px; height: 4px;"></div>
+                    <div class="spacing-label">--spacing-xs</div>
+                    <div class="spacing-value">4px</div>
+                </div>
+
+                <div class="spacing-sample">
+                    <div class="spacing-box" style="width: 8px; height: 8px;"></div>
+                    <div class="spacing-label">--spacing-sm</div>
+                    <div class="spacing-value">8px</div>
+                </div>
+
+                <div class="spacing-sample">
+                    <div class="spacing-box" style="width: 16px; height: 16px;"></div>
+                    <div class="spacing-label">--spacing-md</div>
+                    <div class="spacing-value">16px</div>
+                </div>
+
+                <div class="spacing-sample">
+                    <div class="spacing-box" style="width: 24px; height: 24px;"></div>
+                    <div class="spacing-label">--spacing-lg</div>
+                    <div class="spacing-value">24px</div>
+                </div>
+
+                <div class="spacing-sample">
+                    <div class="spacing-box" style="width: 32px; height: 32px;"></div>
+                    <div class="spacing-label">--spacing-xl</div>
+                    <div class="spacing-value">32px</div>
+                </div>
+
+                <div class="spacing-sample">
+                    <div class="spacing-box" style="width: 48px; height: 48px;"></div>
+                    <div class="spacing-label">--spacing-2xl</div>
+                    <div class="spacing-value">48px</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section id="components" class="guide-section">
+            <h2 class="section-title">
+                <i data-lucide="package"></i>
+                组件库
+                <span class="section-subtitle">Component Library</span>
+            </h2>
+            <p class="section-description">
+                可复用的UI组件,可直接复制代码使用。
+            </p>
+
+            <div class="component-grid">
+                <!-- Buttons -->
+                <div class="component-example">
+                    <div class="component-title">按钮 (Buttons)</div>
+                    <div class="component-preview">
+                        <button class="btn btn-primary">主要按钮</button>
+                        <button class="btn btn-secondary">次要按钮</button>
+                        <button class="btn btn-ghost">轻量按钮</button>
+                        <button class="btn btn-danger">危险按钮</button>
+                    </div>
+                    <div class="component-code">
+                        <button class="copy-code-btn" onclick="copyCode(this)">复制代码</button>
+                        <pre><code>&lt;button class="btn btn-primary"&gt;主要按钮&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;次要按钮&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;轻量按钮&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;危险按钮&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Inputs -->
+                <div class="component-example">
+                    <div class="component-title">输入框 (Inputs)</div>
+                    <div class="component-preview">
+                        <input type="text" class="input" placeholder="标准输入框">
+                        <input type="text" class="input-underline meta-input" placeholder="下划线输入框">
+                    </div>
+                    <div class="component-code">
+                        <button class="copy-code-btn" onclick="copyCode(this)">复制代码</button>
+                        <pre><code>&lt;input type="text" class="input" placeholder="标准输入框"&gt;
+&lt;input type="text" class="input-underline meta-input" placeholder="下划线输入框"&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="component-example">
+                    <div class="component-title">徽章 (Badges)</div>
+                    <div class="component-preview">
+                        <span class="badge">默认</span>
+                        <span class="badge badge-success">成功</span>
+                        <span class="badge badge-warning">警告</span>
+                        <span class="badge badge-error">错误</span>
+                        <span class="badge badge-info">信息</span>
+                    </div>
+                    <div class="component-code">
+                        <button class="copy-code-btn" onclick="copyCode(this)">复制代码</button>
+                        <pre><code>&lt;span class="badge"&gt;默认&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;成功&lt;/span&gt;
+&lt;span class="badge badge-warning"&gt;警告&lt;/span&gt;
+&lt;span class="badge badge-error"&gt;错误&lt;/span&gt;
+&lt;span class="badge badge-info"&gt;信息&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="component-example">
+                    <div class="component-title">卡片 (Card)</div>
+                    <div class="component-preview">
+                        <div class="card">
+                            <div class="card-header">
+                                <i data-lucide="info" class="icon"></i>
+                                <h3 class="card-title">卡片标题</h3>
+                            </div>
+                            <div class="card-content">
+                                这是卡片内容区域,可以放置任何内容。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-code">
+                        <button class="copy-code-btn" onclick="copyCode(this)">复制代码</button>
+                        <pre><code>&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        &lt;i data-lucide="info" class="icon"&gt;&lt;/i&gt;
+        &lt;h3 class="card-title"&gt;卡片标题&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="card-content"&gt;
+        这是卡片内容区域。
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icons Section -->
+        <section id="icons" class="guide-section">
+            <h2 class="section-title">
+                <i data-lucide="smile"></i>
+                图标系统
+                <span class="section-subtitle">Icon System</span>
+            </h2>
+            <p class="section-description">
+                使用Lucide Icons,完整图标列表请访问 <a href="https://lucide.dev/icons/" target="_blank" rel="noopener noreferrer">lucide.dev/icons</a>
+            </p>
+
+            <div class="component-example">
+                <div class="component-title">常用图标示例</div>
+                <div class="component-preview" style="display: flex; gap: var(--spacing-lg); flex-wrap: wrap;">
+                    <i data-lucide="search"></i>
+                    <i data-lucide="target"></i>
+                    <i data-lucide="bar-chart"></i>
+                    <i data-lucide="users"></i>
+                    <i data-lucide="trending-up"></i>
+                    <i data-lucide="settings"></i>
+                    <i data-lucide="save"></i>
+                    <i data-lucide="download"></i>
+                    <i data-lucide="check"></i>
+                    <i data-lucide="x"></i>
+                    <i data-lucide="alert-circle"></i>
+                    <i data-lucide="info"></i>
+                </div>
+                <div class="component-code">
+                    <button class="copy-code-btn" onclick="copyCode(this)">复制代码</button>
+                    <pre><code>&lt;i data-lucide="search"&gt;&lt;/i&gt;
+&lt;i data-lucide="target"&gt;&lt;/i&gt;
+&lt;i data-lucide="bar-chart"&gt;&lt;/i&gt;
+&lt;i data-lucide="users"&gt;&lt;/i&gt;
+
+&lt;!-- 初始化图标 --&gt;
+&lt;script&gt;
+    lucide.createIcons();
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="guide-footer">
+        <h3>📚 更多资源</h3>
+        <p style="margin: var(--spacing-md) 0;">
+            <a href="../../docs/DESIGN_SYSTEM.md">完整设计系统文档</a> &nbsp;|&nbsp;
+            <a href="../../docs/CONTRIBUTION_GUIDE.md">工具开发指南</a> &nbsp;|&nbsp;
+            <a href="../../docs/CHANGELOG.md">变更日志</a>
+        </p>
+        <p>Modiqi Design System v2.0.0 &copy; 2025</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Copy to Clipboard Function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(`var(${text})`).then(() => {
+                alert(`已复制: var(${text})`);
+            });
+        }
+
+        // Copy Code Function
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const code = codeBlock.textContent;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.textContent;
+                button.textContent = '已复制!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // Update active state
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Update active state on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.guide-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 300;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PESTEL 分析 - Modiqi Strategy Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/pestel-analysis.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>PESTEL 分析</h1>
+                <span class="english-subtitle">PESTEL Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>行业</label>
+                    <input type="text" class="meta-input" placeholder="行业名称" data-save-key="industry_name" aria-label="行业名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="pestel-grid">
+            <div class="pestel-card">
+                <div class="card-header">
+                    <i data-lucide="landmark" class="icon"></i>
+                    <div class="card-title">
+                        <h3>政治 Political</h3>
+                        <p class="title-desc">政策、法规、政府稳定性</p>
+                    </div>
+                </div>
+                <div class="factor-list">
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="political_1">政策监管趋严</div>
+                        <select class="impact-select" data-save-key="political_1_impact" aria-label="political 1 impact">
+                            <option value="high" selected>高影响</option>
+                            <option value="medium">中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="political_2">贸易政策变化</div>
+                        <select class="impact-select" data-save-key="political_2_impact" aria-label="political 2 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-factor-btn" onclick="addFactor('political')" type="button">
+                    <i data-lucide="plus" class="icon"></i>
+                </button>
+            </div>
+
+            <div class="pestel-card">
+                <div class="card-header">
+                    <i data-lucide="trending-up" class="icon"></i>
+                    <div class="card-title">
+                        <h3>经济 Economic</h3>
+                        <p class="title-desc">经济增长、通胀、汇率</p>
+                    </div>
+                </div>
+                <div class="factor-list">
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="economic_1">通货膨胀压力</div>
+                        <select class="impact-select" data-save-key="economic_1_impact" aria-label="economic 1 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="economic_2">消费能力下降</div>
+                        <select class="impact-select" data-save-key="economic_2_impact" aria-label="economic 2 impact">
+                            <option value="high" selected>高影响</option>
+                            <option value="medium">中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-factor-btn" onclick="addFactor('economic')" type="button">
+                    <i data-lucide="plus" class="icon"></i>
+                </button>
+            </div>
+
+            <div class="pestel-card">
+                <div class="card-header">
+                    <i data-lucide="users" class="icon"></i>
+                    <div class="card-title">
+                        <h3>社会 Social</h3>
+                        <p class="title-desc">人口结构、文化、价值观</p>
+                    </div>
+                </div>
+                <div class="factor-list">
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="social_1">消费者环保意识提升</div>
+                        <select class="impact-select" data-save-key="social_1_impact" aria-label="social 1 impact">
+                            <option value="high" selected>高影响</option>
+                            <option value="medium">中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="social_2">老龄化趋势</div>
+                        <select class="impact-select" data-save-key="social_2_impact" aria-label="social 2 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-factor-btn" onclick="addFactor('social')" type="button">
+                    <i data-lucide="plus" class="icon"></i>
+                </button>
+            </div>
+
+            <div class="pestel-card">
+                <div class="card-header">
+                    <i data-lucide="cpu" class="icon"></i>
+                    <div class="card-title">
+                        <h3>技术 Technological</h3>
+                        <p class="title-desc">创新、自动化、数字化</p>
+                    </div>
+                </div>
+                <div class="factor-list">
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="tech_1">AI 技术普及</div>
+                        <select class="impact-select" data-save-key="tech_1_impact" aria-label="tech 1 impact">
+                            <option value="high" selected>高影响</option>
+                            <option value="medium">中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="tech_2">5G 网络覆盖</div>
+                        <select class="impact-select" data-save-key="tech_2_impact" aria-label="tech 2 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-factor-btn" onclick="addFactor('tech')" type="button">
+                    <i data-lucide="plus" class="icon"></i>
+                </button>
+            </div>
+
+            <div class="pestel-card">
+                <div class="card-header">
+                    <i data-lucide="leaf" class="icon"></i>
+                    <div class="card-title">
+                        <h3>环境 Environmental</h3>
+                        <p class="title-desc">气候、资源、可持续性</p>
+                    </div>
+                </div>
+                <div class="factor-list">
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="env_1">碳中和目标</div>
+                        <select class="impact-select" data-save-key="env_1_impact" aria-label="env 1 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="env_2">资源短缺</div>
+                        <select class="impact-select" data-save-key="env_2_impact" aria-label="env 2 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-factor-btn" onclick="addFactor('env')" type="button">
+                    <i data-lucide="plus" class="icon"></i>
+                </button>
+            </div>
+
+            <div class="pestel-card">
+                <div class="card-header">
+                    <i data-lucide="scale" class="icon"></i>
+                    <div class="card-title">
+                        <h3>法律 Legal</h3>
+                        <p class="title-desc">法规、合规、知识产权</p>
+                    </div>
+                </div>
+                <div class="factor-list">
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="legal_1">数据隐私法规</div>
+                        <select class="impact-select" data-save-key="legal_1_impact" aria-label="legal 1 impact">
+                            <option value="high" selected>高影响</option>
+                            <option value="medium">中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                    <div class="factor-item">
+                        <div class="factor-content" contenteditable="true" data-save-key="legal_2">劳动法变更</div>
+                        <select class="impact-select" data-save-key="legal_2_impact" aria-label="legal 2 impact">
+                            <option value="high">高影响</option>
+                            <option value="medium" selected>中影响</option>
+                            <option value="low">低影响</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="add-factor-btn" onclick="addFactor('legal')" type="button">
+                    <i data-lucide="plus" class="icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="strategy-response">
+            <div class="response-header">
+                <i data-lucide="shield" class="icon"></i>
+                <h3>应对策略 <span class="en-sub">(Response Strategy)</span></h3>
+            </div>
+            <div class="response-content" contenteditable="true" data-save-key="response_strategy">基于 PESTEL 分析,建议企业重点关注技术创新和法规合规,同时密切监测经济环境变化...</div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('pestel_analysis');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function addFactor(category) {
+            const factorList = document.querySelector(`.pestel-card:has([onclick*="${category}"]) .factor-list`);
+            const timestamp = Date.now();
+            const factorItem = document.createElement('div');
+            factorItem.className = 'factor-item';
+            factorItem.innerHTML = `
+                <div class="factor-content" contenteditable="true" data-save-key="${category}_${timestamp}">新因素...</div>
+                <select class="impact-select" data-save-key="${category}_${timestamp}_impact" aria-label="${category} ${timestamp} impact">
+                    <option value="high">高影响</option>
+                    <option value="medium" selected>中影响</option>
+                    <option value="low">低影响</option>
+                </select>
+            `;
+            factorList.appendChild(factorItem);
+            factorItem.querySelector('.factor-content').focus();
+        }
+    </script>
+</body>
+</html>

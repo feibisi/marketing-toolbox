@@ -1,0 +1,230 @@
+/* Service Blueprint Layout */
+.blueprint-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 2px solid var(--border-sem-inner);
+    border-radius: 0;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+}
+
+.timeline-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    background: var(--color-bg-subtle);
+    border-bottom: 2px solid var(--border-sem-inner);
+    flex-shrink: 0;
+}
+
+.stage-column {
+    padding: var(--spacing-sm);
+    text-align: center;
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.stage-column:last-child {
+    border-right: none;
+}
+
+.stage-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+}
+
+.swimlane {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    background: var(--color-bg-paper);
+}
+
+.swimlane:last-child {
+    border-bottom: none;
+}
+
+.swimlane-label {
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border-right: 2px solid var(--border-sem-inner);
+}
+
+.swimlane-label .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.label-text h4 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.label-text p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin: 2px 0 0 0;
+}
+
+.swimlane-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    padding: var(--spacing-sm);
+}
+
+.touchpoint-card {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-normal);
+    text-align: center;
+    margin: var(--spacing-xs);
+}
+
+.touchpoint-card:hover {
+    border-color: var(--border-sem-input-hover);
+    background: var(--color-bg-hover);
+}
+
+.touchpoint-card:focus {
+    outline: none;
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+/* Dark Theme */
+body.theme-dark .swimlane {
+    background: var(--color-bg-paper);
+}
+
+/* Color Mode */
+body:not(.theme-dark).color-mode .swimlane-customer .swimlane-label {
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .swimlane-customer .swimlane-label .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-customer .touchpoint-card {
+    border-left: 3px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-frontstage .swimlane-label {
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .swimlane-frontstage .swimlane-label .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-frontstage .touchpoint-card {
+    border-left: 3px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-backstage .swimlane-label {
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .swimlane-backstage .swimlane-label .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-backstage .touchpoint-card {
+    border-left: 3px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-support .swimlane-label {
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .swimlane-support .swimlane-label .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-support .touchpoint-card {
+    border-left: 3px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-evidence .swimlane-label {
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .swimlane-evidence .swimlane-label .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .swimlane-evidence .touchpoint-card {
+    border-left: 3px solid var(--color-brand-blue);
+}
+
+/* Print Styles */
+@media print {
+    .blueprint-container {
+        page-break-inside: avoid;
+    }
+
+    .swimlane-content {
+        gap: var(--spacing-xs);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .swimlane {
+        grid-template-columns: 1fr;
+    }
+
+    .swimlane-label {
+        border-right: none;
+        border-bottom: 2px solid var(--border-sem-inner);
+    }
+
+    .swimlane-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blueprint-container { overflow: visible; }
+    .stage-header, .swimlane, .swimlane-content { grid-template-columns: 1fr; }
+}

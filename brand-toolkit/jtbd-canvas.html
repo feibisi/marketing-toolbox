@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JTBD 画布 - Modiqi Brand Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/jtbd-canvas.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>JTBD 画布</h1>
+                <span class="english-subtitle">Jobs-to-be-Done Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目</label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="core-job-section">
+            <div class="core-job-header">
+                <i data-lucide="target" class="icon"></i>
+                <h2>核心任务 Core Job</h2>
+            </div>
+            <div class="core-job-content" contenteditable="true" data-save-key="core_job">当我需要快速准备客户提案时...</div>
+        </div>
+
+        <div class="jtbd-grid">
+            <div class="jtbd-section section-functional">
+                <div class="section-header">
+                    <i data-lucide="wrench" class="icon"></i>
+                    <div class="section-title">
+                        <h3>功能性任务</h3>
+                        <p class="title-en">Functional Jobs</p>
+                    </div>
+                    <button class="add-card-btn" onclick="addCard('functional')" type="button">
+                        <i data-lucide="plus" class="icon"></i>
+                    </button>
+                </div>
+                <div class="cards-container" data-cards="functional">
+                    <div class="job-card" contenteditable="true" data-save-key="functional_1">整理和分析数据</div>
+                    <div class="job-card" contenteditable="true" data-save-key="functional_2">制作专业图表</div>
+                    <div class="job-card" contenteditable="true" data-save-key="functional_3">撰写提案文案</div>
+                </div>
+            </div>
+
+            <div class="jtbd-section section-emotional">
+                <div class="section-header">
+                    <i data-lucide="heart" class="icon"></i>
+                    <div class="section-title">
+                        <h3>情感性任务</h3>
+                        <p class="title-en">Emotional Jobs</p>
+                    </div>
+                    <button class="add-card-btn" onclick="addCard('emotional')" type="button">
+                        <i data-lucide="plus" class="icon"></i>
+                    </button>
+                </div>
+                <div class="cards-container" data-cards="emotional">
+                    <div class="job-card" contenteditable="true" data-save-key="emotional_1">感到专业和自信</div>
+                    <div class="job-card" contenteditable="true" data-save-key="emotional_2">减少焦虑和压力</div>
+                    <div class="job-card" contenteditable="true" data-save-key="emotional_3">获得成就感</div>
+                </div>
+            </div>
+
+            <div class="jtbd-section section-social">
+                <div class="section-header">
+                    <i data-lucide="users" class="icon"></i>
+                    <div class="section-title">
+                        <h3>社交性任务</h3>
+                        <p class="title-en">Social Jobs</p>
+                    </div>
+                    <button class="add-card-btn" onclick="addCard('social')" type="button">
+                        <i data-lucide="plus" class="icon"></i>
+                    </button>
+                </div>
+                <div class="cards-container" data-cards="social">
+                    <div class="job-card" contenteditable="true" data-save-key="social_1">在团队中展现能力</div>
+                    <div class="job-card" contenteditable="true" data-save-key="social_2">获得客户认可</div>
+                    <div class="job-card" contenteditable="true" data-save-key="social_3">提升职业形象</div>
+                </div>
+            </div>
+
+            <div class="jtbd-section section-solutions">
+                <div class="section-header">
+                    <i data-lucide="lightbulb" class="icon"></i>
+                    <div class="section-title">
+                        <h3>当前解决方案</h3>
+                        <p class="title-en">Current Solutions</p>
+                    </div>
+                    <button class="add-card-btn" onclick="addCard('solutions')" type="button">
+                        <i data-lucide="plus" class="icon"></i>
+                    </button>
+                </div>
+                <div class="cards-container" data-cards="solutions">
+                    <div class="job-card" contenteditable="true" data-save-key="solutions_1">PowerPoint + Excel</div>
+                    <div class="job-card" contenteditable="true" data-save-key="solutions_2">手动设计排版</div>
+                    <div class="job-card" contenteditable="true" data-save-key="solutions_3">参考历史案例</div>
+                </div>
+            </div>
+
+            <div class="jtbd-section section-pains">
+                <div class="section-header">
+                    <i data-lucide="alert-circle" class="icon"></i>
+                    <div class="section-title">
+                        <h3>痛点</h3>
+                        <p class="title-en">Pains</p>
+                    </div>
+                    <button class="add-card-btn" onclick="addCard('pains')" type="button">
+                        <i data-lucide="plus" class="icon"></i>
+                    </button>
+                </div>
+                <div class="cards-container" data-cards="pains">
+                    <div class="job-card" contenteditable="true" data-save-key="pains_1">耗时长效率低</div>
+                    <div class="job-card" contenteditable="true" data-save-key="pains_2">格式不统一</div>
+                    <div class="job-card" contenteditable="true" data-save-key="pains_3">缺乏设计灵感</div>
+                </div>
+            </div>
+
+            <div class="jtbd-section section-gains">
+                <div class="section-header">
+                    <i data-lucide="star" class="icon"></i>
+                    <div class="section-title">
+                        <h3>收益</h3>
+                        <p class="title-en">Gains</p>
+                    </div>
+                    <button class="add-card-btn" onclick="addCard('gains')" type="button">
+                        <i data-lucide="plus" class="icon"></i>
+                    </button>
+                </div>
+                <div class="cards-container" data-cards="gains">
+                    <div class="job-card" contenteditable="true" data-save-key="gains_1">节省时间成本</div>
+                    <div class="job-card" contenteditable="true" data-save-key="gains_2">提升输出质量</div>
+                    <div class="job-card" contenteditable="true" data-save-key="gains_3">标准化流程</div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('jtbd_canvas');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function addCard(section) {
+            const container = document.querySelector(`[data-cards="${section}"]`);
+            const timestamp = Date.now();
+            const card = document.createElement('div');
+            card.className = 'job-card';
+            card.contentEditable = 'true';
+            card.textContent = '新卡片...';
+            card.setAttribute('data-save-key', `${section}_${timestamp}`);
+            container.appendChild(card);
+            card.focus();
+        }
+    </script>
+</body>
+</html>

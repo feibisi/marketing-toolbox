@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌触点地图 (Brand Touchpoint Map)</title>
+    <meta name="description" content="品牌触点地图工具，帮助您系统整理客户旅程中的线上线下触点，优化品牌体验。">
+    <meta name="keywords" content="品牌触点,客户旅程,用户体验,触点管理,品牌营销">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="品牌触点地图 - Modiqi Workbench">
+    <meta property="og:description" content="系统整理客户旅程中的线上线下触点，优化品牌体验。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/touchpoint-map.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌触点地图</h1>
+                <span class="english-subtitle">Brand Touchpoint Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" value="我的品牌" data-save-key="brand_name" aria-label="brand name">
+                </div>
+                <div class="meta-group">
+                    <label>阶段 <span class="en-sub">(Stage)</span></label>
+                    <select class="meta-select" data-save-key="meta_stage" aria-label="stage">
+                        <option>全阶段 (Full Journey)</option>
+                        <option>购买前 (Pre-Purchase)</option>
+                        <option>购买时 (Purchase)</option>
+                        <option>购买后 (Post-Purchase)</option>
+                    </select>
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="touchpoint-layout">
+
+            <!-- Matrix Header Row -->
+            <div class="matrix-header">
+                <div class="header-cell empty-corner"></div>
+                <div class="header-cell stage-header">
+                    <h3>认知 (Awareness)</h3>
+                    <span class="stage-desc">首次接触 & 了解</span>
+                </div>
+                <div class="header-cell stage-header">
+                    <h3>考量 (Consideration)</h3>
+                    <span class="stage-desc">评估 & 研究</span>
+                </div>
+                <div class="header-cell stage-header">
+                    <h3>购买 (Purchase)</h3>
+                    <span class="stage-desc">决策 & 交易</span>
+                </div>
+                <div class="header-cell stage-header">
+                    <h3>保留 (Retention)</h3>
+                    <span class="stage-desc">使用 & 服务</span>
+                </div>
+                <div class="header-cell stage-header">
+                    <h3>推荐 (Advocacy)</h3>
+                    <span class="stage-desc">忠诚 & 分享</span>
+                </div>
+            </div>
+
+            <!-- Online Row -->
+            <div class="matrix-row online-row">
+                <div class="row-header">
+                    <i data-lucide="globe" class="icon"></i>
+                    <h3>线上触点<br><span class="en-label">Online</span></h3>
+                </div>
+                <!-- Cells -->
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 社交媒体&#10;• SEO/搜索&#10;• 品牌广告"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 官网&#10;• 评测文章&#10;• 比较页面"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 电商平台&#10;• 小程序&#10;• 支付体验"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 电子服务号&#10;• 用户社区&#10;• 会员系统"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 社交分享&#10;• 在线评价&#10;• 推荐奖励"></div>
+            </div>
+
+            <!-- Offline Row -->
+            <div class="matrix-row offline-row">
+                <div class="row-header">
+                    <i data-lucide="store" class="icon"></i>
+                    <h3>线下触点<br><span class="en-label">Offline</span></h3>
+                </div>
+                <!-- Cells -->
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 户外广告&#10;• 传单/DM&#10;• 展会活动"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 门店陈列&#10;• 导购咨询&#10;• 试用体验"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 收银台&#10;• 包装设计&#10;• 购物小票"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 售后服务&#10;• 维修中心&#10;• 客户关怀"></div>
+                <div class="matrix-cell" contenteditable="true" data-placeholder="• 会员活动&#10;• 口碑传播&#10;• 礼品周边"></div>
+            </div>
+
+            <!-- Experience Score -->
+            <div class="score-section">
+                <div class="score-header">
+                    <h3>体验评分 (Experience Score)</h3>
+                </div>
+                <div class="score-row">
+                    <div class="score-cell">
+                        <div class="rating-stars">
+                            <i data-lucide="star" class="star active"></i><i data-lucide="star"
+                                class="star active"></i><i data-lucide="star" class="star active"></i><i
+                                data-lucide="star" class="star"></i><i data-lucide="star" class="star"></i>
+                        </div>
+                    </div>
+                    <div class="score-cell">
+                        <div class="rating-stars">
+                            <i data-lucide="star" class="star active"></i><i data-lucide="star"
+                                class="star active"></i><i data-lucide="star" class="star active"></i><i
+                                data-lucide="star" class="star"></i><i data-lucide="star" class="star"></i>
+                        </div>
+                    </div>
+                    <div class="score-cell">
+                        <div class="rating-stars">
+                            <i data-lucide="star" class="star active"></i><i data-lucide="star"
+                                class="star active"></i><i data-lucide="star" class="star active"></i><i
+                                data-lucide="star" class="star"></i><i data-lucide="star" class="star"></i>
+                        </div>
+                    </div>
+                    <div class="score-cell">
+                        <div class="rating-stars">
+                            <i data-lucide="star" class="star active"></i><i data-lucide="star"
+                                class="star active"></i><i data-lucide="star" class="star active"></i><i
+                                data-lucide="star" class="star"></i><i data-lucide="star" class="star"></i>
+                        </div>
+                    </div>
+                    <div class="score-cell">
+                        <div class="rating-stars">
+                            <i data-lucide="star" class="star active"></i><i data-lucide="star"
+                                class="star active"></i><i data-lucide="star" class="star active"></i><i
+                                data-lucide="star" class="star"></i><i data-lucide="star" class="star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Section -->
+            <div class="analysis-section">
+                <div class="analysis-card">
+                    <div class="card-title">
+                        <i data-lucide="alert-circle" class="icon-sm"></i>
+                        <span>痛点与断点 (Pain Points)</span>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-placeholder="记录体验不佳或缺乏连接的关键触点..."></div>
+                </div>
+                <div class="analysis-card">
+                    <div class="card-title">
+                        <i data-lucide="zap" class="icon-sm"></i>
+                        <span>关键时刻 (Moments of Truth)</span>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-placeholder="识别决定客户去留的关键决策点..."></div>
+                </div>
+                <div class="analysis-card">
+                    <div class="card-title">
+                        <i data-lucide="lightbulb" class="icon-sm"></i>
+                        <span>优化机会 (Opportunities)</span>
+                    </div>
+                    <div class="card-content" contenteditable="true" data-placeholder="提出改善触点体验的具体建议..."></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('touchpoint-map');
+
+            // Star rating interaction
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', function () {
+                    const stars = this.parentElement.querySelectorAll('.star');
+                    const index = Array.from(stars).indexOf(this);
+                    stars.forEach((s, i) => {
+                        if (i <= index) s.classList.add('active');
+                        else s.classList.remove('active');
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

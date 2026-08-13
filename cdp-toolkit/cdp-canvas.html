@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户数据整合画布 (CDP Canvas) - Modiqi Workbench</title>
+    <meta name="description" content="客户数据平台(CDP)规划画布，帮助您系统规划数据源接入、身份识别、统一视图和激活渠道。">
+    <meta name="keywords" content="CDP,客户数据平台,数据整合,身份识别,营销自动化,数据治理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="客户数据整合画布 - Modiqi Workbench">
+    <meta property="og:description" content="系统规划CDP数据源、核心能力和激活渠道。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/cdp-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户数据整合画布</h1>
+                <span class="english-subtitle">Customer Data Platform Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="meta_project" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="cdp-layout">
+
+            <!-- Left Column: Data Sources -->
+            <section class="data-sources">
+                <div class="section-header">
+                    <i data-lucide="download"></i>
+                    <h3>数据源 <span class="en-sub">(Data Sources)</span></h3>
+                </div>
+
+                <div class="source-category">
+                    <h4>第一方数据 <span class="en-sub">(1st Party)</span></h4>
+                    <div class="source-item" contenteditable="true" data-save-key="source_1p_website">
+                        <i data-lucide="globe"></i>
+                        <span>网站行为数据</span>
+                    </div>
+                    <div class="source-item" contenteditable="true" data-save-key="source_1p_ecommerce">
+                        <i data-lucide="shopping-cart"></i>
+                        <span>电商交易数据</span>
+                    </div>
+                    <div class="source-item" contenteditable="true" data-save-key="source_1p_mobile">
+                        <i data-lucide="smartphone"></i>
+                        <span>移动应用数据</span>
+                    </div>
+                    <div class="source-item" contenteditable="true" data-save-key="source_1p_email">
+                        <i data-lucide="mail"></i>
+                        <span>邮件互动数据</span>
+                    </div>
+                </div>
+
+                <div class="source-category">
+                    <h4>第二方数据 <span class="en-sub">(2nd Party)</span></h4>
+                    <div class="source-item" contenteditable="true" data-save-key="source_2p_partner">
+                        <i data-lucide="handshake"></i>
+                        <span>合作伙伴数据</span>
+                    </div>
+                    <div class="source-item" contenteditable="true" data-save-key="source_2p_alliance">
+                        <i data-lucide="users"></i>
+                        <span>联盟数据</span>
+                    </div>
+                </div>
+
+                <div class="source-category">
+                    <h4>第三方数据 <span class="en-sub">(3rd Party)</span></h4>
+                    <div class="source-item" contenteditable="true" data-save-key="source_3p_demo">
+                        <i data-lucide="database"></i>
+                        <span>人口统计数据</span>
+                    </div>
+                    <div class="source-item" contenteditable="true" data-save-key="source_3p_geo">
+                        <i data-lucide="map-pin"></i>
+                        <span>地理位置数据</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center Column: CDP Core -->
+            <section class="cdp-core">
+                <div class="core-header">
+                    <i data-lucide="database"></i>
+                    <h3>CDP 核心能力 <span class="en-sub">(Core Capabilities)</span></h3>
+                </div>
+
+                <div class="capability-block">
+                    <div class="capability-title">
+                        <i data-lucide="link"></i>
+                        <span>数据整合 <span class="en-sub">(Data Integration)</span></span>
+                    </div>
+                    <div class="capability-notes" contenteditable="true" data-save-key="cap_integration">
+                        <ul>
+                            <li>ETL 流程设计？</li>
+                            <li>数据清洗规则？</li>
+                            <li>实时 vs 批处理？</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="capability-block">
+                    <div class="capability-title">
+                        <i data-lucide="user-check"></i>
+                        <span>身份识别 <span class="en-sub">(Identity Resolution)</span></span>
+                    </div>
+                    <div class="capability-notes" contenteditable="true" data-save-key="cap_identity">
+                        <ul>
+                            <li>跨设备识别方法？</li>
+                            <li>匿名用户追踪？</li>
+                            <li>ID 图谱构建？</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="capability-block">
+                    <div class="capability-title">
+                        <i data-lucide="eye"></i>
+                        <span>统一视图 <span class="en-sub">(Unified Profile)</span></span>
+                    </div>
+                    <div class="capability-notes" contenteditable="true" data-save-key="cap_profile">
+                        <ul>
+                            <li>核心属性字段？</li>
+                            <li>行为标签体系？</li>
+                            <li>实时更新机制？</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="capability-block">
+                    <div class="capability-title">
+                        <i data-lucide="filter"></i>
+                        <span>受众细分 <span class="en-sub">(Segmentation)</span></span>
+                    </div>
+                    <div class="capability-notes" contenteditable="true" data-save-key="cap_segment">
+                        <ul>
+                            <li>细分维度？</li>
+                            <li>动态 vs 静态？</li>
+                            <li>更新频率？</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Activation Channels -->
+            <section class="activation-channels">
+                <div class="section-header">
+                    <i data-lucide="send"></i>
+                    <h3>激活渠道 <span class="en-sub">(Activation)</span></h3>
+                </div>
+
+                <div class="channel-category">
+                    <h4>营销渠道 <span class="en-sub">(Marketing)</span></h4>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_email">
+                        <i data-lucide="mail"></i>
+                        <span>邮件营销</span>
+                    </div>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_sms">
+                        <i data-lucide="message-circle"></i>
+                        <span>短信营销</span>
+                    </div>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_push">
+                        <i data-lucide="megaphone"></i>
+                        <span>推送通知</span>
+                    </div>
+                </div>
+
+                <div class="channel-category">
+                    <h4>广告平台 <span class="en-sub">(Advertising)</span></h4>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_google">
+                        <i data-lucide="target"></i>
+                        <span>Google Ads</span>
+                    </div>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_facebook">
+                        <i data-lucide="share-2"></i>
+                        <span>Facebook Ads</span>
+                    </div>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_dsp">
+                        <i data-lucide="video"></i>
+                        <span>程序化广告</span>
+                    </div>
+                </div>
+
+                <div class="channel-category">
+                    <h4>分析工具 <span class="en-sub">(Analytics)</span></h4>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_bi">
+                        <i data-lucide="bar-chart"></i>
+                        <span>BI 平台</span>
+                    </div>
+                    <div class="channel-item" contenteditable="true" data-save-key="channel_attribution">
+                        <i data-lucide="activity"></i>
+                        <span>归因分析</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Bottom Section: Governance & Metrics -->
+        <div class="bottom-section">
+            <section class="governance-box">
+                <div class="box-header">
+                    <i data-lucide="shield-check"></i>
+                    <h4>数据治理 <span class="en-sub">(Data Governance)</span></h4>
+                </div>
+                <div class="governance-grid">
+                    <div class="governance-item">
+                        <strong>隐私合规:</strong>
+                        <span contenteditable="true" data-save-key="gov_privacy">GDPR, CCPA, PIPL</span>
+                    </div>
+                    <div class="governance-item">
+                        <strong>数据质量:</strong>
+                        <span contenteditable="true" data-save-key="gov_quality">准确性、完整性、一致性</span>
+                    </div>
+                    <div class="governance-item">
+                        <strong>访问控制:</strong>
+                        <span contenteditable="true" data-save-key="gov_access">基于角色的权限管理</span>
+                    </div>
+                    <div class="governance-item">
+                        <strong>数据保留:</strong>
+                        <span contenteditable="true" data-save-key="gov_retention">保留策略与删除规则</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="metrics-box">
+                <div class="box-header">
+                    <i data-lucide="trending-up"></i>
+                    <h4>关键指标 <span class="en-sub">(Key Metrics)</span></h4>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <label>数据覆盖率</label>
+                        <input type="text" class="meta-input" placeholder="85%" data-save-key="metric_coverage" aria-label="85%">
+                    </div>
+                    <div class="metric-item">
+                        <label>身份匹配率</label>
+                        <input type="text" class="meta-input" placeholder="72%" data-save-key="metric_match" aria-label="72%">
+                    </div>
+                    <div class="metric-item">
+                        <label>数据新鲜度</label>
+                        <input type="text" class="meta-input" placeholder="< 5 min" data-save-key="metric_freshness" aria-label="&lt; 5 min">
+                    </div>
+                    <div class="metric-item">
+                        <label>激活成功率</label>
+                        <input type="text" class="meta-input" placeholder="94%" data-save-key="metric_activation" aria-label="94%">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Standard Modiqi Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('cdp_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

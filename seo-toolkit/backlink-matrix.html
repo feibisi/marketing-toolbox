@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外链机会矩阵 (Backlink Opportunity Matrix)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/backlink-matrix.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/vendor/sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>外链机会矩阵</h1>
+                <span class="english-subtitle">Backlink Opportunity Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>分析主题</label>
+                    <input type="text" class="meta-input" placeholder="e.g. CRM Software" aria-label="CRM Software">
+                </div>
+            </div>
+        </header>
+
+        <div class="matrix-container">
+
+            <!-- 1. Prospect List -->
+            <div class="prospect-sidebar no-print">
+                <div class="add-prospect-form">
+                    <label style="font-size:10px;font-weight:bold;color:var(--color-text-secondary);">ADD
+                        PROSPECT</label>
+                    <input type="text" class="prospect-input" id="pName" placeholder="Domain / Site Name" aria-label="Domain / Site Name">
+                    <input type="text" class="prospect-input" id="pDA" placeholder="Est. DA (0-100)" aria-label="Est. DA (0 100)">
+                    <button class="matrix-btn" onclick="addProspect()" type="button">Add to List</button>
+                </div>
+
+                <div class="prospect-list" id="pipelineList">
+                    <!-- Cards -->
+                    <div class="prospect-card">
+                        <div class="p-name">TechCrunch</div>
+                        <div class="p-meta"><span>DA 94</span> <span>News</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Matrix -->
+            <div class="matrix-area">
+                <!-- Axis Labels -->
+                <div class="axis-label axis-y-top">High Authority</div>
+                <div class="axis-label axis-y-bottom">Low Authority</div>
+                <div class="axis-label axis-x-left">Low Relevance</div>
+                <div class="axis-label axis-x-right">High Relevance</div>
+
+                <!-- Q2: Mass Media (High Auth, Low Rel) -->
+                <div class="quadrant" id="q2">
+                    <div class="q-label">大众媒体<span class="q-sub">Mass Media (Hard)</span></div>
+                    <div class="quadrant-content sortable-zone"></div>
+                </div>
+
+                <!-- Q1: Gold Mine (High Auth, High Rel) -->
+                <div class="quadrant" id="q1" style="background:rgba(34, 197, 94, 0.05);">
+                    <div class="q-label" style="color:var(--color-success);opacity:0.8;">金矿<span class="q-sub">Gold Mine
+                            (Priority)</span></div>
+                    <div class="quadrant-content sortable-zone"></div>
+                </div>
+
+                <!-- Q3: Ignore (Low Auth, Low Rel) -->
+                <div class="quadrant" id="q3">
+                    <div class="q-label">忽略<span class="q-sub">Ignore / Spam</span></div>
+                    <div class="quadrant-content sortable-zone"></div>
+                </div>
+
+                <!-- Q4: Niche Blogs (Low Auth, High Rel) -->
+                <div class="quadrant" id="q4">
+                    <div class="q-label">垂直博客<span class="q-sub">Niche Blogs (Easy)</span></div>
+                    <div class="quadrant-content sortable-zone"></div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('backlink_matrix');
+            lucide.createIcons();
+            initDrag();
+
+            // Seed
+            addCard('pipelineList', 'Forbes', 'DA 95');
+            addCard('pipelineList', 'Local News', 'DA 45');
+        });
+
+        function initDrag() {
+            // Source
+            new Sortable(document.getElementById('pipelineList'), {
+                group: 'shared',
+                animation: 150
+            });
+
+            // Quadrants
+            const quadrants = ['q1', 'q2', 'q3', 'q4'];
+            quadrants.forEach(id => {
+                new Sortable(document.querySelector(`#${id} .quadrant-content`), {
+                    group: 'shared',
+                    animation: 150,
+                    onAdd: function (evt) {
+                        // Transform card to chip when dropped in matrix
+                        const card = evt.item;
+                        if (card.classList.contains('prospect-card')) {
+                            const name = card.querySelector('.p-name').innerText;
+                            const da = card.querySelector('.p-meta span:first-child').innerText;
+
+                            card.className = 'node-chip';
+                            card.innerHTML = `${name} <span style="opacity:0.6;font-size:9px;">${da}</span>`;
+                        }
+                    }
+                });
+            });
+        }
+
+        function addProspect() {
+            const name = document.getElementById('pName').value;
+            const da = document.getElementById('pDA').value;
+            if (!name) return;
+
+            addCard('pipelineList', name, 'DA ' + (da || '?'));
+
+            document.getElementById('pName').value = '';
+            document.getElementById('pDA').value = '';
+        }
+
+        function addCard(listId, name, meta) {
+            const div = document.createElement('div');
+            div.className = 'prospect-card';
+            div.innerHTML = `
+                <div class="p-name">${name}</div>
+                <div class="p-meta"><span>${meta}</span></div>
+            `;
+            document.getElementById(listId).appendChild(div);
+        }
+    </script>
+</body>
+
+</html>

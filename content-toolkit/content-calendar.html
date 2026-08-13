@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容日历 (Content Calendar)</title>
+    <meta name="description" content="内容日历工具，帮助您规划和管理月度内容发布计划，提升内容营销效率。">
+    <meta name="keywords" content="内容日历,内容营销,发布计划,社交媒体,博客规划">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="内容日历 - Modiqi Workbench">
+    <meta property="og:description" content="规划和管理月度内容发布计划，提升内容营销效率。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/content-calendar.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容日历</h1>
+                <span class="english-subtitle">Content Calendar</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>月份 <span class="en-sub">(Month)</span></label>
+                    <input type="month" class="meta-input" data-save-key="meta_month" aria-label="month">
+                </div>
+            </div>
+        </header>
+
+        <!-- Calendar Grid -->
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <div class="day-label">周一</div>
+                <div class="day-label">周二</div>
+                <div class="day-label">周三</div>
+                <div class="day-label">周四</div>
+                <div class="day-label">周五</div>
+                <div class="day-label">周六</div>
+                <div class="day-label">周日</div>
+            </div>
+            <div class="calendar-grid">
+                <div class="calendar-day">
+                    <span class="day-number">1</span>
+                    <div class="content-item blog">
+                        <span class="badge">博客</span>
+                        <p contenteditable="true" data-save-key="day_1_content">产品更新文章</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">2</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">3</span>
+                    <div class="content-item social">
+                        <span class="badge">社交</span>
+                        <p contenteditable="true" data-save-key="day_3_content">用户案例分享</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">4</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">5</span>
+                    <div class="content-item video">
+                        <span class="badge">视频</span>
+                        <p contenteditable="true" data-save-key="day_5_content">功能演示</p>
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">6</span>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">7</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">8</span>
+                    <div class="content-item blog">
+                        <span class="badge">博客</span>
+                        <p contenteditable="true" data-save-key="day_8_content">行业趋势分析</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">9</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">10</span>
+                    <div class="content-item email">
+                        <span class="badge">邮件</span>
+                        <p contenteditable="true" data-save-key="day_10_content">月度通讯</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">11</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">12</span>
+                    <div class="content-item social">
+                        <span class="badge">社交</span>
+                        <p contenteditable="true" data-save-key="day_12_content">活动预告</p>
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">13</span>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">14</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">15</span>
+                    <div class="content-item whitepaper">
+                        <span class="badge">白皮书</span>
+                        <p contenteditable="true" data-save-key="day_15_content">年度报告发布</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">16</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">17</span>
+                    <div class="content-item blog">
+                        <span class="badge">博客</span>
+                        <p contenteditable="true" data-save-key="day_17_content">客户成功故事</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">18</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">19</span>
+                    <div class="content-item video">
+                        <span class="badge">视频</span>
+                        <p contenteditable="true" data-save-key="day_19_content">专家访谈</p>
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">20</span>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">21</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">22</span>
+                    <div class="content-item social">
+                        <span class="badge">社交</span>
+                        <p contenteditable="true" data-save-key="day_22_content">产品小贴士</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">23</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">24</span>
+                    <div class="content-item email">
+                        <span class="badge">邮件</span>
+                        <p contenteditable="true" data-save-key="day_24_content">促销活动</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">25</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">26</span>
+                    <div class="content-item blog">
+                        <span class="badge">博客</span>
+                        <p contenteditable="true" data-save-key="day_26_content">最佳实践指南</p>
+                    </div>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">27</span>
+                </div>
+                <div class="calendar-day weekend">
+                    <span class="day-number">28</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">29</span>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">30</span>
+                    <div class="content-item social">
+                        <span class="badge">社交</span>
+                        <p contenteditable="true" data-save-key="day_30_content">月度总结</p>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <span class="day-number">31</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend-section">
+            <h3>内容类型 <span class="en-sub">(Content Types)</span></h3>
+            <div class="legend-items">
+                <div class="legend-item"><span class="badge blog">博客</span></div>
+                <div class="legend-item"><span class="badge social">社交</span></div>
+                <div class="legend-item"><span class="badge video">视频</span></div>
+                <div class="legend-item"><span class="badge email">邮件</span></div>
+                <div class="legend-item"><span class="badge whitepaper">白皮书</span></div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_calendar_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

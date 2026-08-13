@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平衡计分卡 - Modiqi Strategy Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/balanced-scorecard.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>平衡计分卡</h1>
+                <span class="english-subtitle">Balanced Scorecard</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="scorecard-grid">
+            <div class="scorecard-quadrant quadrant-financial">
+                <div class="quadrant-header">
+                    <i data-lucide="trending-up" class="icon"></i>
+                    <h3>财务 <span class="en-sub">(Financial)</span></h3>
+                </div>
+                <div class="objective-section">
+                    <label>战略目标</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="financial_objective">提升盈利能力和股东价值</div>
+                </div>
+                <div class="kpi-section">
+                    <div class="kpi-header">
+                        <label>关键指标 KPI</label>
+                        <button class="add-kpi-btn" onclick="addKPI('financial')" type="button">
+                            <i data-lucide="plus" class="icon"></i>
+                        </button>
+                    </div>
+                    <table class="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>当前值</th>
+                                <th>目标值</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody data-kpi-list="financial">
+                            <tr>
+                                <td contenteditable="true" data-save-key="financial_kpi1_name">营收增长率</td>
+                                <td><input type="text" data-save-key="financial_kpi1_current" value="15%" aria-label="financial kpi1 current"></td>
+                                <td><input type="text" data-save-key="financial_kpi1_target" value="20%" aria-label="financial kpi1 target"></td>
+                                <td><span class="status-badge status-progress">进行中</span></td>
+                            </tr>
+                            <tr>
+                                <td contenteditable="true" data-save-key="financial_kpi2_name">净利润率</td>
+                                <td><input type="text" data-save-key="financial_kpi2_current" value="12%" aria-label="financial kpi2 current"></td>
+                                <td><input type="text" data-save-key="financial_kpi2_target" value="15%" aria-label="financial kpi2 target"></td>
+                                <td><span class="status-badge status-progress">进行中</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="action-section">
+                    <label>行动计划</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="financial_action">优化成本结构、提升产品定价、拓展高利润业务</div>
+                </div>
+            </div>
+
+            <div class="scorecard-quadrant quadrant-customer">
+                <div class="quadrant-header">
+                    <i data-lucide="users" class="icon"></i>
+                    <h3>客户 <span class="en-sub">(Customer)</span></h3>
+                </div>
+                <div class="objective-section">
+                    <label>战略目标</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="customer_objective">提升客户满意度和忠诚度</div>
+                </div>
+                <div class="kpi-section">
+                    <div class="kpi-header">
+                        <label>关键指标 KPI</label>
+                        <button class="add-kpi-btn" onclick="addKPI('customer')" type="button">
+                            <i data-lucide="plus" class="icon"></i>
+                        </button>
+                    </div>
+                    <table class="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>当前值</th>
+                                <th>目标值</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody data-kpi-list="customer">
+                            <tr>
+                                <td contenteditable="true" data-save-key="customer_kpi1_name">客户满意度</td>
+                                <td><input type="text" data-save-key="customer_kpi1_current" value="85" aria-label="customer kpi1 current"></td>
+                                <td><input type="text" data-save-key="customer_kpi1_target" value="90" aria-label="customer kpi1 target"></td>
+                                <td><span class="status-badge status-progress">进行中</span></td>
+                            </tr>
+                            <tr>
+                                <td contenteditable="true" data-save-key="customer_kpi2_name">NPS净推荐值</td>
+                                <td><input type="text" data-save-key="customer_kpi2_current" value="45" aria-label="customer kpi2 current"></td>
+                                <td><input type="text" data-save-key="customer_kpi2_target" value="60" aria-label="customer kpi2 target"></td>
+                                <td><span class="status-badge status-behind">落后</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="action-section">
+                    <label>行动计划</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="customer_action">优化客户服务、建立反馈机制、提升产品体验</div>
+                </div>
+            </div>
+
+            <div class="scorecard-quadrant quadrant-process">
+                <div class="quadrant-header">
+                    <i data-lucide="settings" class="icon"></i>
+                    <h3>内部流程 <span class="en-sub">(Internal Process)</span></h3>
+                </div>
+                <div class="objective-section">
+                    <label>战略目标</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="process_objective">优化运营效率和质量</div>
+                </div>
+                <div class="kpi-section">
+                    <div class="kpi-header">
+                        <label>关键指标 KPI</label>
+                        <button class="add-kpi-btn" onclick="addKPI('process')" type="button">
+                            <i data-lucide="plus" class="icon"></i>
+                        </button>
+                    </div>
+                    <table class="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>当前值</th>
+                                <th>目标值</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody data-kpi-list="process">
+                            <tr>
+                                <td contenteditable="true" data-save-key="process_kpi1_name">订单处理时间</td>
+                                <td><input type="text" data-save-key="process_kpi1_current" value="24h" aria-label="process kpi1 current"></td>
+                                <td><input type="text" data-save-key="process_kpi1_target" value="12h" aria-label="process kpi1 target"></td>
+                                <td><span class="status-badge status-behind">落后</span></td>
+                            </tr>
+                            <tr>
+                                <td contenteditable="true" data-save-key="process_kpi2_name">产品合格率</td>
+                                <td><input type="text" data-save-key="process_kpi2_current" value="98%" aria-label="process kpi2 current"></td>
+                                <td><input type="text" data-save-key="process_kpi2_target" value="99%" aria-label="process kpi2 target"></td>
+                                <td><span class="status-badge status-progress">进行中</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="action-section">
+                    <label>行动计划</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="process_action">流程自动化、质量管理体系、供应链优化</div>
+                </div>
+            </div>
+
+            <div class="scorecard-quadrant quadrant-learning">
+                <div class="quadrant-header">
+                    <i data-lucide="graduation-cap" class="icon"></i>
+                    <h3>学习与成长 <span class="en-sub">(Learning & Growth)</span></h3>
+                </div>
+                <div class="objective-section">
+                    <label>战略目标</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="learning_objective">提升组织能力和创新力</div>
+                </div>
+                <div class="kpi-section">
+                    <div class="kpi-header">
+                        <label>关键指标 KPI</label>
+                        <button class="add-kpi-btn" onclick="addKPI('learning')" type="button">
+                            <i data-lucide="plus" class="icon"></i>
+                        </button>
+                    </div>
+                    <table class="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>当前值</th>
+                                <th>目标值</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody data-kpi-list="learning">
+                            <tr>
+                                <td contenteditable="true" data-save-key="learning_kpi1_name">员工培训完成率</td>
+                                <td><input type="text" data-save-key="learning_kpi1_current" value="70%" aria-label="learning kpi1 current"></td>
+                                <td><input type="text" data-save-key="learning_kpi1_target" value="90%" aria-label="learning kpi1 target"></td>
+                                <td><span class="status-badge status-progress">进行中</span></td>
+                            </tr>
+                            <tr>
+                                <td contenteditable="true" data-save-key="learning_kpi2_name">员工满意度</td>
+                                <td><input type="text" data-save-key="learning_kpi2_current" value="80" aria-label="learning kpi2 current"></td>
+                                <td><input type="text" data-save-key="learning_kpi2_target" value="85" aria-label="learning kpi2 target"></td>
+                                <td><span class="status-badge status-progress">进行中</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="action-section">
+                    <label>行动计划</label>
+                    <div class="editable-field" contenteditable="true" data-save-key="learning_action">人才培养计划、知识管理系统、创新激励机制</div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('balanced_scorecard');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function addKPI(quadrant) {
+            const tbody = document.querySelector(`[data-kpi-list="${quadrant}"]`);
+            const timestamp = Date.now();
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td contenteditable="true" data-save-key="${quadrant}_kpi${timestamp}_name">新指标</td>
+                <td><input type="text" data-save-key="${quadrant}_kpi${timestamp}_current" value="" aria-label="${quadrant} kpi${timestamp} current"></td>
+                <td><input type="text" data-save-key="${quadrant}_kpi${timestamp}_target" value="" aria-label="${quadrant} kpi${timestamp} target"></td>
+                <td><span class="status-badge status-progress">进行中</span></td>
+            `;
+            tbody.appendChild(row);
+        }
+    </script>
+</body>
+</html>

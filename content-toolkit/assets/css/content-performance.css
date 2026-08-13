@@ -1,0 +1,523 @@
+/* ============================================
+   Content Performance Styles
+   工具: 内容效果分析 (Content Performance)
+   
+   Design System Compliance:
+   - 使用设计令牌，禁止硬编码
+   - 无圆角 (border-radius: 0)
+   - 单色优先，支持 color-mode
+   - 使用语义边框变量
+   ============================================ */
+
+/* ========================================
+   KPI Cards Grid
+   ======================================== */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.kpi-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+}
+
+.kpi-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-bg-warm-medium);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.kpi-icon i {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.kpi-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.kpi-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+.kpi-value {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.kpi-value:focus {
+    outline: none;
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-xs);
+}
+
+/* KPI Change Indicators - Monochrome First */
+.kpi-change {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+/* Color Mode: KPI Change Colors */
+body.color-mode .kpi-change.positive {
+    color: var(--color-semantic-growth);
+}
+
+body.color-mode .kpi-change.negative {
+    color: var(--color-semantic-danger);
+}
+
+/* Color Mode: KPI Icon Colors */
+body.color-mode .kpi-icon {
+    background: var(--color-bg-info-subtle);
+    border-color: var(--color-focus-border);
+}
+
+body.color-mode .kpi-icon i {
+    color: var(--color-brand-blue);
+}
+
+/* ========================================
+   Performance Table
+   ======================================== */
+.performance-container {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.performance-container h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: var(--spacing-xs);
+}
+
+.performance-container h2 i {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+body.color-mode .performance-container h2 i {
+    color: var(--color-brand-blue);
+}
+
+.performance-table {
+    width: 100%;
+    border-collapse: collapse;
+    flex: 1;
+}
+
+.performance-table thead {
+    background: var(--color-bg-warm-medium);
+}
+
+.performance-table th {
+    padding: 0.5rem var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-align: left;
+    border-bottom: 2px solid var(--border-sem-inner);
+    color: var(--color-text-primary);
+}
+
+.col-title {
+    width: 35%;
+}
+
+.col-type {
+    width: 10%;
+}
+
+.col-date {
+    width: 12%;
+}
+
+.col-metric {
+    width: 10%;
+    text-align: center !important;
+}
+
+.col-score {
+    width: 8%;
+    text-align: center !important;
+}
+
+.performance-table tbody tr {
+    border-bottom: 1px solid var(--border-sem-dashed);
+}
+
+.performance-table tbody tr:hover {
+    background: var(--color-bg-subtle);
+}
+
+.performance-table td {
+    padding: var(--spacing-sm) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    vertical-align: middle;
+}
+
+.content-title {
+    font-weight: var(--font-weight-medium);
+}
+
+.content-title:focus {
+    outline: none;
+    background: var(--color-bg-subtle);
+}
+
+/* ========================================
+   Badges - Monochrome First
+   ======================================== */
+.badge {
+    display: inline-block;
+    padding: 0.15rem var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border-radius: 0;
+    background: var(--color-bg-warm-medium);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-sem-inner);
+}
+
+/* Color Mode: Badge Colors */
+body.color-mode .badge.blog {
+    background: var(--color-brand-blue);
+    color: white;
+    border-color: var(--color-brand-blue);
+}
+
+body.color-mode .badge.video {
+    background: var(--color-semantic-alert);
+    color: white;
+    border-color: var(--color-semantic-alert);
+}
+
+body.color-mode .badge.whitepaper {
+    background: var(--color-semantic-reflection);
+    color: white;
+    border-color: var(--color-semantic-reflection);
+}
+
+body.color-mode .badge.email {
+    background: var(--color-semantic-growth);
+    color: white;
+    border-color: var(--color-semantic-growth);
+}
+
+body.color-mode .badge.social {
+    background: var(--color-semantic-reflection);
+    color: white;
+    border-color: var(--color-semantic-reflection);
+}
+
+/* ========================================
+   Metric Values
+   ======================================== */
+.metric-value {
+    text-align: center;
+    font-weight: var(--font-weight-semibold);
+    font-feature-settings: "tnum" 1;
+}
+
+/* ========================================
+   Score Badges - Monochrome First
+   ======================================== */
+.score {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    background: var(--color-bg-warm-medium);
+    color: var(--color-text-primary);
+    border: 1px solid var(--border-sem-inner);
+}
+
+/* Color Mode: Score Colors */
+body.color-mode .score.high {
+    background: var(--color-bg-success-subtle);
+    color: var(--color-semantic-growth);
+    border-color: var(--color-semantic-growth);
+}
+
+body.color-mode .score.medium {
+    background: var(--color-semantic-alert-bg);
+    color: var(--color-semantic-alert);
+    border-color: var(--color-semantic-alert);
+}
+
+body.color-mode .score.low {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger);
+    border-color: var(--color-semantic-danger);
+}
+
+/* ========================================
+   Type Analysis Section
+   ======================================== */
+.type-analysis {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+    margin-top: auto;
+}
+
+.type-analysis h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: var(--spacing-xs);
+}
+
+.type-analysis h3 i {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+body.color-mode .type-analysis h3 i {
+    color: var(--color-brand-blue);
+}
+
+.type-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.type-card {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    text-align: center;
+}
+
+.type-card .badge {
+    margin-bottom: var(--spacing-sm);
+}
+
+.type-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+}
+
+.stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.stat-value {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   Compact Layout Variant (紧凑布局变体)
+   适用于空间受限场景，节省约 60% 垂直空间
+   ======================================== */
+
+/* 类型分析紧凑模式 */
+.type-analysis.compact {
+    padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.type-analysis.compact h3 {
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+}
+
+.type-analysis.compact .type-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+}
+
+.type-analysis.compact .type-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-sm);
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+.type-analysis.compact .type-card .badge {
+    margin-bottom: 0;
+    min-width: 54px;
+    text-align: center;
+}
+
+.type-analysis.compact .type-stats {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    margin-top: 0;
+}
+
+.type-analysis.compact .type-stats::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    background: var(--border-sem-inner);
+    margin-right: var(--spacing-xs);
+}
+
+.type-analysis.compact .type-stats:first-of-type::before {
+    display: none;
+}
+
+.type-analysis.compact .stat-label {
+    font-size: var(--font-size-xs);
+    margin-right: var(--spacing-xs);
+}
+
+.type-analysis.compact .stat-value {
+    font-size: var(--font-size-sm);
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .paper-a3 {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .kpi-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kpi-card,
+    .kpi-content {
+        min-width: 0;
+    }
+
+    .kpi-value {
+        overflow-wrap: anywhere;
+    }
+
+    .performance-container {
+        min-height: 0;
+        overflow-x: auto;
+    }
+
+    .performance-table {
+        min-width: 720px;
+    }
+
+    .type-analysis.compact .type-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .type-analysis.compact .type-card {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+    .kpi-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .type-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    /* Keep color badges visible in print for distinction */
+    .badge.blog {
+        background: var(--color-brand-blue) !important;
+        color: white !important;
+    }
+
+    .badge.video {
+        background: var(--color-semantic-alert) !important;
+        color: white !important;
+    }
+
+    .badge.whitepaper {
+        background: var(--color-semantic-reflection) !important;
+        color: white !important;
+    }
+
+    .badge.email {
+        background: var(--color-semantic-growth) !important;
+        color: white !important;
+    }
+
+    .badge.social {
+        background: var(--color-semantic-reflection) !important;
+        color: white !important;
+    }
+
+    .score.high {
+        background: var(--color-bg-success-subtle) !important;
+        color: var(--color-semantic-growth) !important;
+    }
+
+    .score.medium {
+        background: var(--color-semantic-alert-bg) !important;
+        color: var(--color-semantic-alert) !important;
+    }
+
+    .score.low {
+        background: var(--color-bg-danger-subtle) !important;
+        color: var(--color-semantic-danger) !important;
+    }
+}

@@ -1,0 +1,253 @@
+/* Porter's Five Forces - Redesigned (Card Style) */
+
+/* Layout - 3x3 Grid with spacing */
+.forces-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    grid-template-rows: 1fr 1.2fr 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    position: relative;
+    border: none;
+    /* Removed outer border */
+}
+
+/* Base Card Style for all Blocks */
+.force-block {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+}
+
+.force-block:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+
+/* ========================================
+   Specific Block Positioning & Styling
+   ======================================== */
+
+/* Center: Industry Rivalry (The Core) */
+.force-center {
+    grid-column: 2;
+    grid-row: 2;
+    border: 2px solid var(--color-brand-primary);
+    /* Distinctive border */
+    background-color: var(--color-bg-subtle);
+    z-index: 10;
+}
+
+/* Top: New Entrants */
+.force-top {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Bottom: Substitutes */
+.force-bottom {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+/* Left: Suppliers */
+.force-left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* Right: Buyers */
+.force-right {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+/* Corners (Hidden/Decorative) */
+.force-corner {
+    display: none;
+    /* Hide empty corners to clean up layout */
+}
+
+/* ========================================
+   Arrows (Visual Flow)
+   ======================================== */
+/* 
+   Using pseudo-elements to create arrows pointing TO the center.
+   Arrows are attached to the surrounding blocks.
+*/
+
+/* Arrow Base */
+.force-top::after,
+.force-bottom::after,
+.force-left::after,
+.force-right::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a3a3a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M19 12l-7 7-7-7'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Top Block -> Points Down */
+.force-top::after {
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Bottom Block -> Points Up */
+.force-bottom::after {
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+}
+
+/* Left Block -> Points Right */
+.force-left::after {
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Right Block -> Points Left */
+.force-right::after {
+    left: -22px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+
+/* ========================================
+   Internal Content Styling
+   ======================================== */
+
+.force-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    color: var(--color-text-primary);
+}
+
+.force-header .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-secondary);
+}
+
+/* Center header emphasis */
+.force-center .force-header {
+    border-bottom-color: var(--color-brand-primary);
+}
+
+.force-center .force-header .icon {
+    color: var(--color-brand-primary);
+}
+
+.force-content {
+    flex: 1;
+    outline: none;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 1em;
+}
+
+.force-content ul li {
+    margin-bottom: 0.4rem;
+}
+
+/* ========================================
+   Dark Theme Support
+   ======================================== */
+body.theme-dark .force-block {
+    background-color: var(--color-bg-paper);
+    border-color: var(--border-sem-outer);
+}
+
+body.theme-dark .force-center {
+    background-color: var(--color-bg-subtle);
+    border-color: var(--color-brand-primary);
+}
+
+/* Dark Theme - Focus Within States */
+body.theme-dark .force-block:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .force-center {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .force-top,
+body:not(.theme-dark).color-mode .force-bottom {
+    /* Threats */
+    background-color: var(--color-semantic-threat);
+}
+
+body:not(.theme-dark).color-mode .force-left,
+body:not(.theme-dark).color-mode .force-right {
+    /* Bargaining Power */
+    background-color: var(--color-semantic-opportunity);
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen {
+    .paper-a3 {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .forces-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        padding: 0;
+    }
+
+    .force-block {
+        min-height: 180px;
+    }
+
+    .force-block::after {
+        display: none;
+    }
+}

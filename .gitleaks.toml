@@ -1,0 +1,14 @@
+title = "Marketing Toolbox secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Editable field storage keys are localStorage identifiers, not credentials"
+regexTarget = "line"
+paths = [
+  '''analytics-toolkit/experiment-board\.html''',
+  '''strategy-toolkit/ansoff-matrix\.html''',
+  '''strategy-toolkit/blue-ocean-canvas\.html'''
+]
+regexes = ['''data-save-key="[a-z0-9_]+"''']

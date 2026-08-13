@@ -1,0 +1,322 @@
+/* ========================================
+   Content Calendar - Tool Specific Styles
+   Modiqi Design System Compliant
+   ======================================== */
+
+/* ========================================
+   Calendar Container
+   ======================================== */
+.calendar-container {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   Calendar Header (Day Labels)
+   ======================================== */
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.day-label {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-warm-medium);
+    border: 1px solid var(--border-sem-inner);
+}
+
+/* ========================================
+   Calendar Grid
+   ======================================== */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--spacing-xs);
+    flex: 1;
+}
+
+.calendar-day {
+    min-height: 80px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-sm);
+    position: relative;
+}
+
+.calendar-day.weekend {
+    background: var(--color-bg-subtle);
+}
+
+.calendar-day:focus-within {
+    background-color: var(--color-focus-bg);
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -2px;
+}
+
+.day-number {
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   Content Items (Monochrome First)
+   ======================================== */
+.content-item {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.content-item .badge {
+    display: inline-block;
+    padding: 0.1rem var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-xs);
+    background: var(--color-bg-warm-medium);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    /* Override components.css default */
+}
+
+.content-item p {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-snug);
+    color: var(--color-text-primary);
+    margin: 0;
+    outline: none;
+}
+
+.content-item p:focus {
+    background-color: var(--color-focus-bg);
+    padding: var(--spacing-xs);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+/* ========================================
+   Legend Section
+   ======================================== */
+.legend-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.legend-section h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: var(--spacing-sm);
+}
+
+.legend-items {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.legend-item .badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    background: var(--color-bg-warm-medium);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    /* Override components.css default */
+}
+
+/* ========================================
+   Color Mode Support
+   (Colors only appear in color mode)
+   ======================================== */
+
+/* Blog - Blue */
+body:not(.theme-dark).color-mode .content-item.blog {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .content-item.blog .badge,
+body:not(.theme-dark).color-mode .legend-item .badge.blog {
+    background-color: var(--color-brand-blue);
+    color: var(--color-bg-white);
+    border-color: var(--color-brand-blue);
+}
+
+/* Social - Pink */
+body:not(.theme-dark).color-mode .content-item.social {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .content-item.social .badge,
+body:not(.theme-dark).color-mode .legend-item .badge.social {
+    background-color: var(--color-brand-accent-light);
+    color: var(--color-bg-white);
+    border-color: var(--color-brand-accent-light);
+}
+
+/* Video - Yellow/Orange */
+body:not(.theme-dark).color-mode .content-item.video {
+    background-color: var(--color-semantic-threat);
+}
+
+body:not(.theme-dark).color-mode .content-item.video .badge,
+body:not(.theme-dark).color-mode .legend-item .badge.video {
+    background-color: var(--color-semantic-alert);
+    color: var(--color-bg-white);
+    border-color: var(--color-semantic-alert);
+}
+
+/* Email - Green */
+body:not(.theme-dark).color-mode .content-item.email {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .content-item.email .badge,
+body:not(.theme-dark).color-mode .legend-item .badge.email {
+    background-color: var(--color-semantic-growth);
+    color: var(--color-bg-white);
+    border-color: var(--color-semantic-growth);
+}
+
+/* Whitepaper - Purple */
+body:not(.theme-dark).color-mode .content-item.whitepaper {
+    background-color: var(--color-semantic-product);
+}
+
+body:not(.theme-dark).color-mode .content-item.whitepaper .badge,
+body:not(.theme-dark).color-mode .legend-item .badge.whitepaper {
+    background-color: var(--color-semantic-reflection);
+    color: var(--color-bg-white);
+    border-color: var(--color-semantic-reflection);
+}
+
+/* ========================================
+   Responsive Layout
+   ======================================== */
+@media (max-width: 1024px) {
+    .calendar-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .calendar-header {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .calendar-header .day-label:nth-child(n+5) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .paper-a3 {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .calendar-container {
+        min-height: 0;
+    }
+
+    .calendar-header {
+        display: none;
+    }
+
+    .calendar-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .calendar-day {
+        min-height: 64px;
+        padding: var(--spacing-md);
+    }
+
+    .content-item p {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+
+    /* Force 7-column grid */
+    .calendar-grid {
+        display: grid !important;
+        grid-template-columns: repeat(7, 1fr) !important;
+        gap: 2px !important;
+    }
+
+    .calendar-header {
+        display: grid !important;
+        grid-template-columns: repeat(7, 1fr) !important;
+        gap: 2px !important;
+    }
+
+    .calendar-header .day-label:nth-child(n+5) {
+        display: block !important;
+    }
+
+    .calendar-day {
+        min-height: 60px;
+        border-width: 0.5pt;
+        padding: 4px;
+    }
+
+    .calendar-container {
+        border-width: 0.5pt;
+        padding: 8px;
+    }
+
+    .legend-section {
+        border-width: 0.5pt;
+        padding: 8px;
+    }
+
+    /* Ensure content items are visible in monochrome */
+    .content-item {
+        background: var(--color-bg-subtle) !important;
+        border: 0.5pt solid var(--border-sem-inner) !important;
+    }
+
+    .content-item .badge {
+        background: var(--color-bg-warm-medium) !important;
+        color: var(--color-text-primary) !important;
+        border: 0.5pt solid var(--border-sem-inner) !important;
+    }
+}

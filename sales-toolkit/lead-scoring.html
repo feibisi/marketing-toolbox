@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户评分卡 (Lead Scoring Card)</title>
+    <meta name="description" content="客户评分卡工具，帮助您系统评估潜在客户质量，制定精准的销售优先级策略。">
+    <meta name="keywords" content="客户评分,线索评分,销售管理,MQL,SQL">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="客户评分卡 - Modiqi Workbench">
+    <meta property="og:description" content="系统评估潜在客户质量，制定精准的销售优先级策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/lead-scoring.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a4">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户评分卡</h1>
+                <span class="english-subtitle">Lead Scoring Card</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>客户名称 <span class="en-sub">(Lead)</span></label>
+                    <input type="text" class="meta-input" placeholder="Company/Contact Name" data-save-key="lead_name" aria-label="Company/Contact Name">
+                </div>
+                <div class="meta-group">
+                    <label>销售负责人 <span class="en-sub">(Owner)</span></label>
+                    <input type="text" class="meta-input" data-save-key="sales_owner" aria-label="sales owner">
+                </div>
+                <div class="meta-group">
+                    <label>评估日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="scoring-layout">
+
+            <!-- Left: Scoring Matrix -->
+            <section class="matrix-section">
+                <div class="section-header">
+                    <i data-lucide="clipboard-list" class="icon"></i>
+                    <h2>评分维度 <span class="en-label">Scoring Criteria</span></h2>
+                </div>
+
+                <!-- Demographics -->
+                <div class="criteria-block">
+                    <div class="criteria-title">
+                        <i data-lucide="building-2" class="criteria-icon"></i>
+                        <span>人口统计 (Demographics)</span>
+                    </div>
+                    <div class="criteria-rows">
+                        <div class="score-row">
+                            <span class="row-label">公司规模</span>
+                            <div class="score-selector" data-category="demo_size">
+                                <button data-score="0" type="button">N/A</button>
+                                <button data-score="5" type="button">1-50</button>
+                                <button data-score="10" type="button">50-200</button>
+                                <button data-score="20" class="selected" type="button">200+</button>
+                            </div>
+                        </div>
+                        <div class="score-row">
+                            <span class="row-label">行业匹配度</span>
+                            <div class="score-selector" data-category="demo_industry">
+                                <button data-score="0" type="button">低</button>
+                                <button data-score="10" type="button">中</button>
+                                <button data-score="20" class="selected" type="button">高</button>
+                            </div>
+                        </div>
+                        <div class="score-row">
+                            <span class="row-label">职位决策力</span>
+                            <div class="score-selector" data-category="demo_title">
+                                <button data-score="5" type="button">执行层</button>
+                                <button data-score="10" class="selected" type="button">经理</button>
+                                <button data-score="20" type="button">VP/C-Level</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behavior -->
+                <div class="criteria-block">
+                    <div class="criteria-title">
+                        <i data-lucide="mouse-pointer-click" class="criteria-icon"></i>
+                        <span>行为信号 (Behavior)</span>
+                    </div>
+                    <div class="criteria-rows">
+                        <div class="score-row">
+                            <span class="row-label">网站访问</span>
+                            <div class="score-selector" data-category="behav_visit">
+                                <button data-score="0" type="button">无</button>
+                                <button data-score="5" type="button">1-2次</button>
+                                <button data-score="10" class="selected" type="button">3-5次</button>
+                                <button data-score="15" type="button">5+次</button>
+                            </div>
+                        </div>
+                        <div class="score-row">
+                            <span class="row-label">内容下载</span>
+                            <div class="score-selector" data-category="behav_download">
+                                <button data-score="0" class="selected" type="button">无</button>
+                                <button data-score="10" type="button">白皮书</button>
+                                <button data-score="15" type="button">案例</button>
+                            </div>
+                        </div>
+                        <div class="score-row">
+                            <span class="row-label">Demo请求</span>
+                            <div class="score-selector" data-category="behav_demo">
+                                <button data-score="0" class="selected" type="button">否</button>
+                                <button data-score="25" type="button">是</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Score Summary -->
+            <aside class="summary-section">
+                <div class="score-gauge">
+                    <div class="gauge-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="gauge-bg" />
+                            <circle cx="50" cy="50" r="45" class="gauge-fill" stroke-dasharray="180 283" />
+                        </svg>
+                        <div class="gauge-value">
+                            <span class="score-number" id="totalScore">65</span>
+                            <span class="score-max">/ 100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qualification-status">
+                    <div class="status-badge mql">MQL</div>
+                    <p class="status-desc">Marketing Qualified Lead - 可进入培育流程</p>
+                </div>
+
+                <div class="action-box">
+                    <label>下一步行动 (Next Action)</label>
+                    <div class="action-input" contenteditable="true" data-placeholder="e.g. 安排首次电话沟通..."></div>
+                </div>
+
+                <div class="notes-box">
+                    <label>备注 (Notes)</label>
+                    <div class="notes-input" contenteditable="true" data-placeholder="关键洞察、顾虑点..."></div>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            const app = new ModiqiApp('lead-scoring');
+
+            // Score Selector Logic
+            document.querySelectorAll('.score-selector').forEach(selector => {
+                selector.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        selector.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+                        btn.classList.add('selected');
+                        updateTotalScore();
+                        app.saveData();
+                    });
+                });
+            });
+
+            function updateTotalScore() {
+                let total = 0;
+                document.querySelectorAll('.score-selector .selected').forEach(btn => {
+                    total += parseInt(btn.dataset.score || 0);
+                });
+                document.getElementById('totalScore').textContent = total;
+
+                // Update gauge
+                const fill = document.querySelector('.gauge-fill');
+                const dashLength = (total / 100) * 283; // Circumference approx 283 for r=45
+                fill.style.strokeDasharray = `${dashLength} 283`;
+
+                // Update status
+                const statusBadge = document.querySelector('.status-badge');
+                const statusDesc = document.querySelector('.status-desc');
+                if (total >= 75) {
+                    statusBadge.textContent = 'SQL';
+                    statusBadge.className = 'status-badge sql';
+                    statusDesc.textContent = 'Sales Qualified Lead - 可安排销售跟进';
+                } else if (total >= 40) {
+                    statusBadge.textContent = 'MQL';
+                    statusBadge.className = 'status-badge mql';
+                    statusDesc.textContent = 'Marketing Qualified Lead - 可进入培育流程';
+                } else {
+                    statusBadge.textContent = 'Cold';
+                    statusBadge.className = 'status-badge cold';
+                    statusDesc.textContent = 'Cold Lead - 需进一步培育或筛选';
+                }
+            }
+
+            updateTotalScore(); // Initial calculation
+        });
+    </script>
+</body>
+
+</html>

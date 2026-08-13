@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>营销预算分配器 (Marketing Budget Allocator)</title>
+    <meta name="description" content="营销预算分配工具，帮助您科学规划各渠道的营销投入，优化资源配置，实现最大化投资回报。">
+    <meta name="keywords" content="营销预算,预算分配,渠道投入,ROI,营销投资,资源配置">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="营销预算分配器 - Modiqi Workbench">
+    <meta property="og:description" content="科学规划营销渠道投入，优化资源配置。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/budget-allocator.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>营销预算分配器</h1>
+                <span class="english-subtitle">Marketing Budget Allocator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>总预算 <span class="en-sub">(Total)</span></label>
+                    <input type="text" class="meta-input budget-total" placeholder="¥100,000" data-save-key="total_budget"
+                        id="totalBudget" aria-label="¥100,000">
+                </div>
+                <div class="meta-group">
+                    <label>周期 <span class="en-sub">(Period)</span></label>
+                    <input type="text" class="meta-input" placeholder="Q1 2025" data-save-key="budget_period" aria-label="Q1 2025">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="budget-layout">
+            <!-- 左侧：渠道预算表 -->
+            <div class="budget-table-pane">
+                <div class="pane-header">
+                    <i data-lucide="list"></i>
+                    <h2>渠道预算明细 <span class="en-sub">(Channel Budget)</span></h2>
+                </div>
+
+                <div class="budget-table">
+                    <div class="table-header">
+                        <span class="col-channel">渠道 <span class="en-sub">Channel</span></span>
+                        <span class="col-amount">预算金额 <span class="en-sub">Amount</span></span>
+                        <span class="col-percent">占比 <span class="en-sub">%</span></span>
+                        <span class="col-notes">备注 <span class="en-sub">Notes</span></span>
+                    </div>
+
+                    <div class="table-body" id="budgetTableBody">
+                        <!-- 数字广告 -->
+                        <div class="budget-row" data-channel="digital">
+                            <div class="col-channel">
+                                <i data-lucide="monitor" class="channel-icon"></i>
+                                <span class="channel-name" contenteditable="true" data-save-key="ch1_name">数字广告</span>
+                            </div>
+                            <div class="col-amount">
+                                <span class="currency">¥</span>
+                                <input type="text" class="amount-input" placeholder="0" data-save-key="ch1_amount" aria-label="0">
+                            </div>
+                            <div class="col-percent">
+                                <span class="percent-value">0%</span>
+                            </div>
+                            <div class="col-notes">
+                                <span contenteditable="true" class="notes-input" data-save-key="ch1_notes">备注</span>
+                                <button class="delete-channel-btn" title="删除渠道" type="button">
+                                    <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 社交媒体 -->
+                        <div class="budget-row" data-channel="social">
+                            <div class="col-channel">
+                                <i data-lucide="share-2" class="channel-icon"></i>
+                                <span class="channel-name" contenteditable="true" data-save-key="ch2_name">社交媒体</span>
+                            </div>
+                            <div class="col-amount">
+                                <span class="currency">¥</span>
+                                <input type="text" class="amount-input" placeholder="0" data-save-key="ch2_amount" aria-label="0">
+                            </div>
+                            <div class="col-percent">
+                                <span class="percent-value">0%</span>
+                            </div>
+                            <div class="col-notes">
+                                <span contenteditable="true" class="notes-input" data-save-key="ch2_notes">备注</span>
+                                <button class="delete-channel-btn" title="删除渠道" type="button">
+                                    <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 内容营销 -->
+                        <div class="budget-row" data-channel="content">
+                            <div class="col-channel">
+                                <i data-lucide="file-text" class="channel-icon"></i>
+                                <span class="channel-name" contenteditable="true" data-save-key="ch3_name">内容营销</span>
+                            </div>
+                            <div class="col-amount">
+                                <span class="currency">¥</span>
+                                <input type="text" class="amount-input" placeholder="0" data-save-key="ch3_amount" aria-label="0">
+                            </div>
+                            <div class="col-percent">
+                                <span class="percent-value">0%</span>
+                            </div>
+                            <div class="col-notes">
+                                <span contenteditable="true" class="notes-input" data-save-key="ch3_notes">备注</span>
+                                <button class="delete-channel-btn" title="删除渠道" type="button">
+                                    <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- KOL/KOC -->
+                        <div class="budget-row" data-channel="influencer">
+                            <div class="col-channel">
+                                <i data-lucide="user-check" class="channel-icon"></i>
+                                <span class="channel-name" contenteditable="true"
+                                    data-save-key="ch4_name">KOL/KOC</span>
+                            </div>
+                            <div class="col-amount">
+                                <span class="currency">¥</span>
+                                <input type="text" class="amount-input" placeholder="0" data-save-key="ch4_amount" aria-label="0">
+                            </div>
+                            <div class="col-percent">
+                                <span class="percent-value">0%</span>
+                            </div>
+                            <div class="col-notes">
+                                <span contenteditable="true" class="notes-input" data-save-key="ch4_notes">备注</span>
+                                <button class="delete-channel-btn" title="删除渠道" type="button">
+                                    <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 活动营销 -->
+                        <div class="budget-row" data-channel="events">
+                            <div class="col-channel">
+                                <i data-lucide="calendar" class="channel-icon"></i>
+                                <span class="channel-name" contenteditable="true" data-save-key="ch5_name">活动营销</span>
+                            </div>
+                            <div class="col-amount">
+                                <span class="currency">¥</span>
+                                <input type="text" class="amount-input" placeholder="0" data-save-key="ch5_amount" aria-label="0">
+                            </div>
+                            <div class="col-percent">
+                                <span class="percent-value">0%</span>
+                            </div>
+                            <div class="col-notes">
+                                <span contenteditable="true" class="notes-input" data-save-key="ch5_notes">备注</span>
+                                <button class="delete-channel-btn" title="删除渠道" type="button">
+                                    <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 添加渠道按钮 -->
+                    <div style="margin-top: var(--spacing-md);">
+                        <button id="addChannelBtn" style="padding: var(--spacing-sm) var(--spacing-md); border: 1px dashed var(--border-sem-dashed); background: transparent; color: var(--color-text-secondary); cursor: pointer; font-size: var(--font-size-sm); border-radius: var(--radius-sm); display: flex; align-items: center; gap: var(--spacing-xs);" type="button">
+                            <i data-lucide="plus-circle" style="width: 16px; height: 16px;"></i>
+                            <span>添加渠道</span>
+                        </button>
+                    </div>
+
+                    <!-- 合计行 -->
+                    <div class="table-footer">
+                        <span class="total-label">合计 <span class="en-sub">Total</span></span>
+                        <span class="total-amount" id="totalAllocated">¥0</span>
+                        <span class="total-percent" id="totalPercent">0%</span>
+                        <span class="total-status" id="budgetStatus">预算状态</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：可视化 -->
+            <div class="budget-visual-pane">
+                <div class="pane-header">
+                    <i data-lucide="pie-chart"></i>
+                    <h2>预算分配可视化 <span class="en-sub">(Visualization)</span></h2>
+                </div>
+
+                <!-- 条形图 -->
+                <div class="bar-chart" id="barChart">
+                    <div class="bar-item" data-channel="digital">
+                        <span class="bar-label">数字广告</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="bar-value">0%</span>
+                    </div>
+                    <div class="bar-item" data-channel="social">
+                        <span class="bar-label">社交媒体</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="bar-value">0%</span>
+                    </div>
+                    <div class="bar-item" data-channel="content">
+                        <span class="bar-label">内容营销</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="bar-value">0%</span>
+                    </div>
+                    <div class="bar-item" data-channel="influencer">
+                        <span class="bar-label">KOL/KOC</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="bar-value">0%</span>
+                    </div>
+                    <div class="bar-item" data-channel="events">
+                        <span class="bar-label">活动营销</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="bar-value">0%</span>
+                    </div>
+                </div>
+
+                <!-- 预算分配建议 -->
+                <div class="budget-tips">
+                    <div class="tips-header">
+                        <i data-lucide="lightbulb"></i>
+                        <h3>分配建议 <span class="en-sub">(Tips)</span></h3>
+                    </div>
+                    <div class="tips-content" contenteditable="true" data-save-key="budget_tips">
+                        <ul>
+                            <li>根据渠道特点合理分配预算</li>
+                            <li>考虑历史数据和ROI表现</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('budget_allocator_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // Budget calculation logic
+            const totalBudgetInput = document.getElementById('totalBudget');
+            const budgetTableBody = document.getElementById('budgetTableBody');
+            const barChart = document.getElementById('barChart');
+            const addChannelBtn = document.getElementById('addChannelBtn');
+            const MAX_CHANNELS = 10;
+            let channelCounter = 6;
+
+            function parseCurrency(str) {
+                return parseFloat(str.replace(/[¥,]/g, '')) || 0;
+            }
+
+            function formatCurrency(num) {
+                return '¥' + num.toLocaleString('zh-CN');
+            }
+
+            function updateCalculations() {
+                const totalBudget = parseCurrency(totalBudgetInput.value);
+                let totalAllocated = 0;
+                const amountInputs = document.querySelectorAll('.amount-input');
+
+                amountInputs.forEach((input, index) => {
+                    const amount = parseCurrency(input.value);
+                    totalAllocated += amount;
+
+                    const percent = totalBudget > 0 ? (amount / totalBudget * 100) : 0;
+                    const row = input.closest('.budget-row');
+                    const percentEl = row.querySelector('.percent-value');
+                    percentEl.textContent = percent.toFixed(0) + '%';
+
+                    // Update bar chart
+                    const channel = row.dataset.channel;
+                    const barItem = document.querySelector(`.bar-item[data-channel="${channel}"]`);
+                    if (barItem) {
+                        barItem.querySelector('.bar-fill').style.width = percent + '%';
+                        barItem.querySelector('.bar-value').textContent = percent.toFixed(0) + '%';
+                    }
+                });
+
+                document.getElementById('totalAllocated').textContent = formatCurrency(totalAllocated);
+                const totalPercent = totalBudget > 0 ? (totalAllocated / totalBudget * 100) : 0;
+                document.getElementById('totalPercent').textContent = totalPercent.toFixed(0) + '%';
+
+                const statusEl = document.getElementById('budgetStatus');
+                if (Math.abs(totalAllocated - totalBudget) < 1) {
+                    statusEl.textContent = '✓ 预算平衡';
+                    statusEl.className = 'total-status status-balanced';
+                } else if (totalAllocated > totalBudget) {
+                    statusEl.textContent = '⚠ 超出预算';
+                    statusEl.className = 'total-status status-over';
+                } else {
+                    statusEl.textContent = '△ 有剩余';
+                    statusEl.className = 'total-status status-under';
+                }
+            }
+
+            function updateChannelLimit() {
+                const currentCount = document.querySelectorAll('.budget-row').length;
+                budgetTableBody.setAttribute('data-row-count', currentCount);
+
+                if (currentCount >= MAX_CHANNELS) {
+                    addChannelBtn.style.display = 'none';
+                } else {
+                    addChannelBtn.style.display = 'flex';
+                }
+            }
+
+            function addChannel() {
+                const currentCount = document.querySelectorAll('.budget-row').length;
+                if (currentCount >= MAX_CHANNELS) return;
+
+                const channelId = `ch${channelCounter}`;
+                const channelDataId = `channel${channelCounter}`;
+
+                // Create new budget row
+                const newRow = document.createElement('div');
+                newRow.className = 'budget-row';
+                newRow.dataset.channel = channelDataId;
+                newRow.innerHTML = `
+                    <div class="col-channel">
+                        <i data-lucide="tag" class="channel-icon"></i>
+                        <span class="channel-name" contenteditable="true" data-save-key="${channelId}_name">新渠道</span>
+                    </div>
+                    <div class="col-amount">
+                        <span class="currency">¥</span>
+                        <input type="text" class="amount-input" placeholder="0" data-save-key="${channelId}_amount" aria-label="0">
+                    </div>
+                    <div class="col-percent">
+                        <span class="percent-value">0%</span>
+                    </div>
+                    <div class="col-notes">
+                        <span contenteditable="true" class="notes-input" data-save-key="${channelId}_notes">备注</span>
+                        <button class="delete-channel-btn" title="删除渠道" type="button">
+                            <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                        </button>
+                    </div>
+                `;
+                budgetTableBody.appendChild(newRow);
+
+                // Create new bar chart item
+                const newBarItem = document.createElement('div');
+                newBarItem.className = 'bar-item';
+                newBarItem.dataset.channel = channelDataId;
+                newBarItem.innerHTML = `
+                    <span class="bar-label">新渠道</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="bar-value">0%</span>
+                `;
+                barChart.appendChild(newBarItem);
+
+                // Reinitialize Lucide icons
+                lucide.createIcons({
+                    attrs: {
+                        class: "icon",
+                        'stroke-width': 2
+                    }
+                });
+
+                // Attach event listeners
+                const newInput = newRow.querySelector('.amount-input');
+                newInput.addEventListener('input', updateCalculations);
+
+                const deleteBtn = newRow.querySelector('.delete-channel-btn');
+                deleteBtn.addEventListener('click', () => deleteChannel(channelDataId));
+
+                // Sync channel name
+                const channelNameEl = newRow.querySelector('.channel-name');
+                const barLabelEl = newBarItem.querySelector('.bar-label');
+                channelNameEl.addEventListener('input', () => {
+                    barLabelEl.textContent = channelNameEl.textContent;
+                });
+
+                channelCounter++;
+                updateChannelLimit();
+                updateCalculations();
+            }
+
+            function deleteChannel(channelId) {
+                const row = document.querySelector(`.budget-row[data-channel="${channelId}"]`);
+                const barItem = document.querySelector(`.bar-item[data-channel="${channelId}"]`);
+
+                if (row) row.remove();
+                if (barItem) barItem.remove();
+
+                updateChannelLimit();
+                updateCalculations();
+            }
+
+            // Add channel button
+            document.getElementById('addChannelBtn').addEventListener('click', addChannel);
+
+            // Attach event listeners to existing inputs
+            document.querySelectorAll('.amount-input').forEach(input => {
+                input.addEventListener('input', updateCalculations);
+            });
+            totalBudgetInput.addEventListener('input', updateCalculations);
+
+            // Sync channel names for existing rows
+            document.querySelectorAll('.budget-row').forEach(row => {
+                const channelNameEl = row.querySelector('.channel-name');
+                const channel = row.dataset.channel;
+                const barItem = document.querySelector(`.bar-item[data-channel="${channel}"]`);
+                if (barItem) {
+                    const barLabelEl = barItem.querySelector('.bar-label');
+                    channelNameEl.addEventListener('input', () => {
+                        barLabelEl.textContent = channelNameEl.textContent;
+                    });
+                }
+
+                // Attach delete button listeners
+                const deleteBtn = row.querySelector('.delete-channel-btn');
+                if (deleteBtn) {
+                    deleteBtn.addEventListener('click', () => deleteChannel(channel));
+                }
+            });
+
+            // Initial channel limit check
+            updateChannelLimit();
+
+            // Set initial demo values
+            totalBudgetInput.value = '100000';
+            const amountInputs = document.querySelectorAll('.amount-input');
+            amountInputs[0].value = '30000';
+            amountInputs[1].value = '25000';
+            amountInputs[2].value = '20000';
+            amountInputs[3].value = '15000';
+            amountInputs[4].value = '10000';
+
+            // Set demo notes
+            const notesInputs = document.querySelectorAll('.notes-input');
+            const demoNotes = ['SEM + 信息流', '微信 + 抖音', '图文 + 视频', '达人合作', '线下活动'];
+            notesInputs.forEach((note, index) => {
+                if (demoNotes[index]) note.textContent = demoNotes[index];
+            });
+
+            // Initial calculation
+            updateCalculations();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,374 @@
+/* Brand Story Template - Design System Aligned */
+/* 品牌故事模板样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.story-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+.golden-circle-container {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+.narrative-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+/* ========================================
+   头部样式
+   ======================================== */
+.circle-header,
+.narrative-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.circle-header h2,
+.narrative-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.en-label {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-left: var(--spacing-sm);
+}
+
+/* ========================================
+   黄金圈图表样式
+   ======================================== */
+.golden-circle-graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex: 1;
+    padding: var(--spacing-sm) 0;
+}
+
+.circle-layer {
+    width: 100%;
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.why-layer {
+    background: var(--color-brand-blue-dark);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.how-layer {
+    background: var(--color-brand-blue);
+    color: white;
+    width: 90%;
+    opacity: 0.9;
+}
+
+.what-layer {
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-outer);
+    width: 80%;
+}
+
+.layer-title {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.8;
+}
+
+.what-layer .layer-title {
+    color: var(--color-text-secondary);
+}
+
+.layer-content {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    outline: none;
+    min-width: 80px;
+    white-space: pre-line;
+}
+
+.why-layer .layer-content {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+}
+
+.what-layer .layer-content {
+    color: var(--color-text-primary);
+}
+
+.layer-content:empty::before {
+    content: attr(data-placeholder);
+    opacity: 0.6;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
+}
+
+/* ========================================
+   叙事弧线样式
+   ======================================== */
+.story-arc {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    flex: 1;
+}
+
+.arc-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.arc-card:hover {
+    border-color: var(--color-brand-blue);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-inner);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--color-bg-warm-light);
+}
+
+.step-num {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-text-tertiary);
+    opacity: 0.3;
+}
+
+.card-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.card-body {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.card-body label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+.story-input {
+    flex: 1;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 50px;
+}
+
+.story-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   电梯演讲区域
+   ======================================== */
+.elevator-pitch-section {
+    margin-top: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 2px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+}
+
+.pitch-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pitch-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.icon-sm {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.pitch-input {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-relaxed);
+    outline: none;
+    min-height: 30px;
+}
+
+.pitch-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-base);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .golden-circle-container,
+body.theme-dark .narrative-container {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .arc-card,
+body.theme-dark .elevator-pitch-section {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .card-header {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .why-layer {
+    background: var(--color-bg-menu);
+    /* Lighter blue/dark for contrast */
+}
+
+body.theme-dark .what-layer {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .story-layout {
+        gap: var(--spacing-md);
+    }
+
+    .why-layer,
+    .how-layer,
+    .what-layer,
+    .card-header {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .story-layout {
+        flex-direction: column;
+    }
+
+    .golden-circle-container {
+        flex: auto;
+    }
+
+    .story-arc {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a4 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        flex: none;
+    }
+
+    .story-layout,
+    .golden-circle-container,
+    .narrative-container,
+    .story-arc {
+        flex: none;
+        min-width: 0;
+        min-height: 0;
+    }
+
+    .story-arc {
+        grid-template-rows: none;
+    }
+
+    .arc-card {
+        overflow: visible;
+    }
+
+    .circle-layer,
+    .layer-content,
+    .story-input,
+    .pitch-input {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}

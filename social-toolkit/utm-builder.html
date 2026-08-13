@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM 链接构建器 (Campaign URL Builder)</title>
+    <meta name="description" content="UTM 链接构建器，快速生成带追踪参数的营销链接，支持多平台预设和历史记录管理。">
+    <meta name="keywords" content="UTM,链接构建,营销追踪,Campaign URL,社交媒体,链接管理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="UTM 链接构建器 - Modiqi Workbench">
+    <meta property="og:description" content="快速生成带追踪参数的营销链接，支持多平台预设和历史记录管理。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/utm-builder.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>UTM 链接构建器</h1>
+                <span class="english-subtitle">Social Campaign URL Builder</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>短链服务 <span class="en-sub">(Shortener)</span></label>
+                    <select class="meta-input" aria-label="Selection">
+                        <option>无 (None)</option>
+                        <option>Bit.ly (模拟)</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="utm-container">
+
+            <!-- Left: Builder Form -->
+            <div class="col-builder">
+                <div class="builder-group">
+                    <div class="input-label">网站链接 <span class="en-sub">(Website URL)</span> <span>*</span></div>
+                    <input type="text" class="builder-input" id="baseUrl" placeholder="https://www.modiqi.com"
+                        oninput="generateUrl()" aria-label="https://www.modiqi.com">
+
+                    <div class="input-label">活动来源 <span class="en-sub">(Campaign Source / utm_source)</span> <span>*</span></div>
+                    <div class="preset-pills">
+                        <span class="pill" onclick="setVal('utmSource', 'wechat')" role="button" tabindex="0">wechat</span>
+                        <span class="pill" onclick="setVal('utmSource', 'douyin')" role="button" tabindex="0">douyin</span>
+                        <span class="pill" onclick="setVal('utmSource', 'xiaohongshu')" role="button" tabindex="0">xiaohongshu</span>
+                        <span class="pill" onclick="setVal('utmSource', 'linkedin')" role="button" tabindex="0">linkedin</span>
+                    </div>
+                    <input type="text" class="builder-input" id="utmSource" placeholder="例如: wechat"
+                        oninput="generateUrl()" aria-label="wechat">
+
+                    <div class="input-label">活动媒介 <span class="en-sub">(Campaign Medium / utm_medium)</span> <span>*</span></div>
+                    <div class="preset-pills">
+                        <span class="pill" onclick="setVal('utmMedium', 'social')" role="button" tabindex="0">social</span>
+                        <span class="pill" onclick="setVal('utmMedium', 'cpc')" role="button" tabindex="0">cpc</span>
+                        <span class="pill" onclick="setVal('utmMedium', 'video')" role="button" tabindex="0">video</span>
+                        <span class="pill" onclick="setVal('utmMedium', 'kol')" role="button" tabindex="0">kol</span>
+                    </div>
+                    <input type="text" class="builder-input" id="utmMedium" placeholder="例如: social"
+                        oninput="generateUrl()" aria-label="social">
+
+                    <div class="input-label">活动名称 <span class="en-sub">(Campaign Name / utm_campaign)</span> <span>*</span></div>
+                    <div class="preset-pills">
+                        <span class="pill" onclick="setVal('utmCampaign', 'black_friday')" role="button" tabindex="0">black_friday</span>
+                        <span class="pill" onclick="setVal('utmCampaign', 'new_product')" role="button" tabindex="0">new_product</span>
+                    </div>
+                    <input type="text" class="builder-input" id="utmCampaign" placeholder="例如: summer_sale"
+                        oninput="generateUrl()" aria-label="summer sale">
+
+                    <div class="input-label">活动内容 <span class="en-sub">(Campaign Content / utm_content)</span></div>
+                    <input type="text" class="builder-input" id="utmContent" placeholder="例如: video_v1"
+                        oninput="generateUrl()" aria-label="video v1">
+                </div>
+            </div>
+
+            <!-- Right: Result -->
+            <div class="col-result">
+                <div class="result-card">
+                    <div class="result-url" id="finalUrl">https://www.modiqi.com?utm_source=...</div>
+                    <div class="action-row">
+                        <button class="action-btn" onclick="copyUrl()" type="button">
+                            <i data-lucide="copy"></i> 复制链接
+                        </button>
+                        <button class="action-btn secondary" onclick="saveToHistory()" type="button">
+                            <i data-lucide="plus"></i> 保存记录
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-title">最近生成记录 <span class="en-sub">(Recent URLs)</span></div>
+                <div class="history-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>来源 <span class="en-sub">(Source)</span></th>
+                                <th>媒介 <span class="en-sub">(Medium)</span></th>
+                                <th>活动 <span class="en-sub">(Campaign)</span></th>
+                                <th>日期 <span class="en-sub">(Date)</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody">
+                            <!-- JS Injected -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('utm_builder');
+            lucide.createIcons();
+            generateUrl(); // Init
+        });
+
+        function setVal(id, val) {
+            document.getElementById(id).value = val;
+            generateUrl();
+        }
+
+        function generateUrl() {
+            const base = document.getElementById('baseUrl').value.trim() || 'https://www.modiqi.com';
+            const source = document.getElementById('utmSource').value.trim();
+            const medium = document.getElementById('utmMedium').value.trim();
+            const campaign = document.getElementById('utmCampaign').value.trim();
+            const content = document.getElementById('utmContent').value.trim();
+
+            let url = base;
+            const params = [];
+            if (source) params.push(`utm_source=${encodeURIComponent(source)}`);
+            if (medium) params.push(`utm_medium=${encodeURIComponent(medium)}`);
+            if (campaign) params.push(`utm_campaign=${encodeURIComponent(campaign)}`);
+            if (content) params.push(`utm_content=${encodeURIComponent(content)}`);
+
+            if (params.length > 0) {
+                url += (url.includes('?') ? '&' : '?') + params.join('&');
+            }
+
+            document.getElementById('finalUrl').innerText = url;
+        }
+
+        function copyUrl() {
+            const text = document.getElementById('finalUrl').innerText;
+            navigator.clipboard.writeText(text);
+            alert('链接已复制！(URL Copied!)');
+        }
+
+        function saveToHistory() {
+            const source = document.getElementById('utmSource').value || '-';
+            const medium = document.getElementById('utmMedium').value || '-';
+            const campaign = document.getElementById('utmCampaign').value || '-';
+            const date = new Date().toLocaleDateString();
+
+            const row = `<tr><td>${source}</td><td>${medium}</td><td>${campaign}</td><td>${date}</td></tr>`;
+            document.getElementById('historyBody').insertAdjacentHTML('afterbegin', row);
+        }
+    </script>
+</body>
+
+</html>

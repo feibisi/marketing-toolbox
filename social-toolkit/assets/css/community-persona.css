@@ -1,0 +1,456 @@
+/* Community Persona - Design System Aligned */
+/* 社群画像卡样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.persona-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+/* ========================================
+   左侧：身份信息 (Identity)
+   ======================================== */
+.col-identity {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-lg);
+    align-items: center;
+    text-align: center;
+}
+
+.avatar-section {
+    width: 140px;
+    height: 140px;
+    background: var(--color-bg-subtle);
+    border: 2px dashed var(--border-sem-dashed);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.avatar-section:hover {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-hover);
+}
+
+.avatar-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text-tertiary);
+}
+
+.avatar-icon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.5;
+}
+
+.upload-hint {
+    font-size: var(--font-size-xs);
+}
+
+.identity-fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.field-group label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.id-input {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-sm);
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid var(--border-sem-inner);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.id-input:focus {
+    border-bottom-color: var(--color-brand-blue);
+}
+
+.name-input {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.quote-box {
+    margin-top: var(--spacing-md);
+    position: relative;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border-radius: 0;
+    width: 100%;
+}
+
+.quote-icon {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    color: var(--color-brand-blue);
+    background: var(--color-bg-paper);
+    border-radius: 0;
+    padding: 4px;
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    min-height: 40px;
+    outline: none;
+}
+
+.tags-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.tags-section label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.tag {
+    padding: 4px 12px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    border: 1px solid transparent;
+    cursor: text;
+}
+
+.tag:focus {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-paper);
+    outline: none;
+}
+
+.add-tag {
+    cursor: pointer;
+    border: 1px dashed var(--border-sem-dashed);
+    background: transparent;
+}
+
+/* ========================================
+   中间与右侧：通用卡片样式
+   ======================================== */
+.col-psychology,
+.col-behavior {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.card-block {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.highlight-block {
+    background: var(--color-bg-warm-light);
+    border-color: var(--border-sem-outer);
+}
+
+.block-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.block-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.block-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ========================================
+   具体内容区块样式
+   ======================================== */
+.split-row {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.sub-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.sub-block label,
+.field-row label,
+.matrix-item label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+}
+
+.text-area {
+    width: 100%;
+    min-height: 80px;
+    padding: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.text-area-lg {
+    @extend .text-area;
+    min-height: 120px;
+    background: var(--color-bg-paper);
+}
+
+.text-area:focus,
+.text-area-lg:focus {
+    border-color: var(--color-focus-border);
+    box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.list-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.bullet {
+    color: var(--color-brand-blue);
+    font-weight: bold;
+}
+
+.list-text {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    outline: none;
+    padding-bottom: 2px;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--color-bg-paper);
+    padding: var(--spacing-sm);
+    border-radius: 0;
+}
+
+.field-row label {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.line-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.matrix-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.rating-bar {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-bar span {
+    flex: 1;
+    height: 8px;
+    background: var(--color-bg-muted);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.rating-bar span.fill {
+    background: var(--color-brand-blue);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .col-identity {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .avatar-section {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .quote-box {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .card-block {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .highlight-block {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .field-row,
+body.theme-dark .text-area,
+body.theme-dark .text-area-lg {
+    background: var(--color-bg-paper);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .persona-layout {
+        gap: var(--spacing-md);
+    }
+
+    .rating-bar span {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .quote-box,
+    .highlight-block,
+    .avatar-section {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .persona-layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .col-identity {
+        flex: auto;
+    }
+
+    .split-row {
+        flex-direction: column;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}

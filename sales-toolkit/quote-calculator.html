@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报价计算器 (Quote Calculator)</title>
+    <meta name="description" content="报价计算器工具，帮助您快速计算项目报价，包含折扣、税费和付款条款管理。">
+    <meta name="keywords" content="报价计算,报价单,销售报价,价格计算器,商业报价">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="报价计算器 - Modiqi Workbench">
+    <meta property="og:description" content="快速计算项目报价，包含折扣、税费和付款条款管理。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/quote-calculator.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a4">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>报价计算器</h1>
+                <span class="english-subtitle">Quote Calculator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>客户 <span class="en-sub">(Client)</span></label>
+                    <input type="text" class="meta-input" placeholder="Client Name" data-save-key="quote_client" aria-label="Client Name">
+                </div>
+                <div class="meta-group">
+                    <label>有效期 <span class="en-sub">(Validity)</span></label>
+                    <input type="text" class="meta-input" value="30 天" data-save-key="quote_validity" aria-label="quote validity">
+                </div>
+                <div class="meta-group">
+                    <label>报价日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="quote-layout">
+
+            <!-- Line Items Table -->
+            <section class="items-section">
+                <table class="quote-table">
+                    <thead>
+                        <tr>
+                            <th class="col-item">服务/产品 (Item)</th>
+                            <th class="col-qty">数量 (Qty)</th>
+                            <th class="col-price">单价 (Price)</th>
+                            <th class="col-subtotal">小计 (Subtotal)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quoteBody">
+                        <tr class="line-item">
+                            <td><input type="text" class="item-name" placeholder="服务名称..." value="基础咨询服务" aria-label="服务名称..."></td>
+                            <td><input type="number" class="item-qty" value="1" min="1" aria-label="Input field"></td>
+                            <td><input type="number" class="item-price" value="5000" step="100" aria-label="Input field"></td>
+                            <td class="item-subtotal">¥ 5,000</td>
+                        </tr>
+                        <tr class="line-item">
+                            <td><input type="text" class="item-name" placeholder="服务名称..." value="实施部署" aria-label="服务名称..."></td>
+                            <td><input type="number" class="item-qty" value="2" min="1" aria-label="Input field"></td>
+                            <td><input type="number" class="item-price" value="8000" step="100" aria-label="Input field"></td>
+                            <td class="item-subtotal">¥ 16,000</td>
+                        </tr>
+                        <tr class="line-item">
+                            <td><input type="text" class="item-name" placeholder="服务名称..." aria-label="服务名称..."></td>
+                            <td><input type="number" class="item-qty" value="1" min="1" aria-label="Input field"></td>
+                            <td><input type="number" class="item-price" value="0" step="100" aria-label="Input field"></td>
+                            <td class="item-subtotal">¥ 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-row-btn" id="addRowBtn" type="button">
+                    <i data-lucide="plus-circle"></i> 添加项目
+                </button>
+            </section>
+
+            <!-- Summary & Terms -->
+            <aside class="summary-section">
+                <div class="summary-block">
+                    <div class="summary-row">
+                        <span>项目小计 (Subtotal)</span>
+                        <span class="value" id="subtotalValue">¥ 21,000</span>
+                    </div>
+                    <div class="summary-row discount-row">
+                        <span>折扣 (Discount)</span>
+                        <div class="discount-input-group">
+                            <input type="number" id="discountPercent" value="10" min="0" max="100" aria-label="discountPercent"> %
+                        </div>
+                        <span class="value discount" id="discountValue">- ¥ 2,100</span>
+                    </div>
+                    <div class="summary-row tax-row">
+                        <span>税费 (Tax)</span>
+                        <div class="tax-input-group">
+                            <input type="number" id="taxPercent" value="6" min="0" max="100" aria-label="taxPercent"> %
+                        </div>
+                        <span class="value" id="taxValue">+ ¥ 1,134</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>总计 (Total)</span>
+                        <span class="value total" id="totalValue">¥ 20,034</span>
+                    </div>
+                </div>
+
+                <div class="terms-block">
+                    <label>付款条款 (Payment Terms)</label>
+                    <div class="terms-content" contenteditable="true" data-placeholder="e.g. 签约时支付 50%，交付时支付 50%...">
+                    </div>
+                </div>
+
+                <div class="notes-block">
+                    <label>备注 (Notes)</label>
+                    <div class="notes-content" contenteditable="true" data-placeholder="补充说明..."></div>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            const app = new ModiqiApp('quote-calculator');
+
+            const quoteBody = document.getElementById('quoteBody');
+            const addRowBtn = document.getElementById('addRowBtn');
+
+            function formatCurrency(num) {
+                return '¥ ' + num.toLocaleString('zh-CN');
+            }
+
+            function calculateAll() {
+                let subtotal = 0;
+                quoteBody.querySelectorAll('.line-item').forEach(row => {
+                    const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+                    const price = parseFloat(row.querySelector('.item-price').value) || 0;
+                    const itemSubtotal = qty * price;
+                    row.querySelector('.item-subtotal').textContent = formatCurrency(itemSubtotal);
+                    subtotal += itemSubtotal;
+                });
+
+                const discountPercent = parseFloat(document.getElementById('discountPercent').value) || 0;
+                const taxPercent = parseFloat(document.getElementById('taxPercent').value) || 0;
+
+                const discountAmount = subtotal * (discountPercent / 100);
+                const afterDiscount = subtotal - discountAmount;
+                const taxAmount = afterDiscount * (taxPercent / 100);
+                const total = afterDiscount + taxAmount;
+
+                document.getElementById('subtotalValue').textContent = formatCurrency(subtotal);
+                document.getElementById('discountValue').textContent = '- ' + formatCurrency(discountAmount);
+                document.getElementById('taxValue').textContent = '+ ' + formatCurrency(taxAmount);
+                document.getElementById('totalValue').textContent = formatCurrency(total);
+
+                app.saveData();
+            }
+
+            // Event Listeners
+            quoteBody.addEventListener('input', calculateAll);
+            document.getElementById('discountPercent').addEventListener('input', calculateAll);
+            document.getElementById('taxPercent').addEventListener('input', calculateAll);
+
+            addRowBtn.addEventListener('click', () => {
+                const newRow = document.createElement('tr');
+                newRow.className = 'line-item';
+                newRow.innerHTML = `
+                    <td><input type="text" class="item-name" placeholder="服务名称..." aria-label="服务名称..."></td>
+                    <td><input type="number" class="item-qty" value="1" min="1" aria-label="Input field"></td>
+                    <td><input type="number" class="item-price" value="0" step="100" aria-label="Input field"></td>
+                    <td class="item-subtotal">¥ 0</td>
+                `;
+                quoteBody.appendChild(newRow);
+                calculateAll();
+            });
+
+            calculateAll(); // Initial
+        });
+    </script>
+</body>
+
+</html>

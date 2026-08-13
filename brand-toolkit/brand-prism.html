@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌棱镜模型 (Kapferer Brand Prism)</title>
+    <meta name="description" content="卡普菲雷品牌棱镜模型，从六个维度构建品牌识别系统：体格、个性、文化、关系、反映、自我形象。">
+    <meta name="keywords" content="品牌棱镜,Kapferer,品牌识别,品牌战略,Brand Prism,品牌个性">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="品牌棱镜模型 - Modiqi Workbench">
+    <meta property="og:description" content="六维度构建完整品牌识别系统。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/brand-prism.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌棱镜模型</h1>
+                <span class="english-subtitle">Kapferer Brand Prism</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="品牌名称" data-save-key="brand_name" aria-label="品牌名称">
+                </div>
+                <div class="meta-group">
+                    <label>版本 <span class="en-sub">(Version)</span></label>
+                    <input type="text" class="meta-input" placeholder="v1.0" data-save-key="version" aria-label="v1.0">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="prism-layout">
+            <!-- 发送者标签 -->
+            <div class="axis-label sender-label">
+                <span class="label-main">发送者</span>
+                <span class="label-en">Sender (Brand)</span>
+            </div>
+
+            <!-- 棱镜主体 -->
+            <div class="prism-container">
+                <!-- 外化层 (左侧) -->
+                <div class="prism-column externalization">
+                    <div class="axis-marker">
+                        <span class="marker-text">外化</span>
+                        <span class="marker-en">Externalization</span>
+                    </div>
+
+                    <!-- 体格 Physique -->
+                    <div class="prism-facet facet-physique" data-facet="physique">
+                        <div class="facet-header">
+                            <i data-lucide="eye"></i>
+                            <h3>体格 <span class="en-sub">(Physique)</span></h3>
+                        </div>
+                        <div class="facet-desc">品牌的物理特征与视觉识别</div>
+                        <div class="facet-content" contenteditable="true" data-save-key="physique">
+                            <ul>
+                                <li>标志性视觉元素</li>
+                                <li>产品外观特征</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 关系 Relationship -->
+                    <div class="prism-facet facet-relationship" data-facet="relationship">
+                        <div class="facet-header">
+                            <i data-lucide="heart-handshake"></i>
+                            <h3>关系 <span class="en-sub">(Relationship)</span></h3>
+                        </div>
+                        <div class="facet-desc">品牌与消费者的互动模式</div>
+                        <div class="facet-content" contenteditable="true" data-save-key="relationship">
+                            <ul>
+                                <li>如何对待客户</li>
+                                <li>互动情感基调</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 反映 Reflection -->
+                    <div class="prism-facet facet-reflection" data-facet="reflection">
+                        <div class="facet-header">
+                            <i data-lucide="users"></i>
+                            <h3>反映 <span class="en-sub">(Reflection)</span></h3>
+                        </div>
+                        <div class="facet-desc">典型消费者的外在形象</div>
+                        <div class="facet-content" contenteditable="true" data-save-key="reflection">
+                            <ul>
+                                <li>典型用户画像</li>
+                                <li>外界如何看待</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 中央文化 -->
+                <div class="prism-center">
+                    <div class="culture-facet" data-facet="culture">
+                        <div class="culture-header">
+                            <i data-lucide="flame"></i>
+                            <h3>文化 <span class="en-sub">(Culture)</span></h3>
+                        </div>
+                        <div class="culture-desc">品牌的核心价值观与信念</div>
+                        <div class="culture-content" contenteditable="true" data-save-key="culture">
+                            <ul>
+                                <li>核心价值观</li>
+                                <li>品牌使命愿景</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 棱镜装饰线 -->
+                    <div class="prism-lines">
+                        <div class="line line-tl"></div>
+                        <div class="line line-tr"></div>
+                        <div class="line line-bl"></div>
+                        <div class="line line-br"></div>
+                    </div>
+                </div>
+
+                <!-- 内化层 (右侧) -->
+                <div class="prism-column internalization">
+                    <div class="axis-marker">
+                        <span class="marker-text">内化</span>
+                        <span class="marker-en">Internalization</span>
+                    </div>
+
+                    <!-- 个性 Personality -->
+                    <div class="prism-facet facet-personality" data-facet="personality">
+                        <div class="facet-header">
+                            <i data-lucide="sparkles"></i>
+                            <h3>个性 <span class="en-sub">(Personality)</span></h3>
+                        </div>
+                        <div class="facet-desc">如果品牌是一个人</div>
+                        <div class="facet-content" contenteditable="true" data-save-key="personality">
+                            <ul>
+                                <li>品牌人格特质</li>
+                                <li>语言风格调性</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 文化 (镜像位置占位) -->
+                    <div class="prism-spacer"></div>
+
+                    <!-- 自我形象 Self-Image -->
+                    <div class="prism-facet facet-self-image" data-facet="self-image">
+                        <div class="facet-header">
+                            <i data-lucide="user-circle"></i>
+                            <h3>自我形象 <span class="en-sub">(Self-Image)</span></h3>
+                        </div>
+                        <div class="facet-desc">消费者使用后的自我认同</div>
+                        <div class="facet-content" contenteditable="true" data-save-key="self_image">
+                            <ul>
+                                <li>用户期望身份</li>
+                                <li>内在价值实现</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 接收者标签 -->
+            <div class="axis-label receiver-label">
+                <span class="label-main">接收者</span>
+                <span class="label-en">Receiver (Customer)</span>
+            </div>
+        </div>
+
+        <!-- 品牌精髓总结 -->
+        <div class="brand-essence">
+            <i data-lucide="gem"></i>
+            <span class="essence-label">品牌精髓:</span>
+            <div class="essence-content" contenteditable="true" data-save-key="brand_essence">
+                用一句话概括品牌的核心本质...
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_prism_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

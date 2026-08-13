@@ -1,0 +1,66 @@
+body.workspace-page {
+    min-height: 100vh;
+    background: var(--color-bg-desk);
+    color: var(--color-text-primary);
+}
+
+.workspace-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 40px 0 80px;
+}
+
+.workspace-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.workspace-nav-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.workspace-nav a, .workspace-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 9px 14px;
+    border: 1px solid var(--color-border-medium);
+    background: var(--color-bg-paper);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.workspace-button.primary { background: var(--color-brand-primary); color: var(--color-bg-white); }
+.workspace-hero { max-width: 780px; margin-bottom: 36px; }
+.workspace-kicker { color: var(--color-brand-primary); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.workspace-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.workspace-card { border: 1px solid var(--color-border-medium); background: var(--color-bg-paper); padding: 22px; }
+.workspace-card h2 { margin-top: 0; }
+.workflow-list { list-style: none; margin: 20px 0 0; padding: 0; }
+.workflow-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--color-border-light); }
+.workflow-item a { color: var(--color-text-primary); }
+.workflow-item.done a { color: var(--color-text-tertiary); text-decoration: line-through; }
+.workflow-toggle { width: 36px; height: 36px; border: 1px solid var(--color-border-medium); background: var(--color-bg-desk); cursor: pointer; }
+.workflow-progress { height: 8px; background: var(--color-bg-muted); overflow: hidden; margin-top: 16px; }
+.workflow-progress > span { display: block; height: 100%; background: var(--color-brand-primary); }
+.project-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.project-form label { display: grid; gap: 8px; font-weight: 600; }
+.project-form input, .project-form textarea, .project-form select { width: 100%; padding: 12px; border: 1px solid var(--color-border-medium); background: var(--color-bg-desk); color: var(--color-text-primary); }
+.project-form .wide { grid-column: 1 / -1; }
+.project-status { min-height: 24px; color: var(--color-brand-primary); }
+.evidence-section { margin-top: 24px; }
+.section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr); gap: 24px; align-items: start; }
+.section-heading h2 { margin-top: 0; }
+.evidence-form { margin-top: 24px; }
+.evidence-list { display: grid; gap: 12px; margin-top: 24px; }
+.evidence-empty { color: var(--color-text-tertiary); }
+.evidence-item { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 16px; border: 1px solid var(--color-border-light); background: var(--color-bg-desk); }
+.evidence-item p { margin: 0; }
+.evidence-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 10px; color: var(--color-text-secondary); font-size: 0.875rem; }
+.evidence-kind { font-weight: 700; color: var(--color-brand-primary); }
+.evidence-remove { align-self: start; min-width: 42px; min-height: 42px; border: 1px solid var(--color-border-medium); background: var(--color-bg-paper); color: var(--color-text-primary); cursor: pointer; }
+
+@media (max-width: 680px) { .project-form, .section-heading { grid-template-columns: 1fr; } }

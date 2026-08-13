@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter 内容规划器 (Content Planner)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/newsletter-planner.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/vendor/sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 portrait">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>Newsletter 内容规划器</h1>
+                <span class="english-subtitle">Newsletter Content Planner</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>主题 Subject Line</label>
+                    <input type="text" class="meta-input" placeholder="Weekly Insight #42" id="subjectLine" aria-label="Weekly Insight #42">
+                </div>
+            </div>
+        </header>
+
+        <div class="planner-container">
+
+            <!-- 1. Editor Bar -->
+            <div class="editor-bar no-print">
+                <div class="draggable-blocks" id="blockSource">
+                    <div class="block-item" data-type="header">
+                        <i data-lucide="layout-template"></i> Header
+                    </div>
+                    <div class="block-item" data-type="hero">
+                        <i data-lucide="image"></i> Hero Story
+                    </div>
+                    <div class="block-item" data-type="text">
+                        <i data-lucide="align-left"></i> Text Body
+                    </div>
+                    <div class="block-item" data-type="2col">
+                        <i data-lucide="columns"></i> 2-Col Grid
+                    </div>
+                    <div class="block-item" data-type="footer">
+                        <i data-lucide="panel-bottom"></i> Footer
+                    </div>
+                </div>
+
+                <button class="clear-btn" onclick="clearCanvas()" type="button">
+                    <i data-lucide="trash"></i> Clear
+                </button>
+            </div>
+
+            <!-- 2. Visual Canvas -->
+            <div class="email-canvas-wrapper">
+                <div class="email-frame" id="emailCanvas">
+                    <!-- Blocks will be dropped here -->
+                    <!-- Default Initial State -->
+                    <div class="email-block" data-type="header">
+                        <div class="block-actions" onclick="this.parentElement.remove()" role="button" tabindex="0">Remove</div>
+                        <div class="block-header">
+                            <div class="header-logo"></div>
+                            <div class="header-link">View in Browser</div>
+                        </div>
+                    </div>
+
+                    <div class="email-block" data-type="hero">
+                        <div class="block-actions" onclick="this.parentElement.remove()" role="button" tabindex="0">Remove</div>
+                        <div class="block-hero">
+                            <div class="hero-img">
+                                <i data-lucide="image" style="width:48px;height:48px;opacity:0.3;"></i>
+                            </div>
+                            <div class="hero-title" contenteditable="true" placeholder="Enter Headline Here..."></div>
+                            <div class="hero-text" contenteditable="true"
+                                placeholder="Enter teaser description here..."></div>
+                            <button class="btn-primary" contenteditable="true" type="button">Read More</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('newsletter_planner');
+            lucide.createIcons();
+
+            // Init Drag and Drop
+            initSortable();
+        });
+
+        function initSortable() {
+            // Source List (Clone mode)
+            new Sortable(document.getElementById('blockSource'), {
+                group: {
+                    name: 'shared',
+                    pull: 'clone',
+                    put: false
+                },
+                sort: false,
+                animation: 150
+            });
+
+            // Target Canvas
+            new Sortable(document.getElementById('emailCanvas'), {
+                group: 'shared',
+                animation: 150,
+                onAdd: function (evt) {
+                    // Replace the dropped sourced element with the actual HTML block
+                    const type = evt.item.getAttribute('data-type');
+                    const html = getBlockHTML(type);
+                    evt.item.outerHTML = html;
+                    lucide.createIcons();
+                }
+            });
+        }
+
+        function getBlockHTML(type) {
+            const removeBtn = '<div class="block-actions" onclick="this.parentElement.remove()" role="button" tabindex="0">Remove</div>';
+
+            if (type === 'header') {
+                return `
+                <div class="email-block" data-type="header">
+                    ${removeBtn}
+                    <div class="block-header">
+                        <div class="header-logo">LOGO</div>
+                        <div class="header-link" contenteditable="true">View in Browser</div>
+                    </div>
+                </div>`;
+            }
+            if (type === 'hero') {
+                return `
+                <div class="email-block" data-type="hero">
+                    ${removeBtn}
+                    <div class="block-hero">
+                        <div class="hero-img"><i data-lucide="image"></i></div>
+                        <div class="hero-title" contenteditable="true" placeholder="Headline"></div>
+                        <div class="hero-text" contenteditable="true" placeholder="Description..."></div>
+                        <button class="btn-primary" contenteditable="true" type="button">CTA Button</button>
+                    </div>
+                </div>`;
+            }
+            if (type === 'text') {
+                return `
+                <div class="email-block" data-type="text">
+                    ${removeBtn}
+                    <div class="block-text">
+                        <p contenteditable="true" placeholder="Write your paragraph text here..."></p>
+                    </div>
+                </div>`;
+            }
+            if (type === '2col') {
+                return `
+                 <div class="email-block" data-type="2col">
+                    ${removeBtn}
+                    <div class="block-2col">
+                        <div class="col-card">
+                            <div class="col-img"></div>
+                            <div style="font-weight:bold;margin-bottom:4px;" contenteditable="true">Title 1</div>
+                            <div style="font-size:12px;" contenteditable="true">Desc 1</div>
+                        </div>
+                         <div class="col-card">
+                            <div class="col-img"></div>
+                            <div style="font-weight:bold;margin-bottom:4px;" contenteditable="true">Title 2</div>
+                            <div style="font-size:12px;" contenteditable="true">Desc 2</div>
+                        </div>
+                    </div>
+                </div>`;
+            }
+            if (type === 'footer') {
+                return `
+                <div class="email-block" data-type="footer">
+                    ${removeBtn}
+                    <div class="block-footer">
+                        <p contenteditable="true">© 2026 Company Name. All rights reserved.</p>
+                        <p contenteditable="true">Unsubscribe | Update Preferences</p>
+                    </div>
+                </div>`;
+            }
+            return '';
+        }
+
+        function clearCanvas() {
+            if (confirm('清空画布？')) {
+                document.getElementById('emailCanvas').innerHTML = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

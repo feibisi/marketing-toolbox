@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌架构 (Brand Architecture)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="可视化品牌层级结构与关系">
+    <meta name="keywords" content="Brand Architecture, Brand Strategy, Portfolio Management, Branded House">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/brand-architecture.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌架构</h1>
+                <span class="english-subtitle">Brand Architecture</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>架构模式 <span class="en-sub">(Model)</span></label>
+                    <select class="meta-select" id="modelSelect" data-save-key="meta_arch_model" aria-label="arch model">
+                        <option value="branded-house">单一品牌 (Branded House)</option>
+                        <option value="house-of-brands">多品牌 (House of Brands)</option>
+                        <option value="endorsed">背书品牌 (Endorsed Brands)</option>
+                        <option value="hybrid">混合模式 (Hybrid)</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="tree-container" id="treeContainer">
+
+                <!-- Level 1: Parent Brand -->
+                <div class="tree-level level-parent">
+                    <div class="brand-node node-parent" id="rootNode">
+                        <div class="node-icon"><i data-lucide="building-2"></i></div>
+                        <div class="node-content" contenteditable="true" data-placeholder="集团/母品牌 (Parent Brand)"
+                            data-save-key="arch_root"></div>
+                    </div>
+                </div>
+
+                <!-- Connector Line (Vertical) -->
+                <div class="tree-connector-vertical"></div>
+
+                <!-- Level 2: Sub-brands / Business Units -->
+                <div class="tree-level level-children" id="childrenContainer">
+
+                    <!-- Child 1 -->
+                    <div class="brand-branch">
+                        <div class="tree-connector-top"></div>
+                        <div class="brand-node node-child">
+                            <div class="node-type">Sub-brand</div>
+                            <div class="node-content" contenteditable="true" data-placeholder="子品牌 A"
+                                data-save-key="arch_child_1"></div>
+                        </div>
+                        <div class="tree-connector-bottom"></div>
+
+                        <!-- Level 3: Products -->
+                        <div class="level-products">
+                            <div class="product-node" contenteditable="true" data-placeholder="产品 1"
+                                data-save-key="arch_prod_1_1"></div>
+                            <div class="product-node" contenteditable="true" data-placeholder="产品 2"
+                                data-save-key="arch_prod_1_2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Child 2 -->
+                    <div class="brand-branch">
+                        <div class="tree-connector-top"></div>
+                        <div class="brand-node node-child">
+                            <div class="node-type">Sub-brand</div>
+                            <div class="node-content" contenteditable="true" data-placeholder="子品牌 B"
+                                data-save-key="arch_child_2"></div>
+                        </div>
+                        <div class="tree-connector-bottom"></div>
+
+                        <!-- Level 3: Products -->
+                        <div class="level-products">
+                            <div class="product-node" contenteditable="true" data-placeholder="产品 1"
+                                data-save-key="arch_prod_2_1"></div>
+                            <div class="product-node" contenteditable="true" data-placeholder="产品 2"
+                                data-save-key="arch_prod_2_2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Child 3 -->
+                    <div class="brand-branch">
+                        <div class="tree-connector-top"></div>
+                        <div class="brand-node node-child">
+                            <div class="node-type">Sub-brand</div>
+                            <div class="node-content" contenteditable="true" data-placeholder="子品牌 C"
+                                data-save-key="arch_child_3"></div>
+                        </div>
+                        <div class="tree-connector-bottom"></div>
+
+                        <!-- Level 3: Products -->
+                        <div class="level-products">
+                            <div class="product-node" contenteditable="true" data-placeholder="产品 1"
+                                data-save-key="arch_prod_3_1"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Legend/Controls -->
+            <div class="arch-controls">
+                <div class="control-tip">
+                    <i data-lucide="info"></i>
+                    <span>架构模式决定了品牌关系的紧密程度。请在上方选择适合的模式。</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/brand-architecture.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_architecture_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+/* Drip Campaign Blueprint Styles */
+
+/* Main Container */
+.blueprint-container {
+    position: relative;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+    overflow-x: auto;
+    /* Allow horizontal scroll if editing on small screen, but A3 wide prevents it usually */
+    min-height: 400px;
+}
+
+/* Timeline Track (Visual only) */
+.timeline-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-border-medium);
+    z-index: 0;
+    transform: translateY(-50%);
+    display: none;
+    /* Flex items handle connection visually better */
+}
+
+/* Steps Wrapper */
+.steps-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    /* Gap handled by connectors */
+    position: relative;
+    z-index: 1;
+}
+
+/* Step Card */
+.step-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    width: 260px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+.step-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.trigger-step {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-subtle);
+}
+
+.trigger-step .step-header {
+    background: var(--color-brand-blue);
+    color: #fff;
+}
+
+.trigger-step .step-title {
+    color: #fff;
+}
+
+/* Step Header */
+.step-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.step-number {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+}
+
+.step-title {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+}
+
+/* Step Body */
+.step-body {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.field-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.field-group:last-child {
+    margin-bottom: 0;
+}
+
+.field-group label {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+}
+
+.editable-field {
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 2px;
+    min-height: 1.5em;
+    outline: none;
+    color: var(--color-text-primary);
+}
+
+.editable-field:focus {
+    border-bottom-color: var(--color-brand-blue);
+    background: var(--color-focus-bg);
+}
+
+/* Connector */
+.step-connector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 100px;
+    /* Approximate height of card center */
+    margin-top: 20px;
+    /* Align with card top approx */
+    position: relative;
+    flex-shrink: 0;
+}
+
+.step-connector::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-border-medium);
+    z-index: -1;
+}
+
+.step-connector::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid var(--color-border-medium);
+}
+
+.delay-label {
+    background: var(--color-bg-paper);
+    /* Match canvas bg */
+    padding: 2px 6px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Add Button */
+.add-step-wrapper {
+    display: flex;
+    align-items: center;
+    padding-left: var(--spacing-md);
+    height: 200px;
+    /* Approx card height */
+}
+
+.btn-add-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    border: 2px dashed var(--border-sem-dashed);
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+    /* Hide text, show icon */
+}
+
+.btn-add-step:hover {
+    border-color: var(--color-brand-blue);
+    color: var(--color-brand-blue);
+    background: var(--color-bg-subtle);
+}
+
+/* Delete Button */
+.btn-delete-step {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 0;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 10;
+}
+
+.step-card:hover .btn-delete-step {
+    opacity: 1;
+}
+
+.btn-delete-step:hover {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.btn-delete-step svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* KPI Section */
+.kpi-section {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-sem-dashed);
+}
+
+.kpi-section h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.kpi-grid {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+.kpi-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.kpi-card label {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+}
+
+.input-transparent {
+    background: transparent;
+    border: none;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--border-sem-inner);
+    width: 120px;
+    font-family: var(--font-mono);
+}
+
+.input-transparent:focus {
+    outline: none;
+    border-bottom-color: var(--color-brand-blue);
+}
+
+/* Print */
+@media print {
+
+    .btn-add-step,
+    .btn-delete-step {
+        display: none !important;
+    }
+
+    .blueprint-container {
+        overflow: visible;
+    }
+
+    .timeline-track {
+        display: block;
+        /* Show line in print if needed, but connectors do job */
+    }
+
+    .step-card {
+        box-shadow: none;
+        border: 2px solid #000;
+    }
+
+    /* Force fit one page width */
+    .paper-a3 {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .blueprint-container { width: 100%; overflow: visible; }
+    .steps-wrapper { flex-direction: column; align-items: stretch; }
+    .step-card { width: 100%; box-sizing: border-box; }
+    .step-connector { min-height: var(--spacing-xl); transform: rotate(90deg); align-self: center; }
+    .kpi-grid { flex-direction: column; gap: var(--spacing-md); }
+    .input-transparent { width: 100%; }
+}
+

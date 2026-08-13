@@ -1,0 +1,305 @@
+/* Three Horizons Framework Styles */
+
+.horizons-container {
+    margin: var(--spacing-md) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.horizons-table-wrapper {
+    overflow-x: auto;
+}
+
+.horizons-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.horizons-header {
+    background: var(--color-bg-warm-medium);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.horizons-header th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.horizons-header th:last-child {
+    border-right: none;
+}
+
+.horizon-row {
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.horizon-row:last-child {
+    border-bottom: none;
+}
+
+.horizon-row td {
+    padding: var(--spacing-lg);
+    vertical-align: top;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    border-right: 1px solid var(--border-sem-inner);
+    line-height: var(--line-height-relaxed);
+}
+
+.horizon-row td:last-child {
+    border-right: none;
+}
+
+.horizon-row td[contenteditable="true"]:focus {
+    background-color: var(--color-focus-bg);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+    outline: none;
+}
+
+.horizon-name {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.horizon-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+    background: transparent;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.horizon-icon i {
+    width: 20px;
+    height: 20px;
+}
+
+.horizon-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.horizon-info strong {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.horizon-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+.horizon-name-col {
+    width: 200px;
+}
+
+/* Resource Allocation Section */
+.allocation-section {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.section-title i {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.allocation-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.allocation-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.allocation-label {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.allocation-bar {
+    height: 32px;
+    background: var(--color-bg-muted);
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.allocation-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-bg-white);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    background: var(--color-text-primary);
+}
+
+.allocation-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: var(--spacing-sm) 0 0 0;
+    font-style: italic;
+}
+
+/* Color Mode Enhancements */
+body.color-mode .horizon-1 .horizon-icon {
+    background: var(--color-semantic-profit);
+    color: var(--color-bg-white);
+    border-color: transparent;
+}
+
+body.color-mode .horizon-2 .horizon-icon {
+    background: var(--color-archetype-stability);
+    color: var(--color-bg-white);
+    border-color: transparent;
+}
+
+body.color-mode .horizon-3 .horizon-icon {
+    background: var(--color-semantic-reflection);
+    color: var(--color-bg-white);
+    border-color: transparent;
+}
+
+body.color-mode .h1-fill {
+    background: var(--color-semantic-profit);
+}
+
+body.color-mode .h2-fill {
+    background: var(--color-archetype-stability);
+}
+
+body.color-mode .h3-fill {
+    background: var(--color-semantic-reflection);
+    color: var(--color-bg-white);
+}
+
+/* Print Optimization */
+@media print {
+    .horizons-container {
+        page-break-inside: avoid;
+    }
+
+    .horizons-table {
+        border: 1pt solid var(--border-sem-outer);
+        page-break-inside: avoid;
+    }
+
+    .allocation-section {
+        border: 1pt solid var(--border-sem-outer);
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .horizons-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .horizon-name {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .allocation-item {
+        grid-template-columns: 1fr;
+    }
+
+    .allocation-label {
+        text-align: center;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen {
+    .paper-a3 {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .horizons-table-wrapper {
+        overflow-x: visible;
+    }
+
+    .horizons-table,
+    .horizons-table thead,
+    .horizons-table tbody,
+    .horizons-table tr,
+    .horizons-table th,
+    .horizons-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .horizons-header th {
+        border-right: 0;
+    }
+
+    .horizon-row td {
+        border-right: 0;
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+}

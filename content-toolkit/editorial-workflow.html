@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑工作流 (Editorial Workflow)</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/editorial-workflow.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>编辑工作流</h1>
+                <span class="english-subtitle">Editorial Workflow</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>团队 <span class="en-sub">(Team)</span></label>
+                    <input type="text" class="meta-input" placeholder="内容团队" data-save-key="meta_team" aria-label="内容团队">
+                </div>
+            </div>
+        </header>
+
+        <!-- Workflow Stages -->
+        <div class="workflow-container">
+            <div class="workflow-stage">
+                <div class="stage-header ideation">
+                    <i data-lucide="lightbulb"></i>
+                    <h3>创意 (Ideation)</h3>
+                    <span class="count">3</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">AI在营销中的应用</span>
+                            <span class="priority high">高</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">张三</span>
+                            <span class="due-date">01/30</span>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">客户案例访谈</span>
+                            <span class="priority medium">中</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">李四</span>
+                            <span class="due-date">02/05</span>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">行业趋势报告</span>
+                            <span class="priority low">低</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">王五</span>
+                            <span class="due-date">02/15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-stage">
+                <div class="stage-header drafting">
+                    <i data-lucide="file-text"></i>
+                    <h3>撰写 (Drafting)</h3>
+                    <span class="count">2</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">产品功能更新文章</span>
+                            <span class="priority high">高</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">张三</span>
+                            <span class="due-date">01/28</span>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">用户指南更新</span>
+                            <span class="priority medium">中</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">李四</span>
+                            <span class="due-date">02/02</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-stage">
+                <div class="stage-header review">
+                    <i data-lucide="search"></i>
+                    <h3>审核 (Review)</h3>
+                    <span class="count">2</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">最佳实践白皮书</span>
+                            <span class="priority high">高</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">王五</span>
+                            <span class="due-date">01/26</span>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">SEO优化指南</span>
+                            <span class="priority medium">中</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">张三</span>
+                            <span class="due-date">01/29</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-stage">
+                <div class="stage-header approval">
+                    <i data-lucide="check-circle"></i>
+                    <h3>批准 (Approval)</h3>
+                    <span class="count">1</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">年度营销报告</span>
+                            <span class="priority high">高</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">李四</span>
+                            <span class="due-date">01/25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-stage">
+                <div class="stage-header published">
+                    <i data-lucide="send"></i>
+                    <h3>已发布 (Published)</h3>
+                    <span class="count">4</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">客户成功故事</span>
+                            <span class="priority high">高</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">张三</span>
+                            <span class="due-date">01/20</span>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-title" contenteditable="true">产品演示视频</span>
+                            <span class="priority medium">中</span>
+                        </div>
+                        <div class="task-meta">
+                            <span class="assignee">王五</span>
+                            <span class="due-date">01/18</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Summary -->
+        <div class="summary-section">
+            <div class="summary-card">
+                <i data-lucide="users"></i>
+                <div class="summary-content">
+                    <span class="summary-label">团队成员</span>
+                    <span class="summary-value">8人</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <i data-lucide="file-text"></i>
+                <div class="summary-content">
+                    <span class="summary-label">进行中</span>
+                    <span class="summary-value">12篇</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <i data-lucide="clock"></i>
+                <div class="summary-content">
+                    <span class="summary-label">平均周期</span>
+                    <span class="summary-value">7天</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <i data-lucide="trending-up"></i>
+                <div class="summary-content">
+                    <span class="summary-label">本月完成</span>
+                    <span class="summary-value">24篇</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('editorial_workflow_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

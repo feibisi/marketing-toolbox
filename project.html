@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>项目设置 | Modiqi Marketing Toolbox</title>
+  <link rel="stylesheet" href="shared/css/tokens.css">
+  <link rel="stylesheet" href="shared/css/base.css">
+  <link rel="stylesheet" href="shared/css/workspace.css">
+  <script src="shared/vendor/lucide.min.js"></script>
+</head>
+<body class="workspace-page">
+  <main class="workspace-shell">
+    <nav class="workspace-nav" aria-label="主要导航">
+      <a href="workflows.html"><i data-lucide="arrow-left"></i>工作流</a>
+      <div class="workspace-nav-links"><a href="index.html">全部工具</a><a href="docs/index.html">文档</a></div>
+    </nav>
+    <header class="workspace-hero">
+      <p class="workspace-kicker">Local project context</p>
+      <h1>项目设置</h1>
+      <p>这些字段用于在工具间保持同一项目语境，只保存在当前浏览器。不要填写密码、密钥或敏感个人信息。</p>
+    </header>
+    <section class="workspace-card">
+      <form id="projectForm" class="project-form">
+        <label>项目名称<input name="name" required maxlength="120" autocomplete="off"></label>
+        <label>负责人<input name="owner" maxlength="120" autocomplete="off"></label>
+        <label>客户或品牌<input name="brand" maxlength="120" autocomplete="off"></label>
+        <label>目标日期<input name="targetDate" type="date"></label>
+        <label>当前阶段<select name="stage"><option value="discovery">调研</option><option value="strategy">策略</option><option value="execution">执行</option><option value="measurement">衡量</option></select></label>
+        <label>主要目标<input name="objective" maxlength="240" autocomplete="off"></label>
+        <label class="wide">范围与约束<textarea name="constraints" rows="5" maxlength="2000"></textarea></label>
+        <div class="wide"><button class="workspace-button primary" type="submit">保存项目</button></div>
+        <p id="projectStatus" class="project-status wide" role="status"></p>
+      </form>
+    </section>
+    <section class="workspace-card evidence-section" data-evidence-panel>
+      <div class="section-heading">
+        <div>
+          <p class="workspace-kicker">Evidence register</p>
+          <h2>事实、假设与待验证项</h2>
+        </div>
+        <p>每条记录必须填写来源。没有外部来源时，写明“团队假设”或缺失原因，避免把推测当作事实。</p>
+      </div>
+      <form id="evidenceForm" class="project-form evidence-form">
+        <label class="wide">陈述<textarea name="statement" rows="3" maxlength="500" required></textarea></label>
+        <label>类型<select name="kind"><option value="fact">事实</option><option value="assumption">假设</option><option value="to_verify">待验证</option></select></label>
+        <label>状态<select name="status"><option value="draft">草稿</option><option value="needs_review">待复核</option><option value="confirmed">已确认</option><option value="rejected">已否定</option></select></label>
+        <label class="wide">来源或缺失说明<input name="source" maxlength="500" required autocomplete="off" placeholder="例如：CRM 报表 2026-08-01；或：团队假设，尚无数据"></label>
+        <label>负责人<input name="owner" maxlength="120" autocomplete="off"></label>
+        <label>复核日期<input name="reviewDate" type="date"></label>
+        <div class="wide"><button class="workspace-button primary" type="submit">添加记录</button></div>
+        <p id="evidenceStatus" class="project-status wide" role="status"></p>
+      </form>
+      <div id="evidenceList" class="evidence-list" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="shared/js/project-store.js"></script>
+  <script src="shared/js/project.js"></script>
+</body>
+</html>

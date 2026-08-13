@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互动策略卡 (Engagement Strategy)</title>
+    <meta name="description" content="互动策略卡工具，帮助您制定社交媒体互动策略，包含参与金字塔、回复协议和社群仪式。">
+    <meta name="keywords" content="互动策略,社交媒体,社群运营,用户参与,回复协议">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="互动策略卡 - Modiqi Workbench">
+    <meta property="og:description" content="制定社交媒体互动策略，包含参与金字塔、回复协议和社群仪式。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/engagement-strategy.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>互动策略卡</h1>
+                <span class="english-subtitle">Engagement Strategy Card</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>平台 <span class="en-sub">(Platform)</span></label>
+                    <input type="text" class="meta-input" value="多平台 (Cross-platform)" data-save-key="engage_platform" aria-label="engage platform">
+                </div>
+                <div class="meta-group">
+                    <label>负责人 <span class="en-sub">(Owner)</span></label>
+                    <input type="text" class="meta-input" data-save-key="engage_owner" aria-label="engage owner">
+                </div>
+                <div class="meta-group">
+                    <label>更新日期 <span class="en-sub">(Updated)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="engagement-layout">
+
+            <!-- Top: Participation Pyramid -->
+            <section class="pyramid-section">
+                <div class="section-badge">
+                    <i data-lucide="layers" class="icon"></i>
+                    参与金字塔 (Participation Pyramid)
+                </div>
+                <div class="pyramid-container">
+                    <!-- Base: Lurkers -->
+                    <div class="pyramid-level level-1">
+                        <div class="level-label">潜水者 (Lurkers)</div>
+                        <div class="level-action">👀 目标: 吸引点击</div>
+                        <div class="level-input" contenteditable="true" data-placeholder="策略: 标题党、强视觉..."></div>
+                    </div>
+                    <!-- Level 2: Likers -->
+                    <div class="pyramid-level level-2">
+                        <div class="level-label">点赞者 (Likers)</div>
+                        <div class="level-action">👍 目标: 激发共鸣</div>
+                        <div class="level-input" contenteditable="true" data-placeholder="策略: 金句、情感价值..."></div>
+                    </div>
+                    <!-- Level 3: Commenters -->
+                    <div class="pyramid-level level-3">
+                        <div class="level-label">评论者 (Discussers)</div>
+                        <div class="level-action">💬 目标: 诱导讨论</div>
+                        <div class="level-input" contenteditable="true" data-placeholder="策略: 提问、争议话题..."></div>
+                    </div>
+                    <!-- Level 4: Sharers -->
+                    <div class="pyramid-level level-4">
+                        <div class="level-label">传播者 (Sharers)</div>
+                        <div class="level-action">📢 目标: 社交货币</div>
+                        <div class="level-input" contenteditable="true" data-placeholder="策略: 身份认同、干货..."></div>
+                    </div>
+                    <!-- Top: Creators -->
+                    <div class="pyramid-level level-5">
+                        <div class="level-label">创作者 (Co-Creators)</div>
+                        <div class="level-action">✨ 目标: UGC转化</div>
+                        <div class="level-input" contenteditable="true" data-placeholder="策略: 挑战赛、征集..."></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Middle: Response Protocol -->
+            <section class="protocol-section">
+                <div class="section-badge icon-left">
+                    <i data-lucide="message-square" class="icon"></i>
+                    回复协议 (Response Protocol)
+                </div>
+                <div class="protocol-grid">
+                    <!-- Column Headers -->
+                    <div class="grid-header">场景 (Scenario)</div>
+                    <div class="grid-header center">时效 (SLA)</div>
+                    <div class="grid-header">语调 (Tone)</div>
+                    <div class="grid-header">行动指南 (Action Guide)</div>
+
+                    <!-- Row 1 -->
+                    <div class="grid-cell label-cell"><i data-lucide="thumbs-up" class="cell-icon"></i> 夸奖/好评</div>
+                    <div class="grid-cell center" contenteditable="true">24h</div>
+                    <div class="grid-cell" contenteditable="true">感恩/俏皮</div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="点赞、置顶、转发到Story..."></div>
+
+                    <!-- Row 2 -->
+                    <div class="grid-cell label-cell"><i data-lucide="help-circle" class="cell-icon"></i> 咨询/提问</div>
+                    <div class="grid-cell center" contenteditable="true">4h</div>
+                    <div class="grid-cell" contenteditable="true">专业/耐心</div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="准确答复、引导至客服/文档..."></div>
+
+                    <!-- Row 3 -->
+                    <div class="grid-cell label-cell"><i data-lucide="frown" class="cell-icon"></i> 投诉/差评</div>
+                    <div class="grid-cell center" contenteditable="true">1h</div>
+                    <div class="grid-cell" contenteditable="true">诚恳/歉意</div>
+                    <div class="grid-cell" contenteditable="true" data-placeholder="私信跟进、提供补偿、记录问题..."></div>
+
+                    <!-- Row 4 -->
+                    <div class="grid-cell label-cell crisis"><i data-lucide="alert-triangle" class="cell-icon"></i>
+                        危机/公关</div>
+                    <div class="grid-cell center crisis" contenteditable="true">15min</div>
+                    <div class="grid-cell crisis" contenteditable="true">严肃/官方</div>
+                    <div class="grid-cell crisis">
+                        <div contenteditable="true" data-placeholder="上报公关部，启动 <危机应对清单>..."></div>
+                        <a href="crisis-playbook.html" class="link-btn">查看 Playbook &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom: Rituals -->
+            <section class="rituals-section">
+                <div class="section-badge">
+                    <i data-lucide="calendar" class="icon"></i>
+                    社群仪式 (Community Rituals)
+                </div>
+                <div class="rituals-container">
+                    <div class="ritual-card">
+                        <div class="card-header-bar daily">Daily (日常)</div>
+                        <div class="card-content" contenteditable="true" data-placeholder="e.g. 早安签到、晚安话题..."></div>
+                    </div>
+                    <div class="ritual-card">
+                        <div class="card-header-bar weekly">Weekly (周常)</div>
+                        <div class="card-content" contenteditable="true" data-placeholder="e.g. 周五福利日、周一复盘..."></div>
+                    </div>
+                    <div class="ritual-card">
+                        <div class="card-header-bar monthly">Monthly/Special (月度/大事件)</div>
+                        <div class="card-content" contenteditable="true" data-placeholder="e.g. 月度MVP评选、产品发布日..."></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('engagement-strategy');
+        });
+    </script>
+</body>
+
+</html>

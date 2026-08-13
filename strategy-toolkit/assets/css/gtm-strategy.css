@@ -1,0 +1,394 @@
+/* ============================================
+   GTM STRATEGY CANVAS
+   Go-to-Market Strategy Canvas Styles
+   ============================================ */
+
+/* ========================================
+   CANVAS LAYOUT
+   ======================================== */
+
+.gtm-canvas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.gtm-row {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.row-top,
+.row-middle {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.row-milestones,
+.row-metrics {
+    grid-template-columns: 1fr;
+}
+
+/* ========================================
+   SECTION CARDS
+   ======================================== */
+
+.gtm-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.gtm-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px dashed var(--color-border-light);
+    background: var(--color-bg-subtle);
+}
+
+.section-header .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.section-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+}
+
+.section-content {
+    padding: var(--spacing-sm);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+/* ========================================
+   FIELD GROUPS
+   ======================================== */
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.field-group label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.field-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    min-height: 2.5em;
+    padding: var(--spacing-xs);
+}
+
+.field-content ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+.field-content li {
+    margin-bottom: 2px;
+}
+
+/* ========================================
+   MILESTONE TRACK
+   ======================================== */
+
+.milestone-track {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    gap: var(--spacing-xs);
+}
+
+.milestone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    max-width: 180px;
+}
+
+.milestone-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-border-medium);
+    background: var(--color-bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.milestone-icon .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+}
+
+.milestone.active .milestone-icon {
+    border-color: var(--color-brand-primary);
+    background: var(--color-brand-primary);
+}
+
+.milestone.active .milestone-icon .icon {
+    color: white;
+}
+
+.milestone-content h4 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.milestone-date {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-primary);
+    margin-bottom: 4px;
+    padding: 2px 8px;
+    background: var(--color-semantic-opportunity);
+}
+
+.milestone-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+.milestone-connector {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 2px;
+    background: var(--color-border-medium);
+    margin-top: 20px;
+}
+
+/* ========================================
+   METRICS GRID
+   ======================================== */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+.metric-card {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-light);
+    padding: var(--spacing-sm);
+    text-align: center;
+}
+
+.metric-card.highlight {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+    border-color: var(--color-brand-primary);
+}
+
+.metric-period {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--color-border-light);
+}
+
+.metric-card.highlight .metric-period {
+    color: var(--color-brand-primary);
+    border-bottom-color: var(--color-brand-primary);
+}
+
+.metric-content {
+    font-size: var(--font-size-sm);
+    text-align: left;
+}
+
+.metric-content ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+.metric-content li {
+    margin-bottom: 4px;
+}
+
+.north-star-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+}
+
+.north-star-metric strong {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.metric-target {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-primary);
+    font-family: var(--font-serif);
+}
+
+/* ========================================
+   COLOR MODE
+   ======================================== */
+
+body:not(.theme-dark).color-mode .gtm-section[data-section="product"] {
+    background-color: var(--color-semantic-product);
+}
+
+body:not(.theme-dark).color-mode .gtm-section[data-section="market"] {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .gtm-section[data-section="value"] {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .gtm-section[data-section="channels"] {
+    background-color: var(--color-semantic-jobs);
+}
+
+body:not(.theme-dark).color-mode .gtm-section[data-section="marketing"] {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .gtm-section[data-section="sales"] {
+    background-color: var(--color-semantic-opportunity);
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+body.theme-dark .gtm-section {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .section-header {
+    background: var(--color-bg-subtle);
+    border-bottom-color: var(--color-border-medium);
+}
+
+body.theme-dark .milestone-icon {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-strong);
+}
+
+body.theme-dark .milestone.active .milestone-icon {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+}
+
+body.theme-dark .milestone-date {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+body.theme-dark .metric-card {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .metric-card.highlight {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+}
+
+/* GTM has five stacked planning bands. On screen it is a continuous paper,
+   rather than forcing those bands into the fixed A3 ratio and cropping metrics. */
+@media screen and (min-width: 769px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    .gtm-section {
+        break-inside: avoid;
+    }
+
+    .milestone-track {
+        padding: var(--spacing-sm);
+    }
+
+    .metrics-grid {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Mobile composition: stack every planning section and remove fixed paper crop. */
+@media screen and (max-width: 768px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .gtm-row,
+    .row-top,
+    .row-middle,
+    .metrics-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .gtm-section,
+    .field-group,
+    .field-content,
+    .metric-card,
+    .metric-content {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .milestone-track {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .milestone {
+        width: 100%;
+        max-width: none;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .milestone-connector {
+        width: 2px;
+        height: 24px;
+        margin: 0 0 0 19px;
+    }
+}

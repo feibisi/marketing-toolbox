@@ -1,0 +1,177 @@
+/* Cognitive Bias Layout */
+.bias-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+.bias-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    /* 6 categories fits nicely on A4 landscape roughly or scroll */
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+.bias-category-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.category-header {
+    padding: 12px;
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--border-sem-inner);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cat-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-brand-primary);
+}
+
+.bias-list {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.bias-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* Custom Checkbox */
+.bias-check {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    /* prevent shrink */
+    border: 2px solid var(--border-sem-input);
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    margin-top: 2px;
+}
+
+.bias-check.checked {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+}
+
+.bias-check.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    left: 2px;
+    top: 0;
+}
+
+.bias-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.bias-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+.bias-desc {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    line-height: 1.3;
+}
+
+/* Apply Action Area */
+.apply-area {
+    margin-top: 4px;
+    width: 100%;
+    padding: 6px;
+    font-size: 11px;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: var(--color-bg-paper);
+    display: none;
+    /* Hidden by default */
+}
+
+.bias-item:hover .apply-area,
+.bias-item:focus-within .apply-area {
+    display: block;
+}
+
+.bias-check.checked~.bias-content .apply-area {
+    display: block;
+    background: var(--color-bg-success-subtle);
+    border-color: var(--color-semantic-growth-light);
+}
+
+
+/* Dark Mode */
+body.theme-dark .bias-category-card {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .category-header {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .bias-name {
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .apply-area {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-secondary);
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bias-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+    .bias-category-card { overflow: visible; }
+}

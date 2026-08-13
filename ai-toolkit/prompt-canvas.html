@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 提示词工程画布 (Prompt Engineering Canvas)</title>
+    <meta name="description" content="基于 CO-STAR 框架的提示词构建工具，帮助您编写高质量的 AI Prompt。">
+    <meta name="keywords" content="AI,Prompt,提示词工程,ChatGPT,Claude,LLM">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prompt Engineering Canvas - Modiqi Workbench">
+    <meta property="og:description" content="基于 CO-STAR 框架的提示词构建工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific -->
+    <link rel="stylesheet" href="assets/css/prompt-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>提示词工程画布</h1>
+                <span class="english-subtitle">Prompt Engineering Canvas (CO-STAR)</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>模型 <span class="en-sub">(Model)</span></label>
+                    <input type="text" class="meta-input" placeholder="GPT-4" data-save-key="meta_model" aria-label="GPT 4">
+                </div>
+                <!-- Copy Button Area -->
+                <button id="btnCopyPrompt" class="btn btn-primary btn-sm" type="button">
+                    <i data-lucide="copy"></i>
+                    <span>复制提示词 (Copy Prompt)</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Persona Presets -->
+        <div class="persona-selector">
+            <span class="selector-label">专家预设 <span class="en-sub">(Persona Presets)</span>:</span>
+            <button class="preset-btn" data-persona="kotler" type="button">科特勒大脑 (Strategy)</button>
+            <button class="preset-btn" data-persona="analyst" type="button">数据分析专家 (Analyst)</button>
+            <button class="preset-btn" data-persona="creative" type="button">创意总监 (Creative)</button>
+            <button class="preset-btn" data-persona="copywriter" type="button">资深文案 (Copywriter)</button>
+            <span class="toolbar-divider">|</span>
+            <button class="preset-btn btn-brand-dna" data-persona="brand_dna" type="button"><i data-lucide="sparkles"
+                    style="width:14px; margin-right:4px;"></i> 品牌 DNA (My Brand)</button>
+        </div>
+
+        <div class="canvas-grid">
+            <!-- C: Context -->
+            <div class="card context-card">
+                <div class="card-header">
+                    <div class="header-icon-bg"><i data-lucide="book-open"></i></div>
+                    <div class="header-text">
+                        <h3>背景信息 <span class="en-sub">(Context)</span></h3>
+                        <p class="helper-text">为 AI 提供任务的背景信息。</p>
+                    </div>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="prompt_context"
+                    data-strategic-id="brand_name">
+                    <ul>
+                        <li>我是谁？我的业务是什么？</li>
+                        <li>这个任务的目的是什么？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- O: Objective -->
+            <div class="card objective-card">
+                <div class="card-header">
+                    <div class="header-icon-bg"><i data-lucide="target"></i></div>
+                    <div class="header-text">
+                        <h3>任务目标 <span class="en-sub">(Objective)</span></h3>
+                        <p class="helper-text">明确你希望 AI 完成的具体任务。</p>
+                    </div>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="prompt_objective">
+                    <ul>
+                        <li>请帮我撰写...</li>
+                        <li>请帮我分析...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- S: Style -->
+            <div class="card style-card">
+                <div class="card-header">
+                    <div class="header-icon-bg"><i data-lucide="feather"></i></div>
+                    <div class="header-text">
+                        <h3>风格与角色 <span class="en-sub">(Style & Role)</span></h3>
+                        <p class="helper-text">指定 AI 的写作风格或扮演的角色。</p>
+                    </div>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="prompt_style"
+                    data-strategic-id="brand_persona">
+                    <ul>
+                        <li>你是一位资深的营销专家...</li>
+                        <li>使用专业、简洁的商务语气...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- T: Tone -->
+            <div class="card tone-card">
+                <div class="card-header">
+                    <div class="header-icon-bg"><i data-lucide="music"></i></div>
+                    <div class="header-text">
+                        <h3>情感基调 <span class="en-sub">(Tone)</span></h3>
+                        <p class="helper-text">设定内容的情感色彩。</p>
+                    </div>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="prompt_tone">
+                    <ul>
+                        <li>幽默风趣的...</li>
+                        <li>激进且充满活力的...</li>
+                        <li>同理心强的...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- A: Audience -->
+            <div class="card audience-card">
+                <div class="card-header">
+                    <div class="header-icon-bg"><i data-lucide="users"></i></div>
+                    <div class="header-text">
+                        <h3>目标受众 <span class="en-sub">(Audience)</span></h3>
+                        <p class="helper-text">这些内容是写给谁看的？</p>
+                    </div>
+                </div>
+                <div class="card-content" contenteditable="true" data-save-key="prompt_audience">
+                    <ul>
+                        <li>没有任何技术背景的小白用户...</li>
+                        <li>企业的高层决策者...</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+        <!-- Live Preview Footer -->
+        <div class="prompt-preview-footer">
+            <div class="preview-header">
+                <h3>完整提示词预览 <span class="en-sub">(Live Preview)</span></h3>
+                <span class="token-estimate">约 -- Tokens</span>
+            </div>
+            <div id="fullPromptPreview" class="preview-content">
+                <!-- Dynamically updated via JS -->
+                等待录入内容...
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/prompt-canvas.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('prompt_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+/* Repurposing Layout */
+.repurpose-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Column 1: Source */
+.col-source {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border-right: 1px solid var(--border-sem-inner);
+    padding-right: var(--spacing-md);
+}
+
+.source-area {
+    width: 100%;
+    flex: 1;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: 12px;
+    resize: none;
+    font-size: 13px;
+    line-height: 1.6;
+    background: var(--color-bg-paper);
+    color: var(--color-text-primary);
+}
+
+.source-area:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+}
+
+/* Column 2: Controls */
+.col-controls {
+    flex: 0 0 160px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+}
+
+.template-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    text-align: left;
+}
+
+.template-btn:hover {
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    box-shadow: var(--shadow-sm);
+    transform: translateX(2px);
+}
+
+.template-btn i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Column 3: Output */
+.col-output {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+    padding-left: var(--spacing-sm);
+}
+
+.output-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+    animation: slideIn 0.3s ease-out;
+}
+
+.output-card.generating {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-icon {
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+}
+
+.action-icon:hover {
+    color: var(--color-brand-primary);
+}
+
+.output-content {
+    width: 100%;
+    min-height: 80px;
+    border: none;
+    resize: none;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    background: transparent;
+}
+
+.output-content:focus {
+    outline: none;
+}
+
+/* Dark Mode */
+body.theme-dark .source-area {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .template-btn {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-secondary);
+}
+
+body.theme-dark .template-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-focus-border);
+    border-color: var(--color-focus-border);
+}
+
+body.theme-dark .output-card {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .card-header {
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .card-title {
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .output-content {
+    color: var(--color-text-primary);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .repurpose-container {
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .col-source,
+    .col-controls,
+    .col-output {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+    }
+
+    .source-area,
+    .output-content {
+        min-height: 160px;
+    }
+}
+
+/* ========================================
+   Repurposing Flow & Micro-Animations
+   ======================================== */
+.repurpose-flow-viz {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    border: 1px dashed var(--color-border-main);
+}
+
+.flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.flow-node.active {
+    color: var(--color-brand-primary);
+}
+
+.flow-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-main);
+    margin: 0 10px;
+}
+
+.flow-node i {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 4px;
+}
+
+/* Automation Logic Decoration */
+.btn-automation {
+    margin-top: auto;
+    background: var(--color-brand-primary) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border: none !important;
+    justify-content: center !important;
+}
+
+.btn-automation:hover {
+    background: var(--color-text-secondary) !important;
+    transform: scale(1.02);
+}
+
+.col-controls label span {
+    font-size: 9px;
+    opacity: 0.6;
+    margin-left: 4px;
+}

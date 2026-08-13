@@ -1,0 +1,277 @@
+/* ========================================
+   主布局容器 (A3 Landscape)
+   ======================================== */
+.checklist-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   检查列
+   ======================================== */
+.check-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-brand-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.column-header.mt {
+    margin-top: 0;
+}
+
+.header-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-brand-blue);
+}
+
+.column-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.column-header h2 .en-sub {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-tertiary);
+}
+
+.check-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    flex: 1;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.check-item:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-brand-blue);
+}
+
+.check-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border-sem-input);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.checkmark::after {
+    content: '';
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+}
+
+.check-item input:checked+.checkmark {
+    background: var(--color-semantic-growth);
+    border-color: var(--color-semantic-growth);
+}
+
+.check-item input:checked+.checkmark::after {
+    transform: rotate(45deg) scale(1);
+}
+
+.check-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    flex: 1;
+    line-height: 1.4;
+}
+
+.check-label .en-sub {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    display: block;
+}
+
+.check-item input:checked~.check-label {
+    color: var(--color-text-secondary);
+    text-decoration: line-through;
+}
+
+.check-item input:checked~.check-label .en-sub {
+    text-decoration: line-through;
+}
+
+/* ========================================
+   签署区域
+   ======================================== */
+.signoff-section {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    margin-top: var(--spacing-lg);
+}
+
+.signoff-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.status-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
+.status-indicator {
+    width: 150px;
+    height: 12px;
+    background: var(--color-bg-muted);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.status-progress {
+    height: 100%;
+    width: 0;
+    background: var(--color-semantic-danger);
+    border-radius: 0;
+}
+
+.status-text {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    min-width: 60px;
+}
+
+.signoff-notes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.signoff-notes label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.notes-input {
+    flex: 1;
+    padding: var(--spacing-sm);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 40px;
+}
+
+.notes-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .check-item {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .check-item:hover {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .signoff-section {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .notes-input {
+    background: var(--color-bg-paper);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .check-item input:checked+.checkmark {
+        background: var(--color-semantic-growth) !important;
+        border-color: var(--color-semantic-growth) !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .status-progress {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .checklist-layout {
+        flex-direction: column;
+    }
+
+    .signoff-section {
+        flex-direction: column;
+    }
+
+    .status-indicator {
+        width: 100%;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .checklist-layout { grid-template-columns: 1fr; }
+    .signoff-section { align-items: stretch; }
+}
+

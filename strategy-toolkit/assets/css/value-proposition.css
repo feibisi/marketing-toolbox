@@ -1,0 +1,498 @@
+/* Value Proposition Canvas - Design System Aligned */
+/* 左方右圆布局：使用 clip-path 实现真正的圆形分区 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.vpc-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-lg);
+    align-items: stretch;
+    padding: var(--spacing-md) 0;
+}
+
+/* ========================================
+   面板容器
+   ======================================== */
+.vpc-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* 面板标签 */
+.pane-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    /* 不使用 uppercase，让 .en-sub 自己处理 */
+}
+
+/* 形状图标 */
+.shape-icon {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-brand-primary);
+    flex-shrink: 0;
+}
+
+.shape-circle {
+    border-radius: 50%;
+}
+
+/* ========================================
+   左侧方形容器
+   ======================================== */
+.square-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+}
+
+/* 方形内的区域定位 */
+.value-map .section-products {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.value-map .section-gain-creators {
+    grid-column: 2;
+    grid-row: 1;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.value-map .section-pain-relievers {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* ========================================
+   右侧圆形容器
+   ======================================== */
+.circle-container {
+    position: relative;
+    /* 基于父容器高度计算尺寸，保持正圆 */
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    flex-grow: 0;
+    /* 靠左对齐，不居中 */
+    align-self: center;
+}
+
+/* 圆形边框 */
+.circle-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 圆形内的区域 - 使用绝对定位 + clip-path */
+.customer-profile .vpc-section {
+    position: absolute;
+    overflow: hidden;
+}
+
+/* 客户任务 - 右半圆：竖排文字 */
+.customer-profile .section-jobs {
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    clip-path: ellipse(100% 50% at 0% 50%);
+    border-left: 1px solid var(--border-sem-inner);
+    /* 竖排布局 */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    /* padding 调整 */
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) var(--spacing-xl);
+    /* 内容居中 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.customer-profile .section-jobs .section-header {
+    writing-mode: vertical-rl;
+    border-bottom: none;
+    border-left: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0;
+    padding-left: var(--spacing-sm);
+    margin-bottom: 0;
+    margin-left: var(--spacing-sm);
+}
+
+.customer-profile .section-jobs .section-content {
+    writing-mode: vertical-rl;
+    /* 防止右侧溢出 */
+    max-height: 70%;
+    overflow: hidden;
+}
+
+/* 客户获益 - 左上四分之一：内容靠右下（向圆心） */
+.customer-profile .section-gains {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    clip-path: ellipse(100% 100% at 100% 100%);
+    border-bottom: 1px solid var(--border-sem-inner);
+    /* 减少左上 padding，增加可用空间 */
+    padding: 12% var(--spacing-md) var(--spacing-md) 12%;
+    /* 内容向右下靠拢 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.customer-profile .section-gains .section-header {
+    justify-content: flex-end;
+}
+
+.customer-profile .section-gains .section-content {
+    max-width: 95%;
+}
+
+/* 客户痛点 - 左下四分之一：内容靠右上（向圆心） */
+.customer-profile .section-pains {
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    clip-path: ellipse(100% 100% at 100% 0%);
+    /* 减少左下 padding，增加可用空间 */
+    padding: var(--spacing-md) var(--spacing-md) 12% 12%;
+    /* 内容向右上靠拢 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: right;
+}
+
+.customer-profile .section-pains .section-header {
+    justify-content: flex-end;
+}
+
+.customer-profile .section-pains .section-content {
+    max-width: 95%;
+}
+
+/* ========================================
+   区域通用样式
+   ======================================== */
+.vpc-section {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+}
+
+.vpc-section:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.section-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: var(--line-height-snug);
+}
+
+.section-content {
+    flex: 1;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+    overflow-y: auto;
+    padding: 1em;
+}
+
+.vpc-section:focus-within,
+.section-content:focus {
+    background-color: var(--color-focus-bg) !important;
+}
+
+/* ========================================
+   连接器 (FIT)
+   ======================================== */
+.vpc-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.fit-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text-tertiary);
+}
+
+.fit-text {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    text-transform: uppercase;
+}
+
+.fit-indicator .icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .vpc-section {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .shape-icon {
+    border-color: var(--color-text-primary);
+}
+
+body.theme-dark .circle-container::before {
+    border-color: var(--border-sem-outer);
+}
+
+/* Dark Theme - Focus Within States */
+body.theme-dark .vpc-section:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   打印样式 - Force Original Layout
+   ======================================== */
+@media print {
+
+    /* Override responsive - force flex row layout */
+    .vpc-layout {
+        flex-direction: row !important;
+        gap: var(--spacing-lg) !important;
+    }
+
+    .vpc-connector {
+        width: 60px !important;
+        height: auto !important;
+    }
+
+    .fit-indicator {
+        flex-direction: column !important;
+    }
+
+    /* Force circle container back to circle */
+    .circle-container {
+        display: block !important;
+        aspect-ratio: 1 / 1 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-height: none !important;
+    }
+
+    .circle-container::before {
+        display: block !important;
+        border-width: 1pt;
+    }
+
+    /* Force clip-path back */
+    .customer-profile .vpc-section {
+        position: absolute !important;
+    }
+
+    .customer-profile .section-jobs {
+        clip-path: ellipse(100% 50% at 0% 50%) !important;
+    }
+
+    .customer-profile .section-gains {
+        clip-path: ellipse(100% 100% at 100% 100%) !important;
+    }
+
+    .customer-profile .section-pains {
+        clip-path: ellipse(100% 100% at 100% 0%) !important;
+    }
+
+    .square-container {
+        border-width: 1pt;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .vpc-layout {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+
+    .vpc-connector {
+        width: 100%;
+        height: 40px;
+    }
+
+    .fit-indicator {
+        flex-direction: row;
+    }
+
+    .circle-container {
+        max-height: 400px;
+    }
+
+    /* 在小屏幕上移除 clip-path，使用简单矩形 */
+    .customer-profile .vpc-section {
+        position: static;
+        clip-path: none;
+        width: auto;
+        height: auto;
+    }
+
+    .circle-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        aspect-ratio: auto;
+        border: 1px solid var(--border-sem-outer);
+        border-radius: 0;
+    }
+
+    .circle-container::before {
+        display: none;
+    }
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .section-products {
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .section-gain-creators {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .section-pain-relievers {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .section-jobs {
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .section-gains {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .section-pains {
+    background-color: var(--color-semantic-pain);
+}
+
+/* Mobile composition: replace the clipped diagram with six readable cards. */
+@media screen and (max-width: 768px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .vpc-layout {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .square-container,
+    .circle-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+        width: 100%;
+        max-height: none;
+        aspect-ratio: auto;
+        border: 1px solid var(--border-sem-outer);
+    }
+
+    .value-map .vpc-section,
+    .customer-profile .vpc-section,
+    .value-map .section-products,
+    .value-map .section-gain-creators,
+    .value-map .section-pain-relievers,
+    .customer-profile .section-jobs,
+    .customer-profile .section-gains,
+    .customer-profile .section-pains {
+        position: static;
+        grid-column: 1;
+        grid-row: auto;
+        width: auto;
+        height: auto;
+        min-width: 0;
+        padding: var(--spacing-lg);
+        clip-path: none;
+        writing-mode: horizontal-tb;
+        align-items: stretch;
+        justify-content: flex-start;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+
+    .value-map .vpc-section:last-child,
+    .customer-profile .vpc-section:last-child {
+        border-bottom: none;
+    }
+
+    .customer-profile .section-jobs .section-header,
+    .customer-profile .section-jobs .section-content {
+        writing-mode: horizontal-tb;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .section-content {
+        min-height: 7rem;
+        max-width: none;
+        overflow: visible;
+        overflow-wrap: anywhere;
+    }
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTM 策略画布 (Go-to-Market Strategy Canvas)</title>
+    <meta name="description" content="产品上市策略的系统化规划工具，涵盖市场定位、渠道策略、营销计划和里程碑管理。">
+    <meta name="keywords" content="GTM,产品上市,市场策略,渠道策略,营销计划">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="GTM 策略画布 - Modiqi Workbench">
+    <meta property="og:description" content="产品上市策略的系统化规划工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/gtm-strategy.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>GTM 策略画布</h1>
+                <span class="english-subtitle">Go-to-Market Strategy Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="产品名称" data-save-key="product_name" aria-label="产品名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Canvas Grid -->
+        <div class="gtm-canvas">
+            <!-- Row 1: 产品定义 | 目标市场 | 价值主张 -->
+            <div class="gtm-row row-top">
+                <!-- 产品定义 -->
+                <div class="gtm-section" data-section="product">
+                    <div class="section-header">
+                        <i data-lucide="package"></i>
+                        <h3>产品定义 <span class="en-sub">(Product Definition)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>核心产品 <span class="en-sub">(Core Product)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="core_product">
+                                描述产品的核心功能和形态...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>产品差异化 <span class="en-sub">(Differentiation)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="differentiation">
+                                与竞品的核心差异点...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>定价策略 <span class="en-sub">(Pricing)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="pricing">定价模式和价格区间...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 目标市场 -->
+                <div class="gtm-section" data-section="market">
+                    <div class="section-header">
+                        <i data-lucide="target"></i>
+                        <h3>目标市场 <span class="en-sub">(Target Market)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>TAM / SAM / SOM</label>
+                            <div class="field-content" contenteditable="true" data-save-key="tam_sam_som">
+                                <ul>
+                                    <li><strong>TAM:</strong> 总可及市场规模</li>
+                                    <li><strong>SAM:</strong> 可服务市场规模</li>
+                                    <li><strong>SOM:</strong> 可获得市场份额</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>ICP 画像 <span class="en-sub">(Ideal Customer Profile)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="icp">理想客户特征描述...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>购买决策者 <span class="en-sub">(Decision Makers)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="decision_makers">
+                                关键决策人角色...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 价值主张 -->
+                <div class="gtm-section" data-section="value">
+                    <div class="section-header">
+                        <i data-lucide="gem"></i>
+                        <h3>价值主张 <span class="en-sub">(Value Proposition)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>独特卖点 <span class="en-sub">(USP)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="usp">一句话概括产品独特价值...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>关键信息 <span class="en-sub">(Key Messages)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="key_messages">
+                                <ul>
+                                    <li>核心信息点 1</li>
+                                    <li>核心信息点 2</li>
+                                    <li>核心信息点 3</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>竞争定位 <span class="en-sub">(Competitive Position)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="competitive_position">
+                                相对竞品的市场定位...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 渠道策略 | 营销策略 | 销售策略 -->
+            <div class="gtm-row row-middle">
+                <!-- 渠道策略 -->
+                <div class="gtm-section" data-section="channels">
+                    <div class="section-header">
+                        <i data-lucide="git-branch"></i>
+                        <h3>渠道策略 <span class="en-sub">(Channel Strategy)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>销售模式 <span class="en-sub">(Sales Model)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="sales_model">
+                                直销 / 分销 / 混合模式...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>合作伙伴 <span class="en-sub">(Partners)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="partners">关键渠道合作伙伴...
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>技术栈 <span class="en-sub">(Tech Stack)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="tech_stack">
+                                CRM / 电商平台 / 支付系统...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 营销策略 -->
+                <div class="gtm-section" data-section="marketing">
+                    <div class="section-header">
+                        <i data-lucide="megaphone"></i>
+                        <h3>营销策略 <span class="en-sub">(Marketing Strategy)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>获客渠道 <span class="en-sub">(Acquisition Channels)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="acquisition_channels">
+                                <ul>
+                                    <li>SEO / SEM</li>
+                                    <li>社交媒体</li>
+                                    <li>内容营销</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>内容策略 <span class="en-sub">(Content Strategy)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="content_strategy">
+                                内容类型和发布计划...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>活动计划 <span class="en-sub">(Campaign Plan)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="campaign_plan">
+                                关键营销活动安排...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 销售策略 -->
+                <div class="gtm-section" data-section="sales">
+                    <div class="section-header">
+                        <i data-lucide="handshake"></i>
+                        <h3>销售策略 <span class="en-sub">(Sales Strategy)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>销售流程 <span class="en-sub">(Sales Process)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="sales_process">
+                                从线索到成交的流程...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>销售赋能 <span class="en-sub">(Sales Enablement)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="sales_enablement">
+                                销售工具和培训支持...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>漏斗设计 <span class="en-sub">(Funnel Design)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="funnel_design">转化漏斗关键节点...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: 里程碑计划 -->
+            <div class="gtm-row row-milestones">
+                <div class="gtm-section full-width" data-section="milestones">
+                    <div class="section-header">
+                        <i data-lucide="flag"></i>
+                        <h3>上市里程碑 <span class="en-sub">(Launch Milestones)</span></h3>
+                    </div>
+                    <div class="milestone-track">
+                        <div class="milestone" data-phase="warmup">
+                            <div class="milestone-icon">
+                                <i data-lucide="flame"></i>
+                            </div>
+                            <div class="milestone-content">
+                                <h4>预热期 <span class="en-sub">(Warm-up)</span></h4>
+                                <div class="milestone-date" contenteditable="true" data-save-key="warmup_date">T-30天
+                                </div>
+                                <div class="milestone-desc" contenteditable="true" data-save-key="warmup_desc">
+                                    市场预热、KOL合作、内容铺垫</div>
+                            </div>
+                        </div>
+                        <div class="milestone-connector"></div>
+                        <div class="milestone" data-phase="softlaunch">
+                            <div class="milestone-icon">
+                                <i data-lucide="zap"></i>
+                            </div>
+                            <div class="milestone-content">
+                                <h4>软启动 <span class="en-sub">(Soft Launch)</span></h4>
+                                <div class="milestone-date" contenteditable="true" data-save-key="softlaunch_date">T-14天
+                                </div>
+                                <div class="milestone-desc" contenteditable="true" data-save-key="softlaunch_desc">
+                                    种子用户测试、反馈收集</div>
+                            </div>
+                        </div>
+                        <div class="milestone-connector"></div>
+                        <div class="milestone active" data-phase="launch">
+                            <div class="milestone-icon">
+                                <i data-lucide="rocket"></i>
+                            </div>
+                            <div class="milestone-content">
+                                <h4>正式发布 <span class="en-sub">(Launch Day)</span></h4>
+                                <div class="milestone-date" contenteditable="true" data-save-key="launch_date">D-Day
+                                </div>
+                                <div class="milestone-desc" contenteditable="true" data-save-key="launch_desc">
+                                    全渠道发布、PR活动</div>
+                            </div>
+                        </div>
+                        <div class="milestone-connector"></div>
+                        <div class="milestone" data-phase="scale">
+                            <div class="milestone-icon">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <div class="milestone-content">
+                                <h4>规模扩张 <span class="en-sub">(Scale-up)</span></h4>
+                                <div class="milestone-date" contenteditable="true" data-save-key="scale_date">T+30天
+                                </div>
+                                <div class="milestone-desc" contenteditable="true" data-save-key="scale_desc">
+                                    效果优化、渠道扩展</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: 成功指标 -->
+            <div class="gtm-row row-metrics">
+                <div class="gtm-section full-width" data-section="metrics">
+                    <div class="section-header">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h3>成功指标 <span class="en-sub">(Success Metrics)</span></h3>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-period">30天目标</div>
+                            <div class="metric-content" contenteditable="true" data-save-key="metric_30d">
+                                <ul>
+                                    <li>注册用户: 1,000</li>
+                                    <li>付费转化: 5%</li>
+                                    <li>NPS: >40</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-period">90天目标</div>
+                            <div class="metric-content" contenteditable="true" data-save-key="metric_90d">
+                                <ul>
+                                    <li>活跃用户: 3,000</li>
+                                    <li>月复购率: 20%</li>
+                                    <li>CAC回收: <6月< /li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-period">年度目标</div>
+                            <div class="metric-content" contenteditable="true" data-save-key="metric_1y">
+                                <ul>
+                                    <li>市场份额: 5%</li>
+                                    <li>ARR: ¥500万</li>
+                                    <li>品牌认知: 30%</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="metric-card highlight">
+                            <div class="metric-period">北极星指标</div>
+                            <div class="metric-content" contenteditable="true" data-save-key="north_star">
+                                <div class="north-star-metric">
+                                    <strong>月活跃付费用户</strong>
+                                    <span class="metric-target">500+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('gtm_strategy');
+            lucide.createIcons({
+                attrs: { class: 'icon', 'stroke-width': 2 }
+            });
+        });
+    </script>
+</body>
+
+</html>

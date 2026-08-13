@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价值主张画布 (Value Proposition Canvas)</title>
+    <meta name="description" content="价值主张画布工具，帮助您设计满足客户需求的产品和服务，实现产品市场匹配。">
+    <meta name="keywords" content="价值主张,产品设计,客户需求,PMF,商业模式">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="价值主张画布 - Modiqi Workbench">
+    <meta property="og:description" content="设计满足客户需求的产品和服务，实现产品市场匹配。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/value-proposition.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>价值主张画布</h1>
+                <span class="english-subtitle">Value Proposition Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>目标 <span class="en-sub">(Target)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的超级产品" data-save-key="product_name" aria-label="我的超级产品">
+                </div>
+                <div class="meta-group">
+                    <label>客户 <span class="en-sub">(Customer)</span></label>
+                    <input type="text" class="meta-input" placeholder="理想客户群体" data-save-key="customer_segment" aria-label="理想客户群体">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="vpc-layout">
+            <!-- Left Side: Value Map (Square) -->
+            <div class="vpc-pane value-map">
+                <div class="pane-label">
+                    <span class="shape-icon shape-square"></span>
+                    价值图谱 <span class="en-sub">(Value Map)</span>
+                </div>
+                <div class="square-container">
+                    <!-- Products & Services (Left Half) -->
+                    <div class="vpc-section section-products">
+                        <div class="section-header">
+                            <i data-lucide="package"></i>
+                            <h3>产品与服务 <span class="en-sub">(Products & Services)</span></h3>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-save-key="products_services">
+                            <ul>
+                                <li>列出你的所有产品功能...</li>
+                                <li>关键服务内容...</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Gain Creators (Top Right) -->
+                    <div class="vpc-section section-gain-creators">
+                        <div class="section-header">
+                            <i data-lucide="arrow-up-circle"></i>
+                            <h3>获益创造者 <span class="en-sub">(Gain Creators)</span></h3>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-save-key="gain_creators">
+                            <ul>
+                                <li>如何帮助客户实现愿望？</li>
+                                <li>如何产生积极的结果？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pain Relievers (Bottom Right) -->
+                    <div class="vpc-section section-pain-relievers">
+                        <div class="section-header">
+                            <i data-lucide="pill"></i>
+                            <h3>痛点缓释 <span class="en-sub">(Pain Relievers)</span></h3>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-save-key="pain_relievers">
+                            <ul>
+                                <li>如何减轻客户的痛苦？</li>
+                                <li>如何消除障碍和风险？</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="vpc-connector">
+                <div class="fit-indicator">
+                    <span class="fit-text">FIT</span>
+                    <i data-lucide="arrow-right"></i>
+                </div>
+            </div>
+
+            <!-- Right Side: Customer Profile (Circle) -->
+            <div class="vpc-pane customer-profile">
+                <div class="pane-label">
+                    <span class="shape-icon shape-circle"></span>
+                    客户画像 <span class="en-sub">(Customer Profile)</span>
+                </div>
+                <div class="circle-container">
+                    <!-- Customer Jobs (Right Half - Semicircle) -->
+                    <div class="vpc-section section-jobs">
+                        <div class="section-header">
+                            <i data-lucide="briefcase"></i>
+                            <h3>客户任务 <span class="en-sub">(Customer Jobs)</span></h3>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-save-key="customer_jobs">
+                            <ul>
+                                <li>客户试图完成什么工作？</li>
+                                <li>解决什么问题？</li>
+                                <li>功能性、社会性、情感性任务</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Gains (Top Left Quarter) -->
+                    <div class="vpc-section section-gains">
+                        <div class="section-header">
+                            <i data-lucide="trophy"></i>
+                            <h3>客户获益 <span class="en-sub">(Gains)</span></h3>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-save-key="customer_gains">
+                            <ul>
+                                <li>客户想要什么结果？</li>
+                                <li>收益是什么？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pains (Bottom Left Quarter) -->
+                    <div class="vpc-section section-pains">
+                        <div class="section-header">
+                            <i data-lucide="frown"></i>
+                            <h3>客户痛点 <span class="en-sub">(Pains)</span></h3>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-save-key="customer_pains">
+                            <ul>
+                                <li>风险与障碍？</li>
+                                <li>糟糕的结果?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('value_proposition_v4');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

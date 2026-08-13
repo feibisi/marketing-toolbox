@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modiqi Sales Workbench (莫蒂奇销售支持工作台)</title>
+    <!-- Fonts -->
+
+    <!-- Meta -->
+    <meta property="og:title" content="Modiqi Sales Workbench">
+    <meta property="og:description" content="销售支持与客户转化的专业工具集。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">销售支持工作台</h1>
+                    <span class="version-tag">13 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Sales Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Pricing Tier Architect -->
+            <a href="pricing-tier.html" class="tool-card">
+                <i data-lucide="layers" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">定价</div>
+                    <!-- 3-Col Pricing -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Grid -->
+                        <rect x="20" y="30" width="45" height="80" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="75" y="20" width="50" height="100" rx="2" fill="#fff" stroke="#94a3b8" />
+                        <rect x="135" y="30" width="45" height="80" rx="2" fill="#1e293b" stroke="#0f172a" />
+                        <!-- Lines -->
+                        <rect x="30" y="40" width="25" height="4" rx="1" fill="#cbd5e1" />
+                        <rect x="85" y="35" width="30" height="4" rx="1" fill="#cbd5e1" />
+                        <rect x="145" y="40" width="25" height="4" rx="1" fill="#64748b" />
+                        <!-- Price -->
+                        <text x="100" y="60" text-anchor="middle" font-size="20" font-weight="bold"
+                            fill="#1f2937">¥</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">价格阶梯设计器 <span class="en-sub">(Pricing Tier)</span></h3>
+                    <p class="tool-desc">设计 Good/Better/Best 心理学定价策略。</p>
+                </div>
+            </a>
+
+            <!-- 2. Sales Script Builder -->
+            <a href="sales-script.html" class="tool-card">
+                <i data-lucide="mic-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">话术</div>
+                    <!-- Script Flow -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Flow Nodes -->
+                        <rect x="50" y="20" width="100" height="25" rx="2" fill="#fff" stroke="#94a3b8" />
+                        <line x1="100" y1="45" x2="100" y2="55" stroke="#cbd5e1" stroke-width="2" />
+
+                        <rect x="50" y="55" width="100" height="25" rx="2" fill="#fff" stroke="#94a3b8" />
+                        <line x1="100" y1="80" x2="100" y2="90" stroke="#cbd5e1" stroke-width="2" />
+
+                        <rect x="50" y="90" width="100" height="25" rx="2" fill="#fff" stroke="#94a3b8" />
+
+                        <!-- Text lines -->
+                        <line x1="60" y1="32" x2="140" y2="32" stroke="#e2e8f0" stroke-width="2" />
+                        <line x1="60" y1="67" x2="140" y2="67" stroke="#e2e8f0" stroke-width="2" />
+                        <line x1="60" y1="102" x2="140" y2="102" stroke="#e2e8f0" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">销售话术构建器 <span class="en-sub">(Script)</span></h3>
+                    <p class="tool-desc">可视化设计电话/演示脚本流程。</p>
+                </div>
+            </a>
+
+            <!-- 3. Lead Scoring -->
+            <a href="lead-scoring.html" class="tool-card">
+                <i data-lucide="target" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">评分</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Gauge -->
+                        <path d="M100 100 L100 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="#f1f5f9" stroke-width="8" />
+                        <path d="M50 100 A50 50 0 0 1 150 100" fill="none" stroke="#10b981" stroke-width="8" />
+                        <circle cx="100" cy="100" r="10" fill="#1f2937" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">客户评分卡 <span class="en-sub">(Lead Scoring)</span></h3>
+                    <p class="tool-desc">评估潜在客户质量与转化潜力。</p>
+                </div>
+            </a>
+
+            <!-- 2. Quote Calculator -->
+            <a href="quote-calculator.html" class="tool-card">
+                <i data-lucide="calculator" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">报价</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Table -->
+                        <rect x="20" y="25" width="160" height="90" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="20" y1="45" x2="180" y2="45" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="20" y1="65" x2="180" y2="65" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="20" y1="85" x2="180" y2="85" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="25" x2="100" y2="115" stroke="#e2e8f0" stroke-width="1" />
+                        <!-- Total -->
+                        <rect x="100" y="100" width="80" height="15" fill="#f1f5f9" />
+                        <text x="140" y="112" font-size="10" fill="#1f2937" text-anchor="middle">¥ Total</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">报价计算器 <span class="en-sub">(Quote Calculator)</span></h3>
+                    <p class="tool-desc">快速生成服务或产品报价单。</p>
+                </div>
+            </a>
+
+            <!-- 3. Competitive Battlecard -->
+            <a href="competitive-battlecard.html" class="tool-card">
+                <i data-lucide="swords" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">竞品</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- VS Layout -->
+                        <rect x="20" y="30" width="70" height="80" rx="4" fill="#f1f5f9" stroke="#e2e8f0" />
+                        <rect x="110" y="30" width="70" height="80" rx="4" fill="#f1f5f9" stroke="#e2e8f0" />
+                        <text x="55" y="75" font-size="12" fill="#64748b" text-anchor="middle">我们</text>
+                        <text x="145" y="75" font-size="12" fill="#64748b" text-anchor="middle">竞品</text>
+                        <circle cx="100" cy="70" r="15" fill="#fff" stroke="#cbd5e1" />
+                        <text x="100" y="75" font-size="10" fill="#1f2937" text-anchor="middle">VS</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">竞品对比卡 <span class="en-sub">(Battlecard)</span></h3>
+                    <p class="tool-desc">快速参考竞争定位与话术。</p>
+                </div>
+            </a>
+
+            <!-- 4. Closing Checklist -->
+            <a href="closing-checklist.html" class="tool-card">
+                <i data-lucide="check-square" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">成交</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Checklist -->
+                        <rect x="35" y="35" width="15" height="15" rx="2" fill="#10b981" />
+                        <path d="M38 43 L42 47 L50 38" stroke="#fff" stroke-width="2" fill="none" />
+                        <rect x="60" y="38" width="100" height="8" rx="2" fill="#e2e8f0" />
+
+                        <rect x="35" y="60" width="15" height="15" rx="2" fill="#10b981" />
+                        <path d="M38 68 L42 72 L50 63" stroke="#fff" stroke-width="2" fill="none" />
+                        <rect x="60" y="63" width="80" height="8" rx="2" fill="#e2e8f0" />
+
+                        <rect x="35" y="85" width="15" height="15" rx="2" stroke="#cbd5e1" fill="#fff" />
+                        <rect x="60" y="88" width="90" height="8" rx="2" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">成交检查清单 <span class="en-sub">(Closing Checklist)</span></h3>
+                    <p class="tool-desc">签约前的关键项确认清单。</p>
+                </div>
+            </a>
+
+            <!-- 7. Objection Handling Matrix (New) -->
+            <a href="objection-handling-matrix.html" class="tool-card">
+                <i data-lucide="shield-alert" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">话术</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Matrix -->
+                        <rect x="25" y="25" width="70" height="40" rx="2" fill="#fff" stroke="#e2e8f0"
+                            stroke-width="1" />
+                        <rect x="105" y="25" width="70" height="40" rx="2" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="1" />
+
+                        <rect x="25" y="75" width="70" height="40" rx="2" fill="#fff" stroke="#e2e8f0"
+                            stroke-width="1" />
+                        <rect x="105" y="75" width="70" height="40" rx="2" fill="#f8fafc" stroke="#e2e8f0"
+                            stroke-width="1" />
+
+                        <path d="M60 45 L110 45" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="2 2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">异议处理矩阵 <span class="en-sub">(Objection Matrix)</span></h3>
+                    <p class="tool-desc">系统化破解客户顾虑与反驳。</p>
+                </div>
+            </a>
+
+            <!-- 8. Proposal Generator (New) -->
+            <a href="proposal-generator.html" class="tool-card">
+                <i data-lucide="file-text" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">提案</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Doc -->
+                        <rect x="60" y="20" width="80" height="100" fill="#fff" stroke="#e2e8f0" rx="2" />
+                        <rect x="70" y="30" width="40" height="6" fill="#1f2937" rx="1" />
+                        <rect x="70" y="45" width="60" height="4" fill="#cbd5e1" rx="1" />
+                        <rect x="70" y="55" width="60" height="4" fill="#cbd5e1" rx="1" />
+                        <rect x="70" y="65" width="40" height="4" fill="#cbd5e1" rx="1" />
+
+                        <!-- Image placeholder -->
+                        <rect x="70" y="80" width="60" height="30" fill="#f1f5f9" rx="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">提案生成器 <span class="en-sub">(Proposal Gen)</span></h3>
+                    <p class="tool-desc">快速构建专业的销售提案文档。</p>
+                </div>
+            </a>
+
+            
+
+            <!-- 10. AARRR Growth Funnel -->
+            <a href="growth-funnel.html" class="tool-card">
+                <i data-lucide="filter" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">增长</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="20" width="140" height="18" rx="2" fill="#e2e8f0" />
+                        <rect x="40" y="43" width="120" height="16" rx="2" fill="#e2e8f0" />
+                        <rect x="50" y="64" width="100" height="16" rx="2" fill="#cbd5e1" />
+                        <rect x="60" y="85" width="80" height="16" rx="2" fill="#94a3b8" />
+                        <rect x="70" y="106" width="60" height="16" rx="2" fill="#64748b" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">AARRR 增长漏斗 <span class="en-sub">(Growth Funnel)</span></h3>
+                    <p class="tool-desc">获客到推荐的完整转化流程。</p>
+                </div>
+            </a>
+
+            <!-- 11. Sales Funnel -->
+            <a href="sales-funnel.html" class="tool-card">
+                <i data-lucide="trending-down" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">漏斗</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <path d="M40 30 L160 30 L130 70 L70 70 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M70 70 L130 70 L110 100 L90 100 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M90 100 L110 100 L105 120 L95 120 Z" fill="#cbd5e1" stroke="#94a3b8"
+                            stroke-width="1" />
+                        <text x="100" y="50" text-anchor="middle" font-size="10" fill="#64748b">线索</text>
+                        <text x="100" y="85" text-anchor="middle" font-size="10" fill="#64748b">商机</text>
+                        <text x="100" y="113" text-anchor="middle" font-size="9" fill="#64748b">成交</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">销售漏斗 <span class="en-sub">(Sales Funnel)</span></h3>
+                    <p class="tool-desc">线索到成交的转化追踪。</p>
+                </div>
+            </a>
+
+            <!-- 12. ABM Canvas -->
+            <a href="abm-canvas.html" class="tool-card">
+                <i data-lucide="building-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">New</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Tier pyramid -->
+                        <rect x="60" y="20" width="80" height="20" fill="#64748b" />
+                        <rect x="45" y="45" width="110" height="18" fill="#94a3b8" />
+                        <rect x="30" y="68" width="140" height="16" fill="#cbd5e1" />
+                        <!-- Labels -->
+                        <text x="100" y="34" text-anchor="middle" font-size="8" fill="#fff">1:1</text>
+                        <text x="100" y="58" text-anchor="middle" font-size="8" fill="#fff">1:Few</text>
+                        <text x="100" y="80" text-anchor="middle" font-size="8" fill="#374151">1:Many</text>
+                        <!-- Decision makers icons -->
+                        <circle cx="60" cy="105" r="10" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="100" cy="105" r="10" fill="#fef3c7" stroke="#f59e0b" />
+                        <circle cx="140" cy="105" r="10" fill="#f8fafc" stroke="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">ABM 策略画布 <span class="en-sub">(Account-Based Marketing)</span></h3>
+                    <p class="tool-desc">B2B 大客户营销的系统化规划。</p>
+                </div>
+            </a>
+
+            <!-- 13. PDP Optimizer -->
+            <a href="pdp-optimizer.html" class="tool-card">
+                <i data-lucide="shopping-bag" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">New</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Page preview -->
+                        <rect x="20" y="15" width="80" height="110" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="25" y="20" width="70" height="40" fill="#e2e8f0" />
+                        <rect x="25" y="65" width="50" height="6" fill="#64748b" />
+                        <rect x="25" y="75" width="30" height="10" fill="#3b82f6" />
+                        <rect x="25" y="90" width="70" height="8" fill="#cbd5e1" />
+                        <rect x="25" y="102" width="70" height="18" fill="#10b981" />
+                        <!-- Score -->
+                        <circle cx="140" cy="50" r="30" fill="none" stroke="#e2e8f0" stroke-width="6" />
+                        <path d="M140 20 A 30 30 0 1 1 110 50" fill="none" stroke="#3b82f6" stroke-width="6" />
+                        <text x="140" y="55" text-anchor="middle" font-size="14" font-weight="bold"
+                            fill="#3b82f6">78</text>
+                        <!-- Checklist -->
+                        <rect x="110" y="90" width="10" height="10" fill="#10b981" />
+                        <rect x="125" y="92" width="50" height="6" fill="#e2e8f0" />
+                        <rect x="110" y="105" width="10" height="10" fill="#10b981" />
+                        <rect x="125" y="107" width="40" height="6" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">电商详情页优化器 <span class="en-sub">(PDP Optimizer)</span></h3>
+                    <p class="tool-desc">商品页审查与转化率优化。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle Functionality
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load saved preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

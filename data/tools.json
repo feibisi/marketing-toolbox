@@ -1,0 +1,1157 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "id": "ai-toolkit:ai-agent-card",
+      "module": "ai",
+      "path": "ai-toolkit/ai-agent-card.html",
+      "title": "AI 智能体工牌 (AI Agent ID Card)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "ai-toolkit:ai-opportunity-radar",
+      "module": "ai",
+      "path": "ai-toolkit/ai-opportunity-radar.html",
+      "title": "AI 机会雷达 (AI Opportunity Radar)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "ai-toolkit:ai-persona-generator",
+      "module": "ai",
+      "path": "ai-toolkit/ai-persona-generator.html",
+      "title": "AI 用户画像生成器 (AI Persona Generator)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "ai-toolkit:ai-tool-matrix",
+      "module": "ai",
+      "path": "ai-toolkit/ai-tool-matrix.html",
+      "title": "AI 工具选型矩阵 (AI Tool Selection Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "ai-toolkit:ai-workflow-builder",
+      "module": "ai",
+      "path": "ai-toolkit/ai-workflow-builder.html",
+      "title": "AI 工作流构建器 (AI Workflow Builder)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "ai-toolkit:content-repurposing-engine",
+      "module": "ai",
+      "path": "ai-toolkit/content-repurposing-engine.html",
+      "title": "内容复用引擎 (Content Repurposing Engine)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "ai-toolkit:prompt-canvas",
+      "module": "ai",
+      "path": "ai-toolkit/prompt-canvas.html",
+      "title": "AI 提示词工程画布 (Prompt Engineering Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:ab-test-planner",
+      "module": "analytics",
+      "path": "analytics-toolkit/ab-test-planner.html",
+      "title": "A/B 测试规划器 (A/B Test Planner)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "analytics-toolkit:attribution-model",
+      "module": "analytics",
+      "path": "analytics-toolkit/attribution-model.html",
+      "title": "归因模型分析器 (Attribution Modeler)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:budget-allocator",
+      "module": "analytics",
+      "path": "analytics-toolkit/budget-allocator.html",
+      "title": "营销预算分配器 (Marketing Budget Allocator)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:budget-planner",
+      "module": "analytics",
+      "path": "analytics-toolkit/budget-planner.html",
+      "title": "营销预算规划器 (Marketing Budget Planner)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:clv-calculator",
+      "module": "analytics",
+      "path": "analytics-toolkit/clv-calculator.html",
+      "title": "CLV 计算器 (Customer Lifetime Value Calculator)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:cohort-analysis",
+      "module": "analytics",
+      "path": "analytics-toolkit/cohort-analysis.html",
+      "title": "队列分析表 (Cohort Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:competitor-analysis",
+      "module": "analytics",
+      "path": "analytics-toolkit/competitor-analysis.html",
+      "title": "竞争对手分析 (Competitor Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:experiment-board",
+      "module": "analytics",
+      "path": "analytics-toolkit/experiment-board.html",
+      "title": "增长实验看板 (Growth Experiment Board)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:funnel-diagnosis",
+      "module": "analytics",
+      "path": "analytics-toolkit/funnel-diagnosis.html",
+      "title": "漏斗诊断卡 (Funnel Diagnosis)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "analytics-toolkit:ice-scoring",
+      "module": "analytics",
+      "path": "analytics-toolkit/ice-scoring.html",
+      "title": "ICE 评分矩阵 (ICE Scoring Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:kpi-dashboard",
+      "module": "analytics",
+      "path": "analytics-toolkit/kpi-dashboard.html",
+      "title": "KPI 仪表盘 (KPI Dashboard)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "analytics-toolkit:measurement-plan",
+      "module": "analytics",
+      "path": "analytics-toolkit/measurement-plan.html",
+      "title": "数字营销评估计划 (Measurement Plan)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "analytics-toolkit:north-star-metric",
+      "module": "analytics",
+      "path": "analytics-toolkit/north-star-metric.html",
+      "title": "北极星指标 (North Star Metric)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:pirate-metrics",
+      "module": "analytics",
+      "path": "analytics-toolkit/pirate-metrics.html",
+      "title": "海盗指标 AARRR - Modiqi Analytics Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:rfm-analysis",
+      "module": "analytics",
+      "path": "analytics-toolkit/rfm-analysis.html",
+      "title": "RFM 模型分析 (RFM Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "analytics-toolkit:roi-calculator",
+      "module": "analytics",
+      "path": "analytics-toolkit/roi-calculator.html",
+      "title": "ROI 计算器 (Marketing ROI Calculator)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "behavior-toolkit:aida-model",
+      "module": "behavior",
+      "path": "behavior-toolkit/aida-model.html",
+      "title": "AIDA 模型 - Modiqi Marketing Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:attribution-analysis",
+      "module": "behavior",
+      "path": "behavior-toolkit/attribution-analysis.html",
+      "title": "渠道归因分析 (Attribution Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:bj-fogg-model",
+      "module": "behavior",
+      "path": "behavior-toolkit/bj-fogg-model.html",
+      "title": "BJ Fogg 行为模型 (Behavior Model)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:cognitive-bias",
+      "module": "behavior",
+      "path": "behavior-toolkit/cognitive-bias.html",
+      "title": "认知偏差清单 (Cognitive Bias Checklist)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:customer-experience-map",
+      "module": "behavior",
+      "path": "behavior-toolkit/customer-experience-map.html",
+      "title": "客户体验地图 (Customer Experience Map)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:customer-journey",
+      "module": "behavior",
+      "path": "behavior-toolkit/customer-journey.html",
+      "title": "客户旅程地图 (Customer Journey Map)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "behavior-toolkit:empathy-map",
+      "module": "behavior",
+      "path": "behavior-toolkit/empathy-map.html",
+      "title": "同理心地图 (Empathy Map)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "behavior-toolkit:hook-model",
+      "module": "behavior",
+      "path": "behavior-toolkit/hook-model.html",
+      "title": "上瘾模型 (Hook Model)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:marketing-canvas",
+      "module": "behavior",
+      "path": "behavior-toolkit/marketing-canvas.html",
+      "title": "营销策略画布 (Marketing Strategy Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:nudge-planner",
+      "module": "behavior",
+      "path": "behavior-toolkit/nudge-planner.html",
+      "title": "助推理论策划器 (Nudge Theory Planner)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:service-blueprint",
+      "module": "behavior",
+      "path": "behavior-toolkit/service-blueprint.html",
+      "title": "服务蓝图 - Modiqi Customer Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:touchpoint-matrix",
+      "module": "behavior",
+      "path": "behavior-toolkit/touchpoint-matrix.html",
+      "title": "触点矩阵 (Touchpoint Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "behavior-toolkit:user-persona",
+      "module": "behavior",
+      "path": "behavior-toolkit/user-persona.html",
+      "title": "用户画像卡 (User Persona Card)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-archetype-wheel",
+      "module": "brand",
+      "path": "brand-toolkit/brand-archetype-wheel.html",
+      "title": "品牌原型轮盘 (Brand Archetype Wheel)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-archetypes",
+      "module": "brand",
+      "path": "brand-toolkit/brand-archetypes.html",
+      "title": "品牌原型轮 (Brand Archetypes)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-architecture",
+      "module": "brand",
+      "path": "brand-toolkit/brand-architecture.html",
+      "title": "品牌架构 (Brand Architecture)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-essence-wheel",
+      "module": "brand",
+      "path": "brand-toolkit/brand-essence-wheel.html",
+      "title": "品牌精髓轮 - Modiqi Brand Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-messaging",
+      "module": "brand",
+      "path": "brand-toolkit/brand-messaging.html",
+      "title": "品牌信息框架 (Brand Messaging Framework)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "brand-toolkit:brand-naming",
+      "module": "brand",
+      "path": "brand-toolkit/brand-naming.html",
+      "title": "品牌命名画布 (Brand Naming Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-positioning-map",
+      "module": "brand",
+      "path": "brand-toolkit/brand-positioning-map.html",
+      "title": "品牌定位图 (Brand Positioning Map)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "brand-toolkit:brand-prism",
+      "module": "brand",
+      "path": "brand-toolkit/brand-prism.html",
+      "title": "品牌棱镜模型 (Kapferer Brand Prism)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:brand-story",
+      "module": "brand",
+      "path": "brand-toolkit/brand-story.html",
+      "title": "品牌故事模板 (Brand Story Template)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "brand-toolkit:jtbd-canvas",
+      "module": "brand",
+      "path": "brand-toolkit/jtbd-canvas.html",
+      "title": "JTBD 画布 - Modiqi Brand Workbench",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "brand-toolkit:perceptual-map",
+      "module": "brand",
+      "path": "brand-toolkit/perceptual-map.html",
+      "title": "感知地图 - Modiqi Brand Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:positioning-statement",
+      "module": "brand",
+      "path": "brand-toolkit/positioning-statement.html",
+      "title": "定位陈述生成器 (Positioning Statement)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "brand-toolkit:tone-voice",
+      "module": "brand",
+      "path": "brand-toolkit/tone-voice.html",
+      "title": "品牌语调均衡器 (Tone of Voice Equalizer)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "brand-toolkit:touchpoint-map",
+      "module": "brand",
+      "path": "brand-toolkit/touchpoint-map.html",
+      "title": "品牌触点地图 (Brand Touchpoint Map)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "brand-toolkit:visual-identity",
+      "module": "brand",
+      "path": "brand-toolkit/visual-identity.html",
+      "title": "视觉识别清单 (Visual Identity Checklist)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "cdp-toolkit:cdp-canvas",
+      "module": "cdp",
+      "path": "cdp-toolkit/cdp-canvas.html",
+      "title": "客户数据整合画布 (CDP Canvas) - Modiqi Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "cdp-toolkit:ltv-map",
+      "module": "cdp",
+      "path": "cdp-toolkit/ltv-map.html",
+      "title": "客户生命周期价值地图 (LTV Map) - Modiqi Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "cdp-toolkit:segmentation-engine",
+      "module": "cdp",
+      "path": "cdp-toolkit/segmentation-engine.html",
+      "title": "客户细分引擎 (Segmentation Engine) - Modiqi Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:content-audit",
+      "module": "content",
+      "path": "content-toolkit/content-audit.html",
+      "title": "内容盘点工具 (Content Audit Tracker)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "content-toolkit:content-calendar",
+      "module": "content",
+      "path": "content-toolkit/content-calendar.html",
+      "title": "内容日历 (Content Calendar)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "content-toolkit:content-distribution-matrix",
+      "module": "content",
+      "path": "content-toolkit/content-distribution-matrix.html",
+      "title": "内容分发矩阵 (Content Distribution Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:content-performance",
+      "module": "content",
+      "path": "content-toolkit/content-performance.html",
+      "title": "内容效果分析 (Content Performance)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "content-toolkit:content-repurposing",
+      "module": "content",
+      "path": "content-toolkit/content-repurposing.html",
+      "title": "内容再利用引擎 (Content Repurposing Engine)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:content-seo-checklist",
+      "module": "content",
+      "path": "content-toolkit/content-seo-checklist.html",
+      "title": "SEO 内容检查单 (Content SEO Checklist)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:content-strategy-canvas",
+      "module": "content",
+      "path": "content-toolkit/content-strategy-canvas.html",
+      "title": "内容战略画布 (Content Strategy Canvas)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "content-toolkit:editorial-workflow",
+      "module": "content",
+      "path": "content-toolkit/editorial-workflow.html",
+      "title": "编辑工作流 (Editorial Workflow)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:headline-optimizer",
+      "module": "content",
+      "path": "content-toolkit/headline-optimizer.html",
+      "title": "标题效能评估器 (Headline Power Score)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:storytelling-framework",
+      "module": "content",
+      "path": "content-toolkit/storytelling-framework.html",
+      "title": "故事叙事框架 (Storytelling Framework)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "content-toolkit:topic-cluster-mapper",
+      "module": "content",
+      "path": "content-toolkit/topic-cluster-mapper.html",
+      "title": "SEO 主题簇映射器 (Topic Cluster Mapper)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "customer-toolkit:customer-journey-map",
+      "module": "customer",
+      "path": "customer-toolkit/customer-journey-map.html",
+      "title": "客户旅程地图 (Customer Journey Map)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "customer-toolkit:user-persona",
+      "module": "customer",
+      "path": "customer-toolkit/user-persona.html",
+      "title": "用户画像卡 (User Persona Card)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "email-toolkit:deliverability-checklist",
+      "module": "email",
+      "path": "email-toolkit/deliverability-checklist.html",
+      "title": "邮件送达率自检清单 (Email Deliverability Checklist)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "email-toolkit:drip-campaign-blueprint",
+      "module": "email",
+      "path": "email-toolkit/drip-campaign-blueprint.html",
+      "title": "Drip 营销蓝图 (Drip Campaign Blueprint)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "email-toolkit:marketing-mix",
+      "module": "email",
+      "path": "email-toolkit/marketing-mix.html",
+      "title": "营销组合 4P (Marketing Mix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "email-toolkit:newsletter-planner",
+      "module": "email",
+      "path": "email-toolkit/newsletter-planner.html",
+      "title": "Newsletter 内容规划器 (Content Planner)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "email-toolkit:subject-line-tester",
+      "module": "email",
+      "path": "email-toolkit/subject-line-tester.html",
+      "title": "标题测试实验室 (Subject Line Tester)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:blue-ocean-strategy",
+      "module": "innovation",
+      "path": "innovation-toolkit/blue-ocean-strategy.html",
+      "title": "蓝海战略画布 (Blue Ocean Strategy)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:design-thinking-canvas",
+      "module": "innovation",
+      "path": "innovation-toolkit/design-thinking-canvas.html",
+      "title": "设计思维画布 (Design Thinking Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:innovation-ambition-matrix",
+      "module": "innovation",
+      "path": "innovation-toolkit/innovation-ambition-matrix.html",
+      "title": "创新雄心矩阵 (Innovation Ambition Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:kano-model",
+      "module": "innovation",
+      "path": "innovation-toolkit/kano-model.html",
+      "title": "Kano 模型 (Kano Model)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:pmf-engine",
+      "module": "innovation",
+      "path": "innovation-toolkit/pmf-engine.html",
+      "title": "PMF 验证引擎 (PMF Engine)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:scamper-canvas",
+      "module": "innovation",
+      "path": "innovation-toolkit/scamper-canvas.html",
+      "title": "SCAMPER 创意工具 (Ideation Tool)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:service-blueprint",
+      "module": "innovation",
+      "path": "innovation-toolkit/service-blueprint.html",
+      "title": "服务蓝图 (Service Blueprint)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:six-thinking-hats",
+      "module": "innovation",
+      "path": "innovation-toolkit/six-thinking-hats.html",
+      "title": "六顶思考帽 (Six Thinking Hats)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "innovation-toolkit:user-story-map",
+      "module": "innovation",
+      "path": "innovation-toolkit/user-story-map.html",
+      "title": "用户故事地图 (User Story Map)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:abm-canvas",
+      "module": "sales",
+      "path": "sales-toolkit/abm-canvas.html",
+      "title": "ABM 策略画布 (Account-Based Marketing Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:closing-checklist",
+      "module": "sales",
+      "path": "sales-toolkit/closing-checklist.html",
+      "title": "成交检查清单 (Closing Checklist)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:competitive-battlecard",
+      "module": "sales",
+      "path": "sales-toolkit/competitive-battlecard.html",
+      "title": "竞品对比卡 (Competitive Battlecard)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:growth-funnel",
+      "module": "sales",
+      "path": "sales-toolkit/growth-funnel.html",
+      "title": "AARRR 增长漏斗 (Growth Funnel)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:lead-scoring",
+      "module": "sales",
+      "path": "sales-toolkit/lead-scoring.html",
+      "title": "客户评分卡 (Lead Scoring Card)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "sales-toolkit:objection-handling-matrix",
+      "module": "sales",
+      "path": "sales-toolkit/objection-handling-matrix.html",
+      "title": "异议处理矩阵 (Objection Handling Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:pdp-optimizer",
+      "module": "sales",
+      "path": "sales-toolkit/pdp-optimizer.html",
+      "title": "电商详情页优化器 (PDP Optimizer)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:pricing-tier",
+      "module": "sales",
+      "path": "sales-toolkit/pricing-tier.html",
+      "title": "价格阶梯设计器 (Pricing Tier Architect)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:proposal-generator",
+      "module": "sales",
+      "path": "sales-toolkit/proposal-generator.html",
+      "title": "提案生成器 (Proposal Generator)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:quote-calculator",
+      "module": "sales",
+      "path": "sales-toolkit/quote-calculator.html",
+      "title": "报价计算器 (Quote Calculator)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "sales-toolkit:sales-funnel",
+      "module": "sales",
+      "path": "sales-toolkit/sales-funnel.html",
+      "title": "销售漏斗仪表盘 (Sales Funnel Dashboard)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sales-toolkit:sales-script",
+      "module": "sales",
+      "path": "sales-toolkit/sales-script.html",
+      "title": "销售话术构建器 (Sales Script Builder)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:ad-copy-ab-tester",
+      "module": "sem",
+      "path": "sem-toolkit/ad-copy-ab-tester.html",
+      "title": "广告文案 A/B 测试器 (Ad Copy A/B Tester)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:ad-copy-architect",
+      "module": "sem",
+      "path": "sem-toolkit/ad-copy-architect.html",
+      "title": "广告文案架构师 (Ad Copy Architect)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:bid-calculator",
+      "module": "sem",
+      "path": "sem-toolkit/bid-calculator.html",
+      "title": "智能竞价计算器 (Smart Bid Wizard)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:keyword-mixer",
+      "module": "sem",
+      "path": "sem-toolkit/keyword-mixer.html",
+      "title": "关键词组合工具 (Keyword Mixer)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:negative-keyword-manager",
+      "module": "sem",
+      "path": "sem-toolkit/negative-keyword-manager.html",
+      "title": "否定关键词管理器 (Negative Keyword Manager)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:ppc-budget-planner",
+      "module": "sem",
+      "path": "sem-toolkit/ppc-budget-planner.html",
+      "title": "PPC 预算规划器 (PPC Budget Planner)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "sem-toolkit:quality-score",
+      "module": "sem",
+      "path": "sem-toolkit/quality-score.html",
+      "title": "质量度诊断卡 (Quality Score Diagnostic)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:backlink-matrix",
+      "module": "seo",
+      "path": "seo-toolkit/backlink-matrix.html",
+      "title": "外链机会矩阵 (Backlink Opportunity Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:core-vitals",
+      "module": "seo",
+      "path": "seo-toolkit/core-vitals.html",
+      "title": "Core Web Vitals 模拟器 (Core Web Vitals Simulator)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:keyword-intent-mapper",
+      "module": "seo",
+      "path": "seo-toolkit/keyword-intent-mapper.html",
+      "title": "关键词意图映射 (Keyword Intent Mapper)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:keyword-research",
+      "module": "seo",
+      "path": "seo-toolkit/keyword-research.html",
+      "title": "关键词研究工具 (Keyword Research Tool)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:schema-generator",
+      "module": "seo",
+      "path": "seo-toolkit/schema-generator.html",
+      "title": "Schema 结构化数据生成器 (Schema Markup Generator)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:seo-planner",
+      "module": "seo",
+      "path": "seo-toolkit/seo-planner.html",
+      "title": "SEO 关键词规划表 (SEO Keyword Planner)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:serp-analyzer",
+      "module": "seo",
+      "path": "seo-toolkit/serp-analyzer.html",
+      "title": "SERP 竞争格局分析 (SERP Competitive Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "seo-toolkit:technical-seo-audit",
+      "module": "seo",
+      "path": "seo-toolkit/technical-seo-audit.html",
+      "title": "技术 SEO 审计 (Technical SEO Audit)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "seo-toolkit:topic-cluster-mapper",
+      "module": "seo",
+      "path": "seo-toolkit/topic-cluster-mapper.html",
+      "title": "主题集群映射 (Topic Cluster Mapper)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:community-persona",
+      "module": "social",
+      "path": "social-toolkit/community-persona.html",
+      "title": "社群画像卡 (Community Persona)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:content-idea-matrix",
+      "module": "social",
+      "path": "social-toolkit/content-idea-matrix.html",
+      "title": "内容选题矩阵 (Content Idea Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:crisis-playbook",
+      "module": "social",
+      "path": "social-toolkit/crisis-playbook.html",
+      "title": "危机应对清单 (Crisis Playbook)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:engagement-strategy",
+      "module": "social",
+      "path": "social-toolkit/engagement-strategy.html",
+      "title": "互动策略卡 (Engagement Strategy)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:kol-evaluation",
+      "module": "social",
+      "path": "social-toolkit/kol-evaluation.html",
+      "title": "KOL 评估卡 (KOL Evaluation Card)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:social-account-audit",
+      "module": "social",
+      "path": "social-toolkit/social-account-audit.html",
+      "title": "社交媒体账号体检 (Social Media Audit)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:social-listening",
+      "module": "social",
+      "path": "social-toolkit/social-listening.html",
+      "title": "社交舆情看板 (Social Listening Dashboard)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:social-media-matrix",
+      "module": "social",
+      "path": "social-toolkit/social-media-matrix.html",
+      "title": "社媒渠道矩阵 (Social Media Channel Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "social-toolkit:utm-builder",
+      "module": "social",
+      "path": "social-toolkit/utm-builder.html",
+      "title": "UTM 链接构建器 (Campaign URL Builder)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:ansoff-matrix",
+      "module": "strategy",
+      "path": "strategy-toolkit/ansoff-matrix.html",
+      "title": "Ansoff 增长矩阵 - Modiqi Strategy Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:balanced-scorecard",
+      "module": "strategy",
+      "path": "strategy-toolkit/balanced-scorecard.html",
+      "title": "平衡计分卡 - Modiqi Strategy Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:bcg-matrix",
+      "module": "strategy",
+      "path": "strategy-toolkit/bcg-matrix.html",
+      "title": "BCG 矩阵 - Modiqi Strategy Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:blue-ocean-canvas",
+      "module": "strategy",
+      "path": "strategy-toolkit/blue-ocean-canvas.html",
+      "title": "蓝海战略画布 (Blue Ocean Strategy Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:business-model-canvas",
+      "module": "strategy",
+      "path": "strategy-toolkit/business-model-canvas.html",
+      "title": "商业模式画布 (Business Model Canvas)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:digital-audit-report",
+      "module": "strategy",
+      "path": "strategy-toolkit/digital-audit-report.html",
+      "title": "数字化咨询审计报告 (Digital Consulting Audit Report)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:feature-comparison",
+      "module": "strategy",
+      "path": "strategy-toolkit/feature-comparison.html",
+      "title": "功能对比矩阵 (Feature Comparison Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:ge-mckinsey-matrix",
+      "module": "strategy",
+      "path": "strategy-toolkit/ge-mckinsey-matrix.html",
+      "title": "GE-McKinsey 矩阵 (GE-McKinsey Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:gtm-strategy",
+      "module": "strategy",
+      "path": "strategy-toolkit/gtm-strategy.html",
+      "title": "GTM 策略画布 (Go-to-Market Strategy Canvas)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:impact-effort-matrix",
+      "module": "strategy",
+      "path": "strategy-toolkit/impact-effort-matrix.html",
+      "title": "优先级矩阵 (Impact/Effort Matrix)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:landscape-map",
+      "module": "strategy",
+      "path": "strategy-toolkit/landscape-map.html",
+      "title": "竞争格局地图 (Competitive Landscape Map)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:lean-canvas",
+      "module": "strategy",
+      "path": "strategy-toolkit/lean-canvas.html",
+      "title": "精益画布 (Lean Canvas)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:market-positioning",
+      "module": "strategy",
+      "path": "strategy-toolkit/market-positioning.html",
+      "title": "市场定位分析 (Market Positioning Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:mckinsey-7s",
+      "module": "strategy",
+      "path": "strategy-toolkit/mckinsey-7s.html",
+      "title": "McKinsey 7S 模型 (McKinsey 7S Framework)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:okr-cascade",
+      "module": "strategy",
+      "path": "strategy-toolkit/okr-cascade.html",
+      "title": "OKR 战略级联地图 (OKR Strategy Cascade Map)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:okr-template",
+      "module": "strategy",
+      "path": "strategy-toolkit/okr-template.html",
+      "title": "OKR 目标设定 (Objectives & Key Results)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:pestel-analysis",
+      "module": "strategy",
+      "path": "strategy-toolkit/pestel-analysis.html",
+      "title": "PESTEL 分析 - Modiqi Strategy Workbench",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:porters-five-forces",
+      "module": "strategy",
+      "path": "strategy-toolkit/porters-five-forces.html",
+      "title": "波特五力分析 (Porter's Five Forces)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:stakeholder-radar",
+      "module": "strategy",
+      "path": "strategy-toolkit/stakeholder-radar.html",
+      "title": "利益相关者雷达 (Stakeholder Radar)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:stp-canvas",
+      "module": "strategy",
+      "path": "strategy-toolkit/stp-canvas.html",
+      "title": "STP 战略画布 (STP Strategy Canvas)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:strategic-roadmap",
+      "module": "strategy",
+      "path": "strategy-toolkit/strategic-roadmap.html",
+      "title": "战略路线图 (Strategic Roadmap)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:swot-analysis",
+      "module": "strategy",
+      "path": "strategy-toolkit/swot-analysis.html",
+      "title": "SWOT 分析 (SWOT Analysis)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:three-horizons",
+      "module": "strategy",
+      "path": "strategy-toolkit/three-horizons.html",
+      "title": "三层地平线框架 (Three Horizons Framework)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:value-chain",
+      "module": "strategy",
+      "path": "strategy-toolkit/value-chain.html",
+      "title": "价值链分析 (Value Chain Analysis)",
+      "tier": "library",
+      "status": "legacy"
+    },
+    {
+      "id": "strategy-toolkit:value-proposition",
+      "module": "strategy",
+      "path": "strategy-toolkit/value-proposition.html",
+      "title": "价值主张画布 (Value Proposition Canvas)",
+      "tier": "core",
+      "status": "supported"
+    },
+    {
+      "id": "strategy-toolkit:vrio-framework",
+      "module": "strategy",
+      "path": "strategy-toolkit/vrio-framework.html",
+      "title": "VRIO 框架 (VRIO Framework)",
+      "tier": "library",
+      "status": "legacy"
+    }
+  ]
+}

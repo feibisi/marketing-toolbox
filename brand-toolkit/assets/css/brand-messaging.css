@@ -1,0 +1,533 @@
+/* Brand Messaging Framework - Design System Aligned */
+/* 品牌信息框架样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.paper-a3 {
+    /* Four stacked worksheet sections exceed the fixed A3 ratio. The paper
+       follows the content so every editor remains reachable. */
+    aspect-ratio: auto;
+    min-height: 794px;
+    height: auto;
+    overflow: visible;
+    flex: none;
+}
+
+.messaging-layout {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   通用区块头部
+   ======================================== */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.section-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.section-header .en-label {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-left: var(--spacing-sm);
+}
+
+/* ========================================
+   核心信息区域
+   ======================================== */
+.core-message-section {
+    padding: var(--spacing-lg);
+    background: var(--color-bg-warm-light);
+    border: 2px solid var(--border-sem-outer);
+    border-radius: 0;
+}
+
+.core-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.tagline-block,
+.value-prop-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.tagline-block label,
+.value-prop-block label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.tagline-input {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: center;
+    min-height: 60px;
+    outline: none;
+}
+
+.tagline-input:focus {
+    border-color: var(--color-focus-border);
+    box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.tagline-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-lg);
+}
+
+.value-prop-input {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    min-height: 80px;
+    outline: none;
+}
+
+.value-prop-input:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.value-prop-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   信息支柱区域
+   ======================================== */
+.pillars-section {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.pillar-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.pillar-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-brand-blue);
+}
+
+.pillar-number {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    /* Approximate for rgba white 0.6 */
+}
+
+.pillar-title {
+    flex: 1;
+    padding: var(--spacing-xs);
+    border: none;
+    background: transparent;
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: #ffffff;
+    /* Keep white for text on solid brand background */
+    outline: none;
+}
+
+.pillar-title::placeholder {
+    color: var(--color-text-tertiary-inverse);
+    /* Was rgba white 0.5 */
+}
+
+.pillar-content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.pillar-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.pillar-field label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+}
+
+.pillar-field div[contenteditable] {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    min-height: 60px;
+    outline: none;
+}
+
+.pillar-field div[contenteditable]:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.pillar-field div[contenteditable]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+    white-space: pre-line;
+}
+
+/* ========================================
+   受众信息区域
+   ======================================== */
+.audience-section {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.audience-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.audience-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.audience-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.audience-name {
+    flex: 1;
+    padding: var(--spacing-xs);
+    border: none;
+    background: transparent;
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.audience-content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.audience-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.audience-field label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+}
+
+.audience-field div[contenteditable] {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    min-height: 50px;
+    outline: none;
+}
+
+.audience-field div[contenteditable]:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.audience-field div[contenteditable]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   语调风格区域
+   ======================================== */
+.tone-section {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+}
+
+.tone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 1.5fr;
+    gap: var(--spacing-md);
+    align-items: start;
+}
+
+.tone-card {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+}
+
+.tone-scale {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.scale-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    width: 40px;
+    text-align: center;
+}
+
+.scale-label.left {
+    text-align: right;
+}
+
+.scale-label.right {
+    text-align: left;
+}
+
+.scale-bar {
+    flex: 1;
+}
+
+.tone-slider {
+    width: 100%;
+    height: 8px;
+    appearance: none;
+    background: var(--color-bg-muted);
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.tone-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--color-brand-blue);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.tone-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.tone-keywords {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.tone-keywords label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+}
+
+.keywords-input {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    min-height: 40px;
+    outline: none;
+}
+
+.keywords-input:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.keywords-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .core-message-section {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .pillar-card,
+body.theme-dark .audience-card,
+body.theme-dark .tone-card,
+body.theme-dark .tone-keywords {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .tagline-input,
+body.theme-dark .value-prop-input {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .audience-header {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .paper-a3 {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        flex: none !important;
+        padding: 10mm !important;
+    }
+
+    .core-message-section,
+    .pillars-section,
+    .audience-section,
+    .tone-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .tone-slider {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .pillar-header {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+
+    .pillars-grid,
+    .audience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tone-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .messaging-layout {
+        min-width: 0;
+    }
+
+    .pillar-card,
+    .audience-card {
+        overflow: visible;
+    }
+
+    .pillar-header,
+    .audience-header,
+    .tone-scale {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .pillar-title,
+    .audience-name,
+    .scale-bar {
+        min-width: 0;
+    }
+}

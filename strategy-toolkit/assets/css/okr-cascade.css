@@ -1,0 +1,510 @@
+/* ============================================
+   OKR CASCADE - TOOL SPECIFIC STYLES
+   OKR 战略级联地图 - 工具特定样式
+   Version: 2.0.0
+   遵循 Modiqi 设计系统规范
+   ============================================ */
+
+/* ========================================
+   Cascade Container
+   ======================================== */
+
+.cascade-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    height: 100%;
+}
+
+/* ========================================
+   Vision Section
+   ======================================== */
+
+.level-vision {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-light);
+    padding: var(--spacing-lg);
+}
+
+.level-vision .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.vision-overall-score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.vision-overall-score .score-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.vision-overall-score .score-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+}
+
+/* Objective Score Tag */
+.obj-score-tag {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-light);
+    padding: 2px 8px;
+    border-radius: 0;
+    margin-left: auto;
+}
+
+.obj-score-tag .score-val {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-sans);
+    color: var(--color-text-secondary);
+}
+
+/* Score States */
+.score-high {
+    color: #10B981 !important;
+}
+
+/* Green */
+.score-med {
+    color: #F59E0B !important;
+}
+
+/* Amber */
+.score-low {
+    color: #EF4444 !important;
+}
+
+/* Red */
+
+
+/* ========================================
+   Objectives Section
+   ======================================== */
+
+.level-objectives {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.level-objectives .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.level-objectives .section-header .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+}
+
+.level-objectives .section-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.list-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* ========================================
+   Objective Card
+   ======================================== */
+
+.objective-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-light);
+    padding: var(--spacing-lg);
+}
+
+/* Objective Header */
+.obj-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.obj-label {
+    background: var(--color-text-primary);
+    color: var(--color-bg-white);
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.obj-input {
+    flex: 1;
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    outline: none;
+    line-height: var(--line-height-normal);
+}
+
+.obj-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+}
+
+.obj-input:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Key Results List
+   ======================================== */
+
+.kr-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding-left: var(--spacing-xl);
+    margin-left: var(--spacing-md);
+}
+
+.kr-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-subtle);
+    position: relative;
+}
+
+.kr-label {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    min-width: 20px;
+    flex-shrink: 0;
+}
+
+.kr-input {
+    flex: 1;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    outline: none;
+    line-height: var(--line-height-normal);
+}
+
+.kr-input:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* Score Input */
+.kr-score {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    background: var(--color-bg-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border-light);
+    flex-shrink: 0;
+    cursor: help;
+}
+
+.kr-score .icon {
+    width: 12px;
+    height: 12px;
+    color: var(--color-text-muted);
+}
+
+.score-input {
+    width: 32px;
+    border: none;
+    background: transparent;
+    text-align: right;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.score-input:focus {
+    outline: none;
+}
+
+/* ========================================
+   Delete Buttons
+   ======================================== */
+
+.delete-item-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+.delete-item-btn .icon {
+    width: 14px;
+    height: 14px;
+}
+
+.delete-item-btn:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+}
+
+/* Show on hover */
+.objective-card:hover>.obj-header .delete-item-btn,
+.kr-item:hover .delete-item-btn {
+    opacity: 1;
+}
+
+/* ========================================
+   Add Buttons
+   ======================================== */
+
+.btn-add-kr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+.btn-add-kr .icon {
+    width: 14px;
+    height: 14px;
+}
+
+.btn-add-kr:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+}
+
+/* Show on hover */
+.objective-card:hover>.obj-header .btn-add-kr {
+    opacity: 1;
+}
+
+.btn-add-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    background: transparent;
+    border: 1px dashed var(--color-border-medium);
+    color: var(--color-text-secondary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    cursor: pointer;
+}
+
+.btn-add-item .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-add-item:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-strong);
+}
+
+/* ========================================
+   Color Mode Support
+   遵循设计系统规则：使用柔和背景色
+   ======================================== */
+
+body:not(.theme-dark).color-mode .level-vision {
+    background: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .objective-card:nth-child(1) {
+    background: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .objective-card:nth-child(2) {
+    background: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .objective-card:nth-child(3) {
+    background: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .objective-card:nth-child(4) {
+    background: var(--color-semantic-threat);
+}
+
+body:not(.theme-dark).color-mode .kr-item {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* ========================================
+   Print Optimization
+   ======================================== */
+
+@media print {
+
+    .btn-add-kr,
+    .delete-item-btn,
+    .btn-add-item {
+        display: none !important;
+    }
+
+    .objective-card {
+        break-inside: avoid;
+        border: 1px solid var(--color-border-medium);
+    }
+
+    .kr-score {
+        border: 1px solid var(--color-border-light);
+    }
+
+    .vision-box {
+        border-bottom: 1px solid var(--color-border-medium);
+        min-height: auto;
+    }
+
+    .list-body {
+        overflow: visible;
+    }
+}
+
+/* ========================================
+   Dark Mode Adjustments
+   ======================================== */
+
+.theme-dark .objective-card {
+    background: var(--color-bg-white);
+}
+
+.theme-dark .kr-item {
+    background: var(--color-bg-subtle);
+}
+
+.theme-dark .level-vision {
+    background: var(--color-bg-subtle);
+}
+
+.theme-dark .kr-score {
+    background: var(--color-bg-white);
+    border-color: var(--color-border-light);
+}
+
+.theme-dark .obj-label {
+    background: var(--color-text-primary);
+    color: var(--color-bg-white);
+}
+
+/* Mobile composition: allow the cascade to grow instead of clipping its cards. */
+@media screen and (max-width: 768px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .cascade-container,
+    .level-objectives,
+    .list-body {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .list-body {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .level-vision .section-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .obj-header {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto auto;
+        align-items: center;
+    }
+
+    .obj-input {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .kr-item {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+    }
+
+    .kr-input {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .kr-score {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .vision-overall-score {
+        align-items: flex-start;
+    }
+
+    .obj-input,
+    .kr-input {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .kr-list {
+        padding-left: 0;
+        margin-left: 0;
+    }
+}

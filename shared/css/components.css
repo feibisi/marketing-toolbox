@@ -1,0 +1,510 @@
+/* ============================================
+   MODIQI DESIGN SYSTEM - COMPONENTS
+   Reusable UI components
+   Version: 1.0.0
+   ============================================ */
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    border-radius: var(--radius-md);
+    border: var(--border-width-thin) solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+/* Button Variants */
+.btn-primary {
+    background-color: var(--color-brand-primary);
+    color: var(--color-bg-white);
+    border-color: var(--color-brand-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-text-secondary);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-bg-subtle);
+    border-color: var(--color-border-strong);
+}
+
+.btn-ghost {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border-color: transparent;
+}
+
+.btn-ghost:hover {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border-color: var(--color-border-light);
+}
+
+.btn-danger:hover {
+    background-color: #fff1f0;
+    border-color: #ffa39e;
+    color: var(--color-error);
+}
+
+/* Button Sizes */
+.btn-sm {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.btn-lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-lg);
+}
+
+/* Button with Icon */
+.btn .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+}
+
+.btn-sm .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+
+.input {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-white);
+    border: var(--border-width-thin) solid var(--color-border-light);
+    border-radius: var(--radius-md);
+}
+
+.input:focus {
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.1);
+}
+
+.input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+}
+
+/* Underline Input (for meta fields) */
+.input-underline {
+    border: none;
+    border-bottom: var(--border-dashed);
+    border-radius: 0;
+    background: transparent;
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.input-underline:focus {
+    border-bottom-color: var(--color-brand-primary);
+    box-shadow: none;
+}
+
+/* ========================================
+   BADGES
+   ======================================== */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-subtle);
+    border: var(--border-width-thin) solid var(--color-border-subtle);
+    border-radius: var(--radius-full);
+}
+
+.badge-success {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.badge-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-info {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+.card {
+    background-color: var(--color-bg-white);
+    border: var(--border-width-thin) solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: var(--border-dashed);
+}
+
+.card-title {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.card-content {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   ICONS
+   ======================================== */
+
+.icon {
+    display: inline-block;
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.icon-sm {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+.icon-md {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+}
+
+.icon-xl {
+    width: var(--icon-size-xl);
+    height: var(--icon-size-xl);
+}
+
+/* ========================================
+   DIVIDERS
+   ======================================== */
+
+.divider {
+    height: 0;
+    border: none;
+    border-top: var(--border-width-thin) solid var(--color-border-light);
+    margin: var(--spacing-lg) 0;
+}
+
+.divider-dashed {
+    border-top-style: dashed;
+}
+
+.divider-double {
+    border-top: var(--border-double);
+}
+
+/* ========================================
+   TOOLTIPS
+   ======================================== */
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-bg-white);
+    background-color: var(--color-brand-primary);
+    border-radius: var(--radius-md);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    z-index: var(--z-tooltip);
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================================
+   LOADING INDICATORS
+   ======================================== */
+
+.spinner {
+    display: inline-block;
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    border: 2px solid var(--color-border-light);
+    border-top-color: var(--color-brand-primary);
+    border-radius: var(--radius-full);
+    animation: spin 0.8s linear infinite;
+}
+
+.spinner-sm {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* Save Status Indicator */
+.save-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+.save-indicator svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+.save-indicator.is-saving {
+    opacity: 1;
+    color: var(--color-text-tertiary);
+}
+
+.save-indicator.is-saving svg.spin {
+    animation: spin 1s linear infinite;
+}
+
+.save-indicator.is-saved {
+    opacity: 1;
+    color: var(--color-success);
+}
+
+/* ========================================
+   DARK THEME OVERRIDES
+   ======================================== */
+
+body.theme-dark .btn-secondary {
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .btn-secondary:hover {
+    background-color: var(--color-bg-muted);
+}
+
+body.theme-dark .btn-danger:hover {
+    background-color: rgba(255, 77, 79, 0.1);
+    border-color: var(--color-error);
+}
+
+body.theme-dark .input {
+    background-color: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .card {
+    background-color: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+}
+
+/* ========================================
+   DYNAMIC CONTENT LISTS
+   ======================================== */
+
+.list-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.list-item {
+    flex: 1;
+    min-height: 0;
+    padding: var(--spacing-md);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-item .item-content {
+    flex: 1;
+    width: 100%;
+}
+
+/* Adaptive Padding based on row count */
+.list-body[data-row-count="5"] .list-item {
+    padding: var(--spacing-md);
+}
+
+.list-body[data-row-count="6"] .list-item,
+.list-body[data-row-count="7"] .list-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.list-body[data-row-count="8"] .list-item,
+.list-body[data-row-count="9"] .list-item {
+    padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.list-body[data-row-count="10"] .list-item {
+    padding: 6px var(--spacing-md);
+}
+
+/* Delete Button */
+.delete-item-btn {
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.list-item:hover .delete-item-btn {
+    opacity: 1;
+}
+
+.delete-item-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.delete-item-btn:active {
+    transform: scale(0.9);
+}
+
+/* Add Item Button */
+.btn-add-item,
+#addItemBtn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px dashed var(--color-border-medium);
+    /* var(--border-sem-dashed) alias */
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+.btn-add-item:hover,
+#addItemBtn:hover {
+    background-color: var(--color-bg-hover);
+    border-color: var(--color-border-strong);
+    /* var(--border-sem-inner) alias */
+    color: var(--color-text-primary);
+}
+
+.btn-add-item:active,
+#addItemBtn:active {
+    transform: scale(0.98);
+}
+
+/* Print Overrides */
+@media print {
+
+    .delete-item-btn,
+    .btn-add-item,
+    #addItemBtn {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   STRATEGIC CLIPBOARD INDICATORS
+   ======================================== */
+[data-strategic-id] {
+    position: relative;
+}
+
+[data-strategic-id]:focus {
+    /* Subtle glow when editing a strategic field */
+    box-shadow: 0 0 0 2px rgba(var(--color-brand-primary-rgb, 59, 130, 246), 0.1);
+}
+
+/* Minimal indicator for synced fields - no emoji per design rules */
+[data-strategic-id]::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-brand-blue);
+    opacity: 0;
+    pointer-events: none;
+}
+
+[data-strategic-id]:hover::after {
+    opacity: 0.5;
+}
+
+@media print {
+    [data-strategic-id]::after {
+        display: none !important;
+    }
+}

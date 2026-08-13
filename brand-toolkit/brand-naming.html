@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌命名画布 (Brand Naming Canvas)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/brand-naming.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌命名画布</h1>
+                <span class="english-subtitle">Brand Naming Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目代号</label>
+                    <input type="text" class="meta-input" data-save-key="project_code" aria-label="project code">
+                </div>
+            </div>
+        </header>
+
+        <div class="naming-container">
+
+            <!-- 1. Ideation Lab -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="flask-conical" class="icon"></i> 创意实验室 (Ideation Lab)
+                    </div>
+                </div>
+                <div class="ideation-grid">
+                    <!-- Category 1: Descriptive -->
+                    <div class="name-category">
+                        <span class="cat-title">描述性 (Descriptive)</span>
+                        <div class="cat-desc">直接描述产品功能</div>
+                        <textarea class="input-area input-tall" placeholder="e.g. 微信, 支付宝"
+                            data-save-key="inputs_descriptive" aria-label="微信, 支付宝"></textarea>
+                    </div>
+                    <!-- Category 2: Suggestive -->
+                    <div class="name-category">
+                        <span class="cat-title">暗示性 (Suggestive)</span>
+                        <div class="cat-desc">隐喻、联想</div>
+                        <textarea class="input-area input-tall" placeholder="e.g. 淘宝, 亚马逊"
+                            data-save-key="inputs_suggestive" aria-label="淘宝, 亚马逊"></textarea>
+                    </div>
+                    <!-- Category 3: Abstract -->
+                    <div class="name-category">
+                        <span class="cat-title">抽象/创造 (Abstract)</span>
+                        <div class="cat-desc">无意义词汇合成</div>
+                        <textarea class="input-area input-tall" placeholder="e.g. Kodak, Google"
+                            data-save-key="inputs_abstract" aria-label="Kodak, Google"></textarea>
+                    </div>
+                    <!-- Category 4: Arbitrary -->
+                    <div class="name-category">
+                        <span class="cat-title">借势 (Arbitrary)</span>
+                        <div class="cat-desc">真实词汇,无关含义</div>
+                        <textarea class="input-area input-tall" placeholder="e.g. Apple, Shell"
+                            data-save-key="inputs_arbitrary" aria-label="Apple, Shell"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Evaluation Matrix -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="check-square" class="icon"></i> 评估筛选 (Evaluation)
+                    </div>
+                    <button class="btn-primary-sm" onclick="addEvalRow()" type="button">+ Add Candidate</button>
+                </div>
+                <table class="eval-table" id="eval-table">
+                    <thead>
+                        <tr>
+                            <th>候选名称 (Candidate)</th>
+                            <th>发音 (Sound)</th>
+                            <th>记忆 (Memory)</th>
+                            <th>相关性 (Relevance)</th>
+                            <th>.COM 检查</th>
+                            <th>总分</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eval-tbody">
+                        <!-- Rows injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. Final Podium -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="trophy" class="icon"></i> 最终决策 (Final Selection)
+                    </div>
+                </div>
+                <div class="podium-section">
+                    <div class="podium-step">
+                        <input type="text" class="ranking-name rank-2" placeholder="2nd Choice"
+                            data-save-key="podium_2" aria-label="2nd Choice">
+                        <div class="podium-box step-2">2</div>
+                    </div>
+                    <div class="podium-step">
+                        <input type="text" class="ranking-name rank-1" placeholder="Winner" data-save-key="podium_1" aria-label="Winner">
+                        <div class="podium-box step-1">1</div>
+                    </div>
+                    <div class="podium-step">
+                        <input type="text" class="ranking-name rank-3" placeholder="3rd Choice"
+                            data-save-key="podium_3" aria-label="3rd Choice">
+                        <div class="podium-box step-3">3</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_naming_canvas');
+            lucide.createIcons();
+
+            // Init table with 3 empty rows if empty
+            if (document.getElementById('eval-tbody').children.length === 0) {
+                addEvalRow();
+                addEvalRow();
+                addEvalRow();
+            }
+        });
+
+        function addEvalRow() {
+            const tbody = document.getElementById('eval-tbody');
+            const id = 'row_' + Date.now();
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="name-cell"><input type="text" placeholder="Name..." data-save-key="${id}_name" class="name-input" aria-label="Name..."></td>
+                <td><input type="number" min="1" max="10" placeholder="1-10" class="score-input" data-save-key="${id}_s1" oninput="calcScore(this)" aria-label="1 10"></td>
+                <td><input type="number" min="1" max="10" placeholder="1-10" class="score-input" data-save-key="${id}_s2" oninput="calcScore(this)" aria-label="1 10"></td>
+                <td><input type="number" min="1" max="10" placeholder="1-10" class="score-input" data-save-key="${id}_s3" oninput="calcScore(this)" aria-label="1 10"></td>
+                <td>
+                    <select class="status-badge status-unknown" data-save-key="${id}_status" onchange="this.className='status-badge '+this.value" aria-label="${id} status">
+                        <option value="status-unknown">Unknown</option>
+                        <option value="status-available">Available</option>
+                        <option value="status-taken">Taken</option>
+                    </select>
+                </td>
+                <td class="total-score" id="${id}_total">-</td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function calcScore(input) {
+            const row = input.closest('tr');
+            const inputs = row.querySelectorAll('.score-input');
+            let sum = 0;
+            inputs.forEach(i => sum += parseInt(i.value) || 0);
+            row.querySelector('.total-score').textContent = sum;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+/* Proposal Generator Styles */
+
+.proposal-doc {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: var(--spacing-lg);
+}
+
+.doc-meta {
+    text-align: right;
+}
+
+.doc-meta h1 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-blue);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.meta-row {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.editable-line {
+    min-width: 100px;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
+.date-input {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--color-text-primary);
+    text-align: right;
+    background: transparent;
+}
+
+.doc-divider {
+    border: none;
+    border-top: 2px solid var(--border-sem-inner);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Sections */
+.doc-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: var(--font-size-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+    border-bottom: 1px solid var(--border-sem-inner);
+    padding-bottom: 4px;
+    margin-bottom: var(--spacing-md);
+}
+
+.editable-block {
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+    min-height: 60px;
+    color: var(--color-text-primary);
+    outline: none;
+    white-space: pre-wrap;
+}
+
+/* Placeholder Logic */
+.editable-block:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    pointer-events: none;
+}
+
+.grid-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* Acceptance */
+.acceptance-section {
+    margin-top: auto;
+    padding-top: var(--spacing-xl);
+}
+
+.signature-row {
+    display: flex;
+    gap: var(--spacing-2xl);
+}
+
+.sign-box {
+    flex: 1;
+}
+
+.sign-line {
+    border-bottom: 1px solid #000;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.sign-box p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Tips Panel */
+.tips-panel {
+    position: absolute;
+    top: 0;
+    right: -180px;
+    width: 160px;
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-md);
+    border-radius: 0;
+    border: 1px solid var(--border-sem-outer);
+}
+
+.tips-header {
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-brand-blue);
+}
+
+.tips-list {
+    padding-left: 14px;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
+.tips-list li {
+    margin-bottom: 8px;
+}
+
+/* Print */
+@media print {
+    .tips-panel {
+        display: none !important;
+    }
+
+    .editable-line {
+        border-bottom: none;
+    }
+
+    .doc-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Keep the complete proposal and its guidance visible on screen. */
+@media screen {
+    .paper-a4 { height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; }
+}
+
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a4 { width: 100%; max-width: none; padding: var(--spacing-lg); box-sizing: border-box; }
+    .doc-header, .signature-row { align-items: stretch; flex-direction: column; }
+    .grid-section { grid-template-columns: 1fr; }
+    .tips-panel { position: static; width: 100%; box-sizing: border-box; }
+}
+

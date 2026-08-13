@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认知偏差清单 (Cognitive Bias Checklist)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/cognitive-bias.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>认知偏差清单</h1>
+                <span class="english-subtitle">Cognitive Bias Checklist</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>应用场景</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Landing Page Optimization" aria-label="Landing Page Optimization">
+                </div>
+            </div>
+        </header>
+
+        <div class="bias-container">
+            <div class="bias-grid">
+
+                <!-- 1. Scarcity & Urgency -->
+                <div class="bias-category-card">
+                    <div class="category-header">
+                        <i data-lucide="timer" class="cat-icon"></i>
+                        稀缺与紧迫 (Scarcity)
+                    </div>
+                    <div class="bias-list">
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Scarcity Effect (稀缺效应)</div>
+                                <div class="bias-desc">We value things more when they are rare or limited.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: 'Only 3 left in stock'" aria-label="How to apply: &#x27;Only 3 left in stock&#x27;"></textarea>
+                            </div>
+                        </div>
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Loss Aversion (损失厌恶)</div>
+                                <div class="bias-desc">Pain of losing is twice as powerful as pleasure of gaining.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: 'Don't miss out on saving...'" aria-label="How to apply: &#x27;Don&#x27;t miss out on saving...&#x27;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Social Influence -->
+                <div class="bias-category-card">
+                    <div class="category-header">
+                        <i data-lucide="users" class="cat-icon"></i>
+                        社会影响 (Social)
+                    </div>
+                    <div class="bias-list">
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Social Proof (社会认同)</div>
+                                <div class="bias-desc">We copy the actions of others in uncertain situations.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Testimonials, 'Most Popular' tag" aria-label="How to apply: Testimonials, &#x27;Most Popular&#x27; tag"></textarea>
+                            </div>
+                        </div>
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Authority Bias (权威偏误)</div>
+                                <div class="bias-desc">We trust and follow the advice of experts.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Expert endorsements, trust badges" aria-label="How to apply: Expert endorsements, trust badges"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Decision Making -->
+                <div class="bias-category-card">
+                    <div class="category-header">
+                        <i data-lucide="scale" class="cat-icon"></i>
+                        决策辅助 (Decision)
+                    </div>
+                    <div class="bias-list">
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Anchoring (锚定效应)</div>
+                                <div class="bias-desc">The first piece of information influences all subsequent
+                                    judgments.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Strike-through higher original price" aria-label="How to apply: Strike through higher original price"></textarea>
+                            </div>
+                        </div>
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Decoy Effect (诱饵效应)</div>
+                                <div class="bias-desc">Introducing a 3rd option to make one of the others more
+                                    attractive.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Add a slightly worse option similar to target" aria-label="How to apply: Add a slightly worse option similar to target"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Simplicity & Ease -->
+                <div class="bias-category-card">
+                    <div class="category-header">
+                        <i data-lucide="zap" class="cat-icon"></i>
+                        认知流畅 (Ease)
+                    </div>
+                    <div class="bias-list">
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Default Effect (默认效应)</div>
+                                <div class="bias-desc">We tend to stick with pre-set options.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Pre-check 'Subscribe to newsletter'" aria-label="How to apply: Pre check &#x27;Subscribe to newsletter&#x27;"></textarea>
+                            </div>
+                        </div>
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Hick's Law (希克定律)</div>
+                                <div class="bias-desc">More choices = more time/effort to decide.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Reduce CTA options to one primary" aria-label="How to apply: Reduce CTA options to one primary"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Reciprocity & Consistency -->
+                <div class="bias-category-card">
+                    <div class="category-header">
+                        <i data-lucide="gift" class="cat-icon"></i>
+                        互惠承诺 (Commitment)
+                    </div>
+                    <div class="bias-list">
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Reciprocity (互惠原则)</div>
+                                <div class="bias-desc">We feel obliged to return favors.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Free resource/tool before asking for email" aria-label="How to apply: Free resource/tool before asking for email"></textarea>
+                            </div>
+                        </div>
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Foot-in-the-door (登门槛)</div>
+                                <div class="bias-desc">Agreeing to a small request increases likelihood of larger one.
+                                </div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Micro-conversion first" aria-label="How to apply: Micro conversion first"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Emotional & Visual -->
+                <div class="bias-category-card">
+                    <div class="category-header">
+                        <i data-lucide="heart" class="cat-icon"></i>
+                        情感视觉 (Emotion)
+                    </div>
+                    <div class="bias-list">
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Von Restorff (隔离效应)</div>
+                                <div class="bias-desc">Items that stand out are more likely to be remembered.</div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: Highlight one pricing tier visually" aria-label="How to apply: Highlight one pricing tier visually"></textarea>
+                            </div>
+                        </div>
+                        <div class="bias-item">
+                            <div class="bias-check" onclick="toggleCheck(this)" role="button" tabindex="0"></div>
+                            <div class="bias-content">
+                                <div class="bias-name">Halo Effect (光环效应)</div>
+                                <div class="bias-desc">Positive impression in one area influences opinion in others.
+                                </div>
+                                <textarea class="apply-area"
+                                    placeholder="How to apply: High-quality design implies high-quality product" aria-label="How to apply: High quality design implies high quality product"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('cognitive_bias');
+            lucide.createIcons();
+        });
+
+        function toggleCheck(el) {
+            el.classList.toggle('checked');
+        }
+    </script>
+</body>
+
+</html>

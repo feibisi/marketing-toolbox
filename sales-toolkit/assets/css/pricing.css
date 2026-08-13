@@ -1,0 +1,280 @@
+/* Pricing Grid Layout */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    align-items: flex-start;
+    /* Alignment */
+}
+
+/* Base Card */
+.pricing-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    padding: var(--spacing-xl);
+    position: relative;
+}
+
+/* Recommended State */
+.pricing-card.is-recommended {
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-xl);
+    transform: scale(1.05);
+    /* Slight pop */
+    z-index: 10;
+}
+
+/* Ribbon */
+.ribbon {
+    display: none;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-brand-primary);
+    color: var(--color-bg-white);
+    padding: 4px 16px;
+    border-radius: 0;
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pricing-card.is-recommended .ribbon {
+    display: block;
+}
+
+/* Card Sections */
+.card-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-bg-subtle);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: var(--font-size-lg);
+}
+
+.card-header .subtitle {
+    margin: 4px 0 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.price-area {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-primary);
+}
+
+.price-area .currency {
+    vertical-align: top;
+    font-size: var(--font-size-md);
+    position: relative;
+    top: 4px;
+}
+
+.price-area .amount {
+    font-family: var(--font-mono);
+    /* Or Heading font */
+    font-size: 3rem;
+    /* Big impact */
+    font-weight: 700;
+    line-height: 1;
+}
+
+.price-area .period {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+}
+
+/* Feature List */
+.features-list {
+    margin-bottom: var(--spacing-xl);
+}
+
+.features-list h4 {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.dynamic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    position: relative;
+}
+
+.list-item:hover .delete-item-btn {
+    opacity: 1;
+}
+
+.check-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-brand-primary);
+    flex-shrink: 0;
+}
+
+/* Card Footer */
+.card-footer {
+    text-align: center;
+}
+
+.select-btn {
+    /* Hidden in print, used to toggle Recommended status in edit mode */
+    padding: 6px 16px;
+    border: 1px solid var(--color-border-medium);
+    background: transparent;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.select-btn:hover {
+    background: var(--color-bg-subtle);
+}
+
+.is-recommended .select-btn {
+    background: var(--color-brand-primary);
+    color: var(--color-bg-white);
+    border-color: var(--color-brand-primary);
+    pointer-events: none;
+    /* Already selected */
+}
+
+.is-recommended .select-btn::after {
+    content: "ed";
+    /* Select -> Selected */
+}
+
+/* Control Panel */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--color-border-light);
+}
+
+/* Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg-warm-dark);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--color-bg-white);
+}
+
+input:checked+.slider {
+    background-color: var(--color-brand-primary);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--color-brand-primary);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 0;
+}
+
+.slider.round:before {
+    border-radius: 0;
+}
+
+.small-input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 0;
+    text-align: center;
+}
+
+/* Print Overrides */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .pricing-card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    .pricing-card.is-recommended {
+        border: 2px solid #000 !important;
+        background: #f8fafc !important;
+        /* Slight tint for print emphasis */
+    }
+
+    .ribbon {
+        border: 1px solid #000;
+        background: #000 !important;
+        color: #fff !important;
+    }
+
+    .select-btn {
+        display: none;
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.is-recommended { transform: none; }
+}
+

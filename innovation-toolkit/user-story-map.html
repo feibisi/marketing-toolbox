@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户故事地图 (User Story Map)</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/user-story-map.css">
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3"> <!-- Using A4 landscape, but with scrollable container -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>用户故事地图</h1>
+                <span class="english-subtitle">User Story Mapping</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目</label>
+                    <input type="text" class="meta-input" placeholder="Project Alpha" data-save-key="project_name" aria-label="Project Alpha">
+                </div>
+            </div>
+        </header>
+
+        <div class="map-container">
+            <div class="map-scroll-area">
+
+                <!-- Backbone Row -->
+                <div class="backbone-row" id="backbone-container">
+                    <!-- Activity Group 1 -->
+                    <div class="activity-group">
+                        <textarea class="activity-card" placeholder="核心活动 (Activity)"
+                            data-save-key="act_1_title" aria-label="核心活动 (Activity)">搜索商品</textarea>
+                        <div class="task-row">
+                            <div class="task-card" contenteditable="true" data-save-key="task_1_1">输入关键词</div>
+                            <div class="task-card" contenteditable="true" data-save-key="task_1_2">筛选价格</div>
+                        </div>
+                        <button class="add-btn" onclick="addTask(this)" type="button">+ Task</button>
+                    </div>
+
+                    <!-- Activity Group 2 -->
+                    <div class="activity-group">
+                        <textarea class="activity-card" placeholder="核心活动 (Activity)"
+                            data-save-key="act_2_title" aria-label="核心活动 (Activity)">购物车</textarea>
+                        <div class="task-row">
+                            <div class="task-card" contenteditable="true" data-save-key="task_2_1">添加商品</div>
+                            <div class="task-card" contenteditable="true" data-save-key="task_2_2">修改数量</div>
+                        </div>
+                        <button class="add-btn" onclick="addTask(this)" type="button">+ Task</button>
+                    </div>
+
+                    <!-- Activity Group 3 -->
+                    <div class="activity-group">
+                        <textarea class="activity-card" placeholder="核心活动 (Activity)"
+                            data-save-key="act_3_title" aria-label="核心活动 (Activity)">结账支付</textarea>
+                        <div class="task-row">
+                            <div class="task-card" contenteditable="true" data-save-key="task_3_1">填写地址</div>
+                            <div class="task-card" contenteditable="true" data-save-key="task_3_2">选择支付</div>
+                        </div>
+                        <button class="add-btn" onclick="addTask(this)" type="button">+ Task</button>
+                    </div>
+                </div>
+
+                <!-- Release 1 (MVP) -->
+                <div class="release-swimlane">
+                    <div class="release-header">
+                        <i data-lucide="flag" class="icon" style="width:16px;"></i>
+                        Release 1.0 (MVP)
+                    </div>
+                    <div class="release-stories" id="release-1-stories">
+                        <!-- Column aligned with Activity 1 -->
+                        <div class="story-group-column">
+                            <div class="story-card" contenteditable="true" data-save-key="rel1_col1_story1">关键词搜索</div>
+                        </div>
+                        <!-- Column aligned with Activity 2 -->
+                        <div class="story-group-column">
+                            <div class="story-card" contenteditable="true" data-save-key="rel1_col2_story1">单件商品购买</div>
+                        </div>
+                        <!-- Column aligned with Activity 3 -->
+                        <div class="story-group-column">
+                            <div class="story-card" contenteditable="true" data-save-key="rel1_col3_story1">微信支付集成</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Release 2 -->
+                <div class="release-swimlane">
+                    <div class="release-header">
+                        <i data-lucide="zap" class="icon" style="width:16px;"></i>
+                        Release 2.0
+                    </div>
+                    <div class="release-stories" id="release-2-stories">
+                        <div class="story-group-column">
+                            <div class="story-card" contenteditable="true" data-save-key="rel2_col1_story1">高级筛选器</div>
+                            <div class="story-card" contenteditable="true" data-save-key="rel2_col1_story2">历史记录</div>
+                        </div>
+                        <div class="story-group-column">
+                            <div class="story-card" contenteditable="true" data-save-key="rel2_col2_story1">批量操作</div>
+                        </div>
+                        <div class="story-group-column">
+                            <div class="story-card" contenteditable="true" data-save-key="rel2_col3_story1">优惠券支持</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('user_story_map');
+            lucide.createIcons();
+        });
+
+        function addTask(btn) {
+            const taskRow = btn.previousElementSibling;
+            const newTask = document.createElement('div');
+            newTask.className = 'task-card';
+            newTask.contentEditable = 'true';
+            newTask.textContent = '新任务';
+            // Simple unique ID generation for prototype
+            const id = 'task_' + Date.now();
+            newTask.setAttribute('data-save-key', id);
+            taskRow.appendChild(newTask);
+            newTask.focus();
+        }
+    </script>
+</body>
+
+</html>

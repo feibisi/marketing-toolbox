@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务蓝图 - Modiqi Customer Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/service-blueprint.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>服务蓝图</h1>
+                <span class="english-subtitle">Service Blueprint</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目</label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="blueprint-container">
+            <div class="timeline-header">
+                <div class="stage-column">
+                    <div class="stage-title">阶段1<br>预约</div>
+                </div>
+                <div class="stage-column">
+                    <div class="stage-title">阶段2<br>到店</div>
+                </div>
+                <div class="stage-column">
+                    <div class="stage-title">阶段3<br>服务</div>
+                </div>
+                <div class="stage-column">
+                    <div class="stage-title">阶段4<br>结账</div>
+                </div>
+                <div class="stage-column">
+                    <div class="stage-title">阶段5<br>跟进</div>
+                </div>
+            </div>
+
+            <div class="swimlane swimlane-customer">
+                <div class="swimlane-label">
+                    <i data-lucide="user" class="icon"></i>
+                    <div class="label-text">
+                        <h4>客户行为</h4>
+                        <p>Customer Actions</p>
+                    </div>
+                </div>
+                <div class="swimlane-content">
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="customer_1">在线预约</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="customer_2">扫码签到</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="customer_3">接受服务</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="customer_4">扫码支付</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="customer_5">评价反馈</div>
+                </div>
+            </div>
+
+            <div class="swimlane swimlane-frontstage">
+                <div class="swimlane-label">
+                    <i data-lucide="monitor" class="icon"></i>
+                    <div class="label-text">
+                        <h4>前台互动</h4>
+                        <p>Frontstage</p>
+                    </div>
+                </div>
+                <div class="swimlane-content">
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="frontstage_1">客服确认</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="frontstage_2">前台接待</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="frontstage_3">技师服务</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="frontstage_4">收银结算</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="frontstage_5">客服回访</div>
+                </div>
+            </div>
+
+            <div class="swimlane swimlane-backstage">
+                <div class="swimlane-label">
+                    <i data-lucide="server" class="icon"></i>
+                    <div class="label-text">
+                        <h4>后台支持</h4>
+                        <p>Backstage</p>
+                    </div>
+                </div>
+                <div class="swimlane-content">
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="backstage_1">系统分配</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="backstage_2">准备物料</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="backstage_3">记录档案</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="backstage_4">财务入账</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="backstage_5">数据分析</div>
+                </div>
+            </div>
+
+            <div class="swimlane swimlane-support">
+                <div class="swimlane-label">
+                    <i data-lucide="database" class="icon"></i>
+                    <div class="label-text">
+                        <h4>支持流程</h4>
+                        <p>Support Processes</p>
+                    </div>
+                </div>
+                <div class="swimlane-content">
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="support_1">预约系统</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="support_2">CRM系统</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="support_3">服务管理</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="support_4">支付系统</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="support_5">数据平台</div>
+                </div>
+            </div>
+
+            <div class="swimlane swimlane-evidence">
+                <div class="swimlane-label">
+                    <i data-lucide="package" class="icon"></i>
+                    <div class="label-text">
+                        <h4>物理证据</h4>
+                        <p>Physical Evidence</p>
+                    </div>
+                </div>
+                <div class="swimlane-content">
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="evidence_1">预约短信</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="evidence_2">签到二维码</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="evidence_3">服务环境</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="evidence_4">支付凭证</div>
+                    <div class="touchpoint-card" contenteditable="true" data-save-key="evidence_5">回访邮件</div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('service_blueprint');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function addStage() {
+            const header = document.querySelector('.timeline-header');
+            const stageNum = header.children.length + 1;
+            const newStage = document.createElement('div');
+            newStage.className = 'stage-column';
+            newStage.innerHTML = `<div class="stage-title">阶段${stageNum}<br>新阶段</div>`;
+            header.appendChild(newStage);
+
+            document.querySelectorAll('.swimlane-content').forEach(content => {
+                const card = document.createElement('div');
+                card.className = 'touchpoint-card';
+                card.contentEditable = 'true';
+                card.textContent = '新触点';
+                const swimlane = content.closest('.swimlane').className.split(' ')[1].replace('swimlane-', '');
+                card.setAttribute('data-save-key', `${swimlane}_${Date.now()}`);
+                content.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告文案 A/B 测试器 (Ad Copy A/B Tester)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ad-copy-ab-tester.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>广告文案 A/B 测试器</h1>
+                <span class="english-subtitle">Ad Copy A/B Tester</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>实验名称</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Q1 Generic Brand - CTA Test" aria-label="Q1 Generic Brand   CTA Test">
+                </div>
+            </div>
+        </header>
+
+        <div class="ab-container">
+
+            <div class="variant-grid">
+
+                <!-- Variant A -->
+                <div class="variant-col col-a" id="colA">
+                    <div class="col-header">
+                        <span class="variant-id">Variant A</span>
+                        <div class="winner-banner">WINNER (Likelihood: 95%)</div>
+                    </div>
+
+                    <!-- Input Group A -->
+                    <div class="input-group">
+                        <div class="field-row">
+                            <label class="field-label">Final URL</label>
+                            <input type="text" class="ad-input" id="inputUrlA" value="example.com/shoes"
+                                oninput="updatePreview('A')" aria-label="inputUrlA">
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label">Headline 1 <span class="char-count"
+                                    id="cntH1A">0/30</span></label>
+                            <input type="text" class="ad-input" id="inputH1A" value="Best Running Shoes" maxlength="30"
+                                oninput="updatePreview('A')" aria-label="inputH1A">
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label">Headline 2 <span class="char-count"
+                                    id="cntH2A">0/30</span></label>
+                            <input type="text" class="ad-input" id="inputH2A" value="Free Shipping Today" maxlength="30"
+                                oninput="updatePreview('A')" aria-label="inputH2A">
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label">Description 1 <span class="char-count"
+                                    id="cntD1A">0/90</span></label>
+                            <textarea class="ad-input" id="inputD1A" rows="2" maxlength="90"
+                                oninput="updatePreview('A')" aria-label="inputD1A">Shop the latest collection of running shoes. Comfort guaranteed.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Preview A -->
+                    <div class="ad-preview-card">
+                        <div class="ad-header">
+                            <span class="ad-icon">Ad</span>
+                            <span class="ad-display-url" id="dispUrlA">example.com/shoes</span>
+                            <span class="ad-dots"><i data-lucide="more-vertical" style="width:12px;"></i></span>
+                        </div>
+                        <div class="ad-headline" id="dispHA">Best Running Shoes | Free Shipping Today</div>
+                        <div class="ad-description" id="dispDA">Shop the latest collection of running shoes. Comfort
+                            guaranteed.</div>
+                    </div>
+
+                    <!-- Simulated Metrics -->
+                    <div class="metrics-box">
+                        <div class="metric-row">
+                            <span>Predicted CTR:</span>
+                            <span class="metric-val" contenteditable="true">4.2%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>Quality Score:</span>
+                            <span class="metric-val" contenteditable="true">8/10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider-vertical">
+                    <div class="vs-badge">VS</div>
+                </div>
+
+                <!-- Variant B -->
+                <div class="variant-col col-b" id="colB">
+                    <div class="col-header">
+                        <span class="variant-id">Variant B</span>
+                        <div class="winner-banner">WINNER</div>
+                    </div>
+
+                    <!-- Input Group B -->
+                    <div class="input-group">
+                        <div class="field-row">
+                            <label class="field-label">Final URL</label>
+                            <input type="text" class="ad-input" id="inputUrlB" value="example.com/shoes/sale"
+                                oninput="updatePreview('B')" aria-label="inputUrlB">
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label">Headline 1 <span class="char-count"
+                                    id="cntH1B">0/30</span></label>
+                            <input type="text" class="ad-input" id="inputH1B" value="Save 50% on Shoes" maxlength="30"
+                                oninput="updatePreview('B')" aria-label="inputH1B">
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label">Headline 2 <span class="char-count"
+                                    id="cntH2B">0/30</span></label>
+                            <input type="text" class="ad-input" id="inputH2B" value="Limited Time Offer" maxlength="30"
+                                oninput="updatePreview('B')" aria-label="inputH2B">
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label">Description 1 <span class="char-count"
+                                    id="cntD1B">0/90</span></label>
+                            <textarea class="ad-input" id="inputD1B" rows="2" maxlength="90"
+                                oninput="updatePreview('B')" aria-label="inputD1B">Huge savings on top brands. Don't miss out on this seasonal sale.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Preview B -->
+                    <div class="ad-preview-card">
+                        <div class="ad-header">
+                            <span class="ad-icon">Ad</span>
+                            <span class="ad-display-url" id="dispUrlB">example.com/shoes/sale</span>
+                            <span class="ad-dots"><i data-lucide="more-vertical" style="width:12px;"></i></span>
+                        </div>
+                        <div class="ad-headline" id="dispHB">Save 50% on Shoes | Limited Time Offer</div>
+                        <div class="ad-description" id="dispDB">Huge savings on top brands. Don't miss out on this
+                            seasonal sale.</div>
+                    </div>
+
+                    <!-- Simulated Metrics -->
+                    <div class="metrics-box">
+                        <div class="metric-row">
+                            <span>Predicted CTR:</span>
+                            <span class="metric-val" contenteditable="true">6.5%</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>Quality Score:</span>
+                            <span class="metric-val" contenteditable="true">7/10</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ad_ab_tester');
+            lucide.createIcons();
+
+            updatePreview('A');
+            updatePreview('B');
+
+            // Simple Logic to highlight winner based on editable metrics (just a visual toggle simulation)
+            // In a real app, this would parse the numbers. 
+            // Here we default highlighting B as an example.
+            document.getElementById('colB').classList.add('winner');
+        });
+
+        function updatePreview(variant) {
+            const url = document.getElementById(`inputUrl${variant}`).value;
+            const h1 = document.getElementById(`inputH1${variant}`).value;
+            const h2 = document.getElementById(`inputH2${variant}`).value;
+            const d1 = document.getElementById(`inputD1${variant}`).value;
+
+            // Update Counts
+            updateCount(`cntH1${variant}`, h1, 30);
+            updateCount(`cntH2${variant}`, h2, 30);
+            updateCount(`cntD1${variant}`, d1, 90);
+
+            // Update DOM
+            document.getElementById(`dispUrl${variant}`).innerText = url;
+            document.getElementById(`dispH${variant}`).innerText = `${h1} | ${h2}`;
+            document.getElementById(`dispD${variant}`).innerText = d1;
+        }
+
+        function updateCount(id, text, max) {
+            const el = document.getElementById(id);
+            el.innerText = `${text.length}/${max}`;
+            el.classList.remove('warning', 'error');
+            if (text.length === 0) return;
+            if (text.length > max) el.classList.add('error');
+            else if (text.length >= max - 2) el.classList.add('warning');
+        }
+    </script>
+</body>
+
+</html>

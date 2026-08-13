@@ -1,0 +1,159 @@
+/* ============================================
+   DIGITAL AUDIT REPORT STYLES
+   ============================================ */
+
+.report-header {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    border-bottom: var(--border-double);
+    margin-bottom: var(--spacing-xl);
+}
+
+.report-header .brand-logo {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.report-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Report Section Layout */
+.report-section {
+    margin-bottom: var(--spacing-xl);
+    page-break-inside: avoid;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    border-bottom: var(--border-width-thin) solid var(--color-border-main);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.section-title i {
+    color: var(--color-brand-primary);
+}
+
+/* Summary Grid */
+.audit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.audit-tile {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    border: 1px solid var(--color-border-light);
+}
+
+.tile-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.tile-value {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: var(--color-brand-primary);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: 0;
+    margin-top: var(--spacing-sm);
+}
+
+.highlight-box h4 {
+    margin-top: 0;
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+}
+
+.highlight-box p {
+    font-size: var(--font-size-md);
+    margin-bottom: 0;
+}
+
+/* Sync Button Float */
+.sync-trigger-btn {
+    position: fixed;
+    right: 40px;
+    bottom: 100px;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    border-radius: 0;
+    width: 56px;
+    height: 56px;
+}
+
+/* Dark Mode Overrides */
+body.theme-dark .audit-tile {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+@media print {
+    .sync-trigger-btn {
+        display: none !important;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen {
+    .paper-a4 {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .audit-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sync-trigger-btn {
+        right: var(--spacing-md);
+        bottom: 80px;
+    }
+}

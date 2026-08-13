@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kano 模型 (Kano Model)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="基于客户满意度进行功能需求优先级排序">
+    <meta name="keywords" content="Kano Model, Product Management, Feature Prioritization, Customer Satisfaction">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/kano-model.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>Kano 模型</h1>
+                <span class="english-subtitle">Kano Model Analysis</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="Feature Set V1"
+                        data-save-key="meta_product_kano" aria-label="Feature Set V1">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="kano-layout">
+
+                <!-- Left: Chart Visualization -->
+                <div class="kano-chart-container">
+                    <div class="chart-y-label">Customer Satisfaction (满意度)</div>
+                    <div class="chart-x-label">Functionality (功能具备程度)</div>
+
+                    <svg class="kano-svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet">
+                        <!-- Grid -->
+                        <line x1="50" y1="200" x2="550" y2="200" class="axis-line" /> <!-- X Axis -->
+                        <line x1="300" y1="50" x2="300" y2="350" class="axis-line" /> <!-- Y Axis -->
+
+                        <!-- Curves -->
+                        <!-- Attractive (S-Curve Up) -->
+                        <path d="M50 350 Q 300 300 550 50" class="curve curve-attractive" />
+                        <text x="450" y="80" class="curve-label label-attractive">Attractive (魅力型)</text>
+
+                        <!-- One-Dimensional (Linear) -->
+                        <line x1="100" y1="350" x2="500" y2="50" class="curve curve-linear" />
+                        <text x="510" y="50" class="curve-label label-linear">Performance (期望型)</text>
+
+                        <!-- Must-Be (Curve Down) -->
+                        <path d="M50 350 Q 300 330 550 200" class="curve curve-mustbe" />
+                        <text x="400" y="320" class="curve-label label-mustbe">Must-Be (基本型)</text>
+
+                        <!-- Indifferent (Flat) -->
+                        <line x1="50" y1="200" x2="550" y2="200" class="curve curve-indifferent" />
+                        <text x="450" y="215" class="curve-label label-indifferent">Indifferent (无差异)</text>
+
+                        <!-- Reverse (Down Linear) -->
+                        <!-- Omitted to keep clean, usually confuses users -->
+                    </svg>
+                </div>
+
+                <!-- Right: Feature List -->
+                <div class="kano-list-panel">
+                    <div class="panel-header">
+                        <h3>功能特性分析 (Feature Analysis)</h3>
+                        <button class="btn-primary-sm" id="addFeatureBtn" type="button">
+                            <i data-lucide="plus"></i> Add Feature
+                        </button>
+                    </div>
+
+                    <div class="feature-table-header">
+                        <div class="col-name">Feature</div>
+                        <div class="col-type">Kano Category</div>
+                        <div class="col-cost">Cost</div>
+                        <div class="col-actions"></div>
+                    </div>
+
+                    <div class="feature-list" id="featureList">
+                        <!-- Items injected via JS -->
+                    </div>
+
+                    <div class="list-summary">
+                        <div class="legend-item"><span class="dot dot-mustbe"></span> Must-Be (P0)</div>
+                        <div class="legend-item"><span class="dot dot-linear"></span> Performance (P1)</div>
+                        <div class="legend-item"><span class="dot dot-attractive"></span> Attractive (P2)</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/kano-model.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('kano_model_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

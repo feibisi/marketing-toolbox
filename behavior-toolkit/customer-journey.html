@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户旅程地图 (Customer Journey Map)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="客户旅程地图工具 - 可视化客户从认知到推荐的完整体验流程，识别痛点和机会，优化全渠道客户体验">
+    <meta name="keywords" content="客户旅程,Customer Journey,用户体验,UX,触点分析,情感曲线,全渠道,Modiqi">
+    <meta name="author" content="Modiqi Digital Consulting">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="客户旅程地图 - Modiqi Omnichannel Toolkit">
+    <meta property="og:description" content="可视化客户从认知到推荐的完整体验流程">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Font Preloading -->
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/customer-journey.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户旅程地图</h1>
+                <span class="english-subtitle">Customer Journey Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>客户画像 <span class="en-sub">(Persona)</span></label>
+                    <input type="text" class="meta-input" placeholder="目标客户群" data-save-key="meta_persona" aria-label="目标客户群">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Journey Stages -->
+        <div class="journey-container">
+            <div class="journey-stage" data-stage="awareness">
+                <div class="stage-header">
+                    <i data-lucide="eye"></i>
+                    <h3>认知 <span class="en-sub">(Awareness)</span></h3>
+                </div>
+                <div class="stage-content">
+                    <div class="content-section">
+                        <strong>客户目标 <span class="en-sub">(Goals)</span>:</strong>
+                        <p contenteditable="true" data-save-key="awareness_goals">发现问题,寻找解决方案</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>触点 <span class="en-sub">(Touchpoints)</span>:</strong>
+                        <div class="touchpoint-tags">
+                            <span class="tag" contenteditable="true" data-save-key="awareness_touch_1">搜索引擎</span>
+                            <span class="tag" contenteditable="true" data-save-key="awareness_touch_2">社交媒体</span>
+                            <span class="tag" contenteditable="true" data-save-key="awareness_touch_3">广告</span>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <strong>痛点 <span class="en-sub">(Pain Points)</span>:</strong>
+                        <p class="pain" contenteditable="true" data-save-key="awareness_pain">信息过载,难以筛选</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>机会 <span class="en-sub">(Opportunities)</span>:</strong>
+                        <p class="opportunity" contenteditable="true" data-save-key="awareness_opportunity">提供教育内容,建立信任
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journey-stage" data-stage="consideration">
+                <div class="stage-header">
+                    <i data-lucide="search"></i>
+                    <h3>考虑 <span class="en-sub">(Consideration)</span></h3>
+                </div>
+                <div class="stage-content">
+                    <div class="content-section">
+                        <strong>客户目标 <span class="en-sub">(Goals)</span>:</strong>
+                        <p contenteditable="true" data-save-key="consideration_goals">评估不同方案,对比选择</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>触点 <span class="en-sub">(Touchpoints)</span>:</strong>
+                        <div class="touchpoint-tags">
+                            <span class="tag" contenteditable="true" data-save-key="consideration_touch_1">官网</span>
+                            <span class="tag" contenteditable="true" data-save-key="consideration_touch_2">产品页</span>
+                            <span class="tag" contenteditable="true" data-save-key="consideration_touch_3">评价</span>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <strong>痛点 <span class="en-sub">(Pain Points)</span>:</strong>
+                        <p class="pain" contenteditable="true" data-save-key="consideration_pain">难以比较,缺乏信心</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>机会 <span class="en-sub">(Opportunities)</span>:</strong>
+                        <p class="opportunity" contenteditable="true" data-save-key="consideration_opportunity">
+                            提供对比工具,案例证明</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journey-stage" data-stage="purchase">
+                <div class="stage-header">
+                    <i data-lucide="shopping-cart"></i>
+                    <h3>购买 <span class="en-sub">(Purchase)</span></h3>
+                </div>
+                <div class="stage-content">
+                    <div class="content-section">
+                        <strong>客户目标 <span class="en-sub">(Goals)</span>:</strong>
+                        <p contenteditable="true" data-save-key="purchase_goals">完成购买,获得产品</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>触点 <span class="en-sub">(Touchpoints)</span>:</strong>
+                        <div class="touchpoint-tags">
+                            <span class="tag" contenteditable="true" data-save-key="purchase_touch_1">结账页</span>
+                            <span class="tag" contenteditable="true" data-save-key="purchase_touch_2">支付</span>
+                            <span class="tag" contenteditable="true" data-save-key="purchase_touch_3">确认邮件</span>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <strong>痛点 <span class="en-sub">(Pain Points)</span>:</strong>
+                        <p class="pain" contenteditable="true" data-save-key="purchase_pain">流程复杂,支付担忧</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>机会 <span class="en-sub">(Opportunities)</span>:</strong>
+                        <p class="opportunity" contenteditable="true" data-save-key="purchase_opportunity">简化流程,提供保障</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journey-stage" data-stage="retention">
+                <div class="stage-header">
+                    <i data-lucide="repeat"></i>
+                    <h3>留存 <span class="en-sub">(Retention)</span></h3>
+                </div>
+                <div class="stage-content">
+                    <div class="content-section">
+                        <strong>客户目标 <span class="en-sub">(Goals)</span>:</strong>
+                        <p contenteditable="true" data-save-key="retention_goals">使用产品,获得价值</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>触点 <span class="en-sub">(Touchpoints)</span>:</strong>
+                        <div class="touchpoint-tags">
+                            <span class="tag" contenteditable="true" data-save-key="retention_touch_1">产品</span>
+                            <span class="tag" contenteditable="true" data-save-key="retention_touch_2">客服</span>
+                            <span class="tag" contenteditable="true" data-save-key="retention_touch_3">邮件</span>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <strong>痛点 <span class="en-sub">(Pain Points)</span>:</strong>
+                        <p class="pain" contenteditable="true" data-save-key="retention_pain">上手困难,缺乏支持</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>机会 <span class="en-sub">(Opportunities)</span>:</strong>
+                        <p class="opportunity" contenteditable="true" data-save-key="retention_opportunity">优化引导,主动服务
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journey-stage" data-stage="advocacy">
+                <div class="stage-header">
+                    <i data-lucide="heart"></i>
+                    <h3>推荐 <span class="en-sub">(Advocacy)</span></h3>
+                </div>
+                <div class="stage-content">
+                    <div class="content-section">
+                        <strong>客户目标 <span class="en-sub">(Goals)</span>:</strong>
+                        <p contenteditable="true" data-save-key="advocacy_goals">分享体验,推荐他人</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>触点 <span class="en-sub">(Touchpoints)</span>:</strong>
+                        <div class="touchpoint-tags">
+                            <span class="tag" contenteditable="true" data-save-key="advocacy_touch_1">推荐计划</span>
+                            <span class="tag" contenteditable="true" data-save-key="advocacy_touch_2">社区</span>
+                            <span class="tag" contenteditable="true" data-save-key="advocacy_touch_3">评价</span>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <strong>痛点 <span class="en-sub">(Pain Points)</span>:</strong>
+                        <p class="pain" contenteditable="true" data-save-key="advocacy_pain">缺乏激励,分享不便</p>
+                    </div>
+                    <div class="content-section">
+                        <strong>机会 <span class="en-sub">(Opportunities)</span>:</strong>
+                        <p class="opportunity" contenteditable="true" data-save-key="advocacy_opportunity">激励推荐,简化分享</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emotion Curve -->
+        <div class="emotion-section">
+            <h2 class="section-title"><i data-lucide="activity"></i> 情感曲线 <span class="en-sub">(Emotion Curve)</span>
+            </h2>
+            <div class="emotion-chart">
+                <div class="chart-labels">
+                    <span class="label-high">满意</span>
+                    <span class="label-mid">中性</span>
+                    <span class="label-low">不满</span>
+                </div>
+                <svg viewBox="0 0 900 120" xmlns="http://www.w3.org/2000/svg" class="emotion-svg">
+                    <!-- Grid lines -->
+                    <line x1="0" y1="40" x2="900" y2="40" class="grid-line" />
+                    <line x1="0" y1="60" x2="900" y2="60" class="grid-line" />
+                    <line x1="0" y1="80" x2="900" y2="80" class="grid-line" />
+
+                    <!-- Stage dividers -->
+                    <line x1="180" y1="20" x2="180" y2="100" class="stage-divider" />
+                    <line x1="360" y1="20" x2="360" y2="100" class="stage-divider" />
+                    <line x1="540" y1="20" x2="540" y2="100" class="stage-divider" />
+                    <line x1="720" y1="20" x2="720" y2="100" class="stage-divider" />
+
+                    <!-- Emotion curve -->
+                    <path d="M90 70 Q180 65 270 55 T450 60 Q540 70 630 50 T810 45" class="emotion-curve" />
+
+                    <!-- Data points -->
+                    <circle cx="90" cy="70" r="5" class="data-point" />
+                    <circle cx="270" cy="55" r="5" class="data-point" />
+                    <circle cx="450" cy="60" r="5" class="data-point" />
+                    <circle cx="630" cy="50" r="5" class="data-point" />
+                    <circle cx="810" cy="45" r="5" class="data-point" />
+                </svg>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('customer_journey_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

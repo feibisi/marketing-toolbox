@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据分析工作台 - Modiqi Workbench</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">数据分析工作台</h1>
+                    <span class="version-tag">16 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Analytics Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. A/B Test Planner -->
+            <a href="ab-test-planner.html" class="tool-card">
+                <i data-lucide="flask-conical" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">测试</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- A/B comparison -->
+                        <rect x="30" y="30" width="60" height="80" rx="4" fill="#f8fafc" stroke="#cbd5e1"
+                            stroke-width="1.5" />
+                        <text x="60" y="55" text-anchor="middle" font-size="20" fill="#64748b"
+                            font-weight="600">A</text>
+                        <rect x="40" y="70" width="40" height="30" rx="2" fill="#e2e8f0" />
+
+                        <rect x="110" y="30" width="60" height="80" rx="4" fill="#f8fafc" stroke="#cbd5e1"
+                            stroke-width="1.5" />
+                        <text x="140" y="55" text-anchor="middle" font-size="20" fill="#64748b"
+                            font-weight="600">B</text>
+                        <rect x="120" y="70" width="40" height="35" rx="2" fill="#cbd5e1" />
+
+                        <!-- Winner indicator -->
+                        <path d="M135 115 L140 125 L145 115" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">A/B 测试规划器 <span class="en-sub">(A/B Test Planner)</span></h3>
+                    <p class="tool-desc">设计科学的对比实验方案。</p>
+                </div>
+            </a>
+
+            <!-- 2. Attribution Model -->
+            <a href="attribution-model.html" class="tool-card">
+                <i data-lucide="git-branch" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">归因</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Attribution path -->
+                        <circle cx="40" cy="70" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="80" cy="50" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="80" cy="90" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="120" cy="70" r="8" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="160" cy="70" r="10" fill="#64748b" />
+
+                        <!-- Connection lines -->
+                        <line x1="48" y1="70" x2="72" y2="55" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="48" y1="70" x2="72" y2="85" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="88" y1="50" x2="112" y2="65" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="88" y1="90" x2="112" y2="75" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="128" y1="70" x2="150" y2="70" stroke="#94a3b8" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">归因模型 <span class="en-sub">(Attribution Model)</span></h3>
+                    <p class="tool-desc">追踪转化路径与渠道贡献。</p>
+                </div>
+            </a>
+
+            <!-- 3. Budget Allocator -->
+            <a href="budget-allocator.html" class="tool-card">
+                <i data-lucide="pie-chart" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">预算</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Donut chart -->
+                        <circle cx="60" cy="70" r="25" fill="none" stroke="#e2e8f0" stroke-width="10" />
+                        <path d="M60 45 A 25 25 0 0 1 85 70" fill="none" stroke="#3b82f6" stroke-width="10" />
+                        <path d="M85 70 A 25 25 0 0 1 60 95" fill="none" stroke="#10b981" stroke-width="10" />
+
+                        <!-- List -->
+                        <rect x="100" y="45" width="60" height="6" rx="2" fill="#cbd5e1" />
+                        <rect x="100" y="55" width="40" height="6" rx="2" fill="#e2e8f0" />
+                        <rect x="100" y="70" width="70" height="6" rx="2" fill="#cbd5e1" />
+                        <rect x="100" y="80" width="50" height="6" rx="2" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">营销预算分配器 <span class="en-sub">(Budget Allocator)</span></h3>
+                    <p class="tool-desc">科学规划各渠道营销投入。</p>
+                </div>
+            </a>
+
+            <!-- 3. Cohort Analysis -->
+            <a href="cohort-analysis.html" class="tool-card">
+                <i data-lucide="users-round" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">群组</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Cohort table -->
+                        <rect x="30" y="30" width="140" height="80" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+
+                        <!-- Header row -->
+                        <rect x="30" y="30" width="140" height="15" fill="#e2e8f0" />
+
+                        <!-- Data cells with gradient -->
+                        <rect x="35" y="50" width="25" height="12" rx="1" fill="#64748b" />
+                        <rect x="65" y="50" width="25" height="12" rx="1" fill="#94a3b8" />
+                        <rect x="95" y="50" width="25" height="12" rx="1" fill="#cbd5e1" />
+                        <rect x="125" y="50" width="25" height="12" rx="1" fill="#e2e8f0" />
+
+                        <rect x="35" y="67" width="25" height="12" rx="1" fill="#94a3b8" />
+                        <rect x="65" y="67" width="25" height="12" rx="1" fill="#cbd5e1" />
+                        <rect x="95" y="67" width="25" height="12" rx="1" fill="#e2e8f0" />
+
+                        <rect x="35" y="84" width="25" height="12" rx="1" fill="#cbd5e1" />
+                        <rect x="65" y="84" width="25" height="12" rx="1" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">群组分析 <span class="en-sub">(Cohort Analysis)</span></h3>
+                    <p class="tool-desc">分析用户留存与行为变化。</p>
+                </div>
+            </a>
+
+            <!-- 4. Funnel Diagnosis -->
+            <a href="funnel-diagnosis.html" class="tool-card">
+                <i data-lucide="filter" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">漏斗</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Funnel stages -->
+                        <path d="M40 30 L160 30 L130 60 L70 60 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M70 60 L130 60 L115 85 L85 85 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+                        <path d="M85 85 L115 85 L108 105 L92 105 Z" fill="#94a3b8" stroke="#64748b"
+                            stroke-width="1.5" />
+                        <rect x="88" y="105" width="24" height="15" rx="2" fill="#64748b" />
+
+                        <!-- Percentage labels -->
+                        <text x="175" y="45" font-size="10" fill="#94a3b8">100%</text>
+                        <text x="175" y="73" font-size="10" fill="#94a3b8">45%</text>
+                        <text x="175" y="95" font-size="10" fill="#94a3b8">18%</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">漏斗诊断 <span class="en-sub">(Funnel Diagnosis)</span></h3>
+                    <p class="tool-desc">识别转化流失的关键节点。</p>
+                </div>
+            </a>
+
+            <!-- 5. KPI Dashboard -->
+            <a href="kpi-dashboard.html" class="tool-card">
+                <i data-lucide="gauge" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">仪表盘</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Dashboard cards -->
+                        <rect x="20" y="20" width="70" height="45" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="30" width="30" height="6" rx="2" fill="#cbd5e1" />
+                        <text x="35" y="52" font-size="16" fill="#64748b" font-weight="600">1.2K</text>
+
+                        <rect x="110" y="20" width="70" height="45" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="120" y="30" width="35" height="6" rx="2" fill="#cbd5e1" />
+                        <text x="125" y="52" font-size="16" fill="#64748b" font-weight="600">85%</text>
+
+                        <rect x="20" y="75" width="70" height="45" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="85" width="40" height="6" rx="2" fill="#cbd5e1" />
+                        <text x="35" y="107" font-size="16" fill="#64748b" font-weight="600">¥45K</text>
+
+                        <rect x="110" y="75" width="70" height="45" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="120" y="85" width="30" height="6" rx="2" fill="#cbd5e1" />
+                        <text x="125" y="107" font-size="16" fill="#64748b" font-weight="600">3.2</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">KPI 仪表盘 <span class="en-sub">(KPI Dashboard)</span></h3>
+                    <p class="tool-desc">可视化关键业务指标。</p>
+                </div>
+            </a>
+
+            <!-- 6. Measurement Plan -->
+            <a href="measurement-plan.html" class="tool-card">
+                <i data-lucide="clipboard-list" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">计划</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Measurement plan document -->
+                        <rect x="40" y="25" width="120" height="90" rx="4" fill="#f8fafc" stroke="#cbd5e1"
+                            stroke-width="1.5" />
+
+                        <!-- Checklist items -->
+                        <circle cx="55" cy="45" r="4" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M52 45 L54 47 L58 43" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" />
+                        <rect x="65" y="42" width="80" height="4" rx="2" fill="#cbd5e1" />
+
+                        <circle cx="55" cy="65" r="4" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M52 65 L54 67 L58 63" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" />
+                        <rect x="65" y="62" width="70" height="4" rx="2" fill="#e2e8f0" />
+
+                        <circle cx="55" cy="85" r="4" fill="none" stroke="#e2e8f0" stroke-width="1.5" />
+                        <rect x="65" y="82" width="75" height="4" rx="2" fill="#e2e8f0" />
+
+                        <circle cx="55" cy="100" r="4" fill="none" stroke="#e2e8f0" stroke-width="1.5" />
+                        <rect x="65" y="97" width="65" height="4" rx="2" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">测量计划 <span class="en-sub">(Measurement Plan)</span></h3>
+                    <p class="tool-desc">规划数据采集与指标体系。</p>
+                </div>
+            </a>
+
+            <!-- 7. Pirate Metrics (AARRR) -->
+            <a href="pirate-metrics.html" class="tool-card">
+                <i data-lucide="anchor" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">海盗</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- AARRR funnel -->
+                        <rect x="30" y="25" width="140" height="15" rx="2" fill="#e2e8f0" />
+                        <text x="100" y="37" text-anchor="middle" font-size="9" fill="#64748b">Acquisition</text>
+
+                        <rect x="40" y="45" width="120" height="15" rx="2" fill="#e2e8f0" />
+                        <text x="100" y="57" text-anchor="middle" font-size="9" fill="#64748b">Activation</text>
+
+                        <rect x="50" y="65" width="100" height="15" rx="2" fill="#cbd5e1" />
+                        <text x="100" y="77" text-anchor="middle" font-size="9" fill="#64748b">Retention</text>
+
+                        <rect x="60" y="85" width="80" height="15" rx="2" fill="#cbd5e1" />
+                        <text x="100" y="97" text-anchor="middle" font-size="9" fill="#64748b">Revenue</text>
+
+                        <rect x="70" y="105" width="60" height="15" rx="2" fill="#94a3b8" />
+                        <text x="100" y="117" text-anchor="middle" font-size="9" fill="#fff">Referral</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">海盗指标 <span class="en-sub">(Pirate Metrics)</span></h3>
+                    <p class="tool-desc">AARRR 增长模型分析框架。</p>
+                </div>
+            </a>
+
+            <!-- 8. RFM Analysis -->
+            <a href="rfm-analysis.html" class="tool-card">
+                <i data-lucide="box" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">客户</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- RFM 3D cube representation -->
+                        <rect x="50" y="50" width="100" height="60" rx="2" fill="#f8fafc" stroke="#cbd5e1"
+                            stroke-width="1.5" />
+
+                        <!-- Grid divisions -->
+                        <line x1="50" y1="70" x2="150" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="50" y1="90" x2="150" y2="90" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="83" y1="50" x2="83" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="117" y1="50" x2="117" y2="110" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Highlighted segments -->
+                        <rect x="118" y="51" width="31" height="18" fill="#64748b" opacity="0.3" />
+                        <rect x="51" y="91" width="31" height="18" fill="#cbd5e1" opacity="0.3" />
+
+                        <!-- Labels -->
+                        <text x="30" y="65" font-size="8" fill="#94a3b8">R</text>
+                        <text x="30" y="85" font-size="8" fill="#94a3b8">F</text>
+                        <text x="30" y="105" font-size="8" fill="#94a3b8">M</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">RFM 分析 <span class="en-sub">(RFM Analysis)</span></h3>
+                    <p class="tool-desc">客户价值分层与精准营销。</p>
+                </div>
+            </a>
+
+            <!-- 9. Competitor Analysis -->
+            <a href="competitor-analysis.html" class="tool-card">
+                <i data-lucide="bar-chart-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">竞争</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="20" y="20" width="160" height="12" fill="#f8fafc" rx="2" />
+                        <rect x="30" y="45" width="20" height="60" rx="1" fill="#cbd5e1" />
+                        <rect x="55" y="65" width="20" height="40" rx="1" fill="#e2e8f0" />
+                        <rect x="90" y="35" width="20" height="70" rx="1" fill="#cbd5e1" />
+                        <rect x="115" y="55" width="20" height="50" rx="1" fill="#e2e8f0" />
+                        <rect x="150" y="50" width="20" height="55" rx="1" fill="#cbd5e1" />
+                        <line x1="20" y1="110" x2="180" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">竞品分析 <span class="en-sub">(Competitor Analysis)</span></h3>
+                    <p class="tool-desc">多维度对比市场竞争对手。</p>
+                </div>
+            </a>
+
+            <!-- 10. ROI Calculator -->
+            <a href="roi-calculator.html" class="tool-card">
+                <i data-lucide="percent" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">数据</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="20" width="140" height="50" rx="4" fill="#f1f5f9" stroke="#e2e8f0" />
+                        <text x="100" y="55" text-anchor="middle" font-size="24" font-weight="bold"
+                            fill="#475569">354.5%</text>
+                        <text x="100" y="35" text-anchor="middle" font-size="8" fill="#94a3b8">ROI</text>
+                        <rect x="30" y="80" width="65" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="105" y="80" width="65" height="20" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <text x="62" y="93" text-anchor="middle" font-size="8" fill="#64748b">收益</text>
+                        <text x="137" y="93" text-anchor="middle" font-size="8" fill="#64748b">成本</text>
+                        <rect x="30" y="110" width="140" height="8" rx="4" fill="#e2e8f0" />
+                        <rect x="30" y="110" width="120" height="8" rx="4" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">ROI 计算器 <span class="en-sub">(ROI Calculator)</span></h3>
+                    <p class="tool-desc">衡量营销投资回报率。</p>
+                </div>
+            </a>
+
+            <!-- 11. CLV Calculator -->
+            <a href="clv-calculator.html" class="tool-card">
+                <i data-lucide="heart" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">数据</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="20" y="15" width="160" height="35" rx="4" fill="#f1f5f9" stroke="#e2e8f0" />
+                        <text x="100" y="38" text-anchor="middle" font-size="10" fill="#64748b">CLV
+                            = AOV × F × T</text>
+                        <text x="100" y="75" text-anchor="middle" font-size="20" font-weight="bold"
+                            fill="#475569">¥45,000</text>
+                        <text x="100" y="90" text-anchor="middle" font-size="8" fill="#94a3b8">客户终身价值</text>
+                        <rect x="35" y="105" width="50" height="25" rx="2" fill="#e2e8f0" opacity="0.2" />
+                        <rect x="35" y="115" width="50" height="15" rx="2" fill="#94a3b8" />
+                        <text x="60" y="127" text-anchor="middle" font-size="7" fill="#fff">CLV</text>
+                        <rect x="115" y="105" width="50" height="25" rx="2" fill="#e2e8f0" opacity="0.2" />
+                        <rect x="115" y="120" width="50" height="10" rx="2" fill="#cbd5e1" />
+                        <text x="140" y="128" text-anchor="middle" font-size="7" fill="#fff">CAC</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">CLV 计算器 <span class="en-sub">(CLV Calculator)</span></h3>
+                    <p class="tool-desc">计算客户终身价值。</p>
+                </div>
+            </a>
+
+            <!-- 13. Growth Experiment Board v2 -->
+            <a href="experiment-board.html" class="tool-card">
+                <i data-lucide="flask-conical" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">实验v2</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="15" y="20" width="50" height="100" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="75" y="20" width="50" height="100" rx="4" fill="#fef3c7" stroke="#f59e0b" />
+                        <rect x="135" y="20" width="50" height="100" rx="4" fill="#dcfce7" stroke="#10b981" />
+                        <rect x="20" y="30" width="40" height="15" rx="2" fill="#e2e8f0" />
+                        <rect x="20" y="50" width="40" height="15" rx="2" fill="#e2e8f0" />
+                        <rect x="80" y="30" width="40" height="15" rx="2" fill="#fbbf24" />
+                        <rect x="140" y="30" width="40" height="15" rx="2" fill="#10b981" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">增长实验看板 v2 <span class="en-sub">(Experiment Board v2)</span></h3>
+                    <p class="tool-desc">高级版实验管理看板，管理增长实验全流程。</p>
+                </div>
+            </a>
+
+            <!-- 14. ICE Scoring Matrix -->
+            <a href="ice-scoring.html" class="tool-card">
+                <i data-lucide="target" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">评分</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="30" width="140" height="80" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <line x1="30" y1="55" x2="170" y2="55" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="30" y1="80" x2="170" y2="80" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="80" y1="30" x2="80" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="125" y1="30" x2="125" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <rect x="40" y="62" width="30" height="6" rx="2" fill="#3b82f6" />
+                        <rect x="85" y="62" width="35" height="6" rx="2" fill="#10b981" />
+                        <rect x="130" y="62" width="32" height="6" rx="2" fill="#f59e0b" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">ICE 评分矩阵 <span class="en-sub">(ICE Scoring)</span></h3>
+                    <p class="tool-desc">实验优先级评估工具。</p>
+                </div>
+            </a>
+
+            <!-- 15. North Star Metric -->
+            <a href="north-star-metric.html" class="tool-card">
+                <i data-lucide="star" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">指标</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="50" r="25" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" />
+                        <path d="M100 30 L105 45 L120 47 L110 57 L113 72 L100 65 L87 72 L90 57 L80 47 L95 45 Z"
+                            fill="#f59e0b" />
+                        <circle cx="50" cy="100" r="12" fill="#dbeafe" stroke="#3b82f6" />
+                        <circle cx="100" cy="110" r="12" fill="#dbeafe" stroke="#3b82f6" />
+                        <circle cx="150" cy="100" r="12" fill="#dbeafe" stroke="#3b82f6" />
+                        <line x1="85" y1="65" x2="58" y2="92" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="100" y1="75" x2="100" y2="98" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="115" y1="65" x2="142" y2="92" stroke="#cbd5e1" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">北极星指标 <span class="en-sub">(North Star Metric)</span></h3>
+                    <p class="tool-desc">定义和追踪核心增长指标。</p>
+                </div>
+            </a>
+
+            <!-- 16. Marketing Budget Planner -->
+            <a href="budget-planner.html" class="tool-card">
+                <i data-lucide="wallet" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">New</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Budget donut -->
+                        <circle cx="50" cy="55" r="25" fill="none" stroke="#e2e8f0" stroke-width="8" />
+                        <path d="M50 30 A 25 25 0 1 1 25 55" fill="none" stroke="#3b82f6" stroke-width="8" />
+                        <text x="50" y="60" text-anchor="middle" font-size="10" fill="#64748b">75%</text>
+                        <!-- Bars -->
+                        <rect x="90" y="30" width="90" height="10" rx="2" fill="#e2e8f0" />
+                        <rect x="90" y="30" width="65" height="10" rx="2" fill="#3b82f6" />
+                        <rect x="90" y="48" width="90" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="90" y="48" width="50" height="8" rx="2" fill="#64748b" />
+                        <rect x="90" y="64" width="90" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="90" y="64" width="35" height="8" rx="2" fill="#94a3b8" />
+                        <!-- ROI -->
+                        <rect x="30" y="95" width="140" height="25" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <text x="100" y="112" text-anchor="middle" font-size="10" fill="#64748b">ROI: 2.7x</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">营销预算规划器 <span class="en-sub">(Budget Planner)</span></h3>
+                    <p class="tool-desc">预算规划、分配与 ROI 追踪。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

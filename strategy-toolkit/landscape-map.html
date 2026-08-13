@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞争格局地图 (Competitive Landscape Map)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="竞争格局地图工具 - 可视化展示竞争对手在市场中的定位，分析竞争态势与机会空间">
+    <meta name="keywords" content="竞争格局,Competitive Landscape,市场定位,竞争分析,战略定位,Modiqi">
+    <meta name="author" content="Modiqi Digital Consulting">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="竞争格局地图 - Modiqi Competitive Intelligence">
+    <meta property="og:description" content="可视化展示竞争对手在市场中的定位，分析竞争态势与机会空间">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Font Preloading -->
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/landscape-map.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>竞争格局地图</h1>
+                <span class="english-subtitle">Competitive Landscape Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>行业 <span class="en-sub">(Industry)</span></label>
+                    <input type="text" class="meta-input" placeholder="SaaS软件" data-save-key="meta_industry" aria-label="SaaS软件">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Axis Configuration -->
+        <div class="axis-config">
+            <div class="axis-item">
+                <label>X轴 <span class="en-sub">(X-Axis)</span>:</label>
+                <input type="text" class="axis-input" value="价格定位 (低 → 高)" data-save-key="axis_x" aria-label="axis x">
+            </div>
+            <div class="axis-item">
+                <label>Y轴 <span class="en-sub">(Y-Axis)</span>:</label>
+                <input type="text" class="axis-input" value="产品复杂度 (简单 → 复杂)" data-save-key="axis_y" aria-label="axis y">
+            </div>
+        </div>
+
+        <!-- Landscape Map -->
+        <div class="landscape-container">
+            <div class="landscape-map">
+                <!-- Y-axis label -->
+                <div class="y-axis-label">
+                    <span class="axis-high">高</span>
+                    <span class="axis-low">低</span>
+                </div>
+
+                <!-- Map grid -->
+                <div class="map-grid">
+                    <!-- Quadrant labels -->
+                    <div class="quadrant-label q1">高价值/高复杂</div>
+                    <div class="quadrant-label q2">低价值/高复杂</div>
+                    <div class="quadrant-label q3">低价值/低复杂</div>
+                    <div class="quadrant-label q4">高价值/低复杂</div>
+
+                    <!-- Grid lines -->
+                    <div class="grid-line vertical"></div>
+                    <div class="grid-line horizontal"></div>
+
+                    <!-- Competitors -->
+                    <div class="competitor us" style="left: 65%; top: 35%;">
+                        <div class="competitor-bubble">
+                            <span class="competitor-name" contenteditable="true" data-save-key="comp_us_name">我们</span>
+                            <span class="competitor-size" contenteditable="true"
+                                data-save-key="comp_us_size">$50M</span>
+                        </div>
+                    </div>
+
+                    <div class="competitor leader" style="left: 75%; top: 25%;">
+                        <div class="competitor-bubble">
+                            <span class="competitor-name" contenteditable="true"
+                                data-save-key="comp_leader_name">市场领导者</span>
+                            <span class="competitor-size" contenteditable="true"
+                                data-save-key="comp_leader_size">$500M</span>
+                        </div>
+                    </div>
+
+                    <div class="competitor challenger" style="left: 55%; top: 45%;">
+                        <div class="competitor-bubble">
+                            <span class="competitor-name" contenteditable="true"
+                                data-save-key="comp_challenger_name">挑战者A</span>
+                            <span class="competitor-size" contenteditable="true"
+                                data-save-key="comp_challenger_size">$80M</span>
+                        </div>
+                    </div>
+
+                    <div class="competitor niche" style="left: 35%; top: 30%;">
+                        <div class="competitor-bubble">
+                            <span class="competitor-name" contenteditable="true"
+                                data-save-key="comp_niche_name">细分玩家B</span>
+                            <span class="competitor-size" contenteditable="true"
+                                data-save-key="comp_niche_size">$20M</span>
+                        </div>
+                    </div>
+
+                    <div class="competitor follower" style="left: 25%; top: 65%;">
+                        <div class="competitor-bubble">
+                            <span class="competitor-name" contenteditable="true"
+                                data-save-key="comp_follower_name">跟随者C</span>
+                            <span class="competitor-size" contenteditable="true"
+                                data-save-key="comp_follower_size">$15M</span>
+                        </div>
+                    </div>
+
+                    <div class="competitor startup" style="left: 45%; top: 70%;">
+                        <div class="competitor-bubble">
+                            <span class="competitor-name" contenteditable="true"
+                                data-save-key="comp_startup_name">新进入者D</span>
+                            <span class="competitor-size" contenteditable="true"
+                                data-save-key="comp_startup_size">$5M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- X-axis label -->
+                <div class="x-axis-label">
+                    <span class="axis-low">低</span>
+                    <span class="axis-high">高</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitor List -->
+        <div class="competitor-list">
+            <h2 class="section-title"><i data-lucide="users"></i> 竞争对手详情 <span class="en-sub">(Competitor
+                    Details)</span></h2>
+            <div class="competitor-cards">
+                <div class="competitor-card us-card">
+                    <div class="card-header">
+                        <span class="card-badge us-badge">我们</span>
+                        <h3 contenteditable="true" data-save-key="card_us_name">我们的产品</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span class="label">市场份额 <span class="en-sub">(Share)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_us_share">8%</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">核心优势 <span class="en-sub">(Strengths)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_us_strength">用户体验,创新功能</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">目标客户 <span class="en-sub">(Target)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_us_target">中小企业</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <div class="card-header">
+                        <span class="card-badge leader-badge">领导者</span>
+                        <h3 contenteditable="true" data-save-key="card_leader_name">市场领导者</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span class="label">市场份额 <span class="en-sub">(Share)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_leader_share">35%</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">核心优势 <span class="en-sub">(Strengths)</span>:</span>
+                            <span class="value" contenteditable="true"
+                                data-save-key="card_leader_strength">品牌知名度,生态系统</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">目标客户 <span class="en-sub">(Target)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_leader_target">大型企业</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <div class="card-header">
+                        <span class="card-badge challenger-badge">挑战者</span>
+                        <h3 contenteditable="true" data-save-key="card_challenger_name">挑战者A</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span class="label">市场份额 <span class="en-sub">(Share)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_challenger_share">12%</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">核心优势 <span class="en-sub">(Strengths)</span>:</span>
+                            <span class="value" contenteditable="true"
+                                data-save-key="card_challenger_strength">性价比,快速迭代</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">目标客户 <span class="en-sub">(Target)</span>:</span>
+                            <span class="value" contenteditable="true"
+                                data-save-key="card_challenger_target">成长型企业</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <div class="card-header">
+                        <span class="card-badge niche-badge">细分</span>
+                        <h3 contenteditable="true" data-save-key="card_niche_name">细分玩家B</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-row">
+                            <span class="label">市场份额 <span class="en-sub">(Share)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_niche_share">5%</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">核心优势 <span class="en-sub">(Strengths)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_niche_strength">垂直行业专精</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">目标客户 <span class="en-sub">(Target)</span>:</span>
+                            <span class="value" contenteditable="true" data-save-key="card_niche_target">特定行业</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('landscape_map_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容分发矩阵 (Content Distribution Matrix)</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-tools.css">
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body class="content-distribution-page">
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容分发矩阵</h1>
+                <span class="english-subtitle">Content Distribution Matrix (POEM Strategy)</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>战役名称</label>
+                    <input type="text" class="meta-input" data-save-key="campaign_name" aria-label="campaign name">
+                </div>
+            </div>
+        </header>
+
+        <div class="canvas-grid">
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%">渠道类型</th>
+                        <th style="width: 28%">自有媒体 (Owned)</th>
+                        <th style="width: 28%">付费媒体 (Paid)</th>
+                        <th style="width: 29%">赢得媒体 (Earned)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            <i data-lucide="eye"
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i>
+                            意识阶段<br><span style="font-weight:normal;font-size:10px;color:#666">Awareness</span>
+                        </th>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 官网SEO文章"
+                                data-save-key="owned_awareness" aria-label="例: 官网SEO文章"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 信息流广告投放"
+                                data-save-key="paid_awareness" aria-label="例: 信息流广告投放"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 媒体报道、热搜"
+                                data-save-key="earned_awareness" aria-label="例: 媒体报道、热搜"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i data-lucide="search"
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i>
+                            考量阶段<br><span style="font-weight:normal;font-size:10px;color:#666">Consideration</span>
+                        </th>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 产品白皮书、案例页"
+                                data-save-key="owned_consideration" aria-label="例: 产品白皮书、案例页"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 搜索竞价排名 (SEM)"
+                                data-save-key="paid_consideration" aria-label="例: 搜索竞价排名 (SEM)"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 知乎/小红书用户测评"
+                                data-save-key="earned_consideration" aria-label="例: 知乎/小红书用户测评"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i data-lucide="shopping-cart"
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i>
+                            转化阶段<br><span style="font-weight:normal;font-size:10px;color:#666">Conversion</span>
+                        </th>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 落地页、EDM营销"
+                                data-save-key="owned_conversion" aria-label="例: 落地页、EDM营销"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 重定向广告 (Retargeting)"
+                                data-save-key="paid_conversion" aria-label="例: 重定向广告 (Retargeting)"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 用户KOL带货"
+                                data-save-key="earned_conversion" aria-label="例: 用户KOL带货"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <i data-lucide="heart"
+                                style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i>
+                            忠诚阶段<br><span style="font-weight:normal;font-size:10px;color:#666">Loyalty</span>
+                        </th>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 会员中心、社区"
+                                data-save-key="owned_loyalty" aria-label="例: 会员中心、社区"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 老客专属优惠券投放"
+                                data-save-key="paid_loyalty" aria-label="例: 老客专属优惠券投放"></textarea></td>
+                        <td><textarea class="matrix-cell-content" placeholder="例: 病毒式口碑传播"
+                                data-save-key="earned_loyalty" aria-label="例: 病毒式口碑传播"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_dist_matrix');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

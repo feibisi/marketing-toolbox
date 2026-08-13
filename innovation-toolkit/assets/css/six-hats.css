@@ -1,0 +1,202 @@
+/* Six Hats Layout */
+.hats-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+.hats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    flex: 1;
+    align-content: flex-start;
+}
+
+.hat-card {
+    flex: 1 1 300px;
+    /* 3 cols on landscape */
+    min-height: 180px;
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.hat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 6px;
+    background: currentColor;
+}
+
+.hat-card:hover {
+    box-shadow: var(--shadow-md);
+    /* transform: translateY(-2px); REMOVED: Static beauty principle */
+}
+
+.hat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    /* space for border */
+}
+
+.hat-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hat-desc {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+}
+
+.hat-input {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    resize: none;
+    background: var(--color-bg-subtle);
+    margin-left: 12px;
+    /* align with content */
+    width: calc(100% - 12px);
+}
+
+.hat-input:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    background: white;
+}
+
+/* Colors */
+/* Colors - Monochrome First */
+.hat-white,
+.hat-red,
+.hat-black,
+.hat-yellow,
+.hat-green,
+.hat-blue {
+    color: var(--color-text-primary);
+    /* Default to black/gray */
+}
+
+/* Strip color logic */
+.hat-card::before {
+    background: var(--color-border-medium);
+    /* Default strip color */
+}
+
+/* Color Mode Overrides */
+body.color-mode .hat-white {
+    color: var(--color-text-muted);
+}
+
+body.color-mode .hat-white .hat-card::before {
+    background: var(--color-text-muted);
+}
+
+body.color-mode .hat-red {
+    color: var(--color-semantic-danger);
+}
+
+body.color-mode .hat-red .hat-card::before {
+    background: var(--color-semantic-danger);
+}
+
+body.color-mode .hat-black {
+    color: var(--color-text-primary);
+}
+
+body.color-mode .hat-black .hat-card::before {
+    background: var(--color-text-primary);
+}
+
+body.color-mode .hat-yellow {
+    color: var(--color-semantic-alert);
+}
+
+body.color-mode .hat-yellow .hat-card::before {
+    background: var(--color-semantic-alert);
+}
+
+body.color-mode .hat-green {
+    color: var(--color-semantic-growth);
+}
+
+body.color-mode .hat-green .hat-card::before {
+    background: var(--color-semantic-growth);
+}
+
+body.color-mode .hat-blue {
+    color: var(--color-semantic-stability);
+}
+
+body.color-mode .hat-blue .hat-card::before {
+    background: var(--color-semantic-stability);
+}
+
+/* Process */
+
+/* Dark Mode */
+body.theme-dark .hat-card {
+    background: var(--color-bg-card-layer);
+    border-color: var(--color-border-light);
+}
+
+body.theme-dark .hat-input {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-light);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .hat-input:focus {
+    background: var(--color-focus-bg);
+}
+
+body.theme-dark .hat-title {
+    color: var(--color-text-primary);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .hats-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hat-card {
+        min-height: 260px;
+        overflow: visible;
+    }
+
+    .hat-input {
+        min-height: 160px;
+    }
+}

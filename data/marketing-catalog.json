@@ -1,0 +1,1898 @@
+{
+  "schema_version": 1,
+  "generated_from": [
+    "data/tools.json",
+    "data/workflows.json"
+  ],
+  "contract_scope": "public-catalog-only",
+  "main_site": {
+    "origin": "https://modiqi.com",
+    "role": "acquisition-content-and-service-conversion"
+  },
+  "toolbox": {
+    "runtime_origin": null,
+    "role": "independent-local-first-application"
+  },
+  "tools": [
+    {
+      "tool_id": "ai-toolkit:ai-agent-card",
+      "title": "AI 智能体工牌 (AI Agent ID Card)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/ai-agent-card.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/ai-agent-card/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "ai-toolkit:ai-opportunity-radar",
+      "title": "AI 机会雷达 (AI Opportunity Radar)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/ai-opportunity-radar.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/ai-opportunity-radar/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "ai-toolkit:ai-persona-generator",
+      "title": "AI 用户画像生成器 (AI Persona Generator)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/ai-persona-generator.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/ai-persona-generator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "ai-toolkit:ai-tool-matrix",
+      "title": "AI 工具选型矩阵 (AI Tool Selection Matrix)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/ai-tool-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/ai-tool-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "ai-toolkit:ai-workflow-builder",
+      "title": "AI 工作流构建器 (AI Workflow Builder)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/ai-workflow-builder.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/ai-workflow-builder/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "ai-toolkit:content-repurposing-engine",
+      "title": "内容复用引擎 (Content Repurposing Engine)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/content-repurposing-engine.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/content-repurposing-engine/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "ai-toolkit:prompt-canvas",
+      "title": "AI 提示词工程画布 (Prompt Engineering Canvas)",
+      "module": "ai",
+      "tier": "library",
+      "tool_path": "ai-toolkit/prompt-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/ai/prompt-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:ab-test-planner",
+      "title": "A/B 测试规划器 (A/B Test Planner)",
+      "module": "analytics",
+      "tier": "core",
+      "tool_path": "analytics-toolkit/ab-test-planner.html",
+      "workflow_ids": [
+        "measurement-growth"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/analytics/ab-test-planner/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:attribution-model",
+      "title": "归因模型分析器 (Attribution Modeler)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/attribution-model.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/attribution-model/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:budget-allocator",
+      "title": "营销预算分配器 (Marketing Budget Allocator)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/budget-allocator.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/budget-allocator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:budget-planner",
+      "title": "营销预算规划器 (Marketing Budget Planner)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/budget-planner.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/budget-planner/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:clv-calculator",
+      "title": "CLV 计算器 (Customer Lifetime Value Calculator)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/clv-calculator.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/clv-calculator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:cohort-analysis",
+      "title": "队列分析表 (Cohort Analysis)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/cohort-analysis.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/cohort-analysis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:competitor-analysis",
+      "title": "竞争对手分析 (Competitor Analysis)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/competitor-analysis.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/competitor-analysis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:experiment-board",
+      "title": "增长实验看板 (Growth Experiment Board)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/experiment-board.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/experiment-board/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:funnel-diagnosis",
+      "title": "漏斗诊断卡 (Funnel Diagnosis)",
+      "module": "analytics",
+      "tier": "core",
+      "tool_path": "analytics-toolkit/funnel-diagnosis.html",
+      "workflow_ids": [
+        "measurement-growth"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/analytics/funnel-diagnosis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:ice-scoring",
+      "title": "ICE 评分矩阵 (ICE Scoring Matrix)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/ice-scoring.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/ice-scoring/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:kpi-dashboard",
+      "title": "KPI 仪表盘 (KPI Dashboard)",
+      "module": "analytics",
+      "tier": "core",
+      "tool_path": "analytics-toolkit/kpi-dashboard.html",
+      "workflow_ids": [
+        "measurement-growth"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/analytics/kpi-dashboard/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:measurement-plan",
+      "title": "数字营销评估计划 (Measurement Plan)",
+      "module": "analytics",
+      "tier": "core",
+      "tool_path": "analytics-toolkit/measurement-plan.html",
+      "workflow_ids": [
+        "measurement-growth"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/analytics/measurement-plan/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:north-star-metric",
+      "title": "北极星指标 (North Star Metric)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/north-star-metric.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/north-star-metric/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:pirate-metrics",
+      "title": "海盗指标 AARRR - Modiqi Analytics Workbench",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/pirate-metrics.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/pirate-metrics/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:rfm-analysis",
+      "title": "RFM 模型分析 (RFM Analysis)",
+      "module": "analytics",
+      "tier": "library",
+      "tool_path": "analytics-toolkit/rfm-analysis.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/analytics/rfm-analysis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "analytics-toolkit:roi-calculator",
+      "title": "ROI 计算器 (Marketing ROI Calculator)",
+      "module": "analytics",
+      "tier": "core",
+      "tool_path": "analytics-toolkit/roi-calculator.html",
+      "workflow_ids": [
+        "measurement-growth"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/analytics/roi-calculator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:aida-model",
+      "title": "AIDA 模型 - Modiqi Marketing Workbench",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/aida-model.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/aida-model/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:attribution-analysis",
+      "title": "渠道归因分析 (Attribution Analysis)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/attribution-analysis.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/attribution-analysis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:bj-fogg-model",
+      "title": "BJ Fogg 行为模型 (Behavior Model)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/bj-fogg-model.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/bj-fogg-model/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:cognitive-bias",
+      "title": "认知偏差清单 (Cognitive Bias Checklist)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/cognitive-bias.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/cognitive-bias/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:customer-experience-map",
+      "title": "客户体验地图 (Customer Experience Map)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/customer-experience-map.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/customer-experience-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:customer-journey",
+      "title": "客户旅程地图 (Customer Journey Map)",
+      "module": "behavior",
+      "tier": "core",
+      "tool_path": "behavior-toolkit/customer-journey.html",
+      "workflow_ids": [
+        "audience-positioning"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/behavior/customer-journey/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:empathy-map",
+      "title": "同理心地图 (Empathy Map)",
+      "module": "behavior",
+      "tier": "core",
+      "tool_path": "behavior-toolkit/empathy-map.html",
+      "workflow_ids": [
+        "audience-positioning"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/behavior/empathy-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:hook-model",
+      "title": "上瘾模型 (Hook Model)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/hook-model.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/hook-model/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:marketing-canvas",
+      "title": "营销策略画布 (Marketing Strategy Canvas)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/marketing-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/marketing-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:nudge-planner",
+      "title": "助推理论策划器 (Nudge Theory Planner)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/nudge-planner.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/nudge-planner/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:service-blueprint",
+      "title": "服务蓝图 - Modiqi Customer Workbench",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/service-blueprint.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/service-blueprint/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:touchpoint-matrix",
+      "title": "触点矩阵 (Touchpoint Matrix)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/touchpoint-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/touchpoint-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "behavior-toolkit:user-persona",
+      "title": "用户画像卡 (User Persona Card)",
+      "module": "behavior",
+      "tier": "library",
+      "tool_path": "behavior-toolkit/user-persona.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/behavior/user-persona/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-archetype-wheel",
+      "title": "品牌原型轮盘 (Brand Archetype Wheel)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/brand-archetype-wheel.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/brand-archetype-wheel/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-archetypes",
+      "title": "品牌原型轮 (Brand Archetypes)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/brand-archetypes.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/brand-archetypes/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-architecture",
+      "title": "品牌架构 (Brand Architecture)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/brand-architecture.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/brand-architecture/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-essence-wheel",
+      "title": "品牌精髓轮 - Modiqi Brand Workbench",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/brand-essence-wheel.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/brand-essence-wheel/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-messaging",
+      "title": "品牌信息框架 (Brand Messaging Framework)",
+      "module": "brand",
+      "tier": "core",
+      "tool_path": "brand-toolkit/brand-messaging.html",
+      "workflow_ids": [
+        "brand-narrative"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/brand/brand-messaging/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-naming",
+      "title": "品牌命名画布 (Brand Naming Canvas)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/brand-naming.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/brand-naming/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-positioning-map",
+      "title": "品牌定位图 (Brand Positioning Map)",
+      "module": "brand",
+      "tier": "core",
+      "tool_path": "brand-toolkit/brand-positioning-map.html",
+      "workflow_ids": [
+        "audience-positioning"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/brand/brand-positioning-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-prism",
+      "title": "品牌棱镜模型 (Kapferer Brand Prism)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/brand-prism.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/brand-prism/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:brand-story",
+      "title": "品牌故事模板 (Brand Story Template)",
+      "module": "brand",
+      "tier": "core",
+      "tool_path": "brand-toolkit/brand-story.html",
+      "workflow_ids": [
+        "brand-narrative"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/brand/brand-story/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:jtbd-canvas",
+      "title": "JTBD 画布 - Modiqi Brand Workbench",
+      "module": "brand",
+      "tier": "core",
+      "tool_path": "brand-toolkit/jtbd-canvas.html",
+      "workflow_ids": [
+        "audience-positioning"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/brand/jtbd-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:perceptual-map",
+      "title": "感知地图 - Modiqi Brand Workbench",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/perceptual-map.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/perceptual-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:positioning-statement",
+      "title": "定位陈述生成器 (Positioning Statement)",
+      "module": "brand",
+      "tier": "core",
+      "tool_path": "brand-toolkit/positioning-statement.html",
+      "workflow_ids": [
+        "brand-narrative"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/brand/positioning-statement/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:tone-voice",
+      "title": "品牌语调均衡器 (Tone of Voice Equalizer)",
+      "module": "brand",
+      "tier": "core",
+      "tool_path": "brand-toolkit/tone-voice.html",
+      "workflow_ids": [
+        "brand-narrative"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/brand/tone-voice/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:touchpoint-map",
+      "title": "品牌触点地图 (Brand Touchpoint Map)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/touchpoint-map.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/touchpoint-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "brand-toolkit:visual-identity",
+      "title": "视觉识别清单 (Visual Identity Checklist)",
+      "module": "brand",
+      "tier": "library",
+      "tool_path": "brand-toolkit/visual-identity.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/brand/visual-identity/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "cdp-toolkit:cdp-canvas",
+      "title": "客户数据整合画布 (CDP Canvas) - Modiqi Workbench",
+      "module": "cdp",
+      "tier": "library",
+      "tool_path": "cdp-toolkit/cdp-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/cdp/cdp-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "cdp-toolkit:ltv-map",
+      "title": "客户生命周期价值地图 (LTV Map) - Modiqi Workbench",
+      "module": "cdp",
+      "tier": "library",
+      "tool_path": "cdp-toolkit/ltv-map.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/cdp/ltv-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "cdp-toolkit:segmentation-engine",
+      "title": "客户细分引擎 (Segmentation Engine) - Modiqi Workbench",
+      "module": "cdp",
+      "tier": "library",
+      "tool_path": "cdp-toolkit/segmentation-engine.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/cdp/segmentation-engine/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-audit",
+      "title": "内容盘点工具 (Content Audit Tracker)",
+      "module": "content",
+      "tier": "core",
+      "tool_path": "content-toolkit/content-audit.html",
+      "workflow_ids": [
+        "content-operations"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/content/content-audit/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-calendar",
+      "title": "内容日历 (Content Calendar)",
+      "module": "content",
+      "tier": "core",
+      "tool_path": "content-toolkit/content-calendar.html",
+      "workflow_ids": [
+        "content-operations"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/content/content-calendar/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-distribution-matrix",
+      "title": "内容分发矩阵 (Content Distribution Matrix)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/content-distribution-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/content-distribution-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-performance",
+      "title": "内容效果分析 (Content Performance)",
+      "module": "content",
+      "tier": "core",
+      "tool_path": "content-toolkit/content-performance.html",
+      "workflow_ids": [
+        "content-operations"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/content/content-performance/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-repurposing",
+      "title": "内容再利用引擎 (Content Repurposing Engine)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/content-repurposing.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/content-repurposing/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-seo-checklist",
+      "title": "SEO 内容检查单 (Content SEO Checklist)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/content-seo-checklist.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/content-seo-checklist/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:content-strategy-canvas",
+      "title": "内容战略画布 (Content Strategy Canvas)",
+      "module": "content",
+      "tier": "core",
+      "tool_path": "content-toolkit/content-strategy-canvas.html",
+      "workflow_ids": [
+        "content-operations"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/content/content-strategy-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:editorial-workflow",
+      "title": "编辑工作流 (Editorial Workflow)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/editorial-workflow.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/editorial-workflow/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:headline-optimizer",
+      "title": "标题效能评估器 (Headline Power Score)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/headline-optimizer.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/headline-optimizer/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:storytelling-framework",
+      "title": "故事叙事框架 (Storytelling Framework)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/storytelling-framework.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/storytelling-framework/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "content-toolkit:topic-cluster-mapper",
+      "title": "SEO 主题簇映射器 (Topic Cluster Mapper)",
+      "module": "content",
+      "tier": "library",
+      "tool_path": "content-toolkit/topic-cluster-mapper.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/content/topic-cluster-mapper/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "customer-toolkit:customer-journey-map",
+      "title": "客户旅程地图 (Customer Journey Map)",
+      "module": "customer",
+      "tier": "library",
+      "tool_path": "customer-toolkit/customer-journey-map.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/customer/customer-journey-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "customer-toolkit:user-persona",
+      "title": "用户画像卡 (User Persona Card)",
+      "module": "customer",
+      "tier": "core",
+      "tool_path": "customer-toolkit/user-persona.html",
+      "workflow_ids": [
+        "audience-positioning"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/customer/user-persona/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "email-toolkit:deliverability-checklist",
+      "title": "邮件送达率自检清单 (Email Deliverability Checklist)",
+      "module": "email",
+      "tier": "library",
+      "tool_path": "email-toolkit/deliverability-checklist.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/email/deliverability-checklist/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "email-toolkit:drip-campaign-blueprint",
+      "title": "Drip 营销蓝图 (Drip Campaign Blueprint)",
+      "module": "email",
+      "tier": "library",
+      "tool_path": "email-toolkit/drip-campaign-blueprint.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/email/drip-campaign-blueprint/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "email-toolkit:marketing-mix",
+      "title": "营销组合 4P (Marketing Mix)",
+      "module": "email",
+      "tier": "library",
+      "tool_path": "email-toolkit/marketing-mix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/email/marketing-mix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "email-toolkit:newsletter-planner",
+      "title": "Newsletter 内容规划器 (Content Planner)",
+      "module": "email",
+      "tier": "library",
+      "tool_path": "email-toolkit/newsletter-planner.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/email/newsletter-planner/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "email-toolkit:subject-line-tester",
+      "title": "标题测试实验室 (Subject Line Tester)",
+      "module": "email",
+      "tier": "library",
+      "tool_path": "email-toolkit/subject-line-tester.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/email/subject-line-tester/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:blue-ocean-strategy",
+      "title": "蓝海战略画布 (Blue Ocean Strategy)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/blue-ocean-strategy.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/blue-ocean-strategy/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:design-thinking-canvas",
+      "title": "设计思维画布 (Design Thinking Canvas)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/design-thinking-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/design-thinking-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:innovation-ambition-matrix",
+      "title": "创新雄心矩阵 (Innovation Ambition Matrix)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/innovation-ambition-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/innovation-ambition-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:kano-model",
+      "title": "Kano 模型 (Kano Model)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/kano-model.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/kano-model/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:pmf-engine",
+      "title": "PMF 验证引擎 (PMF Engine)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/pmf-engine.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/pmf-engine/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:scamper-canvas",
+      "title": "SCAMPER 创意工具 (Ideation Tool)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/scamper-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/scamper-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:service-blueprint",
+      "title": "服务蓝图 (Service Blueprint)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/service-blueprint.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/service-blueprint/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:six-thinking-hats",
+      "title": "六顶思考帽 (Six Thinking Hats)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/six-thinking-hats.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/six-thinking-hats/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "innovation-toolkit:user-story-map",
+      "title": "用户故事地图 (User Story Map)",
+      "module": "innovation",
+      "tier": "library",
+      "tool_path": "innovation-toolkit/user-story-map.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/innovation/user-story-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:abm-canvas",
+      "title": "ABM 策略画布 (Account-Based Marketing Canvas)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/abm-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/abm-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:closing-checklist",
+      "title": "成交检查清单 (Closing Checklist)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/closing-checklist.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/closing-checklist/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:competitive-battlecard",
+      "title": "竞品对比卡 (Competitive Battlecard)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/competitive-battlecard.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/competitive-battlecard/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:growth-funnel",
+      "title": "AARRR 增长漏斗 (Growth Funnel)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/growth-funnel.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/growth-funnel/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:lead-scoring",
+      "title": "客户评分卡 (Lead Scoring Card)",
+      "module": "sales",
+      "tier": "core",
+      "tool_path": "sales-toolkit/lead-scoring.html",
+      "workflow_ids": [
+        "go-to-market"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/sales/lead-scoring/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:objection-handling-matrix",
+      "title": "异议处理矩阵 (Objection Handling Matrix)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/objection-handling-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/objection-handling-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:pdp-optimizer",
+      "title": "电商详情页优化器 (PDP Optimizer)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/pdp-optimizer.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/pdp-optimizer/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:pricing-tier",
+      "title": "价格阶梯设计器 (Pricing Tier Architect)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/pricing-tier.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/pricing-tier/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:proposal-generator",
+      "title": "提案生成器 (Proposal Generator)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/proposal-generator.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/proposal-generator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:quote-calculator",
+      "title": "报价计算器 (Quote Calculator)",
+      "module": "sales",
+      "tier": "core",
+      "tool_path": "sales-toolkit/quote-calculator.html",
+      "workflow_ids": [
+        "go-to-market"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/sales/quote-calculator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:sales-funnel",
+      "title": "销售漏斗仪表盘 (Sales Funnel Dashboard)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/sales-funnel.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/sales-funnel/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sales-toolkit:sales-script",
+      "title": "销售话术构建器 (Sales Script Builder)",
+      "module": "sales",
+      "tier": "library",
+      "tool_path": "sales-toolkit/sales-script.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sales/sales-script/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:ad-copy-ab-tester",
+      "title": "广告文案 A/B 测试器 (Ad Copy A/B Tester)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/ad-copy-ab-tester.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/ad-copy-ab-tester/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:ad-copy-architect",
+      "title": "广告文案架构师 (Ad Copy Architect)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/ad-copy-architect.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/ad-copy-architect/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:bid-calculator",
+      "title": "智能竞价计算器 (Smart Bid Wizard)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/bid-calculator.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/bid-calculator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:keyword-mixer",
+      "title": "关键词组合工具 (Keyword Mixer)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/keyword-mixer.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/keyword-mixer/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:negative-keyword-manager",
+      "title": "否定关键词管理器 (Negative Keyword Manager)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/negative-keyword-manager.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/negative-keyword-manager/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:ppc-budget-planner",
+      "title": "PPC 预算规划器 (PPC Budget Planner)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/ppc-budget-planner.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/ppc-budget-planner/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "sem-toolkit:quality-score",
+      "title": "质量度诊断卡 (Quality Score Diagnostic)",
+      "module": "sem",
+      "tier": "library",
+      "tool_path": "sem-toolkit/quality-score.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/sem/quality-score/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:backlink-matrix",
+      "title": "外链机会矩阵 (Backlink Opportunity Matrix)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/backlink-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/backlink-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:core-vitals",
+      "title": "Core Web Vitals 模拟器 (Core Web Vitals Simulator)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/core-vitals.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/core-vitals/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:keyword-intent-mapper",
+      "title": "关键词意图映射 (Keyword Intent Mapper)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/keyword-intent-mapper.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/keyword-intent-mapper/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:keyword-research",
+      "title": "关键词研究工具 (Keyword Research Tool)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/keyword-research.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/keyword-research/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:schema-generator",
+      "title": "Schema 结构化数据生成器 (Schema Markup Generator)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/schema-generator.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/schema-generator/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:seo-planner",
+      "title": "SEO 关键词规划表 (SEO Keyword Planner)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/seo-planner.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/seo-planner/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:serp-analyzer",
+      "title": "SERP 竞争格局分析 (SERP Competitive Analysis)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/serp-analyzer.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/serp-analyzer/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:technical-seo-audit",
+      "title": "技术 SEO 审计 (Technical SEO Audit)",
+      "module": "seo",
+      "tier": "core",
+      "tool_path": "seo-toolkit/technical-seo-audit.html",
+      "workflow_ids": [
+        "content-operations"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/seo/technical-seo-audit/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "seo-toolkit:topic-cluster-mapper",
+      "title": "主题集群映射 (Topic Cluster Mapper)",
+      "module": "seo",
+      "tier": "library",
+      "tool_path": "seo-toolkit/topic-cluster-mapper.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/seo/topic-cluster-mapper/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:community-persona",
+      "title": "社群画像卡 (Community Persona)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/community-persona.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/community-persona/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:content-idea-matrix",
+      "title": "内容选题矩阵 (Content Idea Matrix)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/content-idea-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/content-idea-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:crisis-playbook",
+      "title": "危机应对清单 (Crisis Playbook)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/crisis-playbook.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/crisis-playbook/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:engagement-strategy",
+      "title": "互动策略卡 (Engagement Strategy)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/engagement-strategy.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/engagement-strategy/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:kol-evaluation",
+      "title": "KOL 评估卡 (KOL Evaluation Card)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/kol-evaluation.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/kol-evaluation/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:social-account-audit",
+      "title": "社交媒体账号体检 (Social Media Audit)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/social-account-audit.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/social-account-audit/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:social-listening",
+      "title": "社交舆情看板 (Social Listening Dashboard)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/social-listening.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/social-listening/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:social-media-matrix",
+      "title": "社媒渠道矩阵 (Social Media Channel Matrix)",
+      "module": "social",
+      "tier": "library",
+      "tool_path": "social-toolkit/social-media-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/social/social-media-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "social-toolkit:utm-builder",
+      "title": "UTM 链接构建器 (Campaign URL Builder)",
+      "module": "social",
+      "tier": "core",
+      "tool_path": "social-toolkit/utm-builder.html",
+      "workflow_ids": [
+        "go-to-market"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/social/utm-builder/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:ansoff-matrix",
+      "title": "Ansoff 增长矩阵 - Modiqi Strategy Workbench",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/ansoff-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/ansoff-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:balanced-scorecard",
+      "title": "平衡计分卡 - Modiqi Strategy Workbench",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/balanced-scorecard.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/balanced-scorecard/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:bcg-matrix",
+      "title": "BCG 矩阵 - Modiqi Strategy Workbench",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/bcg-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/bcg-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:blue-ocean-canvas",
+      "title": "蓝海战略画布 (Blue Ocean Strategy Canvas)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/blue-ocean-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/blue-ocean-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:business-model-canvas",
+      "title": "商业模式画布 (Business Model Canvas)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/business-model-canvas.html",
+      "workflow_ids": [
+        "strategy-alignment"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/business-model-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:digital-audit-report",
+      "title": "数字化咨询审计报告 (Digital Consulting Audit Report)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/digital-audit-report.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/digital-audit-report/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:feature-comparison",
+      "title": "功能对比矩阵 (Feature Comparison Matrix)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/feature-comparison.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/feature-comparison/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:ge-mckinsey-matrix",
+      "title": "GE-McKinsey 矩阵 (GE-McKinsey Matrix)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/ge-mckinsey-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/ge-mckinsey-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:gtm-strategy",
+      "title": "GTM 策略画布 (Go-to-Market Strategy Canvas)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/gtm-strategy.html",
+      "workflow_ids": [
+        "go-to-market"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/gtm-strategy/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:impact-effort-matrix",
+      "title": "优先级矩阵 (Impact/Effort Matrix)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/impact-effort-matrix.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/impact-effort-matrix/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:landscape-map",
+      "title": "竞争格局地图 (Competitive Landscape Map)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/landscape-map.html",
+      "workflow_ids": [
+        "strategy-alignment"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/landscape-map/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:lean-canvas",
+      "title": "精益画布 (Lean Canvas)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/lean-canvas.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/lean-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:market-positioning",
+      "title": "市场定位分析 (Market Positioning Analysis)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/market-positioning.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/market-positioning/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:mckinsey-7s",
+      "title": "McKinsey 7S 模型 (McKinsey 7S Framework)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/mckinsey-7s.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/mckinsey-7s/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:okr-cascade",
+      "title": "OKR 战略级联地图 (OKR Strategy Cascade Map)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/okr-cascade.html",
+      "workflow_ids": [
+        "strategy-alignment"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/okr-cascade/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:okr-template",
+      "title": "OKR 目标设定 (Objectives & Key Results)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/okr-template.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/okr-template/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:pestel-analysis",
+      "title": "PESTEL 分析 - Modiqi Strategy Workbench",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/pestel-analysis.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/pestel-analysis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:porters-five-forces",
+      "title": "波特五力分析 (Porter's Five Forces)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/porters-five-forces.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/porters-five-forces/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:stakeholder-radar",
+      "title": "利益相关者雷达 (Stakeholder Radar)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/stakeholder-radar.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/stakeholder-radar/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:stp-canvas",
+      "title": "STP 战略画布 (STP Strategy Canvas)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/stp-canvas.html",
+      "workflow_ids": [
+        "audience-positioning"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/stp-canvas/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:strategic-roadmap",
+      "title": "战略路线图 (Strategic Roadmap)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/strategic-roadmap.html",
+      "workflow_ids": [
+        "strategy-alignment"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/strategic-roadmap/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:swot-analysis",
+      "title": "SWOT 分析 (SWOT Analysis)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/swot-analysis.html",
+      "workflow_ids": [
+        "strategy-alignment"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/swot-analysis/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:three-horizons",
+      "title": "三层地平线框架 (Three Horizons Framework)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/three-horizons.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/three-horizons/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:value-chain",
+      "title": "价值链分析 (Value Chain Analysis)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/value-chain.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/value-chain/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:value-proposition",
+      "title": "价值主张画布 (Value Proposition Canvas)",
+      "module": "strategy",
+      "tier": "core",
+      "tool_path": "strategy-toolkit/value-proposition.html",
+      "workflow_ids": [
+        "strategy-alignment"
+      ],
+      "resource_level": "authoritative",
+      "main_site_path": "/tools/strategy/value-proposition/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "tool_id": "strategy-toolkit:vrio-framework",
+      "title": "VRIO 框架 (VRIO Framework)",
+      "module": "strategy",
+      "tier": "library",
+      "tool_path": "strategy-toolkit/vrio-framework.html",
+      "workflow_ids": [],
+      "resource_level": "directory",
+      "main_site_path": "/tools/strategy/vrio-framework/",
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    }
+  ],
+  "workflows": [
+    {
+      "workflow_id": "strategy-alignment",
+      "title": "01 战略对齐",
+      "description": "从环境判断到目标、商业模式与执行路线。",
+      "main_site_path": "/workflows/strategy-alignment/",
+      "tool_ids": [
+        "strategy-toolkit:swot-analysis",
+        "strategy-toolkit:landscape-map",
+        "strategy-toolkit:business-model-canvas",
+        "strategy-toolkit:value-proposition",
+        "strategy-toolkit:okr-cascade",
+        "strategy-toolkit:strategic-roadmap"
+      ],
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "workflow_id": "audience-positioning",
+      "title": "02 受众与定位",
+      "description": "形成受众证据、细分选择与定位表达。",
+      "main_site_path": "/workflows/audience-positioning/",
+      "tool_ids": [
+        "customer-toolkit:user-persona",
+        "behavior-toolkit:empathy-map",
+        "behavior-toolkit:customer-journey",
+        "strategy-toolkit:stp-canvas",
+        "brand-toolkit:jtbd-canvas",
+        "brand-toolkit:brand-positioning-map"
+      ],
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "workflow_id": "brand-narrative",
+      "title": "03 品牌叙事",
+      "description": "把定位转为一致的信息、故事与语调。",
+      "main_site_path": "/workflows/brand-narrative/",
+      "tool_ids": [
+        "brand-toolkit:positioning-statement",
+        "brand-toolkit:brand-messaging",
+        "brand-toolkit:brand-story",
+        "brand-toolkit:tone-voice"
+      ],
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "workflow_id": "content-operations",
+      "title": "04 内容运营",
+      "description": "盘点内容、制定策略、排期并复盘效果。",
+      "main_site_path": "/workflows/content-operations/",
+      "tool_ids": [
+        "content-toolkit:content-audit",
+        "content-toolkit:content-strategy-canvas",
+        "content-toolkit:content-calendar",
+        "content-toolkit:content-performance",
+        "seo-toolkit:technical-seo-audit"
+      ],
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "workflow_id": "go-to-market",
+      "title": "05 获客与成交",
+      "description": "把上市计划、活动归因、线索选择和报价连成闭环。",
+      "main_site_path": "/workflows/go-to-market/",
+      "tool_ids": [
+        "strategy-toolkit:gtm-strategy",
+        "social-toolkit:utm-builder",
+        "sales-toolkit:lead-scoring",
+        "sales-toolkit:quote-calculator"
+      ],
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    },
+    {
+      "workflow_id": "measurement-growth",
+      "title": "06 衡量与增长",
+      "description": "建立指标口径，诊断漏斗并用实验验证改进。",
+      "main_site_path": "/workflows/measurement-growth/",
+      "tool_ids": [
+        "analytics-toolkit:measurement-plan",
+        "analytics-toolkit:kpi-dashboard",
+        "analytics-toolkit:funnel-diagnosis",
+        "analytics-toolkit:ab-test-planner",
+        "analytics-toolkit:roi-calculator"
+      ],
+      "publication_status": "planned",
+      "review_status": "unreviewed"
+    }
+  ]
+}

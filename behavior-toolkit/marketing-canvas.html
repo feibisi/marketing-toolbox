@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>营销策略画布 (Marketing Strategy Canvas)</title>
+    <meta name="description" content="营销策略画布工具，帮助您在一页纸上规划完整的营销策略，涵盖价值主张、渠道、客户关系等关键要素。">
+    <meta name="keywords" content="营销策略,商业模式画布,价值主张,客户细分,营销规划">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="营销策略画布 - Modiqi Workbench">
+    <meta property="og:description" content="在一页纸上规划完整的营销策略，涵盖价值主张、渠道、客户关系等关键要素。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/marketing-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>营销策略画布</h1>
+                <span class="english-subtitle">Marketing Strategy Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的新策略" data-save-key="meta_project" aria-label="我的新策略">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="grid-layout">
+            <!-- Partners & Media (Was Key Partners) -->
+            <div class="card area-kp">
+                <div class="card-header">
+                    <i data-lucide="handshake"></i>
+                    <h2>协作与媒介 <span class="en-sub">(Partners & Media)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>合作机构 (Agencies)</li>
+                        <li>KOL / 达人 / 媒体伙伴</li>
+                        <li>联合营销品牌</li>
+                        <li>分销商与代理</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Key Tactics (Was Key Activities) -->
+            <div class="card area-ka">
+                <div class="card-header">
+                    <i data-lucide="megaphone"></i>
+                    <h2>核心策略 <span class="en-sub">(Key Tactics)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>内容营销 (Content)</li>
+                        <li>SEO / SEM</li>
+                        <li>社交媒体运营</li>
+                        <li>线下活动 / 公关</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Marketing Assets (Was Key Resources) -->
+            <div class="card area-kr">
+                <div class="card-header">
+                    <i data-lucide="database"></i>
+                    <h2>营销资产 <span class="en-sub">(Marketing Assets)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>品牌形象 / VI 系统</li>
+                        <li>自有媒体 (官网/公众号)</li>
+                        <li>客户数据库 (CRM)</li>
+                        <li>营销技术栈 (MarTech)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Brand Value (Was Value Propositions) -->
+            <div class="card area-vp">
+                <div class="card-header">
+                    <i data-lucide="gem"></i>
+                    <h2>价值主张 <span class="en-sub">(Value Proposition)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>核心卖点是什么？(USP)</li>
+                        <li>品牌承诺是什么？</li>
+                        <li>我们如何解决痛点？</li>
+                        <li>与竞品的核心差异化？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Retention & Experience (Was Customer Relationships) -->
+            <div class="card area-cr">
+                <div class="card-header">
+                    <i data-lucide="heart"></i>
+                    <h2>客户留存 <span class="en-sub">(Retention)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>会员体系 / 忠诚度计划</li>
+                        <li>社群运营策略</li>
+                        <li>售后服务体验</li>
+                        <li>如何提升复购率？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Channels / Touchpoints (Was Channels) -->
+            <div class="card area-ch">
+                <div class="card-header">
+                    <i data-lucide="mouse-pointer"></i>
+                    <h2>接触点 <span class="en-sub">(Touchpoints)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>付费渠道 (Paid)</li>
+                        <li>自有渠道 (Owned)</li>
+                        <li>口碑渠道 (Earned)</li>
+                        <li>哪里不仅能触达，还能转化？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Target Audience (Was Customer Segments) -->
+            <div class="card area-cs">
+                <div class="card-header">
+                    <i data-lucide="target"></i>
+                    <h2>目标受众 <span class="en-sub">(Target Audience)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>理想客户画像 (Persona)</li>
+                        <li>核心购买决策者</li>
+                        <li>受众规模与特征</li>
+                        <li>使用场景 (Scenarios)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Budget (Was Cost Structure) -->
+            <div class="card area-cst">
+                <div class="card-header">
+                    <i data-lucide="pie-chart"></i>
+                    <h2>营销预算 <span class="en-sub">(Marketing Budget)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>媒介投放预算</li>
+                        <li>内容制作成本</li>
+                        <li>人力与工具成本</li>
+                        <li>预留金 (Contingency)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Marketing Goals / KPIs (Was Revenue Streams) -->
+            <div class="card area-rs">
+                <div class="card-header">
+                    <i data-lucide="trophy"></i>
+                    <h2>关键与指标 <span class="en-sub">(Goals & KPIs)</span></h2>
+                </div>
+                <div class="card-content" contenteditable="true">
+                    <ul>
+                        <li>ROI / ROAS 目标</li>
+                        <li>获客成本 (CAC)</li>
+                        <li>销售线索数量 (Leads)</li>
+                        <li>品牌知名度指标</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('marketing_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFM 模型分析 (RFM Analysis)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="基于消费行为的客户价值细分模型 (Recency, Frequency, Monetary)">
+    <meta name="keywords" content="RFM Analysis, Customer Segmentation, CRM, Customer Value">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/rfm-analysis.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>RFM 模型分析</h1>
+                <span class="english-subtitle">Recency, Frequency, Monetary Analysis</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>数据周期 <span class="en-sub">(Period)</span></label>
+                    <input type="text" class="meta-input" placeholder="Last 12 Months" data-save-key="meta_period" aria-label="Last 12 Months">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="rfm-dashboard">
+
+                <!-- Grid of Segments -->
+                <div class="rfm-grid">
+
+                    <!-- Champions -->
+                    <div class="rfm-card card-champion">
+                        <div class="card-header">
+                            <i data-lucide="crown" class="card-icon"></i>
+                            <h3>Champions</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_champ_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_champ_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_champ_act">Reward them. Can be early adopters for new products.</div>
+                    </div>
+
+                    <!-- Loyal Customers -->
+                    <div class="rfm-card card-loyal">
+                        <div class="card-header">
+                            <i data-lucide="heart" class="card-icon"></i>
+                            <h3>Loyal Customers</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_loyal_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_loyal_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_loyal_act">Upsell higher value products. Engage them.</div>
+                    </div>
+
+                    <!-- Potential Loyalist -->
+                    <div class="rfm-card card-potential">
+                        <div class="card-header">
+                            <i data-lucide="trending-up" class="card-icon"></i>
+                            <h3>Potential Loyalist</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_pot_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_pot_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_pot_act">Offer membership / loyalty program.</div>
+                    </div>
+
+                    <!-- New Customers -->
+                    <div class="rfm-card card-new">
+                        <div class="card-header">
+                            <i data-lucide="user-plus" class="card-icon"></i>
+                            <h3>New Customers</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_new_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_new_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_new_act">Provide onboarding support and special offers.</div>
+                    </div>
+
+                    <!-- Promising -->
+                    <div class="rfm-card card-promising">
+                        <div class="card-header">
+                            <i data-lucide="sparkles" class="card-icon"></i>
+                            <h3>Promising</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_prom_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_prom_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_prom_act">Create brand awareness and offer free trials.</div>
+                    </div>
+
+                    <!-- Needs Attention -->
+                    <div class="rfm-card card-attention">
+                        <div class="card-header">
+                            <i data-lucide="alert-triangle" class="card-icon"></i>
+                            <h3>Needs Attention</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_attn_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_attn_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_attn_act">Limit time offers, reactivation campaigns.</div>
+                    </div>
+
+                    <!-- At Risk -->
+                    <div class="rfm-card card-risk">
+                        <div class="card-header">
+                            <i data-lucide="frown" class="card-icon"></i>
+                            <h3>At Risk</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_risk_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_risk_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_risk_act">Send personalized reactivation emails.</div>
+                    </div>
+
+                    <!-- Can't Lose Them -->
+                    <div class="rfm-card card-cantlose">
+                        <div class="card-header">
+                            <i data-lucide="shield-alert" class="card-icon"></i>
+                            <h3>Can't Lose Them</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_lose_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_lose_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_lose_act">Win them back with newer products or updates.</div>
+                    </div>
+
+                    <!-- Hibernating / Lost -->
+                    <div class="rfm-card card-lost">
+                        <div class="card-header">
+                            <i data-lucide="bed-double" class="card-icon"></i>
+                            <h3>Hibernating</h3>
+                        </div>
+                        <div class="card-metrics">
+                            <div class="metric">
+                                <label>Count</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="0"
+                                    data-save-key="rfm_hib_count"></div>
+                            </div>
+                            <div class="metric">
+                                <label>Avg M</label>
+                                <div class="metric-val" contenteditable="true" data-placeholder="¥0"
+                                    data-save-key="rfm_hib_val"></div>
+                            </div>
+                        </div>
+                        <div class="card-action" contenteditable="true" data-placeholder="Action Strategy..."
+                            data-save-key="rfm_hib_act">Recreate brand value. Offer relevant products.</div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('rfm_analysis_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

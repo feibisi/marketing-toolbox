@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战略路线图 (Strategic Roadmap)</title>
+    <meta name="description" content="战略路线图工具,帮助您规划和可视化战略目标、关键里程碑和时间线。">
+    <meta name="keywords" content="战略路线图,Strategic Roadmap,战略规划,里程碑,时间线">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="战略路线图 - Modiqi Workbench">
+    <meta property="og:description" content="规划和可视化战略目标与时间线。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/strategic-roadmap.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>战略路线图</h1>
+                <span class="english-subtitle">Strategic Roadmap</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>公司/项目 <span class="en-sub">(Company)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的公司" data-save-key="meta_company" aria-label="我的公司">
+                </div>
+                <div class="meta-group">
+                    <label>年份 <span class="en-sub">(Year)</span></label>
+                    <input type="text" class="meta-input" placeholder="2025" data-save-key="meta_year" aria-label="2025">
+                </div>
+            </div>
+        </header>
+
+        <!-- Vision & Goals -->
+        <div class="vision-section">
+            <div class="vision-block">
+                <h2><i data-lucide="eye"></i> 战略愿景 <span class="en-sub">(Vision)</span></h2>
+                <div class="vision-content" contenteditable="true" data-save-key="vision">
+                    <p>我们的长期战略愿景和目标...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap Timeline -->
+        <div class="roadmap-container">
+            <div class="timeline-header">
+                <div class="timeline-label">主题</div>
+                <div class="timeline-period">Q1</div>
+                <div class="timeline-period">Q2</div>
+                <div class="timeline-period">Q3</div>
+                <div class="timeline-period">Q4</div>
+            </div>
+
+            <!-- Theme 1: Product -->
+            <div class="roadmap-row">
+                <div class="row-label">
+                    <i data-lucide="package"></i>
+                    <span>产品开发</span>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="product_q1">
+                    <div class="milestone">需求调研</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="product_q2">
+                    <div class="milestone">原型开发</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="product_q3">
+                    <div class="milestone">测试优化</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="product_q4">
+                    <div class="milestone">正式发布</div>
+                </div>
+            </div>
+
+            <!-- Theme 2: Market -->
+            <div class="roadmap-row">
+                <div class="row-label">
+                    <i data-lucide="target"></i>
+                    <span>市场拓展</span>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="market_q1">
+                    <div class="milestone">市场分析</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="market_q2">
+                    <div class="milestone">渠道建设</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="market_q3">
+                    <div class="milestone">品牌推广</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="market_q4">
+                    <div class="milestone">规模化</div>
+                </div>
+            </div>
+
+            <!-- Theme 3: Operations -->
+            <div class="roadmap-row">
+                <div class="row-label">
+                    <i data-lucide="settings"></i>
+                    <span>运营优化</span>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="ops_q1">
+                    <div class="milestone">流程梳理</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="ops_q2">
+                    <div class="milestone">系统升级</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="ops_q3">
+                    <div class="milestone">效率提升</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="ops_q4">
+                    <div class="milestone">标准化</div>
+                </div>
+            </div>
+
+            <!-- Theme 4: Team -->
+            <div class="roadmap-row">
+                <div class="row-label">
+                    <i data-lucide="users"></i>
+                    <span>团队建设</span>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="team_q1">
+                    <div class="milestone">人才招聘</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="team_q2">
+                    <div class="milestone">培训体系</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="team_q3">
+                    <div class="milestone">文化建设</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="team_q4">
+                    <div class="milestone">绩效优化</div>
+                </div>
+            </div>
+
+            <!-- Theme 5: Finance -->
+            <div class="roadmap-row">
+                <div class="row-label">
+                    <i data-lucide="dollar-sign"></i>
+                    <span>财务目标</span>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="finance_q1">
+                    <div class="milestone">预算规划</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="finance_q2">
+                    <div class="milestone">成本控制</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="finance_q3">
+                    <div class="milestone">收入增长</div>
+                </div>
+                <div class="timeline-cell" contenteditable="true" data-save-key="finance_q4">
+                    <div class="milestone">盈利目标</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Milestones -->
+        <div class="milestones-section">
+            <h2 class="section-title">
+                <i data-lucide="flag"></i>
+                关键里程碑 <span class="en-sub">(Key Milestones)</span>
+            </h2>
+            <div class="milestones-grid">
+                <div class="milestone-card">
+                    <div class="milestone-date" contenteditable="true" data-save-key="milestone_1_date">Q1</div>
+                    <div class="milestone-title" contenteditable="true" data-save-key="milestone_1_title">里程碑 1</div>
+                    <div class="milestone-desc" contenteditable="true" data-save-key="milestone_1_desc">描述关键成果...</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-date" contenteditable="true" data-save-key="milestone_2_date">Q2</div>
+                    <div class="milestone-title" contenteditable="true" data-save-key="milestone_2_title">里程碑 2</div>
+                    <div class="milestone-desc" contenteditable="true" data-save-key="milestone_2_desc">描述关键成果...</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-date" contenteditable="true" data-save-key="milestone_3_date">Q3</div>
+                    <div class="milestone-title" contenteditable="true" data-save-key="milestone_3_title">里程碑 3</div>
+                    <div class="milestone-desc" contenteditable="true" data-save-key="milestone_3_desc">描述关键成果...</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-date" contenteditable="true" data-save-key="milestone_4_date">Q4</div>
+                    <div class="milestone-title" contenteditable="true" data-save-key="milestone_4_title">里程碑 4</div>
+                    <div class="milestone-desc" contenteditable="true" data-save-key="milestone_4_desc">描述关键成果...</div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('strategic_roadmap_v1');
+            const roadmapPrintStyle = document.createElement('style');
+            roadmapPrintStyle.textContent = '@page { size: A3 landscape; margin: 10mm; }';
+            document.head.appendChild(roadmapPrintStyle);
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞争对手分析 (Competitor Analysis)</title>
+    <meta name="description" content="竞争对手分析工具，帮助您系统分析竞争格局、识别竞争优势和差异化机会。">
+    <meta name="keywords" content="竞争分析,竞争对手,竞争优势,市场分析,战略规划">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="竞争对手分析 - Modiqi Workbench">
+    <meta property="og:description" content="系统分析竞争格局、识别竞争优势和差异化机会。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/competitor-analysis.css">
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>竞争对手分析</h1>
+                <span class="english-subtitle">Competitor Analysis</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>分析目标 <span class="en-sub">(Target)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的产品/服务" data-save-key="meta_target" aria-label="我的产品/服务">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="analysis-layout">
+            <!-- Your Company Section -->
+            <div class="company-section your-company">
+                <div class="section-header">
+                    <i data-lucide="star"></i>
+                    <h2>我方 <span class="en-sub">(Your Company)</span></h2>
+                </div>
+                <div class="company-card highlight-card">
+                    <div class="company-name" contenteditable="true">您的公司/产品名称</div>
+                    <div class="dimension-grid">
+                        <div class="dimension">
+                            <div class="dim-label">核心产品 <span class="en-sub">(Core Product)</span></div>
+                            <div class="dim-content" contenteditable="true">描述您的主要产品或服务...</div>
+                        </div>
+                        <div class="dimension">
+                            <div class="dim-label">价值主张 <span class="en-sub">(Value Prop)</span></div>
+                            <div class="dim-content" contenteditable="true">您为客户提供的独特价值...</div>
+                        </div>
+                        <div class="dimension">
+                            <div class="dim-label">定价策略 <span class="en-sub">(Pricing)</span></div>
+                            <div class="dim-content" contenteditable="true">价格定位与策略...</div>
+                        </div>
+                        <div class="dimension">
+                            <div class="dim-label">目标客户 <span class="en-sub">(Target Customer)</span></div>
+                            <div class="dim-content" contenteditable="true">主要客户群体...</div>
+                        </div>
+                        <div class="dimension">
+                            <div class="dim-label">核心优势 <span class="en-sub">(Key Advantage)</span></div>
+                            <div class="dim-content" contenteditable="true">竞争壁垒与优势...</div>
+                        </div>
+                        <div class="dimension">
+                            <div class="dim-label">当前劣势 <span class="en-sub">(Weakness)</span></div>
+                            <div class="dim-content" contenteditable="true">需要改进的领域...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitors Section -->
+            <div class="competitors-section">
+                <div class="section-header">
+                    <i data-lucide="users"></i>
+                    <h2>竞争对手 <span class="en-sub">(Competitors)</span></h2>
+                </div>
+
+                <div class="competitors-grid">
+                    <!-- Competitor 1 -->
+                    <div class="competitor-card">
+                        <div class="competitor-header">
+                            <div class="competitor-rank">1</div>
+                            <div class="competitor-name" contenteditable="true">竞争对手 A</div>
+                        </div>
+                        <div class="competitor-details">
+                            <div class="detail-row">
+                                <span class="detail-label">产品/服务 <span class="en-sub">(Product)</span></span>
+                                <div class="detail-content" contenteditable="true">主要产品描述...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">市场份额 <span class="en-sub">(Share)</span></span>
+                                <div class="detail-content" contenteditable="true">估计份额...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">优势 <span class="en-sub">(Pros)</span></span>
+                                <div class="detail-content" contenteditable="true">他们的强项...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">劣势 <span class="en-sub">(Cons)</span></span>
+                                <div class="detail-content" contenteditable="true">他们的弱点...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">定价 <span class="en-sub">(Price)</span></span>
+                                <div class="detail-content" contenteditable="true">价格策略...</div>
+                            </div>
+                        </div>
+                        <div class="threat-level">
+                            <span class="threat-label">威胁等级 <span class="en-sub">(Threat)</span></span>
+                            <div class="threat-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competitor 2 -->
+                    <div class="competitor-card">
+                        <div class="competitor-header">
+                            <div class="competitor-rank">2</div>
+                            <div class="competitor-name" contenteditable="true">竞争对手 B</div>
+                        </div>
+                        <div class="competitor-details">
+                            <div class="detail-row">
+                                <span class="detail-label">产品/服务</span>
+                                <div class="detail-content" contenteditable="true">主要产品描述...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">市场份额</span>
+                                <div class="detail-content" contenteditable="true">估计份额...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">优势</span>
+                                <div class="detail-content" contenteditable="true">他们的强项...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">劣势</span>
+                                <div class="detail-content" contenteditable="true">他们的弱点...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">定价</span>
+                                <div class="detail-content" contenteditable="true">价格策略...</div>
+                            </div>
+                        </div>
+                        <div class="threat-level">
+                            <span class="threat-label">威胁等级:</span>
+                            <div class="threat-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competitor 3 -->
+                    <div class="competitor-card">
+                        <div class="competitor-header">
+                            <div class="competitor-rank">3</div>
+                            <div class="competitor-name" contenteditable="true">竞争对手 C</div>
+                        </div>
+                        <div class="competitor-details">
+                            <div class="detail-row">
+                                <span class="detail-label">产品/服务 <span class="en-sub">(Product)</span></span>
+                                <div class="detail-content" contenteditable="true">主要产品描述...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">市场份额 <span class="en-sub">(Share)</span></span>
+                                <div class="detail-content" contenteditable="true">估计份额...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">优势 <span class="en-sub">(Pros)</span></span>
+                                <div class="detail-content" contenteditable="true">他们的强项...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">劣势 <span class="en-sub">(Cons)</span></span>
+                                <div class="detail-content" contenteditable="true">他们的弱点...</div>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">定价 <span class="en-sub">(Price)</span></span>
+                                <div class="detail-content" contenteditable="true">价格策略...</div>
+                            </div>
+                        </div>
+                        <div class="threat-level">
+                            <span class="threat-label">威胁等级 <span class="en-sub">(Threat)</span></span>
+                            <div class="threat-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Insights Section -->
+            <div class="insights-section">
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <i data-lucide="lightbulb"></i>
+                        <h3>差异化机会 <span class="en-sub">(Opportunities)</span></h3>
+                    </div>
+                    <div class="insight-content" contenteditable="true">
+                        <ul>
+                            <li>基于分析识别的市场空白...</li>
+                            <li>可发挥的独特优势...</li>
+                            <li>竞争对手未满足的客户需求...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-header">
+                        <i data-lucide="check-circle-2"></i>
+                        <h3>行动计划 <span class="en-sub">(Action Plan)</span></h3>
+                    </div>
+                    <div class="insight-content" contenteditable="true">
+                        <ul>
+                            <li>短期：立即可采取的行动...</li>
+                            <li>中期：需要准备的战略举措...</li>
+                            <li>长期：建立竞争壁垒的目标...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('competitor_analysis_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

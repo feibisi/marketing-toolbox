@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>价格阶梯设计器 (Pricing Tier Architect)</title>
+    <meta name="description" content="设计符合心理学的 Good/Better/Best 三档定价策略。">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool Specific -->
+    <link rel="stylesheet" href="assets/css/pricing.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>价格阶梯设计器</h1>
+                <span class="english-subtitle">Pricing Tier Architect</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>方案名称</label>
+                    <input type="text" class="meta-input" value="2025年度服务方案" data-save-key="pricing_project_name" aria-label="pricing project name">
+                </div>
+            </div>
+        </header>
+
+        <!-- Control Panel (No-Print) -->
+        <section class="control-panel no-print">
+            <div class="toggle-group">
+                <span class="toggle-label">Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="billingToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">Yearly</span>
+            </div>
+
+            <div class="discount-group">
+                <label>Yearly Discount:</label>
+                <input type="number" id="discountInput" value="20" min="0" max="100" class="small-input" aria-label="discountInput">
+                <span>%</span>
+            </div>
+
+            <div class="action-group">
+                <button class="btn btn-secondary" id="btnResetRecommended" type="button">Check Logic</button>
+            </div>
+        </section>
+
+        <!-- Pricing Grid -->
+        <div class="pricing-grid">
+
+            <!-- Tier 1: Basic -->
+            <article class="pricing-card" id="tier1">
+                <div class="card-header">
+                    <h3 contenteditable="true" data-save-key="tier1_name">Starter</h3>
+                    <p class="subtitle" contenteditable="true" data-save-key="tier1_sub">基础入门版</p>
+                </div>
+                <div class="price-area">
+                    <span class="currency">¥</span>
+                    <span class="amount" contenteditable="true" data-save-key="tier1_price"
+                        data-monthly="2980">2,980</span>
+                    <span class="period">/月</span>
+                </div>
+                <div class="features-list">
+                    <h4>包含内容:</h4>
+                    <ul class="dynamic-list">
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">标准咨询服务</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">月度数据报告</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">工作日邮件支持</span>
+                        </li>
+                    </ul>
+                    <button class="btn-add-item" type="button"><i data-lucide="plus"></i></button>
+                </div>
+                <div class="card-footer">
+                    <button class="select-btn" onclick="setRecommended('tier1')" type="button">设为推荐</button>
+                </div>
+            </article>
+
+            <!-- Tier 2: Pro (Recommended) -->
+            <article class="pricing-card is-recommended" id="tier2">
+                <div class="ribbon">Recommended</div>
+                <div class="card-header">
+                    <h3 contenteditable="true" data-save-key="tier2_name">Professional</h3>
+                    <p class="subtitle" contenteditable="true" data-save-key="tier2_sub">企业增长版</p>
+                </div>
+                <div class="price-area">
+                    <span class="currency">¥</span>
+                    <span class="amount" contenteditable="true" data-save-key="tier2_price"
+                        data-monthly="6880">6,880</span>
+                    <span class="period">/月</span>
+                </div>
+                <div class="features-list">
+                    <h4>全部 Starter 功能, 加上:</h4>
+                    <ul class="dynamic-list">
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true"><strong>高级</strong> 战略规划</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">双周复盘会议</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">专属客户经理</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">竞品分析报告</span>
+                        </li>
+                    </ul>
+                    <button class="btn-add-item" type="button"><i data-lucide="plus"></i></button>
+                </div>
+                <div class="card-footer">
+                    <button class="select-btn" onclick="setRecommended('tier2')" type="button">设为推荐</button>
+                </div>
+            </article>
+
+            <!-- Tier 3: Enterprise -->
+            <article class="pricing-card" id="tier3">
+                <div class="card-header">
+                    <h3 contenteditable="true" data-save-key="tier3_name">Enterprise</h3>
+                    <p class="subtitle" contenteditable="true" data-save-key="tier3_sub">全案定制版</p>
+                </div>
+                <div class="price-area">
+                    <span class="currency">¥</span>
+                    <span class="amount" contenteditable="true" data-save-key="tier3_price"
+                        data-monthly="12800">12,800</span>
+                    <span class="period">/月</span>
+                </div>
+                <div class="features-list">
+                    <h4>全部 Pro 功能, 加上:</h4>
+                    <ul class="dynamic-list">
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">24/7 优先响应</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">季度战略工作坊</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">自定义数据仪表盘</span>
+                        </li>
+                        <li class="list-item">
+                            <i data-lucide="check" class="check-icon"></i>
+                            <span contenteditable="true">多渠道整合营销</span>
+                        </li>
+                    </ul>
+                    <button class="btn-add-item" type="button"><i data-lucide="plus"></i></button>
+                </div>
+                <div class="card-footer">
+                    <button class="select-btn" onclick="setRecommended('tier3')" type="button">设为推荐</button>
+                </div>
+            </article>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/pricing.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('sales_pricing_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

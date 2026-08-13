@@ -1,0 +1,500 @@
+/* ============================================
+   MODIQI DESIGN SYSTEM - TOKENS
+   Design Tokens: The single source of truth for all visual properties
+
+   Version: 2.0.0
+   Last Updated: 2025-01-01
+   Maintainer: Modiqi Design System Team
+
+   ============================================
+   CHANGELOG
+   ============================================
+
+   [2.0.0] - 2025-01-01
+   Added:
+   - 完整的设计系统文档 (docs/DESIGN_SYSTEM.md)
+   - 工具开发贡献指南 (docs/CONTRIBUTION_GUIDE.md)
+   - 三个标准化工具模板 (shared/templates/)
+   - 版本管理和变更日志系统
+
+   Changed:
+   - 优化设计令牌注释,增加使用场景说明
+   - 统一命名规范,提升一致性
+
+   [1.0.0] - 2024-12-01
+   - 初始版本
+   - 基础颜色系统 (品牌色、背景色、文本色、边框色)
+   - 完整的字体系统 (字族、字重、字号、行高、字间距)
+   - 间距系统 (基于8pt网格)
+   - 布局令牌 (纸张尺寸、容器宽度、z-index)
+   - 边框系统 (宽度、圆角、样式)
+   - 阴影系统 (sm/md/lg/xl + 纸张阴影)
+   - 过渡动画系统
+   - 图标尺寸
+   - 纸张纹理 (Noise Texture)
+   - 暗色主题支持
+   - 白板主题支持
+   - 打印优化样式
+
+   ============================================
+   USAGE GUIDELINES (使用指南)
+   ============================================
+
+   1. 始终使用CSS变量,禁止硬编码值
+      ✅ 正确: color: var(--color-text-primary);
+      ❌ 错误: color: #1a1a1a;
+
+   2. 颜色令牌优先级:
+      Level 1: 基础色板 (--color-brand-*, --color-success)
+      Level 2: 语义化令牌 (--color-bg-*, --color-text-*)
+      Level 3: 组件令牌 (--color-semantic-*, --color-focus-*)
+      → 优先使用Level 2和Level 3
+
+   3. 间距使用8pt网格:
+      4px, 8px, 16px, 24px, 32px, 48px, 64px...
+      使用 var(--spacing-xs/sm/md/lg/xl/2xl)
+
+   4. 主题支持:
+      - 默认: 经典主题 (暖色调木桌风格)
+      - 白板: body.theme-whiteboard
+      - 暗色: body.theme-dark
+
+   5. 详细文档:
+      - 设计系统使用指南: docs/DESIGN_SYSTEM.md
+      - 工具开发指南: docs/CONTRIBUTION_GUIDE.md
+
+   ============================================ */
+
+:root {
+   /* ========================================
+       COLOR PALETTE
+       ======================================== */
+
+   /* Brand Colors */
+   --color-brand-primary: #1a1a1a;
+   --color-brand-blue: #4e609f;
+   /* Modiqi 品牌蓝 */
+   --color-brand-blue-dark: #3d4c7f;
+   /* 品牌蓝深色 (hover) */
+   --color-brand-accent: #d32f2f;
+   --color-brand-accent-light: #ff6b6b;
+
+   /* Background Colors - Warm Gray Palette */
+   --color-bg-desk: #e3dad3;
+   /* 内页桌面背景 - 暖米色 */
+   --color-bg-desk-alt: #EAE8E3;
+   /* 主页/合集页背景 - 略淡暖灰 */
+   --color-bg-paper: #fdfbf7;
+   /* 纸张背景 - 象牙白 */
+   --color-bg-white: #ffffff;
+   /* 纯白 */
+
+   /* 暖色调次级背景 (统一的暖灰色阶) */
+   --color-bg-subtle: #f8f6f3;
+   /* 微暖浅灰 - 卡片/区块背景 */
+   --color-bg-muted: #f3f0ec;
+   /* 暖灰 - 次级区域 */
+   --color-bg-warm-light: #f5f3f0;
+   /* 表格行/单元格背景 */
+   --color-bg-warm-medium: #ebe8e4;
+   /* 表头/分隔区块 */
+   --color-bg-warm-dark: #e0dcd7;
+   /* 更深的暖灰背景 */
+
+   /* 交互状态背景 */
+   --color-bg-hover: #f1f5f9;
+   /* 卡片悬停背景 - 淡蓝灰色 */
+   --color-bg-hover-warm: #f3f0ec;
+   /* 卡片悬停背景 - 暖色调 */
+   --color-bg-card-layer: #f8fafc;
+   /* 卡片背景层 - 极淡蓝灰色 */
+
+   /* Text Colors */
+   --color-text-primary: #1a1a1a;
+   --color-text-secondary: #666666;
+   --color-text-tertiary: #888888;
+   --color-text-muted: #999999;
+   --color-text-disabled: #cccccc;
+
+   /* Border Colors */
+   --color-border-strong: #333333;
+   --color-border-medium: #e5e7eb;
+   /* Cool gray 200 */
+   --color-border-light: #f3f4f6;
+   /* Cool gray 100 */
+   --color-border-subtle: #f9fafb;
+   /* Cool gray 50 */
+
+   /* State Colors */
+   --color-success: #52c41a;
+   --color-warning: #faad14;
+   --color-error: #ff4d4f;
+   --color-info: #1890ff;
+
+   /* Focus Colors - Modern Blue Aesthetic */
+   --color-focus-bg: rgba(59, 130, 246, 0.08);
+   /* Subtle blue tint */
+   --color-focus-ring: rgba(59, 130, 246, 0.4);
+   --color-focus-border: #3b82f6;
+
+   /* ========================================
+       SEMANTIC COLORS (Color Mode)
+       Muted, warm-toned pastels to match paper aesthetic
+       ======================================== */
+   /* Quadrant Colors - Subtle, desaturated backgrounds */
+   --color-semantic-strength: #e8f0e4;
+   /* Muted sage green - 优势/Strengths */
+   --color-semantic-weakness: #f5e6e4;
+   /* Muted blush - 劣势/Weaknesses */
+   --color-semantic-opportunity: #e4eaf0;
+   /* Muted sky blue - 机会/Opportunities */
+   --color-semantic-threat: #f5f0e4;
+   /* Muted cream/amber - 威胁/Threats */
+
+   /* Additional semantic colors - warm undertones */
+   --color-semantic-gain: #e6f0e8;
+   /* Soft mint - 获益/Gains */
+   --color-semantic-pain: #f2e4e4;
+   /* Soft rose - 痛点/Pains */
+   --color-semantic-jobs: #e8eaf2;
+   /* Soft lavender - 任务/Jobs */
+   --color-semantic-product: #f0e8f0;
+   /* Soft lilac - 产品/Products */
+
+   /* Neutral semantic */
+   --color-semantic-neutral: #f0eeeb;
+   /* Warm gray - 中性区域 */
+
+   /* Brand Archetype Group Colors */
+   --color-archetype-independence: #eab308;
+   /* Yellow - 独立动机 */
+   --color-archetype-mastery: #ef4444;
+   /* Red - 掌控动机 */
+   --color-archetype-belonging: #22c55e;
+   /* Green - 归属动机 */
+   --color-archetype-stability: #3b82f6;
+   /* Blue - 稳定动机 */
+
+   /* Action Semantic Colors (Status/Feedback) */
+   --color-semantic-growth: #10b981;
+   /* Emerald - 成功/增长 */
+   --color-semantic-growth-light: #34d399;
+   /* Emerald light */
+   --color-semantic-growth-bg: #ecfdf5;
+   /* Emerald subtle bg */
+   --color-semantic-profit: #16a34a;
+   /* Green - 利润/价值 */
+   --color-semantic-danger: #ef4444;
+   /* Red - 危险/错误 */
+   --color-semantic-danger-light: #f87171;
+   /* Red light */
+   --color-semantic-alert: #f59e0b;
+   /* Amber - 警告/注意 */
+   --color-semantic-alert-light: #fbbf24;
+   /* Amber light */
+   --color-semantic-alert-bg: #fffbeb;
+   /* Amber subtle bg */
+   --color-bg-danger-subtle: #fef2f2;
+   /* Light red bg */
+   --color-bg-success-subtle: #f0fdf4;
+   /* Light green bg */
+   --color-bg-info-subtle: #eff6ff;
+   /* Light blue bg */
+   --color-semantic-reflection: #8b5cf6;
+   /* Purple - 思考/反思 */
+   --color-semantic-reflection-bg: #f5f3ff;
+   /* Purple subtle bg */
+
+   /* ========================================
+       SEMANTIC BORDERS (The "Premium" Layer)
+       ======================================== */
+   /* Outer borders (Cards, Main Grid Outline) - Clear definition */
+   --border-sem-outer: #a3a3a3;
+
+   /* Inner dividers - Visible structure */
+   --border-sem-inner: #d4d4d4;
+
+   /* Dashed placeholder lines */
+   --border-sem-dashed: #dcdcdc;
+
+   /* Interactive borders (Inputs) */
+   --border-sem-input: transparent;
+   --border-sem-input-hover: #d1d5db;
+
+   /* ========================================
+       TYPOGRAPHY
+       ======================================== */
+
+   /* Font Families */
+   --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+   --font-sans: 'Noto Sans SC', 'PingFang SC', 'Inter', sans-serif;
+   --font-mono: 'SF Mono', 'Consolas', monospace;
+
+   /* Font Weights */
+   --font-weight-light: 300;
+   --font-weight-regular: 400;
+   --font-weight-medium: 500;
+   --font-weight-semibold: 600;
+   --font-weight-bold: 700;
+
+   /* Font Sizes - Scale */
+   --font-size-xs: 0.65rem;
+   /* 10.4px */
+   --font-size-sm: 0.75rem;
+   /* 12px */
+   --font-size-base: 0.9rem;
+   /* 14.4px */
+   --font-size-md: 1rem;
+   /* 16px */
+   --font-size-lg: 1.1rem;
+   /* 17.6px */
+   --font-size-xl: 1.25rem;
+   /* 20px */
+   --font-size-2xl: 1.5rem;
+   /* 24px */
+   --font-size-3xl: 1.7rem;
+   /* 27.2px */
+   --font-size-4xl: 2.2rem;
+   /* 35.2px */
+
+   /* Line Heights */
+   --line-height-tight: 1.1;
+   --line-height-snug: 1.3;
+   --line-height-normal: 1.5;
+   --line-height-relaxed: 1.6;
+   --line-height-loose: 1.8;
+
+   /* Letter Spacing */
+   --letter-spacing-tight: -0.02em;
+   --letter-spacing-normal: 0;
+   --letter-spacing-wide: 0.02em;
+   --letter-spacing-wider: 0.05em;
+   --letter-spacing-widest: 0.15em;
+
+   /* ========================================
+       SPACING
+       ======================================== */
+
+   --space-0: 0;
+   --space-px: 1px;
+   --space-0-5: 0.125rem;
+   /* 2px */
+   --space-1: 0.25rem;
+   /* 4px */
+   --space-2: 0.5rem;
+   /* 8px */
+   --space-3: 0.75rem;
+   /* 12px */
+   --space-4: 1rem;
+   /* 16px */
+   --space-5: 1.25rem;
+   /* 20px */
+   --space-6: 1.5rem;
+   /* 24px */
+   --space-8: 2rem;
+   /* 32px */
+   --space-10: 2.5rem;
+   /* 40px */
+   --space-12: 3rem;
+   /* 48px */
+   --space-16: 4rem;
+   /* 64px */
+   --space-20: 5rem;
+   /* 80px */
+
+   /* Semantic Spacing Aliases */
+   --spacing-xs: var(--space-1);
+   --spacing-sm: var(--space-2);
+   --spacing-md: var(--space-4);
+   --spacing-lg: var(--space-6);
+   --spacing-xl: var(--space-8);
+   --spacing-2xl: var(--space-12);
+
+   /* ========================================
+       LAYOUT
+       ======================================== */
+
+   /* Paper Dimensions (A-Series) */
+   --paper-a3-width: 420mm;
+   --paper-a3-height: 297mm;
+   --paper-a3-aspect: 420 / 297;
+
+   --paper-a4-width: 297mm;
+   --paper-a4-height: 210mm;
+   --paper-a4-aspect: 297 / 210;
+
+   /* Container Widths */
+   --container-sm: 640px;
+   --container-md: 768px;
+   --container-lg: 1024px;
+   --container-xl: 1200px;
+   --container-2xl: 1400px;
+
+   /* Z-Index Scale */
+   --z-dropdown: 100;
+   --z-sticky: 200;
+   --z-fixed: 300;
+   --z-modal: 400;
+   --z-popover: 500;
+   --z-tooltip: 600;
+   --z-toolbar: 1000;
+
+   /* ========================================
+       BORDERS
+       ======================================== */
+
+   /* Border Widths */
+   --border-width-thin: 1px;
+   --border-width-normal: 2px;
+   --border-width-thick: 4px;
+
+   /* Border Radii */
+   --radius-none: 0;
+   --radius-sm: 2px;
+   --radius-md: 4px;
+   --radius-lg: 8px;
+   --radius-xl: 12px;
+   --radius-2xl: 16px;
+   --radius-full: 9999px;
+
+   /* Border Styles */
+   --border-solid: 1px solid var(--color-border-strong);
+   --border-dashed: 1px dashed var(--color-border-light);
+   --border-double: 4px double var(--color-brand-primary);
+
+   /* ========================================
+       SHADOWS
+       ======================================== */
+
+   --shadow-none: none;
+   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+   /* Paper Shadow */
+   --shadow-paper: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.1);
+   --shadow-paper-hover: 0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+   /* ========================================
+       TRANSITIONS
+       ======================================== */
+
+   --transition-fast: 150ms ease;
+   --transition-normal: 300ms ease;
+   --transition-slow: 500ms ease;
+   --transition-bounce: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+   /* ========================================
+       ICONS
+       ======================================== */
+
+   --icon-size-sm: 16px;
+   --icon-size-md: 20px;
+   --icon-size-lg: 24px;
+   --icon-size-xl: 32px;
+
+   /* ========================================
+       NOISE TEXTURE (Data URI)
+       ======================================== */
+
+   --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+
+   --texture-noise-subtle: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   DARK THEME TOKENS
+   ======================================== */
+
+[data-theme="dark"],
+body.theme-dark {
+   --color-bg-desk: #121212;
+   --color-bg-paper: #1e1e1e;
+   --color-bg-white: #2d2d2d;
+   --color-bg-subtle: #2a2a2a;
+   --color-bg-muted: #333333;
+   --color-bg-warm-light: #2a2a2a;
+   --color-bg-warm-medium: #252525;
+   --color-bg-warm-dark: #1f1f1f;
+   --color-bg-hover: #334155;
+   /* 深色主题悬停 - 深蓝灰色 */
+   --color-bg-hover-warm: #3a3a3a;
+   /* 深色主题悬停 - 中灰色 */
+   --color-bg-card-layer: #1e293b;
+   /* 深色主题卡片背景层 */
+
+   --color-text-primary: #e0e0e0;
+   --color-text-secondary: #aaaaaa;
+   --color-text-tertiary: #888888;
+   --color-text-muted: #9ca3af;
+
+   --color-border-strong: #a3a3a3;
+   --color-border-medium: #444444;
+   --color-border-light: #3a3a3a;
+   --color-border-subtle: #333333;
+
+   --color-brand-primary: #ffffff;
+   --color-brand-accent: #ff6b6b;
+   /* Dark Mode Semantic Mappings - Enhanced contrast for better visibility */
+   --border-sem-outer: #6b6b6b;
+   --border-sem-inner: #555555;
+   --border-sem-dashed: #555555;
+   --border-sem-input: transparent;
+   --border-sem-input-hover: #525252;
+
+   --color-focus-bg: rgba(59, 130, 246, 0.15);
+   --color-focus-ring: rgba(59, 130, 246, 0.6);
+   --color-focus-border: #60a5fa;
+
+   --shadow-paper: 0 0 0 1px var(--border-sem-outer), 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+
+   /* Dark mode semantic colors */
+   --color-bg-danger-subtle: rgba(239, 68, 68, 0.15);
+   --color-bg-success-subtle: rgba(16, 185, 129, 0.15);
+   --color-bg-info-subtle: rgba(59, 130, 246, 0.15);
+   --color-semantic-growth-bg: rgba(16, 185, 129, 0.15);
+   --color-semantic-alert-bg: rgba(245, 158, 11, 0.15);
+}
+
+/* ========================================
+   WHITEBOARD THEME TOKENS
+   ======================================== */
+
+body.theme-whiteboard {
+   --color-bg-desk: #f0f2f5;
+   --color-bg-paper: #ffffff;
+   --shadow-paper: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   PRINT OVERRIDES (High Contrast)
+   ======================================== */
+@media print {
+   :root {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+
+      /* Force high contrast for physical paper */
+      --color-bg-paper: #ffffff;
+      /* --color-bg-subtle: #ffffff;  // Keep subtle backgrounds visible */
+      /* --color-bg-warm-light: #ffffff; // Keep warm backgrounds visible */
+
+      /* Borders: Crisp Black/Dark Grey */
+      --border-sem-outer: #000000;
+      --border-sem-inner: #404040;
+      --border-sem-dashed: #808080;
+
+      /* Text: Maximum Legibility */
+      --color-text-primary: #000000;
+      --color-text-secondary: #333333;
+      --color-text-muted: #555555;
+
+      /* Shadows/Decorations */
+      --shadow-paper: none;
+      --texture-noise: none;
+
+      /* Ensure main border is visible */
+      --border-sem-outer: #000000;
+   }
+}

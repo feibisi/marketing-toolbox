@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AARRR 增长漏斗 (Growth Funnel)</title>
+    <meta name="description" content="AARRR 漏斗模型工具，帮助您分析用户生命周期的五个关键阶段：获客、激活、留存、变现和推荐。">
+    <meta name="keywords" content="AARRR,增长黑客,漏斗模型,用户增长,数据分析">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AARRR 增长漏斗 - Modiqi Workbench">
+    <meta property="og:description" content="分析用户生命周期的五个关键阶段。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/growth-funnel.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>增长漏斗模型</h1>
+                <span class="english-subtitle">AARRR Growth Funnel</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="产品名称" data-save-key="meta_product" aria-label="产品名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="funnel-layout">
+            <!-- Left: Visual Funnel -->
+            <div class="funnel-visual">
+                <div class="funnel-stage-visual stage-1" data-stage="acquisition">
+                    <div class="stage-icon">
+                        <i data-lucide="megaphone"></i>
+                    </div>
+                    <div class="stage-info">
+                        <span class="stage-letter">A</span>
+                        <span class="stage-title">获取</span>
+                        <span class="stage-subtitle">Acquisition</span>
+                    </div>
+                    <div class="stage-metric">
+                        <input type="text" class="metric-value" value="10,000" data-save-key="acq_value" aria-label="acq value">
+                        <span class="metric-label">访客</span>
+                    </div>
+                </div>
+                <div class="funnel-stage-visual stage-2" data-stage="activation">
+                    <div class="stage-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <div class="stage-info">
+                        <span class="stage-letter">A</span>
+                        <span class="stage-title">激活</span>
+                        <span class="stage-subtitle">Activation</span>
+                    </div>
+                    <div class="stage-metric">
+                        <input type="text" class="metric-value" value="3,500" data-save-key="act_value" aria-label="act value">
+                        <span class="metric-label">注册</span>
+                    </div>
+                </div>
+                <div class="funnel-stage-visual stage-3" data-stage="retention">
+                    <div class="stage-icon">
+                        <i data-lucide="repeat"></i>
+                    </div>
+                    <div class="stage-info">
+                        <span class="stage-letter">R</span>
+                        <span class="stage-title">留存</span>
+                        <span class="stage-subtitle">Retention</span>
+                    </div>
+                    <div class="stage-metric">
+                        <input type="text" class="metric-value" value="1,200" data-save-key="ret_value" aria-label="ret value">
+                        <span class="metric-label">活跃</span>
+                    </div>
+                </div>
+                <div class="funnel-stage-visual stage-4" data-stage="revenue">
+                    <div class="stage-icon">
+                        <i data-lucide="circle-dollar-sign"></i>
+                    </div>
+                    <div class="stage-info">
+                        <span class="stage-letter">R</span>
+                        <span class="stage-title">变现</span>
+                        <span class="stage-subtitle">Revenue</span>
+                    </div>
+                    <div class="stage-metric">
+                        <input type="text" class="metric-value" value="480" data-save-key="rev_value" aria-label="rev value">
+                        <span class="metric-label">付费</span>
+                    </div>
+                </div>
+                <div class="funnel-stage-visual stage-5" data-stage="referral">
+                    <div class="stage-icon">
+                        <i data-lucide="share-2"></i>
+                    </div>
+                    <div class="stage-info">
+                        <span class="stage-letter">R</span>
+                        <span class="stage-title">推荐</span>
+                        <span class="stage-subtitle">Referral</span>
+                    </div>
+                    <div class="stage-metric">
+                        <input type="text" class="metric-value" value="150" data-save-key="ref_value" aria-label="ref value">
+                        <span class="metric-label">传播</span>
+                    </div>
+                </div>
+                <!-- Conversion Rate Indicators -->
+                <div class="conversion-rates">
+                    <div class="rate-connector rate-1">
+                        <span class="rate-badge">35%</span>
+                    </div>
+                    <div class="rate-connector rate-2">
+                        <span class="rate-badge">34%</span>
+                    </div>
+                    <div class="rate-connector rate-3">
+                        <span class="rate-badge">40%</span>
+                    </div>
+                    <div class="rate-connector rate-4">
+                        <span class="rate-badge">31%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Strategy & Metrics Panel -->
+            <div class="funnel-details">
+                <!-- Stage 1: Acquisition -->
+                <div class="detail-panel" data-stage="acquisition">
+                    <div class="panel-header">
+                        <div class="panel-title">
+                            <i data-lucide="megaphone"></i>
+                            <h3>用户获取 <span class="en-sub">(Acquisition)</span></h3>
+                        </div>
+                        <div class="panel-question">如何让用户发现我们？</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="lightbulb"></i>
+                                关键策略
+                            </div>
+                            <div class="section-content" contenteditable="true" data-save-key="acq_strategies">
+                                <ul>
+                                    <li>SEO 优化提升自然流量</li>
+                                    <li>LinkedIn 投放定向广告</li>
+                                    <li>内容营销：发布行业白皮书</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="gauge"></i>
+                                核心指标
+                            </div>
+                            <div class="metrics-tags">
+                                <span class="metric-tag">UV/PV</span>
+                                <span class="metric-tag">CAC</span>
+                                <span class="metric-tag">点击率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Activation -->
+                <div class="detail-panel" data-stage="activation">
+                    <div class="panel-header">
+                        <div class="panel-title">
+                            <i data-lucide="zap"></i>
+                            <h3>用户激活 <span class="en-sub">(Activation)</span></h3>
+                        </div>
+                        <div class="panel-question">如何让用户体验核心价值？</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="lightbulb"></i>
+                                关键策略
+                            </div>
+                            <div class="section-content" contenteditable="true" data-save-key="act_strategies">
+                                <ul>
+                                    <li>优化首次启动引导 (Onboarding)</li>
+                                    <li>提供"Aha时刻"的快速体验路径</li>
+                                    <li>发送欢迎邮件系列</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="gauge"></i>
+                                核心指标
+                            </div>
+                            <div class="metrics-tags">
+                                <span class="metric-tag">注册率</span>
+                                <span class="metric-tag">DAU</span>
+                                <span class="metric-tag">关键行为完成率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Retention -->
+                <div class="detail-panel" data-stage="retention">
+                    <div class="panel-header">
+                        <div class="panel-title">
+                            <i data-lucide="repeat"></i>
+                            <h3>用户留存 <span class="en-sub">(Retention)</span></h3>
+                        </div>
+                        <div class="panel-question">如何让用户持续回访？</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="lightbulb"></i>
+                                关键策略
+                            </div>
+                            <div class="section-content" contenteditable="true" data-save-key="ret_strategies">
+                                <ul>
+                                    <li>建立积分激励体系</li>
+                                    <li>定期推送个性化内容</li>
+                                    <li>社区运营增强归属感</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="gauge"></i>
+                                核心指标
+                            </div>
+                            <div class="metrics-tags">
+                                <span class="metric-tag">次日留存</span>
+                                <span class="metric-tag">7日留存</span>
+                                <span class="metric-tag">30日留存</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: Revenue -->
+                <div class="detail-panel" data-stage="revenue">
+                    <div class="panel-header">
+                        <div class="panel-title">
+                            <i data-lucide="circle-dollar-sign"></i>
+                            <h3>商业变现 <span class="en-sub">(Revenue)</span></h3>
+                        </div>
+                        <div class="panel-question">如何将用户转化为收入？</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="lightbulb"></i>
+                                关键策略
+                            </div>
+                            <div class="section-content" contenteditable="true" data-save-key="rev_strategies">
+                                <ul>
+                                    <li>推出限时折扣活动</li>
+                                    <li>开发高级付费功能 (Pro Plan)</li>
+                                    <li>交叉销售相关产品</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="gauge"></i>
+                                核心指标
+                            </div>
+                            <div class="metrics-tags">
+                                <span class="metric-tag">LTV</span>
+                                <span class="metric-tag">ARPU</span>
+                                <span class="metric-tag">付费转化率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 5: Referral -->
+                <div class="detail-panel" data-stage="referral">
+                    <div class="panel-header">
+                        <div class="panel-title">
+                            <i data-lucide="share-2"></i>
+                            <h3>自传播 <span class="en-sub">(Referral)</span></h3>
+                        </div>
+                        <div class="panel-question">如何让用户主动推荐？</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="lightbulb"></i>
+                                关键策略
+                            </div>
+                            <div class="section-content" contenteditable="true" data-save-key="ref_strategies">
+                                <ul>
+                                    <li>邀请好友送会员时长</li>
+                                    <li>设计易于分享的社交货币内容</li>
+                                    <li>建立品牌大使计划</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-section">
+                            <div class="section-label">
+                                <i data-lucide="gauge"></i>
+                                核心指标
+                            </div>
+                            <div class="metrics-tags">
+                                <span class="metric-tag">NPS</span>
+                                <span class="metric-tag">K因子</span>
+                                <span class="metric-tag">邀请率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('growth_funnel_v2');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // Stage hover interaction
+            const visualStages = document.querySelectorAll('.funnel-stage-visual');
+            const detailPanels = document.querySelectorAll('.detail-panel');
+
+            visualStages.forEach((stage, index) => {
+                stage.addEventListener('mouseenter', () => {
+                    visualStages.forEach(s => s.classList.remove('active'));
+                    detailPanels.forEach(p => p.classList.remove('active'));
+                    stage.classList.add('active');
+                    detailPanels[index].classList.add('active');
+                });
+            });
+
+            detailPanels.forEach((panel, index) => {
+                panel.addEventListener('mouseenter', () => {
+                    visualStages.forEach(s => s.classList.remove('active'));
+                    detailPanels.forEach(p => p.classList.remove('active'));
+                    panel.classList.add('active');
+                    visualStages[index].classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

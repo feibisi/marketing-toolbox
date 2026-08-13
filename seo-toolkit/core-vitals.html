@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Web Vitals 模拟器 (Core Web Vitals Simulator)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/core-vitals.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>核心网页指标模拟器</h1>
+                <span class="english-subtitle">Core Web Vitals Simulator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>页面类型</label>
+                    <select class="meta-input" aria-label="Selection">
+                        <option>Product Page</option>
+                        <option>Homepage</option>
+                        <option>Blog Post</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="vitals-container">
+
+            <!-- 1. Metrics Sliders -->
+            <div class="metrics-row">
+
+                <!-- LCP -->
+                <div class="metric-card" id="card-lcp">
+                    <div class="metric-title">LCP (Largest Contentful Paint)</div>
+                    <div class="metric-value" id="val-lcp">2.5</div>
+                    <div class="metric-unit">seconds</div>
+                    <div class="status-badge" id="status-lcp">GOOD</div>
+
+                    <div class="slider-container">
+                        <input type="range" min="0" max="6" step="0.1" value="2.5" class="metric-slider" id="slider-lcp"
+                            oninput="updateVitals()" aria-label="slider lcp">
+                    </div>
+                </div>
+
+                <!-- INP/FID -->
+                <div class="metric-card" id="card-inp">
+                    <div class="metric-title">INP (Interaction to Next Paint)</div>
+                    <div class="metric-value" id="val-inp">200</div>
+                    <div class="metric-unit">milliseconds</div>
+                    <div class="status-badge" id="status-inp">NEEDS IMPROVEMENT</div>
+
+                    <div class="slider-container">
+                        <input type="range" min="0" max="1000" step="10" value="200" class="metric-slider"
+                            id="slider-inp" oninput="updateVitals()" aria-label="slider inp">
+                    </div>
+                </div>
+
+                <!-- CLS -->
+                <div class="metric-card" id="card-cls">
+                    <div class="metric-title">CLS (Cumulative Layout Shift)</div>
+                    <div class="metric-value" id="val-cls">0.1</div>
+                    <div class="metric-unit">score</div>
+                    <div class="status-badge" id="status-cls">GOOD</div>
+
+                    <div class="slider-container">
+                        <input type="range" min="0" max="0.5" step="0.01" value="0.1" class="metric-slider"
+                            id="slider-cls" oninput="updateVitals()" aria-label="slider cls">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 2. Optimization Checklist -->
+            <div class="checklist-section">
+                <div class="checklist-header">
+                    <i data-lucide="clipboard-check"></i> 优化清单 (Optimization Checklist)
+                </div>
+
+                <div class="checklist-grid">
+
+                    <!-- LCP Fixes -->
+                    <div class="check-col">
+                        <h4>Optimize LCP</h4>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Compress Hero Images (WebP)</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Preload Hero Resources</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Improve Server Response (TTFB)</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Critical CSS Inline</div>
+                    </div>
+
+                    <!-- INP Fixes -->
+                    <div class="check-col">
+                        <h4>Optimize INP / FID</h4>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Minimize Main Thread Work</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Break Up Long Tasks</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Defer Unused JS</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Use Web Workers</div>
+                    </div>
+
+                    <!-- CLS Fixes -->
+                    <div class="check-col">
+                        <h4>Optimize CLS</h4>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Set Width/Height on Images</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Reserve Space for Ads</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Avoid Layout Thrashing</div>
+                        <div class="check-item"><input type="checkbox" aria-label="Input field"> Use font-display: swap</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('core_vitals');
+            lucide.createIcons();
+            updateVitals();
+        });
+
+        function updateVitals() {
+            updateMetric('lcp', 2.5, 4.0);
+            updateMetric('inp', 200, 500); // INP thresholds
+            updateMetric('cls', 0.1, 0.25);
+        }
+
+        function updateMetric(id, limitGood, limitPoor) {
+            const slider = document.getElementById(`slider-${id}`);
+            const valSpan = document.getElementById(`val-${id}`);
+            const badge = document.getElementById(`status-${id}`);
+            const card = document.getElementById(`card-${id}`);
+
+            const val = parseFloat(slider.value);
+            valSpan.innerText = val;
+
+            // Reset classes
+            card.classList.remove('status-good', 'status-needs', 'status-poor');
+            badge.classList.remove('bg-good', 'bg-needs', 'bg-poor');
+
+            if (val <= limitGood) {
+                card.classList.add('status-good');
+                badge.classList.add('bg-good');
+                badge.innerText = 'GOOD';
+            } else if (val <= limitPoor) {
+                card.classList.add('status-needs');
+                badge.classList.add('bg-needs');
+                badge.innerText = 'NEEDS IMPROVEMENT';
+            } else {
+                card.classList.add('status-poor');
+                badge.classList.add('bg-poor');
+                badge.innerText = 'POOR';
+            }
+        }
+    </script>
+</body>
+
+</html>

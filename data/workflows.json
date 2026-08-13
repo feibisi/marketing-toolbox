@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "workflows": [
+    {
+      "id": "strategy-alignment",
+      "title": "01 战略对齐",
+      "description": "从环境判断到目标、商业模式与执行路线。",
+      "tools": [
+        "strategy-toolkit/swot-analysis.html",
+        "strategy-toolkit/landscape-map.html",
+        "strategy-toolkit/business-model-canvas.html",
+        "strategy-toolkit/value-proposition.html",
+        "strategy-toolkit/okr-cascade.html",
+        "strategy-toolkit/strategic-roadmap.html"
+      ]
+    },
+    {
+      "id": "audience-positioning",
+      "title": "02 受众与定位",
+      "description": "形成受众证据、细分选择与定位表达。",
+      "tools": [
+        "customer-toolkit/user-persona.html",
+        "behavior-toolkit/empathy-map.html",
+        "behavior-toolkit/customer-journey.html",
+        "strategy-toolkit/stp-canvas.html",
+        "brand-toolkit/jtbd-canvas.html",
+        "brand-toolkit/brand-positioning-map.html"
+      ]
+    },
+    {
+      "id": "brand-narrative",
+      "title": "03 品牌叙事",
+      "description": "把定位转为一致的信息、故事与语调。",
+      "tools": [
+        "brand-toolkit/positioning-statement.html",
+        "brand-toolkit/brand-messaging.html",
+        "brand-toolkit/brand-story.html",
+        "brand-toolkit/tone-voice.html"
+      ]
+    },
+    {
+      "id": "content-operations",
+      "title": "04 内容运营",
+      "description": "盘点内容、制定策略、排期并复盘效果。",
+      "tools": [
+        "content-toolkit/content-audit.html",
+        "content-toolkit/content-strategy-canvas.html",
+        "content-toolkit/content-calendar.html",
+        "content-toolkit/content-performance.html",
+        "seo-toolkit/technical-seo-audit.html"
+      ]
+    },
+    {
+      "id": "go-to-market",
+      "title": "05 获客与成交",
+      "description": "把上市计划、活动归因、线索选择和报价连成闭环。",
+      "tools": [
+        "strategy-toolkit/gtm-strategy.html",
+        "social-toolkit/utm-builder.html",
+        "sales-toolkit/lead-scoring.html",
+        "sales-toolkit/quote-calculator.html"
+      ]
+    },
+    {
+      "id": "measurement-growth",
+      "title": "06 衡量与增长",
+      "description": "建立指标口径，诊断漏斗并用实验验证改进。",
+      "tools": [
+        "analytics-toolkit/measurement-plan.html",
+        "analytics-toolkit/kpi-dashboard.html",
+        "analytics-toolkit/funnel-diagnosis.html",
+        "analytics-toolkit/ab-test-planner.html",
+        "analytics-toolkit/roi-calculator.html"
+      ]
+    }
+  ]
+}

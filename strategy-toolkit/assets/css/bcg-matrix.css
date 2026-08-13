@@ -1,0 +1,373 @@
+/* BCG Matrix Layout */
+.bcg-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+.matrix-axes {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.axis-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.axis-y {
+    flex-direction: column;
+    text-align: center;
+    width: 60px;
+    justify-content: center;
+}
+
+.axis-x {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.axis-title {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
+/* Matrix Grid */
+.bcg-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Quadrant Cards */
+.matrix-quadrant {
+    padding: var(--spacing-md);
+    background: var(--color-bg-paper);
+    border: 2px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    min-height: 0;
+    overflow: hidden;
+}
+
+.quadrant-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    flex-shrink: 0;
+}
+
+.quadrant-header .icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-secondary);
+}
+
+.quadrant-title h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.quadrant-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin: 2px 0 0 0;
+}
+
+/* Product List - Scrollable */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.product-card {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+}
+
+.product-name {
+    width: 100%;
+    padding: var(--spacing-xs);
+    border: 1px solid transparent;
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    background: transparent;
+    outline: none;
+}
+
+.product-name:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.product-name:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+.product-metrics {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.metric-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.metric-field label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.metric-input {
+    width: 100%;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text-primary);
+    background: var(--color-bg-paper);
+    outline: none;
+}
+
+.metric-input:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.metric-input:focus {
+    border-color: var(--color-focus-border);
+}
+
+.metric-unit {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-left: 2px;
+}
+
+.strategy-select {
+    width: 100%;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+    background: var(--color-bg-paper);
+    cursor: pointer;
+    outline: none;
+}
+
+.strategy-select:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.strategy-select:focus {
+    border-color: var(--color-focus-border);
+}
+
+.add-product-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background: transparent;
+    border: 1px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.add-product-btn:hover {
+    border-color: var(--border-sem-input-hover);
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.add-product-btn .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* Portfolio Summary */
+.portfolio-summary {
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    flex-shrink: 0;
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.summary-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.summary-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.summary-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xs);
+    border-radius: 0;
+    border: 1px solid transparent;
+}
+
+.summary-content:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.summary-content:focus {
+    outline: none;
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+/* Dark Theme */
+body.theme-dark .matrix-quadrant {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .product-card {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .portfolio-summary {
+    background: var(--color-bg-muted);
+}
+
+/* Color Mode */
+body:not(.theme-dark).color-mode .quadrant-star {
+    border-left: 4px solid var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .quadrant-star .quadrant-header .icon {
+    color: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .quadrant-question {
+    border-left: 4px solid var(--color-semantic-warning);
+}
+
+body:not(.theme-dark).color-mode .quadrant-question .quadrant-header .icon {
+    color: var(--color-semantic-warning);
+}
+
+body:not(.theme-dark).color-mode .quadrant-cash {
+    border-left: 4px solid var(--color-semantic-profit);
+}
+
+body:not(.theme-dark).color-mode .quadrant-cash .quadrant-header .icon {
+    color: var(--color-semantic-profit);
+}
+
+body:not(.theme-dark).color-mode .quadrant-dog {
+    border-left: 4px solid var(--color-text-tertiary);
+}
+
+body:not(.theme-dark).color-mode .quadrant-dog .quadrant-header .icon {
+    color: var(--color-text-tertiary);
+}
+
+/* Print Styles */
+@media print {
+    .add-product-btn {
+        display: none;
+    }
+
+    .bcg-matrix {
+        gap: var(--spacing-sm);
+    }
+
+    .matrix-quadrant {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .bcg-matrix {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .matrix-quadrant,
+    .products-list {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}

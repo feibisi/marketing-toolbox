@@ -1,0 +1,554 @@
+/* User Persona Card - Tool Specific Styles */
+/* Clean Magazine Layout - Minimal Borders */
+
+/* ========================================
+   Main Layout
+   ======================================== */
+
+.persona-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    flex: 1;
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ========================================
+   Left Sidebar
+   ======================================== */
+
+.persona-sidebar {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-sem-outer);
+    background: transparent;
+}
+
+.persona-sidebar:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* Avatar Section */
+.avatar-section {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center horizontal */
+}
+
+/* Avatar Wrapper to hold image and icon */
+.avatar-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.persona-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 6%;
+    object-fit: cover;
+    background: var(--color-bg-warm-medium);
+    border: 0;
+    /* box-shadow: none; */
+}
+
+.cravatar-icon-link {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 28px;
+    height: 28px;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cravatar-icon-link:hover {
+    color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+}
+
+.cravatar-icon-link .icon {
+    width: 14px;
+    height: 14px;
+}
+
+.avatar-hint {
+    margin-top: 0.75rem;
+}
+
+.email-input {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    border: none;
+    border-bottom: 1px dashed var(--border-sem-input-hover);
+    background: transparent;
+    text-align: center;
+    outline: none;
+    font-family: inherit;
+}
+
+.email-input:focus {
+    border-bottom-color: var(--color-brand-primary);
+    background: var(--color-focus-bg);
+}
+
+/* Identity */
+.persona-identity {
+    padding: 0.75rem 1.5rem 1rem;
+    text-align: center;
+}
+
+.persona-name {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0 0 0.25rem 0;
+    outline: none;
+    line-height: 1.2;
+}
+
+.persona-role {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    outline: none;
+}
+
+/* Quote Section */
+.quote-section {
+    padding: 1rem 1.5rem;
+    background: transparent;
+    position: relative;
+    margin: 0 1rem;
+    border-left: 2px solid var(--color-brand-accent);
+}
+
+.quote-icon {
+    display: none;
+}
+
+.persona-quote {
+    font-size: 0.8rem;
+    color: var(--color-border-strong);
+    line-height: 1.5;
+    outline: none;
+}
+
+/* Basic Info Section */
+.basic-info-section {
+    padding: 1rem 1.5rem;
+    flex: 1;
+}
+
+.basic-info-section h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-brand-primary);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.5rem;
+}
+
+.basic-info-section h3 .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-muted);
+}
+
+.info-grid {
+    outline: none;
+    padding: 1em;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+}
+
+.info-label {
+    color: var(--color-text-muted);
+}
+
+.info-value {
+    font-weight: 500;
+    color: var(--color-border-strong);
+}
+
+/* ========================================
+   Main Content Area
+   ======================================== */
+
+.persona-main {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Detail Row */
+.detail-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detail-row:not(:last-child) {
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+/* Detail Cards */
+.detail-card {
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.persona-sidebar:focus-within,
+.detail-card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+.detail-card:hover {
+    box-shadow: none;
+    transform: none;
+    border-color: var(--border-sem-outer);
+    z-index: auto;
+}
+
+.detail-card:first-child {
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.detail-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-brand-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.5rem;
+}
+
+.detail-card h3 .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-muted);
+}
+
+/* Content Area */
+.content-area {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 1em;
+    color: var(--color-border-strong);
+    outline: none;
+    overflow-y: auto;
+}
+
+.content-area:focus {
+    background-color: var(--color-focus-bg);
+}
+
+
+
+.content-area p {
+    margin: 0;
+}
+
+/* Personality Traits */
+.traits-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trait-slider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.trait-slider>span {
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+/* Range Input Slider */
+.trait-range {
+    flex: 1;
+    height: 6px;
+    appearance: none;
+    background: var(--color-bg-warm-medium);
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.trait-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--color-brand-primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.trait-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--color-brand-primary);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.trait-range::-moz-range-track {
+    height: 6px;
+    background: var(--color-bg-warm-medium);
+    border-radius: 0;
+    padding: 1em;
+}
+
+/* Channels Grid */
+.channels-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    outline: none;
+    padding: 1em;
+}
+
+.channel-tag {
+    padding: 0.25rem 0.6rem;
+    background: transparent;
+    border: 1px solid var(--border-sem-input-hover);
+    font-size: 0.8rem;
+    color: var(--color-border-strong);
+    border-radius: 0;
+}
+
+.channel-tag:hover {
+    border-color: var(--border-sem-outer);
+    color: var(--color-brand-primary);
+}
+
+/* Brands List */
+.brands-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    outline: none;
+    padding: 1em;
+}
+
+.brand-tag {
+    padding: 0.25rem 0.6rem;
+    background: transparent;
+    border: 1px solid var(--border-sem-input-hover);
+    font-size: 0.8rem;
+    color: var(--color-border-strong);
+    border-radius: 0;
+}
+
+/* Bio & Brands Cards */
+.bio-card {
+    flex: 1.5;
+}
+
+.brands-card {
+    flex: 1;
+}
+
+/* ========================================
+   Dark Theme
+   ======================================== */
+
+@media (max-width: 1100px) {
+    .persona-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .persona-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-sem-outer);
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-card:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .persona-sidebar {
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .detail-card:nth-child(1) {
+    /* Personality & Goals */
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .detail-card:nth-child(2) {
+    /* Channels & Frustrations */
+    background-color: var(--color-bg-paper);
+    /* Default/Neutral */
+}
+
+/* Specific overrides for sections */
+body:not(.theme-dark).color-mode .detail-row:nth-child(2) .detail-card:nth-child(2) {
+    /* Frustrations */
+    background-color: var(--color-semantic-pain);
+}
+
+body:not(.theme-dark).color-mode .detail-row:nth-child(2) .detail-card:nth-child(1) {
+    /* Goals */
+    background-color: var(--color-semantic-gain);
+}
+
+/* ========================================
+   Print Styles - Force Grid Layout
+   ======================================== */
+@media print {
+
+    /* Main layout container - use percentages */
+    .persona-layout {
+        display: grid !important;
+        grid-template-columns: 22% 78% !important;
+        grid-template-rows: 1fr !important;
+        width: 100% !important;
+        height: auto !important;
+        flex: 1 !important;
+        flex-direction: unset !important;
+        gap: 0 !important;
+        min-width: 0 !important;
+    }
+
+    /* Sidebar */
+    .persona-sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        border-right: 1px solid var(--border-sem-outer) !important;
+        border-bottom: none !important;
+    }
+
+    /* Main content */
+    .persona-main {
+        display: grid !important;
+        grid-template-rows: 1fr 1fr 1fr !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Detail rows */
+    .detail-row {
+        display: grid !important;
+        grid-template-columns: 50% 50% !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Detail cards */
+    .detail-card {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .detail-card:first-child {
+        border-right: 1px solid var(--border-sem-inner) !important;
+        border-bottom: none !important;
+    }
+
+    /* Avatar */
+    .persona-avatar {
+        max-width: 100px !important;
+        max-height: 100px !important;
+    }
+
+    /* Content areas - prevent overflow */
+    .content-area,
+    .channels-grid,
+    .brands-list,
+    .traits-container {
+        width: 100% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+}
+
+/* ========================================
+   Presentation Mode
+   ======================================== */
+body.presentation-mode .persona-layout {
+    width: 100%;
+    height: 100%;
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .persona-layout, .detail-row { display: block !important; }
+    .persona-sidebar, .persona-details, .detail-card { width: 100% !important; height: auto; overflow: visible !important; }
+}

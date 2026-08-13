@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告文案架构师 (Ad Copy Architect)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="撰写高转化率的搜索与社媒广告">
+    <meta name="keywords" content="Ad Copy, PPC, SEM, Google Ads, Facebook Ads, Creative">
+
+    <!-- Fonts -->
+
+    <!-- Google Font for Ads Previews (Roboto is standard for Google/FB) -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ad-copy-architect.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Portrait Canvas -->
+    <main class="paper-a4">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>广告文案架构师</h1>
+                <span class="english-subtitle">Ad Copy Architect</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="产品名称" data-save-key="meta_product" aria-label="产品名称">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <!-- Platform Switcher -->
+            <div class="platform-tabs">
+                <button class="tab-btn active" data-platform="google" type="button">
+                    <i data-lucide="search"></i> Google Search
+                </button>
+                <button class="tab-btn" data-platform="facebook" type="button">
+                    <i data-lucide="users"></i> Facebook Feed
+                </button>
+            </div>
+
+            <!-- Editor Section -->
+            <div class="tool-section editor-section">
+                <div class="section-header">
+                    <i data-lucide="edit-3"></i>
+                    <h2>文案编辑 <span class="en-sub">(Drafting)</span></h2>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label>标题 1 <span class="en-sub">(Headline 1)</span></label>
+                        <span class="counter" id="countH1">0/30</span>
+                    </div>
+                    <input type="text" id="inputH1" class="input" placeholder="强有力的主标题" maxlength="30"
+                        data-save-key="ad_h1" aria-label="强有力的主标题">
+                </div>
+
+                <div class="form-group google-only">
+                    <div class="label-row">
+                        <label>标题 2 <span class="en-sub">(Headline 2)</span></label>
+                        <span class="counter" id="countH2">0/30</span>
+                    </div>
+                    <input type="text" id="inputH2" class="input" placeholder="补充价值主张" maxlength="30"
+                        data-save-key="ad_h2" aria-label="补充价值主张">
+                </div>
+
+                <div class="form-group google-only">
+                    <div class="label-row">
+                        <label>标题 3 <span class="en-sub">(Headline 3 - Optional)</span></label>
+                        <span class="counter" id="countH3">0/30</span>
+                    </div>
+                    <input type="text" id="inputH3" class="input" placeholder="品牌名称或号召" maxlength="30"
+                        data-save-key="ad_h3" aria-label="品牌名称或号召">
+                </div>
+
+                <div class="form-group fb-only hidden">
+                    <div class="label-row">
+                        <label>正文文本 <span class="en-sub">(Primary Text)</span></label>
+                        <span class="counter" id="countPrimary">0/125</span>
+                    </div>
+                    <textarea id="inputPrimary" class="input" rows="3" placeholder="出现在图片上方的正文..." maxlength="125"
+                        data-save-key="ad_primary" aria-label="出现在图片上方的正文..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label>描述/副标题 <span class="en-sub">(Description/Headline)</span></label>
+                        <span class="counter" id="countDesc">0/90</span>
+                    </div>
+                    <textarea id="inputDesc" class="input" rows="2" placeholder="详细的描述内容..." maxlength="90"
+                        data-save-key="ad_desc" aria-label="详细的描述内容..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>显示链接 <span class="en-sub">(Display URL)</span></label>
+                    <input type="text" id="inputUrl" class="input" placeholder="example.com/product"
+                        data-save-key="ad_url" aria-label="example.com/product">
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="tool-section preview-section">
+                <div class="section-header">
+                    <i data-lucide="eye"></i>
+                    <h2>实时预览 <span class="en-sub">(Preview)</span></h2>
+                </div>
+
+                <div class="ad-preview-container">
+                    <!-- Google Preview -->
+                    <div id="previewGoogle" class="ad-card google-ad">
+                        <div class="ad-meta">
+                            <span class="ad-badge">Ad</span>
+                            <span class="ad-url" id="viewUrlGoogle">example.com</span>
+                        </div>
+                        <div class="ad-headline">
+                            <span id="viewH1">Headline 1</span>
+                            <span class="separator">|</span>
+                            <span id="viewH2">Headline 2</span>
+                            <span class="separator">|</span>
+                            <span id="viewH3">Headline 3</span>
+                        </div>
+                        <div class="ad-desc" id="viewDescGoogle">Description goes here...</div>
+                    </div>
+
+                    <!-- Facebook Preview -->
+                    <div id="previewFacebook" class="ad-card fb-ad hidden">
+                        <div class="fb-header">
+                            <div class="fb-avatar"></div>
+                            <div class="fb-info">
+                                <div class="fb-name">Modiqi Brand</div>
+                                <div class="fb-sub">Sponsored · <i data-lucide="globe"
+                                        style="width:10px; display:inline;"></i></div>
+                            </div>
+                        </div>
+                        <div class="fb-text" id="viewPrimary">Primary text appears here...</div>
+                        <div class="fb-media-placeholder">
+                            <i data-lucide="image"></i>
+                            <span>1200 x 628 Media</span>
+                        </div>
+                        <div class="fb-footer">
+                            <div class="fb-meta">
+                                <span class="fb-url" id="viewUrlFb">EXAMPLE.COM</span>
+                                <span class="fb-headline" id="viewH1Fb">Headline Goes Here</span>
+                                <span class="fb-desc" id="viewDescFb">Short description...</span>
+                            </div>
+                            <button class="fb-cta" type="button">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="tool-section checklist-section">
+                <div class="section-header">
+                    <i data-lucide="clipboard-check"></i>
+                    <h2>高转化自检 <span class="en-sub">(Conversion Checklist)</span></h2>
+                </div>
+                <div class="checklist-grid" contenteditable="true" data-save-key="checklist">
+                    <ul>
+                        <li>是否包含主要关键词? (Relevant Keyword)</li>
+                        <li>是否突出独特卖点? (USP)</li>
+                        <li>是否有明确的行动号召? (Call to Action)</li>
+                        <li>是否使用了数字或符号? (Numbers/Symbols)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/ad-copy-architect.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ad_copy_architect_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

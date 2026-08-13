@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六顶思考帽 (Six Thinking Hats)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/six-hats.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>六顶思考帽</h1>
+                <span class="english-subtitle">Six Thinking Hats Framework</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>讨论议题</label>
+                    <input type="text" class="meta-input" placeholder="e.g. New Product Launch Strategy" aria-label="New Product Launch Strategy">
+                </div>
+            </div>
+        </header>
+
+        <div class="hats-container">
+            <div class="hats-grid">
+
+                <!-- White Hat -->
+                <div class="hat-card hat-white">
+                    <div class="hat-header">
+                        <div>
+                            <div class="hat-title"><i data-lucide="file-text" style="width:16px;"></i> 白帽 (White Hat)
+                            </div>
+                            <div class="hat-desc">事实与数据。我们已知什么？缺什么信息？</div>
+                        </div>
+                    </div>
+                    <textarea class="hat-input"
+                        placeholder="Objective data, facts, figures, requirements..." aria-label="Objective data, facts, figures, requirements..."></textarea>
+                </div>
+
+                <!-- Red Hat -->
+                <div class="hat-card hat-red">
+                    <div class="hat-header">
+                        <div>
+                            <div class="hat-title"><i data-lucide="heart" style="width:16px;"></i> 红帽 (Red Hat)</div>
+                            <div class="hat-desc">直觉与情感。你的直觉告诉你是好是坏？</div>
+                        </div>
+                    </div>
+                    <textarea class="hat-input"
+                        placeholder="Feelings, hunches, intuition, fears (no justification needed)..." aria-label="Feelings, hunches, intuition, fears (no justification needed)..."></textarea>
+                </div>
+
+                <!-- Black Hat -->
+                <div class="hat-card hat-black">
+                    <div class="hat-header">
+                        <div>
+                            <div class="hat-title"><i data-lucide="shield-alert" style="width:16px;"></i> 黑帽 (Black Hat)
+                            </div>
+                            <div class="hat-desc">风险与谨慎。这为什么行不通？潜在危险？</div>
+                        </div>
+                    </div>
+                    <textarea class="hat-input"
+                        placeholder="Risks, difficulties, potential problems, compliance issues..." aria-label="Risks, difficulties, potential problems, compliance issues..."></textarea>
+                </div>
+
+                <!-- Yellow Hat -->
+                <div class="hat-card hat-yellow">
+                    <div class="hat-header">
+                        <div>
+                            <div class="hat-title"><i data-lucide="sun" style="width:16px;"></i> 黄帽 (Yellow Hat)</div>
+                            <div class="hat-desc">积极与价值。这有什么好处？为什么值得做？</div>
+                        </div>
+                    </div>
+                    <textarea class="hat-input" placeholder="Benefits, value, feasibility, optimism..." aria-label="Benefits, value, feasibility, optimism..."></textarea>
+                </div>
+
+                <!-- Green Hat -->
+                <div class="hat-card hat-green">
+                    <div class="hat-header">
+                        <div>
+                            <div class="hat-title"><i data-lucide="sprout" style="width:16px;"></i> 绿帽 (Green Hat)</div>
+                            <div class="hat-desc">创意与可能。还有什么备选方案？新的点子？</div>
+                        </div>
+                    </div>
+                    <textarea class="hat-input"
+                        placeholder="Ideas, alternatives, possibilities, solutions..." aria-label="Ideas, alternatives, possibilities, solutions..."></textarea>
+                </div>
+
+                <!-- Blue Hat -->
+                <div class="hat-card hat-blue">
+                    <div class="hat-header">
+                        <div>
+                            <div class="hat-title"><i data-lucide="users" style="width:16px;"></i> 蓝帽 (Blue Hat)</div>
+                            <div class="hat-desc">控制与流程。下一步是什么？总结与行动。</div>
+                        </div>
+                    </div>
+                    <textarea class="hat-input" placeholder="Agenda, summary, next steps, action plan..." aria-label="Agenda, summary, next steps, action plan..."></textarea>
+                </div>
+
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('six_hats');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

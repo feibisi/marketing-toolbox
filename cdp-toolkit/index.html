@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户数据平台工作台 - Modiqi Workbench</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">客户数据平台工作台</h1>
+                    <span class="version-tag">3 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Customer Data Platform Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. CDP Canvas -->
+            <a href="cdp-canvas.html" class="tool-card">
+                <i data-lucide="database" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">整合</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Data sources -->
+                        <rect x="20" y="20" width="35" height="25" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="20" y="55" width="35" height="25" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="20" y="90" width="35" height="25" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+
+                        <!-- Central CDP -->
+                        <rect x="80" y="45" width="50" height="50" rx="4" fill="#e2e8f0" stroke="#94a3b8"
+                            stroke-width="2" />
+                        <text x="105" y="75" text-anchor="middle" font-size="10" fill="#64748b"
+                            font-weight="600">CDP</text>
+
+                        <!-- Output channels -->
+                        <rect x="150" y="30" width="35" height="20" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="150" y="60" width="35" height="20" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="150" y="90" width="35" height="20" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+
+                        <!-- Connection lines -->
+                        <line x1="55" y1="32" x2="80" y2="60" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="55" y1="67" x2="80" y2="70" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="55" y1="102" x2="80" y2="80" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="130" y1="60" x2="150" y2="40" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="130" y1="70" x2="150" y2="70" stroke="#cbd5e1" stroke-width="1.5" />
+                        <line x1="130" y1="80" x2="150" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">客户数据整合画布 <span class="en-sub">(CDP Canvas)</span></h3>
+                    <p class="tool-desc">统一管理多源客户数据。</p>
+                </div>
+            </a>
+
+            <!-- 2. Segmentation Engine -->
+            <a href="segmentation-engine.html" class="tool-card">
+                <i data-lucide="filter" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">细分</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Funnel -->
+                        <path d="M50 20 L150 20 L120 70 L80 70 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+
+                        <!-- Segments -->
+                        <rect x="30" y="85" width="35" height="30" rx="2" fill="#dbeafe" stroke="#3b82f6" />
+                        <rect x="75" y="85" width="35" height="30" rx="2" fill="#dcfce7" stroke="#10b981" />
+                        <rect x="120" y="85" width="35" height="30" rx="2" fill="#fef3c7" stroke="#f59e0b" />
+                        <rect x="165" y="85" width="20" height="30" rx="2" fill="#fee2e2" stroke="#ef4444" />
+
+                        <!-- Labels -->
+                        <text x="47" y="103" text-anchor="middle" font-size="8" fill="#1e40af">VIP</text>
+                        <text x="92" y="103" text-anchor="middle" font-size="8" fill="#047857">Active</text>
+                        <text x="137" y="103" text-anchor="middle" font-size="8" fill="#b45309">Risk</text>
+                        <text x="175" y="103" text-anchor="middle" font-size="7" fill="#b91c1c">Lost</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">客户细分引擎 <span class="en-sub">(Segmentation Engine)</span></h3>
+                    <p class="tool-desc">智能划分客户群体。</p>
+                </div>
+            </a>
+
+            <!-- 3. LTV Map -->
+            <a href="ltv-map.html" class="tool-card">
+                <i data-lucide="trending-up" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">价值</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Grid -->
+                        <line x1="30" y1="110" x2="170" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="30" y1="30" x2="30" y2="110" stroke="#e2e8f0" stroke-width="1" />
+
+                        <!-- Growth curve -->
+                        <path d="M30 110 Q60 90 90 70 T150 40" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+
+                        <!-- Data points -->
+                        <circle cx="30" cy="110" r="3" fill="#3b82f6" />
+                        <circle cx="60" cy="85" r="3" fill="#3b82f6" />
+                        <circle cx="90" cy="65" r="3" fill="#3b82f6" />
+                        <circle cx="120" cy="50" r="3" fill="#3b82f6" />
+                        <circle cx="150" cy="40" r="3" fill="#3b82f6" />
+
+                        <!-- Value indicator -->
+                        <rect x="155" y="25" width="30" height="15" rx="2" fill="#dbeafe" stroke="#3b82f6" />
+                        <text x="170" y="35" text-anchor="middle" font-size="8" fill="#1e40af"
+                            font-weight="600">$$$</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">客户生命周期价值地图 <span class="en-sub">(LTV Map)</span></h3>
+                    <p class="tool-desc">追踪客户长期价值。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

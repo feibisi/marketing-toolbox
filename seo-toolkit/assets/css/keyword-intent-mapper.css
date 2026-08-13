@@ -1,0 +1,43 @@
+.intent-matrix{margin-bottom:var(--spacing-lg)}.matrix-row{display:grid;grid-template-columns:180px 1fr 1fr;gap:var(--spacing-md);margin-bottom:var(--spacing-md)}.stage-header{display:flex;flex-direction:column;justify-content:center;padding:var(--spacing-md);background:var(--color-bg-subtle);border:1px solid var(--border-sem-inner);border-radius:var(--radius-md)}.stage-title{font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--color-text-primary);margin-bottom:var(--spacing-xs)}.stage-title .en{font-size:var(--font-size-xs);font-weight:var(--font-weight-normal);color:var(--color-text-tertiary)}.stage-desc{font-size:var(--font-size-xs);color:var(--color-text-secondary)}.intent-cell{padding:var(--spacing-md);background:var(--color-bg-paper);border:1px solid var(--border-sem-inner);border-radius:var(--radius-md)}.cell-header{display:flex;align-items:center;gap:var(--spacing-xs);margin-bottom:var(--spacing-sm);padding-bottom:var(--spacing-xs);border-bottom:1px dashed var(--border-sem-dashed);font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-text-primary)}.cell-header .icon{width:var(--icon-size-sm);height:var(--icon-size-sm);color:var(--color-text-secondary)}.keyword-list{font-size:var(--font-size-xs);line-height:var(--line-height-relaxed);color:var(--color-text-primary);outline:none}.keyword-list:focus{background:var(--color-focus-bg)}.strategy-section .section-header{display:flex;align-items:center;gap:var(--spacing-sm);margin-bottom:var(--spacing-md);padding-bottom:var(--spacing-sm);border-bottom:1px dashed var(--border-sem-dashed)}.strategy-section .section-header .icon{width:var(--icon-size-md);height:var(--icon-size-md);color:var(--color-text-secondary)}.strategy-section .section-header h2{font-family:var(--font-serif);font-size:var(--font-size-md);font-weight:var(--font-weight-bold);color:var(--color-text-primary);margin:0}.strategy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-md)}.strategy-card{padding:var(--spacing-md);background:var(--color-bg-subtle);border:1px solid var(--border-sem-inner);border-radius:var(--radius-md)}.strategy-card h3{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-text-primary);margin:0 0 var(--spacing-sm) 0}.strategy-card ul{margin:0;padding-left:var(--spacing-md);font-size:var(--font-size-xs);line-height:var(--line-height-relaxed);color:var(--color-text-primary);outline:none}.strategy-card ul:focus{background:var(--color-focus-bg)}.strategy-card li{margin-bottom:var(--spacing-xs)}body:not(.theme-dark).color-mode .cell-informational{background:var(--color-bg-info-subtle);border-color:var(--color-brand-blue)}body:not(.theme-dark).color-mode .cell-commercial{background:var(--color-semantic-reflection-bg);border-color:var(--color-semantic-reflection)}body:not(.theme-dark).color-mode .cell-transactional{background:var(--color-bg-success-subtle);border-color:var(--color-success)}body:not(.theme-dark).color-mode .cell-navigational{background:var(--color-bg-muted)}body:not(.theme-dark).color-mode .strategy-section .section-header .icon{color:var(--color-brand-blue)}body:not(.theme-dark).color-mode .cell-header .icon{color:var(--color-brand-blue)}body.theme-dark .stage-header,body.theme-dark .intent-cell,body.theme-dark .strategy-card{background:var(--color-bg-muted)}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .matrix-row,
+    .strategy-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社群画像卡 (Community Persona)</title>
+    <meta name="description" content="社群画像卡工具，帮助您深入分析社群用户特征、动机和行为，制定精准的社群运营策略。">
+    <meta name="keywords" content="社群画像,用户画像,社群运营,用户分析,社区管理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="社群画像卡 - Modiqi Workbench">
+    <meta property="og:description" content="深入分析社群用户特征、动机和行为，制定精准的社群运营策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/community-persona.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>社群画像卡</h1>
+                <span class="english-subtitle">Community Persona Card</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>社群名称 <span class="en-sub">(Community)</span></label>
+                    <input type="text" class="meta-input" value="我的社群" data-save-key="community_name" aria-label="community name">
+                </div>
+                <div class="meta-group">
+                    <label>画像类型 <span class="en-sub">(Type)</span></label>
+                    <select class="meta-select" data-save-key="persona_type" aria-label="persona type">
+                        <option>核心贡献者 (Creator)</option>
+                        <option>活跃参与者 (Contributor)</option>
+                        <option>潜水观察者 (Observer)</option>
+                        <option>潜在加入者 (Prospect)</option>
+                    </select>
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="persona-layout">
+
+            <!-- Left Col: Identity -->
+            <aside class="col-identity">
+                <div class="avatar-section">
+                    <div class="avatar-placeholder">
+                        <i data-lucide="user" class="avatar-icon"></i>
+                        <span class="upload-hint">上传/粘贴头像</span>
+                    </div>
+                </div>
+
+                <div class="identity-fields">
+                    <div class="field-group">
+                        <label>昵称 / 代号</label>
+                        <input type="text" class="id-input name-input" placeholder="Name/Alias"
+                            data-save-key="persona_name" aria-label="Name/Alias">
+                    </div>
+                    <div class="field-group">
+                        <label>职业 / 身份</label>
+                        <input type="text" class="id-input" placeholder="Role/Job" data-save-key="persona_role" aria-label="Role/Job">
+                    </div>
+                    <div class="field-group">
+                        <label>加入时长</label>
+                        <input type="text" class="id-input" placeholder="Time in Community"
+                            data-save-key="persona_time" aria-label="Time in Community">
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <i data-lucide="quote" class="quote-icon"></i>
+                    <div class="quote-text" contenteditable="true" data-placeholder="“在这里写一句最能代表他/她心声的话...”"></div>
+                </div>
+
+                <div class="tags-section">
+                    <label>标签 (Tags)</label>
+                    <div class="tags-container">
+                        <div class="tag" contenteditable="true">#活跃</div>
+                        <div class="tag" contenteditable="true">#专业</div>
+                        <div class="tag" contenteditable="true">#分享控</div>
+                        <div class="tag add-tag">+</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Middle Col: Psychology -->
+            <section class="col-psychology">
+                <!-- Motivations -->
+                <div class="card-block">
+                    <div class="block-header">
+                        <i data-lucide="heart" class="icon"></i>
+                        <h3>加入动机 (Motivations)</h3>
+                    </div>
+                    <div class="split-row">
+                        <div class="sub-block">
+                            <label>为什么加入？(Trigger)</label>
+                            <div class="text-area" contenteditable="true" data-placeholder="寻找资源、解决问题、寻找归属感..."></div>
+                        </div>
+                        <div class="sub-block">
+                            <label>为什么留下？(Retention)</label>
+                            <div class="text-area" contenteditable="true" data-placeholder="优质通过、人脉链接、个人成长..."></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain Points & Needs -->
+                <div class="card-block">
+                    <div class="block-header">
+                        <i data-lucide="frown" class="icon"></i>
+                        <h3>痛点与需求 (Pains & Needs)</h3>
+                    </div>
+                    <div class="list-container">
+                        <div class="list-item">
+                            <span class="bullet">•</span>
+                            <div contenteditable="true" class="list-text" data-placeholder="他在其他地方未被满足的需求是？"></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">•</span>
+                            <div contenteditable="true" class="list-text" data-placeholder="他在社群中遇到的最大障碍是？"></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">•</span>
+                            <div contenteditable="true" class="list-text" data-placeholder="..."></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Values -->
+                <div class="card-block">
+                    <div class="block-header">
+                        <i data-lucide="scale" class="icon"></i>
+                        <h3>共同价值观 (Shared Values)</h3>
+                    </div>
+                    <div class="text-area" contenteditable="true" data-placeholder="例如：开放分享、互助成长、长期主义..."></div>
+                </div>
+            </section>
+
+            <!-- Right Col: Behavior -->
+            <section class="col-behavior">
+                <!-- Participation -->
+                <div class="card-block">
+                    <div class="block-header">
+                        <i data-lucide="activity" class="icon"></i>
+                        <h3>参与习惯 (Participation)</h3>
+                    </div>
+                    <div class="field-row">
+                        <label>活跃时间段</label>
+                        <input type="text" class="line-input" placeholder="e.g. 工作日晚间" aria-label="工作日晚间">
+                    </div>
+                    <div class="field-row">
+                        <label>偏好平台</label>
+                        <input type="text" class="line-input" placeholder="e.g. 微信群, Discord" aria-label="微信群, Discord">
+                    </div>
+                    <div class="field-row">
+                        <label>内容偏好</label>
+                        <input type="text" class="line-input" placeholder="e.g. 干货文章, 线上直播" aria-label="干货文章, 线上直播">
+                    </div>
+                </div>
+
+                <!-- Contribution Matrix -->
+                <div class="card-block">
+                    <div class="block-header">
+                        <i data-lucide="gift" class="icon"></i>
+                        <h3>贡献力矩阵 (Contribution)</h3>
+                    </div>
+                    <div class="matrix-grid">
+                        <div class="matrix-item">
+                            <label>知识分享</label>
+                            <div class="rating-bar" data-score="4">
+                                <span class="fill"></span><span class="fill"></span><span class="fill"></span><span
+                                    class="fill"></span><span></span>
+                            </div>
+                        </div>
+                        <div class="matrix-item">
+                            <label>话题互动</label>
+                            <div class="rating-bar" data-score="3">
+                                <span class="fill"></span><span class="fill"></span><span
+                                    class="fill"></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="matrix-item">
+                            <label>拉新推荐</label>
+                            <div class="rating-bar" data-score="2">
+                                <span class="fill"></span><span
+                                    class="fill"></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="matrix-item">
+                            <label>活动组织</label>
+                            <div class="rating-bar" data-score="1">
+                                <span class="fill"></span><span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Engagement Strategy -->
+                <div class="card-block highlight-block">
+                    <div class="block-header">
+                        <i data-lucide="zap" class="icon"></i>
+                        <h3>激活策略 (Activation)</h3>
+                    </div>
+                    <div class="text-area-lg" contenteditable="true" data-placeholder="如何更好地服务和激活这类用户？
+1. ...
+2. ..."></div>
+                </div>
+            </section>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('community-persona');
+
+            // Rating Bar Interaction
+            document.querySelectorAll('.rating-bar').forEach(bar => {
+                bar.innerHTML = '<span></span><span></span><span></span><span></span><span></span>';
+                const spans = bar.querySelectorAll('span');
+                const updateBar = (score) => {
+                    spans.forEach((span, idx) => {
+                        if (idx < score) span.classList.add('fill');
+                        else span.classList.remove('fill');
+                    });
+                    bar.dataset.score = score;
+                };
+
+                // Init
+                updateBar(bar.dataset.score || 0);
+
+                // Click
+                spans.forEach((span, idx) => {
+                    span.addEventListener('click', () => updateBar(idx + 1));
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

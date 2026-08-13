@@ -1,0 +1,423 @@
+/* Competitor Analysis - Tool Specific Styles */
+/* Clean monochromatic design for A3 print */
+
+/* Main Layout */
+.analysis-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.75rem;
+    /* Reduced gap */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /* Ensure layout respects parent overflow */
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    /* Reduced margin */
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.3rem;
+    /* Reduced padding */
+}
+
+.section-header .icon {
+    width: 18px;
+    /* Slightly smaller icon */
+    height: 18px;
+    color: var(--color-border-strong);
+}
+
+.section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    /* Slightly smaller font */
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0;
+}
+
+/* Your Company Section */
+.your-company {
+    border: none;
+    padding: 0;
+}
+
+.company-card {
+    border: 1px solid var(--border-sem-outer);
+    padding: 0.75rem;
+    /* Reduced padding */
+    background: transparent;
+}
+
+.company-name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    /* Adjusted font size */
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+    /* Reduced margin */
+    outline: none;
+}
+
+.dimension-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border: 1px solid var(--border-sem-inner);
+}
+
+.dimension {
+    border-right: 1px solid var(--border-sem-inner);
+    padding: 0.5rem;
+    /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.dimension:last-child {
+    border-right: none;
+}
+
+.dim-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    border-bottom: 1px dotted var(--color-border-light);
+    padding-bottom: 0.1rem;
+}
+
+.dim-content {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    color: var(--color-brand-primary);
+    outline: none;
+    min-height: 2rem;
+    padding: 0.5rem;
+}
+
+.dim-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+.company-card:focus-within,
+.competitor-card:focus-within,
+.insight-card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Competitors Section */
+.competitors-section {
+    flex: 1;
+    /* Allow to expand but managed by parent flex */
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Important for flex child overflow */
+}
+
+.competitors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    /* Reduced gap */
+    flex: 1;
+}
+
+.competitor-card {
+    border: 1px solid var(--border-sem-outer);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.competitor-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    /* Reduced padding */
+    border-bottom: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+}
+
+.competitor-rank {
+    width: 20px;
+    /* Smaller rank badge */
+    height: 20px;
+    background: var(--color-brand-primary);
+    color: var(--color-bg-white);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.competitor-name {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    flex: 1;
+    color: var(--color-brand-primary);
+}
+
+.competitor-details {
+    padding: 0.75rem;
+    /* Reduced padding */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* Reduced gap */
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.detail-label {
+    font-size: 0.55rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.detail-content {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+    outline: none;
+    padding-bottom: 0.1rem;
+    border-bottom: 1px dotted var(--color-border-light);
+    padding: 0.35rem;
+}
+
+.detail-content:focus {
+    background-color: var(--color-focus-bg);
+    border-bottom-color: var(--color-brand-primary);
+}
+
+.threat-level {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    /* Reduced padding */
+    border-top: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+}
+
+.threat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    text-transform: uppercase;
+}
+
+.threat-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.threat-dots .dot {
+    width: 8px;
+    /* Smaller dots */
+    height: 8px;
+    border-radius: 0;
+    background: transparent;
+    border: 1px solid var(--color-brand-primary);
+}
+
+.threat-dots .dot.active {
+    background: var(--color-brand-primary);
+}
+
+/* Insights Section */
+.insights-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    /* Reduced gap */
+    /* Remove margin-top: auto to allow tighter packing */
+}
+
+.insight-card {
+    border: 1px solid var(--border-sem-outer);
+    padding: 0.75rem;
+    /* Reduced padding */
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.insight-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+    /* Reduced margin */
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.3rem;
+}
+
+.insight-header .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-brand-primary);
+}
+
+.insight-header h3 {
+    font-family: var(--font-header);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.insight-content {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--color-border-strong);
+    outline: none;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.insight-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .dimension-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .competitors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .insights-section {
+        grid-template-columns: 1fr;
+    }
+
+    .dimension {
+        border-right: none;
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+}
+
+/* Print Styles - Force Grid Layout */
+@media print {
+
+    /* Override responsive - force grid layouts */
+    .dimension-grid {
+        grid-template-columns: repeat(6, 1fr) !important;
+    }
+
+    .competitors-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .insights-section {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .dimension {
+        border-right: 1px solid var(--border-sem-inner) !important;
+        border-bottom: none !important;
+    }
+
+    .dimension:last-child {
+        border-right: none !important;
+    }
+
+    .company-card,
+    .competitor-card,
+    .insight-card {
+        border-width: 1pt;
+    }
+
+    .competitor-header,
+    .threat-level {
+        background: none !important;
+    }
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .company-card {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .competitor-card {
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .insight-card {
+    background-color: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .competitor-header,
+body:not(.theme-dark).color-mode .threat-level {
+    background-color: rgba(255, 255, 255, 0.4);
+    /* Lighten header to distinguish from card bg */
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .analysis-layout { overflow: visible; }
+    .dimension-grid, .competitors-grid, .insights-section { grid-template-columns: minmax(0, 1fr); }
+    .company-card, .competitor-card, .insight-card { min-width: 0; }
+}

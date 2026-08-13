@@ -1,0 +1,656 @@
+/* STP Strategy Canvas - Design System Aligned */
+/* 三栏横向布局：Segmentation → Targeting → Positioning */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.stp-layout {
+    display: flex;
+    flex: 1;
+    gap: 0;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   STP 面板通用样式
+   ======================================== */
+.stp-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-sem-outer);
+    background: var(--color-bg-paper);
+}
+
+.stp-pane:not(:last-of-type) {
+    border-right: none;
+}
+
+/* 面板头部 */
+.pane-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.pane-header .icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-primary);
+}
+
+.pane-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.pane-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+/* ========================================
+   连接箭头
+   ======================================== */
+.stp-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    flex-shrink: 0;
+    background: var(--color-bg-warm-light);
+    border-top: 1px solid var(--border-sem-outer);
+    border-bottom: 1px solid var(--border-sem-outer);
+}
+
+.stp-connector .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   Segmentation 市场细分
+   ======================================== */
+.segmentation-pane {
+    flex: 1.2;
+}
+
+.segment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--spacing-sm);
+    flex: 1;
+}
+
+.segment-card {
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-subtle);
+}
+
+.segment-card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+.segment-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.segment-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.segment-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.segment-content {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+    overflow-y: auto;
+}
+
+/* ========================================
+   Targeting 目标选择
+   ======================================== */
+.targeting-pane {
+    flex: 0.9;
+}
+
+/* 评估矩阵 */
+.targeting-matrix {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--spacing-md);
+}
+
+.matrix-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: var(--spacing-xs);
+}
+
+.matrix-label-y {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-align: center;
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    flex: 1;
+    border: 1px solid var(--border-sem-inner);
+    position: relative;
+}
+
+.matrix-quadrant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-sem-inner);
+    cursor: pointer;
+}
+
+.matrix-quadrant:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.quadrant-label {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.quadrant-en {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+/* 矩阵象限颜色 - 默认单色 */
+.matrix-quadrant.q1 {
+    background-color: var(--color-bg-subtle);
+}
+
+.matrix-quadrant.q2 {
+    background-color: var(--color-bg-muted);
+}
+
+.matrix-quadrant.q3 {
+    background-color: var(--color-bg-subtle);
+}
+
+.matrix-quadrant.q4 {
+    background-color: var(--color-bg-muted);
+}
+
+/* 彩色模式 */
+body.color-mode .matrix-quadrant.q1 {
+    background-color: var(--color-semantic-strength);
+}
+
+body.color-mode .matrix-quadrant.q2 {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body.color-mode .matrix-quadrant.q3 {
+    background-color: var(--color-semantic-neutral);
+}
+
+body.color-mode .matrix-quadrant.q4 {
+    background-color: var(--color-semantic-weakness);
+}
+
+.matrix-label-x {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: var(--spacing-xs);
+}
+
+/* 目标声明 */
+.target-statement {
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+}
+
+.statement-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+.statement-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.statement-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.statement-content {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+    min-height: 3em;
+}
+
+.statement-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Positioning 市场定位
+   ======================================== */
+.positioning-pane {
+    flex: 1.1;
+}
+
+/* 感知图 */
+.perceptual-map {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--spacing-md);
+}
+
+.map-title {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.map-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr auto;
+    gap: var(--spacing-xs);
+    flex: 1;
+}
+
+.map-axis-y {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.map-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 1px solid var(--border-sem-inner);
+    background: var(--color-bg-subtle);
+}
+
+.map-quadrant {
+    border: 1px dashed var(--border-sem-dashed);
+}
+
+.map-axis-x {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    padding-top: var(--spacing-xs);
+}
+
+/* 轴标签可编辑样式 */
+.axis-label-top,
+.axis-label-bottom,
+.axis-label-left,
+.axis-label-right {
+    outline: none;
+    border-bottom: 1px dashed transparent;
+}
+
+.axis-label-top:focus,
+.axis-label-bottom:focus,
+.axis-label-left:focus,
+.axis-label-right:focus {
+    border-bottom-color: var(--color-focus-border);
+}
+
+/* 品牌位置点 */
+.brand-dot {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    cursor: move;
+    z-index: 10;
+}
+
+.brand-dot:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* 品牌位置点 - 默认单色 */
+.brand-dot.our-brand {
+    background: var(--color-text-primary);
+    color: white;
+    border: 2px solid var(--color-text-primary);
+}
+
+.brand-dot.competitor-a {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-text-secondary);
+}
+
+.brand-dot.competitor-b {
+    background: var(--color-bg-muted);
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-text-secondary);
+}
+
+/* 彩色模式 */
+body.color-mode .brand-dot.our-brand {
+    background: var(--color-brand-blue);
+    border-color: var(--color-brand-blue-dark);
+}
+
+body.color-mode .brand-dot.competitor-a {
+    background: var(--color-bg-warm-medium);
+    border-color: var(--border-sem-inner);
+}
+
+body.color-mode .brand-dot.competitor-b {
+    background: var(--color-bg-warm-dark);
+    border-color: var(--border-sem-inner);
+}
+
+.dot-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+/* 定位声明 */
+.positioning-statement {
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+}
+
+.statement-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.statement-title .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.statement-template {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.template-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+.template-label {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+    min-width: 4em;
+}
+
+.template-input {
+    flex: 1;
+    color: var(--color-text-primary);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    outline: none;
+    padding: 2px 0;
+}
+
+.template-input:focus {
+    background-color: var(--color-focus-bg);
+    border-bottom-color: var(--color-focus-border);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .stp-pane {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .segment-card,
+body.theme-dark .target-statement,
+body.theme-dark .positioning-statement {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .stp-connector {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .map-grid {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .brand-dot.our-brand {
+    background: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+}
+
+body.theme-dark .brand-dot.competitor-a,
+body.theme-dark .brand-dot.competitor-b {
+    background: var(--color-bg-muted);
+    border-color: var(--color-text-secondary);
+}
+
+body.theme-dark.color-mode .brand-dot.our-brand {
+    background: var(--color-brand-blue);
+    border-color: var(--color-brand-blue-dark);
+}
+
+/* ========================================
+   Color Mode 彩色模式
+   ======================================== */
+body:not(.theme-dark).color-mode .segment-card[data-segment="demographic"] {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .segment-card[data-segment="geographic"] {
+    background-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .segment-card[data-segment="psychographic"] {
+    background-color: var(--color-semantic-jobs);
+}
+
+body:not(.theme-dark).color-mode .segment-card[data-segment="behavioral"] {
+    background-color: var(--color-semantic-product);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .stp-layout {
+        flex-direction: row !important;
+    }
+
+    .stp-connector {
+        background: transparent;
+        border: none;
+    }
+
+    .brand-dot {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .matrix-quadrant {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1200px) {
+    .stp-layout {
+        flex-direction: column;
+    }
+
+    .stp-pane {
+        border-right: 1px solid var(--border-sem-outer);
+        border-bottom: none;
+    }
+
+    .stp-pane:not(:last-of-type) {
+        border-bottom: none;
+    }
+
+    .stp-connector {
+        width: 100%;
+        height: 40px;
+        border-left: 1px solid var(--border-sem-outer);
+        border-right: 1px solid var(--border-sem-outer);
+        border-top: none;
+        border-bottom: none;
+    }
+
+    .stp-connector .icon {
+        transform: rotate(90deg);
+    }
+
+    .segment-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile composition: present S, T and P as one vertical planning flow. */
+@media screen and (max-width: 768px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .stp-layout {
+        flex-direction: column;
+    }
+
+    .stp-pane,
+    .segment-card,
+    .target-statement,
+    .positioning-statement {
+        min-width: 0;
+    }
+
+    .segment-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    .segment-content {
+        min-height: 7rem;
+        overflow: visible;
+        overflow-wrap: anywhere;
+    }
+
+    .targeting-matrix,
+    .perceptual-map {
+        min-height: 20rem;
+    }
+
+    .map-container {
+        min-height: 17rem;
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .template-row {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .template-input,
+    .statement-content,
+    .axis-label-top,
+    .axis-label-bottom,
+    .axis-label-left,
+    .axis-label-right {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}

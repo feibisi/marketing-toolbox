@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同理心地图 (Empathy Map)</title>
+    <meta name="description" content="同理心地图工具，帮助您深入理解用户的所想、所见、所说、所做和所听，建立用户同理心。">
+    <meta name="keywords" content="同理心地图,移情图,用户研究,UX设计,用户体验">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="同理心地图 - Modiqi Workbench">
+    <meta property="og:description" content="深入理解用户的所想、所见、所说、所做和所听，建立用户同理心。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/empathy-map.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>同理心地图</h1>
+                <span class="english-subtitle">Empathy Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>用户 <span class="en-sub">(User)</span></label>
+                    <input type="text" class="meta-input" placeholder="目标用户" data-save-key="meta_user" aria-label="目标用户">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="empathy-container">
+            <!-- Center Image -->
+            <div class="center-head">
+                <img src="https://cn.cravatar.com/avatar/00000000000000000000000000000000?s=80&d=mp" alt="User Avatar"
+                    class="head-icon" id="avatarImg">
+            </div>
+
+            <!-- Quadrants -->
+            <div class="quadrant top">
+                <div class="q-header">
+                    <i data-lucide="brain"></i>
+                    想法与感觉 <span class="en-sub">(Thinks & Feels)</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="thinks_feels">
+                    <ul>
+                        <li>真正重要的是什么？</li>
+                        <li>主要的担忧和愿望是什么？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quadrant right">
+                <div class="q-header">
+                    <i data-lucide="eye"></i>
+                    所见 <span class="en-sub">(Sees)</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="sees">
+                    <ul>
+                        <li>环境如何？</li>
+                        <li>朋友在做什么？</li>
+                        <li>市场提供了什么？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quadrant bottom">
+                <div class="q-header">
+                    <i data-lucide="message-square-quote"></i>
+                    言语与行为 <span class="en-sub">(Says & Does)</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="says_does">
+                    <ul>
+                        <li>公开场合说了什么？</li>
+                        <li>表现出什么样的行为？</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quadrant left">
+                <div class="q-header">
+                    <i data-lucide="ear"></i>
+                    所听 <span class="en-sub">(Hears)</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="hears">
+                    <ul>
+                        <li>朋友说什么？</li>
+                        <li>老板/影响者说什么？</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer: Pains & Gains -->
+        <div class="empathy-footer">
+            <div class="footer-box">
+                <div class="f-header">
+                    <i data-lucide="frown"></i>
+                    痛点 <span class="en-sub">(Pains)</span>
+                </div>
+                <div class="f-content" contenteditable="true" data-save-key="pains" data-strategic-id="customer_pains">
+                    <ul>
+                        <li>恐惧、挫折、障碍</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-box">
+                <div class="f-header">
+                    <i data-lucide="smile-plus"></i>
+                    收获 <span class="en-sub">(Gains)</span>
+                </div>
+                <div class="f-content" contenteditable="true" data-save-key="gains" data-strategic-id="customer_goals">
+                    <ul>
+                        <li>需求、愿望、成功指标</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/md5.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('empathy_map_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // Read avatar from user-persona's localStorage
+            const avatarImg = document.getElementById('avatarImg');
+            const savedEmail = localStorage.getItem('modiqi_persona_v2_email');
+
+            if (savedEmail) {
+                const hash = md5(savedEmail.toLowerCase());
+                avatarImg.src = `https://cn.cravatar.com/avatar/${hash}?s=80&d=mp`;
+            }
+        });
+    </script>
+</body>
+
+</html>

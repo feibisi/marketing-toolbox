@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM 工作台 - Modiqi Workbench</title>
+    <meta name="description" content="SEM 工作台 - 包含PPC预算规划、广告文案架构、关键词组合、质量度诊断等7个搜索引擎营销工具">
+    <meta name="keywords" content="SEM,PPC,搜索引擎营销,广告文案,关键词工具,质量度,A/B测试,否定关键词,竞价计算">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SEM 工作台 - Modiqi Workbench">
+    <meta property="og:description" content="包含PPC预算规划、广告文案架构、关键词组合、质量度诊断等7个搜索引擎营销工具">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">SEM 工作台</h1>
+                    <span class="version-tag">7 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <!-- 英文副标题 -->
+                <p class="brand-subtitle">Search Engine Marketing Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. PPC Budget Planner -->
+            <a href="ppc-budget-planner.html" class="tool-card">
+                <i data-lucide="calculator" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">预算</div>
+                    <!-- Visual: Budget Chart/Bars -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Chart Area -->
+                        <rect x="20" y="20" width="160" height="80" fill="#f8fafc" stroke="#e2e8f0" />
+
+                        <!-- Forecast Lines -->
+                        <polyline points="20,100 60,80 100,50 140,30 180,20" fill="none" stroke="#94a3b8"
+                            stroke-width="2" />
+                        <polyline points="20,100 60,90 100,70 140,60 180,50" fill="none" stroke="#cbd5e1"
+                            stroke-width="2" stroke-dasharray="4 2" />
+
+                        <!-- Metric Blocks -->
+                        <rect x="20" y="110" width="45" height="15" rx="2" fill="#e2e8f0" />
+                        <rect x="75" y="110" width="45" height="15" rx="2" fill="#e2e8f0" />
+                        <rect x="135" y="110" width="45" height="15" rx="2" fill="#64748b" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">PPC 预算规划器 <span class="en-sub">(PPC Budget Planner)</span></h3>
+                    <p class="tool-desc">估算投入产出比与流量成本。</p>
+                </div>
+            </a>
+
+            <!-- 2. Ad Copy Architect -->
+            <a href="ad-copy-architect.html" class="tool-card">
+                <i data-lucide="pen-tool" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">创意</div>
+                    <!-- Visual: Ad Preview -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Ad Container -->
+                        <rect x="20" y="20" width="160" height="100" rx="4" fill="#fff" stroke="#e2e8f0"
+                            stroke-width="1" />
+
+                        <!-- Headline -->
+                        <rect x="30" y="35" width="100" height="8" rx="2" fill="#64748b" />
+
+                        <!-- URL -->
+                        <rect x="30" y="50" width="60" height="6" rx="2" fill="#cbd5e1" />
+
+                        <!-- Description -->
+                        <rect x="30" y="65" width="140" height="6" rx="2" fill="#94a3b8" />
+                        <rect x="30" y="75" width="120" height="6" rx="2" fill="#94a3b8" />
+
+                        <!-- Call to Action Button Mock -->
+                        <rect x="30" y="95" width="40" height="12" rx="2" fill="#e2e8f0" stroke="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">广告文案架构师 <span class="en-sub">(Ad Copy Architect)</span></h3>
+                    <p class="tool-desc">撰写高转化率的搜索与社媒广告。</p>
+                </div>
+            </a>
+
+            <!-- 3. Keyword Mixer -->
+            <a href="keyword-mixer.html" class="tool-card">
+                <i data-lucide="merge" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">工具</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Visualization of mixing lists -->
+                        <rect x="30" y="30" width="40" height="60" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="35" y="35" width="30" height="4" rx="1" fill="#e2e8f0" />
+                        <rect x="35" y="45" width="20" height="4" rx="1" fill="#e2e8f0" />
+
+                        <rect x="80" y="30" width="40" height="60" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <rect x="85" y="35" width="25" height="4" rx="1" fill="#e2e8f0" />
+                        <rect x="85" y="45" width="30" height="4" rx="1" fill="#e2e8f0" />
+
+                        <!-- Arrow -->
+                        <path d="M130 60 L145 60" stroke="#94a3b8" stroke-width="2" />
+                        <path d="M145 60 L140 55 M145 60 L140 65" stroke="#94a3b8" stroke-width="2" />
+
+                        <!-- Result stack -->
+                        <rect x="155" y="40" width="30" height="40" rx="2" fill="#cbd5e1" />
+                        <rect x="160" y="50" width="20" height="2" rx="1" fill="#fff" />
+                        <rect x="160" y="60" width="20" height="2" rx="1" fill="#fff" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">关键词组合工具 <span class="en-sub">(Keyword Mixer)</span></h3>
+                    <p class="tool-desc">快速生成海量关键词组合与匹配模式。</p>
+                </div>
+            </a>
+
+            <!-- 4. Quality Score Diagnostic -->
+            <a href="quality-score.html" class="tool-card">
+                <i data-lucide="activity" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">诊断</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Score Circle -->
+                        <circle cx="100" cy="60" r="30" fill="none" stroke="#fecaca" stroke-width="6" />
+                        <path d="M70 60 A 30 30 0 0 1 100 30" fill="none" stroke="#dc2626" stroke-width="6" />
+                        <text x="100" y="70" text-anchor="middle" font-size="24" font-weight="bold"
+                            fill="#dc2626">3</text>
+
+                        <!-- Factors -->
+                        <rect x="30" y="105" width="40" height="6" rx="2" fill="#fecaca" />
+                        <rect x="80" y="105" width="40" height="6" rx="2" fill="#fecaca" />
+                        <rect x="130" y="105" width="40" height="6" rx="2" fill="#bfdbfe" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">质量度诊断卡 <span class="en-sub">(Quality Score)</span></h3>
+                    <p class="tool-desc">针对低分词的优化建议清单。</p>
+                </div>
+            </a>
+
+            <!-- 5. Ad Copy A/B Tester -->
+            <a href="ad-copy-ab-tester.html" class="tool-card">
+                <i data-lucide="split" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">测试</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Split Screen -->
+                        <rect x="20" y="30" width="75" height="80" rx="2" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="105" y="30" width="75" height="80" rx="2" fill="#fff" stroke="#f59e0b" />
+                        <path d="M100 20 L100 120" stroke="#cbd5e1" stroke-dasharray="4 2" />
+
+                        <!-- Content -->
+                        <rect x="30" y="40" width="55" height="5" rx="1" fill="#cbd5e1" />
+                        <rect x="30" y="50" width="40" height="5" rx="1" fill="#e2e8f0" />
+
+                        <rect x="115" y="40" width="55" height="5" rx="1" fill="#fcd34d" />
+                        <rect x="115" y="50" width="40" height="5" rx="1" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">广告 A/B 测试器 <span class="en-sub">(A/B Tester)</span></h3>
+                    <p class="tool-desc">可视化对比两版广告文案效果。</p>
+                </div>
+            </a>
+
+            <!-- 6. Negative Keyword Manager -->
+            <a href="negative-keyword-manager.html" class="tool-card">
+                <i data-lucide="shield-off" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">清洗</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- List -->
+                        <rect x="50" y="30" width="100" height="80" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="60" y="40" width="60" height="6" rx="2" fill="#fecaca" />
+                        <rect x="60" y="55" width="40" height="6" rx="2" fill="#fecaca" />
+                        <rect x="60" y="70" width="80" height="6" rx="2" fill="#e2e8f0" />
+                        <circle cx="130" cy="43" r="3" fill="#ef4444" />
+                        <circle cx="130" cy="58" r="3" fill="#ef4444" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">否定关键词清洗 <span class="en-sub">(Negative Manager)</span></h3>
+                    <p class="tool-desc">快速清洗搜索词报告，生成否定词表。</p>
+                </div>
+            </a>
+
+            <!-- 7. Bid Calculator -->
+            <a href="bid-calculator.html" class="tool-card">
+                <i data-lucide="trending-up" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">竞价</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Sliders -->
+                        <line x1="40" y1="50" x2="140" y2="50" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="90" cy="50" r="4" fill="#3b82f6" />
+
+                        <line x1="40" y1="80" x2="140" y2="80" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="120" cy="80" r="4" fill="#3b82f6" />
+
+                        <!-- Big Number -->
+                        <text x="160" y="70" text-anchor="middle" font-size="20" font-weight="bold"
+                            fill="#1e293b">¥</text>
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">智能竞价计算器 <span class="en-sub">(Bid Wizard)</span></h3>
+                    <p class="tool-desc">基于 ROAS 目标计算最大可用 CPC。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

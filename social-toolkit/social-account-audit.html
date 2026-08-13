@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交媒体账号体检 (Social Media Audit)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/social-audit.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>社交媒体账号体检</h1>
+                <span class="english-subtitle">Social Media Account Audit</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>审计日期</label>
+                    <input type="date" class="meta-input" aria-label="Input field">
+                </div>
+            </div>
+        </header>
+
+        <div class="audit-container">
+
+            <!-- 1. Platform Health Cards -->
+            <div class="platform-grid">
+
+                <!-- WeChat -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon"><i data-lucide="message-square"></i> WeChat</div>
+                        <div class="health-score" id="score-wechat">80</div>
+                    </div>
+
+                    <div class="check-item">
+                        <span>Official Verification (认证)</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Profile Logo Consistent</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Menu Links Active</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Welcome Message Set</span>
+                        <i data-lucide="check-circle" class="check-status" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                </div>
+
+                <!-- RED (Xiaohongshu) -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon"><i data-lucide="book-open"></i> RED / Xiaohongshu</div>
+                        <div class="health-score" id="score-red">100</div>
+                    </div>
+
+                    <div class="check-item">
+                        <span>Pro Account (企业号)</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Bio Keyword Optimized</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Pinned Posts (置顶)</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Collection Created</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                </div>
+
+                <!-- TikTok / Douyin -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon"><i data-lucide="video"></i> Douyin / TikTok</div>
+                        <div class="health-score" id="score-douyin">60</div>
+                    </div>
+
+                    <div class="check-item">
+                        <span>Blue V Verification</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Bio Link Tool</span>
+                        <i data-lucide="check-circle" class="check-status" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Cover Style Consistent</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                    <div class="check-item">
+                        <span>Store / Cart Linked</span>
+                        <i data-lucide="check-circle" class="check-status is-checked" onclick="toggleCheck(this)" role="button" tabindex="0"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 2. Profile Consistency Check -->
+            <div class="bio-section">
+                <div class="canvas-section-title">
+                    <i data-lucide="scan-line"></i> 资料一致性检查 (Consistency Check)
+                </div>
+
+                <div class="bio-check-row header-row">
+                    <div>Platform</div>
+                    <div>Bio / Description</div>
+                    <div>Link</div>
+                    <div>Status</div>
+                </div>
+
+                <div class="bio-check-row">
+                    <div>WeChat</div>
+                    <input class="bio-input" value="Leading Digital Strategy Toolbox provider." aria-label="Input field">
+                    <input class="bio-input" value="modiqi.com" aria-label="Input field">
+                    <select class="status-select" aria-label="Selection">
+                        <option>OK</option>
+                        <option>Fix</option>
+                    </select>
+                </div>
+                <div class="bio-check-row">
+                    <div>RED</div>
+                    <input class="bio-input" value="Modiqi | 你的数字营销军火库" aria-label="Input field">
+                    <input class="bio-input" value="linktr.ee/modiqi" aria-label="Input field">
+                    <select class="status-select" aria-label="Selection">
+                        <option>OK</option>
+                        <option>Fix</option>
+                    </select>
+                </div>
+                <div class="bio-check-row">
+                    <div>Douyin</div>
+                    <input class="bio-input" value="关注Modiqi，获取最新营销工具" aria-label="Input field">
+                    <input class="bio-input" value="shop.douyin...123" aria-label="Input field">
+                    <select class="status-select" aria-label="Selection">
+                        <option style="color:red">Fix</option>
+                        <option>OK</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('social_audit');
+            lucide.createIcons();
+        });
+
+        function toggleCheck(el) {
+            el.classList.toggle('is-checked');
+            updateScore(el.closest('.platform-card'));
+        }
+
+        function updateScore(card) {
+            const checks = card.querySelectorAll('.check-status');
+            const checked = card.querySelectorAll('.check-status.is-checked');
+            const scoreDisplay = card.querySelector('.health-score');
+
+            const score = Math.round((checked.length / checks.length) * 100);
+            scoreDisplay.innerText = score;
+
+            if (score === 100) scoreDisplay.style.color = '#10b981';
+            else if (score >= 75) scoreDisplay.style.color = '#3b82f6';
+            else if (score >= 50) scoreDisplay.style.color = '#f59e0b';
+            else scoreDisplay.style.color = '#ef4444';
+        }
+    </script>
+</body>
+
+</html>

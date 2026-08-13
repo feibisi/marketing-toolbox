@@ -1,0 +1,206 @@
+/* AI Workflow Builder Layout */
+.workflow-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Swimlanes Grid */
+.swimlane-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+.lane-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.lane-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-bg-paper);
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
+
+.lane-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-brand-primary);
+}
+
+/* Workflow Cards */
+.flow-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    cursor: grab;
+}
+
+.flow-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-brand-primary);
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    border: none;
+    background: transparent;
+    width: 80%;
+}
+
+.card-title:focus {
+    outline: none;
+    text-decoration: underline;
+}
+
+.card-badge {
+    font-size: 9px;
+    padding: 2px 4px;
+    border-radius: 0;
+    background: var(--color-bg-subtle);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.card-content {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    min-height: 40px;
+    resize: none;
+    border: none;
+    background: transparent;
+    line-height: 1.4;
+}
+
+.card-content:focus {
+    outline: none;
+    background: var(--color-bg-input);
+}
+
+.add-card-btn {
+    padding: 8px;
+    border: 1px dashed var(--border-sem-dashed);
+    border-radius: 0;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    background: transparent;
+    font-size: var(--font-size-sm);
+}
+
+.add-card-btn:hover {
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    background: var(--color-bg-paper);
+}
+
+/* Process Arrows (Visual only, CSS tricks) */
+.flow-card::after {
+    content: '→';
+    position: absolute;
+    right: -18px;
+    /* Half of gap */
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--border-sem-dashed);
+    font-weight: bold;
+    display: none;
+    /* Only show if not last lane? Hard to target via CSS alone without JS logic or structure assumptions */
+}
+
+/* Specific Lane Styles */
+.lane-input .lane-header {
+    border-bottom-color: var(--color-text-tertiary);
+}
+
+.lane-ai .lane-header {
+    border-bottom-color: var(--color-semantic-reflection);
+}
+
+.lane-human .lane-header {
+    border-bottom-color: var(--color-semantic-danger);
+}
+
+.lane-output .lane-header {
+    border-bottom-color: var(--color-semantic-growth);
+}
+
+/* Dark Mode */
+body.theme-dark .lane-col {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .flow-card {
+    background: var(--color-bg-paper);
+    /* Keep it slightly lighter/darker */
+}
+
+body.theme-dark .card-content:focus {
+    background: var(--color-bg-hover);
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .workflow-container { min-height: 0; }
+    .swimlane-grid { grid-template-columns: minmax(0, 1fr); }
+    .lane-col { min-width: 0; }
+}

@@ -1,0 +1,320 @@
+/* Brand Essence Wheel Layout */
+.wheel-container {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+.essence-wheel {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+}
+
+.wheel-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-sem-inner);
+    background: var(--color-bg-paper);
+}
+
+.layer-1 {
+    width: 80px;
+    height: 80px;
+    z-index: 5;
+}
+
+.layer-2 {
+    width: 140px;
+    height: 140px;
+    z-index: 4;
+}
+
+.layer-3 {
+    width: 200px;
+    height: 200px;
+    z-index: 3;
+}
+
+.layer-4 {
+    width: 260px;
+    height: 260px;
+    z-index: 2;
+}
+
+.layer-5 {
+    width: 320px;
+    height: 320px;
+    z-index: 1;
+}
+
+.layer-content {
+    padding: var(--spacing-xs);
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    word-break: break-word;
+}
+
+.layer-1 .layer-content {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+}
+
+.layer-2 .layer-content {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.wheel-layer:hover {
+    border-color: var(--border-sem-input-hover);
+    box-shadow: 0 0 0 4px var(--color-bg-hover);
+}
+
+.wheel-layer:focus-within {
+    outline: none;
+    border-color: var(--color-focus-border);
+    box-shadow: 0 0 0 4px var(--color-focus-bg);
+}
+
+.wheel-legend {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    flex: 1;
+    max-width: 400px;
+}
+
+.legend-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.legend-marker {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    border: 2px solid var(--border-sem-inner);
+    background: var(--color-bg-paper);
+    flex-shrink: 0;
+}
+
+.legend-text {
+    flex: 1;
+}
+
+.legend-text h4 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 2px 0;
+}
+
+.legend-en {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin: 0 0 4px 0;
+}
+
+.legend-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: var(--line-height-relaxed);
+}
+
+/* Brand Notes */
+.brand-notes {
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    flex-shrink: 0;
+}
+
+.notes-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.notes-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.notes-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.notes-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xs);
+    border-radius: 0;
+    border: 1px solid transparent;
+}
+
+.notes-content:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.notes-content:focus {
+    outline: none;
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+/* Dark Theme */
+body.theme-dark .wheel-layer {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .brand-notes {
+    background: var(--color-bg-muted);
+}
+
+/* Color Mode */
+body:not(.theme-dark).color-mode .layer-1 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .layer-2 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .layer-3 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .layer-4 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .layer-5 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .marker-1 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .marker-2 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .marker-3 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .marker-4 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+body:not(.theme-dark).color-mode .marker-5 {
+    border-color: var(--color-brand-blue);
+    background: var(--color-bg-info-subtle);
+}
+
+/* Print Styles */
+@media print {
+    .wheel-container {
+        page-break-inside: avoid;
+    }
+
+    .brand-notes {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .wheel-container {
+        flex-direction: column;
+    }
+
+    .essence-wheel {
+        width: 300px;
+        height: 300px;
+    }
+
+    .layer-1 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .layer-2 {
+        width: 105px;
+        height: 105px;
+    }
+
+    .layer-3 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .layer-4 {
+        width: 195px;
+        height: 195px;
+    }
+
+    .layer-5 {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}

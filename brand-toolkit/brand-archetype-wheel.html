@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌原型轮盘 (Brand Archetype Wheel)</title>
+    <meta name="description" content="选择品牌原型,定义品牌个性和沟通风格">
+    <meta name="keywords" content="品牌原型,品牌个性,品牌定位,品牌策略,12原型">
+    <meta property="og:title" content="品牌原型轮盘 - Modiqi Workbench">
+    <meta property="og:description" content="选择品牌原型,定义品牌个性和沟通风格">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/brand-archetype-wheel.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌原型轮盘</h1>
+                <span class="english-subtitle">Brand Archetype Wheel</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="品牌名称" data-save-key="meta_brand"
+                        data-strategic-id="brand_name" aria-label="品牌名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+        <div class="tool-content">
+            <div class="wheel-main-layout">
+                <!-- Interactive Wheel Container -->
+                <div class="wheel-container">
+                    <div class="archetype-wheel">
+                        <div class="wheel-slice" data-archetype="innocent" style="--i:0"><span>天真者</span></div>
+                        <div class="wheel-slice" data-archetype="sage" style="--i:1"><span>智者</span></div>
+                        <div class="wheel-slice" data-archetype="explorer" style="--i:2"><span>探险家</span></div>
+                        <div class="wheel-slice" data-archetype="outlaw" style="--i:3"><span>叛逆者</span></div>
+                        <div class="wheel-slice" data-archetype="magician" style="--i:4"><span>魔术师</span></div>
+                        <div class="wheel-slice" data-archetype="hero" style="--i:5"><span>英雄</span></div>
+                        <div class="wheel-slice" data-archetype="lover" style="--i:6"><span>情人</span></div>
+                        <div class="wheel-slice" data-archetype="jester" style="--i:7"><span>小丑</span></div>
+                        <div class="wheel-slice" data-archetype="everyman" style="--i:8"><span>凡人</span></div>
+                        <div class="wheel-slice" data-archetype="caregiver" style="--i:9"><span>照顾者</span></div>
+                        <div class="wheel-slice" data-archetype="ruler" style="--i:10"><span>统治者</span></div>
+                        <div class="wheel-slice" data-archetype="creator" style="--i:11"><span>创造者</span></div>
+                        <div class="wheel-center">
+                            <i data-lucide="compass"></i>
+                            <div class="center-text">请选择</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Explanation Panel -->
+                <div class="archetype-info-panel" id="archetypeInfo">
+                    <div class="info-placeholder">
+                        <i data-lucide="mouse-pointer-click"></i>
+                        <p>点击轮盘查看详细原型解析</p>
+                    </div>
+                    <div class="info-content" style="display:none;">
+                        <div class="info-header">
+                            <h2 id="infoTitle">智者 Sage</h2>
+                            <p id="infoDesc">智慧、真理、专业</p>
+                        </div>
+                        <div class="info-body">
+                            <div class="info-row">
+                                <span class="info-label">核心动机 (Desire)</span>
+                                <span class="info-val" id="infoDesire">发现真理</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">核心恐惧 (Fear)</span>
+                                <span class="info-val" id="infoFear">被误导或无知</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">品牌策略 (Strategy)</span>
+                                <span class="info-val" id="infoStrategy">使用智慧和分析</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">代表性品牌 (Examples)</span>
+                                <span class="info-val" id="infoExamples">Google, BBC, 中新社</span>
+                            </div>
+                        </div>
+                        <button class="btn-select-archetype" id="btnSelectPrimary" type="button">设定为主要原型</button>
+                    </div>
+                </div>
+            </div>
+            <div class="selection-section">
+                <div class="section-header">
+                    <i data-lucide="check-circle" class="icon"></i>
+                    <h2>品牌原型选择 <span class="en-sub">(Your Selection)</span></h2>
+                </div>
+                <div class="selection-content">
+                    <div class="selection-field">
+                        <label>主要原型 Primary</label>
+                        <input type="text" class="selection-input" placeholder="选择主要原型"
+                            data-save-key="primary_archetype" data-strategic-id="primary_archetype" aria-label="选择主要原型">
+                    </div>
+                    <div class="selection-field">
+                        <label>次要原型 Secondary</label>
+                        <input type="text" class="selection-input" placeholder="选择次要原型(可选)"
+                            data-save-key="secondary_archetype" aria-label="选择次要原型(可选)">
+                    </div>
+                    <div class="selection-field full-width">
+                        <label>品牌个性描述 Brand Personality</label>
+                        <textarea class="selection-textarea" rows="3" placeholder="基于选择的原型,描述品牌个性..."
+                            data-save-key="personality_desc" data-strategic-id="brand_persona" aria-label="基于选择的原型,描述品牌个性..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/brand-archetype-wheel.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_archetype_wheel_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

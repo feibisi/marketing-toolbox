@@ -1,0 +1,1227 @@
+/* ============================================
+   MODIQI LAUNCHER STYLES
+   Self-contained stylesheet for toolkit launchers
+   ============================================ */
+
+body {
+    background-color: var(--color-bg-warm-light, #EAE8E3);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    color: var(--color-text-primary, #2C2C2C);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px;
+}
+
+.main-container,
+.launcher-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header */
+.launcher-header {
+    width: 100%;
+    margin-bottom: 60px;
+    padding: 24px 0;
+    position: relative;
+    /* Clean separator */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    /* Three-column layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hero-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero-logo {
+    height: 48px;
+    width: auto;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
+}
+
+/* Legacy support for brand-lockup */
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-img {
+    height: 64px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-title {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-brand-primary, #1a1a1a);
+    line-height: 1.2;
+}
+
+/* Title row with version tag */
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-subtitle {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-text-muted, #888);
+    margin: 4px 0 0 0;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Badge */
+.hero-badge {
+    display: flex;
+    align-items: center;
+}
+
+.version-tag {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: #94a3b8;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 3px 8px;
+    border-radius: 99px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* Landscape Grid */
+.launcher-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    column-gap: 40px;
+    row-gap: 60px;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.tool-card {
+    background-color: transparent;
+    /* Changed from white to allow stacking control */
+    aspect-ratio: 1.414;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    /* Box shadow and border moved to ::after */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-sizing: border-box;
+    /* Removed overflow:hidden to let the rotated layer poke out */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    isolation: isolate;
+    /* Create new stacking context */
+}
+
+/* The Rotated "Cute" Back Layer */
+.tool-card::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    transform-origin: center center;
+    transform: rotate(4deg) scale(0.98);
+    inset: 0px;
+    background: var(--color-bg-card-layer, #f8fafc);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.06);
+    border-image: initial;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* The Main Card Surface */
+.tool-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Content Layering */
+.mini-preview,
+.card-meta,
+.paper-icon {
+    position: relative;
+    z-index: 10;
+}
+
+.paper-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.tool-card:hover {
+    transform: translateY(-6px);
+}
+
+.tool-card:hover::before {
+    transform: rotate(8deg) scale(1) translate(4px, 2px);
+    background: var(--color-bg-hover, #f1f5f9);
+}
+
+.tool-card:hover::after {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 
+   HIGH FIDELITY MINIATURES 
+*/
+.mini-preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 20px;
+    /* Increased space */
+    position: relative;
+    overflow: hidden;
+    /* Add inner subtle border/shadow for depth */
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #64748b;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 20;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Shared Graphic Elements - Mini Preview Sketch Styles */
+.sk-line {
+    background: var(--color-bg-warm-dark);
+    height: 1px;
+    width: 100%;
+    margin: 2px 0;
+}
+
+.sk-block {
+    background: var(--color-bg-warm-medium);
+    border: 1px solid var(--color-bg-warm-dark);
+}
+
+.sk-circle {
+    border-radius: 50%;
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--color-bg-warm-dark);
+}
+
+.sk-text {
+    height: 3px;
+    background: var(--color-bg-warm-dark);
+    border-radius: 1px;
+    margin-bottom: 3px;
+    width: 80%;
+}
+
+.sk-text.short {
+    width: 40%;
+}
+
+.sk-text.title {
+    height: 5px;
+    background: var(--color-border-strong);
+    margin-bottom: 6px;
+    width: 50%;
+}
+
+/* 1. Customer Journey Specifics */
+.journey-grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    gap: 4px;
+}
+
+.journey-stages {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.journey-curve {
+    position: relative;
+    border-bottom: 1px dashed #dbd8d3;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.curve-point {
+    width: 6px;
+    height: 6px;
+    background: #c9c5c0;
+    border-radius: 50%;
+}
+
+.journey-swimlanes {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* 2. SWOT Specifics */
+.swot-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    gap: 4px;
+    position: relative;
+}
+
+.swot-quad {
+    background: #f5f3f0;
+    border: 1px solid #dbd8d3;
+    position: relative;
+    padding: 4px;
+}
+
+.swot-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #FFF;
+    border: 1px solid #c9c5c0;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* 3. Persona Specifics */
+.persona-layout {
+    display: flex;
+    height: 100%;
+    gap: 8px;
+}
+
+.persona-sidebar {
+    width: 25%;
+    background: #f5f3f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+    gap: 4px;
+}
+
+.persona-main {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 4px;
+}
+
+.persona-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #d5d2cd;
+}
+
+/* 4. Value Prop Specifics */
+.v-canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 8px;
+}
+
+.v-square {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #dbd8d3;
+    background: #f5f3f0;
+    position: relative;
+}
+
+.v-circle {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #dbd8d3;
+    background: #f5f3f0;
+    border-radius: 50%;
+    position: relative;
+}
+
+.v-inner-line {
+    position: absolute;
+    background: #dbd8d3;
+}
+
+/* Specific internal divisions */
+.v-square .cross-v {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+}
+
+.v-square .cross-h {
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+}
+
+.v-circle .peace-sign {
+    /* Simplified 3-way split */
+}
+
+/* 5. Empathy Map Specifics */
+.empathy-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 4px;
+}
+
+.empathy-top {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empathy-head {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #c9c5c0;
+    border-radius: 50%;
+    background: #FFF;
+    z-index: 2;
+}
+
+.empathy-quads {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.e-quad {
+    border: 1px dashed #dbd8d3;
+}
+
+.empathy-bottom {
+    height: 20%;
+    display: flex;
+    gap: 4px;
+}
+
+.e-bar {
+    flex: 1;
+    border: 1px solid #dbd8d3;
+    background: #f5f3f0;
+}
+
+/* 6. Marketing Canvas Specifics (Lean Canvas style) */
+.m-canvas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    gap: 2px;
+    height: 100%;
+    border: 1px solid #dbd8d3;
+    background: #dbd8d3;
+}
+
+.m-cell {
+    background: #FFF;
+    position: relative;
+}
+
+.m-cell.tall {
+    grid-row: span 2;
+}
+
+/* Problem, Solution, etc */
+.m-cell.wide {
+    grid-column: span 1;
+}
+
+/* Special layout for lean canvas: 5 cols. 
+   1(Problem-tall), 2(Solution-split), 3(UVP-tall), 4(Unfair-split), 5(Segment-tall)
+   Bottom: Cost, Revenue
+*/
+.lean-row-top {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 2px;
+    height: 100%;
+}
+
+.lean-row-bottom {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    height: 100%;
+}
+
+/* 7. Content Calendar Specifics */
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto repeat(4, 1fr);
+    gap: 1px;
+    background: #dbd8d3;
+    border: 1px solid #dbd8d3;
+    height: 100%;
+}
+
+.cal-header {
+    background: #ebe8e4;
+    height: 6px;
+}
+
+.cal-day {
+    background: #FFF;
+    position: relative;
+}
+
+.cal-event {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    right: 1px;
+    height: 2px;
+    background: #d5d2cd;
+    border-radius: 1px;
+}
+
+.cal-event.blue {
+    background: #D1D5DB;
+}
+
+.card-meta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: 1px solid #ebe8e4;
+    padding-top: 12px;
+    width: 100%;
+    text-align: left;
+}
+
+.tool-title {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--color-brand-primary, #111);
+}
+
+.tool-title .en-sub {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.65em;
+    font-weight: 400;
+    color: #94a3b8;
+    margin-left: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.tool-desc {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.8rem;
+    color: var(--color-text-muted, #888);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.paper-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #E5E7EB;
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.8rem;
+    color: var(--color-text-muted, #94a3b8);
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.version-info {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-family: var(--font-mono, monospace);
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-link {
+    color: var(--color-text-muted, #94a3b8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-brand-primary, #1e293b);
+}
+
+.footer-divider {
+    color: rgba(0, 0, 0, 0.1);
+}
+
+/* Widescreen adjustments for footer */
+body.widescreen-mode .footer-content {
+    max-width: 100%;
+}
+
+/* Aliases for compatibility */
+.launcher-logo {
+    height: 64px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.launcher-title-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.launcher-title {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-brand-primary, #1a1a1a);
+    line-height: 1.1;
+}
+
+.launcher-subtitle {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.8rem;
+    color: var(--color-text-muted, #666);
+    margin: 6px 0 0 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Tool Icon in Cards */
+.tool-icon {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #E5E7EB;
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .launcher-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 40px 20px;
+    }
+
+    .launcher-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-container,
+    .launcher-container {
+        padding: 0 20px;
+    }
+
+    .launcher-header {
+        margin-bottom: 40px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .brand-lockup {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .brand-title,
+    .launcher-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* ============================================
+   WIDESCREEN TOGGLE BUTTON
+   ============================================ */
+
+.widescreen-toggle {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    padding: 0;
+    margin-left: 4px;
+}
+
+.widescreen-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #64748b;
+}
+
+.widescreen-toggle:active {
+    transform: scale(0.95);
+}
+
+.widescreen-toggle svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Strategy Mode Switcher Button */
+.mode-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: #1a1a1a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mode-switch-btn:hover {
+    background: #333;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.mode-switch-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+body.theme-dark .mode-switch-btn {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-main);
+}
+
+
+body.widescreen-mode .widescreen-toggle:hover {
+    background: var(--color-brand-blue-dark, #3d4c7f);
+    color: white;
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+
+.theme-toggle {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    padding: 0;
+    margin-left: 4px;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #64748b;
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ============================================
+   WIDESCREEN MODE CONTAINER
+   ============================================ */
+
+body.widescreen-mode .main-container,
+body.widescreen-mode .launcher-container {
+    max-width: 1800px;
+}
+
+/* Adjust grid for wider screens in widescreen mode */
+body.widescreen-mode .launcher-grid {
+    /* Keep default card size (340px), just allow more columns */
+    /* Only adjust container width effectively */
+}
+
+/* ============================================
+   THEME SUPPORT
+   ============================================ */
+
+/* Dark Theme */
+body.theme-dark {
+    background-color: var(--color-bg-desk);
+    background-image: none;
+    color: #e5e5e5;
+}
+
+body.theme-dark .launcher-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .brand-title,
+body.theme-dark .launcher-title {
+    color: #ffffff;
+}
+
+body.theme-dark .brand-subtitle {
+    color: #a0a0a0;
+}
+
+body.theme-dark .version-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e5e5e5;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Logo inversion in dark mode */
+body.theme-dark .hero-logo {
+    filter: invert(1) grayscale(1);
+}
+
+body.theme-dark .tool-card {
+    background: #1e1e1e;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .tool-card::after {
+    background: #1e1e1e;
+}
+
+body.theme-dark .tool-card:hover {
+    background: #252525;
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.theme-dark .tool-card:hover::after {
+    background: #252525;
+}
+
+body.theme-dark .card-meta {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .tool-title {
+    color: #ffffff;
+}
+
+body.theme-dark .tool-desc {
+    color: #a0a0a0;
+}
+
+body.theme-dark .card-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e5e5e5;
+}
+
+body.theme-dark .mini-preview {
+    background: #2d2d2d;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* SVG elements in dark mode */
+body.theme-dark .mini-preview svg rect[fill="#fff"] {
+    fill: #1e1e1e;
+}
+
+body.theme-dark .mini-preview svg rect[fill="#f8fafc"],
+body.theme-dark .mini-preview svg rect[fill="#f1f5f9"] {
+    fill: #2d2d2d;
+}
+
+body.theme-dark .mini-preview svg rect[fill="#e2e8f0"],
+body.theme-dark .mini-preview svg circle[fill="#e2e8f0"],
+body.theme-dark .mini-preview svg path[fill="#e2e8f0"] {
+    fill: #404040;
+}
+
+body.theme-dark .mini-preview svg rect[fill="#cbd5e1"],
+body.theme-dark .mini-preview svg circle[fill="#cbd5e1"],
+body.theme-dark .mini-preview svg path[fill="#cbd5e1"] {
+    fill: #525252;
+}
+
+body.theme-dark .mini-preview svg rect[fill="#94a3b8"],
+body.theme-dark .mini-preview svg circle[fill="#94a3b8"],
+body.theme-dark .mini-preview svg path[fill="#94a3b8"] {
+    fill: #666666;
+}
+
+body.theme-dark .mini-preview svg [stroke="#e2e8f0"] {
+    stroke: #404040;
+}
+
+body.theme-dark .mini-preview svg [stroke="#cbd5e1"] {
+    stroke: #525252;
+}
+
+body.theme-dark .mini-preview svg [stroke="#94a3b8"] {
+    stroke: #666666;
+}
+
+body.theme-dark .mini-preview svg text {
+    fill: #a0a0a0;
+}
+
+body.theme-dark .site-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .copyright,
+body.theme-dark .version-info,
+body.theme-dark .footer-link {
+    color: #a0a0a0;
+}
+
+body.theme-dark .footer-link:hover {
+    color: #ffffff;
+}
+
+body.theme-dark .theme-toggle,
+body.theme-dark .widescreen-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+}
+
+body.theme-dark .theme-toggle:hover,
+body.theme-dark .widescreen-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+body.theme-dark .widescreen-toggle.is-active {
+    background: rgba(78, 96, 159, 0.3);
+    border-color: rgba(78, 96, 159, 0.5);
+}
+
+body.theme-dark .en-sub {
+    color: #808080;
+}
+
+body.theme-dark .paper-icon {
+    color: #666666;
+}
+
+/* ============================================
+   TOOLKIT INVENTORY MODE (A3 Landscape Paper)
+   Mimics the actual tool canvas ratio (A3 Landscape).
+   ============================================ */
+
+.launcher-grid.inventory-mode {
+    display: grid;
+    /* Wide columns for A3 Landscape feel */
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    column-gap: 32px;
+    row-gap: 40px;
+    padding-top: 10px;
+}
+
+.launcher-grid.inventory-mode .tool-card {
+    /* ISO A-series Landscape Ratio (approx 1.414) */
+    aspect-ratio: 1.414 / 1;
+    min-height: auto;
+    /* Remove fixed height, rely on ratio */
+
+    transform: none !important;
+    transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 0;
+
+    background: #FFFFFF;
+    /* Pure white paper */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    /* Paper border */
+    border-radius: 2px;
+    /* Sharp paper corners */
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.launcher-grid.inventory-mode .tool-card::before {
+    display: none;
+}
+
+/* Hover: Lift the paper sheet */
+.launcher-grid.inventory-mode .tool-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* 
+   LAYOUT: 
+   Top 75%: Canvas Preview (The "Content")
+   Bottom 25%: Meta (The "Label")
+*/
+
+.launcher-grid.inventory-mode .mini-preview {
+    margin: 0;
+    width: 100%;
+    flex: 3;
+    /* Takes up 3/4 of space */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 2px 2px 0 0;
+
+    background: var(--color-bg-subtle, #f9fafb);
+    /* Restore original subtle background */
+    /* Removed dot grid to match original look better */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Restore Original SVG Appearance */
+.launcher-grid.inventory-mode .mini-preview svg {
+    width: 85%;
+    height: 85%;
+    transform: scale(0.95);
+    transition: transform 0.4s ease;
+    /* No grayscale filters - keep original colors */
+}
+
+.launcher-grid.inventory-mode .tool-card:hover .mini-preview svg {
+    transform: scale(1.0);
+    /* Slight zoom on hover */
+}
+
+/* Bottom Label Section */
+.launcher-grid.inventory-mode .card-meta {
+    flex: 1;
+    /* Takes up 1/4 of space */
+    padding: 16px 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 0 2px 2px;
+}
+
+/* Typography */
+.launcher-grid.inventory-mode .tool-title {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1a1a1a);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.launcher-grid.inventory-mode .tool-desc {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary, #666);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Badge - Minimalist, inside preview */
+.launcher-grid.inventory-mode .card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: #666;
+    font-size: 0.6rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 2px;
+    z-index: 20;
+    backdrop-filter: blur(2px);
+}
+
+/* Icon - Minimalist */
+.launcher-grid.inventory-mode .paper-icon {
+    display: block;
+    top: auto;
+    bottom: 12px;
+    /* Positioned in meta area or bottom of preview? Let's put in meta area */
+    right: 16px;
+    position: absolute;
+    /* Absolute relative to card */
+    color: #cbd5e1;
+    width: 18px;
+    height: 18px;
+    opacity: 0;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.launcher-grid.inventory-mode .tool-card:hover .paper-icon {
+    opacity: 1;
+    color: var(--color-brand-primary, #1a1a1a);
+}
+
+/* Dark Mode Overrides */
+body.theme-dark .launcher-grid.inventory-mode .tool-card {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+body.theme-dark .launcher-grid.inventory-mode .mini-preview {
+    background: #252525;
+    border-bottom-color: #333;
+}
+
+body.theme-dark .launcher-grid.inventory-mode .card-meta {
+    background: #1e1e1e;
+}
+
+body.theme-dark .launcher-grid.inventory-mode .card-badge {
+    background: rgba(30, 30, 30, 0.9);
+    border-color: #444;
+    color: #aaa;
+}
+
+/* No filters on SVG in dark mode either, unless they were there originally. 
+   Usually we might want to invert if they are dark-on-light designed SVGs. 
+   Checking original logic: Hub style had specific fill overrides. 
+   Here we rely on inherent SVG colors or previous overrides. 
+   Let's keep standard behavior. */

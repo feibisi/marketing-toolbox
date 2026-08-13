@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌故事模板 (Brand Story Template)</title>
+    <meta name="description" content="品牌故事模板工具，帮助您構建引人入胜的品牌叙事，包含黄金圈法则和品牌叙事弧。">
+    <meta name="keywords" content="品牌故事,品牌叙事,黄金圈,电梯演讲,品牌文化">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="品牌故事模板 - Modiqi Workbench">
+    <meta property="og:description" content="構建引人入胜的品牌叙事，包含黄金圈法则和品牌叙事弧。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/brand-story.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a4">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌故事模板</h1>
+                <span class="english-subtitle">Brand Story Template</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" value="我的品牌" data-save-key="brand_name" aria-label="brand name">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+                <div class="meta-group">
+                    <label>讲述人 <span class="en-sub">(Storyteller)</span></label>
+                    <input type="text" class="meta-input" data-save-key="meta_storyteller" aria-label="storyteller">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="story-layout">
+
+            <!-- Left: Golden Circle -->
+            <div class="golden-circle-container">
+                <div class="circle-header">
+                    <i data-lucide="target" class="icon"></i>
+                    <h2>黄金圈法则 <span class="en-label">The Golden Circle</span></h2>
+                </div>
+
+                <div class="golden-circle-graphic">
+                    <!-- WHY -->
+                    <div class="circle-layer why-layer">
+                        <span class="layer-title">WHY</span>
+                        <div class="layer-content" contenteditable="true" data-placeholder="为什么存在？&#10;核心信念/使命"></div>
+                    </div>
+                    <!-- HOW -->
+                    <div class="circle-layer how-layer">
+                        <span class="layer-title">HOW</span>
+                        <div class="layer-content" contenteditable="true" data-placeholder="如何实现？&#10;独特方法/价值主张"></div>
+                    </div>
+                    <!-- WHAT -->
+                    <div class="circle-layer what-layer">
+                        <span class="layer-title">WHAT</span>
+                        <div class="layer-content" contenteditable="true" data-placeholder="做什么？&#10;产品/服务"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Story Narrative -->
+            <div class="narrative-container">
+                <div class="narrative-header">
+                    <i data-lucide="book-open" class="icon"></i>
+                    <h2>品牌叙事流 <span class="en-label">Brand Narrative Arc</span></h2>
+                </div>
+
+                <div class="story-arc">
+                    <!-- 1. Origin -->
+                    <div class="arc-card origin">
+                        <div class="card-header">
+                            <span class="step-num">01</span>
+                            <h3>起源 (Origin)</h3>
+                        </div>
+                        <div class="card-body">
+                            <label>一切是如何开始的？</label>
+                            <div class="story-input" contenteditable="true" data-placeholder="描述创始故事、初衷或触发时刻..."></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Challenge -->
+                    <div class="arc-card challenge">
+                        <div class="card-header">
+                            <span class="step-num">02</span>
+                            <h3>挑战 (Challenge)</h3>
+                        </div>
+                        <div class="card-body">
+                            <label>发现了什么问题或冲突？</label>
+                            <div class="story-input" contenteditable="true"
+                                data-placeholder="描述市场痛点、未被满足的需求或现有解决方案的缺陷..."></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Solution/Guide -->
+                    <div class="arc-card solution">
+                        <div class="card-header">
+                            <span class="step-num">03</span>
+                            <h3>方案 (Solution)</h3>
+                        </div>
+                        <div class="card-body">
+                            <label>我们如何解决它？</label>
+                            <div class="story-input" contenteditable="true"
+                                data-placeholder="描述产品/服务的独特之处，以及它是如何改变现状的..."></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Transformation -->
+                    <div class="arc-card transformation">
+                        <div class="card-header">
+                            <span class="step-num">04</span>
+                            <h3>愿景 (Vision)</h3>
+                        </div>
+                        <div class="card-body">
+                            <label>世界因此有了什么不同？</label>
+                            <div class="story-input" contenteditable="true"
+                                data-placeholder="描述品牌带来的最终改变、客户的成功或美好的未来..."></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- One-Liner Summary -->
+                <div class="elevator-pitch-section">
+                    <div class="pitch-header">
+                        <i data-lucide="mic-2" class="icon-sm"></i>
+                        <h3>电梯演讲 (Elevator Pitch)</h3>
+                    </div>
+                    <div class="pitch-input" contenteditable="true" data-placeholder="用 30 秒概括你的品牌故事..."></div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('brand-story');
+        });
+    </script>
+</body>
+
+</html>

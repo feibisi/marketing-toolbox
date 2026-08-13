@@ -1,0 +1,485 @@
+/* ========================================
+   Segmentation Engine Specific Styles
+   Modiqi Design System Compliant
+   - No border-radius (tool pages use sharp corners)
+   ======================================== */
+
+/* Override paper-a3 with Grid for vertical layout control */
+.paper-a3 {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "bottom"
+        "footer";
+}
+
+.paper-a3>.canvas-header {
+    grid-area: header;
+}
+
+.paper-a3>.segmentation-layout {
+    grid-area: main;
+    min-height: 0;
+    /* Remove overflow:hidden to allow interaction */
+}
+
+.paper-a3>.action-plan {
+    grid-area: bottom;
+}
+
+.paper-a3>.modiqi-footer {
+    grid-area: footer;
+}
+
+/* Main Layout: Sidebar + Content */
+.segmentation-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: var(--spacing-lg);
+}
+
+/* ========================================
+   CRITERIA PANEL (Left Sidebar)
+   ======================================== */
+
+.criteria-panel {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius - per design system */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.criteria-panel .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.criteria-panel .section-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Criteria Groups */
+.criteria-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.criteria-group:last-child {
+    margin-bottom: 0;
+}
+
+.criteria-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.criteria-title i {
+    width: 12px;
+    height: 12px;
+    color: var(--color-text-tertiary);
+}
+
+.criteria-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) 0;
+    font-size: var(--font-size-xs);
+}
+
+.criteria-item input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: var(--color-text-secondary);
+}
+
+.criteria-item label {
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    line-height: 1.3;
+}
+
+.criteria-item:hover label {
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   SEGMENT MATRIX (Main Content)
+   ======================================== */
+
+.segment-matrix {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    /* No border-radius - per design system */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.segment-matrix .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-sem-inner);
+    flex-shrink: 0;
+}
+
+.segment-matrix .section-header h3 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Legend */
+.matrix-legend {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 0;
+    /* Exception: dots/badges can be round */
+    background: var(--color-text-tertiary);
+}
+
+/* Color mode: show colored dots */
+body.color-mode .dot.vip {
+    background: var(--color-brand-blue);
+}
+
+body.color-mode .dot.active {
+    background: var(--color-semantic-growth);
+}
+
+body.color-mode .dot.risk {
+    background: var(--color-semantic-alert);
+}
+
+body.color-mode .dot.lost {
+    background: var(--color-semantic-danger);
+}
+
+/* Matrix Grid */
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    flex: 1;
+    min-height: 0;
+}
+
+/* ========================================
+   SEGMENT CARDS
+   ======================================== */
+
+.segment-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius - per design system */
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.segment-card:hover {
+    border-color: var(--color-text-tertiary);
+}
+
+/* Monochrome default, colored in color-mode */
+body.color-mode .segment-card.vip {
+    border-color: var(--color-brand-blue);
+    background: var(--color-focus-bg);
+}
+
+body.color-mode .segment-card.active {
+    border-color: var(--color-semantic-growth);
+    background: var(--color-semantic-growth-bg);
+}
+
+body.color-mode .segment-card.risk {
+    border-color: var(--color-semantic-alert);
+    background: var(--color-semantic-alert-bg);
+}
+
+body.color-mode .segment-card.lost {
+    border-color: var(--color-semantic-danger);
+    background: var(--color-bg-danger-subtle);
+}
+
+.segment-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.segment-header i {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* Color mode: colored icons */
+body.color-mode .segment-card.vip .segment-header i {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode .segment-card.active .segment-header i {
+    color: var(--color-semantic-growth);
+}
+
+body.color-mode .segment-card.risk .segment-header i {
+    color: var(--color-semantic-alert);
+}
+
+body.color-mode .segment-card.lost .segment-header i {
+    color: var(--color-semantic-danger);
+}
+
+.segment-header h4 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Segment Stats */
+.segment-stats {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background: var(--color-bg-subtle);
+    /* No border-radius - per design system */
+}
+
+.stat {
+    flex: 1;
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.stat-label {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+/* Segment Description */
+.segment-desc {
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Action Tags */
+.segment-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.action-tag {
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: var(--font-weight-medium);
+    /* No border-radius - per design system */
+    background: var(--color-bg-muted);
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+}
+
+/* ========================================
+   ACTION PLAN (Bottom Section)
+   ======================================== */
+
+.action-plan {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    /* No border-radius - per design system */
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.action-plan .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.action-plan .section-header h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.plan-item {
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+}
+
+.plan-item strong {
+    display: block;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.plan-item span {
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .criteria-panel,
+    .segment-matrix,
+    .action-plan {
+        border-width: 0.5pt;
+    }
+
+    .segment-card {
+        border-width: 0.5pt;
+        page-break-inside: avoid;
+    }
+
+    .matrix-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+    .segmentation-layout {
+        grid-template-columns: 220px 1fr;
+    }
+
+    .matrix-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .plan-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .segmentation-layout,
+    .matrix-grid,
+    .plan-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    .criteria-panel,
+    .segment-card {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}

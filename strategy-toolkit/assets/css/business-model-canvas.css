@@ -1,0 +1,200 @@
+/* Business Model Canvas - Tool Specific Styles */
+
+/* 9-Box Canvas Layout */
+/* 9-Box Canvas Layout */
+.bmc-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid var(--border-sem-outer);
+}
+
+/* Individual Blocks */
+.bmc-block {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.bmc-block:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+}
+
+.bmc-block:focus-within {
+    box-shadow: none;
+    background-color: var(--color-focus-bg);
+}
+
+/* Remove right border on last column (col 5) */
+.bmc-segments {
+    border-right: none;
+}
+
+/* Remove bottom border on last row (row 3) */
+.bmc-costs,
+.bmc-revenue {
+    border-bottom: none;
+}
+
+/* Block spanning configurations */
+/* Key Partners: Col 1, Row 1-2 */
+.bmc-partners {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* Key Activities: Col 2, Row 1 */
+.bmc-activities {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Key Resources: Col 2, Row 2 */
+.bmc-resources {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* Value Propositions: Col 3, Row 1-2 */
+.bmc-value {
+    grid-column: 3;
+    grid-row: 1 / 3;
+}
+
+/* Customer Relationships: Col 4, Row 1 */
+.bmc-relationships {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+/* Channels: Col 4, Row 2 */
+.bmc-channels {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+/* Customer Segments: Col 5, Row 1-2 */
+.bmc-segments {
+    grid-column: 5;
+    grid-row: 1 / 3;
+}
+
+/* Cost Structure: Col 1-2, Row 3 */
+.bmc-costs {
+    grid-column: 1 / 3;
+    grid-row: 3;
+}
+
+/* Revenue Streams: Col 3-5, Row 3 */
+.bmc-revenue {
+    grid-column: 3 / 6;
+    grid-row: 3;
+    border-right: none;
+}
+
+/* Block Header */
+.bmc-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.bmc-header .icon {
+    width: 14px;
+    height: 14px;
+}
+
+/* Block Content */
+.bmc-content {
+    flex: 1;
+    outline: none;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-y: auto;
+    padding: 1em;
+}
+
+.bmc-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .bmc-value {
+    background-color: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .bmc-segments {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .bmc-costs {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .bmc-revenue {
+    background-color: var(--color-semantic-strength);
+}
+
+/* Secondary areas can be neutral or have subtle shift */
+body:not(.theme-dark).color-mode .bmc-partners,
+body:not(.theme-dark).color-mode .bmc-activities,
+body:not(.theme-dark).color-mode .bmc-resources,
+body:not(.theme-dark).color-mode .bmc-relationships,
+body:not(.theme-dark).color-mode .bmc-channels {
+    background-color: var(--color-semantic-neutral);
+}
+
+/* Mobile composition: the desktop 5-column board becomes a readable sequence. */
+@media screen and (max-width: 768px) {
+    main.paper-a3 {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .bmc-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    .bmc-block,
+    .bmc-partners,
+    .bmc-activities,
+    .bmc-resources,
+    .bmc-value,
+    .bmc-relationships,
+    .bmc-channels,
+    .bmc-segments,
+    .bmc-costs,
+    .bmc-revenue {
+        grid-column: 1;
+        grid-row: auto;
+        min-width: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+
+    .bmc-revenue {
+        border-bottom: none;
+    }
+
+    .bmc-content {
+        min-height: 7rem;
+        overflow: visible;
+        overflow-wrap: anywhere;
+    }
+}

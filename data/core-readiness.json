@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "source": "canonical core tools from data/tools.json",
+  "summary": {
+    "smoke": 30,
+    "contract": 0,
+    "fixture": 0,
+    "reviewed": 0,
+    "release": 0
+  },
+  "tools": [
+    {
+      "path": "analytics-toolkit/ab-test-planner.html",
+      "tool_id": "analytics-toolkit:ab-test-planner",
+      "workflow_id": "measurement-growth",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 0,
+        "form_controls": 7,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "analytics-toolkit/funnel-diagnosis.html",
+      "tool_id": "analytics-toolkit:funnel-diagnosis",
+      "workflow_id": "measurement-growth",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 0,
+        "form_controls": 7,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "analytics-toolkit/kpi-dashboard.html",
+      "tool_id": "analytics-toolkit:kpi-dashboard",
+      "workflow_id": "measurement-growth",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 0,
+        "form_controls": 5,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "analytics-toolkit/measurement-plan.html",
+      "tool_id": "analytics-toolkit:measurement-plan",
+      "workflow_id": "measurement-growth",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 3,
+        "form_controls": 1,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "analytics-toolkit/roi-calculator.html",
+      "tool_id": "analytics-toolkit:roi-calculator",
+      "workflow_id": "measurement-growth",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 11,
+        "form_controls": 12,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "behavior-toolkit/customer-journey.html",
+      "tool_id": "behavior-toolkit:customer-journey",
+      "workflow_id": "audience-positioning",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 32,
+        "form_controls": 2,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "behavior-toolkit/empathy-map.html",
+      "tool_id": "behavior-toolkit:empathy-map",
+      "workflow_id": "audience-positioning",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 8,
+        "form_controls": 2,
+        "strategic_fields": 2,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "brand-toolkit/brand-messaging.html",
+      "tool_id": "brand-toolkit:brand-messaging",
+      "workflow_id": "brand-narrative",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 3,
+        "form_controls": 12,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "brand-toolkit/brand-positioning-map.html",
+      "tool_id": "brand-toolkit:brand-positioning-map",
+      "workflow_id": "audience-positioning",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 5,
+        "form_controls": 7,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "brand-toolkit/brand-story.html",
+      "tool_id": "brand-toolkit:brand-story",
+      "workflow_id": "brand-narrative",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 3,
+        "form_controls": 3,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "brand-toolkit/jtbd-canvas.html",
+      "tool_id": "brand-toolkit:jtbd-canvas",
+      "workflow_id": "audience-positioning",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 21,
+        "form_controls": 2,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "brand-toolkit/positioning-statement.html",
+      "tool_id": "brand-toolkit:positioning-statement",
+      "workflow_id": "brand-narrative",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 7,
+        "form_controls": 1,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "brand-toolkit/tone-voice.html",
+      "tool_id": "brand-toolkit:tone-voice",
+      "workflow_id": "brand-narrative",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 6,
+        "form_controls": 6,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "content-toolkit/content-audit.html",
+      "tool_id": "content-toolkit:content-audit",
+      "workflow_id": "content-operations",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 1,
+        "form_controls": 7,
+        "strategic_fields": 0,
+        "example_hook": true,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "content-toolkit/content-calendar.html",
+      "tool_id": "content-toolkit:content-calendar",
+      "workflow_id": "content-operations",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 14,
+        "form_controls": 1,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "content-toolkit/content-performance.html",
+      "tool_id": "content-toolkit:content-performance",
+      "workflow_id": "content-operations",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 1,
+        "form_controls": 1,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "content-toolkit/content-strategy-canvas.html",
+      "tool_id": "content-toolkit:content-strategy-canvas",
+      "workflow_id": "content-operations",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 6,
+        "form_controls": 6,
+        "strategic_fields": 3,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "customer-toolkit/user-persona.html",
+      "tool_id": "customer-toolkit:user-persona",
+      "workflow_id": "audience-positioning",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 17,
+        "form_controls": 11,
+        "strategic_fields": 5,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "sales-toolkit/lead-scoring.html",
+      "tool_id": "sales-toolkit:lead-scoring",
+      "workflow_id": "go-to-market",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 3,
+        "form_controls": 3,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "sales-toolkit/quote-calculator.html",
+      "tool_id": "sales-toolkit:quote-calculator",
+      "workflow_id": "go-to-market",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 3,
+        "form_controls": 17,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "seo-toolkit/technical-seo-audit.html",
+      "tool_id": "seo-toolkit:technical-seo-audit",
+      "workflow_id": "content-operations",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 6,
+        "form_controls": 5,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "social-toolkit/utm-builder.html",
+      "tool_id": "social-toolkit:utm-builder",
+      "workflow_id": "go-to-market",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 0,
+        "form_controls": 6,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/business-model-canvas.html",
+      "tool_id": "strategy-toolkit:business-model-canvas",
+      "workflow_id": "strategy-alignment",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 11,
+        "form_controls": 2,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/gtm-strategy.html",
+      "tool_id": "strategy-toolkit:gtm-strategy",
+      "workflow_id": "go-to-market",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 32,
+        "form_controls": 2,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/landscape-map.html",
+      "tool_id": "strategy-toolkit:landscape-map",
+      "workflow_id": "strategy-alignment",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 32,
+        "form_controls": 4,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/okr-cascade.html",
+      "tool_id": "strategy-toolkit:okr-cascade",
+      "workflow_id": "strategy-alignment",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 4,
+        "form_controls": 6,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/stp-canvas.html",
+      "tool_id": "strategy-toolkit:stp-canvas",
+      "workflow_id": "audience-positioning",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 17,
+        "form_controls": 3,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/strategic-roadmap.html",
+      "tool_id": "strategy-toolkit:strategic-roadmap",
+      "workflow_id": "strategy-alignment",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 35,
+        "form_controls": 2,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/swot-analysis.html",
+      "tool_id": "strategy-toolkit:swot-analysis",
+      "workflow_id": "strategy-alignment",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 7,
+        "form_controls": 2,
+        "strategic_fields": 5,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    },
+    {
+      "path": "strategy-toolkit/value-proposition.html",
+      "tool_id": "strategy-toolkit:value-proposition",
+      "workflow_id": "strategy-alignment",
+      "validation_level": "smoke",
+      "review_status": "draft",
+      "signals": {
+        "shared_runtime": true,
+        "persistable_fields": 9,
+        "form_controls": 3,
+        "strategic_fields": 0,
+        "example_hook": false,
+        "evidence_ui": false,
+        "business_fixture": false
+      }
+    }
+  ]
+}

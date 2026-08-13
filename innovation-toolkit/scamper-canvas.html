@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAMPER 创意工具 (Ideation Tool)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/scamper-canvas.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>SCAMPER 创意工具</h1>
+                <span class="english-subtitle">Ideation Technique</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>现有产品</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Coffee Mug" aria-label="Coffee Mug">
+                </div>
+            </div>
+        </header>
+
+        <div class="scamper-container">
+
+            <!-- S: Substitute -->
+            <div class="scamper-card card-s">
+                <div class="scamper-header">
+                    <div class="scamper-letter">S</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">替代 (Substitute)</div>
+                        <div class="scamper-desc">材料、规则、成分、人员...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_s">
+                    <!-- Textareas will be injected -->
+                </div>
+            </div>
+
+            <!-- C: Combine -->
+            <div class="scamper-card card-c">
+                <div class="scamper-header">
+                    <div class="scamper-letter">C</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">合并 (Combine)</div>
+                        <div class="scamper-desc">功能、受众、用途...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_c"></div>
+            </div>
+
+            <!-- A: Adapt -->
+            <div class="scamper-card card-a">
+                <div class="scamper-header">
+                    <div class="scamper-letter">A</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">调整 (Adapt)</div>
+                        <div class="scamper-desc">模仿、借鉴其他领域...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_a"></div>
+            </div>
+
+            <!-- M: Modify -->
+            <div class="scamper-card card-m">
+                <div class="scamper-header">
+                    <div class="scamper-letter">M</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">修改 (Modify)</div>
+                        <div class="scamper-desc">放大、缩小、改变形状...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_m"></div>
+            </div>
+
+            <!-- P: Put -->
+            <div class="scamper-card card-p">
+                <div class="scamper-header">
+                    <div class="scamper-letter">P</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">其他用途 (Put)</div>
+                        <div class="scamper-desc">针对不同人群、场景...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_p"></div>
+            </div>
+
+            <!-- E: Eliminate -->
+            <div class="scamper-card card-e">
+                <div class="scamper-header">
+                    <div class="scamper-letter">E</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">消除 (Eliminate)</div>
+                        <div class="scamper-desc">去掉非必要、简化...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_e"></div>
+            </div>
+
+            <!-- R: Reverse -->
+            <div class="scamper-card card-r">
+                <div class="scamper-header">
+                    <div class="scamper-letter">R</div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">反向 (Reverse)</div>
+                        <div class="scamper-desc">重组、颠倒顺序...</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_r"></div>
+            </div>
+
+            <!-- Summary -->
+            <div class="scamper-card card-summary">
+                <div class="scamper-header">
+                    <div class="scamper-letter"><i data-lucide="lightbulb" style="width:18px;"></i></div>
+                    <div class="scamper-title-group">
+                        <div class="scamper-title">Top Ideas</div>
+                        <div class="scamper-desc">最有潜力的创意集合</div>
+                    </div>
+                </div>
+                <div class="scamper-content" id="box_summary"></div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('scamper_canvas');
+            lucide.createIcons();
+
+            // Init Inputs
+            const sections = ['box_s', 'box_c', 'box_a', 'box_m', 'box_p', 'box_e', 'box_r', 'box_summary'];
+            sections.forEach(id => {
+                const container = document.getElementById(id);
+                addInputRow(container, 5);
+            });
+        });
+
+        function addInputRow(container, count) {
+            for (let i = 0; i < count; i++) {
+                const input = document.createElement('textarea');
+                input.className = 'idea-bullet';
+                input.rows = 1;
+                input.placeholder = '• Idea...';
+
+                // Auto resize
+                input.addEventListener('input', function () {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+
+                container.appendChild(input);
+            }
+        }
+    </script>
+</body>
+
+</html>

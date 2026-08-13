@@ -1,0 +1,240 @@
+/* Customer Journey Map Styles */
+
+.journey-grid {
+    display: grid;
+    /* Label col + 5 Stage cols */
+    grid-template-columns: 160px repeat(5, 1fr);
+    gap: 2px;
+    background: var(--color-border-main);
+    /* Gap acts as border */
+    border: 2px solid var(--color-border-main);
+    margin-top: var(--spacing-lg);
+}
+
+.journey-header,
+.journey-lane {
+    display: contents;
+    /* Allows children to participate in the main grid */
+}
+
+/* Header Cells */
+.journey-header .lane-label {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-md);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border-light);
+}
+
+.journey-header .stage-col {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+.stage-col h3 {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--color-text-primary);
+}
+
+.stage-col .stage-desc {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+}
+
+/* Lane Labels */
+.journey-lane .lane-label {
+    background: var(--color-bg-white);
+    padding: var(--spacing-md);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--color-border-light);
+}
+
+.sub-label {
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+}
+
+/* Lane Cells */
+.lane-cell {
+    background: #fff;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    min-height: 100px;
+}
+
+.lane-cell ul {
+    padding-left: 16px;
+    margin: 0;
+}
+
+.lane-cell li {
+    margin-bottom: 4px;
+}
+
+/* Special Styling for Thinking Bubbles */
+.lane-thinking .lane-cell {
+    font-style: italic;
+    color: var(--color-text-secondary);
+}
+
+.bubble-bg {
+    position: relative;
+    background: #fdfbf7;
+}
+
+/* Feeling Lane (Curve) */
+.lane-feeling .lane-label {
+    background: var(--color-bg-white);
+}
+
+/* Spanning cell for the curve chart */
+.chart-cell-wrapper {
+    grid-column: 2 / -1;
+    /* Span all stage columns */
+    background: #fff;
+    position: relative;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.emotion-curve {
+    width: 100%;
+    height: 100px;
+    overflow: visible;
+}
+
+.curve-path {
+    stroke: var(--color-brand-primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: d 0.3s ease;
+}
+
+.curve-point {
+    fill: #fff;
+    stroke: var(--color-brand-primary);
+    stroke-width: 2;
+    cursor: grab;
+}
+
+.curve-point:hover {
+    fill: var(--color-brand-primary);
+}
+
+.emoji-controls {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    border-top: 1px dashed var(--color-border-light);
+}
+
+.emoji-slider-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    border-right: 1px dashed var(--color-border-light);
+}
+
+.emoji-slider-box:last-child {
+    border-right: none;
+}
+
+.e-slider {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Touchpoints */
+.lane-touchpoints .lane-cell {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Opportunities */
+.lane-opps .lane-cell {
+    background: #f0fdf4;
+    /* Light green tint */
+    border-top: 2px solid var(--color-semantic-gain);
+}
+
+.lane-opps .lane-label {
+    border-top: 2px solid var(--color-semantic-gain);
+}
+
+.btn-icon-small {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-brand-primary);
+    padding: 4px;
+}
+
+.btn-icon-small:hover {
+    background: var(--color-bg-subtle);
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .journey-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .journey-header .lane-label,
+    .journey-header .stage-col,
+    .journey-lane .lane-label,
+    .lane-cell {
+        min-width: 0;
+    }
+
+    .chart-cell-wrapper {
+        grid-column: auto;
+        height: 220px;
+    }
+
+    .emotion-curve {
+        height: 120px;
+    }
+
+    .emoji-controls {
+        height: auto;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .emoji-slider-box {
+        min-height: 44px;
+        padding: 0 var(--spacing-md);
+        border-right: 0;
+        border-bottom: 1px dashed var(--color-border-light);
+    }
+}

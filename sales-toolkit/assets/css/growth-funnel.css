@@ -1,0 +1,525 @@
+/* Growth Funnel - Redesigned Visual Funnel Layout */
+/* Modern, professional AARRR funnel visualization */
+/* Default: Neutral warm tones | Color Mode: Semantic colors */
+
+/* ========================================
+   Main Layout - Full Height Split View
+   ======================================== */
+
+.funnel-layout {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 0;
+    flex: 1;
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ========================================
+   Left Panel - Visual Funnel (Full Height)
+   ======================================== */
+
+.funnel-visual {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-muted);
+    position: relative;
+    padding: 0.75rem;
+    gap: 0.5rem;
+    border-right: 1px solid var(--border-sem-outer);
+}
+
+/* Funnel Stage Visual - Trapezoid Shape with Clip-Path */
+/* Default: Neutral warm gray tones (no semantic colors) */
+.funnel-stage-visual {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 0;
+    background: var(--color-bg-warm-light);
+}
+
+/* Trapezoid shapes - Padding to match clip-path */
+.funnel-stage-visual.stage-1 {
+    clip-path: polygon(2% 0, 98% 0, 96% 100%, 4% 100%);
+    padding: 0.6rem 2.5rem;
+}
+
+.funnel-stage-visual.stage-2 {
+    clip-path: polygon(4% 0, 96% 0, 94% 100%, 6% 100%);
+    padding: 0.6rem 3rem;
+}
+
+.funnel-stage-visual.stage-3 {
+    clip-path: polygon(6% 0, 94% 0, 92% 100%, 8% 100%);
+    padding: 0.6rem 3.5rem;
+}
+
+.funnel-stage-visual.stage-4 {
+    clip-path: polygon(8% 0, 92% 0, 90% 100%, 10% 100%);
+    padding: 0.6rem 4rem;
+}
+
+.funnel-stage-visual.stage-5 {
+    clip-path: polygon(10% 0, 90% 0, 88% 100%, 12% 100%);
+    padding: 0.6rem 4.5rem;
+}
+
+/* Hover & Active States */
+.funnel-stage-visual:hover,
+.funnel-stage-visual.active {
+    filter: brightness(0.96);
+    transform: scale(1.01);
+    z-index: 10;
+}
+
+.funnel-stage-visual:focus-within {
+    filter: brightness(0.94);
+}
+
+/* Stage Content Layout */
+.stage-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stage-icon .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-primary);
+}
+
+/* Stage Info */
+.stage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+}
+
+.stage-letter {
+    display: none;
+}
+
+.stage-title {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.stage-subtitle {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+/* Stage Metric (Right side) */
+.stage-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
+    flex-shrink: 0;
+}
+
+.metric-value {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    background: transparent;
+    border: none;
+    text-align: right;
+    width: 70px;
+    padding: 2px 4px;
+    outline: none;
+    border-bottom: 1px dashed transparent;
+    border-radius: 0;
+}
+
+.metric-value:focus {
+    border-bottom-color: var(--color-brand-primary);
+    background: var(--color-bg-paper);
+}
+
+.metric-label {
+    font-size: 0.55rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+
+/* ========================================
+   Conversion Rate Connectors - Hidden
+   ======================================== */
+
+.conversion-rates {
+    display: none;
+}
+
+/* ========================================
+   Right Panel - Detail Panels (Synced Heights)
+   ======================================== */
+
+.funnel-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.detail-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border-sem-inner);
+    min-height: 0;
+    overflow: hidden;
+}
+
+.detail-panel:last-child {
+    border-bottom: none;
+}
+
+.detail-panel:hover,
+.detail-panel.active {
+    background: var(--color-focus-bg);
+}
+
+.detail-panel:focus-within {
+    background: var(--color-focus-bg);
+}
+
+/* Panel Header */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    background: var(--color-bg-subtle);
+    flex-shrink: 0;
+}
+
+.panel-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-title .icon {
+    width: 15px;
+    height: 15px;
+    color: var(--color-text-secondary);
+}
+
+.panel-title h3 {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.panel-question {
+    font-size: 0.65rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background: var(--color-bg-paper);
+    padding: 2px 8px;
+    border-radius: 0;
+    border: 1px dashed var(--border-sem-dashed);
+}
+
+/* Panel Body */
+.panel-body {
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    gap: 0.75rem;
+    padding: 0.4rem 1rem;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Panel Sections */
+.panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-height: 0;
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+}
+
+.section-label .icon {
+    width: 11px;
+    height: 11px;
+}
+
+.section-content {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--color-text-primary);
+    outline: none;
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5em;
+}
+
+.section-content:focus {
+    background: var(--color-focus-bg);
+    border-radius: 0;
+}
+
+.section-content ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+.section-content li {
+    padding-left: 0.9rem;
+    margin-bottom: 0.15rem;
+}
+
+/* Metrics Tags */
+.metrics-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-content: flex-start;
+}
+
+.metric-tag {
+    font-size: 0.6rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    padding: 3px 6px;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: var(--color-bg-paper);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.metric-tag:hover {
+    border-color: var(--color-brand-blue);
+    color: var(--color-text-primary);
+    background: var(--color-bg-subtle);
+}
+
+/* ========================================
+   COLOR MODE - Semantic Colors
+   Only applied in light theme with color-mode class
+   ======================================== */
+
+body:not(.theme-dark).color-mode .funnel-visual {
+    background: var(--color-bg-warm-dark);
+}
+
+/* Stage 1 - Acquisition: Opportunity (Sky Blue) */
+body:not(.theme-dark).color-mode .funnel-stage-visual.stage-1 {
+    background: var(--color-semantic-opportunity);
+}
+
+/* Stage 2 - Activation: Gain (Mint Green) */
+body:not(.theme-dark).color-mode .funnel-stage-visual.stage-2 {
+    background: var(--color-semantic-gain);
+}
+
+/* Stage 3 - Retention: Jobs (Lavender) */
+body:not(.theme-dark).color-mode .funnel-stage-visual.stage-3 {
+    background: var(--color-semantic-jobs);
+}
+
+/* Stage 4 - Revenue: Threat/Amber (Cream) */
+body:not(.theme-dark).color-mode .funnel-stage-visual.stage-4 {
+    background: var(--color-semantic-threat);
+}
+
+/* Stage 5 - Referral: Product (Lilac) */
+body:not(.theme-dark).color-mode .funnel-stage-visual.stage-5 {
+    background: var(--color-semantic-product);
+}
+
+/* Right Panel Headers - Color Mode */
+body:not(.theme-dark).color-mode .detail-panel[data-stage="acquisition"] .panel-header {
+    background: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .detail-panel[data-stage="activation"] .panel-header {
+    background: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .detail-panel[data-stage="retention"] .panel-header {
+    background: var(--color-semantic-jobs);
+}
+
+body:not(.theme-dark).color-mode .detail-panel[data-stage="revenue"] .panel-header {
+    background: var(--color-semantic-threat);
+}
+
+body:not(.theme-dark).color-mode .detail-panel[data-stage="referral"] .panel-header {
+    background: var(--color-semantic-product);
+}
+
+/* ========================================
+   Dark Theme Adjustments
+   ======================================== */
+
+body.theme-dark .funnel-visual {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .funnel-stage-visual {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .funnel-stage-visual:hover,
+body.theme-dark .funnel-stage-visual.active {
+    filter: brightness(1.1);
+}
+
+body.theme-dark .stage-icon {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .stage-icon .icon {
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .metric-tag {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .panel-question {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .metric-value:focus {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .panel-header {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+    .funnel-layout {
+        display: grid !important;
+        grid-template-columns: 340px 1fr !important;
+    }
+
+    .funnel-stage-visual {
+        filter: none !important;
+        transform: none !important;
+    }
+
+    .detail-panel {
+        background: transparent !important;
+    }
+}
+
+/* ========================================
+   Presentation Mode
+   ======================================== */
+
+body.presentation-mode .funnel-layout {
+    width: 100%;
+    height: 100%;
+}
+
+body.presentation-mode .funnel-stage-visual {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+body.presentation-mode .stage-title {
+    font-size: 1.4rem;
+}
+
+body.presentation-mode .metric-value {
+    font-size: 1.5rem;
+}
+
+body.presentation-mode .panel-title h3 {
+    font-size: 1rem;
+}
+
+/* ========================================
+   Responsive - Stack on narrow screens
+   ======================================== */
+
+@media (max-width: 1000px) {
+    .funnel-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .funnel-visual {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 0.5rem;
+        gap: 0.25rem;
+    }
+
+    .funnel-stage-visual {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+        clip-path: none !important;
+        padding: 0.5rem !important;
+        border-radius: 0;
+    }
+
+    .stage-metric {
+        align-items: center;
+    }
+
+    .funnel-details {
+        border-top: 1px solid var(--border-sem-outer);
+    }
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .funnel-layout { grid-template-columns: 1fr; grid-template-rows: none; overflow: visible; }
+    .funnel-visual { align-items: stretch; flex-direction: column; }
+    .funnel-stage-visual { width: 100%; }
+    .funnel-details, .detail-panel, .panel-body { min-height: 0; overflow: visible; }
+    .strategy-grid { grid-template-columns: 1fr; }
+}
+

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>技术 SEO 审计 (Technical SEO Audit)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="全面检查网站技术 SEO 健康度,包括 Core Web Vitals、移动友好性、HTTPS 等关键指标">
+    <meta name="keywords" content="技术SEO,SEO审计,Core Web Vitals,移动优化,网站性能,SEO检查清单">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="技术 SEO 审计 - Modiqi Workbench">
+    <meta property="og:description" content="全面检查网站技术 SEO 健康度">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Lucide Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/technical-seo-audit.css">
+</head>
+
+<body>
+    <!-- 桌面背景 -->
+    <div class="desk-background"></div>
+
+    <!-- A4 纵向画布 -->
+    <main class="paper-a4 paper-a4-portrait">
+
+        <!-- 画布头部 -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>技术 SEO 审计</h1>
+                <span class="english-subtitle">Technical SEO Audit</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>网站 <span class="en-sub">(Website)</span></label>
+                    <input type="text" class="meta-input" placeholder="example.com" data-save-key="meta_website" aria-label="example.com">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- 工具内容区域 -->
+        <div class="tool-content">
+
+            <!-- Core Web Vitals -->
+            <section class="audit-section">
+                <div class="section-header">
+                    <i data-lucide="gauge" class="icon"></i>
+                    <h2>Core Web Vitals <span class="en-sub">(核心网页指标)</span></h2>
+                </div>
+                <div class="audit-items">
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">LCP (Largest Contentful Paint)</div>
+                            <div class="item-desc">最大内容绘制 &lt; 2.5s</div>
+                            <input type="text" class="item-value" placeholder="实际值" data-save-key="lcp_value"
+                                aria-label="LCP 实际值">
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">FID (First Input Delay)</div>
+                            <div class="item-desc">首次输入延迟 &lt; 100ms</div>
+                            <input type="text" class="item-value" placeholder="实际值" data-save-key="fid_value"
+                                aria-label="FID 实际值">
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">CLS (Cumulative Layout Shift)</div>
+                            <div class="item-desc">累积布局偏移 &lt; 0.1</div>
+                            <input type="text" class="item-value" placeholder="实际值" data-save-key="cls_value"
+                                aria-label="CLS 实际值">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 移动友好性 -->
+            <section class="audit-section">
+                <div class="section-header">
+                    <i data-lucide="smartphone" class="icon"></i>
+                    <h2>移动友好性 <span class="en-sub">(Mobile Friendly)</span></h2>
+                </div>
+                <div class="audit-items">
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">响应式设计</div>
+                            <div class="item-desc">viewport meta 标签正确配置</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">触摸元素间距</div>
+                            <div class="item-desc">可点击元素间距 ≥ 48px</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">字体大小</div>
+                            <div class="item-desc">正文字体 ≥ 16px</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 安全性 -->
+            <section class="audit-section">
+                <div class="section-header">
+                    <i data-lucide="shield" class="icon"></i>
+                    <h2>安全性 <span class="en-sub">(Security)</span></h2>
+                </div>
+                <div class="audit-items">
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">HTTPS 协议</div>
+                            <div class="item-desc">全站启用 SSL 证书</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">混合内容</div>
+                            <div class="item-desc">无 HTTP 资源加载</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 可索引性 -->
+            <section class="audit-section">
+                <div class="section-header">
+                    <i data-lucide="search" class="icon"></i>
+                    <h2>可索引性 <span class="en-sub">(Indexability)</span></h2>
+                </div>
+                <div class="audit-items">
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">robots.txt</div>
+                            <div class="item-desc">正确配置,无误屏蔽</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">XML Sitemap</div>
+                            <div class="item-desc">已提交到 Search Console</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">Canonical 标签</div>
+                            <div class="item-desc">正确设置规范 URL</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">结构化数据</div>
+                            <div class="item-desc">Schema.org 标记正确</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 页面优化 -->
+            <section class="audit-section">
+                <div class="section-header">
+                    <i data-lucide="file-text" class="icon"></i>
+                    <h2>页面优化 <span class="en-sub">(On-Page SEO)</span></h2>
+                </div>
+                <div class="audit-items">
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">Title 标签</div>
+                            <div class="item-desc">50-60 字符,包含关键词</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">Meta Description</div>
+                            <div class="item-desc">150-160 字符,吸引点击</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">H1 标签</div>
+                            <div class="item-desc">每页唯一,包含主关键词</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">图片 Alt 文本</div>
+                            <div class="item-desc">所有图片包含描述性 alt</div>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="item-status">
+                            <button class="status-btn status-pass" data-status="pass" type="button">
+                                <i data-lucide="check-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-warning" data-status="warning" type="button">
+                                <i data-lucide="alert-circle" class="icon"></i>
+                            </button>
+                            <button class="status-btn status-fail" data-status="fail" type="button">
+                                <i data-lucide="x-circle" class="icon"></i>
+                            </button>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-title">内部链接</div>
+                            <div class="item-desc">合理的内链结构</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 总结与建议 -->
+            <section class="summary-section">
+                <div class="section-header">
+                    <i data-lucide="clipboard-list" class="icon"></i>
+                    <h2>审计总结 <span class="en-sub">(Summary)</span></h2>
+                </div>
+                <div class="summary-content" contenteditable="true" data-save-key="summary">
+                    <p><strong>主要问题:</strong></p>
+                    <ul>
+                        <li>点击此处添加发现的主要问题...</li>
+                    </ul>
+                    <p><strong>优先修复建议:</strong></p>
+                    <ul>
+                        <li>点击此处添加优先修复建议...</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 画布底部 -->
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Modiqi Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        // 初始化 Modiqi 应用
+        const app = new ModiqiApp({
+            toolName: '技术 SEO 审计',
+            toolNameEn: 'Technical SEO Audit',
+            saveKey: 'technical-seo-audit'
+        });
+
+        // The shared runtime treats the generic .paper-a4 shell as landscape.
+        // This audit is explicitly portrait and paginates across multiple sheets.
+        const auditPrintStyle = document.createElement('style');
+        auditPrintStyle.textContent = '@page { size: A4 portrait; margin: 12mm; }';
+        document.head.appendChild(auditPrintStyle);
+
+        // 状态按钮交互
+        document.querySelectorAll('.status-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const parent = this.closest('.item-status');
+                parent.querySelectorAll('.status-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+/* Nudge Planner Layout */
+.nudge-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Introduction Column */
+.intro-col {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+.intro-card {
+    background: var(--color-bg-paper);
+    padding: 16px;
+    border-radius: 0;
+    border: 1px solid var(--border-sem-inner);
+}
+
+.intro-card h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-text-primary);
+}
+
+.intro-card p {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* EAST Framework Grid */
+.east-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.east-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.east-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-brand-primary);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.letter-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+.intervention-input {
+    flex: 1;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    resize: none;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.5;
+    background: var(--color-bg-subtle);
+}
+
+.intervention-input:focus {
+    background: white;
+    border-color: var(--color-brand-primary);
+    outline: none;
+}
+
+/* Example Chips */
+.example-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.chip {
+    font-size: 9px;
+    padding: 2px 6px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.chip:hover {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-input);
+}
+
+/* Color Themes for Cards */
+.card-easy .letter-circle {
+    background: var(--color-bg-success-subtle);
+    color: var(--color-semantic-growth);
+}
+
+.card-attractive .letter-circle {
+    background: var(--color-bg-danger-subtle);
+    color: var(--color-semantic-danger);
+}
+
+.card-social .letter-circle {
+    background: var(--color-bg-info-subtle);
+    color: var(--color-info);
+}
+
+.card-timely .letter-circle {
+    background: var(--color-bg-warning-subtle);
+    color: var(--color-semantic-warning);
+}
+
+
+/* Dark Mode */
+body.theme-dark .east-card {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .intro-card {
+    background: var(--color-bg-paper);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .intervention-input {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-medium);
+    color: var(--color-text-secondary);
+}
+
+body.theme-dark .intervention-input:focus {
+    background: var(--color-bg-hover);
+}
+
+body.theme-dark .chip {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .east-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+    .east-card { overflow: visible; }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 { width: calc(100% - 32px) !important; max-width: calc(100% - 32px) !important; }
+}

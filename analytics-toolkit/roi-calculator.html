@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI 计算器 (Marketing ROI Calculator)</title>
+    <meta name="description" content="营销投资回报率计算器，帮助您衡量营销活动的投资效益，优化预算分配决策。">
+    <meta name="keywords" content="ROI,投资回报率,营销效果,成本效益,营销分析">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ROI 计算器 - Modiqi Workbench">
+    <meta property="og:description" content="衡量营销活动投资回报率。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/roi-calculator.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 paper-a4-portrait">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>ROI 计算器</h1>
+                <span class="english-subtitle">Marketing ROI Calculator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>货币 <span class="en-sub">(Currency)</span></label>
+                    <input type="text" id="currencySymbol" class="meta-input currency-selector" value="¥" maxlength="3"
+                        data-save-key="currency_symbol" aria-label="currency symbol">
+                </div>
+                <div class="meta-group">
+                    <label>活动 <span class="en-sub">(Campaign)</span></label>
+                    <input type="text" class="meta-input" placeholder="Q1 营销活动" data-save-key="campaign_name" aria-label="Q1 营销活动">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="roi-layout">
+            <!-- 左侧：输入区 -->
+            <div class="roi-input-pane">
+                <div class="pane-header">
+                    <i data-lucide="calculator"></i>
+                    <h2>数据输入 <span class="en-sub">(Input Data)</span></h2>
+                </div>
+
+                <!-- 收益输入 -->
+                <div class="input-section revenue-section">
+                    <div class="section-header">
+                        <i data-lucide="trending-up"></i>
+                        <h3>收益 <span class="en-sub">(Revenue)</span></h3>
+                    </div>
+                    <div class="input-group">
+                        <label>归因收入 <span class="en-sub">(Attributed Revenue)</span></label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="revenue" class="number-input" value="500000" data-save-key="revenue" aria-label="revenue">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>转化次数 <span class="en-sub">(Conversions)</span></label>
+                        <div class="input-field">
+                            <i data-lucide="users" class="input-icon-inline"></i>
+                            <input type="text" id="conversions" class="number-input" value="1000"
+                                data-save-key="conversions" aria-label="conversions">
+                        </div>
+                        <span class="input-hint">总成交客户数或线索数</span>
+                    </div>
+                    <div class="input-group">
+                        <label>增量收入 <span class="en-sub">(Incremental Revenue)</span></label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="incrementalRevenue" class="number-input" value="150000"
+                                data-save-key="incremental_revenue" aria-label="incremental revenue">
+                        </div>
+                        <span class="input-hint">相比不做营销的额外增收</span>
+                    </div>
+                </div>
+
+                <!-- 成本输入 -->
+                <div class="input-section cost-section">
+                    <div class="section-header">
+                        <i data-lucide="credit-card"></i>
+                        <h3>成本 <span class="en-sub">(Costs)</span></h3>
+                    </div>
+                    <div class="input-group">
+                        <label>广告费用 <span class="en-sub">(Ad Spend)</span></label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="adSpend" class="number-input" value="80000" data-save-key="ad_spend" aria-label="ad spend">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>人力成本 <span class="en-sub">(Labor Cost)</span></label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="laborCost" class="number-input" value="20000"
+                                data-save-key="labor_cost" aria-label="labor cost">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>工具/平台费 <span class="en-sub">(Tools/Platform)</span></label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="toolsCost" class="number-input" value="5000"
+                                data-save-key="tools_cost" aria-label="tools cost">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>其他成本 <span class="en-sub">(Other Costs)</span></label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="otherCost" class="number-input" value="5000"
+                                data-save-key="other_cost" aria-label="other cost">
+                        </div>
+                    </div>
+                    <div class="cost-total">
+                        <span>总成本</span>
+                        <span id="totalCost">¥110,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：结果区 -->
+            <div class="roi-result-pane">
+                <div class="pane-header">
+                    <i data-lucide="pie-chart"></i>
+                    <h2>计算结果 <span class="en-sub">(Results)</span></h2>
+                </div>
+
+                <!-- ROI 主指标 -->
+                <div class="roi-main-result">
+                    <div class="roi-formula">
+                        <span class="formula-label">ROI 公式</span>
+                        <span class="formula">ROI = (收益 - 成本) ÷ 成本 × 100%</span>
+                    </div>
+                    <div class="roi-value-container">
+                        <div class="roi-value" id="roiValue">354.5%</div>
+                        <div class="roi-interpretation" id="roiInterpretation">
+                            每投入 ¥1，获得 ¥4.55 回报
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 辅助指标 -->
+                <div class="secondary-metrics">
+                    <div class="metric-card">
+                        <div class="metric-label">净利润 <span class="en-sub">(Net Profit)</span></div>
+                        <div class="metric-value positive" id="netProfit">¥390,000</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">ROAS <span class="en-sub">(Return on Ad Spend)</span></div>
+                        <div class="metric-value" id="roas">6.25x</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">获客成本 <span class="en-sub">(CAC)</span></div>
+                        <div class="metric-value" id="cacValue">¥25.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">单客贡献 <span class="en-sub">(ARPU)</span></div>
+                        <div class="metric-value" id="arpuValue">¥150.00</div>
+                    </div>
+                </div>
+
+                <!-- 敏感度模拟分析 (What-if Analysis) -->
+                <div class="sensitivity-analysis">
+                    <div class="pane-header-sub">
+                        <i data-lucide="sliders-horizontal"></i>
+                        <h3>场景模拟 <span class="en-sub">(Scenario Simulation)</span></h3>
+                    </div>
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <label>转化率提升 <span class="en-sub">(CVR Lift)</span></label>
+                            <span class="slider-val" id="valCvr">+0%</span>
+                        </div>
+                        <input type="range" id="sliderCvr" min="-50" max="100" value="0" class="roi-slider" aria-label="sliderCvr">
+                    </div>
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <label>单位成本优化 <span class="en-sub">(Cost Opt.)</span></label>
+                            <span class="slider-val" id="valCost">-0%</span>
+                        </div>
+                        <input type="range" id="sliderCost" min="-50" max="50" value="0" class="roi-slider" aria-label="sliderCost">
+                    </div>
+                    <div class="simulation-impact">
+                        <span class="impact-label">模拟预期 ROI:</span>
+                        <span class="impact-value" id="simulatedRoi">354.5%</span>
+                        <span class="impact-diff" id="roiDiff">+0.0%</span>
+                    </div>
+                </div>
+
+                <!-- ROI 评级 -->
+                <div class="roi-rating">
+                    <div class="rating-header">
+                        <i data-lucide="award"></i>
+                        <h3>ROI 评级 <span class="en-sub">(Performance Rating)</span></h3>
+                    </div>
+                    <div class="rating-scale">
+                        <div class="rating-bar">
+                            <div class="rating-fill" id="ratingFill" style="width: 90%;"></div>
+                            <div class="rating-marker" id="ratingMarker" style="left: 90%;"></div>
+                        </div>
+                        <div class="rating-labels">
+                            <span>差 (Poor)</span>
+                            <span>一般 (Average)</span>
+                            <span>良好 (Good)</span>
+                            <span>优秀 (Excellent)</span>
+                        </div>
+                    </div>
+                    <div class="rating-result">
+                        <i id="ratingIcon" data-lucide="trophy"></i>
+                        <span id="ratingResult">优秀 - 此活动投资回报显著</span>
+                    </div>
+                </div>
+
+                <!-- 分析备注 -->
+                <div class="analysis-notes">
+                    <div class="notes-header">
+                        <i data-lucide="file-text"></i>
+                        <h3>分析备注 <span class="en-sub">(Analysis Notes)</span></h3>
+                    </div>
+                    <div class="notes-content" contenteditable="true" data-save-key="analysis_notes">
+                        <ul>
+                            <li>ROI 超过 300% 表示活动效果优秀</li>
+                            <li>建议增加此类活动的预算投入</li>
+                            <li>可考虑复制到其他渠道/市场</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('roi_calculator_v1');
+            lucide.createIcons({
+                attrs: { class: "icon", 'stroke-width': 2 }
+            });
+
+            // ROI calculation logic
+            const inputs = ['revenue', 'conversions', 'incrementalRevenue', 'adSpend', 'laborCost', 'toolsCost', 'otherCost'];
+            const sliders = ['sliderCvr', 'sliderCost'];
+            const currencyInput = document.getElementById('currencySymbol');
+            const currencySpans = document.querySelectorAll('.currency');
+
+            function getCurrency() {
+                return currencyInput.value || '¥';
+            }
+
+            function updateCurrencyDisplays() {
+                const symbol = getCurrency();
+                currencySpans.forEach(span => span.textContent = symbol);
+            }
+
+            function parseNumber(val) {
+                return parseFloat(val.replace(/[^\d.-]/g, '')) || 0;
+            }
+
+            function formatCurrency(num) {
+                return getCurrency() + Math.abs(num).toLocaleString('zh-CN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            }
+
+            function calculate() {
+                const revenue = parseNumber(document.getElementById('revenue').value);
+                const conversions = parseNumber(document.getElementById('conversions').value) || 1;
+                const adSpend = parseNumber(document.getElementById('adSpend').value);
+                const laborCost = parseNumber(document.getElementById('laborCost').value);
+                const toolsCost = parseNumber(document.getElementById('toolsCost').value);
+                const otherCost = parseNumber(document.getElementById('otherCost').value);
+
+                const totalCost = adSpend + laborCost + toolsCost + otherCost;
+                const netProfit = revenue - totalCost;
+                const roi = totalCost > 0 ? ((revenue - totalCost) / totalCost * 100) : 0;
+                const roas = adSpend > 0 ? (revenue / adSpend) : 0;
+                const cac = totalCost / conversions;
+                const arpu = revenue / conversions;
+
+                // Simulated logic
+                const cvrLift = parseInt(document.getElementById('sliderCvr').value) / 100;
+                const costOpt = parseInt(document.getElementById('sliderCost').value) / 100;
+
+                const simRevenue = revenue * (1 + cvrLift);
+                const simCost = totalCost * (1 - costOpt);
+                const simRoi = simCost > 0 ? ((simRevenue - simCost) / simCost * 100) : 0;
+                const diff = simRoi - roi;
+
+                // Update displays
+                document.getElementById('totalCost').textContent = formatCurrency(totalCost);
+                document.getElementById('roiValue').textContent = roi.toFixed(1) + '%';
+                document.getElementById('netProfit').textContent = (netProfit < 0 ? '-' : '') + formatCurrency(netProfit);
+                document.getElementById('roas').textContent = roas.toFixed(2) + 'x';
+                document.getElementById('cacValue').textContent = formatCurrency(cac);
+                document.getElementById('arpuValue').textContent = formatCurrency(arpu);
+
+                // Sensitivity indicators
+                document.getElementById('valCvr').textContent = (cvrLift >= 0 ? '+' : '') + (cvrLift * 100).toFixed(0) + '%';
+                document.getElementById('valCost').textContent = (costOpt >= 0 ? '-' : '+') + Math.abs(costOpt * 100).toFixed(0) + '%';
+                document.getElementById('simulatedRoi').textContent = simRoi.toFixed(1) + '%';
+
+                const diffEl = document.getElementById('roiDiff');
+                diffEl.textContent = (diff >= 0 ? '+' : '') + diff.toFixed(1) + '%';
+                diffEl.className = 'impact-diff ' + (diff >= 0 ? 'positive' : 'negative');
+
+                // Interpretation
+                document.getElementById('roiInterpretation').textContent =
+                    `每投入 ${getCurrency()}1，获得 ${getCurrency()}${(1 + roi / 100).toFixed(2)} 回报`;
+
+                // Net profit color
+                document.getElementById('netProfit').className =
+                    'metric-value ' + (netProfit >= 0 ? 'positive' : 'negative');
+
+                // Rating (Basic linear scale)
+                let ratingPercent = Math.min(100, Math.max(0, (roi / 400) * 100)); // 400% as MAX
+                let ratingText = '';
+                let ratingIconName = 'award';
+
+                if (roi <= 0) {
+                    ratingText = '亏损 - 需要深度审计获客链路';
+                    ratingIconName = 'alert-octagon';
+                    ratingPercent = 5;
+                } else if (roi < 100) {
+                    ratingText = '及格 - 回报率偏低，考虑优化成本';
+                    ratingIconName = 'trending-down';
+                } else if (roi < 250) {
+                    ratingText = '良好 - 业务健康，可尝试小幅扩容';
+                    ratingIconName = 'check-circle';
+                } else {
+                    ratingText = '优秀 - 极佳的投资回报，建议重注投入';
+                    ratingIconName = 'trophy';
+                }
+
+                document.getElementById('ratingFill').style.width = ratingPercent + '%';
+                document.getElementById('ratingMarker').style.left = ratingPercent + '%';
+                document.getElementById('ratingResult').textContent = ratingText;
+
+                const ratingIcon = document.getElementById('ratingIcon');
+                ratingIcon.setAttribute('data-lucide', ratingIconName);
+                lucide.createIcons({ nodes: [ratingIcon] });
+
+                // Push to Strategic Clipboard for Audit Report
+                if (window.modiqiApp) {
+                    window.modiqiApp.pushToStrategicClipboard('analytics_roi', roi.toFixed(1) + '%');
+                    window.modiqiApp.pushToStrategicClipboard('analytics_profit', formatCurrency(netProfit));
+                    window.modiqiApp.pushToStrategicClipboard('analytics_cac', formatCurrency(cac));
+                }
+            }
+
+            [...inputs, ...sliders].forEach(id => {
+                document.getElementById(id).addEventListener('input', calculate);
+            });
+
+            currencyInput.addEventListener('input', () => {
+                updateCurrencyDisplays();
+                calculate();
+            });
+
+            updateCurrencyDisplays();
+            calculate();
+        });
+    </script>
+</body>
+
+</html>

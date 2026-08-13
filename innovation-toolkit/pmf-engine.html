@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMF 验证引擎 (PMF Engine)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/pmf-engine.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 portrait">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>PMF 验证引擎</h1>
+                <span class="english-subtitle">Product-Market Fit Survey Engine</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品版本</label>
+                    <input type="text" class="meta-input" placeholder="v1.0 MVP" data-save-key="product_version" aria-label="v1.0 MVP">
+                </div>
+                <div class="meta-group">
+                    <label>样本量</label>
+                    <input type="number" class="meta-input" placeholder="N=" id="total-sample-display" readonly aria-label="N=">
+                </div>
+            </div>
+        </header>
+
+        <div class="pmf-container">
+
+            <!-- Result Card -->
+            <div class="score-card">
+                <div class="score-content">
+                    <span class="score-title">PMF Score (Sean Ellis Test)</span>
+                    <div class="score-value-group">
+                        <span class="score-value" id="pmf-score">0.0</span>
+                        <span class="score-unit">%</span>
+                    </div>
+                    <div class="score-status status-initial" id="pmf-status">暂无数据</div>
+                </div>
+
+                <!-- SVG Meter -->
+                <div style="width: 160px; height: 100px; position:relative;">
+                    <svg viewBox="0 0 200 120" width="100%" height="100%">
+                        <!-- BG Arc -->
+                        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" stroke-width="20"
+                            stroke-linecap="round" />
+                        <!-- Fill Arc -->
+                        <path id="meter-fill" d="M 20 100 A 80 80 0 0 1 20 100" fill="none" stroke="#3b82f6"
+                            stroke-width="20" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"
+                            style="transition: stroke-dashoffset 1s ease;" />
+                        <!-- Threshold Line (40%) -->
+                        <line x1="124" y1="20" x2="124" y2="45" stroke="#ef4444" stroke-width="2"
+                            stroke-dasharray="4 2" />
+                        <text x="124" y="15" text-anchor="middle" font-size="10" fill="#ef4444">40% Target</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="data-grid">
+                <!-- Input Panel -->
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <span>问卷数据输入</span>
+                        <span
+                            style="font-size:12px;color:var(--color-text-tertiary);font-weight:normal;">Q:如果不能再使用该产品，你会感到？</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="response-row">
+                            <span class="response-label">非常失望 (Very Disappointed)</span>
+                            <input type="number" class="response-input" id="input-very" value="0" min="0"
+                                oninput="calculatePMF()" aria-label="very">
+                        </div>
+                        <div class="response-row">
+                            <span class="response-label">有点失望 (Somewhat Disappointed)</span>
+                            <input type="number" class="response-input" id="input-somewhat" value="0" min="0"
+                                oninput="calculatePMF()" aria-label="somewhat">
+                        </div>
+                        <div class="response-row">
+                            <span class="response-label">不失望 (Not Disappointed)</span>
+                            <input type="number" class="response-input" id="input-not" value="0" min="0"
+                                oninput="calculatePMF()" aria-label="not">
+                        </div>
+                        <div class="response-row">
+                            <span class="response-label">不再适用/无所谓 (N/A)</span>
+                            <input type="number" class="response-input" id="input-na" value="0" min="0"
+                                oninput="calculatePMF()" aria-label="na">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guidance Panel -->
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <span>结果解读</span>
+                    </div>
+                    <div class="panel-content">
+                        <textarea class="analysis-text" placeholder="在此记录分析结论..."
+                            data-save-key="analysis_note" aria-label="在此记录分析结论..."></textarea>
+
+                        <div class="benchmark-info">
+                            <strong>基准参考 (Benchmarks):</strong><br>
+                            • <strong>> 40%</strong>: 达到 PMF，适合开始规模化增长。<br>
+                            • <strong>20% - 40%</strong>: 初步验证，需优化核心功能或微调受众。<br>
+                            • <strong>
+                                < 20%</strong>: 尚未达到 PMF，需重新审视痛点或解决方案。<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('pmf_engine');
+            lucide.createIcons();
+
+            // Allow ModiqiApp to restore inputs, then calc
+            setTimeout(calculatePMF, 100);
+        });
+
+        function calculatePMF() {
+            const very = parseInt(document.getElementById('input-very').value) || 0;
+            const somewhat = parseInt(document.getElementById('input-somewhat').value) || 0;
+            const not = parseInt(document.getElementById('input-not').value) || 0;
+            const na = parseInt(document.getElementById('input-na').value) || 0;
+
+            const total = very + somewhat + not + na;
+            document.getElementById('total-sample-display').value = total;
+
+            const pmfScore = total > 0 ? (very / total) * 100 : 0;
+            const scoreDisplay = document.getElementById('pmf-score');
+            const statusDisplay = document.getElementById('pmf-status');
+            const meterFill = document.getElementById('meter-fill');
+
+            // Animate Number
+            scoreDisplay.textContent = pmfScore.toFixed(1);
+
+            // Update Status
+            if (total === 0) {
+                statusDisplay.textContent = '等待数据';
+                statusDisplay.className = 'score-status status-initial';
+            } else if (pmfScore >= 40) {
+                statusDisplay.textContent = 'PMF Achieved (验证通过)';
+                statusDisplay.className = 'score-status status-success';
+            } else {
+                statusDisplay.textContent = 'Not Yet (尚未达成)';
+                statusDisplay.className = 'score-status status-warning';
+            }
+
+            // Update Chart
+            // Arc length for 180 deg is PI * R = 3.14159 * 80 ~= 251
+            const maxDash = 251;
+            // Map score 0-100 to offset 251-0
+            const offset = maxDash - (pmfScore / 100 * maxDash);
+            meterFill.style.strokeDashoffset = offset;
+
+            // Color Logic
+            if (pmfScore >= 40) {
+                meterFill.setAttribute('stroke', '#10b981'); // Success Green
+            } else {
+                meterFill.setAttribute('stroke', '#f59e0b'); // Warning Yellow/Orange
+            }
+
+            // Save values manually as helper for auto-calc restoration
+            // ModiqiApp handles saving on input, but we need to ensure inputs trigger things on restore.
+        }
+
+    </script>
+</body>
+
+</html>

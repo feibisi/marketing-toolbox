@@ -1,0 +1,323 @@
+/* Social Listening Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Cards */
+.dash-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.card-title {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Sentiment Chart (Donut) */
+.sentiment-chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 150px;
+}
+
+.sentiment-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-pos {
+    background: var(--color-success);
+}
+
+.dot-neu {
+    background: var(--color-text-tertiary);
+    opacity: 0.3;
+}
+
+/* Grey */
+.dot-neg {
+    background: var(--color-error);
+}
+
+/* Share of Voice (Bar) */
+.sov-bar-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.sov-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sov-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+}
+
+.sov-track {
+    width: 100%;
+    height: 8px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.sov-fill {
+    height: 100%;
+    border-radius: 0;
+    background: var(--color-brand-blue);
+}
+
+/* Topics Cloud (Simple) */
+.topic-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+}
+
+.topic-tag {
+    padding: 4px 8px;
+    border-radius: 0;
+    /* Slightly squarer */
+    font-size: var(--font-size-sm);
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+    border: 1px solid var(--border-sem-input);
+    cursor: pointer;
+}
+
+.topic-tag:hover {
+    background: var(--color-bg-hover);
+    transform: translateY(-1px);
+}
+
+.topic-hot {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: var(--color-error);
+}
+
+.topic-warm {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: var(--color-warning);
+}
+
+/* Mentions Feed */
+.mentions-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    overflow-y: auto;
+    flex: 1;
+}
+
+.mention-item {
+    padding: var(--spacing-sm);
+    /* Compact */
+    border-bottom: 1px solid var(--border-sem-input);
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.mention-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+}
+
+.mention-content {
+    flex: 1;
+}
+
+.mention-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.mention-user {
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+}
+
+.mention-platform {
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 0;
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.mention-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+/* Metric Cards (Top row) */
+.metric-row {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 top metrics */
+    gap: var(--spacing-md);
+}
+
+.metric-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-md);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.metric-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    font-weight: bold;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+}
+
+.metric-trend {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.trend-up {
+    color: var(--color-success);
+}
+
+.trend-down {
+    color: var(--color-error);
+}
+
+/* Dark Mode */
+body.theme-dark .dash-card,
+body.theme-dark .metric-card {
+    background: var(--color-bg-muted);
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-grid,
+    .metric-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .metric-row {
+        grid-column: auto;
+    }
+
+    .dash-card,
+    .metric-card {
+        min-width: 0;
+    }
+}

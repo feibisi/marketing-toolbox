@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOL 评估卡 (KOL Evaluation Card)</title>
+    <meta name="description" content="KOL/达人评估工具，帮助您评估和筛选适合品牌合作的意见领袖。">
+    <meta name="keywords" content="KOL,达人营销,网红合作,影响力评估,ROI预估">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="KOL 评估卡 - Modiqi Workbench">
+    <meta property="og:description" content="评估和筛选品牌合作达人。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/kol-evaluation.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>KOL 评估卡</h1>
+                <span class="english-subtitle">KOL EVALUATION CARD</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="品牌名称" data-save-key="brand_name" aria-label="品牌名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout: Sidebar + Grid -->
+        <div class="kol-layout">
+            <!-- Left Sidebar: KOL Profile -->
+            <div class="kol-sidebar">
+                <!-- Avatar & Identity -->
+                <div class="avatar-section">
+                    <div class="avatar-wrapper">
+                        <img src="https://cn.cravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp"
+                            alt="KOL Avatar" class="kol-avatar" id="kolAvatar">
+                        <a href="https://cravatar.com" target="_blank" rel="noopener noreferrer" class="cravatar-icon-link" id="cravatarLink"
+                            title="前往 Cravatar 设置头像">
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                    <div class="avatar-hint">
+                        <input type="text" placeholder="输入邮箱或头像链接" class="avatar-input" id="avatarInput" aria-label="输入邮箱或头像链接">
+                    </div>
+                </div>
+
+                <div class="kol-identity">
+                    <input type="text" class="kol-name" value="达人昵称" data-save-key="kol_name" aria-label="kol name">
+                    <div class="kol-badges">
+                        <span class="badge platform" contenteditable="true" data-save-key="platform">抖音</span>
+                        <span class="badge category" contenteditable="true" data-save-key="category">美妆</span>
+                    </div>
+                </div>
+
+                <!-- Core Metrics -->
+                <div class="sidebar-section">
+                    <h3>
+                        <i data-lucide="bar-chart-3"></i>
+                        核心数据 <span class="en-sub">(Metrics)</span>
+                    </h3>
+                    <div class="metrics-list">
+                        <div class="metric-row">
+                            <span class="metric-label">粉丝数 <span class="en-sub">(Followers)</span></span>
+                            <input type="text" class="metric-value" value="500K" data-save-key="followers" aria-label="followers">
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">互动率 <span class="en-sub">(Engagement)</span></span>
+                            <input type="text" class="metric-value" value="4.5%" data-save-key="engagement_rate" aria-label="engagement rate">
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">平均播放 <span class="en-sub">(Avg Views)</span></span>
+                            <input type="text" class="metric-value" value="50K" data-save-key="avg_views" aria-label="avg views">
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">增速 <span class="en-sub">(Growth)</span></span>
+                            <input type="text" class="metric-value" value="+5%/月" data-save-key="growth_rate" aria-label="growth rate">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audience -->
+                <div class="sidebar-section">
+                    <h3>
+                        <i data-lucide="pie-chart"></i>
+                        粉丝画像 <span class="en-sub">(Audience)</span>
+                    </h3>
+                    <div class="info-grid" contenteditable="true" data-save-key="audience_info">
+                        <div class="info-row">
+                            <span class="info-label">性别</span>
+                            <span class="info-value">女性70%</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">年龄</span>
+                            <span class="info-value">18-28岁</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">地域</span>
+                            <span class="info-value">一二线城市</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">兴趣</span>
+                            <span class="info-value">美妆护肤</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Main: Evaluation Grid -->
+            <div class="kol-main">
+                <!-- Row 1: Pricing & Rating -->
+                <div class="detail-row">
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="dollar-sign"></i>
+                            合作报价 <span class="en-sub">(Pricing)</span>
+                        </h3>
+                        <div class="pricing-list" id="pricingList">
+                            <div class="pricing-row">
+                                <input type="text" class="pricing-type-input" value="视频广告" data-save-key="price_type_1" aria-label="price type 1">
+                                <input type="text" class="pricing-value" value="¥30,000" data-save-key="price_value_1" aria-label="price value 1">
+                                <button class="remove-pricing-btn" type="button" title="删除">
+                                    <i data-lucide="x"></i>
+                                </button>
+                            </div>
+                            <div class="pricing-row">
+                                <input type="text" class="pricing-type-input" value="图文推广" data-save-key="price_type_2" aria-label="price type 2">
+                                <input type="text" class="pricing-value" value="¥15,000" data-save-key="price_value_2" aria-label="price value 2">
+                                <button class="remove-pricing-btn" type="button" title="删除">
+                                    <i data-lucide="x"></i>
+                                </button>
+                            </div>
+                            <div class="pricing-row">
+                                <input type="text" class="pricing-type-input" value="直播带货" data-save-key="price_type_3" aria-label="price type 3">
+                                <input type="text" class="pricing-value" value="坑位费+佣金" data-save-key="price_value_3" aria-label="price value 3">
+                                <button class="remove-pricing-btn" type="button" title="删除">
+                                    <i data-lucide="x"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="add-pricing-btn" id="addPricingBtn" type="button">
+                            <i data-lucide="plus"></i>
+                            <span>添加报价项</span>
+                        </button>
+                    </section>
+
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="star"></i>
+                            综合评分 <span class="en-sub">(Rating)</span>
+                        </h3>
+                        <div class="rating-list">
+                            <div class="rating-row">
+                                <span class="rating-label">品牌契合 <span class="en-sub">(Fit)</span></span>
+                                <div class="rating-stars" data-rating="brand_fit" data-save-key="rating_brand_fit">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-score">4/5</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">内容质量 <span class="en-sub">(Quality)</span></span>
+                                <div class="rating-stars" data-rating="content_quality" data-save-key="rating_content">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                </div>
+                                <span class="rating-score">5/5</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">性价比 <span class="en-sub">(Value)</span></span>
+                                <div class="rating-stars" data-rating="value" data-save-key="rating_value">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-score">3/5</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-label">真实度 <span class="en-sub">(Auth)</span></span>
+                                <div class="rating-stars" data-rating="authenticity"
+                                    data-save-key="rating_authenticity">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span class="rating-score">4/5</span>
+                            </div>
+                        </div>
+                        <div class="rating-total">
+                            <span class="total-label">综合评分 <span class="en-sub">(Total)</span></span>
+                            <span class="total-score">4.0 / 5</span>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Row 2: ROI Estimate & Recommendation -->
+                <div class="detail-row">
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="calculator"></i>
+                            ROI 预估 <span class="en-sub">(ROI Estimate)</span>
+                        </h3>
+                        <div class="roi-grid">
+                            <div class="roi-item">
+                                <span class="roi-label">预估曝光 <span class="en-sub">(Impressions)</span></span>
+                                <span class="roi-value" contenteditable="true"
+                                    data-save-key="est_impressions">200K</span>
+                            </div>
+                            <div class="roi-item">
+                                <span class="roi-label">预估互动 <span class="en-sub">(Engagement)</span></span>
+                                <span class="roi-value" contenteditable="true" data-save-key="est_engagement">9K</span>
+                            </div>
+                            <div class="roi-item">
+                                <span class="roi-label">预估 CPM</span>
+                                <span class="roi-value" contenteditable="true" data-save-key="est_cpm">¥150</span>
+                            </div>
+                            <div class="roi-item">
+                                <span class="roi-label">预估 CPC</span>
+                                <span class="roi-value" contenteditable="true" data-save-key="est_cpc">¥3.3</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="detail-card">
+                        <h3>
+                            <i data-lucide="message-square"></i>
+                            合作建议 <span class="en-sub">(Recommendation)</span>
+                        </h3>
+                        <div class="content-area" contenteditable="true" data-save-key="recommendation">
+                            <ul>
+                                <li>该达人粉丝画像与目标受众匹配度高</li>
+                                <li>内容质量稳定，风格与品牌调性一致</li>
+                                <li>建议先进行小规模测试合作</li>
+                                <li>可考虑长期合作以获得更优报价</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Row 3: Decision -->
+                <div class="detail-row decision-row">
+                    <section class="detail-card decision-card">
+                        <h3>
+                            <i data-lucide="check-circle-2"></i>
+                            合作决策 <span class="en-sub">(Decision)</span>
+                        </h3>
+                        <div class="decision-options">
+                            <label class="decision-option">
+                                <input type="radio" name="decision" value="approve" data-save-key="decision">
+                                <span class="option-btn approve">
+                                    <i data-lucide="thumbs-up"></i>
+                                    <span>推荐合作</span>
+                                    <span class="en-sub">(Approve)</span>
+                                </span>
+                            </label>
+                            <label class="decision-option">
+                                <input type="radio" name="decision" value="pending">
+                                <span class="option-btn pending">
+                                    <i data-lucide="clock"></i>
+                                    <span>待定观察</span>
+                                    <span class="en-sub">(Pending)</span>
+                                </span>
+                            </label>
+                            <label class="decision-option">
+                                <input type="radio" name="decision" value="reject">
+                                <span class="option-btn reject">
+                                    <i data-lucide="thumbs-down"></i>
+                                    <span>不予合作</span>
+                                    <span class="en-sub">(Reject)</span>
+                                </span>
+                            </label>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/md5.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('kol_evaluation_v2');
+            lucide.createIcons({
+                attrs: { class: "icon", 'stroke-width': 2 }
+            });
+
+            // ========================================
+            // Avatar: Cravatar Email or Custom URL
+            // ========================================
+            const avatarInput = document.getElementById('avatarInput');
+            const kolAvatar = document.getElementById('kolAvatar');
+            const cravatarLink = document.getElementById('cravatarLink');
+
+            // Load saved avatar source
+            const savedAvatarSource = localStorage.getItem('modiqi_kol_avatar_source');
+            if (savedAvatarSource) {
+                avatarInput.value = savedAvatarSource;
+                updateAvatar(savedAvatarSource);
+            }
+
+            avatarInput.addEventListener('input', () => {
+                const value = avatarInput.value.trim();
+                localStorage.setItem('modiqi_kol_avatar_source', value);
+                updateAvatar(value);
+            });
+
+            function updateAvatar(source) {
+                if (!source) {
+                    // Default placeholder
+                    kolAvatar.src = 'https://cn.cravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp';
+                    cravatarLink.style.display = 'flex';
+                    return;
+                }
+
+                // Check if it's a URL (starts with http/https) or an email
+                if (source.startsWith('http://') || source.startsWith('https://')) {
+                    // Custom URL
+                    kolAvatar.src = source;
+                    cravatarLink.style.display = 'none';
+                } else if (source.includes('@')) {
+                    // Email - use Cravatar
+                    const hash = md5(source.toLowerCase());
+                    kolAvatar.src = `https://cn.cravatar.com/avatar/${hash}?s=200&d=mp`;
+                    cravatarLink.style.display = 'none';
+                } else {
+                    // Invalid - keep current
+                    cravatarLink.style.display = 'flex';
+                }
+            }
+
+            // Handle avatar load error - show placeholder
+            kolAvatar.addEventListener('error', () => {
+                kolAvatar.src = 'https://cn.cravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp';
+            });
+
+            // ========================================
+            // Dynamic Pricing Rows
+            // ========================================
+            const pricingList = document.getElementById('pricingList');
+            const addPricingBtn = document.getElementById('addPricingBtn');
+            let pricingCounter = 3; // Start from 3 since we have 3 default rows
+
+            addPricingBtn.addEventListener('click', () => {
+                pricingCounter++;
+                const newRow = document.createElement('div');
+                newRow.className = 'pricing-row';
+                newRow.innerHTML = `
+                    <input type="text" class="pricing-type-input" value="自定义项目" data-save-key="price_type_${pricingCounter}" aria-label="price type ${pricingCounter}">
+                    <input type="text" class="pricing-value" value="¥0" data-save-key="price_value_${pricingCounter}" aria-label="price value ${pricingCounter}">
+                    <button class="remove-pricing-btn" type="button" title="删除">
+                        <i data-lucide="x"></i>
+                    </button>
+                `;
+                pricingList.appendChild(newRow);
+                lucide.createIcons({
+                    attrs: { class: "icon", 'stroke-width': 2 }
+                });
+                bindRemoveButtons();
+            });
+
+            function bindRemoveButtons() {
+                document.querySelectorAll('.remove-pricing-btn').forEach(btn => {
+                    btn.onclick = function () {
+                        if (pricingList.children.length > 1) {
+                            this.closest('.pricing-row').remove();
+                        }
+                    };
+                });
+            }
+            bindRemoveButtons();
+
+            // ========================================
+            // Star Rating Interaction
+            // ========================================
+            const ratingRows = document.querySelectorAll('.rating-stars');
+            ratingRows.forEach(row => {
+                const stars = row.querySelectorAll('.star');
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', () => {
+                        stars.forEach((s, i) => {
+                            s.classList.toggle('active', i <= index);
+                        });
+                        row.nextElementSibling.textContent = `${index + 1}/5`;
+                        updateTotalScore();
+                    });
+                });
+            });
+
+            function updateTotalScore() {
+                const allScores = document.querySelectorAll('.rating-score');
+                let total = 0;
+                allScores.forEach(score => {
+                    total += parseInt(score.textContent);
+                });
+                const avg = (total / allScores.length).toFixed(1);
+                document.querySelector('.total-score').textContent = `${avg} / 5`;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞品对比卡 (Competitive Battlecard)</title>
+    <meta name="description" content="竞品对比卡工具，帮助您系统分析竞争对手，制定致胜话术和应对策略。">
+    <meta name="keywords" content="竞品分析,竞争对手,销售话术,竞争策略,市场分析">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="竞品对比卡 - Modiqi Workbench">
+    <meta property="og:description" content="系统分析竞争对手，制定致胜话术和应对策略。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/competitive-battlecard.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>竞品对比卡</h1>
+                <span class="english-subtitle">Competitive Battlecard</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>竞品名称 <span class="en-sub">(Competitor)</span></label>
+                    <input type="text" class="meta-input" placeholder="Competitor Name" data-save-key="competitor_name" aria-label="Competitor Name">
+                </div>
+                <div class="meta-group">
+                    <label>我方产品 <span class="en-sub">(Our Product)</span></label>
+                    <input type="text" class="meta-input" value="Modiqi" data-save-key="our_product" aria-label="our product">
+                </div>
+                <div class="meta-group">
+                    <label>更新日期 <span class="en-sub">(Updated)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="battlecard-layout">
+
+            <!-- Top: Comparison Grid -->
+            <section class="comparison-section">
+                <div class="comparison-header">
+                    <div class="header-cell empty"></div>
+                    <div class="header-cell us">
+                        <i data-lucide="trophy" class="header-icon"></i>
+                        <span>我们 (Us)</span>
+                    </div>
+                    <div class="header-cell them">
+                        <i data-lucide="target" class="header-icon"></i>
+                        <span id="competitorHeader">竞品 (Them)</span>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <!-- Row 1 -->
+                    <div class="grid-row">
+                        <div class="row-label">核心功能 (Core Features)</div>
+                        <div class="cell-us" contenteditable="true" data-placeholder="我们的优势..."></div>
+                        <div class="cell-them" contenteditable="true" data-placeholder="竞品特点..."></div>
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="grid-row">
+                        <div class="row-label">定价策略 (Pricing)</div>
+                        <div class="cell-us" contenteditable="true" data-placeholder="价格定位..."></div>
+                        <div class="cell-them" contenteditable="true" data-placeholder="竞品价格..."></div>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="grid-row">
+                        <div class="row-label">技术能力 (Technology)</div>
+                        <div class="cell-us" contenteditable="true" data-placeholder="技术优势..."></div>
+                        <div class="cell-them" contenteditable="true" data-placeholder="技术劣势..."></div>
+                    </div>
+                    <!-- Row 4 -->
+                    <div class="grid-row">
+                        <div class="row-label">客户支持 (Support)</div>
+                        <div class="cell-us" contenteditable="true" data-placeholder="服务水平..."></div>
+                        <div class="cell-them" contenteditable="true" data-placeholder="服务差距..."></div>
+                    </div>
+                    <!-- Row 5 -->
+                    <div class="grid-row">
+                        <div class="row-label">市场口碑 (Reputation)</div>
+                        <div class="cell-us" contenteditable="true" data-placeholder="品牌认知..."></div>
+                        <div class="cell-them" contenteditable="true" data-placeholder="市场反馈..."></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Row: Win Themes, Objections, Rebuttals -->
+            <section class="tactics-section">
+                <!-- Win Themes -->
+                <div class="tactic-card win-themes">
+                    <div class="card-header">
+                        <i data-lucide="thumbs-up" class="card-icon"></i>
+                        <h3>致胜话术 (Win Themes)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-item">
+                            <span class="bullet">✓</span>
+                            <div contenteditable="true" data-placeholder="为什么客户应该选择我们？"></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">✓</span>
+                            <div contenteditable="true" data-placeholder="我们的独特价值是什么？"></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">✓</span>
+                            <div contenteditable="true" data-placeholder="成功案例参考..."></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Objections -->
+                <div class="tactic-card objections">
+                    <div class="card-header">
+                        <i data-lucide="message-circle-warning" class="card-icon"></i>
+                        <h3>常见异议 (Objections)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-item">
+                            <span class="bullet">!</span>
+                            <div contenteditable="true" data-placeholder="" 你们比X贵...""></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">!</span>
+                            <div contenteditable="true" data-placeholder="" 我们已经在用Y了...""></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">!</span>
+                            <div contenteditable="true" data-placeholder="" 功能Z你们有吗？""></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rebuttals -->
+                <div class="tactic-card rebuttals">
+                    <div class="card-header">
+                        <i data-lucide="message-circle-reply" class="card-icon"></i>
+                        <h3>应对策略 (Rebuttals)</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-item">
+                            <span class="bullet">→</span>
+                            <div contenteditable="true" data-placeholder="针对价格异议的回应..."></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">→</span>
+                            <div contenteditable="true" data-placeholder="针对切换成本的回应..."></div>
+                        </div>
+                        <div class="list-item">
+                            <span class="bullet">→</span>
+                            <div contenteditable="true" data-placeholder="针对功能差距的回应..."></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('competitive-battlecard');
+
+            // Sync competitor name to header
+            const competitorInput = document.querySelector('[data-save-key="competitor_name"]');
+            const competitorHeader = document.getElementById('competitorHeader');
+            competitorInput.addEventListener('input', () => {
+                competitorHeader.textContent = competitorInput.value || '竞品 (Them)';
+            });
+        });
+    </script>
+</body>
+
+</html>

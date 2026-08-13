@@ -1,0 +1,517 @@
+/* ============================================
+   CUSTOMER JOURNEY MAP - Tool Specific CSS
+   Modiqi Design System Compliant
+   ============================================ */
+
+/* ========================================
+   JOURNEY CONTAINER
+   ======================================== */
+
+.journey-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex: 1;
+    /* Fill remaining space to push footer down */
+    min-height: 0;
+}
+
+.journey-stage {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-stage:focus-within {
+    border-color: var(--color-focus-border);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+/* ========================================
+   STAGE HEADER - Monochrome First
+   使用柔和的暖灰背景，而非深色
+   ======================================== */
+
+.stage-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-medium);
+    border-bottom: 1px solid var(--color-border-medium);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.stage-header i,
+.stage-header .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+}
+
+.stage-header h3 {
+    font-size: var(--font-size-sm);
+    font-family: var(--font-serif);
+    margin: 0;
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
+
+.stage-header .en-sub {
+    font-size: 0.65em;
+    font-weight: var(--font-weight-regular);
+    opacity: 0.7;
+    margin-left: var(--spacing-xs);
+    font-family: var(--font-sans);
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+/* ========================================
+   STAGE CONTENT
+   ======================================== */
+
+.stage-content {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.content-section {
+    margin-bottom: var(--spacing-sm);
+}
+
+.content-section:last-child {
+    margin-bottom: 0;
+}
+
+.content-section strong {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-weight: var(--font-weight-medium);
+}
+
+.content-section strong .en-sub {
+    font-size: 0.85em;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-tertiary);
+    text-transform: none;
+}
+
+.content-section p {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid transparent;
+    min-height: 2rem;
+}
+
+.content-section p:focus {
+    outline: none;
+    background: var(--color-bg-white);
+    border-color: var(--color-focus-border);
+    box-shadow: inset 2px 0 0 0 var(--color-focus-border);
+}
+
+/* Pain Points - 单色模式使用左边框区分 */
+.content-section p.pain {
+    border-left: 2px solid var(--color-text-tertiary);
+}
+
+/* Opportunities - 单色模式使用左边框区分 */
+.content-section p.opportunity {
+    border-left: 2px solid var(--color-text-tertiary);
+}
+
+/* ========================================
+   TOUCHPOINT TAGS
+   ======================================== */
+
+.touchpoint-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.tag {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    background: var(--color-bg-muted);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-light);
+    font-weight: var(--font-weight-medium);
+}
+
+.tag:focus {
+    outline: none;
+    background: var(--color-text-primary);
+    color: var(--color-bg-white);
+    border-color: var(--color-text-primary);
+}
+
+/* ========================================
+   EMOTION SECTION
+   ======================================== */
+
+.emotion-section {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-medium);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-lg) 0;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border-medium);
+}
+
+.section-title i,
+.section-title .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.section-title .en-sub {
+    font-size: 0.7em;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-tertiary);
+    margin-left: var(--spacing-xs);
+    font-family: var(--font-sans);
+}
+
+/* ========================================
+   EMOTION CHART
+   ======================================== */
+
+.emotion-chart {
+    position: relative;
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.chart-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: var(--spacing-lg) 0;
+}
+
+.chart-labels span {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* 单色模式 - 标签统一使用次要文字色 */
+.label-high,
+.label-mid,
+.label-low {
+    color: var(--color-text-secondary);
+}
+
+.emotion-svg {
+    flex: 1;
+    height: 120px;
+}
+
+/* SVG Styling - Using CSS instead of inline attributes */
+.grid-line {
+    stroke: var(--color-border-light);
+    stroke-width: 1;
+}
+
+.stage-divider {
+    stroke: var(--color-border-light);
+    stroke-width: 1;
+    stroke-dasharray: 4;
+}
+
+.emotion-curve {
+    stroke: var(--color-text-secondary);
+    stroke-width: 2;
+    fill: none;
+}
+
+.data-point {
+    fill: var(--color-text-secondary);
+}
+
+/* ========================================
+   COLOR MODE - 使用正确的语义化柔和背景色
+   仅影响背景色，文字始终使用深色保持可读性
+   ======================================== */
+
+/* 认知阶段 - 柔和蓝色 (Opportunity) */
+body:not(.theme-dark).color-mode [data-stage="awareness"] .stage-header {
+    background: var(--color-semantic-opportunity);
+    border-bottom-color: rgba(59, 130, 246, 0.2);
+}
+
+/* 考虑阶段 - 柔和薰衣草色 (Jobs) */
+body:not(.theme-dark).color-mode [data-stage="consideration"] .stage-header {
+    background: var(--color-semantic-jobs);
+    border-bottom-color: rgba(139, 92, 246, 0.2);
+}
+
+/* 购买阶段 - 柔和绿色 (Strength/Gain) */
+body:not(.theme-dark).color-mode [data-stage="purchase"] .stage-header {
+    background: var(--color-semantic-strength);
+    border-bottom-color: rgba(16, 185, 129, 0.2);
+}
+
+/* 留存阶段 - 柔和黄色 (Threat - 用作暖色调) */
+body:not(.theme-dark).color-mode [data-stage="retention"] .stage-header {
+    background: var(--color-semantic-threat);
+    border-bottom-color: rgba(245, 158, 11, 0.2);
+}
+
+/* 推荐阶段 - 柔和丁香色 (Product) */
+body:not(.theme-dark).color-mode [data-stage="advocacy"] .stage-header {
+    background: var(--color-semantic-product);
+    border-bottom-color: rgba(236, 72, 153, 0.2);
+}
+
+/* 彩色模式 - Header 图标加深 */
+body:not(.theme-dark).color-mode .stage-header i,
+body:not(.theme-dark).color-mode .stage-header .icon {
+    color: var(--color-text-primary);
+}
+
+/* 彩色模式 - 痛点使用柔和玫瑰色背景 */
+body:not(.theme-dark).color-mode .content-section p.pain {
+    background: var(--color-semantic-pain);
+    border-left-color: var(--color-semantic-danger);
+    color: var(--color-text-primary);
+    /* 保持深色文字 */
+}
+
+/* 彩色模式 - 机会使用柔和绿色背景 */
+body:not(.theme-dark).color-mode .content-section p.opportunity {
+    background: var(--color-semantic-gain);
+    border-left-color: var(--color-semantic-growth);
+    color: var(--color-text-primary);
+    /* 保持深色文字 */
+}
+
+/* 彩色模式 - 标签使用柔和蓝色背景 */
+body:not(.theme-dark).color-mode .tag {
+    background: var(--color-semantic-opportunity);
+    color: var(--color-text-primary);
+    /* 保持深色文字 */
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* 彩色模式 - 情感标签 */
+body:not(.theme-dark).color-mode .label-high {
+    color: var(--color-semantic-growth);
+}
+
+body:not(.theme-dark).color-mode .label-low {
+    color: var(--color-semantic-danger);
+}
+
+/* 彩色模式 - 情感曲线使用品牌蓝 */
+body:not(.theme-dark).color-mode .emotion-curve {
+    stroke: var(--color-brand-blue);
+}
+
+body:not(.theme-dark).color-mode .data-point {
+    fill: var(--color-brand-blue);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+body.theme-dark .journey-stage {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .stage-header {
+    background: var(--color-bg-warm-dark);
+    border-bottom-color: var(--color-border-medium);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .stage-header i,
+body.theme-dark .stage-header .icon {
+    color: var(--color-text-secondary);
+}
+
+body.theme-dark .content-section p {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .tag {
+    background: var(--color-bg-warm-dark);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .emotion-section {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border-medium);
+}
+
+body.theme-dark .emotion-curve {
+    stroke: var(--color-text-secondary);
+}
+
+body.theme-dark .data-point {
+    fill: var(--color-text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE LAYOUT
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .journey-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .journey-stage {
+        border-left: 3px solid var(--color-border-medium);
+    }
+
+    .stage-header {
+        justify-content: flex-start;
+    }
+
+    .emotion-chart {
+        flex-direction: column;
+    }
+
+    .chart-labels {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .emotion-svg {
+        height: 80px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    .paper-a3 {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .journey-container {
+        min-height: 0;
+    }
+
+    .journey-stage {
+        overflow: visible;
+    }
+
+    .content-section p,
+    .tag {
+        overflow-wrap: anywhere;
+    }
+
+    .emotion-section {
+        padding: var(--spacing-md);
+    }
+
+    .emotion-chart {
+        min-width: 0;
+    }
+
+    .emotion-svg {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   PRINT OPTIMIZATION
+   ======================================== */
+
+@media print {
+    .journey-container {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 8pt !important;
+    }
+
+    .journey-stage {
+        border: 0.5pt solid var(--color-border-medium) !important;
+        page-break-inside: avoid;
+    }
+
+    .stage-header {
+        background: var(--color-bg-muted) !important;
+        color: var(--color-text-primary) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .content-section p {
+        background: transparent !important;
+        border: 0.5pt solid var(--color-border-light) !important;
+        padding: 4pt !important;
+    }
+
+    .content-section p.pain,
+    .content-section p.opportunity {
+        border-left-width: 2pt !important;
+    }
+
+    .tag {
+        border: 0.5pt solid var(--color-border-medium) !important;
+        background: transparent !important;
+    }
+
+    .emotion-section {
+        border: 0.5pt solid var(--color-border-medium) !important;
+        margin-top: 12pt !important;
+        padding: 12pt !important;
+    }
+
+    .emotion-curve {
+        stroke: var(--color-text-primary) !important;
+    }
+
+    .data-point {
+        fill: var(--color-text-primary) !important;
+    }
+}

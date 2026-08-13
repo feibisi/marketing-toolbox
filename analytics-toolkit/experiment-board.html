@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增长实验看板 (Growth Experiment Board)</title>
+    <meta name="description" content="增长实验看板工具，帮助团队管理和追踪A/B测试、增长实验，从假设到结果的完整生命周期管理。">
+    <meta name="keywords" content="增长实验,A/B测试,实验看板,增长黑客,ICE评分,实验管理">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="增长实验看板 - Modiqi Workbench">
+    <meta property="og:description" content="管理和追踪A/B测试、增长实验，从假设到结果的完整生命周期管理。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/experiment-board.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>增长实验看板</h1>
+                <span class="english-subtitle">Growth Experiment Board</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>季度 <span class="en-sub">(Quarter)</span></label>
+                    <input type="text" class="meta-input" placeholder="2025 Q1" data-save-key="meta_quarter" aria-label="2025 Q1">
+                </div>
+                <div class="meta-group">
+                    <label>团队 <span class="en-sub">(Team)</span></label>
+                    <input type="text" class="meta-input" placeholder="增长团队" data-save-key="meta_team" aria-label="增长团队">
+                </div>
+            </div>
+        </header>
+
+        <!-- Kanban Board -->
+        <div class="kanban-board">
+
+            <!-- Column 1: Backlog -->
+            <div class="kanban-column backlog">
+                <div class="column-header">
+                    <i data-lucide="inbox"></i>
+                    <h3>待测试 <span class="en-sub">(Backlog)</span></h3>
+                    <span class="count">3</span>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_001">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-001</span>
+                        <span class="priority high">高优先级</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_001_title">优化注册流程减少步骤</h4>
+                    <div class="card-section">
+                        <strong>假设 <span class="en-sub">(Hypothesis)</span>:</strong>
+                        <p contenteditable="true" data-save-key="exp_001_hypothesis">减少注册步骤从5步到3步将提升注册转化率20%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_001_metric">注册转化率</span>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_001_ice">ICE: 8.5</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_001_owner">负责人: 张三</span>
+                    </div>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_002">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-002</span>
+                        <span class="priority medium">中优先级</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_002_title">首页添加社会证明元素</h4>
+                    <div class="card-section">
+                        <strong>假设:</strong>
+                        <p contenteditable="true" data-save-key="exp_002_hypothesis">添加用户评价和使用数据将提升首页转化率15%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_002_metric">首页转化率</span>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_002_ice">ICE: 7.2</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_002_owner">负责人: 李四</span>
+                    </div>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_003">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-003</span>
+                        <span class="priority low">低优先级</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_003_title">测试新的CTA按钮颜色</h4>
+                    <div class="card-section">
+                        <strong>假设:</strong>
+                        <p contenteditable="true" data-save-key="exp_003_hypothesis">将CTA按钮从蓝色改为橙色将提升点击率10%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_003_metric">按钮点击率</span>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_003_ice">ICE: 5.8</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_003_owner">负责人: 王五</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Running -->
+            <div class="kanban-column running">
+                <div class="column-header">
+                    <i data-lucide="play-circle"></i>
+                    <h3>进行中 <span class="en-sub">(Running)</span></h3>
+                    <span class="count">2</span>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_004">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-004</span>
+                        <span class="status running">运行中</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_004_title">个性化推荐算法优化</h4>
+                    <div class="card-section">
+                        <strong>假设:</strong>
+                        <p contenteditable="true" data-save-key="exp_004_hypothesis">使用协同过滤算法将提升点击率25%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_004_metric">推荐点击率</span>
+                    </div>
+                    <div class="card-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <span class="progress-text" contenteditable="true" data-save-key="exp_004_progress">进度: 65%
+                            (13/20天)</span>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">当前提升:</span>
+                            <span class="metric-value positive" contenteditable="true"
+                                data-save-key="exp_004_lift">+18%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">样本量:</span>
+                            <span class="metric-value" contenteditable="true"
+                                data-save-key="exp_004_sample">8,450</span>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_004_ice">ICE: 8.0</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_004_owner">负责人: 赵六</span>
+                    </div>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_005">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-005</span>
+                        <span class="status running">运行中</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_005_title">邮件主题行A/B测试</h4>
+                    <div class="card-section">
+                        <strong>假设:</strong>
+                        <p contenteditable="true" data-save-key="exp_005_hypothesis">个性化主题行将提升打开率30%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_005_metric">邮件打开率</span>
+                    </div>
+                    <div class="card-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                        <span class="progress-text" contenteditable="true" data-save-key="exp_005_progress">进度: 40%
+                            (4/10天)</span>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">当前提升:</span>
+                            <span class="metric-value positive" contenteditable="true"
+                                data-save-key="exp_005_lift">+22%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">样本量:</span>
+                            <span class="metric-value" contenteditable="true"
+                                data-save-key="exp_005_sample">12,300</span>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_005_ice">ICE: 7.5</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_005_owner">负责人: 孙七</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Completed -->
+            <div class="kanban-column completed">
+                <div class="column-header">
+                    <i data-lucide="check-circle"></i>
+                    <h3>已完成 <span class="en-sub">(Completed)</span></h3>
+                    <span class="count">2</span>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_006">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-006</span>
+                        <span class="result win"><i data-lucide="check" class="result-icon"></i> 成功</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_006_title">定价页面重新设计</h4>
+                    <div class="card-section">
+                        <strong>假设:</strong>
+                        <p contenteditable="true" data-save-key="exp_006_hypothesis">突出年付优惠将提升年付转化率20%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_006_metric">年付转化率</span>
+                    </div>
+                    <div class="card-results">
+                        <div class="result-item">
+                            <span class="result-label">实际提升:</span>
+                            <span class="result-value win" contenteditable="true"
+                                data-save-key="exp_006_lift">+28%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">置信度:</span>
+                            <span class="result-value" contenteditable="true"
+                                data-save-key="exp_006_confidence">95%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">样本量:</span>
+                            <span class="result-value" contenteditable="true"
+                                data-save-key="exp_006_sample">15,600</span>
+                        </div>
+                    </div>
+                    <div class="card-learning">
+                        <strong>学习 <span class="en-sub">(Learning)</span>:</strong>
+                        <p contenteditable="true" data-save-key="exp_006_learning">用户对长期价值更敏感，视觉对比效果显著</p>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_006_ice">ICE: 8.3</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_006_date">完成日期: 2024-12-15</span>
+                    </div>
+                </div>
+
+                <div class="experiment-card" data-save-key="exp_007">
+                    <div class="card-header">
+                        <span class="card-id">#EXP-007</span>
+                        <span class="result neutral">无显著差异</span>
+                    </div>
+                    <h4 class="card-title" contenteditable="true" data-save-key="exp_007_title">产品页面视频演示</h4>
+                    <div class="card-section">
+                        <strong>假设:</strong>
+                        <p contenteditable="true" data-save-key="exp_007_hypothesis">添加产品演示视频将提升转化率15%</p>
+                    </div>
+                    <div class="card-section">
+                        <strong>目标指标:</strong>
+                        <span class="metric-tag" contenteditable="true" data-save-key="exp_007_metric">产品页转化率</span>
+                    </div>
+                    <div class="card-results">
+                        <div class="result-item">
+                            <span class="result-label">实际提升:</span>
+                            <span class="result-value neutral" contenteditable="true"
+                                data-save-key="exp_007_lift">+2%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">置信度:</span>
+                            <span class="result-value" contenteditable="true"
+                                data-save-key="exp_007_confidence">68%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">样本量:</span>
+                            <span class="result-value" contenteditable="true"
+                                data-save-key="exp_007_sample">9,200</span>
+                        </div>
+                    </div>
+                    <div class="card-learning">
+                        <strong>学习 <span class="en-sub">(Learning)</span>:</strong>
+                        <p contenteditable="true" data-save-key="exp_007_learning">视频加载时间影响体验，需优化视频质量</p>
+                    </div>
+                    <div class="card-meta">
+                        <span class="ice-score" contenteditable="true" data-save-key="exp_007_ice">ICE: 6.5</span>
+                        <span class="owner" contenteditable="true" data-save-key="exp_007_date">完成日期: 2024-12-10</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="summary-stats">
+            <div class="stat-card">
+                <i data-lucide="flask-conical"></i>
+                <div class="stat-content">
+                    <span class="stat-value" contenteditable="true" data-save-key="stat_total">7</span>
+                    <span class="stat-label">总实验数</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="trending-up"></i>
+                <div class="stat-content">
+                    <span class="stat-value" contenteditable="true" data-save-key="stat_success_rate">50%</span>
+                    <span class="stat-label">成功率</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="zap"></i>
+                <div class="stat-content">
+                    <span class="stat-value" contenteditable="true" data-save-key="stat_avg_lift">+23%</span>
+                    <span class="stat-label">平均提升</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="clock"></i>
+                <div class="stat-content">
+                    <span class="stat-value" contenteditable="true" data-save-key="stat_avg_cycle">14天</span>
+                    <span class="stat-label">平均周期</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('experiment_board_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

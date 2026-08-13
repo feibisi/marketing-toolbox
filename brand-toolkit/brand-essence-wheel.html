@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌精髓轮 - Modiqi Brand Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/brand-essence-wheel.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌精髓轮</h1>
+                <span class="english-subtitle">Brand Essence Wheel</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目</label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="wheel-container">
+            <div class="essence-wheel">
+                <div class="wheel-layer layer-5">
+                    <div class="layer-content" contenteditable="true" data-save-key="layer5">AI驱动 · 云端 · 实时协作 · 智能化 · 开放平台</div>
+                </div>
+                <div class="wheel-layer layer-4">
+                    <div class="layer-content" contenteditable="true" data-save-key="layer4">高效 · 稳定 · 易用 · 安全</div>
+                </div>
+                <div class="wheel-layer layer-3">
+                    <div class="layer-content" contenteditable="true" data-save-key="layer3">安心 · 自豪 · 归属感</div>
+                </div>
+                <div class="wheel-layer layer-2">
+                    <div class="layer-content" contenteditable="true" data-save-key="layer2">前瞻 · 专业 · 可靠</div>
+                </div>
+                <div class="wheel-layer layer-1">
+                    <div class="layer-content" contenteditable="true" data-save-key="layer1">创新</div>
+                </div>
+            </div>
+
+            <div class="wheel-legend">
+                <div class="legend-item">
+                    <div class="legend-marker marker-1"></div>
+                    <div class="legend-text">
+                        <h4>品牌精髓</h4>
+                        <p class="legend-en">Brand Essence</p>
+                        <p class="legend-desc">品牌的核心价值和灵魂</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-marker marker-2"></div>
+                    <div class="legend-text">
+                        <h4>品牌个性</h4>
+                        <p class="legend-en">Brand Personality</p>
+                        <p class="legend-desc">品牌的性格特征</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-marker marker-3"></div>
+                    <div class="legend-text">
+                        <h4>情感利益</h4>
+                        <p class="legend-en">Emotional Benefits</p>
+                        <p class="legend-desc">带给用户的情感价值</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-marker marker-4"></div>
+                    <div class="legend-text">
+                        <h4>功能利益</h4>
+                        <p class="legend-en">Functional Benefits</p>
+                        <p class="legend-desc">提供的实际功能价值</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-marker marker-5"></div>
+                    <div class="legend-text">
+                        <h4>属性特征</h4>
+                        <p class="legend-en">Attributes</p>
+                        <p class="legend-desc">品牌的外在特征</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-notes">
+            <div class="notes-header">
+                <i data-lucide="file-text" class="icon"></i>
+                <h3>品牌说明 Brand Notes</h3>
+            </div>
+            <div class="notes-content" contenteditable="true" data-save-key="brand_notes">品牌精髓轮从内到外展示了品牌的核心价值体系,从抽象的精神内核到具体的外在表现,形成完整的品牌识别体系...</div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_essence_wheel');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+</html>

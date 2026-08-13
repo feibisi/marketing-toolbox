@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STP 战略画布 (STP Strategy Canvas)</title>
+    <meta name="description" content="STP战略画布工具，帮助您进行市场细分、目标市场选择和市场定位，实现精准营销战略。">
+    <meta name="keywords" content="STP,市场细分,目标市场,市场定位,营销战略,Segmentation,Targeting,Positioning">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="STP 战略画布 - Modiqi Workbench">
+    <meta property="og:description" content="市场细分、目标选择、定位策略三位一体的战略规划工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/stp-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>STP 战略画布</h1>
+                <span class="english-subtitle">STP Strategy Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌 <span class="en-sub">(Brand)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的品牌" data-save-key="brand_name" aria-label="我的品牌">
+                </div>
+                <div class="meta-group">
+                    <label>市场 <span class="en-sub">(Market)</span></label>
+                    <input type="text" class="meta-input" placeholder="目标市场" data-save-key="target_market" aria-label="目标市场">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="stp-layout">
+            <!-- Segmentation 市场细分 -->
+            <div class="stp-pane segmentation-pane">
+                <div class="pane-header">
+                    <i data-lucide="pie-chart"></i>
+                    <h2>市场细分 <span class="en-sub">(Segmentation)</span></h2>
+                </div>
+                <div class="pane-subtitle">识别有意义的客户群体差异</div>
+
+                <div class="segment-grid">
+                    <!-- 人口统计 -->
+                    <div class="segment-card" data-segment="demographic">
+                        <div class="segment-header">
+                            <i data-lucide="users"></i>
+                            <h3>人口统计 <span class="en-sub">(Demographic)</span></h3>
+                        </div>
+                        <div class="segment-content" contenteditable="true" data-save-key="seg_demographic">
+                            <ul>
+                                <li>年龄、性别、收入、教育程度？</li>
+                                <li>家庭结构、职业特征？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 地理位置 -->
+                    <div class="segment-card" data-segment="geographic">
+                        <div class="segment-header">
+                            <i data-lucide="map-pin"></i>
+                            <h3>地理位置 <span class="en-sub">(Geographic)</span></h3>
+                        </div>
+                        <div class="segment-content" contenteditable="true" data-save-key="seg_geographic">
+                            <ul>
+                                <li>地理区域、城市级别？</li>
+                                <li>气候、文化差异？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 心理特征 -->
+                    <div class="segment-card" data-segment="psychographic">
+                        <div class="segment-header">
+                            <i data-lucide="brain"></i>
+                            <h3>心理特征 <span class="en-sub">(Psychographic)</span></h3>
+                        </div>
+                        <div class="segment-content" contenteditable="true" data-save-key="seg_psychographic">
+                            <ul>
+                                <li>价值观、生活方式？</li>
+                                <li>兴趣爱好、个性特征？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 行为模式 -->
+                    <div class="segment-card" data-segment="behavioral">
+                        <div class="segment-header">
+                            <i data-lucide="activity"></i>
+                            <h3>行为模式 <span class="en-sub">(Behavioral)</span></h3>
+                        </div>
+                        <div class="segment-content" contenteditable="true" data-save-key="seg_behavioral">
+                            <ul>
+                                <li>购买频率、使用场景？</li>
+                                <li>品牌忠诚度、决策过程？</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrow Connector 1 -->
+            <div class="stp-connector">
+                <i data-lucide="chevron-right"></i>
+            </div>
+
+            <!-- Targeting 目标选择 -->
+            <div class="stp-pane targeting-pane">
+                <div class="pane-header">
+                    <i data-lucide="target"></i>
+                    <h2>目标选择 <span class="en-sub">(Targeting)</span></h2>
+                </div>
+                <div class="pane-subtitle">评估并选择最具价值的细分市场</div>
+
+                <!-- 评估矩阵 -->
+                <div class="targeting-matrix">
+                    <div class="matrix-header">
+                        <div class="matrix-label-y">
+                            <span>市场吸引力</span>
+                            <span class="en-sub">(Attractiveness)</span>
+                        </div>
+                    </div>
+                    <div class="matrix-grid">
+                        <div class="matrix-quadrant q1" data-quadrant="priority">
+                            <span class="quadrant-label">优先进入</span>
+                            <span class="quadrant-en">Priority</span>
+                        </div>
+                        <div class="matrix-quadrant q2" data-quadrant="selective">
+                            <span class="quadrant-label">选择性投资</span>
+                            <span class="quadrant-en">Selective</span>
+                        </div>
+                        <div class="matrix-quadrant q3" data-quadrant="develop">
+                            <span class="quadrant-label">培育发展</span>
+                            <span class="quadrant-en">Develop</span>
+                        </div>
+                        <div class="matrix-quadrant q4" data-quadrant="avoid">
+                            <span class="quadrant-label">暂不考虑</span>
+                            <span class="quadrant-en">Avoid</span>
+                        </div>
+                    </div>
+                    <div class="matrix-label-x">
+                        <span>竞争能力</span>
+                        <span class="en-sub">(Competitive Strength)</span>
+                    </div>
+                </div>
+
+                <!-- 目标细分声明 -->
+                <div class="target-statement">
+                    <div class="statement-header">
+                        <i data-lucide="crosshair"></i>
+                        <h3>目标细分 <span class="en-sub">(Target Segment)</span></h3>
+                    </div>
+                    <div class="statement-content" contenteditable="true" data-save-key="target_segment">
+                        我们选择的目标细分市场是...（描述市场规模、特征、吸引力）
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrow Connector 2 -->
+            <div class="stp-connector">
+                <i data-lucide="chevron-right"></i>
+            </div>
+
+            <!-- Positioning 市场定位 -->
+            <div class="stp-pane positioning-pane">
+                <div class="pane-header">
+                    <i data-lucide="compass"></i>
+                    <h2>市场定位 <span class="en-sub">(Positioning)</span></h2>
+                </div>
+                <div class="pane-subtitle">在目标客户心智中建立独特位置</div>
+
+                <!-- 感知图 -->
+                <div class="perceptual-map">
+                    <div class="map-title">感知图 <span class="en-sub">(Perceptual Map)</span></div>
+                    <div class="map-container">
+                        <div class="map-axis-y">
+                            <span class="axis-label-top" contenteditable="true" data-save-key="axis_y_top">高...</span>
+                            <span class="axis-label-bottom" contenteditable="true"
+                                data-save-key="axis_y_bottom">低...</span>
+                        </div>
+                        <div class="map-grid">
+                            <div class="map-quadrant tl"></div>
+                            <div class="map-quadrant tr"></div>
+                            <div class="map-quadrant bl"></div>
+                            <div class="map-quadrant br"></div>
+                            <!-- 品牌位置点 -->
+                            <div class="brand-dot our-brand" style="top: 25%; left: 70%;" title="我们的品牌">
+                                <span class="dot-label">我们</span>
+                            </div>
+                            <div class="brand-dot competitor-a" style="top: 40%; left: 30%;" title="竞争对手A">
+                                <span class="dot-label">A</span>
+                            </div>
+                            <div class="brand-dot competitor-b" style="top: 60%; left: 55%;" title="竞争对手B">
+                                <span class="dot-label">B</span>
+                            </div>
+                        </div>
+                        <div class="map-axis-x">
+                            <span class="axis-label-left" contenteditable="true" data-save-key="axis_x_left">低...</span>
+                            <span class="axis-label-right" contenteditable="true"
+                                data-save-key="axis_x_right">高...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 定位声明 -->
+                <div class="positioning-statement">
+                    <div class="statement-title">
+                        <i data-lucide="quote"></i>
+                        定位声明 <span class="en-sub">(Positioning Statement)</span>
+                    </div>
+                    <div class="statement-template">
+                        <div class="template-row">
+                            <span class="template-label">对于</span>
+                            <span class="template-input" contenteditable="true"
+                                data-save-key="pos_target">[目标客户群体]</span>
+                        </div>
+                        <div class="template-row">
+                            <span class="template-label">我们的</span>
+                            <span class="template-input" contenteditable="true" data-save-key="pos_brand">[品牌/产品]</span>
+                        </div>
+                        <div class="template-row">
+                            <span class="template-label">是</span>
+                            <span class="template-input" contenteditable="true"
+                                data-save-key="pos_category">[品类/参照系]</span>
+                        </div>
+                        <div class="template-row">
+                            <span class="template-label">能够提供</span>
+                            <span class="template-input" contenteditable="true"
+                                data-save-key="pos_benefit">[独特价值/差异化利益点]</span>
+                        </div>
+                        <div class="template-row">
+                            <span class="template-label">因为</span>
+                            <span class="template-input" contenteditable="true"
+                                data-save-key="pos_reason">[支撑理由/证据]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('stp_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

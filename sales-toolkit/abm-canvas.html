@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM 策略画布 (Account-Based Marketing Canvas)</title>
+    <meta name="description" content="B2B 大客户营销的系统化规划工具，涵盖目标客户选择、决策链地图、个性化内容和销售协同。">
+    <meta name="keywords" content="ABM,大客户营销,B2B营销,账户营销,企业销售">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ABM 策略画布 - Modiqi Workbench">
+    <meta property="og:description" content="B2B 大客户营销规划工具。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/abm-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>ABM 策略画布</h1>
+                <span class="english-subtitle">Account-Based Marketing Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>目标客户 <span class="en-sub">(Target Account)</span></label>
+                    <input type="text" class="meta-input" placeholder="客户名称" data-save-key="account_name" aria-label="客户名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Canvas Grid -->
+        <div class="abm-canvas">
+            <!-- Row 1: 目标客户选择 | 客户洞察 | 决策链地图 -->
+            <div class="abm-row row-top">
+                <!-- 目标客户选择 -->
+                <div class="abm-section" data-section="selection">
+                    <div class="section-header">
+                        <i data-lucide="crosshair"></i>
+                        <h3>目标客户选择 <span class="en-sub">(Account Selection)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="tier-list">
+                            <div class="tier-item tier-1">
+                                <div class="tier-label">Tier 1</div>
+                                <div class="tier-desc">1:1 深度营销</div>
+                                <div class="tier-content" contenteditable="true" data-save-key="tier1_accounts">
+                                    战略级大客户（3-5家）</div>
+                            </div>
+                            <div class="tier-item tier-2">
+                                <div class="tier-label">Tier 2</div>
+                                <div class="tier-desc">1:Few 行业聚焦</div>
+                                <div class="tier-content" contenteditable="true" data-save-key="tier2_accounts">
+                                    高潜力客户群（10-20家）</div>
+                            </div>
+                            <div class="tier-item tier-3">
+                                <div class="tier-label">Tier 3</div>
+                                <div class="tier-desc">1:Many 规模化</div>
+                                <div class="tier-content" contenteditable="true" data-save-key="tier3_accounts">
+                                    行业目标客户（50+家）</div>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>ICP 评分标准 <span class="en-sub">(Scoring Criteria)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="icp_criteria">
+                                <ul>
+                                    <li>年营收 > ¥1亿</li>
+                                    <li>员工规模 > 500人</li>
+                                    <li>技术成熟度 高</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 客户洞察 -->
+                <div class="abm-section" data-section="intelligence">
+                    <div class="section-header">
+                        <i data-lucide="search"></i>
+                        <h3>客户洞察 <span class="en-sub">(Account Intelligence)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>公司背景 <span class="en-sub">(Company Profile)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="company_profile">
+                                行业地位、发展历程、核心业务...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>业务挑战 <span class="en-sub">(Business Challenges)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="challenges">
+                                <ul>
+                                    <li>数字化转型压力</li>
+                                    <li>成本控制需求</li>
+                                    <li>人才短缺</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label>技术栈 / 预算周期 <span class="en-sub">(Tech & Budget)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="tech_budget">
+                                现有系统、预算审批周期、采购流程...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 决策链地图 -->
+                <div class="abm-section" data-section="stakeholders">
+                    <div class="section-header">
+                        <i data-lucide="users"></i>
+                        <h3>决策链地图 <span class="en-sub">(Decision Makers)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="org-chart">
+                            <div class="stakeholder champion">
+                                <div class="role-icon"><i data-lucide="crown"></i></div>
+                                <div class="role-info">
+                                    <div class="role-title" contenteditable="true" data-save-key="champion_title">CTO
+                                    </div>
+                                    <div class="role-name" contenteditable="true" data-save-key="champion_name">张三
+                                    </div>
+                                    <div class="role-tag">Champion</div>
+                                </div>
+                            </div>
+                            <div class="stakeholder-row">
+                                <div class="stakeholder influencer">
+                                    <div class="role-icon"><i data-lucide="lightbulb"></i></div>
+                                    <div class="role-info">
+                                        <div class="role-title" contenteditable="true"
+                                            data-save-key="influencer1_title">IT总监</div>
+                                        <div class="role-name" contenteditable="true" data-save-key="influencer1_name">
+                                            李四</div>
+                                        <div class="role-tag">Influencer</div>
+                                    </div>
+                                </div>
+                                <div class="stakeholder economic">
+                                    <div class="role-icon"><i data-lucide="wallet"></i></div>
+                                    <div class="role-info">
+                                        <div class="role-title" contenteditable="true" data-save-key="economic_title">
+                                            CFO</div>
+                                        <div class="role-name" contenteditable="true" data-save-key="economic_name">王五
+                                        </div>
+                                        <div class="role-tag">Economic Buyer</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stakeholder-row">
+                                <div class="stakeholder user">
+                                    <div class="role-icon"><i data-lucide="user"></i></div>
+                                    <div class="role-info">
+                                        <div class="role-title" contenteditable="true" data-save-key="user_title">
+                                            业务经理</div>
+                                        <div class="role-name" contenteditable="true" data-save-key="user_name">赵六
+                                        </div>
+                                        <div class="role-tag">End User</div>
+                                    </div>
+                                </div>
+                                <div class="stakeholder blocker">
+                                    <div class="role-icon"><i data-lucide="shield-x"></i></div>
+                                    <div class="role-info">
+                                        <div class="role-title" contenteditable="true" data-save-key="blocker_title">
+                                            采购总监</div>
+                                        <div class="role-name" contenteditable="true" data-save-key="blocker_name">钱七
+                                        </div>
+                                        <div class="role-tag">Potential Blocker</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 个性化内容 | 触达策略 | 销销协同 -->
+            <div class="abm-row row-middle">
+                <!-- 个性化内容 -->
+                <div class="abm-section" data-section="content">
+                    <div class="section-header">
+                        <i data-lucide="file-text"></i>
+                        <h3>个性化内容 <span class="en-sub">(Personalized Content)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="content-grid">
+                            <div class="content-item">
+                                <i data-lucide="file-check"></i>
+                                <span>行业案例</span>
+                                <div class="content-detail" contenteditable="true" data-save-key="content_case">
+                                    同行业成功案例</div>
+                            </div>
+                            <div class="content-item">
+                                <i data-lucide="file-signature"></i>
+                                <span>定制方案</span>
+                                <div class="content-detail" contenteditable="true" data-save-key="content_proposal">
+                                    针对性解决方案</div>
+                            </div>
+                            <div class="content-item">
+                                <i data-lucide="gift"></i>
+                                <span>高管礼品</span>
+                                <div class="content-detail" contenteditable="true" data-save-key="content_gift">
+                                    定制化商务礼品</div>
+                            </div>
+                            <div class="content-item">
+                                <i data-lucide="lock"></i>
+                                <span>私享内容</span>
+                                <div class="content-detail" contenteditable="true" data-save-key="content_exclusive">
+                                    行业报告、白皮书</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 触达策略 -->
+                <div class="abm-section" data-section="engagement">
+                    <div class="section-header">
+                        <i data-lucide="send"></i>
+                        <h3>触达策略 <span class="en-sub">(Engagement Tactics)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="tactic-list">
+                            <div class="tactic-item">
+                                <i data-lucide="briefcase-business"></i>
+                                <div class="tactic-info">
+                                    <div class="tactic-name">LinkedIn ABM</div>
+                                    <div class="tactic-desc" contenteditable="true" data-save-key="tactic_linkedin">
+                                        精准定向广告 + InMail</div>
+                                </div>
+                            </div>
+                            <div class="tactic-item">
+                                <i data-lucide="target"></i>
+                                <div class="tactic-info">
+                                    <div class="tactic-name">定向广告</div>
+                                    <div class="tactic-desc" contenteditable="true" data-save-key="tactic_ads">
+                                        IP定向 + 重定向</div>
+                                </div>
+                            </div>
+                            <div class="tactic-item">
+                                <i data-lucide="calendar"></i>
+                                <div class="tactic-info">
+                                    <div class="tactic-name">活动邀请</div>
+                                    <div class="tactic-desc" contenteditable="true" data-save-key="tactic_event">
+                                        私享会 / 行业峰会</div>
+                                </div>
+                            </div>
+                            <div class="tactic-item">
+                                <i data-lucide="mail"></i>
+                                <div class="tactic-info">
+                                    <div class="tactic-name">直邮营销</div>
+                                    <div class="tactic-desc" contenteditable="true" data-save-key="tactic_dm">
+                                        实体礼盒 + 邀请函</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 销销协同 -->
+                <div class="abm-section" data-section="alignment">
+                    <div class="section-header">
+                        <i data-lucide="handshake"></i>
+                        <h3>销销协同 <span class="en-sub">(Sales & Marketing Alignment)</span></h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="field-group">
+                            <label>线索交接流程 <span class="en-sub">(Lead Handoff)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="lead_handoff">
+                                MQL → SQL 交接标准和流程...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>会议协调 <span class="en-sub">(Meeting Coordination)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="meeting_coord">
+                                销售与市场联合拜访安排...</div>
+                        </div>
+                        <div class="field-group">
+                            <label>共同 KPI <span class="en-sub">(Shared KPIs)</span></label>
+                            <div class="field-content" contenteditable="true" data-save-key="shared_kpi">
+                                <ul>
+                                    <li>目标账户覆盖率</li>
+                                    <li>管道贡献金额</li>
+                                    <li>成交率</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: 客户旅程追踪 -->
+            <div class="abm-row row-journey">
+                <div class="abm-section full-width" data-section="journey">
+                    <div class="section-header">
+                        <i data-lucide="map"></i>
+                        <h3>客户旅程追踪 <span class="en-sub">(Account Journey)</span></h3>
+                    </div>
+                    <div class="journey-track">
+                        <div class="journey-stage" data-stage="awareness">
+                            <div class="stage-icon"><i data-lucide="eye"></i></div>
+                            <div class="stage-info">
+                                <h4>意识 <span class="en-sub">(Awareness)</span></h4>
+                                <div class="stage-status" contenteditable="true" data-save-key="stage_awareness">
+                                    广告曝光: 15次</div>
+                            </div>
+                        </div>
+                        <div class="journey-connector"></div>
+                        <div class="journey-stage active" data-stage="interest">
+                            <div class="stage-icon"><i data-lucide="heart"></i></div>
+                            <div class="stage-info">
+                                <h4>兴趣 <span class="en-sub">(Interest)</span></h4>
+                                <div class="stage-status" contenteditable="true" data-save-key="stage_interest">
+                                    网站访问: 8次</div>
+                            </div>
+                        </div>
+                        <div class="journey-connector"></div>
+                        <div class="journey-stage" data-stage="consideration">
+                            <div class="stage-icon"><i data-lucide="brain"></i></div>
+                            <div class="stage-info">
+                                <h4>考虑 <span class="en-sub">(Consideration)</span></h4>
+                                <div class="stage-status" contenteditable="true" data-save-key="stage_consideration">
+                                    Demo请求: 待安排</div>
+                            </div>
+                        </div>
+                        <div class="journey-connector"></div>
+                        <div class="journey-stage" data-stage="decision">
+                            <div class="stage-icon"><i data-lucide="check-circle"></i></div>
+                            <div class="stage-info">
+                                <h4>决策 <span class="en-sub">(Decision)</span></h4>
+                                <div class="stage-status" contenteditable="true" data-save-key="stage_decision">
+                                    提案阶段: 未开始</div>
+                            </div>
+                        </div>
+                        <div class="journey-connector"></div>
+                        <div class="journey-stage" data-stage="closed">
+                            <div class="stage-icon"><i data-lucide="trophy"></i></div>
+                            <div class="stage-info">
+                                <h4>成交 <span class="en-sub">(Closed Won)</span></h4>
+                                <div class="stage-status" contenteditable="true" data-save-key="stage_closed">目标: Q2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: 核心指标 -->
+            <div class="abm-row row-metrics">
+                <div class="abm-section full-width" data-section="metrics">
+                    <div class="section-header">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h3>核心指标 <span class="en-sub">(Key Metrics)</span></h3>
+                    </div>
+                    <div class="metrics-bar">
+                        <div class="metric-item">
+                            <div class="metric-label">覆盖率 <span class="en-sub">(Coverage)</span></div>
+                            <div class="metric-value" contenteditable="true" data-save-key="metric_coverage">75%</div>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <div class="metric-label">互动率 <span class="en-sub">(Engagement)</span></div>
+                            <div class="metric-value" contenteditable="true" data-save-key="metric_engagement">42%</div>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <div class="metric-label">转化率 <span class="en-sub">(Pipeline Rate)</span></div>
+                            <div class="metric-value" contenteditable="true" data-save-key="metric_pipeline">18%</div>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item highlight">
+                            <div class="metric-label">预期 ACV <span class="en-sub">(Annual Contract Value)</span></div>
+                            <div class="metric-value" contenteditable="true" data-save-key="metric_acv">¥500,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('abm_canvas');
+            lucide.createIcons({
+                attrs: { class: 'icon', 'stroke-width': 2 }
+            });
+        });
+    </script>
+</body>
+
+</html>

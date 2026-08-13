@@ -1,0 +1,326 @@
+/* Crisis Playbook Card - Design System Aligned */
+/* 危机应对清单样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.crisis-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+}
+
+/* Grid areas not needed for stacked A4 layout */
+
+/* ========================================
+   Header Controls
+   ======================================== */
+.warning-level {
+    font-weight: bold;
+}
+
+.warning-level option[value="low"] {
+    color: var(--color-semantic-alert);
+}
+
+.warning-level option[value="medium"] {
+    color: var(--color-semantic-warning, #ea580c);
+}
+
+.warning-level option[value="high"] {
+    color: var(--color-semantic-danger);
+}
+
+
+/* ========================================
+   通用卡片样式
+   ======================================== */
+.card-section {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--border-sem-inner);
+    /* Stronger separator */
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-title .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-brand-blue);
+}
+
+.section-title h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ========================================
+   Risk Assessment (Section 1)
+   ======================================== */
+.assessment-grid {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.assessment-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.assessment-item label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+}
+
+.text-input {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    min-height: 40px;
+    color: var(--color-text-primary);
+}
+
+.text-input:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   Checklist (Section 2)
+   ======================================== */
+.checklist-grid {
+    display: flex;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.checklist-col {
+    flex: 1;
+    background: var(--color-bg-subtle);
+    /* Slight bg for columns */
+    padding: var(--spacing-md);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.col-title {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.time-urgent {
+    color: var(--color-semantic-danger);
+}
+
+.time-mid {
+    color: var(--color-semantic-warning, #ea580c);
+}
+
+.time-long {
+    color: var(--color-semantic-growth);
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+}
+
+.checkbox {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-text-tertiary);
+    border-radius: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    position: relative;
+}
+
+.checkbox:hover {
+    border-color: var(--color-brand-blue);
+}
+
+/* Checked State */
+.check-item[data-state="checked"] .checkbox {
+    background: var(--color-brand-blue);
+    border-color: var(--color-brand-blue);
+}
+
+.check-item[data-state="checked"] .checkbox::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.check-item[data-state="checked"] span {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   Statement Draft (Section 3)
+   ======================================== */
+/* Statement section already positioned by grid */
+
+.draft-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    height: 100%;
+}
+
+.draft-guidelines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-warm-light);
+    padding: var(--spacing-sm);
+    border-radius: 0;
+}
+
+.draft-editor {
+    flex: 1;
+    background: #fff;
+    /* Paper look */
+    border: 1px dashed var(--border-sem-inner);
+    padding: var(--spacing-md);
+    font-family: var(--font-serif);
+    /* Serif for official feel */
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    min-height: 80px;
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .text-input {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .checklist-col {
+    background: var(--color-bg-muted);
+    border: 1px solid var(--border-sem-inner);
+}
+
+body.theme-dark .col-title {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .draft-editor {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .draft-guidelines {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .crisis-layout {
+        gap: var(--spacing-sm);
+    }
+
+    .checklist-col,
+    .draft-guidelines {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .draft-editor {
+        border-style: solid;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+
+    .assessment-grid,
+    .checklist-grid {
+        flex-direction: column;
+    }
+
+    .checklist-col {
+        width: 100%;
+    }
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}

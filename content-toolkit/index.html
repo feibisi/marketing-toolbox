@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容营销工作台 - Modiqi Workbench</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">内容营销工作台</h1>
+                    <span class="version-tag">10 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Content Marketing Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Content Strategy Canvas -->
+            <a href="content-strategy-canvas.html" class="tool-card">
+                <i data-lucide="layout-template" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">战略</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Strategy canvas grid -->
+                        <rect x="20" y="20" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="95" y="20" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="20" y="75" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="95" y="75" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Content icons -->
+                        <rect x="30" y="35" width="30" height="4" rx="2" fill="#cbd5e1" />
+                        <rect x="30" y="45" width="20" height="3" rx="1" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容战略画布 <span class="en-sub">(Content Strategy Canvas)</span></h3>
+                    <p class="tool-desc">规划内容营销的目标、受众与核心主题。</p>
+                </div>
+            </a>
+
+            <!-- 2. Content Calendar -->
+            <a href="content-calendar.html" class="tool-card">
+                <i data-lucide="calendar" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">日历</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Calendar grid -->
+                        <rect x="20" y="20" width="160" height="100" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="20" y="20" width="160" height="20" rx="4" fill="#e2e8f0" />
+                        <!-- Grid cells -->
+                        <line x1="20" y1="55" x2="180" y2="55" stroke="#e2e8f0" />
+                        <line x1="20" y1="75" x2="180" y2="75" stroke="#e2e8f0" />
+                        <line x1="20" y1="95" x2="180" y2="95" stroke="#e2e8f0" />
+                        <line x1="65" y1="40" x2="65" y2="120" stroke="#e2e8f0" />
+                        <line x1="110" y1="40" x2="110" y2="120" stroke="#e2e8f0" />
+                        <line x1="155" y1="40" x2="155" y2="120" stroke="#e2e8f0" />
+                        <!-- Content markers -->
+                        <circle cx="42" cy="65" r="4" fill="#94a3b8" />
+                        <circle cx="87" cy="85" r="4" fill="#cbd5e1" />
+                        <circle cx="132" cy="105" r="4" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容日历 <span class="en-sub">(Content Calendar)</span></h3>
+                    <p class="tool-desc">系统化规划内容发布时间与频率。</p>
+                </div>
+            </a>
+
+            <!-- 3. Storytelling Framework -->
+            <a href="storytelling-framework.html" class="tool-card">
+                <i data-lucide="book-open" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">叙事</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Story arc -->
+                        <path d="M20 100 Q60 80 100 50 T180 40" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <!-- Story points -->
+                        <circle cx="20" cy="100" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <circle cx="100" cy="50" r="8" fill="#cbd5e1" stroke="#94a3b8" />
+                        <circle cx="180" cy="40" r="6" fill="#e2e8f0" stroke="#cbd5e1" />
+                        <!-- Text lines -->
+                        <rect x="30" y="110" width="40" height="3" rx="1" fill="#e2e8f0" />
+                        <rect x="90" y="60" width="40" height="3" rx="1" fill="#cbd5e1" />
+                        <rect x="150" y="50" width="30" height="3" rx="1" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">故事叙事框架 <span class="en-sub">(Storytelling Framework)</span></h3>
+                    <p class="tool-desc">构建引人入胜的品牌故事结构。</p>
+                </div>
+            </a>
+
+            <!-- 4. Content Distribution Matrix -->
+            <a href="content-distribution-matrix.html" class="tool-card">
+                <i data-lucide="share-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">分发</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Central content -->
+                        <rect x="75" y="55" width="50" height="30" rx="4" fill="#cbd5e1" />
+                        <!-- Distribution channels -->
+                        <circle cx="40" cy="40" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="160" cy="40" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="40" cy="100" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="160" cy="100" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Connection lines -->
+                        <line x1="75" y1="70" x2="52" y2="46" stroke="#e2e8f0" stroke-width="1.5" />
+                        <line x1="125" y1="70" x2="148" y2="46" stroke="#e2e8f0" stroke-width="1.5" />
+                        <line x1="75" y1="70" x2="52" y2="94" stroke="#e2e8f0" stroke-width="1.5" />
+                        <line x1="125" y1="70" x2="148" y2="94" stroke="#e2e8f0" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容分发矩阵 <span class="en-sub">(Distribution Matrix)</span></h3>
+                    <p class="tool-desc">多渠道内容分发策略规划。</p>
+                </div>
+            </a>
+
+            <!-- 5. Content SEO Checklist -->
+            <a href="content-seo-checklist.html" class="tool-card">
+                <i data-lucide="check-circle" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">SEO</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Checklist items -->
+                        <rect x="30" y="30" width="15" height="15" rx="2" fill="#cbd5e1" />
+                        <path d="M33 38 L37 42 L45 33" stroke="#fff" stroke-width="2" fill="none" />
+                        <rect x="55" y="33" width="100" height="8" rx="2" fill="#e2e8f0" />
+
+                        <rect x="30" y="55" width="15" height="15" rx="2" fill="#cbd5e1" />
+                        <path d="M33 63 L37 67 L45 58" stroke="#fff" stroke-width="2" fill="none" />
+                        <rect x="55" y="58" width="80" height="8" rx="2" fill="#e2e8f0" />
+
+                        <rect x="30" y="80" width="15" height="15" rx="2" stroke="#cbd5e1" fill="#fff" />
+                        <rect x="55" y="83" width="90" height="8" rx="2" fill="#e2e8f0" />
+
+                        <rect x="30" y="105" width="15" height="15" rx="2" stroke="#cbd5e1" fill="#fff" />
+                        <rect x="55" y="108" width="70" height="8" rx="2" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容 SEO 清单 <span class="en-sub">(Content SEO Checklist)</span></h3>
+                    <p class="tool-desc">优化内容搜索引擎可见性。</p>
+                </div>
+            </a>
+
+            <!-- 6. Headline Optimizer -->
+            <a href="headline-optimizer.html" class="tool-card">
+                <i data-lucide="zap" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">工具</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Score Dial -->
+                        <circle cx="100" cy="65" r="30" fill="none" stroke="#e2e8f0" stroke-width="6" />
+                        <path d="M70 65 A 30 30 0 0 1 125 50" fill="none" stroke="#22c55e" stroke-width="6" />
+                        <text x="100" y="75" text-anchor="middle" font-size="20" font-weight="bold"
+                            fill="#0f172a">85</text>
+                        <!-- Bars -->
+                        <rect x="50" y="105" width="100" height="6" rx="3" fill="#f1f5f9" />
+                        <rect x="50" y="105" width="70" height="6" rx="3" fill="#22c55e" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">标题效能评估器 <span class="en-sub">(Headline Score)</span></h3>
+                    <p class="tool-desc">测试标题的情感、长度与点击潜力。</p>
+                </div>
+            </a>
+
+            <!-- 7. Content Audit Tracker -->
+            <a href="content-audit.html" class="tool-card">
+                <i data-lucide="list-checks" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">审计</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Table structure -->
+                        <rect x="20" y="20" width="160" height="20" fill="#f1f5f9" />
+                        <line x1="20" y1="40" x2="180" y2="40" stroke="#cbd5e1" />
+
+                        <!-- Rows -->
+                        <line x1="20" y1="65" x2="180" y2="65" stroke="#f1f5f9" />
+                        <rect x="25" y="48" width="80" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="140" y="48" width="30" height="10" rx="2" fill="#dcfce7" /> <!-- Green Keep -->
+
+                        <line x1="20" y1="90" x2="180" y2="90" stroke="#f1f5f9" />
+                        <rect x="25" y="73" width="60" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="140" y="73" width="30" height="10" rx="2" fill="#fee2e2" /> <!-- Red Update -->
+
+                        <rect x="25" y="98" width="70" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="140" y="98" width="30" height="10" rx="2" fill="#f1f5f9" /> <!-- Gray Delete -->
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容盘点工具 <span class="en-sub">(Audit Tracker)</span></h3>
+                    <p class="tool-desc">评估存量内容表现 (保留/更新/删除)。</p>
+                </div>
+            </a>
+
+            <!-- 8. Content Repurposing Engine -->
+            <a href="content-repurposing.html" class="tool-card">
+                <i data-lucide="refresh-cw" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">AI</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Source Doc -->
+                        <rect x="30" y="40" width="40" height="60" rx="2" fill="#f8fafc" stroke="#cbd5e1" />
+                        <line x1="35" y1="50" x2="65" y2="50" stroke="#cbd5e1" />
+                        <line x1="35" y1="60" x2="65" y2="60" stroke="#cbd5e1" />
+
+                        <!-- Arrow -->
+                        <path d="M80 70 L110 70" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                        <polygon points="105,67 112,70 105,73" fill="#94a3b8" />
+
+                        <!-- Output Cards -->
+                        <rect x="120" y="30" width="40" height="25" rx="2" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="125" y="40" width="30" height="4" rx="1" fill="#cbd5e1" />
+                        <circle cx="150" cy="36" r="3" fill="#0ea5e9" /> <!-- Twitter -->
+
+                        <rect x="120" y="60" width="40" height="25" rx="2" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="125" y="70" width="30" height="4" rx="1" fill="#cbd5e1" />
+                        <circle cx="150" cy="66" r="3" fill="#0a66c2" /> <!-- LinkedIn -->
+
+                        <rect x="120" y="90" width="40" height="25" rx="2" fill="#fff" stroke="#e2e8f0" />
+                        <rect x="125" y="100" width="30" height="4" rx="1" fill="#cbd5e1" />
+                        <circle cx="150" cy="96" r="3" fill="#ef4444" /> <!-- Video -->
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容再利用引擎 <span class="en-sub">(Repurposing)</span></h3>
+                    <p class="tool-desc">一键将长文转为社媒、邮件与脚本。</p>
+                </div>
+            </a>
+
+            <!-- 9. Topic Cluster Mapper -->
+            <a href="topic-cluster-mapper.html" class="tool-card">
+                <i data-lucide="network" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">SEO</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Core Node -->
+                        <circle cx="100" cy="70" r="16" fill="#3b82f6" />
+                        <!-- Cluster Nodes -->
+                        <circle cx="50" cy="40" r="10" fill="#10b981" />
+                        <line x1="50" y1="40" x2="100" y2="70" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="150" cy="40" r="10" fill="#10b981" />
+                        <line x1="150" y1="40" x2="100" y2="70" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="50" cy="100" r="10" fill="#10b981" />
+                        <line x1="50" y1="100" x2="100" y2="70" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="150" cy="100" r="10" fill="#10b981" />
+                        <line x1="150" y1="100" x2="100" y2="70" stroke="#cbd5e1" stroke-width="2" />
+                        <!-- Support Nodes -->
+                        <circle cx="30" cy="25" r="6" fill="#f59e0b" />
+                        <line x1="30" y1="25" x2="50" y2="40" stroke="#e2e8f0" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">主题簇映射器 <span class="en-sub">(Topic Cluster)</span></h3>
+                    <p class="tool-desc">可视化构建 SEO 话题集群与链接策略。</p>
+                </div>
+            </a>
+
+            
+
+            
+
+            <!-- 9. Content Performance Analysis -->
+            <a href="content-performance.html" class="tool-card">
+                <i data-lucide="bar-chart-3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">分析</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="30" y1="110" x2="170" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <line x1="30" y1="30" x2="30" y2="110" stroke="#cbd5e1" stroke-width="1" />
+                        <rect x="50" y="80" width="20" height="30" fill="#e0f2fe" stroke="#94a3b8" />
+                        <rect x="80" y="60" width="20" height="50" fill="#dcfce7" stroke="#94a3b8" />
+                        <rect x="110" y="70" width="20" height="40" fill="#fef3c7" stroke="#94a3b8" />
+                        <rect x="140" y="50" width="20" height="60" fill="#fee2e2" stroke="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容效果分析 <span class="en-sub">(Content Performance)</span></h3>
+                    <p class="tool-desc">追踪和分析内容营销效果。</p>
+                </div>
+            </a>
+
+            <!-- 10. Editorial Workflow -->
+            <a href="editorial-workflow.html" class="tool-card">
+                <i data-lucide="workflow" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">流程</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="30" y="50" width="40" height="40" rx="4" fill="#e0f2fe" stroke="#cbd5e1" />
+                        <rect x="90" y="50" width="40" height="40" rx="4" fill="#fef3c7" stroke="#cbd5e1" />
+                        <rect x="150" y="50" width="40" height="40" rx="4" fill="#dcfce7" stroke="#cbd5e1" />
+                        <path d="M70 70 L90 70" stroke="#94a3b8" stroke-width="2" />
+                        <path d="M85 65 L90 70 L85 75" stroke="#94a3b8" stroke-width="2" />
+                        <path d="M130 70 L150 70" stroke="#94a3b8" stroke-width="2" />
+                        <path d="M145 65 L150 70 L145 75" stroke="#94a3b8" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">编辑工作流 <span class="en-sub">(Editorial Workflow)</span></h3>
+                    <p class="tool-desc">管理内容创作和审批流程。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

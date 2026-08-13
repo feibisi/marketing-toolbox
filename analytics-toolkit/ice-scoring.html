@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE 评分矩阵 (ICE Scoring Matrix)</title>
+    <meta name="description" content="ICE评分矩阵工具，通过影响力、信心度、易实现度三个维度评估和优先排序增长实验想法。">
+    <meta name="keywords" content="ICE评分,实验优先级,增长黑客,Impact,Confidence,Ease,实验排序">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ICE 评分矩阵 - Modiqi Workbench">
+    <meta property="og:description" content="通过影响力、信心度、易实现度三个维度评估和优先排序增长实验想法。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ice-scoring.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>ICE 评分矩阵</h1>
+                <span class="english-subtitle">ICE Scoring Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>评估日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+                <div class="meta-group">
+                    <label>团队 <span class="en-sub">(Team)</span></label>
+                    <input type="text" class="meta-input" placeholder="增长团队" data-save-key="meta_team" aria-label="增长团队">
+                </div>
+            </div>
+        </header>
+
+        <!-- ICE Framework Explanation -->
+        <div class="ice-explanation">
+            <div class="explanation-item">
+                <div class="explanation-header">
+                    <i data-lucide="trending-up"></i>
+                    <h3>Impact <span class="en-sub">(影响力)</span></h3>
+                </div>
+                <p>如果实验成功，对目标指标的影响有多大？(1-10分)</p>
+            </div>
+            <div class="explanation-item">
+                <div class="explanation-header">
+                    <i data-lucide="check-circle"></i>
+                    <h3>Confidence <span class="en-sub">(信心度)</span></h3>
+                </div>
+                <p>你对实验假设的信心有多强？(1-10分)</p>
+            </div>
+            <div class="explanation-item">
+                <div class="explanation-header">
+                    <i data-lucide="zap"></i>
+                    <h3>Ease <span class="en-sub">(易实现度)</span></h3>
+                </div>
+                <p>实现这个实验有多容易？(1-10分)</p>
+            </div>
+            <div class="explanation-formula">
+                <strong>ICE 分数 =</strong>
+                <span>(Impact + Confidence + Ease) / 3</span>
+            </div>
+        </div>
+
+        <!-- ICE Scoring Table -->
+        <div class="ice-table-container">
+            <table class="ice-table">
+                <thead>
+                    <tr>
+                        <th class="col-id">#</th>
+                        <th class="col-experiment">实验想法 <span class="en-sub">(Experiment Idea)</span></th>
+                        <th class="col-score">Impact<br><span class="sub">影响力</span></th>
+                        <th class="col-score">Confidence<br><span class="sub">信心度</span></th>
+                        <th class="col-score">Ease<br><span class="sub">易实现</span></th>
+                        <th class="col-ice">ICE 分数</th>
+                        <th class="col-priority">优先级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="priority-high">
+                        <td>1</td>
+                        <td contenteditable="true" data-save-key="exp_1_idea">优化注册流程减少步骤</td>
+                        <td><input type="number" class="score-input" value="9" min="1" max="10"
+                                data-save-key="exp_1_impact" aria-label="exp 1 impact"></td>
+                        <td><input type="number" class="score-input" value="8" min="1" max="10"
+                                data-save-key="exp_1_confidence" aria-label="exp 1 confidence"></td>
+                        <td><input type="number" class="score-input" value="9" min="1" max="10"
+                                data-save-key="exp_1_ease" aria-label="exp 1 ease"></td>
+                        <td class="ice-score">8.7</td>
+                        <td><span class="priority-badge high">高</span></td>
+                    </tr>
+                    <tr class="priority-high">
+                        <td>2</td>
+                        <td contenteditable="true" data-save-key="exp_2_idea">个性化推荐算法优化</td>
+                        <td><input type="number" class="score-input" value="9" min="1" max="10"
+                                data-save-key="exp_2_impact" aria-label="exp 2 impact"></td>
+                        <td><input type="number" class="score-input" value="7" min="1" max="10"
+                                data-save-key="exp_2_confidence" aria-label="exp 2 confidence"></td>
+                        <td><input type="number" class="score-input" value="6" min="1" max="10"
+                                data-save-key="exp_2_ease" aria-label="exp 2 ease"></td>
+                        <td class="ice-score">7.3</td>
+                        <td><span class="priority-badge high">高</span></td>
+                    </tr>
+                    <tr class="priority-medium">
+                        <td>3</td>
+                        <td contenteditable="true" data-save-key="exp_3_idea">首页添加社会证明元素</td>
+                        <td><input type="number" class="score-input" value="7" min="1" max="10"
+                                data-save-key="exp_3_impact" aria-label="exp 3 impact"></td>
+                        <td><input type="number" class="score-input" value="8" min="1" max="10"
+                                data-save-key="exp_3_confidence" aria-label="exp 3 confidence"></td>
+                        <td><input type="number" class="score-input" value="9" min="1" max="10"
+                                data-save-key="exp_3_ease" aria-label="exp 3 ease"></td>
+                        <td class="ice-score">8.0</td>
+                        <td><span class="priority-badge medium">中</span></td>
+                    </tr>
+                    <tr class="priority-medium">
+                        <td>4</td>
+                        <td contenteditable="true" data-save-key="exp_4_idea">邮件主题行个性化</td>
+                        <td><input type="number" class="score-input" value="6" min="1" max="10"
+                                data-save-key="exp_4_impact" aria-label="exp 4 impact"></td>
+                        <td><input type="number" class="score-input" value="7" min="1" max="10"
+                                data-save-key="exp_4_confidence" aria-label="exp 4 confidence"></td>
+                        <td><input type="number" class="score-input" value="8" min="1" max="10"
+                                data-save-key="exp_4_ease" aria-label="exp 4 ease"></td>
+                        <td class="ice-score">7.0</td>
+                        <td><span class="priority-badge medium">中</span></td>
+                    </tr>
+                    <tr class="priority-medium">
+                        <td>5</td>
+                        <td contenteditable="true" data-save-key="exp_5_idea">定价页面重新设计</td>
+                        <td><input type="number" class="score-input" value="8" min="1" max="10"
+                                data-save-key="exp_5_impact" aria-label="exp 5 impact"></td>
+                        <td><input type="number" class="score-input" value="6" min="1" max="10"
+                                data-save-key="exp_5_confidence" aria-label="exp 5 confidence"></td>
+                        <td><input type="number" class="score-input" value="5" min="1" max="10"
+                                data-save-key="exp_5_ease" aria-label="exp 5 ease"></td>
+                        <td class="ice-score">6.3</td>
+                        <td><span class="priority-badge medium">中</span></td>
+                    </tr>
+                    <tr class="priority-low">
+                        <td>6</td>
+                        <td contenteditable="true" data-save-key="exp_6_idea">产品页面添加视频演示</td>
+                        <td><input type="number" class="score-input" value="5" min="1" max="10"
+                                data-save-key="exp_6_impact" aria-label="exp 6 impact"></td>
+                        <td><input type="number" class="score-input" value="5" min="1" max="10"
+                                data-save-key="exp_6_confidence" aria-label="exp 6 confidence"></td>
+                        <td><input type="number" class="score-input" value="4" min="1" max="10"
+                                data-save-key="exp_6_ease" aria-label="exp 6 ease"></td>
+                        <td class="ice-score">4.7</td>
+                        <td><span class="priority-badge low">低</span></td>
+                    </tr>
+                    <tr class="priority-low">
+                        <td>7</td>
+                        <td contenteditable="true" data-save-key="exp_7_idea">测试新的CTA按钮颜色</td>
+                        <td><input type="number" class="score-input" value="4" min="1" max="10"
+                                data-save-key="exp_7_impact" aria-label="exp 7 impact"></td>
+                        <td><input type="number" class="score-input" value="6" min="1" max="10"
+                                data-save-key="exp_7_confidence" aria-label="exp 7 confidence"></td>
+                        <td><input type="number" class="score-input" value="10" min="1" max="10"
+                                data-save-key="exp_7_ease" aria-label="exp 7 ease"></td>
+                        <td class="ice-score">6.7</td>
+                        <td><span class="priority-badge low">低</span></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td contenteditable="true" data-save-key="exp_8_idea">添加新实验想法...</td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_8_impact" aria-label="1 10"></td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_8_confidence" aria-label="1 10"></td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_8_ease" aria-label="1 10"></td>
+                        <td class="ice-score">-</td>
+                        <td><span class="priority-badge">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td contenteditable="true" data-save-key="exp_9_idea">添加新实验想法...</td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_9_impact" aria-label="1 10"></td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_9_confidence" aria-label="1 10"></td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_9_ease" aria-label="1 10"></td>
+                        <td class="ice-score">-</td>
+                        <td><span class="priority-badge">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td contenteditable="true" data-save-key="exp_10_idea">添加新实验想法...</td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_10_impact" aria-label="1 10"></td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_10_confidence" aria-label="1 10"></td>
+                        <td><input type="number" class="score-input" placeholder="1-10" min="1" max="10"
+                                data-save-key="exp_10_ease" aria-label="1 10"></td>
+                        <td class="ice-score">-</td>
+                        <td><span class="priority-badge">-</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Scoring Guidelines -->
+        <div class="scoring-guidelines">
+            <div class="guideline-section">
+                <h4><i data-lucide="trending-up"></i> Impact 评分指南</h4>
+                <div class="guideline-grid">
+                    <div class="guideline-item">
+                        <strong>9-10分:</strong> 可能带来30%+的提升
+                    </div>
+                    <div class="guideline-item">
+                        <strong>7-8分:</strong> 可能带来15-30%的提升
+                    </div>
+                    <div class="guideline-item">
+                        <strong>4-6分:</strong> 可能带来5-15%的提升
+                    </div>
+                    <div class="guideline-item">
+                        <strong>1-3分:</strong> 可能带来小于5%的提升
+                    </div>
+                </div>
+            </div>
+
+            <div class="guideline-section">
+                <h4><i data-lucide="check-circle"></i> Confidence 评分指南</h4>
+                <div class="guideline-grid">
+                    <div class="guideline-item">
+                        <strong>9-10分:</strong> 有强数据支持或成功案例
+                    </div>
+                    <div class="guideline-item">
+                        <strong>7-8分:</strong> 有一定数据或行业最佳实践
+                    </div>
+                    <div class="guideline-item">
+                        <strong>4-6分:</strong> 基于合理假设但缺乏验证
+                    </div>
+                    <div class="guideline-item">
+                        <strong>1-3分:</strong> 纯粹猜测或直觉
+                    </div>
+                </div>
+            </div>
+
+            <div class="guideline-section">
+                <h4><i data-lucide="zap"></i> Ease 评分指南</h4>
+                <div class="guideline-grid">
+                    <div class="guideline-item">
+                        <strong>9-10分:</strong> 小于1天可完成，无需开发
+                    </div>
+                    <div class="guideline-item">
+                        <strong>7-8分:</strong> 1-3天，简单开发
+                    </div>
+                    <div class="guideline-item">
+                        <strong>4-6分:</strong> 1-2周，中等复杂度
+                    </div>
+                    <div class="guideline-item">
+                        <strong>1-3分:</strong> 大于2周，高复杂度
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ice_scoring_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+
+            // Auto-calculate ICE scores
+            document.querySelectorAll('.ice-table tbody tr').forEach(row => {
+                const inputs = row.querySelectorAll('.score-input');
+                const iceCell = row.querySelector('.ice-score');
+                const priorityCell = row.querySelector('.priority-badge');
+
+                inputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        const values = Array.from(inputs).map(i => parseFloat(i.value) || 0);
+                        if (values.every(v => v > 0)) {
+                            const iceScore = (values.reduce((a, b) => a + b, 0) / 3).toFixed(1);
+                            iceCell.textContent = iceScore;
+
+                            // Update priority
+                            row.classList.remove('priority-high', 'priority-medium', 'priority-low');
+                            priorityCell.classList.remove('high', 'medium', 'low');
+
+                            if (iceScore >= 7.5) {
+                                row.classList.add('priority-high');
+                                priorityCell.classList.add('high');
+                                priorityCell.textContent = '高';
+                            } else if (iceScore >= 5.5) {
+                                row.classList.add('priority-medium');
+                                priorityCell.classList.add('medium');
+                                priorityCell.textContent = '中';
+                            } else {
+                                row.classList.add('priority-low');
+                                priorityCell.classList.add('low');
+                                priorityCell.textContent = '低';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

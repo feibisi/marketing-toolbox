@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提案生成器 (Proposal Generator)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="快速构建专业的销售提案文档">
+    <meta name="keywords" content="Sales Proposal, B2B Sales, Pitch Deck, Contract">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/proposal-generator.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Portrait Canvas -->
+    <main class="paper-a4">
+
+        <!-- Proposal Document Structure -->
+        <article class="proposal-doc">
+
+            <!-- Doc Header -->
+            <header class="doc-header">
+                <div class="brand-logo">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Logo"
+                        style="height: 40px; filter: grayscale(1);">
+                </div>
+                <div class="doc-meta">
+                    <h1 contenteditable="true" data-save-key="prop_title">合作提案 (Proposal)</h1>
+                    <div class="meta-row">
+                        <span>Prepared For:</span>
+                        <span class="editable-line" contenteditable="true" data-save-key="prop_client">Client Co.</span>
+                    </div>
+                    <div class="meta-row">
+                        <span>Date:</span>
+                        <input type="date" class="date-input" data-save-key="prop_date" aria-label="prop date">
+                    </div>
+                </div>
+            </header>
+
+            <hr class="doc-divider">
+
+            <!-- 1. Executive Summary -->
+            <section class="doc-section">
+                <h2 class="section-title">1. 执行摘要 (Executive Summary)</h2>
+                <div class="editable-block" contenteditable="true" data-save-key="prop_summary"
+                    data-placeholder="简述项目目标、核心价值与预期成果...">
+                </div>
+            </section>
+
+            <!-- 2. Situation Analysis -->
+            <section class="doc-section">
+                <h2 class="section-title">2. 现状与挑战 (Situation Analysis)</h2>
+                <div class="editable-block" contenteditable="true" data-save-key="prop_problem"
+                    data-placeholder="描述客户当前的痛点、业务瓶颈或错失的机会...">
+                </div>
+            </section>
+
+            <!-- 3. Solution -->
+            <section class="doc-section">
+                <h2 class="section-title">3. 解决方案 (Proposed Solution)</h2>
+                <div class="editable-block" contenteditable="true" data-save-key="prop_solution"
+                    data-placeholder="阐述我们将如何解决上述问题（方法论、技术、服务内容）...">
+                </div>
+            </section>
+
+            <!-- 4. Investment & Timeline -->
+            <section class="doc-section grid-section">
+                <div class="half-col">
+                    <h2 class="section-title">4. 投资方案 (Investment)</h2>
+                    <div class="editable-block" contenteditable="true" data-save-key="prop_price"
+                        data-placeholder="列出费用结构、付款方式...">
+                    </div>
+                </div>
+                <div class="half-col">
+                    <h2 class="section-title">5. 时间规划 (Timeline)</h2>
+                    <div class="editable-block" contenteditable="true" data-save-key="prop_timeline"
+                        data-placeholder="关键里程碑节点...">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Acceptance -->
+            <section class="doc-section acceptance-section">
+                <h2 class="section-title">6. 确认签署 (Acceptance)</h2>
+                <div class="signature-row">
+                    <div class="sign-box">
+                        <div class="sign-line"></div>
+                        <p>Authorized Signature</p>
+                    </div>
+                    <div class="sign-box">
+                        <div class="sign-line"></div>
+                        <p>Date</p>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+
+        <!-- Helpful Tips (Sidebar/Floating) -->
+        <aside class="tips-panel">
+            <div class="tips-header">
+                <i data-lucide="lightbulb"></i> Tips
+            </div>
+            <ul class="tips-list">
+                <li><strong>Summary:</strong> Keep it under 1 page. Focus on ROI.</li>
+                <li><strong>Problem:</strong> Use "Cost of Inaction" (e.g. losing $X/day).</li>
+                <li><strong>Solution:</strong> Focus on "Outcome" not just "Features".</li>
+            </ul>
+        </aside>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('proposal_doc_v1');
+            lucide.createIcons();
+
+            // Auto-fill date
+            const dateInput = document.querySelector('[data-save-key="prop_date"]');
+            if (dateInput && !dateInput.value) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+        });
+    </script>
+</body>
+
+</html>

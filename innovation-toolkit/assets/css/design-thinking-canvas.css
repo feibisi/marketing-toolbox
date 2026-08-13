@@ -1,0 +1,210 @@
+/* Design Thinking Canvas Styles */
+
+.dt-canvas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-md);
+    height: 100%;
+    margin-bottom: var(--spacing-xl);
+}
+
+.dt-stage {
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Arrow shape via CSS clip-path or pseudo-elements might be complex for full borders, using simple spacing + connector logic instead */
+}
+
+/* Stage Headers */
+.stage-header {
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-inner);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    text-align: center;
+    position: relative;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-num {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+}
+
+.stage-icon {
+    color: var(--color-brand-blue);
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+}
+
+.stage-header h3 {
+    margin: 0;
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.en-sub {
+    font-size: 11px;
+    font-weight: normal;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+}
+
+/* Connectors (CSS Arrows between columns) */
+.dt-stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    /* Center of header */
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    background: var(--color-bg-white);
+    /* Match bg behind */
+    border-top: 1px solid var(--border-sem-outer);
+    border-right: 1px solid var(--border-sem-outer);
+    transform: rotate(45deg);
+    z-index: 10;
+}
+
+/* This specific arrow style is tricky with overlapping borders, simpler approach: vertical line connector */
+
+
+/* Stage Body */
+.stage-body {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: var(--color-bg-white);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.prompt-box {
+    background: var(--color-bg-subtle);
+    padding: 8px;
+    border-radius: 0;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.icon-xs {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    color: var(--color-brand-blue);
+}
+
+.content-area {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    outline: none;
+    white-space: pre-wrap;
+}
+
+.content-area:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* Color Accents (Subtle) */
+/* Color Accents (Subtle) */
+.stage-empathize {
+    border-top: 4px solid var(--color-semantic-reflection);
+}
+
+/* Indigo */
+.stage-define {
+    border-top: 4px solid var(--color-info);
+}
+
+/* Sky */
+.stage-ideate {
+    border-top: 4px solid var(--color-archetype-independence);
+}
+
+/* Yellow */
+.stage-prototype {
+    border-top: 4px solid var(--color-brand-accent-light);
+}
+
+/* Orange */
+.stage-test {
+    border-top: 4px solid var(--color-semantic-growth);
+}
+
+/* Emerald */
+
+/* Print */
+@media print {
+    .dt-canvas {
+        gap: 10px;
+    }
+
+    .dt-stage {
+        border: 1px solid var(--border-sem-outer);
+        box-shadow: none;
+    }
+
+    .stage-header {
+        border-bottom: 1px solid var(--border-sem-inner);
+    }
+
+    .prompt-box {
+        border: 1px dashed var(--border-sem-dashed);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .dt-canvas {
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+    }
+
+    .dt-stage:not(:last-child)::after {
+        top: auto;
+        right: 50%;
+        bottom: -12px;
+    }
+
+    .stage-header {
+        height: auto;
+        min-height: 88px;
+    }
+
+    .content-area {
+        min-height: 140px;
+    }
+}

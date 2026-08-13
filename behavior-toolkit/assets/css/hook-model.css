@@ -1,0 +1,302 @@
+/* Hook Model - 数字化咨询操作系统增强版 */
+
+:root {
+    --hook-node-width: 260px;
+    --hook-node-bg: var(--color-bg-paper);
+    --hook-accent: var(--color-brand-primary);
+}
+
+.tool-content {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+/* ========================================
+   Hook Engine Wrapper (Circular Layout)
+   ======================================== */
+.hook-engine-wrapper {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cycle-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cycle-path {
+    stroke-dasharray: 8, 8;
+    animation: dash 60s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.hook-cycle-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Center Core */
+.cycle-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    background: var(--color-bg-paper);
+    border: 2px solid var(--border-sem-outer);
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    z-index: 5;
+}
+
+.center-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center-content .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--color-text-tertiary);
+    font-weight: 700;
+}
+
+.core-score {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-brand-primary);
+}
+
+.center-content .sub {
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+}
+
+/* ========================================
+   Hook Nodes
+   ======================================== */
+.hook-node {
+    position: absolute;
+    width: var(--hook-node-width);
+    background: var(--hook-node-bg);
+    border: 1px solid var(--border-sem-outer);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.hook-node:hover {
+    transform: translate(-50%, -2px) !important;
+    /* Specific override for translate positioning */
+    border-color: var(--hook-accent);
+    box-shadow: var(--shadow-md);
+}
+
+/* Special hover for lateral nodes */
+.node-action:hover,
+.node-invest:hover {
+    transform: translateY(-52%) !important;
+}
+
+.node-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.node-icon-main {
+    width: 20px;
+    height: 20px;
+    color: var(--hook-accent);
+}
+
+.node-header h3 {
+    margin: 0;
+    font-size: var(--font-size-md);
+    font-weight: 700;
+}
+
+.node-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-block label {
+    display: block;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.editable-area {
+    min-height: 48px;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    outline: none;
+    color: var(--color-text-primary);
+}
+
+.editable-area:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    opacity: 0.6;
+}
+
+/* ========================================
+   Analysis Panel
+   ======================================== */
+.analysis-panel {
+    width: 100%;
+    max-width: 600px;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    padding: var(--spacing-lg);
+}
+
+.panel-section h4 {
+    font-family: var(--font-serif);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-outer);
+    padding-bottom: 8px;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.score-item label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--color-text-secondary);
+}
+
+.score-slider {
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--color-border-main);
+    border-radius: 0;
+    outline: none;
+}
+
+.score-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--color-bg-white);
+    border: 2px solid var(--hook-accent);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ========================================
+   Dark Mode & Print
+   ======================================== */
+body.theme-dark .hook-node {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+@media print {
+    .hook-engine-wrapper {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .cycle-svg,
+    .cycle-center {
+        display: none;
+    }
+
+    .hook-node {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        width: 100%;
+        margin-bottom: 20px;
+        break-inside: avoid;
+    }
+
+    .analysis-panel {
+        display: block;
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hook-engine-wrapper, .hook-cycle-container { width: 100%; height: auto; display: block; }
+    .cycle-svg, .cycle-center { display: none; }
+    .hook-node { position: relative; inset: auto; transform: none; width: 100%; margin-bottom: 12px; }
+    .analysis-panel { grid-template-columns: 1fr; }
+}
+
+@media screen and (min-width: 769px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        height: auto !important;
+        min-height: var(--paper-min-height, 0) !important;
+        overflow: visible !important;
+    }
+}

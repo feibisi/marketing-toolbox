@@ -1,0 +1,271 @@
+/* McKinsey 7S Styles */
+
+.model-container {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    /* Center on A3 */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.connectors-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.connectors-svg line {
+    stroke: var(--border-sem-dashed);
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+}
+
+/* Nodes */
+.element-node {
+    position: absolute;
+    width: 165px;
+    height: 165px;
+    background: var(--color-bg-white);
+    border: 2px solid var(--border-sem-outer);
+    border-radius: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.element-node:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-brand-blue);
+    z-index: 10;
+}
+
+/* Positioning (Based on 1000x800 SVG canvas) */
+/* Center: x=500 y=350 */
+.center-node {
+    top: 267.5px;
+    /* 350 - 82.5 */
+    left: 417.5px;
+    /* 500 - 82.5 */
+    background: var(--color-bg-subtle);
+    border-style: double;
+    border-width: 4px;
+}
+
+/* Top: Strategy (x=500 y=100) */
+.pos-top-center {
+    top: 17.5px;
+    left: 417.5px;
+}
+
+/* Top Left: Structure (x=200 y=250) */
+.pos-top-left {
+    top: 167.5px;
+    left: 117.5px;
+}
+
+/* Top Right: Systems (x=800 y=250) */
+.pos-top-right {
+    top: 167.5px;
+    left: 717.5px;
+}
+
+/* Bottom Left: Style (x=200 y=550) */
+.pos-bottom-left {
+    top: 467.5px;
+    left: 117.5px;
+}
+
+/* Bottom Center: Staff (x=500 y=650) */
+.pos-bottom-center {
+    top: 567.5px;
+    left: 417.5px;
+}
+
+/* Bottom Right: Skills (x=800 y=550) */
+.pos-bottom-right {
+    top: 467.5px;
+    left: 717.5px;
+}
+
+
+/* Node Content */
+.node-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    pointer-events: none;
+}
+
+.node-icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.node-title {
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+}
+
+.node-cn {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    display: none;
+}
+
+.node-content {
+    flex: 1;
+    width: 100%;
+
+    font-size: var(--font-size-xs);
+    overflow-y: hidden;
+    /* Hide overflow to keep circle clean */
+    color: var(--color-text-secondary);
+    outline: none;
+    display: flex;
+    /* Center vertical align text */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.node-content:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    font-size: var(--font-size-xs);
+}
+
+.node-content:focus {
+    background: var(--color-focus-bg);
+    overflow-y: auto;
+    /* Allow scroll when editing */
+}
+
+/* Print */
+@media print {
+    .model-container {
+        width: 100%;
+        height: 100%;
+        transform: scale(0.9);
+        /* Fit to page */
+        top: 0;
+    }
+
+    .element-node {
+        box-shadow: none;
+        border: 1px solid var(--border-sem-outer);
+    }
+
+
+    .connectors-svg line {
+        stroke: var(--color-border-strong);
+    }
+}
+
+/* Color Mode */
+body:not(.theme-dark).color-mode .center-node {
+    background: var(--color-semantic-reflection-bg);
+    border-color: var(--color-semantic-reflection);
+}
+
+body:not(.theme-dark).color-mode .center-node .node-icon {
+    color: var(--color-semantic-reflection);
+}
+
+body:not(.theme-dark).color-mode .pos-top-center,
+body:not(.theme-dark).color-mode .pos-top-left,
+body:not(.theme-dark).color-mode .pos-top-right {
+    background: var(--color-semantic-strength-bg);
+    border-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .pos-top-center .node-icon,
+body:not(.theme-dark).color-mode .pos-top-left .node-icon,
+body:not(.theme-dark).color-mode .pos-top-right .node-icon {
+    color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .pos-bottom-center,
+body:not(.theme-dark).color-mode .pos-bottom-left,
+body:not(.theme-dark).color-mode .pos-bottom-right {
+    background: var(--color-semantic-gain-bg);
+    border-color: var(--color-semantic-gain);
+}
+
+body:not(.theme-dark).color-mode .pos-bottom-center .node-icon,
+body:not(.theme-dark).color-mode .pos-bottom-left .node-icon,
+body:not(.theme-dark).color-mode .pos-bottom-right .node-icon {
+    color: var(--color-semantic-gain);
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    .paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .model-container {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        transform: none;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .connectors-svg {
+        display: none;
+    }
+
+    .element-node,
+    .center-node,
+    .pos-top-center,
+    .pos-top-left,
+    .pos-top-right,
+    .pos-bottom-left,
+    .pos-bottom-center,
+    .pos-bottom-right {
+        position: static;
+        width: 100%;
+        height: auto;
+        min-height: 170px;
+    }
+
+    .node-content {
+        min-height: 80px;
+        overflow: visible;
+        justify-content: flex-start;
+    }
+}

@@ -1,0 +1,261 @@
+/* Marketing Strategy Canvas - Tool Specific Styles */
+
+.meta-input {
+    width: 200px;
+}
+
+.meta-input:focus {
+    border-bottom-style: solid;
+}
+
+/* Grid Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 2.5fr 1.5fr 1.5fr;
+    flex: 1;
+    border: 1px solid var(--border-sem-outer);
+    position: relative;
+    z-index: 1;
+    gap: 0;
+}
+
+/* Card Styles */
+.card {
+    border-right: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.card:hover {
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+}
+
+.card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Grid Areas */
+.area-kp {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.area-ka {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+}
+
+.area-kr {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+}
+
+.area-vp {
+    grid-column: 5 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.area-cr {
+    grid-column: 7 / span 2;
+    grid-row: 1;
+}
+
+.area-ch {
+    grid-column: 7 / span 2;
+    grid-row: 2;
+}
+
+.area-cs {
+    grid-column: 9 / span 2;
+    grid-row: 1 / span 2;
+    border-right: none;
+}
+
+.area-cst {
+    grid-column: 1 / span 5;
+    grid-row: 3;
+    border-bottom: none;
+}
+
+.area-rs {
+    grid-column: 6 / span 5;
+    grid-row: 3;
+    border-right: none;
+    border-bottom: none;
+}
+
+/* Card Header */
+.card .card-header {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding-bottom: 0.5rem;
+}
+
+.card .card-header .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-muted);
+}
+
+.card .card-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Card Content */
+.card .card-content {
+    flex: 1;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--color-brand-primary);
+    padding: 0.5rem 0.75rem;
+}
+
+.card .card-content:focus {
+    background: transparent;
+}
+
+.card .card-content:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid-layout {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--border-sem-outer);
+    }
+
+    .card {
+        border-right: none;
+        border-bottom: 1px solid var(--border-sem-inner);
+        min-height: 150px;
+    }
+
+    .area-rs {
+        border-bottom: none;
+    }
+}
+
+/* ========================================
+   Dark Theme Support
+   ======================================== */
+body.theme-dark .card {
+    background-color: var(--color-bg-paper);
+}
+
+/* Dark Theme - Focus Within States */
+body.theme-dark .card:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .area-vp {
+    background-color: var(--color-semantic-highlight);
+}
+
+body:not(.theme-dark).color-mode .area-rs {
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .area-cst {
+    background-color: var(--color-semantic-weakness);
+}
+
+body:not(.theme-dark).color-mode .area-cs {
+    background-color: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .area-kp,
+body:not(.theme-dark).color-mode .area-ka,
+body:not(.theme-dark).color-mode .area-kr,
+body:not(.theme-dark).color-mode .area-cr,
+body:not(.theme-dark).color-mode .area-ch {
+    background-color: var(--color-semantic-neutral);
+}
+
+/* ========================================
+   Print Styles - Force Grid Layout
+   ======================================== */
+@media print {
+
+    /* Override responsive - force grid layout */
+    .grid-layout {
+        display: grid !important;
+        grid-template-columns: repeat(10, 1fr) !important;
+        grid-template-rows: 2.5fr 2.5fr 1.5fr !important;
+        flex-direction: unset !important;
+    }
+
+    .card {
+        border-right: 1px solid var(--border-sem-inner) !important;
+        border-bottom: 1px solid var(--border-sem-inner) !important;
+        min-height: unset !important;
+    }
+
+    .area-cs {
+        border-right: none !important;
+    }
+
+    .area-cst,
+    .area-rs {
+        border-bottom: none !important;
+    }
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-layout { display: flex; flex-direction: column; height: auto; }
+    .card { width: 100%; min-height: 150px; }
+}
+
+@media screen and (min-width: 769px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        height: auto !important;
+        min-height: var(--paper-min-height, 0) !important;
+        overflow: visible !important;
+    }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创新雄心矩阵 (Innovation Ambition Matrix)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="规划核心、邻近和转型创新投资组合">
+    <meta name="keywords" content="Innovation Matrix, Portfolio Management, Strategy, Growth">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/innovation-ambition-matrix.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>创新雄心矩阵</h1>
+                <span class="english-subtitle">Innovation Ambition Matrix</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>投资组合 <span class="en-sub">(Portfolio)</span></label>
+                    <input type="text" class="meta-input" placeholder="2025 Roadmap" data-save-key="meta_portfolio" aria-label="2025 Roadmap">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="matrix-wrapper">
+
+                <!-- Axis Labels -->
+                <div class="y-axis-label">WHERE TO PLAY (Markets)</div>
+                <div class="x-axis-label">HOW TO WIN (Products & Assets)</div>
+
+                <!-- Matrix Grid -->
+                <div class="matrix-grid">
+
+                    <!-- Row 1 (Top): New Markets -->
+                    <div class="matrix-cell zone-adjacent" data-zone="Adjacent">
+                        <span class="cell-label">Adjacent</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_1"></div>
+                    </div>
+                    <div class="matrix-cell zone-transformational" data-zone="Transformational">
+                        <span class="cell-label">Transformational</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_2"></div>
+                    </div>
+                    <div class="matrix-cell zone-transformational" data-zone="Transformational">
+                        <span class="cell-label">Transformational</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_3"></div>
+                    </div>
+
+                    <!-- Row 2 (Middle): Adjacent Markets -->
+                    <div class="matrix-cell zone-adjacent" data-zone="Adjacent">
+                        <span class="cell-label">Adjacent</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_4"></div>
+                    </div>
+                    <div class="matrix-cell zone-adjacent" data-zone="Adjacent">
+                        <span class="cell-label">Adjacent</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_5"></div>
+                    </div>
+                    <div class="matrix-cell zone-transformational" data-zone="Transformational">
+                        <span class="cell-label">Transformational</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_6"></div>
+                    </div>
+
+                    <!-- Row 3 (Bottom): Existing Markets -->
+                    <div class="matrix-cell zone-core" data-zone="Core">
+                        <span class="cell-label">Core</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_7"></div>
+                    </div>
+                    <div class="matrix-cell zone-core" data-zone="Core">
+                        <span class="cell-label">Core</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_8"></div>
+                    </div>
+                    <div class="matrix-cell zone-adjacent" data-zone="Adjacent">
+                        <span class="cell-label">Adjacent</span>
+                        <div class="project-list" contenteditable="true" data-placeholder="+ New Projects..."
+                            data-save-key="iam_cell_9"></div>
+                    </div>
+
+                </div>
+
+                <!-- Axis Values -->
+                <div class="x-values">
+                    <span>Existing</span>
+                    <span>Adjacent</span>
+                    <span>New</span>
+                </div>
+                <div class="y-values">
+                    <span>New</span>
+                    <span>Adjacent</span>
+                    <span>Existing</span>
+                </div>
+
+            </div>
+
+            <!-- Legend / Stats -->
+            <div class="matrix-legend">
+                <div class="legend-item">
+                    <span class="color-dot dot-core"></span>
+                    <strong>Core (70%)</strong>: Optimize Existing Products for Existing Customers
+                </div>
+                <div class="legend-item">
+                    <span class="color-dot dot-adjacent"></span>
+                    <strong>Adjacent (20%)</strong>: Expand from Existing Business into New to the Company
+                </div>
+                <div class="legend-item">
+                    <span class="color-dot dot-transformational"></span>
+                    <strong>Transformational (10%)</strong>: Develop Breakthroughs and Invent things for markets that
+                    don't yet exist
+                </div>
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('innovation_ambition_matrix_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

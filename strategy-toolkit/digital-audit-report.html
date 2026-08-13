@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字化咨询审计报告 (Digital Consulting Audit Report)</title>
+    <meta name="description" content="聚合莫蒂奇工作台数据的自动化审计报告，用于提供高价值咨询建议。">
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/digital-audit-report.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <button class="btn btn-primary sync-trigger-btn" onclick="refreshReportData()" title="从全局剪贴板同步数据" type="button">
+        <i data-lucide="refresh-cw"></i>
+    </button>
+
+    <main class="paper-a4">
+        <header class="report-header">
+            <div class="brand-logo" data-strategic-id="report_brand_name" contenteditable="true">莫蒂奇咨询</div>
+            <div class="report-subtitle">数字化战略审计建议书</div>
+            <div style="font-size: 12px; color: var(--color-text-tertiary); margin-top: 10px;">
+                CONFIDENTIAL · <span id="reportDate">2026-00-00</span>
+            </div>
+        </header>
+
+        <!-- Section 1: Brand Essence -->
+        <section class="report-section">
+            <h2 class="section-title"><i data-lucide="shield-check"></i> 品牌战略定位 <span class="en-sub">Brand
+                    Essence</span>
+            </h2>
+            <div class="audit-grid">
+                <div class="audit-tile">
+                    <div class="tile-label">核心原型 Primary Archetype</div>
+                    <div class="tile-value" data-strategic-id="primary_archetype">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">品牌名称 Brand Name</div>
+                    <div class="tile-value" data-strategic-id="brand_name">待填充</div>
+                </div>
+                <div class="audit-tile" style="grid-column: span 2;">
+                    <div class="tile-label">品牌人格描述 Brand Personality</div>
+                    <div class="tile-value" data-strategic-id="brand_persona">
+                        品牌性格将决定所有内容分发的基调和语言风格。请确保在品牌工作台中完成定义。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1.5: Strategic SWOT -->
+        <section class="report-section">
+            <h2 class="section-title"><i data-lucide="crosshair"></i> 战略 SWOT 分析 <span class="en-sub">Strategic
+                    SWOT</span></h2>
+            <div class="audit-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="audit-tile">
+                    <div class="tile-label">优势 Strengths</div>
+                    <div class="tile-value highlight-value" data-strategic-id="swot_strengths">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">劣势 Weaknesses</div>
+                    <div class="tile-value" data-strategic-id="swot_weaknesses">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">机会 Opportunities</div>
+                    <div class="tile-value highlight-value" data-strategic-id="swot_opportunities">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">威胁 Threats</div>
+                    <div class="tile-value" data-strategic-id="swot_threats">待填充</div>
+                </div>
+                <div class="audit-tile" style="grid-column: span 2; background: var(--color-bg-subtle);">
+                    <div class="tile-label">战略结论 Key Conclusion</div>
+                    <div class="tile-value" data-strategic-id="swot_conclusion" style="font-weight: 700;">待填充</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Audience Insights -->
+        <section class="report-section">
+            <h2 class="section-title"><i data-lucide="users"></i> 用户洞察与画像 <span class="en-sub">Audience Insights</span>
+            </h2>
+            <div class="audit-grid">
+                <div class="audit-tile">
+                    <div class="tile-label">目标受众 Target Audience</div>
+                    <div class="tile-value" data-strategic-id="target_audience_type">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">核心渠道 Key Channels</div>
+                    <div class="tile-value" data-strategic-id="marketing_channels">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">核心诉求/目标 Gains & Goals</div>
+                    <div class="tile-value" data-strategic-id="customer_goals">待填充</div>
+                </div>
+                <div class="audit-tile">
+                    <div class="tile-label">核心痛点/阻碍 Pains & Barriers</div>
+                    <div class="tile-value" data-strategic-id="customer_pains">待填充</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: AI & Performance -->
+        <section class="report-section">
+            <h2 class="section-title"><i data-lucide="bar-chart-3"></i> 效能评估与预测 <span class="en-sub">Performance
+                    Projection</span>
+            </h2>
+            <div class="highlight-box">
+                <h4>财务回报预测 (Annual Projection)</h4>
+                <p>基于 ROI 计算器的模拟，本年度预期 ROI 为 <strong data-strategic-id="analytics_roi">--%</strong>。
+                    项目净营收预计将达到 <strong data-strategic-id="analytics_profit">--</strong>，建议在此基础上进行 15%-25% 的预算增杠杆。</p>
+            </div>
+            <div
+                style="margin-top: 15px; font-size: 13px; color: var(--color-text-secondary); border-left: 2px solid var(--color-brand-primary); padding-left: 10px;">
+                <strong>咨询建议：</strong> 当前获客成本 (CAC) 预计为 <span data-strategic-id="analytics_cac">--</span>，应重点通过 AI
+                提示词工程优化内容生产效率，降低人力成本权重。
+            </div>
+        </section>
+
+        <!-- Section 4: Expert Opinion -->
+        <section class="report-section">
+            <h2 class="section-title"><i data-lucide="pen-tool"></i> 咨询专家意见 <span class="en-sub">Consultant OPX</span>
+            </h2>
+            <div class="audit-tile" contenteditable="true" data-save-key="expert_conclusion"
+                style="min-height: 120px; font-style: italic;">
+                基于以上数据，我们建议在下一阶段重点加强内容战略的颗粒化程度，利用 AI 杠杆实现跨平台分发。品牌应保持一致的人格化输出，以建立持久的市场信任。
+            </div>
+        </section>
+
+        <footer class="canvas-footer" style="border-top: 1px solid var(--color-border-light); padding-top: 10px;">
+            <div class="footer-left">莫蒂奇 (Modiqi) 数字化咨询审计系统</div>
+            <div class="footer-right">Page 1 of 1</div>
+        </footer>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('digital_audit_report_v1');
+            lucide.createIcons();
+
+            // Set current date
+            document.getElementById('reportDate').textContent = new Date().toISOString().split('T')[0];
+
+            // Auto-refresh on first load
+            setTimeout(refreshReportData, 500);
+        });
+
+        function refreshReportData() {
+            if (!window.modiqiApp) return;
+
+            const btn = document.querySelector('.sync-trigger-btn');
+            btn.classList.add('loading');
+
+            // Core.js logic for pulling from clipboard
+            const fields = document.querySelectorAll('[data-strategic-id]');
+            fields.forEach(el => {
+                const sid = el.dataset.strategicId;
+                const val = window.modiqiApp.pullFromStrategicClipboard(sid);
+                if (val) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.value = val;
+                    } else if (el.innerText !== val) {
+                        el.textContent = val;
+                        el.style.color = 'var(--color-brand-primary)';
+                        setTimeout(() => { el.style.color = ''; }, 2000);
+                    }
+                }
+            });
+
+            console.log("Report data refreshed from strategic clipboard.");
+            setTimeout(() => { btn.classList.remove('loading'); }, 600);
+        }
+    </script>
+</body>
+
+</html>

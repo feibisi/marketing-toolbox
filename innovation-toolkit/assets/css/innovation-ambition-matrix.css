@@ -1,0 +1,259 @@
+/* Innovation Ambition Matrix Styles */
+
+.matrix-wrapper {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    /* Y-Axis Label + Grid */
+    grid-template-rows: 1fr 40px;
+    /* Grid + X-Axis Label */
+    gap: 10px;
+    height: 100%;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Axis Labels */
+.y-axis-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    letter-spacing: 1px;
+    border-right: 2px solid var(--color-text-tertiary);
+    padding-left: 10px;
+}
+
+.x-axis-label {
+    grid-column: 2;
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    letter-spacing: 1px;
+    border-top: 2px solid var(--color-text-tertiary);
+    padding-top: 10px;
+}
+
+.x-values {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 4px;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.y-values {
+    position: absolute;
+    /* Floating relative to grid */
+    left: 40px;
+    /* Width of y-axis label */
+    top: 110px;
+    /* Header offset */
+    bottom: 150px;
+    /* Footer + X-axis offset */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 520px;
+    /* Rough calc based on A3 1400px width aspect */
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    text-align: right;
+    width: 60px;
+    padding-right: 10px;
+}
+
+/* Re-adjust grid to accommodate values */
+.matrix-wrapper {
+    grid-template-columns: 120px 1fr !important;
+}
+
+
+/* Matrix Grid */
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--border-sem-outer);
+}
+
+.matrix-cell {
+    padding: var(--spacing-md);
+    border: 1px dashed var(--border-sem-inner);
+    display: flex;
+    flex-direction: column;
+}
+
+.cell-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Zones Coloring */
+/* Zones Coloring */
+/* Core = Greenish */
+.zone-core {
+    background: var(--color-semantic-growth-bg);
+}
+
+.zone-core .cell-label {
+    color: var(--color-semantic-growth);
+}
+
+/* Adjacent = Yellowish */
+.zone-adjacent {
+    background: var(--color-semantic-alert-bg);
+}
+
+.zone-adjacent .cell-label {
+    color: var(--color-semantic-alert);
+}
+
+/* Transformational = Reddish */
+.zone-transformational {
+    background: var(--color-bg-danger-subtle);
+}
+
+.zone-transformational .cell-label {
+    color: var(--color-semantic-danger);
+}
+
+
+/* Project List */
+.project-list {
+    flex: 1;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    outline: none;
+    line-height: 1.6;
+}
+
+.project-list:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* Legend */
+.matrix-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-sem-outer);
+}
+
+.legend-item {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 0;
+}
+
+.dot-core {
+    background: var(--color-semantic-growth);
+}
+
+.dot-adjacent {
+    background: var(--color-semantic-alert);
+}
+
+.dot-transformational {
+    background: var(--color-semantic-danger);
+}
+
+
+/* Print */
+@media print {
+    .matrix-wrapper {
+        height: 800px;
+        /* Explicit height for print */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .matrix-grid {
+        height: 600px;
+        display: grid;
+    }
+
+    .y-axis-label,
+    .y-values {
+        display: none;
+        /* Simplify print view */
+    }
+
+    .matrix-cell {
+        border: 1px solid var(--border-sem-inner);
+        background: transparent !important;
+        /* Save ink */
+    }
+
+    /* Print friendly indicators */
+    .zone-core {
+        border-bottom: 4px solid var(--color-semantic-growth);
+    }
+
+    .zone-adjacent {
+        border-bottom: 4px solid var(--color-semantic-alert);
+    }
+
+    .zone-transformational {
+        border-bottom: 4px solid var(--color-semantic-danger);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .matrix-wrapper {
+        display: block;
+        height: auto;
+    }
+
+    .y-axis-label,
+    .y-values,
+    .x-values {
+        display: none;
+    }
+
+    .matrix-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    .matrix-cell {
+        min-height: 150px;
+    }
+
+    .x-axis-label {
+        margin-top: var(--spacing-md);
+    }
+
+    .matrix-legend {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}

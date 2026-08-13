@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容战略画布 (Content Strategy Canvas)</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-tools.css">
+    <link rel="stylesheet" href="assets/css/content-strategy-canvas.css">
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3"> <!-- A4 Landscape -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容战略画布</h1>
+                <span class="english-subtitle">Content Strategy Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>品牌</label>
+                    <input type="text" class="meta-input" data-save-key="brand_name" data-strategic-id="brand_name" aria-label="brand name">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="canvas-grid strategy-grid">
+            <!-- 1. Who: Audience -->
+            <div class="canvas-card span-row">
+                <div class="card-header">
+                    <i data-lucide="users" class="icon"></i>
+                    目标受众 (Audience)
+                </div>
+                <textarea class="input-area" placeholder="- 核心画像&#10;- 痛点与需求&#10;- 内容消费习惯" data-save-key="col_audience"
+                    data-strategic-id="target_audience_type" aria-label="核心画像
+  痛点与需求
+  内容消费习惯"></textarea>
+            </div>
+
+            <!-- 2. Why: Goals -->
+            <div class="canvas-card">
+                <div class="card-header">
+                    <i data-lucide="target" class="icon"></i>
+                    商业目标 (Goals)
+                </div>
+                <textarea class="input-area" placeholder="- 品牌知名度&#10;- 潜在客户获取&#10;- 用户留存"
+                    data-save-key="col_goals" aria-label="品牌知名度
+  潜在客户获取
+  用户留存"></textarea>
+            </div>
+
+            <!-- 3. What: Core Topics -->
+            <div class="canvas-card">
+                <div class="card-header">
+                    <i data-lucide="message-square" class="icon"></i>
+                    核心主题 (Core Topics)
+                </div>
+                <textarea class="input-area" placeholder="- 行业洞察&#10;- 产品教程&#10;- 客户案例"
+                    data-save-key="col_topics" aria-label="行业洞察
+  产品教程
+  客户案例"></textarea>
+            </div>
+
+            <!-- 4. How: Formats & Channels (Span 2 cols) -->
+            <div class="canvas-card span-col">
+                <div class="card-header">
+                    <i data-lucide="layout" class="icon"></i>
+                    形式与渠道 (Formats & Channels)
+                </div>
+                <textarea class="input-area" placeholder="- 博客文章 (官网)&#10;- 短视频 (抖音/视频号)&#10;- 白皮书 (EDM)"
+                    data-save-key="col_channels" data-strategic-id="marketing_channels" aria-label="博客文章 (官网)
+  短视频 (抖音/视频号)
+  白皮书 (EDM)"></textarea>
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('content_strategy_canvas');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

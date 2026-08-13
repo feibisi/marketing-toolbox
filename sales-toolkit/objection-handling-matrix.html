@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异议处理矩阵 (Objection Handling Matrix)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="系统化破解客户顾虑与反驳，建立标准话术库">
+    <meta name="keywords" content="Sales Objections, Rebuttals, Sales Script, Objection Handling">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/objection-handling-matrix.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A4 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>异议处理矩阵</h1>
+                <span class="english-subtitle">Objection Handling Matrix</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="Sales Playbook" data-save-key="meta_project" aria-label="Sales Playbook">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="framework-bar">
+                <span class="fw-label">L.A.R.C. Framework:</span>
+                <span class="fw-step"><span class="step-num">L</span>isten (倾听)</span>
+                <span class="fw-arrow">→</span>
+                <span class="fw-step"><span class="step-num">A</span>cknowledge (共情)</span>
+                <span class="fw-arrow">→</span>
+                <span class="fw-step"><span class="step-num">R</span>espond (回应)</span>
+                <span class="fw-arrow">→</span>
+                <span class="fw-step"><span class="step-num">C</span>onfirm (确认)</span>
+            </div>
+
+            <div class="matrix-container">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th class="col-category">类别 (Category)</th>
+                            <th class="col-objection">具体异议 (Objection)</th>
+                            <th class="col-empathy">共情/缓冲 (Empathy)</th>
+                            <th class="col-reframe">重构/回应 (Reframe & Response)</th>
+                            <th class="col-proof">佐证/案例 (Proof)</th>
+                        </tr>
+                    </thead>
+                    <tbody contenteditable="true" data-save-key="matrix_body">
+                        <!-- Row 1: Price -->
+                        <tr>
+                            <td class="cell-category">
+                                <div class="cat-badge badge-price"><i data-lucide="dollar-sign"></i> 价格 (Price)</div>
+                            </td>
+                            <td class="cell-input">"太贵了，超出预算"</td>
+                            <td class="cell-input">"完全理解，预算确实是重要的考量因素..."</td>
+                            <td class="cell-input">"与其看作是一次性支出的成本，不如看作是长期投资..."</td>
+                            <td class="cell-input">"客户A使用后节省了30%..."</td>
+                        </tr>
+                        <!-- Row 2: Competitor -->
+                        <tr>
+                            <td class="cell-category">
+                                <div class="cat-badge badge-comp"><i data-lucide="swords"></i> 竞品 (Competitor)</div>
+                            </td>
+                            <td class="cell-input">"我们在用X公司的产品"</td>
+                            <td class="cell-input">"X公司确实是很不错的选择，很多人都在用..."</td>
+                            <td class="cell-input">"不过由于我们的[独特优势]，我们能更好地解决..."</td>
+                            <td class="cell-input">"对比表/功能差异图"</td>
+                        </tr>
+                        <!-- Row 3: Need -->
+                        <tr>
+                            <td class="cell-category">
+                                <div class="cat-badge badge-need"><i data-lucide="help-circle"></i> 需求 (Need)</div>
+                            </td>
+                            <td class="cell-input">"暂时不需要/没兴趣"</td>
+                            <td class="cell-input">"明白，现在可能不是最紧迫的时候..."</td>
+                            <td class="cell-input">"但考虑到[行业趋势]，现在的布局能帮您..."</td>
+                            <td class="cell-input">"行业报告/损失规避"</td>
+                        </tr>
+                        <!-- Row 4: Authority -->
+                        <tr>
+                            <td class="cell-category">
+                                <div class="cat-badge badge-auth"><i data-lucide="users"></i> 决策 (Authority)</div>
+                            </td>
+                            <td class="cell-input">"我需要和老板商量"</td>
+                            <td class="cell-input">"当然，这是一个需要慎重的集体决策..."</td>
+                            <td class="cell-input">"为了帮您更好地汇报，我可以提供这份..."</td>
+                            <td class="cell-input">"ROI计算器/演示PPT"</td>
+                        </tr>
+                        <!-- Row 5: Timing -->
+                        <tr>
+                            <td class="cell-category">
+                                <div class="cat-badge badge-time"><i data-lucide="clock"></i> 时机 (Timing)</div>
+                            </td>
+                            <td class="cell-input">"下个季度再说吧"</td>
+                            <td class="cell-input">"理解，每个季度都有不同的重点..."</td>
+                            <td class="cell-input">"但如果我们现在启动，刚好能在下季度初..."</td>
+                            <td class="cell-input">"实施时间表"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('objection_matrix_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon-sm"
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

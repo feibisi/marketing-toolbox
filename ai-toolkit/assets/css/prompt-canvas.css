@@ -1,0 +1,231 @@
+/* Prompt Canvas Specifc Styles */
+
+/* Persona Selector */
+.persona-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-light);
+    border-radius: 0;
+}
+
+.selector-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.preset-btn {
+    padding: 6px 12px;
+    font-size: var(--font-size-xs);
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-main);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.preset-btn:hover {
+    border-color: var(--color-brand-primary);
+    background: var(--color-bg-subtle);
+    transform: translateY(-1px);
+}
+
+.preset-btn.active {
+    background: var(--color-brand-primary);
+    color: white;
+    border-color: var(--color-brand-primary);
+}
+
+.canvas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    height: 600px;
+    min-height: 0;
+}
+
+/* Live Preview Footer */
+.prompt-preview-footer {
+    margin-top: var(--spacing-xl);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-main);
+    border-radius: 0;
+    padding: var(--spacing-lg);
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.preview-header h3 {
+    font-size: var(--font-size-md);
+    margin: 0;
+}
+
+.token-estimate {
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    color: var(--color-text-tertiary);
+}
+
+.preview-content {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    white-space: pre-wrap;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+/* Card Improvements */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-md);
+}
+
+/* Card Header Tweaks */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--color-border-light);
+}
+
+.header-icon-bg {
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg-subtle);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+}
+
+.card:hover .header-icon-bg {
+    background: var(--color-brand-primary);
+    color: white;
+}
+
+.header-text h3 {
+    font-size: var(--font-size-md);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.helper-text {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin: 2px 0 0 0;
+}
+
+/* Content Area */
+.card-content {
+    flex: 1;
+    overflow-y: auto;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    padding: var(--spacing-xs);
+}
+
+.card-content:focus {
+    background-color: var(--color-focus-bg);
+    outline: none;
+}
+
+/* Specific Card Accents (Optional - keeping it monochrome for now as per system) */
+
+/* Print Optimizations */
+@media print {
+    .btn {
+        display: none !important;
+    }
+
+    .canvas-grid {
+        display: block;
+        /* Stack for print if needed, or keep grid if fits */
+        gap: var(--spacing-md);
+    }
+
+    .card {
+        page-break-inside: avoid;
+        height: auto;
+        border: 1px solid #000;
+        margin-bottom: var(--spacing-md);
+        box-shadow: none;
+    }
+
+    .card-header {
+        border-bottom: 1px solid #000;
+    }
+
+    .helper-text {
+        display: none;
+    }
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .persona-selector { flex-wrap: wrap; }
+    .canvas-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; height: auto; }
+    .card { height: auto; min-height: 0; overflow: visible; }
+    .card-content, .preview-content { max-height: none; overflow: visible; }
+}
+
+@media screen and (min-width: 769px) {
+    .canvas-grid { height: auto; min-height: 600px; grid-template-rows: none; }
+    .card { height: auto; min-height: 180px; overflow: visible; }
+    .card-content { max-height: none; overflow: visible; }
+    main.paper-a3 { height: auto; min-height: 950px; aspect-ratio: auto; overflow: visible; }
+}

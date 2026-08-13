@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B 测试规划器 (A/B Test Planner)</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ab-test-planner.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body class="desk-background">
+
+    <main id="canvas" class="paper-a4 portrait">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="header-left">
+                <div class="logo-title-group">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="modiqi-logo">
+                    <div class="title-group">
+                        <h1 class="canvas-title">A/B 测试规划器</h1>
+                        <p class="canvas-subtitle">A/B TEST PLANNER</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="test-status-picker">
+                    <label>测试状态 <span class="en-sub">(Test Status)</span>:</label>
+                    <select class="status-select" aria-label="Selection">
+                        <option value="planning">📅 规划中 (Planning)</option>
+                        <option value="running">🚀 进行中 (Running)</option>
+                        <option value="completed">✅ 已完成 (Completed)</option>
+                        <option value="archived">📦 已归档 (Archived)</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="planner-layout">
+
+            <!-- 1. Test Overview -->
+            <section class="test-overview">
+                <div class="input-group full-width">
+                    <label>测试名称 <span class="en-sub">(Test Name)</span></label>
+                    <input type="text" class="clean-input large" placeholder="e.g. Homepage Hero CTA Color Test" aria-label="Homepage Hero CTA Color Test">
+                </div>
+                <div class="hypothesis-box">
+                    <div class="section-label"><i data-lucide="lightbulb"></i> 测试假设 <span
+                            class="en-sub">(Hypothesis)</span></div>
+                    <div class="hypothesis-template" contenteditable="true">
+                        如果我们将 <strong>[页面元素]</strong> 从 A 改为 B，<br>
+                        将会导致 <strong>[核心指标]</strong> 提升，<br>
+                        因为 <strong>[用户心理/行为逻辑]</strong>。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Variants Comparison -->
+            <section class="variants-comparison">
+                <!-- Control A -->
+                <div class="variant-card control">
+                    <div class="variant-header">
+                        <span class="variant-badge">A</span>
+                        <h3>对照组 <span class="en-sub">(Control)</span></h3>
+                    </div>
+                    <div class="variant-visual" contenteditable="true" data-placeholder="Paste screenshot here...">
+                    </div>
+                    <div class="variant-desc">
+                        <label>描述</label>
+                        <div contenteditable="true" class="desc-input">Current version...</div>
+                    </div>
+                </div>
+
+                <!-- VS Badge -->
+                <div class="vs-badge">VS</div>
+
+                <!-- Variant B -->
+                <div class="variant-card variant">
+                    <div class="variant-header">
+                        <span class="variant-badge">B</span>
+                        <h3>实验组 <span class="en-sub">(Variant)</span></h3>
+                    </div>
+                    <div class="variant-visual" contenteditable="true" data-placeholder="Paste screenshot here...">
+                    </div>
+                    <div class="variant-desc">
+                        <label>描述</label>
+                        <div contenteditable="true" class="desc-input">New version with...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Test Configuration (Grid) -->
+            <section class="test-config">
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label><i data-lucide="target"></i> 主要指标 <span class="en-sub">(Primary Metric)</span></label>
+                        <input type="text" class="clean-input" placeholder="e.g. Subscription Rate" aria-label="Subscription Rate">
+                    </div>
+                    <div class="config-item">
+                        <label><i data-lucide="eye"></i> 目标受众 <span class="en-sub">(Audience)</span></label>
+                        <input type="text" class="clean-input" placeholder="e.g. New Mobile Users" aria-label="New Mobile Users">
+                    </div>
+                    <div class="config-item">
+                        <label><i data-lucide="users"></i> 样本量预估 <span class="en-sub">(Sample Size)</span></label>
+                        <input type="text" class="clean-input" placeholder="e.g. 5,000 / variant" aria-label="5,000 / variant">
+                    </div>
+                    <div class="config-item">
+                        <label><i data-lucide="clock"></i> 预计时长 <span class="en-sub">(Duration)</span></label>
+                        <input type="text" class="clean-input" placeholder="e.g. 2 weeks" aria-label="2 weeks">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Results & Learnings -->
+            <section class="test-results">
+                <div class="section-title">
+                    <i data-lucide="clipboard-check" class="icon"></i>
+                    <h3>测试结果 <span class="en-sub">(Results & Learnings)</span></h3>
+                </div>
+                <div class="result-summary">
+                    <div class="result-box">
+                        <label>获胜版本 <span class="en-sub">(Winner)</span></label>
+                        <select class="winner-select" aria-label="Selection">
+                            <option value="pending">Waiting...</option>
+                            <option value="a">Control (A)</option>
+                            <option value="b">Variant (B)</option>
+                            <option value="inconclusive">无显著差异</option>
+                        </select>
+                    </div>
+                    <div class="result-metrics">
+                        <div class="metrics-header">
+                            <span>Key Metric</span>
+                            <span>A Result</span>
+                            <span>B Result</span>
+                            <span>Lift</span>
+                        </div>
+                        <div class="metric-row">
+                            <div contenteditable="true">Conv. Rate</div>
+                            <div contenteditable="true">2.1%</div>
+                            <div contenteditable="true">2.4%</div>
+                            <div contenteditable="true" class="positive">+14.2%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="learnings-box">
+                    <label>关键洞察 <span class="en-sub">(Key Learnings)</span></label>
+                    <div class="learning-content" contenteditable="true"
+                        data-placeholder="What did we learn about user behavior? Next steps?"></div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Footer Logo -->
+    <div class="footer-logo">
+        <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="logo-img">
+    </div>
+
+    <!-- Floating Toolbar -->
+    <div class="modiqi-toolbar">
+        <a href="index.html" class="toolbar-btn" data-tooltip="返回工作台">
+            <i data-lucide="home"></i>
+        </a>
+        <button class="toolbar-btn" data-tooltip="放大" id="zoomIn" type="button">
+            <i data-lucide="zoom-in"></i>
+        </button>
+        <button class="toolbar-btn" data-tooltip="缩小" id="zoomOut" type="button">
+            <i data-lucide="zoom-out"></i>
+        </button>
+        <button class="toolbar-btn" data-tooltip="导出 PDF" onclick="window.print()" type="button">
+            <i data-lucide="download"></i>
+        </button>
+        <button class="toolbar-btn" data-tooltip="深色模式" id="themeToggle" type="button">
+            <i data-lucide="moon"></i>
+        </button>
+    </div>
+
+    <!-- Core JS -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            new ModiqiApp('ab-test-planner');
+        });
+    </script>
+</body>
+
+</html>

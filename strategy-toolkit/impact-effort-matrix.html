@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优先级矩阵 (Impact/Effort Matrix)</title>
+    <meta name="description" content="优先级矩阵工具，通过价值与成本两个维度，科学排定任务优先级，识别速赢项目与重大项目。">
+    <meta name="keywords" content="优先级矩阵,Impact Effort Matrix,时间管理,项目管理,决策工具">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="优先级矩阵 - Modiqi Workbench">
+    <meta property="og:description" content="科学排定任务优先级，识别速赢项目与重大项目。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/impact-effort-matrix.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>优先级矩阵</h1>
+                <span class="english-subtitle">Impact / Effort Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="meta_project" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="matrix-container">
+            <!-- Y-Axis -->
+            <div class="axis-y">价值 / 影响力 <span class="en-sub">(Impact)</span></div>
+
+            <!-- Quadrant 1: Top-Left - Quick Wins -->
+            <div class="quadrant">
+                <div class="q-header">
+                    <i data-lucide="zap"></i>
+                    速赢项目 <span class="en-sub">(Quick Wins)</span>
+                    <span class="q-hint">高价值 · 低成本</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="quick_wins">
+                    <ul>
+                        <li>修复首页主要Bug</li>
+                        <li>优化注册流程文案</li>
+                        <li>发送召回邮件</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quadrant 2: Top-Right - Major Projects -->
+            <div class="quadrant">
+                <div class="q-header">
+                    <i data-lucide="star"></i>
+                    重大项目 <span class="en-sub">(Major Projects)</span>
+                    <span class="q-hint">高价值 · 高成本</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="major_projects">
+                    <ul>
+                        <li>开发会员系统</li>
+                        <li>重构底层架构</li>
+                        <li>拓展海外市场</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quadrant 3: Bottom-Left - Fill-ins -->
+            <div class="quadrant">
+                <div class="q-header">
+                    <i data-lucide="coffee"></i>
+                    填充任务 <span class="en-sub">(Fill-ins)</span>
+                    <span class="q-hint">低价值 · 低成本</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="fill_ins">
+                    <ul>
+                        <li>整理文件归档</li>
+                        <li>更新页脚版权年份</li>
+                        <li>微调图标样式</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quadrant 4: Bottom-Right - Thankless Tasks -->
+            <div class="quadrant">
+                <div class="q-header">
+                    <i data-lucide="trash-2"></i>
+                    费力不讨好 <span class="en-sub">(Thankless Tasks)</span>
+                    <span class="q-hint">低价值 · 高成本</span>
+                </div>
+                <div class="q-content" contenteditable="true" data-save-key="thankless_tasks">
+                    <ul>
+                        <li>为个别用户定制冷门功能</li>
+                        <li>手动处理大量低质数据</li>
+                        <li>无效益的多部门协调</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- X-Axis -->
+            <div class="axis-x">成本 / 难易度 <span class="en-sub">(Effort)</span></div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('impact_effort_matrix_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

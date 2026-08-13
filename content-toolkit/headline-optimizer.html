@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标题效能评估器 (Headline Power Score)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/headline-optimizer.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 portrait">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>标题效能评估器</h1>
+                <span class="english-subtitle">Headline Power Score</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>目标受众</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Agency Owners" aria-label="Agency Owners">
+                </div>
+            </div>
+        </header>
+
+        <div class="optimizer-container">
+
+            <!-- 1. Input Section -->
+            <div class="input-section no-print">
+                <div class="headline-input-wrapper">
+                    <input type="text" class="headline-input" id="headlineInput" placeholder="在此输入您的文章标题..."
+                        oninput="analyzeHeadline()" aria-label="在此输入您的文章标题...">
+                </div>
+                <div class="input-meta">
+                    <span id="charCount">0 字符</span>
+                    <span id="wordCount">0 词</span>
+                </div>
+            </div>
+
+            <!-- 2. Analysis Dashboard -->
+            <div class="analysis-grid">
+
+                <!-- Score Card -->
+                <div class="score-card">
+                    <div class="score-dial" id="scoreCircle">--</div>
+                    <div class="score-label">HEADLINE SCORE</div>
+                    <div style="margin-top:16px; font-size:12px; color:var(--color-text-tertiary);" id="scoreVerdict">
+                        Waiting for input...</div>
+                </div>
+
+                <!-- Metrics -->
+                <div class="metrics-panel">
+
+                    <!-- Length -->
+                    <div class="metric-box">
+                        <div class="metric-header">
+                            <i data-lucide="ruler"></i> 长度 (Length)
+                        </div>
+                        <div class="metric-value" id="lengthStatus">--</div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" id="lengthBar" style="width: 0%;"></div>
+                        </div>
+                        <p style="font-size:10px; color:var(--color-text-tertiary); margin-top:4px;">最佳: 20-60 字符</p>
+                    </div>
+
+                    <!-- Sentiment -->
+                    <div class="metric-box">
+                        <div class="metric-header">
+                            <i data-lucide="heart-pulse"></i> 情感 (Sentiment)
+                        </div>
+                        <div class="metric-value" id="sentimentStatus">--</div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" id="sentimentBar"
+                                style="width: 0%; background:var(--color-text-tertiary);"></div>
+                        </div>
+                        <p style="font-size:10px; color:var(--color-text-tertiary); margin-top:4px;">建议使用强情感词汇</p>
+                    </div>
+
+                    <!-- Power Words -->
+                    <div class="metric-box">
+                        <div class="metric-header">
+                            <i data-lucide="zap"></i> 强力词 (Power Words)
+                        </div>
+                        <div class="metric-value" id="powerStatus">0</div>
+                        <div class="metric-bar-track">
+                            <div class="metric-bar-fill" id="powerBar" style="width: 0%;"></div>
+                        </div>
+                        <p style="font-size:10px; color:var(--color-text-tertiary); margin-top:4px;">e.g., 秘密, 惊人, 免费
+                        </p>
+                    </div>
+
+                    <!-- Skimmability -->
+                    <div class="metric-box">
+                        <div class="metric-header">
+                            <i data-lucide="eye"></i> 易读性 (Clarity)
+                        </div>
+                        <div class="metric-value" id="clarityStatus">--</div>
+                        <p style="font-size:10px; color:var(--color-text-tertiary); margin-top:4px;">避免生僻字与过长句子</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3. Previews -->
+            <div class="preview-section">
+                <div class="preview-tabs">
+                    <div class="tab-btn active" onclick="showTab('serp')" role="button" tabindex="0">Google Search</div>
+                    <div class="tab-btn" onclick="showTab('social')" role="button" tabindex="0">Social Card</div>
+                </div>
+
+                <!-- Google Preview -->
+                <div id="serpPreview" class="preview-card serp">
+                    <div class="serp-url">
+                        <div style="width:14px;height:14px;background:#f1f3f4;border-radius:50%;margin-right:4px;">
+                        </div>
+                        www.example.com › blog › post
+                    </div>
+                    <span class="serp-title" id="previewTitleSerp">Your Headline Here</span>
+                    <div class="serp-desc">
+                        Jan 2, 2026 — This is a meta description placeholder. A good headline encourages users to click
+                        through to your content from search results.
+                    </div>
+                </div>
+
+                <!-- Social Preview -->
+                <div id="socialPreview" class="preview-card social" style="display:none;">
+                    <div class="social-image">
+                        <i data-lucide="image" style="width:48px;height:48px;opacity:0.3;"></i>
+                    </div>
+                    <div class="social-meta">
+                        <div class="social-domain">EXAMPLE.COM</div>
+                        <div class="social-title" id="previewTitleSocial">Your Headline Here</div>
+                        <div class="social-desc">This is a description appearing on social media cards. It complements
+                            your headline.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        // Simple word lists (Mock logic for frontend demo)
+        const POWER_WORDS = ['秘密', '惊人', '免费', '最佳', '指南', '策略', '提升', '翻倍', 'Secret', 'Amazing', 'Free', 'Best', 'Guide', 'Strategy', 'Boost', 'Double', 'How to', '如何', '清单', 'Checklist'];
+        const EMOTIONAL_WORDS = ['痛苦', '糟糕', '危险', '爱', '赢', '成功', '失败', 'Pain', 'Bad', 'Danger', 'Love', 'Win', 'Success', 'Fail'];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('headline_optimizer');
+            lucide.createIcons();
+        });
+
+        function showTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (tab === 'serp') {
+                document.getElementById('serpPreview').style.display = 'block';
+                document.getElementById('socialPreview').style.display = 'none';
+            } else {
+                document.getElementById('serpPreview').style.display = 'none';
+                document.getElementById('socialPreview').style.display = 'block';
+            }
+        }
+
+        function analyzeHeadline() {
+            const input = document.getElementById('headlineInput');
+            const text = input.value.trim();
+
+            // Basic Counts
+            const chars = text.length;
+            const words = text.split(/\s+|[\u4e00-\u9fa5]/).filter(w => w.length > 0).length; // Rough word count mixing EN/CN
+
+            document.getElementById('charCount').innerText = `${chars} 字符`;
+            document.getElementById('wordCount').innerText = `${words} 词`;
+
+            // Update Previews
+            const displayTitle = text || 'Your Headline Here';
+            document.getElementById('previewTitleSerp').innerText = displayTitle;
+            document.getElementById('previewTitleSocial').innerText = displayTitle;
+
+            if (chars === 0) {
+                resetMetrics();
+                return;
+            }
+
+            // Calculations
+            let score = 0;
+
+            // 1. Length (Target 20-60 chars)
+            let lenScore = 0;
+            if (chars >= 20 && chars <= 60) lenScore = 100;
+            else if (chars > 60) lenScore = Math.max(0, 100 - (chars - 60) * 2);
+            else lenScore = Math.max(0, chars * 5); // Ramp up
+
+            document.getElementById('lengthBar').style.width = lenScore + '%';
+            document.getElementById('lengthStatus').innerText = chars + ' chars';
+            score += lenScore * 0.3; // 30% weight
+
+            // 2. Power Words
+            let pCount = 0;
+            POWER_WORDS.forEach(w => {
+                if (text.toLowerCase().includes(w.toLowerCase())) pCount++;
+            });
+            let pScore = Math.min(100, pCount * 35);
+            document.getElementById('powerBar').style.width = pScore + '%';
+            document.getElementById('powerStatus').innerText = pCount;
+            score += pScore * 0.3; // 30% weight
+
+            // 3. Sentiment (Simple presence check)
+            let sCount = 0;
+            EMOTIONAL_WORDS.forEach(w => {
+                if (text.toLowerCase().includes(w.toLowerCase())) sCount++;
+            });
+            let sScore = Math.min(100, sCount * 50);
+            if (sCount > 0) {
+                document.getElementById('sentimentBar').style.width = '80%';
+                document.getElementById('sentimentBar').style.background = 'var(--color-success)';
+                document.getElementById('sentimentStatus').innerText = 'Emotional';
+            } else {
+                document.getElementById('sentimentBar').style.width = '20%';
+                document.getElementById('sentimentBar').style.background = 'var(--color-text-tertiary)';
+                document.getElementById('sentimentStatus').innerText = 'Neutral';
+            }
+            score += sScore * 0.2; // 20% weight
+
+            // 4. Clarity (Penalize very long words or too many words)
+            let cScore = 100;
+            if (chars > 65) cScore = 60; // Truncation risk
+            score += cScore * 0.2; // 20% weight
+            document.getElementById('clarityStatus').innerText = cScore > 80 ? 'Good' : 'Risk';
+
+
+            // Final Score
+            const finalScore = Math.round(score);
+            const circle = document.getElementById('scoreCircle');
+            circle.innerText = finalScore;
+
+            circle.style.borderColor = getScoreColor(finalScore);
+            circle.style.color = getScoreColor(finalScore);
+
+            let verdict = "Needs Work";
+            if (finalScore > 80) verdict = "Excellent!";
+            else if (finalScore > 60) verdict = "Good";
+            else if (finalScore > 40) verdict = "Average";
+            document.getElementById('scoreVerdict').innerText = verdict;
+        }
+
+        function getScoreColor(val) {
+            if (val >= 80) return 'var(--color-success)';
+            if (val >= 60) return 'var(--color-brand-primary)'; // Blueish
+            if (val >= 40) return 'var(--color-warning)';
+            return 'var(--color-error)';
+        }
+
+        function resetMetrics() {
+            document.getElementById('scoreCircle').innerText = '--';
+            document.getElementById('scoreCircle').style.borderColor = 'var(--color-bg-paper)';
+            document.getElementById('scoreCircle').style.color = 'var(--color-text-primary)';
+            document.getElementById('lengthBar').style.width = '0%';
+            document.getElementById('powerBar').style.width = '0%';
+        }
+    </script>
+</body>
+
+</html>

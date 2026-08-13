@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容盘点工具 (Content Audit Tracker)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/content-audit.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>内容盘点工具</h1>
+                <span class="english-subtitle">Content Audit Tracker</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>审计日期</label>
+                    <input type="date" class="meta-input" aria-label="Input field">
+                </div>
+            </div>
+        </header>
+
+        <div class="audit-container">
+
+            <!-- 1. Controls -->
+            <div class="audit-controls no-print">
+                <div class="filter-group">
+                    <button class="audit-btn primary" onclick="addItem()" type="button">
+                        <i data-lucide="plus"></i> 添加内容
+                    </button>
+                    <button class="audit-btn" onclick="suggestActions()" title="基于表现数据自动建议决策" type="button">
+                        <i data-lucide="sparkles"></i> 智能建议
+                    </button>
+                    <button class="audit-btn" onclick="clearAll()" type="button">
+                        <i data-lucide="trash-2"></i> 清空列表
+                    </button>
+                    <div style="width:1px;height:24px;background:var(--border-sem-inner);"></div>
+                    <span style="font-size:12px;color:var(--color-text-tertiary);">Total: <span
+                            id="totalCount">0</span></span>
+                </div>
+                <div class="filter-group">
+                    <!-- Sort/Filter toggles could go here -->
+                </div>
+            </div>
+
+            <!-- 2. Inventory Grid -->
+            <div class="audit-table-wrapper">
+                <div class="audit-header-row">
+                    <div>内容标题 / URL</div>
+                    <div>类型 (Type)</div>
+                    <div>状态 (Lifecycle)</div>
+                    <div>表现 (Traffic/Conv)</div>
+                    <div style="text-align:right;">决策 (Action)</div>
+                </div>
+
+                <ul class="audit-list" id="auditList" data-save-key="audit_list_content">
+                    <!-- Dynamic Items -->
+                </ul>
+            </div>
+
+            <!-- 3. Summary Footer -->
+            <div class="audit-summary">
+                <div class="summary-card">
+                    <div class="summary-num" style="color:var(--color-success);" id="keepCount">0</div>
+                    <div class="summary-label">保留 (Keep)</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-num" style="color:var(--color-warning);" id="updateCount">0</div>
+                    <div class="summary-label">更新 (Update)</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-num" style="color:#1e40af;" id="mergeCount">0</div>
+                    <div class="summary-label">合并 (Merge)</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-num" style="color:var(--color-error);" id="deleteCount">0</div>
+                    <div class="summary-label">删除 (Delete)</div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = new ModiqiApp('content_audit_tracker');
+            lucide.createIcons();
+
+            // Load List specifically if exists
+            const list = document.getElementById('auditList');
+            const savedList = localStorage.getItem(app.storageKeyPrefix + 'audit_list_content');
+            if (savedList) {
+                list.innerHTML = savedList;
+                // Re-bind events to select elements
+                document.querySelectorAll('.action-select').forEach(sel => {
+                    updateActionColor(sel);
+                });
+            } else {
+                // Initial seed
+                addItem('示例文章: 如何制定数字营销战略', 'Blog Post', 'Evergreen', 'Keep');
+                addItem('2023 行业趋势报告', 'Whitepaper', 'Outdated', 'Update');
+                addItem('旧版产品着陆页 A', 'Landing Page', 'Duplicate', 'Delete');
+            }
+            updateSummary();
+            lucide.createIcons();
+        });
+
+        function createItemHTML(title = '', type = 'Blog', lifecycle = 'Active', action = 'Keep', id) {
+            return `
+                <div class="audit-item" id="${id}">
+                    <div class="col-content">
+                        <input class="content-title" value="${title}" placeholder="内容标题..." oninput="autoSaveList()" aria-label="内容标题...">
+                        <input class="content-url" value="" placeholder="https://example.com/..." oninput="autoSaveList()" aria-label="https://example.com/...">
+                    </div>
+                    <div class="col-type">
+                         <span class="type-badge" contenteditable="true" oninput="autoSaveList()">${type}</span>
+                    </div>
+                    <div class="col-status">
+                        <select onchange="autoSaveList()" aria-label="Selection">
+                            <option>Active</option>
+                            <option>Outdated</option>
+                            <option>Draft</option>
+                            <option>Duplicate</option>
+                        </select>
+                    </div>
+                    <div class="col-perf">
+                        <input class="pv-input" style="border:none;background:transparent;width:100%;font-family:inherit;font-size:11px;" placeholder="PV: 0" oninput="autoSaveList()" aria-label="PV: 0">
+                        <input class="cvr-input" style="border:none;background:transparent;width:100%;font-family:inherit;font-size:11px;" placeholder="CVR: 0%" oninput="autoSaveList()" aria-label="CVR: 0%">
+                    </div>
+                    <div class="col-action">
+                        <select class="action-select action-keep" onchange="updateActionColor(this); updateSummary(); autoSaveList();" aria-label="Selection">
+                            <option value="Keep" ${action == 'Keep' ? 'selected' : ''}>Keep</option>
+                            <option value="Update" ${action == 'Update' ? 'selected' : ''}>Update</option>
+                            <option value="Merge" ${action == 'Merge' ? 'selected' : ''}>Merge</option>
+                            <option value="Delete" ${action == 'Delete' ? 'selected' : ''}>Delete</option>
+                        </select>
+                        <button class="no-print" onclick="this.closest('.audit-item').remove(); updateSummary(); autoSaveList();" style="border:none;background:none;cursor:pointer;margin-left:8px;opacity:0.3;" type="button">
+                            <i data-lucide="trash-2" style="width:14px;"></i>
+                        </button>
+                    </div>
+                </div>
+             `;
+        }
+
+        function addItem(title, type, lifecycle, action) {
+            const list = document.getElementById('auditList');
+            const uniqueId = 'item_' + Date.now() + Math.random().toString(36).substr(2, 5);
+
+            const div = document.createElement('div');
+            div.innerHTML = createItemHTML(title, type, lifecycle, action, uniqueId);
+            list.appendChild(div.firstElementChild);
+
+            lucide.createIcons();
+            updateSummary();
+            autoSaveList();
+        }
+
+        function suggestActions() {
+            const items = document.querySelectorAll('.audit-item');
+            items.forEach(item => {
+                const pv = parseInt(item.querySelector('.pv-input').value.replace(/[^0-9]/g, '')) || 0;
+                const cvr = parseFloat(item.querySelector('.cvr-input').value.replace(/[^0-9.]/g, '')) || 0;
+                const select = item.querySelector('.action-select');
+
+                if (pv < 10 && cvr < 0.1) {
+                    select.value = 'Delete';
+                } else if (pv > 500 && cvr < 1) {
+                    select.value = 'Update';
+                } else if (pv > 1000) {
+                    select.value = 'Keep';
+                }
+                updateActionColor(select);
+            });
+            updateSummary();
+            autoSaveList();
+        }
+
+        function updateActionColor(select) {
+            select.classList.remove('action-keep', 'action-update', 'action-merge', 'action-delete');
+            const val = select.value.toLowerCase();
+            select.classList.add('action-' + val);
+        }
+
+        function updateSummary() {
+            const items = document.querySelectorAll('.audit-item');
+            document.getElementById('totalCount').innerText = items.length;
+
+            let k = 0, u = 0, m = 0, d = 0;
+            items.forEach(item => {
+                const act = item.querySelector('.action-select').value;
+                if (act === 'Keep') k++;
+                if (act === 'Update') u++;
+                if (act === 'Merge') m++;
+                if (act === 'Delete') d++;
+            });
+
+            document.getElementById('keepCount').innerText = k;
+            document.getElementById('updateCount').innerText = u;
+            document.getElementById('mergeCount').innerText = m;
+            document.getElementById('deleteCount').innerText = d;
+        }
+
+        function autoSaveList() {
+            const list = document.getElementById('auditList');
+            const app = new ModiqiApp('content_audit_tracker');
+            // Save inputs by converting value to attribute before saving innerHTML
+            const inputs = list.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                if (input.tagName === 'SELECT') {
+                    // For selects, we need to mark selected option
+                    Array.from(input.options).forEach(opt => {
+                        if (opt.selected) opt.setAttribute('selected', 'selected');
+                        else opt.removeAttribute('selected');
+                    });
+                } else {
+                    input.setAttribute('value', input.value);
+                }
+            });
+
+            localStorage.setItem(app.storageKeyPrefix + 'audit_list_content', list.innerHTML);
+            if (window.modiqiApp) window.modiqiApp.showSaveStatus('saved');
+        }
+
+        function clearAll() {
+            if (confirm('确定清空所有条目吗？')) {
+                document.getElementById('auditList').innerHTML = '';
+                updateSummary();
+                autoSaveList();
+            }
+        }
+    </script>
+</body>
+
+</html>

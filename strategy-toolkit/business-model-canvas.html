@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商业模式画布 (Business Model Canvas)</title>
+    <meta name="description" content="商业模式画布工具，帮助您系统梳理价值主张、客户细分、渠道、收入来源等九大商业模式要素。">
+    <meta name="keywords" content="商业模式画布,Business Model Canvas,BMC,商业模式,战略规划">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="商业模式画布 - Modiqi Workbench">
+    <meta property="og:description" content="系统梳理九大商业模式要素。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <!-- Tool-specific styles -->
+    <link rel="stylesheet" href="assets/css/business-model-canvas.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>商业模式画布</h1>
+                <span class="english-subtitle">Business Model Canvas</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>公司/项目 <span class="en-sub">(Company)</span></label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="meta_company" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="bmc-container">
+            <!-- 1. Key Partners -->
+            <div class="bmc-block bmc-partners">
+                <div class="bmc-header">
+                    <i data-lucide="handshake"></i>
+                    重要伙伴 <span class="en-sub">(Key Partners)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_partners">
+                    <ul>
+                        <li>关键供应商</li>
+                        <li>战略联盟</li>
+                        <li>合资企业</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Key Activities -->
+            <div class="bmc-block bmc-activities">
+                <div class="bmc-header">
+                    <i data-lucide="activity"></i>
+                    关键活动 <span class="en-sub">(Key Activities)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_activities">
+                    <ul>
+                        <li>生产制造</li>
+                        <li>问题解决</li>
+                        <li>平台运营</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. Key Resources -->
+            <div class="bmc-block bmc-resources">
+                <div class="bmc-header">
+                    <i data-lucide="database"></i>
+                    核心资源 <span class="en-sub">(Key Resources)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_resources">
+                    <ul>
+                        <li>实体资产</li>
+                        <li>知识产权</li>
+                        <li>人力资源</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. Value Propositions -->
+            <div class="bmc-block bmc-value">
+                <div class="bmc-header">
+                    <i data-lucide="gem"></i>
+                    价值主张 <span class="en-sub">(Value Propositions)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_value">
+                    <ul>
+                        <li>我们为客户解决什么问题？</li>
+                        <li>我们提供什么独特价值？</li>
+                        <li>我们满足哪些客户需求？</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. Customer Relationships -->
+            <div class="bmc-block bmc-relationships">
+                <div class="bmc-header">
+                    <i data-lucide="heart"></i>
+                    客户关系 <span class="en-sub">(Customer Relationships)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_relationships">
+                    <ul>
+                        <li>专属服务</li>
+                        <li>自助服务</li>
+                        <li>社区运营</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 6. Channels -->
+            <div class="bmc-block bmc-channels">
+                <div class="bmc-header">
+                    <i data-lucide="truck"></i>
+                    渠道通路 <span class="en-sub">(Channels)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_channels">
+                    <ul>
+                        <li>直销</li>
+                        <li>线上商城</li>
+                        <li>合作分销</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 7. Customer Segments -->
+            <div class="bmc-block bmc-segments">
+                <div class="bmc-header">
+                    <i data-lucide="users"></i>
+                    客户细分 <span class="en-sub">(Customer Segments)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_segments">
+                    <ul>
+                        <li>我们为谁创造价值？</li>
+                        <li>最重要的客户是谁？</li>
+                        <li>大众市场/利基市场</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 8. Cost Structure -->
+            <div class="bmc-block bmc-costs">
+                <div class="bmc-header">
+                    <i data-lucide="credit-card"></i>
+                    成本结构 <span class="en-sub">(Cost Structure)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_costs">
+                    <ul>
+                        <li>最重要的固有成本是什么？</li>
+                        <li>哪些核心资源/活动成本最高？</li>
+                        <li>成本驱动型 vs 价值驱动型</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 9. Revenue Streams -->
+            <div class="bmc-block bmc-revenue">
+                <div class="bmc-header">
+                    <i data-lucide="banknote"></i>
+                    收入来源 <span class="en-sub">(Revenue Streams)</span>
+                </div>
+                <div class="bmc-content" contenteditable="true" data-save-key="bmc_revenue">
+                    <ul>
+                        <li>客户愿意为什么付费？</li>
+                        <li>他们目前如何付费？更愿意如何付费？</li>
+                        <li>产品销售 / 订阅 / 许可 / 广告 / 佣金</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('business_model_canvas_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

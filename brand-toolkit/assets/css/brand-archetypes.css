@@ -1,0 +1,193 @@
+/* Brand Archetypes - Tool Specific Styles */
+
+/* Main Grid of 12 Archetypes */
+.archetype-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid var(--border-sem-outer);
+}
+
+/* Individual Archetype Cell */
+.archetype-cell {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.archetype-cell:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Remove right border on last column */
+.archetype-cell:nth-child(4n) {
+    border-right: none;
+}
+
+/* Remove bottom border on last row */
+.archetype-cell:nth-child(n+9) {
+    border-bottom: none;
+}
+
+/* Cell Header */
+.arch-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.arch-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-sem-inner);
+    flex-shrink: 0;
+    background: var(--color-bg-subtle);
+}
+
+.arch-icon .icon {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+.arch-title {
+    flex: 1;
+}
+
+.arch-title h4 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.arch-title span {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+/* Cell Content */
+.arch-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.arch-keywords {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+}
+
+.arch-desc {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-relaxed);
+    outline: none;
+    color: var(--color-text-secondary);
+}
+
+.arch-examples {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: auto;
+    padding-top: var(--spacing-xs);
+    border-top: 1px dotted var(--border-sem-inner);
+}
+
+.arch-examples strong {
+    color: var(--color-text-muted);
+}
+
+/* Group color indicators - monochrome by default */
+/* Colors only appear in color-mode */
+.archetype-cell[data-group="independence"],
+.archetype-cell[data-group="mastery"],
+.archetype-cell[data-group="belonging"],
+.archetype-cell[data-group="stability"] {
+    border-top: none;
+}
+
+/* Selection state */
+.archetype-cell.selected {
+    background: var(--color-bg-warm-light);
+    border: 2px solid var(--border-sem-outer);
+}
+
+/* Checkbox for selection */
+.arch-select {
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+}
+
+/* ========================================
+   Dark Theme Support
+   ======================================== */
+[data-theme="dark"] .archetype-cell.selected {
+    background: var(--color-bg-interaction-focus);
+}
+
+/* ========================================
+   Color Mode Support - Colored Borders
+   ======================================== */
+/* 独立象限 - 黄/金色 (追求自由、真理) */
+body:not(.theme-dark).color-mode .archetype-cell[data-group="independence"] {
+    background-color: var(--color-semantic-alert-bg);
+    border-top: 3px solid var(--color-archetype-independence);
+}
+
+body:not(.theme-dark).color-mode .archetype-cell[data-group="mastery"] {
+    background-color: var(--color-semantic-pain);
+    border-top: 3px solid var(--color-archetype-mastery);
+}
+
+body:not(.theme-dark).color-mode .archetype-cell[data-group="belonging"] {
+    background-color: var(--color-semantic-gain);
+    border-top: 3px solid var(--color-archetype-belonging);
+}
+
+body:not(.theme-dark).color-mode .archetype-cell[data-group="stability"] {
+    background-color: var(--color-semantic-opportunity);
+    border-top: 3px solid var(--color-archetype-stability);
+}
+
+/* Mobile canvas: preserve every editor and let the page grow with its content. */
+@media screen and (max-width: 768px) {
+    .paper-a3,
+    .paper-a4,
+    .paper-a4-portrait,
+    #canvas {
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .paper-a3 *,
+    .paper-a4 *,
+    .paper-a4-portrait *,
+    #canvas * {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .archetypes-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+}

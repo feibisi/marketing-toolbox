@@ -1,0 +1,573 @@
+/* Marketing Budget Allocator - Design System Aligned */
+/* 营销预算分配器：渠道预算规划与可视化 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.budget-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   面板通用样式
+   ======================================== */
+.budget-table-pane,
+.budget-visual-pane {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-sem-outer);
+    background: var(--color-bg-paper);
+}
+
+.budget-table-pane {
+    flex: 1.2;
+}
+
+.budget-visual-pane {
+    flex: 0.8;
+}
+
+.pane-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.pane-header .icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-primary);
+}
+
+.pane-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ========================================
+   预算表格
+   ======================================== */
+.budget-table {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 0.8fr 1.5fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+.table-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.budget-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 0.8fr 1.5fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-sem-inner);
+    border-top: none;
+    align-items: center;
+    flex: 1;
+    min-height: 0;
+}
+
+/* 动态调整行高 */
+.table-body[data-row-count="5"] .budget-row {
+    padding: var(--spacing-md);
+}
+
+.table-body[data-row-count="6"] .budget-row {
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.table-body[data-row-count="7"] .budget-row {
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.table-body[data-row-count="8"] .budget-row {
+    padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.table-body[data-row-count="9"] .budget-row {
+    padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.table-body[data-row-count="10"] .budget-row {
+    padding: 6px var(--spacing-md);
+}
+
+.budget-row:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.budget-row:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* 渠道列 */
+.col-channel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.channel-icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.channel-name {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    outline: none;
+    border-bottom: 1px dashed transparent;
+}
+
+.channel-name:focus {
+    border-bottom-color: var(--color-focus-border);
+}
+
+/* 金额列 */
+.col-amount {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.currency {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+}
+
+.amount-input {
+    width: 100%;
+    max-width: 100px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    background: var(--color-bg-white);
+    font-size: var(--font-size-base);
+    font-family: var(--font-mono);
+    color: var(--color-text-primary);
+    text-align: right;
+    outline: none;
+}
+
+.amount-input:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.amount-input:focus {
+    border-color: var(--color-focus-border);
+    background-color: var(--color-focus-bg);
+}
+
+/* 百分比列 */
+.col-percent {
+    text-align: center;
+}
+
+.percent-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* 备注列 */
+.col-notes {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.notes-input {
+    flex: 1;
+    outline: none;
+    border-bottom: 1px dashed transparent;
+}
+
+.notes-input:focus {
+    border-bottom-color: var(--color-focus-border);
+}
+
+.delete-channel-btn {
+    padding: 2px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.budget-row:hover .delete-channel-btn {
+    opacity: 1;
+}
+
+.delete-channel-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.delete-channel-btn:active {
+    transform: scale(0.9);
+}
+
+/* 合计行 */
+.table-footer {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 0.8fr 1.5fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-medium);
+    border: 1px solid var(--border-sem-outer);
+    font-weight: var(--font-weight-bold);
+}
+
+.total-label {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+}
+
+.total-amount {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+}
+
+.total-percent {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+}
+
+.total-status {
+    font-size: var(--font-size-sm);
+}
+
+.status-balanced,
+.status-over,
+.status-under {
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   条形图可视化
+   ======================================== */
+.bar-chart {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+}
+
+.bar-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 50px;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.bar-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-align: right;
+}
+
+.bar-track {
+    height: 24px;
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--color-text-secondary);
+}
+
+.bar-item:nth-child(1) .bar-fill {
+    background: var(--color-text-secondary);
+}
+
+.bar-item:nth-child(2) .bar-fill {
+    background: var(--color-text-secondary);
+}
+
+.bar-item:nth-child(3) .bar-fill {
+    background: var(--color-text-secondary);
+}
+
+.bar-item:nth-child(4) .bar-fill {
+    background: var(--color-text-secondary);
+}
+
+.bar-item:nth-child(5) .bar-fill {
+    background: var(--color-text-secondary);
+}
+
+.bar-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   预算建议
+   ======================================== */
+.budget-tips {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.tips-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tips-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.tips-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.tips-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    outline: none;
+}
+
+.tips-content:focus {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   添加渠道按钮
+   ======================================== */
+#addChannelBtn {}
+
+#addChannelBtn:hover {
+    background-color: var(--color-bg-hover);
+    border-color: var(--border-sem-inner);
+}
+
+#addChannelBtn:active {
+    transform: scale(0.98);
+}
+
+/* ========================================
+   Color Mode 彩色模式
+   ======================================== */
+body.color-mode .percent-value {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode .total-percent {
+    color: var(--color-brand-blue);
+}
+
+body.color-mode .status-balanced {
+    color: var(--color-success);
+}
+
+body.color-mode .status-over {
+    color: var(--color-error);
+}
+
+body.color-mode .status-under {
+    color: var(--color-warning);
+}
+
+body.color-mode .toggle-btn.active {
+    background: var(--color-bg-white);
+    color: var(--color-brand-blue);
+}
+
+body.color-mode .bar-fill {
+    background: var(--color-brand-blue);
+}
+
+body.color-mode .bar-item:nth-child(1) .bar-fill {
+    background: var(--color-brand-primary);
+}
+
+body.color-mode .bar-item:nth-child(2) .bar-fill {
+    background: var(--color-brand-primary-light);
+}
+
+body.color-mode .bar-item:nth-child(3) .bar-fill {
+    background: var(--color-brand-secondary);
+}
+
+body.color-mode .bar-item:nth-child(4) .bar-fill {
+    background: var(--color-brand-secondary-light);
+}
+
+body.color-mode .bar-item:nth-child(5) .bar-fill {
+    background: var(--color-text-tertiary);
+}
+
+body.color-mode .tips-header .icon {
+    color: var(--color-warning);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .budget-table-pane,
+body.theme-dark .budget-visual-pane {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .table-header {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .table-footer {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .bar-track {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .budget-tips {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .amount-input {
+    background: transparent;
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .budget-layout {
+        flex-direction: row !important;
+    }
+
+    .bar-fill {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .budget-row:hover {
+        background-color: transparent;
+    }
+
+    .delete-channel-btn {
+        display: none !important;
+    }
+
+    #addChannelBtn {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .budget-layout {
+        flex-direction: column;
+    }
+
+    .budget-table-pane,
+    .budget-visual-pane {
+        flex: 1;
+    }
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .budget-layout { display: flex; flex-direction: column; }
+    .budget-table-pane, .budget-visual-pane { width: 100%; min-width: 0; }
+    .table-header, .budget-row, .table-footer { grid-template-columns: minmax(88px, 1.3fr) minmax(78px, 1fr) 52px; }
+    .col-notes { grid-column: 1 / -1; }
+    .budget-row { row-gap: 8px; }
+    .bar-item { grid-template-columns: 64px minmax(0, 1fr) 44px; }
+}

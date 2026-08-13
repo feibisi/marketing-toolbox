@@ -1,0 +1,139 @@
+/* Marketing Mix 4P - Tool Specific Styles */
+
+/* 2x2 Grid Layout */
+.mix-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: 1px solid var(--border-sem-outer);
+}
+
+/* P Block */
+.p-block {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Borders forming cross */
+.p-block:nth-child(1) {
+    /* Product */
+    /* Product */
+    border-right: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.p-block:nth-child(2) {
+    /* Price */
+    /* Price */
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.p-block:nth-child(3) {
+    /* Place */
+    /* Place */
+    border-right: 1px solid var(--border-sem-inner);
+}
+
+/* P Header */
+.p-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.p-header .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.p-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* P Content */
+.p-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.p-question {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--border-sem-inner);
+}
+
+.p-answer {
+    flex: 1;
+    outline: none;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 1em;
+}
+
+.p-answer:focus {
+    background-color: var(--color-focus-bg);
+}
+
+.p-block:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* ========================================
+   Color Mode Support
+   ======================================== */
+body:not(.theme-dark).color-mode .p-block:nth-child(1) {
+    /* Product */
+    background-color: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .p-block:nth-child(2) {
+    /* Price */
+    background-color: var(--color-semantic-threat);
+}
+
+body:not(.theme-dark).color-mode .p-block:nth-child(3) {
+    /* Place */
+    background-color: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .p-block:nth-child(4) {
+    /* Promotion */
+    background-color: var(--color-semantic-opportunity);
+}
+
+/* ========================================
+   Dark Theme Support
+   ======================================== */
+body.theme-dark .p-block {
+    background-color: var(--color-bg-paper);
+}
+
+body.theme-dark .p-question {
+    border-left-color: var(--color-border-medium);
+}
+
+/* Dark Theme - Focus Within States */
+body.theme-dark .p-block:focus-within {
+    background-color: var(--color-focus-bg);
+}
+
+/* Narrow-screen readable composition */
+@media screen and (max-width: 768px) {
+    body { justify-content: flex-start; padding: var(--spacing-md); }
+    .paper-a3 { width: 100%; max-width: none; height: auto; min-height: 0; aspect-ratio: auto; overflow: visible; padding: var(--spacing-lg); box-sizing: border-box; }
+    .mix-container { grid-template-columns: 1fr; grid-template-rows: none; }
+    .p-block { min-width: 0; min-height: 280px; }
+}
+

@@ -1,0 +1,289 @@
+/* Blue Ocean Layout */
+.ocean-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* 1. Value Curves Chart */
+.chart-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 350px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-title {
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 0;
+}
+
+/* Canvas Area for Drawing (SVG) */
+.canvas-wrapper {
+    flex: 1;
+    position: relative;
+    border-left: 1px solid var(--border-sem-inner);
+    border-bottom: 1px solid var(--border-sem-inner);
+    margin: 0 10px 10px 40px;
+    /* Space for labels */
+}
+
+/* Axis Labels */
+.y-axis-label {
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    transform: rotate(-90deg);
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+}
+
+.x-axis-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 40px;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
+.factor-input {
+    width: 60px;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-family: inherit;
+    font-size: 10px;
+    border-bottom: 1px dashed var(--border-sem-inner);
+}
+
+.factor-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--color-brand-primary);
+}
+
+/* SVG overlay */
+#valueCurve {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.curve-point {
+    cursor: pointer;
+}
+
+.curve-point:hover {
+    r: 6;
+}
+
+/* Chart Colors (Class-based for Monochrome First) */
+.dot-industry,
+.line-industry {
+    background: var(--color-text-tertiary);
+    /* Dot bg */
+    stroke: var(--color-text-tertiary);
+    /* SVG stroke */
+    fill: var(--color-text-tertiary);
+    /* SVG fill if needed */
+}
+
+.dot-innovation,
+.line-innovation {
+    background: var(--color-text-primary);
+    stroke: var(--color-text-primary);
+    fill: var(--color-text-primary);
+}
+
+/* Color Mode for Chart */
+body.color-mode .dot-industry,
+body.color-mode .line-industry {
+    /* Industry often stays neutral/gray even in color mode to contrast */
+    background: var(--color-text-tertiary);
+    stroke: var(--color-text-tertiary);
+    fill: var(--color-text-tertiary);
+}
+
+body.color-mode .dot-innovation,
+body.color-mode .line-innovation {
+    background: var(--color-archetype-stability);
+    /* Brand Blue */
+    stroke: var(--color-archetype-stability);
+    fill: var(--color-archetype-stability);
+}
+
+/* 2. ERRC Grid */
+.errc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    height: 180px;
+}
+
+.errc-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.errc-card:hover {
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.errc-header {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Default Monochrome State */
+.errc-eliminate .errc-header,
+.errc-reduce .errc-header,
+.errc-raise .errc-header,
+.errc-create .errc-header {
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
+}
+
+/* Color Mode Overrides */
+body.color-mode .errc-eliminate .errc-header {
+    border-color: var(--color-semantic-danger);
+    color: var(--color-semantic-danger);
+}
+
+body.color-mode .errc-reduce .errc-header {
+    border-color: var(--color-semantic-alert);
+    color: var(--color-semantic-alert);
+}
+
+body.color-mode .errc-raise .errc-header {
+    border-color: var(--color-archetype-stability);
+    color: var(--color-archetype-stability);
+}
+
+body.color-mode .errc-create .errc-header {
+    border-color: var(--color-semantic-growth);
+    color: var(--color-semantic-growth);
+}
+
+.errc-content {
+    flex: 1;
+    width: 100%;
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 1.5;
+    background: transparent;
+}
+
+.errc-content:focus {
+    outline: none;
+}
+
+
+/* Dark Mode */
+body.theme-dark .chart-card,
+body.theme-dark .errc-card {
+    background: var(--color-bg-card-layer);
+    border-color: var(--border-sem-inner);
+}
+
+body.theme-dark .factor-input {
+    color: var(--color-text-primary);
+}
+
+body.theme-dark .errc-content {
+    color: var(--color-text-primary);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .chart-card {
+        min-width: 0;
+        min-height: 420px;
+        padding: var(--spacing-md);
+    }
+
+    .chart-header,
+    .legend {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .canvas-wrapper {
+        min-height: 260px;
+        margin-left: 28px;
+    }
+
+    .x-axis-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-sm);
+        padding-left: 28px;
+    }
+
+    .factor-input {
+        width: 100%;
+    }
+
+    .errc-grid {
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+    }
+
+    .errc-content {
+        min-height: 120px;
+    }
+}

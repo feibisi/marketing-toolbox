@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>感知地图 - Modiqi Brand Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/perceptual-map.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>感知地图</h1>
+                <span class="english-subtitle">Perceptual Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目</label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期</label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="map-container">
+            <div class="axis-labels">
+                <div class="axis-label axis-y-top" contenteditable="true" data-save-key="axis_y_high">高质量</div>
+                <div class="axis-label axis-x-left" contenteditable="true" data-save-key="axis_x_low">低价格</div>
+                <div class="axis-label axis-x-right" contenteditable="true" data-save-key="axis_x_high">高价格</div>
+                <div class="axis-label axis-y-bottom" contenteditable="true" data-save-key="axis_y_low">低质量</div>
+            </div>
+
+            <div class="perceptual-map" id="perceptualMap">
+                <div class="axis-line axis-vertical"></div>
+                <div class="axis-line axis-horizontal"></div>
+
+                <div class="brand-bubble bubble-ours" style="left:40%;top:30%" data-brand="ours">
+                    <div class="bubble-content">
+                        <div class="bubble-name" contenteditable="true" data-save-key="brand_ours_name">我们的品牌</div>
+                        <div class="bubble-share">15%</div>
+                    </div>
+                    <input type="range" class="position-x" min="0" max="100" value="40" data-brand="ours" data-axis="x" aria-label="Input field">
+                    <input type="range" class="position-y" min="0" max="100" value="30" data-brand="ours" data-axis="y" aria-label="Input field">
+                    <input type="number" class="share-input" min="1" max="100" value="15" data-brand="ours" aria-label="Input field">
+                </div>
+
+                <div class="brand-bubble bubble-competitor" style="left:30%;top:20%" data-brand="a">
+                    <div class="bubble-content">
+                        <div class="bubble-name" contenteditable="true" data-save-key="brand_a_name">品牌A</div>
+                        <div class="bubble-share">25%</div>
+                    </div>
+                    <input type="range" class="position-x" min="0" max="100" value="30" data-brand="a" data-axis="x" aria-label="Input field">
+                    <input type="range" class="position-y" min="0" max="100" value="20" data-brand="a" data-axis="y" aria-label="Input field">
+                    <input type="number" class="share-input" min="1" max="100" value="25" data-brand="a" aria-label="Input field">
+                </div>
+
+                <div class="brand-bubble bubble-competitor" style="left:70%;top:15%" data-brand="b">
+                    <div class="bubble-content">
+                        <div class="bubble-name" contenteditable="true" data-save-key="brand_b_name">品牌B</div>
+                        <div class="bubble-share">35%</div>
+                    </div>
+                    <input type="range" class="position-x" min="0" max="100" value="70" data-brand="b" data-axis="x" aria-label="Input field">
+                    <input type="range" class="position-y" min="0" max="100" value="15" data-brand="b" data-axis="y" aria-label="Input field">
+                    <input type="number" class="share-input" min="1" max="100" value="35" data-brand="b" aria-label="Input field">
+                </div>
+
+                <div class="brand-bubble bubble-competitor" style="left:50%;top:50%" data-brand="c">
+                    <div class="bubble-content">
+                        <div class="bubble-name" contenteditable="true" data-save-key="brand_c_name">品牌C</div>
+                        <div class="bubble-share">20%</div>
+                    </div>
+                    <input type="range" class="position-x" min="0" max="100" value="50" data-brand="c" data-axis="x" aria-label="Input field">
+                    <input type="range" class="position-y" min="0" max="100" value="50" data-brand="c" data-axis="y" aria-label="Input field">
+                    <input type="number" class="share-input" min="1" max="100" value="20" data-brand="c" aria-label="Input field">
+                </div>
+            </div>
+
+            <div class="axis-titles">
+                <div class="axis-title axis-title-x">
+                    <i data-lucide="arrow-right" class="icon"></i>
+                    <span contenteditable="true" data-save-key="axis_x_title">价格 Price</span>
+                </div>
+                <div class="axis-title axis-title-y">
+                    <i data-lucide="arrow-up" class="icon"></i>
+                    <span contenteditable="true" data-save-key="axis_y_title">质量 Quality</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quadrant-analysis">
+            <div class="analysis-header">
+                <i data-lucide="grid" class="icon"></i>
+                <h3>象限分析 Quadrant Analysis</h3>
+            </div>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h4>高质低价</h4>
+                    <div class="editable-field" contenteditable="true" data-save-key="quadrant_1">性价比优势,市场竞争力强</div>
+                </div>
+                <div class="analysis-card">
+                    <h4>高质高价</h4>
+                    <div class="editable-field" contenteditable="true" data-save-key="quadrant_2">高端定位,品牌溢价能力强</div>
+                </div>
+                <div class="analysis-card">
+                    <h4>低质低价</h4>
+                    <div class="editable-field" contenteditable="true" data-save-key="quadrant_3">价格敏感市场,利润空间有限</div>
+                </div>
+                <div class="analysis-card">
+                    <h4>低质高价</h4>
+                    <div class="editable-field" contenteditable="true" data-save-key="quadrant_4">定位不清晰,需要调整策略</div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('perceptual_map');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function updateBubble(brand) {
+            const bubble = document.querySelector(`[data-brand="${brand}"]`);
+            const x = bubble.querySelector('.position-x').value;
+            const y = bubble.querySelector('.position-y').value;
+            const share = bubble.querySelector('.share-input').value;
+
+            bubble.style.left = x + '%';
+            bubble.style.top = y + '%';
+
+            const size = 30 + (share * 1.5);
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+
+            bubble.querySelector('.bubble-share').textContent = share + '%';
+        }
+
+        document.querySelectorAll('.position-x, .position-y, .share-input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const brand = e.target.dataset.brand;
+                updateBubble(brand);
+            });
+        });
+
+        document.querySelectorAll('.brand-bubble').forEach(bubble => {
+            const brand = bubble.dataset.brand;
+            updateBubble(brand);
+        });
+
+        function addBrand() {
+            const map = document.getElementById('perceptualMap');
+            const timestamp = Date.now();
+            const bubble = document.createElement('div');
+            bubble.className = 'brand-bubble bubble-competitor';
+            bubble.style.left = '50%';
+            bubble.style.top = '50%';
+            bubble.dataset.brand = timestamp;
+            bubble.innerHTML = `
+                <div class="bubble-content">
+                    <div class="bubble-name" contenteditable="true" data-save-key="brand_${timestamp}_name">新品牌</div>
+                    <div class="bubble-share">10%</div>
+                </div>
+                <input type="range" class="position-x" min="0" max="100" value="50" data-brand="${timestamp}" data-axis="x" aria-label="Input field">
+                <input type="range" class="position-y" min="0" max="100" value="50" data-brand="${timestamp}" data-axis="y" aria-label="Input field">
+                <input type="number" class="share-input" min="1" max="100" value="10" data-brand="${timestamp}" aria-label="Input field">
+            `;
+            map.appendChild(bubble);
+
+            bubble.querySelectorAll('.position-x, .position-y, .share-input').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    updateBubble(e.target.dataset.brand);
+                });
+            });
+
+            updateBubble(timestamp);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLV 计算器 (Customer Lifetime Value Calculator)</title>
+    <meta name="description" content="客户终身价值计算器，帮助您评估客户的长期价值，优化获客和留存策略。">
+    <meta name="keywords" content="CLV,LTV,客户终身价值,客户留存,获客成本,CAC">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="CLV 计算器 - Modiqi Workbench">
+    <meta property="og:description" content="评估客户长期价值，优化营销投入。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Stylesheets: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/clv-calculator.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>CLV 计算器</h1>
+                <span class="english-subtitle">Customer Lifetime Value Calculator</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>货币 <span class="en-sub">(Currency)</span></label>
+                    <input type="text" id="currencySymbol" class="meta-input currency-selector" value="¥" maxlength="3"
+                        data-save-key="currency_symbol" aria-label="currency symbol">
+                </div>
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="核心产品" data-save-key="product_name" aria-label="核心产品">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="clv-layout">
+            <!-- 左侧：参数输入 -->
+            <div class="clv-input-pane">
+                <div class="pane-header">
+                    <i data-lucide="sliders"></i>
+                    <h2>参数输入 <span class="en-sub">(Input Parameters)</span></h2>
+                </div>
+
+                <!-- CLV 公式说明 -->
+                <div class="formula-section">
+                    <div class="formula-display">
+                        <span class="formula-title">CLV 公式</span>
+                        <span class="formula">CLV = AOV × F × T</span>
+                    </div>
+                    <div class="formula-legend">
+                        <span>AOV = 平均订单价值</span>
+                        <span>F = 年购买频率</span>
+                        <span>T = 客户关系年数</span>
+                    </div>
+                </div>
+
+                <!-- 核心参数 -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i data-lucide="shopping-cart"></i>
+                        <h3>核心参数 <span class="en-sub">(Core Metrics)</span></h3>
+                    </div>
+
+                    <div class="input-group">
+                        <label>平均订单价值 (AOV)</label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="aov" class="number-input" value="500" data-save-key="aov" aria-label="aov">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>年均购买次数 (F)</label>
+                        <div class="input-field">
+                            <input type="text" id="frequency" class="number-input" value="6" data-save-key="frequency" aria-label="frequency">
+                            <span class="unit">次/年</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>客户关系年限 (T)</label>
+                        <div class="input-field">
+                            <input type="text" id="lifespan" class="number-input" value="3" data-save-key="lifespan" aria-label="lifespan">
+                            <span class="unit">年</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 成本参数 -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <i data-lucide="wallet"></i>
+                        <h3>成本参数 <span class="en-sub">(Cost Metrics)</span></h3>
+                    </div>
+
+                    <div class="input-group">
+                        <label>获客成本 (CAC)</label>
+                        <div class="input-field">
+                            <span class="currency">¥</span>
+                            <input type="text" id="cac" class="number-input" value="800" data-save-key="cac" aria-label="cac">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>毛利率</label>
+                        <div class="input-field">
+                            <input type="text" id="margin" class="number-input" value="40" data-save-key="margin" aria-label="margin">
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>年流失率</label>
+                        <div class="input-field">
+                            <input type="text" id="churnRate" class="number-input" value="20"
+                                data-save-key="churn_rate" aria-label="churn rate">
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：结果区 -->
+            <div class="clv-result-pane">
+                <div class="pane-header">
+                    <i data-lucide="heart"></i>
+                    <h2>计算结果 <span class="en-sub">(Results)</span></h2>
+                </div>
+
+                <!-- CLV 主结果 -->
+                <div class="clv-main-result">
+                    <div class="result-label">客户终身价值</div>
+                    <div class="result-value" id="clvValue">¥9,000</div>
+                    <div class="result-sub">Customer Lifetime Value</div>
+                </div>
+
+                <!-- 关键比率 -->
+                <div class="ratios-grid">
+                    <div class="ratio-card highlight">
+                        <div class="ratio-label">CLV : CAC 比率</div>
+                        <div class="ratio-value" id="clvCacRatio">11.25 : 1</div>
+                        <div class="ratio-status" id="ratioStatus">优秀 (>3:1)</div>
+                    </div>
+                    <div class="ratio-card">
+                        <div class="ratio-label">净 CLV</div>
+                        <div class="ratio-value" id="netClv">¥8,200</div>
+                        <div class="ratio-status">CLV - CAC</div>
+                    </div>
+                    <div class="ratio-card">
+                        <div class="ratio-label">年均价值</div>
+                        <div class="ratio-value" id="yearlyValue">¥3,000</div>
+                        <div class="ratio-status">AOV × F</div>
+                    </div>
+                    <div class="ratio-card">
+                        <div class="ratio-label">利润 CLV</div>
+                        <div class="ratio-value" id="profitClv">¥3,600</div>
+                        <div class="ratio-status">CLV × 毛利率</div>
+                    </div>
+                </div>
+
+                <!-- CLV vs CAC 可视化 -->
+                <div class="comparison-visual">
+                    <div class="visual-header">
+                        <i data-lucide="bar-chart-2"></i>
+                        <h3>CLV vs CAC 对比 <span class="en-sub">(Comparison)</span></h3>
+                    </div>
+                    <div class="comparison-bars">
+                        <div class="bar-row">
+                            <span class="bar-label">CLV</span>
+                            <div class="bar-container">
+                                <div class="bar clv-bar" id="clvBar" style="width: 90%;"></div>
+                            </div>
+                            <span class="bar-value" id="clvBarValue">¥9,000</span>
+                        </div>
+                        <div class="bar-row">
+                            <span class="bar-label">CAC</span>
+                            <div class="bar-container">
+                                <div class="bar cac-bar" id="cacBar" style="width: 8%;"></div>
+                            </div>
+                            <span class="bar-value" id="cacBarValue">¥800</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 策略建议 -->
+                <div class="strategy-section">
+                    <div class="section-header">
+                        <i data-lucide="lightbulb"></i>
+                        <h3>策略建议 <span class="en-sub">(Recommendations)</span></h3>
+                    </div>
+                    <div class="strategy-content" contenteditable="true" data-save-key="strategy_notes">
+                        <ul>
+                            <li><strong>CLV:CAC > 3:1</strong>：可以增加获客投入</li>
+                            <li><strong>提升 AOV</strong>：交叉销售、向上销售</li>
+                            <li><strong>提高复购频率</strong>：会员计划、订阅制</li>
+                            <li><strong>延长客户关系</strong>：优化客户体验、忠诚度计划</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('clv_calculator_v1');
+            lucide.createIcons({
+                attrs: { class: "icon", 'stroke-width': 2 }
+            });
+
+            // CLV calculation logic
+            const inputs = ['aov', 'frequency', 'lifespan', 'cac', 'margin', 'churnRate'];
+            const currencyInput = document.getElementById('currencySymbol');
+            const currencySpans = document.querySelectorAll('.currency');
+
+            function getCurrency() {
+                return currencyInput.value || '¥';
+            }
+
+            function updateCurrencyDisplays() {
+                const symbol = getCurrency();
+                currencySpans.forEach(span => span.textContent = symbol);
+            }
+
+            function parseNumber(val) {
+                return parseFloat(val.replace(/[^\d.-]/g, '')) || 0;
+            }
+
+            function formatCurrency(num) {
+                return getCurrency() + num.toLocaleString('zh-CN');
+            }
+
+            function calculate() {
+                const aov = parseNumber(document.getElementById('aov').value);
+                const frequency = parseNumber(document.getElementById('frequency').value);
+                const lifespan = parseNumber(document.getElementById('lifespan').value);
+                const cac = parseNumber(document.getElementById('cac').value);
+                const margin = parseNumber(document.getElementById('margin').value) / 100;
+                const churnRate = parseNumber(document.getElementById('churnRate').value) / 100;
+
+                // Core calculations
+                const clv = aov * frequency * lifespan;
+                const yearlyValue = aov * frequency;
+                const netClv = clv - cac;
+                const profitClv = clv * margin;
+                const clvCacRatio = cac > 0 ? clv / cac : 0;
+
+                // Update displays
+                document.getElementById('clvValue').textContent = formatCurrency(clv);
+                document.getElementById('clvCacRatio').textContent = clvCacRatio.toFixed(2) + ' : 1';
+                document.getElementById('netClv').textContent = formatCurrency(netClv);
+                document.getElementById('yearlyValue').textContent = formatCurrency(yearlyValue);
+                document.getElementById('profitClv').textContent = formatCurrency(profitClv);
+
+                // Ratio status
+                const ratioStatus = document.getElementById('ratioStatus');
+                if (clvCacRatio >= 5) {
+                    ratioStatus.textContent = '卓越 (>5:1)';
+                    ratioStatus.className = 'ratio-status excellent';
+                } else if (clvCacRatio >= 3) {
+                    ratioStatus.textContent = '优秀 (>3:1)';
+                    ratioStatus.className = 'ratio-status good';
+                } else if (clvCacRatio >= 1) {
+                    ratioStatus.textContent = '需优化 (1-3:1)';
+                    ratioStatus.className = 'ratio-status warning';
+                } else {
+                    ratioStatus.textContent = '亏损 (<1:1)';
+                    ratioStatus.className = 'ratio-status danger';
+                }
+
+                // Update comparison bars
+                const maxValue = Math.max(clv, cac);
+                const clvPercent = maxValue > 0 ? (clv / maxValue * 100) : 0;
+                const cacPercent = maxValue > 0 ? (cac / maxValue * 100) : 0;
+
+                document.getElementById('clvBar').style.width = clvPercent + '%';
+                document.getElementById('cacBar').style.width = cacPercent + '%';
+                document.getElementById('clvBarValue').textContent = formatCurrency(clv);
+                document.getElementById('cacBarValue').textContent = formatCurrency(cac);
+            }
+
+            inputs.forEach(id => {
+                document.getElementById(id).addEventListener('input', calculate);
+            });
+
+            currencyInput.addEventListener('input', () => {
+                updateCurrencyDisplays();
+                calculate();
+            });
+
+            updateCurrencyDisplays();
+            calculate();
+        });
+    </script>
+</body>
+
+</html>

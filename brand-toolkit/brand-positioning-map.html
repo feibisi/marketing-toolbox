@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌定位图 (Brand Positioning Map)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="可视化分析品牌市场定位与竞争格局">
+    <meta name="keywords" content="Brand Positioning, Perceptual Map, Marketing Strategy, Competitive Analysis">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/brand-positioning-map.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>品牌定位图</h1>
+                <span class="english-subtitle">Brand Positioning Map</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="Market Analysis" data-save-key="meta_project" aria-label="Market Analysis">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="map-layout">
+                <!-- Sidebar: Controls -->
+                <aside class="map-controls">
+                    <div class="control-group">
+                        <label>X轴属性 (X-Axis)</label>
+                        <div class="axis-inputs">
+                            <input type="text" class="axis-label" placeholder="Low Price" data-save-key="axis_x_left" aria-label="Low Price">
+                            <span class="arrow">↔</span>
+                            <input type="text" class="axis-label" placeholder="High Price" data-save-key="axis_x_right" aria-label="High Price">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Y轴属性 (Y-Axis)</label>
+                        <div class="axis-inputs">
+                            <input type="text" class="axis-label" placeholder="Low Quality"
+                                data-save-key="axis_y_bottom" aria-label="Low Quality">
+                            <span class="arrow">↕</span>
+                            <input type="text" class="axis-label" placeholder="High Quality" data-save-key="axis_y_top" aria-label="High Quality">
+                        </div>
+                    </div>
+
+                    <hr class="control-divider">
+
+                    <div class="control-group">
+                        <label>添加品牌 (Add Brand)</label>
+                        <div class="add-brand-row">
+                            <input type="text" id="newBrandName" placeholder="Brand Name" class="input-sm" aria-label="Brand Name">
+                            <select id="newBrandType" class="select-sm" aria-label="newBrandType">
+                                <option value="competitor">竞品 (Competitor)</option>
+                                <option value="us">我们 (My Brand)</option>
+                                <option value="target">目标 (Ideal)</option>
+                            </select>
+                            <button id="addBrandBtn" class="btn-icon" type="button"><i data-lucide="plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="tips-box">
+                        <i data-lucide="info" class="icon-xs"></i>
+                        <p>拖拽地图上的圆点来调整位置。<br>Drag dots to position.</p>
+                    </div>
+                </aside>
+
+                <!-- Map Area -->
+                <div class="map-container" id="mapContainer">
+                    <!-- Grid Lines -->
+                    <div class="grid-line x-axis"></div>
+                    <div class="grid-line y-axis"></div>
+
+                    <!-- Axis Labels (Live updated via JS) -->
+                    <div class="map-label label-top" id="labelTop">High Quality</div>
+                    <div class="map-label label-bottom" id="labelBottom">Low Quality</div>
+                    <div class="map-label label-left" id="labelLeft">Low Price</div>
+                    <div class="map-label label-right" id="labelRight">High Price</div>
+
+                    <!-- Brand Markers Container -->
+                    <div id="markerLayer">
+                        <!-- Markers injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/brand-positioning-map.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('brand_positioning_map_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

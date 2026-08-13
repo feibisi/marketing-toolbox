@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drip 营销蓝图 (Drip Campaign Blueprint)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="规划自动化邮件培育序列">
+    <meta name="keywords" content="Email Marketing, Drip Campaign, Automation, Nurture Sequence">
+
+    <!-- Fonts -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/drip-campaign-blueprint.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <!-- A3 Landscape Canvas (~1400px width) -->
+    <main class="paper-a3">
+
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>Drip 营销蓝图</h1>
+                <span class="english-subtitle">Drip Campaign Blueprint</span>
+            </div>
+
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="自动化序列名称" data-save-key="meta_project" aria-label="自动化序列名称">
+                </div>
+                <div class="meta-group">
+                    <label>目标受众 <span class="en-sub">(Audience)</span></label>
+                    <input type="text" class="meta-input" placeholder="e.g. 新注册用户" data-save-key="meta_audience" aria-label="新注册用户">
+                </div>
+            </div>
+        </header>
+
+        <div class="tool-content">
+
+            <div class="blueprint-container">
+                <!-- Timeline Track (Visual Line) -->
+                <div class="timeline-track"></div>
+
+                <!-- Steps Container -->
+                <div class="steps-wrapper" id="stepsContainer">
+
+                    <!-- Step 1: Trigger -->
+                    <div class="step-card trigger-step">
+                        <div class="step-header">
+                            <div class="step-icon"><i data-lucide="zap"></i></div>
+                            <div class="step-title">触发条件 <span class="en-sub">(Trigger)</span></div>
+                        </div>
+                        <div class="step-body" contenteditable="true" data-save-key="step_trigger">
+                            <p>用户注册账号</p>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Connect -->
+                    <div class="step-connector">
+                        <span class="delay-label">立即 (Immediate)</span>
+                    </div>
+
+                    <!-- Step 2: Welcome -->
+                    <div class="step-card email-step">
+                        <div class="step-header">
+                            <div class="step-number">01</div>
+                            <div class="step-title" contenteditable="true" data-save-key="step_1_title">Day 0: 欢迎邮件
+                            </div>
+                        </div>
+                        <div class="step-body">
+                            <div class="field-group">
+                                <label>主题 <span class="en-sub">(Subject)</span></label>
+                                <div class="editable-field" contenteditable="true" data-save-key="step_1_subject">
+                                    欢迎加入Modiqi! 这里是你的入门指南...</div>
+                            </div>
+                            <div class="field-group">
+                                <label>核心信息 <span class="en-sub">(Key Message)</span></label>
+                                <div class="editable-field" contenteditable="true" data-save-key="step_1_msg">
+                                    感谢注册，介绍核心价值，引导完成设置。</div>
+                            </div>
+                            <div class="field-group">
+                                <label>行动号召 <span class="en-sub">(CTA)</span></label>
+                                <div class="editable-field" contenteditable="true" data-save-key="step_1_cta">登录控制台
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Connect -->
+                    <div class="step-connector">
+                        <span class="delay-label" contenteditable="true" data-save-key="delay_1">Day 3</span>
+                    </div>
+
+                    <!-- Step 3: Value -->
+                    <div class="step-card email-step">
+                        <div class="step-header">
+                            <div class="step-number">02</div>
+                            <div class="step-title" contenteditable="true" data-save-key="step_2_title">Day 3: 价值传递
+                            </div>
+                        </div>
+                        <div class="step-body">
+                            <div class="field-group">
+                                <label>主题 <span class="en-sub">(Subject)</span></label>
+                                <div class="editable-field" contenteditable="true" data-save-key="step_2_subject">
+                                    如何最大化利用...</div>
+                            </div>
+                            <div class="field-group">
+                                <label>核心信息 <span class="en-sub">(Key Message)</span></label>
+                                <div class="editable-field" contenteditable="true" data-save-key="step_2_msg">
+                                    分享最佳实践案例，教育用户。</div>
+                            </div>
+                            <div class="field-group">
+                                <label>行动号召 <span class="en-sub">(CTA)</span></label>
+                                <div class="editable-field" contenteditable="true" data-save-key="step_2_cta">阅读案例</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Button Placeholder (Manual for Phase 1 to keep it simple, or functional) -->
+                    <!-- Let's make it static for now as per "Planner" nature, users can duplicate mentally or we add JS dynamic later -->
+                    <!-- Actually plan says "Dynamic: Add Stage button", so I should implement basic dynamic add -->
+
+                    <div class="add-step-wrapper" id="addStepWrapper">
+                        <button class="btn-add-step" id="btnAddStep" type="button">
+                            <i data-lucide="plus"></i>
+                            添加步骤
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="kpi-section">
+                <h3>目标设定 <span class="en-sub">(Goals & KPIs)</span></h3>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <label>预计打开率</label>
+                        <input type="text" class="input-transparent" placeholder="00%" data-save-key="kpi_open_rate" aria-label="00%">
+                    </div>
+                    <div class="kpi-card">
+                        <label>预计点击率</label>
+                        <input type="text" class="input-transparent" placeholder="00%" data-save-key="kpi_ctr" aria-label="00%">
+                    </div>
+                    <div class="kpi-card">
+                        <label>主要转化目标</label>
+                        <input type="text" class="input-transparent" placeholder="付费/激活" data-save-key="kpi_goal" aria-label="付费/激活">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+
+    </main>
+
+    <!-- Template for new step -->
+    <template id="stepTemplate">
+        <div class="step-connector">
+            <span class="delay-label" contenteditable="true">Day X</span>
+        </div>
+        <div class="step-card email-step">
+            <button class="btn-delete-step" title="删除步骤" type="button"><i data-lucide="x"></i></button>
+            <div class="step-header">
+                <div class="step-number">0X</div>
+                <div class="step-title" contenteditable="true">Day X: 标题</div>
+            </div>
+            <div class="step-body">
+                <div class="field-group">
+                    <label>主题 <span class="en-sub">(Subject)</span></label>
+                    <div class="editable-field" contenteditable="true">请输入邮件主题...</div>
+                </div>
+                <div class="field-group">
+                    <label>核心信息 <span class="en-sub">(Key Message)</span></label>
+                    <div class="editable-field" contenteditable="true">请输入邮件内容概要...</div>
+                </div>
+                <div class="field-group">
+                    <label>行动号召 <span class="en-sub">(CTA)</span></label>
+                    <div class="editable-field" contenteditable="true">请输入CTA...</div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="../shared/js/core.js"></script>
+    <script src="assets/js/drip-campaign-blueprint.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('drip_campaign_v1');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

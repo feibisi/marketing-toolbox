@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北极星指标 (North Star Metric)</title>
+    <meta name="description" content="北极星指标工具，帮助团队定义最重要的成功指标，追踪驱动指标并制定行动计划。">
+    <meta name="keywords" content="北极星指标,North Star Metric,增长指标,驱动指标,KPI,OKR,增长黑客">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="北极星指标 - Modiqi Workbench">
+    <meta property="og:description" content="定义最重要的成功指标，追踪驱动指标并制定行动计划。">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts with preload -->
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/north-star-metric.css">
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>北极星指标</h1>
+                <span class="english-subtitle">North Star Metric</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>产品 <span class="en-sub">(Product)</span></label>
+                    <input type="text" class="meta-input" placeholder="输入产品名称" data-save-key="meta_product" aria-label="输入产品名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <!-- North Star Section -->
+        <div class="north-star-section">
+            <div class="star-container">
+                <div class="star-icon">
+                    <i data-lucide="star"></i>
+                </div>
+                <div class="star-content">
+                    <label>北极星指标 <span class="en-sub">(North Star Metric)</span></label>
+                    <input type="text" class="star-input" placeholder="例如: 每周活跃用户数 (WAU)"
+                        data-save-key="north_star_metric" aria-label="每周活跃用户数 (WAU)">
+                    <div class="star-meta">
+                        <div class="star-meta-group">
+                            <span class="star-meta-label">当前值 <span class="en-sub">(Current)</span>:</span>
+                            <input type="text" class="star-meta-input" placeholder="12,500" data-save-key="ns_current" aria-label="12,500">
+                        </div>
+                        <div class="star-meta-group">
+                            <span class="star-meta-label">目标值 <span class="en-sub">(Target)</span>:</span>
+                            <input type="text" class="star-meta-input" placeholder="20,000" data-save-key="ns_target" aria-label="20,000">
+                        </div>
+                        <div class="star-meta-group">
+                            <span class="star-meta-label">增长率 <span class="en-sub">(Growth)</span>:</span>
+                            <input type="text" class="star-meta-input growth-rate" placeholder="+15%"
+                                data-save-key="ns_growth" aria-label="+15%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-section">
+                <h3><i data-lucide="lightbulb"></i> 为什么选择这个指标？ <span class="en-sub">(Why This Metric)</span></h3>
+                <textarea class="why-textarea" placeholder="描述为什么这个指标最能代表你的产品价值和用户成功..."
+                    data-save-key="ns_why" aria-label="描述为什么这个指标最能代表你的产品价值和用户成功..."></textarea>
+            </div>
+        </div>
+
+        <!-- Input Metrics -->
+        <div class="metrics-section">
+            <h2 class="section-title"><i data-lucide="trending-up"></i> 驱动指标 <span class="en-sub">(Input Metrics)</span>
+            </h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i data-lucide="user-plus"></i>
+                        <h4 contenteditable="true" data-save-key="metric_1_name">新用户注册数</h4>
+                    </div>
+                    <div class="metric-values">
+                        <div class="value-item">
+                            <span class="value-label">当前 <span class="en-sub">(Current)</span></span>
+                            <input type="text" class="value-input" value="850" data-save-key="metric_1_current" aria-label="metric 1 current">
+                        </div>
+                        <div class="value-item">
+                            <span class="value-label">目标 <span class="en-sub">(Target)</span></span>
+                            <input type="text" class="value-input" value="1,200" data-save-key="metric_1_target" aria-label="metric 1 target">
+                        </div>
+                    </div>
+                    <div class="metric-impact">
+                        <span class="impact-label">影响权重:</span>
+                        <div class="impact-bar">
+                            <div class="impact-fill" style="width: 80%"></div>
+                        </div>
+                        <input type="text" class="impact-value" value="80%" data-save-key="metric_1_weight" aria-label="metric 1 weight">
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i data-lucide="repeat"></i>
+                        <h4 contenteditable="true" data-save-key="metric_2_name">用户留存率</h4>
+                    </div>
+                    <div class="metric-values">
+                        <div class="value-item">
+                            <span class="value-label">当前 <span class="en-sub">(Current)</span></span>
+                            <input type="text" class="value-input" value="65%" data-save-key="metric_2_current" aria-label="metric 2 current">
+                        </div>
+                        <div class="value-item">
+                            <span class="value-label">目标 <span class="en-sub">(Target)</span></span>
+                            <input type="text" class="value-input" value="75%" data-save-key="metric_2_target" aria-label="metric 2 target">
+                        </div>
+                    </div>
+                    <div class="metric-impact">
+                        <span class="impact-label">影响权重:</span>
+                        <div class="impact-bar">
+                            <div class="impact-fill" style="width: 90%"></div>
+                        </div>
+                        <input type="text" class="impact-value" value="90%" data-save-key="metric_2_weight" aria-label="metric 2 weight">
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i data-lucide="zap"></i>
+                        <h4 contenteditable="true" data-save-key="metric_3_name">功能使用频率</h4>
+                    </div>
+                    <div class="metric-values">
+                        <div class="value-item">
+                            <span class="value-label">当前 <span class="en-sub">(Current)</span></span>
+                            <input type="text" class="value-input" value="3.2" data-save-key="metric_3_current" aria-label="metric 3 current">
+                        </div>
+                        <div class="value-item">
+                            <span class="value-label">目标 <span class="en-sub">(Target)</span></span>
+                            <input type="text" class="value-input" value="5.0" data-save-key="metric_3_target" aria-label="metric 3 target">
+                        </div>
+                    </div>
+                    <div class="metric-impact">
+                        <span class="impact-label">影响权重:</span>
+                        <div class="impact-bar">
+                            <div class="impact-fill" style="width: 70%"></div>
+                        </div>
+                        <input type="text" class="impact-value" value="70%" data-save-key="metric_3_weight" aria-label="metric 3 weight">
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <i data-lucide="share-2"></i>
+                        <h4 contenteditable="true" data-save-key="metric_4_name">病毒传播系数</h4>
+                    </div>
+                    <div class="metric-values">
+                        <div class="value-item">
+                            <span class="value-label">当前 <span class="en-sub">(Current)</span></span>
+                            <input type="text" class="value-input" value="1.2" data-save-key="metric_4_current" aria-label="metric 4 current">
+                        </div>
+                        <div class="value-item">
+                            <span class="value-label">目标 <span class="en-sub">(Target)</span></span>
+                            <input type="text" class="value-input" value="1.5" data-save-key="metric_4_target" aria-label="metric 4 target">
+                        </div>
+                    </div>
+                    <div class="metric-impact">
+                        <span class="impact-label">影响权重:</span>
+                        <div class="impact-bar">
+                            <div class="impact-fill" style="width: 60%"></div>
+                        </div>
+                        <input type="text" class="impact-value" value="60%" data-save-key="metric_4_weight" aria-label="metric 4 weight">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Plan -->
+        <div class="action-section">
+            <h2 class="section-title"><i data-lucide="target"></i> 行动计划 <span class="en-sub">(Action Plan)</span></h2>
+            <div class="action-grid">
+                <div class="action-card">
+                    <div class="action-header">
+                        <span class="action-number">1</span>
+                        <input type="text" class="action-title" placeholder="行动项标题" value="优化新手引导流程"
+                            data-save-key="action_1_title" aria-label="行动项标题">
+                    </div>
+                    <textarea class="action-desc" placeholder="描述具体行动..."
+                        data-save-key="action_1_desc" aria-label="描述具体行动...">简化注册步骤，添加产品价值演示，提升首次体验</textarea>
+                    <div class="action-meta">
+                        <input type="text" class="action-metric" value="→ 新用户注册数" data-save-key="action_1_metric" aria-label="action 1 metric">
+                        <input type="text" class="action-owner" placeholder="负责人" value="负责人: 张三"
+                            data-save-key="action_1_owner" aria-label="负责人">
+                    </div>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-header">
+                        <span class="action-number">2</span>
+                        <input type="text" class="action-title" placeholder="行动项标题" value="推送个性化内容"
+                            data-save-key="action_2_title" aria-label="行动项标题">
+                    </div>
+                    <textarea class="action-desc" placeholder="描述具体行动..."
+                        data-save-key="action_2_desc" aria-label="描述具体行动...">基于用户行为推送相关内容，提升用户粘性</textarea>
+                    <div class="action-meta">
+                        <input type="text" class="action-metric" value="→ 用户留存率" data-save-key="action_2_metric" aria-label="action 2 metric">
+                        <input type="text" class="action-owner" placeholder="负责人" value="负责人: 李四"
+                            data-save-key="action_2_owner" aria-label="负责人">
+                    </div>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-header">
+                        <span class="action-number">3</span>
+                        <input type="text" class="action-title" placeholder="行动项标题" value="添加社交分享功能"
+                            data-save-key="action_3_title" aria-label="行动项标题">
+                    </div>
+                    <textarea class="action-desc" placeholder="描述具体行动..."
+                        data-save-key="action_3_desc" aria-label="描述具体行动...">一键分享成果到社交媒体，激励用户传播</textarea>
+                    <div class="action-meta">
+                        <input type="text" class="action-metric" value="→ 病毒传播系数" data-save-key="action_3_metric" aria-label="action 3 metric">
+                        <input type="text" class="action-owner" placeholder="负责人" value="负责人: 王五"
+                            data-save-key="action_3_owner" aria-label="负责人">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('north_star_metric_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

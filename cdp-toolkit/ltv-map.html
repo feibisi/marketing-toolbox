@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户生命周期价值地图 (LTV Map) - Modiqi Workbench</title>
+    <meta name="description" content="客户生命周期价值地图 - 分析LTV增长曲线、组成要素、驱动因素和细分对比">
+    <meta name="keywords" content="LTV,客户生命周期价值,CAC,客户获取成本,AOV,购买频率,客户细分,CDP">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="客户生命周期价值地图 - Modiqi Workbench">
+    <meta property="og:description" content="分析LTV增长曲线、组成要素、驱动因素和细分对比">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ltv-map.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main id="canvas" class="paper-a3">
+        <!-- Canvas Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>客户生命周期价值地图</h1>
+                <span class="english-subtitle">Customer Lifetime Value Map</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>队列 <span class="en-sub">(Cohort)</span></label>
+                    <select class="meta-input" data-save-key="ltv_cohort" aria-label="ltv cohort">
+                        <option value="2024q4">2024 Q4 新客</option>
+                        <option value="2024q3">2024 Q3 新客</option>
+                        <option value="all">全部客户</option>
+                    </select>
+                </div>
+                <div class="meta-group">
+                    <label>周期 <span class="en-sub">(Period)</span></label>
+                    <select class="meta-input" data-save-key="ltv_period" aria-label="ltv period">
+                        <option value="12m">12 个月</option>
+                        <option value="24m">24 个月</option>
+                        <option value="36m">36 个月</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="ltv-layout">
+
+            <!-- Top: LTV Curve Visualization -->
+            <section class="ltv-curve-section">
+                <div class="section-header">
+                    <h3>LTV 增长曲线 <span class="en-sub">(LTV Growth Curve)</span></h3>
+                    <div class="curve-metrics">
+                        <div class="metric-badge">
+                            <span class="metric-label">平均 LTV</span>
+                            <span class="metric-value" contenteditable="true" data-save-key="ltv_avg">$2,450</span>
+                        </div>
+                        <div class="metric-badge">
+                            <span class="metric-label">CAC</span>
+                            <span class="metric-value" contenteditable="true" data-save-key="ltv_cac">$180</span>
+                        </div>
+                        <div class="metric-badge highlight">
+                            <span class="metric-label">LTV:CAC</span>
+                            <span class="metric-value" contenteditable="true" data-save-key="ltv_ratio">13.6x</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="curve-chart">
+                    <svg viewBox="0 0 900 220" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+                        <!-- Grid -->
+                        <line x1="60" y1="180" x2="860" y2="180" stroke="currentColor" stroke-opacity="0.2"
+                            stroke-width="1" />
+                        <line x1="60" y1="30" x2="60" y2="180" stroke="currentColor" stroke-opacity="0.2"
+                            stroke-width="1" />
+
+                        <!-- Grid lines -->
+                        <line x1="60" y1="142" x2="860" y2="142" stroke="currentColor" stroke-opacity="0.1"
+                            stroke-width="1" stroke-dasharray="4" />
+                        <line x1="60" y1="104" x2="860" y2="104" stroke="currentColor" stroke-opacity="0.1"
+                            stroke-width="1" stroke-dasharray="4" />
+                        <line x1="60" y1="66" x2="860" y2="66" stroke="currentColor" stroke-opacity="0.1"
+                            stroke-width="1" stroke-dasharray="4" />
+
+                        <!-- Y-axis labels -->
+                        <text x="50" y="185" text-anchor="end" font-size="10" fill="currentColor"
+                            opacity="0.5">$0</text>
+                        <text x="50" y="147" text-anchor="end" font-size="10" fill="currentColor"
+                            opacity="0.5">$500</text>
+                        <text x="50" y="109" text-anchor="end" font-size="10" fill="currentColor"
+                            opacity="0.5">$1000</text>
+                        <text x="50" y="71" text-anchor="end" font-size="10" fill="currentColor"
+                            opacity="0.5">$1500</text>
+                        <text x="50" y="35" text-anchor="end" font-size="10" fill="currentColor"
+                            opacity="0.5">$2000</text>
+
+                        <!-- X-axis labels -->
+                        <text x="130" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M1</text>
+                        <text x="200" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M2</text>
+                        <text x="270" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M3</text>
+                        <text x="340" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M4</text>
+                        <text x="410" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M5</text>
+                        <text x="480" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M6</text>
+                        <text x="550" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M7</text>
+                        <text x="620" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M8</text>
+                        <text x="690" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M9</text>
+                        <text x="760" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M10</text>
+                        <text x="830" y="198" text-anchor="middle" font-size="10" fill="currentColor"
+                            opacity="0.5">M11</text>
+
+                        <!-- LTV Curve (monochrome) -->
+                        <path class="ltv-curve"
+                            d="M60 180 L130 158 L200 140 L270 126 L340 114 L410 104 L480 96 L550 90 L620 85 L690 81 L760 78 L830 76"
+                            fill="none" stroke="currentColor" stroke-width="2" />
+
+                        <!-- Data points -->
+                        <g class="data-points">
+                            <circle cx="60" cy="180" r="3" fill="currentColor" />
+                            <circle cx="130" cy="158" r="3" fill="currentColor" />
+                            <circle cx="200" cy="140" r="3" fill="currentColor" />
+                            <circle cx="270" cy="126" r="3" fill="currentColor" />
+                            <circle cx="340" cy="114" r="3" fill="currentColor" />
+                            <circle cx="410" cy="104" r="3" fill="currentColor" />
+                            <circle cx="480" cy="96" r="3" fill="currentColor" />
+                            <circle cx="550" cy="90" r="3" fill="currentColor" />
+                            <circle cx="620" cy="85" r="3" fill="currentColor" />
+                            <circle cx="690" cy="81" r="3" fill="currentColor" />
+                            <circle cx="760" cy="78" r="3" fill="currentColor" />
+                            <circle cx="830" cy="76" r="3" fill="currentColor" />
+                        </g>
+
+                        <!-- CAC line -->
+                        <line class="cac-line" x1="60" y1="172" x2="860" y2="172" stroke="currentColor"
+                            stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="6" />
+                        <text x="870" y="175" font-size="9" fill="currentColor" opacity="0.6"
+                            font-weight="600">CAC</text>
+
+                        <!-- Breakeven point -->
+                        <line class="breakeven-line" x1="130" y1="30" x2="130" y2="180" stroke="currentColor"
+                            stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4" />
+                        <text x="135" y="25" font-size="9" fill="currentColor" opacity="0.6"
+                            font-weight="500">盈亏平衡</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Bottom: LTV Components & Drivers -->
+            <div class="bottom-grid">
+
+                <!-- LTV Components -->
+                <section class="components-section">
+                    <div class="section-header">
+                        <h3>LTV 组成要素 <span class="en-sub">(Components)</span></h3>
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-label">
+                            <i data-lucide="shopping-cart"></i>
+                            <span>平均订单价值 (AOV)</span>
+                        </div>
+                        <input type="text" class="component-input" value="$85" data-save-key="ltv_aov" aria-label="ltv aov">
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-label">
+                            <i data-lucide="repeat"></i>
+                            <span>购买频率 (Purchase Frequency)</span>
+                        </div>
+                        <input type="text" class="component-input" value="4.2x / 年" data-save-key="ltv_freq" aria-label="ltv freq">
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-label">
+                            <i data-lucide="clock"></i>
+                            <span>客户寿命 (Customer Lifespan)</span>
+                        </div>
+                        <input type="text" class="component-input" value="3.5 年" data-save-key="ltv_lifespan" aria-label="ltv lifespan">
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-label">
+                            <i data-lucide="percent"></i>
+                            <span>利润率 (Profit Margin)</span>
+                        </div>
+                        <input type="text" class="component-input" value="35%" data-save-key="ltv_margin" aria-label="ltv margin">
+                    </div>
+
+                    <div class="ltv-formula">
+                        <strong>LTV 计算公式:</strong>
+                        <div class="formula">AOV × 购买频率 × 客户寿命 × 利润率</div>
+                        <div class="formula-result">= $85 × 4.2 × 3.5 × 0.35 = <strong contenteditable="true"
+                                data-save-key="ltv_result">$437</strong></div>
+                    </div>
+                </section>
+
+                <!-- Value Drivers -->
+                <section class="drivers-section">
+                    <div class="section-header">
+                        <h3>价值驱动因素 <span class="en-sub">(Drivers)</span></h3>
+                    </div>
+
+                    <div class="driver-category">
+                        <h4>提升 AOV</h4>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_aov1">交叉销售与向上销售</span>
+                        </div>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_aov2">捆绑销售策略</span>
+                        </div>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_aov3">满减活动</span>
+                        </div>
+                    </div>
+
+                    <div class="driver-category">
+                        <h4>提升购买频率</h4>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_freq1">会员订阅计划</span>
+                        </div>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_freq2">个性化推荐</span>
+                        </div>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_freq3">定期复购提醒</span>
+                        </div>
+                    </div>
+
+                    <div class="driver-category">
+                        <h4>延长客户寿命</h4>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_life1">优质客户服务</span>
+                        </div>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_life2">忠诚度计划</span>
+                        </div>
+                        <div class="driver-item">
+                            <i data-lucide="arrow-up-right"></i>
+                            <span contenteditable="true" data-save-key="driver_life3">流失预警与挽回</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Segment Comparison -->
+                <section class="comparison-section">
+                    <div class="section-header">
+                        <h3>细分对比 <span class="en-sub">(Comparison)</span></h3>
+                    </div>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>客户细分</th>
+                                <th>LTV</th>
+                                <th>CAC</th>
+                                <th>比率</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="segment-vip">
+                                <td contenteditable="true" data-save-key="seg_vip">VIP 客户</td>
+                                <td contenteditable="true" data-save-key="seg_vip_ltv">$5,200</td>
+                                <td contenteditable="true" data-save-key="seg_vip_cac">$220</td>
+                                <td class="ratio-good" contenteditable="true" data-save-key="seg_vip_ratio">23.6x</td>
+                            </tr>
+                            <tr class="segment-active">
+                                <td contenteditable="true" data-save-key="seg_active">活跃客户</td>
+                                <td contenteditable="true" data-save-key="seg_active_ltv">$1,850</td>
+                                <td contenteditable="true" data-save-key="seg_active_cac">$165</td>
+                                <td class="ratio-good" contenteditable="true" data-save-key="seg_active_ratio">11.2x
+                                </td>
+                            </tr>
+                            <tr class="segment-normal">
+                                <td contenteditable="true" data-save-key="seg_normal">普通客户</td>
+                                <td contenteditable="true" data-save-key="seg_normal_ltv">$680</td>
+                                <td contenteditable="true" data-save-key="seg_normal_cac">$145</td>
+                                <td class="ratio-ok" contenteditable="true" data-save-key="seg_normal_ratio">4.7x</td>
+                            </tr>
+                            <tr class="segment-risk">
+                                <td contenteditable="true" data-save-key="seg_risk">风险客户</td>
+                                <td contenteditable="true" data-save-key="seg_risk_ltv">$280</td>
+                                <td contenteditable="true" data-save-key="seg_risk_cac">$180</td>
+                                <td class="ratio-bad" contenteditable="true" data-save-key="seg_risk_ratio">1.6x</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="comparison-insight">
+                        <i data-lucide="lightbulb"></i>
+                        <span contenteditable="true" data-save-key="ltv_insight">洞察:
+                            VIP客户的LTV是普通客户的7.6倍，应加大对高价值客户的投入</span>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+    </main>
+
+    <!-- Core JavaScript -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ltv_map_v1');
+            lucide.createIcons({
+                attrs: {
+                    class: 'icon',
+                    'stroke-width': 2
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

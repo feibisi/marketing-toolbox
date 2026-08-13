@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键词意图映射 (Keyword Intent Mapper)</title>
+    <meta name="description" content="将关键词按用户意图和购买旅程阶段分类,优化内容策略">
+    <meta name="keywords" content="关键词意图,搜索意图,用户旅程,SEO策略,内容规划">
+    <meta property="og:title" content="关键词意图映射 - Modiqi Workbench">
+    <meta property="og:description" content="将关键词按用户意图和购买旅程阶段分类">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/keyword-intent-mapper.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>关键词意图映射</h1>
+                <span class="english-subtitle">Keyword Intent Mapper</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="我的项目" data-save-key="meta_project" aria-label="我的项目">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="meta_date" aria-label="date">
+                </div>
+            </div>
+        </header>
+        <div class="tool-content">
+            <div class="intent-matrix">
+                <div class="matrix-row">
+                    <div class="stage-header">
+                        <div class="stage-title">认知阶段<br><span class="en">Awareness</span></div>
+                        <div class="stage-desc">用户发现问题</div>
+                    </div>
+                    <div class="intent-cell cell-informational">
+                        <div class="cell-header">
+                            <i data-lucide="info" class="icon"></i>
+                            <span>信息型 Informational</span>
+                        </div>
+                        <div class="keyword-list" contenteditable="true" data-save-key="aware_info">什么是数字营销<br>营销策略有哪些<br>如何做市场调研</div>
+                    </div>
+                    <div class="intent-cell cell-navigational">
+                        <div class="cell-header">
+                            <i data-lucide="compass" class="icon"></i>
+                            <span>导航型 Navigational</span>
+                        </div>
+                        <div class="keyword-list" contenteditable="true" data-save-key="aware_nav">营销工具推荐<br>SEO 工具对比<br>营销博客</div>
+                    </div>
+                </div>
+                <div class="matrix-row">
+                    <div class="stage-header">
+                        <div class="stage-title">考虑阶段<br><span class="en">Consideration</span></div>
+                        <div class="stage-desc">用户评估方案</div>
+                    </div>
+                    <div class="intent-cell cell-commercial">
+                        <div class="cell-header">
+                            <i data-lucide="shopping-bag" class="icon"></i>
+                            <span>商业型 Commercial</span>
+                        </div>
+                        <div class="keyword-list" contenteditable="true" data-save-key="consider_comm">最佳营销工具<br>营销软件评测<br>XX vs YY 对比</div>
+                    </div>
+                    <div class="intent-cell cell-informational">
+                        <div class="cell-header">
+                            <i data-lucide="book-open" class="icon"></i>
+                            <span>深度研究 Research</span>
+                        </div>
+                        <div class="keyword-list" contenteditable="true" data-save-key="consider_research">营销自动化指南<br>如何选择营销工具<br>营销工具功能对比</div>
+                    </div>
+                </div>
+                <div class="matrix-row">
+                    <div class="stage-header">
+                        <div class="stage-title">决策阶段<br><span class="en">Decision</span></div>
+                        <div class="stage-desc">用户准备购买</div>
+                    </div>
+                    <div class="intent-cell cell-transactional">
+                        <div class="cell-header">
+                            <i data-lucide="credit-card" class="icon"></i>
+                            <span>交易型 Transactional</span>
+                        </div>
+                        <div class="keyword-list" contenteditable="true" data-save-key="decision_trans">购买营销工具<br>营销软件价格<br>免费试用<br>立即注册</div>
+                    </div>
+                    <div class="intent-cell cell-navigational">
+                        <div class="cell-header">
+                            <i data-lucide="log-in" class="icon"></i>
+                            <span>品牌导航 Brand</span>
+                        </div>
+                        <div class="keyword-list" contenteditable="true" data-save-key="decision_brand">品牌名 + 登录<br>品牌名 + 定价<br>品牌名 + 评价</div>
+                    </div>
+                </div>
+            </div>
+            <div class="strategy-section">
+                <div class="section-header">
+                    <i data-lucide="target" class="icon"></i>
+                    <h2>内容策略 <span class="en-sub">(Content Strategy)</span></h2>
+                </div>
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h3>认知阶段内容</h3>
+                        <ul contenteditable="true" data-save-key="strategy_aware">
+                            <li>教育性博客文章</li>
+                            <li>行业报告和白皮书</li>
+                            <li>入门指南和教程</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-card">
+                        <h3>考虑阶段内容</h3>
+                        <ul contenteditable="true" data-save-key="strategy_consider">
+                            <li>产品对比文章</li>
+                            <li>案例研究</li>
+                            <li>专家评测和推荐</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-card">
+                        <h3>决策阶段内容</h3>
+                        <ul contenteditable="true" data-save-key="strategy_decision">
+                            <li>产品页面和定价</li>
+                            <li>客户评价和证言</li>
+                            <li>免费试用和演示</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        const app = new ModiqiApp({toolName: '关键词意图映射', toolNameEn: 'Keyword Intent Mapper', saveKey: 'keyword-intent-mapper'});
+        lucide.createIcons();
+    </script>
+</body>
+</html>

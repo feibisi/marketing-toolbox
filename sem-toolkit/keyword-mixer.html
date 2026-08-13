@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键词组合工具 (Keyword Mixer)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/keyword-mixer.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 portrait">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>关键词组合工具</h1>
+                <span class="english-subtitle">Keyword Mixer</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目名称</label>
+                    <input type="text" class="meta-input" placeholder="e.g. Summer Sale" aria-label="Summer Sale">
+                </div>
+            </div>
+        </header>
+
+        <div class="mixer-container">
+
+            <!-- Input Columns -->
+            <div class="input-grid">
+                <div class="input-col">
+                    <div class="col-header">
+                        <span class="badge">A</span> 前缀 / 动作 (Prefix)
+                    </div>
+                    <textarea id="colA" class="keyword-textarea" placeholder="买&#10;购&#10;低价&#10;优惠" aria-label="买
+购
+低价
+优惠"></textarea>
+                </div>
+                <div class="input-col">
+                    <div class="col-header">
+                        <span class="badge">B</span> 核心词 (Core)
+                    </div>
+                    <textarea id="colB" class="keyword-textarea" placeholder="跑鞋&#10;运动鞋&#10;球鞋" aria-label="跑鞋
+运动鞋
+球鞋"></textarea>
+                </div>
+                <div class="input-col">
+                    <div class="col-header">
+                        <span class="badge">C</span> 后缀 / 属性 (Suffix)
+                    </div>
+                    <textarea id="colC" class="keyword-textarea" placeholder="男款&#10;透气&#10;正品" aria-label="男款
+透气
+正品"></textarea>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-bar no-print">
+                <div class="match-types">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="broad" checked> 广泛匹配 (Broad)
+                    </label>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="phrase" checked> "词组匹配" ("Phrase")
+                    </label>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="exact" checked> [精确匹配] ([Exact])
+                    </label>
+                </div>
+                <div class="action-group">
+                    <button class="btn-primary" onclick="generateKeywords()" type="button">
+                        <i data-lucide="refresh-cw"></i> 生成组合 (Mix)
+                    </button>
+                    <button class="btn-secondary" onclick="copyResults()" type="button">
+                        <i data-lucide="copy"></i> 复制 (Copy)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="output-pane">
+                <div class="col-header">
+                    <i data-lucide="list"></i> 结果列表 (Results)
+                </div>
+                <textarea id="output" class="output-textarea" readonly aria-label="output"></textarea>
+                <div class="stats-bar">
+                    <span id="countTotal">Total: 0</span>
+                    <span id="charCount">Characters: 0</span>
+                </div>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('keyword_mixer');
+            lucide.createIcons();
+
+            // Auto generate on load for demo
+            generateKeywords();
+        });
+
+        function getLines(id) {
+            const text = document.getElementById(id).value;
+            return text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+        }
+
+        function generateKeywords() {
+            const listA = getLines('colA');
+            const listB = getLines('colB');
+            const listC = getLines('colC');
+
+            let combinations = [];
+
+            // A + B
+            if (listA.length > 0 && listB.length > 0) {
+                listA.forEach(a => {
+                    listB.forEach(b => {
+                        combinations.push(`${a} ${b}`);
+                        // A + B + C
+                        if (listC.length > 0) {
+                            listC.forEach(c => {
+                                combinations.push(`${a} ${b} ${c}`);
+                            });
+                        }
+                    });
+                });
+            }
+            // B + C (if A is empty)
+            else if (listA.length === 0 && listB.length > 0 && listC.length > 0) {
+                listB.forEach(b => {
+                    listC.forEach(c => {
+                        combinations.push(`${b} ${c}`);
+                    });
+                });
+            }
+
+            // Fallback: just B if others empty (not really a mixer but useful)
+            if (combinations.length === 0 && listB.length > 0) {
+                combinations = listB;
+            }
+
+
+            // Apply Match Types
+            let finalOutput = [];
+            const useBroad = document.getElementById('broad').checked;
+            const usePhrase = document.getElementById('phrase').checked;
+            const useExact = document.getElementById('exact').checked;
+
+            combinations.forEach(combo => {
+                if (useBroad) finalOutput.push(combo);
+                if (usePhrase) finalOutput.push(`"${combo}"`);
+                if (useExact) finalOutput.push(`[${combo}]`);
+            });
+
+            const outputText = finalOutput.join('\n');
+            document.getElementById('output').value = outputText;
+
+            // Update stats
+            document.getElementById('countTotal').innerText = `Total: ${finalOutput.length}`;
+            document.getElementById('charCount').innerText = `Characters: ${outputText.length}`;
+        }
+
+        function copyResults() {
+            const copyText = document.getElementById("output");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("已复制到剪贴板! (Copied!)");
+        }
+    </script>
+</body>
+
+</html>

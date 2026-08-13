@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件送达率自检清单 (Email Deliverability Checklist)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/deliverability-checklist.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a4 portrait">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>邮件送达率自检清单</h1>
+                <span class="english-subtitle">Email Deliverability Checklist</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>检查域名</label>
+                    <input type="text" class="meta-input" placeholder="example.com" aria-label="example.com">
+                </div>
+            </div>
+        </header>
+
+        <div class="checklist-container">
+
+            <!-- 1. Health Dashboard -->
+            <div class="health-dashboard">
+                <div class="health-score-card">
+                    <div class="health-circle" id="healthScore">0%</div>
+                    <div class="health-label">HEALTH SCORE</div>
+                </div>
+                <div class="health-stats">
+                    <div class="stat-box">
+                        <div class="stat-val" style="color:var(--color-text-primary);" id="totalItems">12</div>
+                        <div class="stat-desc">总检查项 (Total)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" style="color:var(--color-success);" id="passedItems">0</div>
+                        <div class="stat-desc">已通过 (Passed)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" style="color:var(--color-error);" id="pendingItems">12</div>
+                        <div class="stat-desc">待处理 (Pending)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Checklist Sections -->
+            <div class="checklist-grid">
+
+                <!-- Section 1: Technical Setup -->
+                <div class="check-section">
+                    <div class="section-title">
+                        <i data-lucide="server"></i> 技术设置 (Technical Setup)
+                    </div>
+                    <ul class="check-list">
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">SPF Record Valid</div>
+                                <div class="item-desc">确保 SPF 记录包含所有发送 IP。</div>
+                            </div>
+                            <span class="status-pill critical">Critical</span>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">DKIM Signed</div>
+                                <div class="item-desc">所有外发邮件均有 DKIM 签名。</div>
+                            </div>
+                            <span class="status-pill critical">Critical</span>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">DMARC Policy</div>
+                                <div class="item-desc">设置 DMARC (建议 p=quarantine 或 reject)。</div>
+                            </div>
+                            <span class="status-pill critical">Critical</span>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Custom Domain Tracking</div>
+                                <div class="item-desc">使用自定义域名进行链接追踪。</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 2: List Hygiene -->
+                <div class="check-section">
+                    <div class="section-title">
+                        <i data-lucide="users"></i> 名单健康 (List Hygiene)
+                    </div>
+                    <ul class="check-list">
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Hard Bounce Removal</div>
+                                <div class="item-desc">自动移除硬退信地址。</div>
+                            </div>
+                            <span class="status-pill critical">Critical</span>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Sunset Policy</div>
+                                <div class="item-desc">3-6个月未互动的用户移入再营销或剔除。</div>
+                            </div>
+                            <span class="status-pill recommended">Rec</span>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Double Opt-in</div>
+                                <div class="item-desc">确任新用户经过二次验证。</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 3: Content Quality -->
+                <div class="check-section">
+                    <div class="section-title">
+                        <i data-lucide="file-check"></i> 内容质量 (Content)
+                    </div>
+                    <ul class="check-list">
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Spam Word Check</div>
+                                <div class="item-desc">避免使用 "Free", "Guaranteed", "Cash" 等词。</div>
+                            </div>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Text-to-Image Ratio</div>
+                                <div class="item-desc">保持 60:40 或更高的图文比例。</div>
+                            </div>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Unsubscribe Link</div>
+                                <div class="item-desc">退订链接清晰可见，一键退订。</div>
+                            </div>
+                            <span class="status-pill critical">Critical</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 4: Testing & Monitoring -->
+                <div class="check-section">
+                    <div class="section-title">
+                        <i data-lucide="activity"></i> 监控 (Monitoring)
+                    </div>
+                    <ul class="check-list">
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Blacklist Check</div>
+                                <div class="item-desc">定期检查发送IP是否在黑名单 (RBLs)。</div>
+                            </div>
+                            <span class="status-pill critical">Critical</span>
+                        </li>
+                        <li class="check-item">
+                            <input type="checkbox" class="check-input" onchange="updateHealth()" aria-label="Input field">
+                            <div class="item-content">
+                                <div class="item-title">Google Postmaster</div>
+                                <div class="item-desc">设置并监控 Gmail Postmaster Tools。</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('email_deliverability_check');
+            lucide.createIcons();
+
+            // Initial calc
+            setTimeout(updateHealth, 500);
+        });
+
+        function updateHealth() {
+            const checkboxes = document.querySelectorAll('.check-input');
+            const total = checkboxes.length;
+            let checked = 0;
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) checked++;
+            });
+
+            const percent = Math.round((checked / total) * 100);
+
+            // Update UI
+            document.getElementById('totalItems').innerText = total;
+            document.getElementById('passedItems').innerText = checked;
+            document.getElementById('pendingItems').innerText = total - checked;
+
+            const circle = document.getElementById('healthScore');
+            circle.innerText = percent + "%";
+
+            // Color Logic
+            let color = 'var(--color-error)';
+            if (percent >= 100) color = 'var(--color-success)';
+            else if (percent >= 80) color = 'var(--color-brand-primary)';
+            else if (percent >= 50) color = 'var(--color-warning)';
+
+            circle.style.borderColor = color;
+            circle.style.color = color;
+        }
+    </script>
+</body>
+
+</html>

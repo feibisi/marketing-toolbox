@@ -1,0 +1,515 @@
+/* CLV Calculator - Design System Aligned */
+/* 客户终身价值计算器样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.clv-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   面板通用样式
+   ======================================== */
+.clv-input-pane,
+.clv-result-pane {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-sem-outer);
+    background: var(--color-bg-paper);
+}
+
+.clv-input-pane {
+    flex: 0.85;
+}
+
+.clv-result-pane {
+    flex: 1.15;
+}
+
+.pane-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.pane-header .icon {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    color: var(--color-text-primary);
+}
+
+.pane-header h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* ========================================
+   公式展示
+   ======================================== */
+.formula-section {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-inner);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.formula-display {
+    margin-bottom: var(--spacing-sm);
+}
+
+.formula-title {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: var(--spacing-xs);
+}
+
+.formula {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.formula-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}
+
+/* ========================================
+   输入区域
+   ======================================== */
+.input-section {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.section-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.section-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.input-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.currency,
+.unit {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+}
+
+.currency-selector {
+    width: 40px !important;
+    text-align: center;
+    font-family: var(--font-mono);
+}
+
+.number-input {
+    flex: 1;
+    max-width: 120px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-sem-input);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: var(--color-bg-paper);
+    text-align: right;
+    outline: none;
+}
+
+.number-input:hover {
+    border-color: var(--border-sem-input-hover);
+}
+
+.number-input:focus {
+    border-color: var(--color-focus-border);
+    background: var(--color-focus-bg);
+}
+
+/* ========================================
+   CLV 主结果
+   ======================================== */
+.clv-main-result {
+    padding: var(--spacing-md);
+    background: var(--color-bg-warm-medium);
+    border: 2px solid var(--border-sem-outer);
+    text-align: center;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.result-label {
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+    margin-bottom: var(--spacing-xs);
+}
+
+.result-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.result-sub {
+    font-size: var(--font-size-xs);
+    opacity: 0.7;
+    margin-top: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+/* ========================================
+   比率卡片
+   ======================================== */
+.ratios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.ratio-card {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    text-align: center;
+}
+
+.ratio-card.highlight {
+    background: var(--color-bg-warm-light);
+    border-color: var(--border-sem-outer);
+}
+
+.ratio-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.ratio-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.ratio-status {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin-top: var(--spacing-xs);
+}
+
+.ratio-status.excellent {
+    color: var(--color-text-primary);
+    font-weight: bold;
+}
+
+.ratio-status.good {
+    color: var(--color-text-primary);
+}
+
+.ratio-status.warning {
+    color: var(--color-text-primary);
+}
+
+.ratio-status.danger {
+    color: var(--color-text-primary);
+}
+
+/* ========================================
+   对比可视化
+   ======================================== */
+.comparison-visual {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+    margin-bottom: var(--spacing-lg);
+}
+
+.visual-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.visual-header .icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    color: var(--color-text-secondary);
+}
+
+.visual-header h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.comparison-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.bar-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 80px;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.bar-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
+.bar-container {
+    height: 24px;
+    background: var(--color-bg-warm-light);
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+}
+
+.clv-bar {
+    background: var(--color-text-secondary);
+}
+
+.cac-bar {
+    background: var(--color-text-tertiary);
+}
+
+.bar-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
+/* ========================================
+   策略建议
+   ======================================== */
+.strategy-section {
+    padding: var(--spacing-md);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--border-sem-inner);
+}
+
+.strategy-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    outline: none;
+}
+
+.strategy-content:focus {
+    background: var(--color-focus-bg);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .clv-input-pane,
+body.theme-dark .clv-result-pane {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .formula-section {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .input-section,
+body.theme-dark .ratio-card,
+body.theme-dark .comparison-visual,
+body.theme-dark .strategy-section {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .number-input {
+    background: var(--color-bg-paper);
+}
+
+body.theme-dark .clv-main-result {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .bar-container {
+    background: var(--color-bg-muted);
+}
+
+/* ========================================
+   色彩模式 - 使用语义化颜色
+   ======================================== */
+body:not(.theme-dark).color-mode .formula-section {
+    background: var(--color-semantic-opportunity);
+}
+
+body:not(.theme-dark).color-mode .clv-main-result {
+    background: var(--color-semantic-gain);
+    border-color: var(--color-success);
+}
+
+body:not(.theme-dark).color-mode .ratio-card.highlight {
+    background: var(--color-semantic-strength);
+}
+
+body:not(.theme-dark).color-mode .ratio-status.excellent {
+    color: var(--color-success);
+    font-weight: var(--font-weight-bold);
+}
+
+body:not(.theme-dark).color-mode .ratio-status.good {
+    color: var(--color-info);
+}
+
+body:not(.theme-dark).color-mode .ratio-status.warning {
+    color: var(--color-warning);
+}
+
+body:not(.theme-dark).color-mode .ratio-status.danger {
+    color: var(--color-error);
+}
+
+body:not(.theme-dark).color-mode .clv-bar {
+    background: var(--color-semantic-growth);
+}
+
+body:not(.theme-dark).color-mode .cac-bar {
+    background: var(--color-semantic-danger);
+}
+
+body:not(.theme-dark).color-mode .comparison-visual {
+    background: var(--color-semantic-neutral);
+}
+
+body:not(.theme-dark).color-mode .strategy-section {
+    background: var(--color-semantic-highlight);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .clv-layout {
+        flex-direction: row !important;
+    }
+
+    .clv-main-result,
+    .bar {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .clv-layout {
+        flex-direction: column;
+    }
+
+    .ratios-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* [CX] Screen-layout stabilization: responsive reading mode without dropping content. */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    main.paper-a3,
+    main.paper-a4,
+    main.paper-a4-portrait {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        margin: 0 0 72px;
+        padding: 16px;
+        overflow: visible;
+    }
+
+    main.paper-a3 > *,
+    main.paper-a4 > *,
+    main.paper-a4-portrait > * {
+        min-width: 0;
+    }
+
+    .tool-content {
+        flex: none;
+        min-height: 0;
+    }
+
+    .clv-layout { display: flex; flex-direction: column; }
+    .clv-input-pane, .clv-result-pane { width: 100%; min-width: 0; }
+    .ratios-grid { grid-template-columns: minmax(0, 1fr); }
+    .formula { overflow-wrap: anywhere; }
+}

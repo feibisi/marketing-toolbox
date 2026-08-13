@@ -1,0 +1,397 @@
+/* Quote Calculator - Design System Aligned */
+/* 报价计算器样式 */
+
+/* ========================================
+   主布局容器
+   ======================================== */
+.quote-layout {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   左侧：项目表格
+   ======================================== */
+.items-section {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.quote-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.quote-table thead {
+    background: var(--color-bg-subtle);
+}
+
+.quote-table th {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.col-item {
+    width: 50%;
+}
+
+.col-qty {
+    width: 15%;
+    text-align: center;
+}
+
+.col-price {
+    width: 20%;
+    text-align: right;
+}
+
+.col-subtotal {
+    width: 15%;
+    text-align: right;
+}
+
+.quote-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-sem-inner);
+}
+
+.line-item input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    outline: none;
+    padding: var(--spacing-xs);
+}
+
+.line-item input:focus {
+    background: var(--color-focus-bg);
+    border-radius: 0;
+}
+
+.item-qty,
+.item-price {
+    text-align: center;
+}
+
+.item-price {
+    text-align: right;
+}
+
+.item-subtotal {
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
+.add-row-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px dashed var(--border-sem-dashed);
+    background: transparent;
+    color: var(--color-text-secondary);
+    border-radius: 0;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    align-self: flex-start;
+}
+
+.add-row-btn:hover {
+    border-color: var(--color-brand-blue);
+    color: var(--color-brand-blue);
+    background: var(--color-bg-subtle);
+}
+
+/* ========================================
+   右侧：汇总区域
+   ======================================== */
+.summary-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.summary-block {
+    background: var(--color-bg-warm-light);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-md);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row .value {
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.summary-row .value.discount {
+    color: var(--color-semantic-danger);
+}
+
+.summary-row .value.total {
+    font-size: var(--font-size-xl);
+    color: var(--color-semantic-growth);
+}
+
+.discount-input-group,
+.tax-input-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+}
+
+.discount-input-group input,
+.tax-input-group input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+    background: var(--color-bg-paper);
+}
+
+.total-row {
+    background: var(--color-bg-paper);
+    margin: var(--spacing-sm) calc(var(--spacing-md) * -1) calc(var(--spacing-md) * -1);
+    padding: var(--spacing-md);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    border-top: 2px solid var(--border-sem-outer);
+}
+
+.terms-block,
+.notes-block {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-outer);
+    border-radius: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.terms-block label,
+.notes-block label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.terms-content,
+.notes-content {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-relaxed);
+    outline: none;
+    min-height: 50px;
+}
+
+.terms-content:empty::before,
+.notes-content:empty::before {
+    content: attr(data-placeholder);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   深色主题支持
+   ======================================== */
+body.theme-dark .quote-table {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .quote-table thead {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .summary-block {
+    background: var(--color-bg-subtle);
+}
+
+body.theme-dark .total-row,
+body.theme-dark .terms-block,
+body.theme-dark .notes-block {
+    background: var(--color-bg-paper);
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .add-row-btn {
+        display: none;
+    }
+
+    .quote-table,
+    .summary-block {
+        border: 1px solid #ddd;
+    }
+
+    .total-row,
+    .summary-row .value.total {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   响应式布局
+   ======================================== */
+@media (max-width: 1024px) {
+    .quote-layout {
+        flex-direction: column;
+    }
+}
+
+/* Mobile composition replaces the wide quote grid with stacked line-item cards. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
+
+    main.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+        padding: var(--spacing-lg);
+        overflow: visible;
+    }
+
+    .quote-layout,
+    .items-section,
+    .summary-section,
+    .quote-table,
+    .quote-table tbody,
+    .quote-table tr {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .quote-table {
+        display: block;
+        border: 0;
+        overflow: visible;
+    }
+
+    .quote-table thead {
+        display: none;
+    }
+
+    .quote-table tbody {
+        display: grid;
+        gap: var(--spacing-md);
+    }
+
+    .quote-table tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+        border: 1px solid var(--border-sem-outer);
+        background: var(--color-bg-paper);
+    }
+
+    .quote-table td {
+        display: grid;
+        min-width: 0;
+        gap: var(--spacing-xs);
+        padding: 0;
+        border: 0;
+        text-align: left;
+    }
+
+    .quote-table td:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .quote-table td::before {
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-bold);
+        text-transform: uppercase;
+    }
+
+    .quote-table td:nth-child(1)::before {
+        content: "服务/产品 (Item)";
+    }
+
+    .quote-table td:nth-child(2)::before {
+        content: "数量 (Qty)";
+    }
+
+    .quote-table td:nth-child(3)::before {
+        content: "单价 (Price)";
+    }
+
+    .quote-table td:nth-child(4)::before {
+        content: "小计 (Subtotal)";
+    }
+
+    .item-qty,
+    .item-price,
+    .item-subtotal {
+        text-align: left;
+    }
+
+    .summary-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--spacing-sm);
+        align-items: center;
+    }
+
+    .discount-input-group,
+    .tax-input-group {
+        justify-self: end;
+    }
+
+    .discount-row .value,
+    .tax-row .value {
+        grid-column: 1 / -1;
+        justify-self: end;
+    }
+
+    .terms-content,
+    .notes-content {
+        height: auto;
+        overflow-wrap: anywhere;
+    }
+}

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交媒体工作台 - Modiqi Workbench</title>
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">社交媒体工作台</h1>
+                    <span class="version-tag">10 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <p class="brand-subtitle">Social Media Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Community Persona -->
+            <a href="community-persona.html" class="tool-card">
+                <i data-lucide="users" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">社群</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Central persona -->
+                        <circle cx="100" cy="70" r="20" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+                        <circle cx="100" cy="65" r="8" fill="#e2e8f0" />
+                        <path d="M85 85 Q100 78 115 85" fill="#e2e8f0" />
+                        <!-- Surrounding community members -->
+                        <circle cx="60" cy="50" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="140" cy="50" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="60" cy="90" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="140" cy="90" r="12" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Connection lines -->
+                        <line x1="80" y1="70" x2="68" y2="56" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="120" y1="70" x2="132" y2="56" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="80" y1="70" x2="68" y2="84" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="120" y1="70" x2="132" y2="84" stroke="#e2e8f0" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">社群人格画像 <span class="en-sub">(Community Persona)</span></h3>
+                    <p class="tool-desc">定义目标社群的核心特征。</p>
+                </div>
+            </a>
+
+            <!-- 2. Content Idea Matrix -->
+            <a href="content-idea-matrix.html" class="tool-card">
+                <i data-lucide="grid-3x3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">内容</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- 3x3 Grid -->
+                        <rect x="30" y="30" width="45" height="35" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="80" y="30" width="45" height="35" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="130" y="30" width="45" height="35" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="70" width="45" height="35" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="80" y="70" width="45" height="35" rx="2" fill="#f1f5f9" stroke="#cbd5e1" />
+                        <rect x="130" y="70" width="45" height="35" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="30" y="110" width="45" height="15" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="80" y="110" width="45" height="15" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="130" y="110" width="45" height="15" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Content icons -->
+                        <circle cx="52" cy="47" r="4" fill="#cbd5e1" />
+                        <rect x="102" y="85" width="20" height="3" rx="1" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容创意矩阵 <span class="en-sub">(Content Idea Matrix)</span></h3>
+                    <p class="tool-desc">系统化生成社媒内容创意。</p>
+                </div>
+            </a>
+
+
+            <!-- 4. Crisis Playbook -->
+            <a href="crisis-playbook.html" class="tool-card">
+                <i data-lucide="alert-triangle" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">危机</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Alert triangle -->
+                        <path d="M100 35 L140 100 L60 100 Z" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="100" cy="75" r="3" fill="#94a3b8" />
+                        <line x1="100" y1="55" x2="100" y2="68" stroke="#94a3b8" stroke-width="2" />
+                        <!-- Response steps -->
+                        <rect x="30" y="110" width="35" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="70" y="110" width="35" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="110" y="110" width="35" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="150" y="110" width="20" height="8" rx="2" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">危机应对手册 <span class="en-sub">(Crisis Playbook)</span></h3>
+                    <p class="tool-desc">预设社媒危机响应流程。</p>
+                </div>
+            </a>
+
+            <!-- 5. Engagement Strategy -->
+            <a href="engagement-strategy.html" class="tool-card">
+                <i data-lucide="heart-handshake" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">互动</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Engagement metrics -->
+                        <rect x="30" y="40" width="140" height="60" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                        <!-- Like icon -->
+                        <circle cx="60" cy="65" r="8" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
+                        <path d="M56 65 L59 68 L64 61" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" />
+                        <!-- Comment icon -->
+                        <rect x="85" y="57" width="20" height="16" rx="2" fill="none" stroke="#cbd5e1"
+                            stroke-width="1.5" />
+                        <path d="M95 73 L95 78 L90 73" fill="#cbd5e1" />
+                        <!-- Share icon -->
+                        <path d="M125 60 L135 60 M132 57 L135 60 L132 63" stroke="#cbd5e1" stroke-width="1.5" />
+                        <circle cx="125" cy="60" r="4" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
+                        <circle cx="135" cy="70" r="4" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
+                        <!-- Growth curve -->
+                        <path d="M40 90 Q70 85 100 75 T160 65" fill="none" stroke="#94a3b8" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">互动策略 <span class="en-sub">(Engagement Strategy)</span></h3>
+                    <p class="tool-desc">提升社媒互动率与粉丝粘性。</p>
+                </div>
+            </a>
+
+            <!-- 6. Social Media Matrix -->
+            <a href="social-media-matrix.html" class="tool-card">
+                <i data-lucide="layout-grid" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">矩阵</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="20" y="20" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="110" y="20" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="20" y="80" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="110" y="80" width="70" height="50" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <circle cx="55" cy="45" r="8" fill="#cbd5e1" />
+                        <circle cx="145" cy="45" r="8" fill="#cbd5e1" />
+                        <circle cx="55" cy="105" r="8" fill="#cbd5e1" />
+                        <circle cx="145" cy="105" r="8" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">社媒渠道矩阵 <span class="en-sub">(Social Media Matrix)</span></h3>
+                    <p class="tool-desc">多平台社媒策略规划。</p>
+                </div>
+            </a>
+
+            <!-- 7. KOL Evaluation -->
+            <a href="kol-evaluation.html" class="tool-card">
+                <i data-lucide="star" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">达人</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <circle cx="100" cy="50" r="25" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+                        <circle cx="100" cy="45" r="10" fill="#e2e8f0" />
+                        <path d="M80 70 Q100 63 120 70" fill="#e2e8f0" />
+                        <rect x="40" y="90" width="120" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="40" y="90" width="90" height="8" rx="2" fill="#cbd5e1" />
+                        <rect x="40" y="105" width="120" height="8" rx="2" fill="#e2e8f0" />
+                        <rect x="40" y="105" width="75" height="8" rx="2" fill="#94a3b8" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">KOL 评估卡 <span class="en-sub">(KOL Evaluation)</span></h3>
+                    <p class="tool-desc">达人合作价值评估。</p>
+                </div>
+            </a>
+
+            <!-- 8. Social Listening Dashboard -->
+            <a href="social-listening.html" class="tool-card">
+                <i data-lucide="bar-chart-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">舆情</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Donut chart -->
+                        <circle cx="50" cy="50" r="20" fill="none" stroke="#e2e8f0" stroke-width="8" />
+                        <path d="M50 30 A 20 20 0 1 1 50 70" fill="none" stroke="#10b981" stroke-width="8"
+                            stroke-dasharray="62 62" />
+                        <!-- Bar chart -->
+                        <rect x="100" y="30" width="10" height="40" fill="#cbd5e1" />
+                        <rect x="120" y="50" width="10" height="20" fill="#cbd5e1" />
+                        <rect x="140" y="20" width="10" height="50" fill="#3b82f6" />
+                        <!-- Feed lines -->
+                        <line x1="20" y1="90" x2="180" y2="90" stroke="#f1f5f9" stroke-width="2" />
+                        <line x1="20" y1="100" x2="180" y2="100" stroke="#f1f5f9" stroke-width="2" />
+                        <line x1="20" y1="110" x2="180" y2="110" stroke="#f1f5f9" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">社交舆情看板 <span class="en-sub">(Social Listening)</span></h3>
+                    <p class="tool-desc">品牌声量、情感与话题追踪。</p>
+                </div>
+            </a>
+
+            <!-- 9. Social Account Audit -->
+            <a href="social-account-audit.html" class="tool-card">
+                <i data-lucide="scan-line" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">诊断</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Platforms -->
+                        <rect x="30" y="30" width="40" height="40" rx="4" fill="#dcfce7" stroke="#86efac" />
+                        <rect x="80" y="30" width="40" height="40" rx="4" fill="#fee2e2" stroke="#fca5a5" />
+                        <rect x="130" y="30" width="40" height="40" rx="4" fill="#1e293b" />
+
+                        <!-- Checkmarks -->
+                        <circle cx="50" cy="50" r="10" fill="#fff" />
+                        <path d="M46 50 L48 52 L54 46" stroke="#16a34a" stroke-width="2" fill="none" />
+
+                        <circle cx="100" cy="50" r="10" fill="#fff" />
+                        <path d="M100 45 L100 55 M100 55 L95 50" stroke="#ef4444" stroke-width="2" fill="none" />
+                        <!-- ! -->
+
+                        <!-- List -->
+                        <rect x="30" y="85" width="140" height="25" rx="2" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="35" y="93" width="90" height="4" rx="2" fill="#cbd5e1" />
+                        <circle cx="155" cy="97" r="6" fill="#10b981" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">社媒账号体检 <span class="en-sub">(Account Audit)</span></h3>
+                    <p class="tool-desc">多平台账户健康度检查与优化。</p>
+                </div>
+            </a>
+
+            <!-- 10. UTM Builder -->
+            <a href="utm-builder.html" class="tool-card">
+                <i data-lucide="link-2" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">链接</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- URL components -->
+                        <rect x="30" y="40" width="40" height="20" rx="2" fill="#e2e8f0" />
+                        <rect x="80" y="40" width="30" height="20" rx="2" fill="#dbeafe" />
+                        <rect x="120" y="40" width="30" height="20" rx="2" fill="#dcfce7" />
+                        <rect x="160" y="40" width="20" height="20" rx="2" fill="#fee2e2" />
+
+                        <!-- Chain links -->
+                        <line x1="70" y1="50" x2="80" y2="50" stroke="#cbd5e1" stroke-width="2" />
+                        <line x1="110" y1="50" x2="120" y2="50" stroke="#cbd5e1" stroke-width="2" />
+                        <line x1="150" y1="50" x2="160" y2="50" stroke="#cbd5e1" stroke-width="2" />
+
+                        <!-- Result link -->
+                        <rect x="30" y="80" width="150" height="10" rx="4" fill="#3b82f6" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">UTM 链接构建器 <span class="en-sub">(UTM Builder)</span></h3>
+                    <p class="tool-desc">标准化生成广告投放追踪链接。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

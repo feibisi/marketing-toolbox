@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansoff 增长矩阵 - Modiqi Strategy Workbench</title>
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/ansoff-matrix.css">
+</head>
+<body>
+    <div class="desk-background"></div>
+    <main class="paper-a3">
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>Ansoff 增长矩阵</h1>
+                <span class="english-subtitle">Ansoff Growth Matrix</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>项目 <span class="en-sub">(Project)</span></label>
+                    <input type="text" class="meta-input" placeholder="项目名称" data-save-key="project_name" aria-label="项目名称">
+                </div>
+                <div class="meta-group">
+                    <label>日期 <span class="en-sub">(Date)</span></label>
+                    <input type="date" class="meta-input" data-save-key="date" aria-label="date">
+                </div>
+            </div>
+        </header>
+
+        <div class="ansoff-container">
+            <div class="axis-label axis-y">
+                <span class="axis-end">新产品</span>
+                <span class="axis-title">产品<br>Product</span>
+                <span class="axis-start">现有产品</span>
+            </div>
+
+            <div class="matrix-content">
+                <div class="ansoff-matrix">
+                    <div class="matrix-quadrant quadrant-product">
+                        <div class="quadrant-header">
+                            <i data-lucide="package" class="icon"></i>
+                            <h3>产品开发 <span class="en-sub">(Product Development)</span></h3>
+                            <span class="risk-badge risk-medium">中风险</span>
+                        </div>
+                        <div class="quadrant-desc" contenteditable="true" data-save-key="product_desc">为现有市场开发新产品</div>
+                        <div class="action-list">
+                            <div class="action-item" contenteditable="true" data-save-key="product_1">推出产品新功能</div>
+                            <div class="action-item" contenteditable="true" data-save-key="product_2">开发产品新版本</div>
+                            <div class="action-item" contenteditable="true" data-save-key="product_3">创建产品延伸线</div>
+                        </div>
+                        <button class="add-action-btn" onclick="addAction('product')" type="button">
+                            <i data-lucide="plus-circle" class="icon"></i>
+                            添加策略
+                        </button>
+                    </div>
+
+                    <div class="matrix-quadrant quadrant-diversification">
+                        <div class="quadrant-header">
+                            <i data-lucide="zap" class="icon"></i>
+                            <h3>多元化 <span class="en-sub">(Diversification)</span></h3>
+                            <span class="risk-badge risk-high">高风险</span>
+                        </div>
+                        <div class="quadrant-desc" contenteditable="true" data-save-key="diversification_desc">在新市场推出新产品</div>
+                        <div class="action-list">
+                            <div class="action-item" contenteditable="true" data-save-key="diversification_1">进入相关行业</div>
+                            <div class="action-item" contenteditable="true" data-save-key="diversification_2">收购或合并企业</div>
+                            <div class="action-item" contenteditable="true" data-save-key="diversification_3">开发全新业务线</div>
+                        </div>
+                        <button class="add-action-btn" onclick="addAction('diversification')" type="button">
+                            <i data-lucide="plus-circle" class="icon"></i>
+                            添加策略
+                        </button>
+                    </div>
+
+                    <div class="matrix-quadrant quadrant-penetration">
+                        <div class="quadrant-header">
+                            <i data-lucide="target" class="icon"></i>
+                            <h3>市场渗透 <span class="en-sub">(Market Penetration)</span></h3>
+                            <span class="risk-badge risk-low">低风险</span>
+                        </div>
+                        <div class="quadrant-desc" contenteditable="true" data-save-key="penetration_desc">在现有市场中提升现有产品的市场份额</div>
+                        <div class="action-list">
+                            <div class="action-item" contenteditable="true" data-save-key="penetration_1">提升客户复购率</div>
+                            <div class="action-item" contenteditable="true" data-save-key="penetration_2">增加产品使用频率</div>
+                            <div class="action-item" contenteditable="true" data-save-key="penetration_3">从竞争对手抢夺市场份额</div>
+                        </div>
+                        <button class="add-action-btn" onclick="addAction('penetration')" type="button">
+                            <i data-lucide="plus-circle" class="icon"></i>
+                            添加策略
+                        </button>
+                    </div>
+
+                    <div class="matrix-quadrant quadrant-development">
+                        <div class="quadrant-header">
+                            <i data-lucide="map" class="icon"></i>
+                            <h3>市场开发 <span class="en-sub">(Market Development)</span></h3>
+                            <span class="risk-badge risk-medium">中风险</span>
+                        </div>
+                        <div class="quadrant-desc" contenteditable="true" data-save-key="development_desc">将现有产品推向新市场</div>
+                        <div class="action-list">
+                            <div class="action-item" contenteditable="true" data-save-key="development_1">拓展新地理区域</div>
+                            <div class="action-item" contenteditable="true" data-save-key="development_2">开发新客户细分市场</div>
+                            <div class="action-item" contenteditable="true" data-save-key="development_3">开拓新销售渠道</div>
+                        </div>
+                        <button class="add-action-btn" onclick="addAction('development')" type="button">
+                            <i data-lucide="plus-circle" class="icon"></i>
+                            添加策略
+                        </button>
+                    </div>
+                </div>
+
+                <div class="axis-label axis-x">
+                    <span class="axis-start">现有市场</span>
+                    <span class="axis-title">市场 Market</span>
+                    <span class="axis-end">新市场</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="strategy-notes">
+            <div class="notes-header">
+                <i data-lucide="lightbulb" class="icon"></i>
+                <h3>战略建议 <span class="en-sub">(Strategic Recommendations)</span></h3>
+            </div>
+            <div class="notes-content" contenteditable="true" data-save-key="strategy_notes">基于当前市场环境和企业资源,建议优先考虑市场渗透策略,同时探索产品开发机会...</div>
+        </div>
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="../shared/vendor/lucide.min.js"></script>
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('ansoff_matrix');
+            lucide.createIcons({
+                attrs: {
+                    class: "icon",
+                    'stroke-width': 2
+                }
+            });
+        });
+
+        function addAction(quadrant) {
+            const actionList = document.querySelector(`.quadrant-${quadrant} .action-list`);
+            const addBtn = document.querySelector(`.quadrant-${quadrant} .add-action-btn`);
+            const maxItems = 5;
+
+            // 检查当前数量
+            if (actionList.children.length >= maxItems) {
+                addBtn.style.display = 'none';
+                return;
+            }
+
+            const newAction = document.createElement('div');
+            newAction.className = 'action-item';
+            newAction.contentEditable = 'true';
+            newAction.textContent = '新策略...';
+            newAction.setAttribute('data-save-key', `${quadrant}_${Date.now()}`);
+            actionList.appendChild(newAction);
+            newAction.focus();
+
+            // 达到限制时隐藏按钮
+            if (actionList.children.length >= maxItems) {
+                addBtn.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

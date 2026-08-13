@@ -1,0 +1,159 @@
+/* Social Audit Layout */
+.audit-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* Account Info Cards */
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.platform-card {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.platform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.platform-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.health-score {
+    font-size: 24px;
+    font-weight: 800;
+    color: #10b981;
+}
+
+.check-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border-sem-inner);
+}
+
+.check-item:last-child {
+    border-bottom: none;
+}
+
+.check-status {
+    cursor: pointer;
+    color: #cbd5e1;
+}
+
+.check-status.is-checked {
+    color: #10b981;
+}
+
+/* Bio/Link Audit */
+.bio-section {
+    background: white;
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    padding: 20px;
+}
+
+.bio-check-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px 50px;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 12px;
+}
+
+.header-row {
+    font-weight: bold;
+    color: var(--color-text-tertiary);
+    border-bottom: 1px solid var(--border-sem-inner);
+    padding-bottom: 8px;
+}
+
+.bio-input {
+    width: 100%;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    padding: 6px;
+    font-size: 12px;
+}
+
+.status-select {
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    font-size: 11px;
+    padding: 4px;
+    background: var(--color-bg-subtle);
+}
+
+/* Dark Mode */
+body.theme-dark .platform-card,
+body.theme-dark .bio-section {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.theme-dark .bio-input,
+body.theme-dark .status-select {
+    background: #0f172a;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+/* Screen layout stabilization: let long-form content define the paper height. */
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: var(--spacing-sm);
+    }
+
+    .paper-a3,
+    #canvas.paper-a3 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .paper-a4,
+    #canvas.paper-a4 {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+        padding: var(--spacing-md);
+    }
+}

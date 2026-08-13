@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>否定关键词管理器 (Negative Keyword Manager)</title>
+    <!-- Fonts -->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/canvas.css">
+    <link rel="stylesheet" href="assets/css/negative-keyword-manager.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="desk-background"></div>
+
+    <main class="paper-a3">
+        <!-- Header -->
+        <header class="canvas-header">
+            <div class="title-group">
+                <h1>否定关键词管理器</h1>
+                <span class="english-subtitle">Negative Keyword Manager & Scrubber</span>
+            </div>
+            <div class="meta-info">
+                <div class="meta-group">
+                    <label>清单名称</label>
+                    <input type="text" class="meta-input" placeholder="Universal Negatives" aria-label="Universal Negatives">
+                </div>
+            </div>
+        </header>
+
+        <div class="manager-container">
+
+            <!-- Column 1: Raw Search Terms -->
+            <div class="column">
+                <div class="col-header">
+                    <div>
+                        <div class="col-title">搜索词报告 (Raw Terms)</div>
+                        <div class="col-desc">粘贴待处理的搜索词/Query</div>
+                    </div>
+                    <span class="col-count" id="countRaw">0</span>
+                </div>
+                <textarea class="list-area" id="inputRaw"
+                    placeholder="free pdf download&#10;crack software&#10;cheap running shoes" aria-label="free pdf download
+crack software
+cheap running shoes"></textarea>
+            </div>
+
+            <!-- Column 2: Actions -->
+            <div class="action-column">
+
+                <div class="match-type-group">
+                    <div style="font-size:10px; font-weight:bold; margin-bottom:4px; color:var(--color-text-tertiary);">
+                        WRAP MODE (包装模式)</div>
+                    <label class="radio-label">
+                        <input type="radio" name="matchType" value="broad" checked> Broad
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="matchType" value="phrase"> "Phrase"
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="matchType" value="exact"> [Exact]
+                    </label>
+                </div>
+
+                <button class="action-btn" onclick="processTerms()" type="button">
+                    <i data-lucide="arrow-right"></i>
+                    <span class="btn-label">添加至否定 (Move to Negative)</span>
+                </button>
+
+                <div style="height: 20px;"></div>
+
+                <div style="font-size:10px; font-weight:bold; color:var(--color-text-tertiary); text-align:center;">
+                    UTILITIES</div>
+
+                <button class="action-btn" onclick="cleanDuplicates()" type="button">
+                    <i data-lucide="filter"></i>
+                    <span class="btn-label">去重 (Dedup)</span>
+                </button>
+            </div>
+
+            <!-- Column 3: Negative List -->
+            <div class="column">
+                <div class="col-header">
+                    <div>
+                        <div class="col-title">否定词表 (Negative List)</div>
+                        <div class="col-desc">Formatted for Google Ads</div>
+                    </div>
+                    <span class="col-count" id="countNeg">0</span>
+                </div>
+                <textarea class="list-area" id="outputNeg" placeholder="-free&#10;-[crack software]" aria-label="free
+ [crack software]"></textarea>
+                <button class="btn btn-primary btn-sm" style="margin-top:8px;" onclick="copyOutput()" type="button">
+                    <i data-lucide="copy"></i> 复制列表
+                </button>
+            </div>
+
+        </div>
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi Logo" class="footer-logo"
+                title="点击隐藏/显示工具栏 (Toggle Toolbar)">
+            <div class="copyright">Modiqi Digital Strategy Workbench &copy; 2026</div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../shared/js/core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModiqiApp('neg_manager');
+            lucide.createIcons();
+
+            // Initial counts
+            updateCounts();
+
+            ['inputRaw', 'outputNeg'].forEach(id => {
+                document.getElementById(id).addEventListener('input', updateCounts);
+            });
+        });
+
+        function processTerms() {
+            const raw = document.getElementById('inputRaw').value;
+            const lines = raw.split('\n').filter(line => line.trim() !== '');
+            const matchType = document.querySelector('input[name="matchType"]:checked').value;
+
+            const processed = lines.map(line => {
+                const term = line.trim();
+                if (matchType === 'phrase') return `-"${term}"`;
+                if (matchType === 'exact') return `-[${term}]`;
+                return `-${term}`; // Broad negative
+            });
+
+            // Append to output
+            const currentOut = document.getElementById('outputNeg').value;
+            const newOut = currentOut ? currentOut + '\n' + processed.join('\n') : processed.join('\n');
+
+            document.getElementById('outputNeg').value = newOut;
+            document.getElementById('inputRaw').value = ''; // Clear input
+            updateCounts();
+        }
+
+        function cleanDuplicates() {
+            const out = document.getElementById('outputNeg').value;
+            const lines = out.split('\n').filter(line => line.trim() !== '');
+            const unique = [...new Set(lines)];
+            document.getElementById('outputNeg').value = unique.join('\n');
+            updateCounts();
+        }
+
+        function copyOutput() {
+            const out = document.getElementById('outputNeg');
+            out.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        }
+
+        function updateCounts() {
+            const raw = document.getElementById('inputRaw').value;
+            const neg = document.getElementById('outputNeg').value;
+
+            document.getElementById('countRaw').innerText = raw.split('\n').filter(l => l.trim()).length;
+            document.getElementById('countNeg').innerText = neg.split('\n').filter(l => l.trim()).length;
+        }
+    </script>
+</body>
+
+</html>

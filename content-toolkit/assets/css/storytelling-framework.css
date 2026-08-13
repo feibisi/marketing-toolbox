@@ -1,0 +1,237 @@
+/* Hero's Journey Layout */
+.hero-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex: 1;
+    min-height: 0;
+    position: relative;
+}
+
+/* Visual Cycle Section (Left/Center) */
+.cycle-section {
+    flex: 3;
+    background: var(--color-bg-paper);
+    border: 2px solid var(--border-sem-inner);
+    border-radius: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cycle-svg {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+/* SVG Elements */
+.stage-path {
+    fill: none;
+    stroke-width: 40;
+    cursor: pointer;
+}
+
+.stage-path:hover {
+    stroke-width: 50;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+}
+
+.stage-path.active {
+    stroke-width: 50;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+}
+
+.stage-departure {
+    stroke: var(--color-brand-blue);
+    opacity: 0.8;
+}
+
+.stage-initiation {
+    stroke: var(--color-error);
+    opacity: 0.8;
+}
+
+.stage-return {
+    stroke: var(--color-success);
+    opacity: 0.8;
+}
+
+.step-marker {
+    cursor: pointer;
+}
+
+.step-circle {
+    fill: var(--color-bg-paper);
+    stroke: var(--color-text-secondary);
+    stroke-width: 2;
+}
+
+.step-marker:hover .step-circle,
+.step-marker.active .step-circle {
+    fill: var(--color-text-primary);
+    stroke: var(--color-text-primary);
+}
+
+.step-text {
+    font-size: 10px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    fill: var(--color-text-secondary);
+    pointer-events: none;
+}
+
+.step-marker:hover .step-text,
+.step-marker.active .step-text {
+    fill: var(--color-bg-paper);
+}
+
+/* Editor Section (Right) */
+.editor-section {
+    flex: 2;
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+}
+
+.editor-header {
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-sem-dashed);
+}
+
+.current-step-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+    font-weight: bold;
+}
+
+.current-step-title {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin: 4px 0;
+}
+
+.editor-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.step-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background: var(--color-bg-subtle);
+    padding: var(--spacing-sm);
+    border-radius: 0;
+}
+
+.script-input {
+    flex: 1;
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background: transparent;
+    resize: none;
+    outline: none;
+}
+
+.script-input:focus {
+    border-color: var(--color-brand-primary);
+    background: var(--color-bg-paper);
+    box-shadow: 0 0 0 2px var(--color-bg-subtle);
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-sem-input);
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.nav-btn:hover {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+}
+
+.nav-btn .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Dark Mode */
+body.theme-dark .cycle-section,
+body.theme-dark .editor-section {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .step-circle {
+    fill: var(--color-bg-muted);
+    stroke: var(--color-text-secondary);
+}
+
+body.theme-dark .step-marker:hover .step-text,
+body.theme-dark .step-marker.active .step-text {
+    fill: var(--color-bg-muted);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .cycle-section {
+        flex: none;
+        min-height: 320px;
+        overflow: visible;
+    }
+
+    .cycle-svg {
+        height: auto;
+        min-height: 300px;
+    }
+
+    .editor-section {
+        flex: none;
+        min-width: 0;
+    }
+
+    .script-input {
+        min-height: 240px;
+    }
+}

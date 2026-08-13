@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 协同工作台 - Modiqi Workbench</title>
+    <meta name="description" content="AI 协同工作台 - 包含提示词工程、AI画像生成、内容复用引擎、机会雷达等7个AI协同工具">
+    <meta name="keywords" content="AI工具,提示词工程,AI画像,内容复用,AI机会,工作流,AI智能体,AI选型">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI 协同工作台 - Modiqi Workbench">
+    <meta property="og:description" content="包含提示词工程、AI画像生成、内容复用引擎、机会雷达等7个AI协同工具">
+    <meta property="og:image" content="../shared/images/modiqi-logo-r.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../shared/images/modiqi-logo-r.png">
+
+    <!-- Fonts -->
+
+    <!-- Styles: Modiqi Design System -->
+    <link rel="stylesheet" href="../shared/css/tokens.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/launcher.css">
+
+    <!-- Icons -->
+    <script src="../shared/vendor/lucide.min.js"></script>
+
+    <style>
+        /* Blueprint/Drafting Style Overrides */
+        .tool-card {
+            background: var(--color-bg-paper) !important;
+            background-image: radial-gradient(var(--color-bg-warm-dark) 0.5px, transparent 0.5px) !important;
+            background-size: 15px 15px !important;
+            /* Dot matrix background */
+            border: 1px solid var(--border-sem-outer) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            position: relative;
+            padding: 24px !important;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+        }
+
+        /* Technical Corner Marks */
+        .tool-card::before,
+        .tool-card::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--color-text-muted);
+            z-index: 5;
+            transform: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .tool-card::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .tool-card::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Hover: Reveal "Measurement" blue lines */
+        .tool-card:hover {
+            border-color: var(--color-brand-blue) !important;
+            background-color: var(--color-bg-subtle) !important;
+        }
+
+        .tool-card:hover::before,
+        .tool-card:hover::after {
+            border-color: var(--color-brand-blue) !important;
+            width: 20px;
+            height: 20px;
+        }
+
+        .mini-preview {
+            border: 1px solid var(--border-sem-inner) !important;
+            background: var(--color-bg-white) !important;
+            filter: grayscale(1) !important;
+            /* Pure technical look */
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .mini-preview {
+            filter: grayscale(0) !important;
+            opacity: 1;
+            transform: scale(1.02);
+            border-color: var(--color-brand-blue) !important;
+        }
+
+        .tool-title {
+            font-family: var(--font-mono) !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .card-badge {
+            font-family: var(--font-mono) !important;
+            background: var(--color-brand-blue) !important;
+            color: white !important;
+            border-radius: 0 !important;
+            font-size: 0.55rem !important;
+        }
+
+        /* Technical Stamp Icon at Bottom Right */
+        .paper-icon {
+            position: absolute !important;
+            top: auto !important;
+            /* Reset existing top */
+            bottom: 12px !important;
+            right: 12px !important;
+            width: 18px !important;
+            height: 18px !important;
+            color: var(--color-text-muted) !important;
+            opacity: 0.25 !important;
+            margin: 0 !important;
+            z-index: 20 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .tool-card:hover .paper-icon {
+            opacity: 0.8 !important;
+            color: var(--color-brand-blue) !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="launcher-header">
+            <div class="hero-left">
+                <div class="title-row">
+                    <h1 class="brand-title">AI 协同工作台</h1>
+                    <span class="version-tag">7 TOOLS</span>
+                    <button class="theme-toggle" id="themeToggle" title="切换主题 (Toggle Theme)" type="button">
+                        <i data-lucide="sun"></i>
+                    </button>
+                    <button class="widescreen-toggle" id="widescreenToggle" title="切换宽屏模式 (Toggle Widescreen)" type="button">
+                        <i data-lucide="monitor"></i>
+                    </button>
+                </div>
+                <!-- 英文副标题 -->
+                <p class="brand-subtitle">AI Collaboration Workbench</p>
+            </div>
+            <div class="hero-right">
+                <a href="../index.html" class="logo-link" title="返回主页">
+                    <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="hero-logo">
+                </a>
+            </div>
+        </header>
+
+        <!-- Tool Grid -->
+        <div class="launcher-grid">
+
+            <!-- 1. Prompt Engineering Canvas (Existing) -->
+            <a href="prompt-canvas.html" class="tool-card">
+                <i data-lucide="terminal-square" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">A3 Canvas</div>
+                    <!-- Visual: Grid -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="20" y="20" width="160" height="100" fill="none" stroke="#e2e8f0" />
+                        <line x1="100" y1="20" x2="100" y2="120" stroke="#e2e8f0" />
+                        <line x1="20" y1="70" x2="180" y2="70" stroke="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">提示词工程画布 <span class="en-sub">(Prompt Canvas)</span></h3>
+                    <p class="tool-desc">基于 CO-STAR 框架构建高质量提示词。</p>
+                </div>
+            </a>
+
+            <!-- 2. AI Persona Generator (New) -->
+            <a href="ai-persona-generator.html" class="tool-card">
+                <i data-lucide="bot" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">生成器</div>
+                    <!-- Visual: Bot + User -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Center Avatar -->
+                        <circle cx="100" cy="60" r="25" fill="#e2e8f0" />
+                        <circle cx="100" cy="55" r="10" fill="#94a3b8" />
+                        <path d="M85 80 Q100 95 115 80" fill="#94a3b8" />
+
+                        <!-- Data Points around -->
+                        <circle cx="50" cy="40" r="5" fill="#cbd5e1" />
+                        <line x1="55" y1="42" x2="75" y2="50" stroke="#cbd5e1" />
+
+                        <circle cx="150" cy="40" r="5" fill="#cbd5e1" />
+                        <line x1="145" y1="42" x2="125" y2="50" stroke="#cbd5e1" />
+
+                        <rect x="60" y="100" width="80" height="6" rx="3" fill="#cbd5e1" />
+                        <rect x="70" y="112" width="60" height="6" rx="3" fill="#e2e8f0" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">AI 用户画像生成器 <span class="en-sub">(AI Persona Gen)</span></h3>
+                    <p class="tool-desc">利用 AI 快速丰富用户画像细节。</p>
+                </div>
+            </a>
+
+            <!-- 3. Content Repurposing Engine (New) -->
+            <a href="content-repurposing-engine.html" class="tool-card">
+                <i data-lucide="refresh-cw" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">内容引擎</div>
+                    <!-- Visual: One to Many -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+
+                        <!-- Source -->
+                        <rect x="30" y="55" width="40" height="30" fill="#64748b" rx="2" />
+
+                        <!-- Arrows -->
+                        <path d="M80 70 L110 70" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)" />
+                        <path d="M110 70 L130 40" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M110 70 L130 70" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M110 70 L130 100" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Targets -->
+                        <rect x="135" y="30" width="30" height="20" fill="#e2e8f0" rx="2" />
+                        <rect x="135" y="60" width="30" height="20" fill="#e2e8f0" rx="2" />
+                        <rect x="135" y="90" width="30" height="20" fill="#e2e8f0" rx="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">内容复用引擎 <span class="en-sub">(Repurposing Engine)</span></h3>
+                    <p class="tool-desc">将一篇长内容裂变为多种格式。</p>
+                </div>
+            </a>
+
+            <!-- 4. AI Opportunity Radar -->
+            <a href="ai-opportunity-radar.html" class="tool-card">
+                <i data-lucide="radar" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">雷达</div>
+                    <!-- Visual: Radar chart -->
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Radar circles -->
+                        <circle cx="100" cy="70" r="50" fill="none" stroke="#f1f5f9" stroke-width="1" />
+                        <circle cx="100" cy="70" r="35" fill="none" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="100" cy="70" r="20" fill="none" stroke="#cbd5e1" stroke-width="1" />
+                        <!-- Radar lines -->
+                        <line x1="100" y1="70" x2="100" y2="20" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="70" x2="150" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="70" x2="100" y2="120" stroke="#e2e8f0" stroke-width="1" />
+                        <line x1="100" y1="70" x2="50" y2="70" stroke="#e2e8f0" stroke-width="1" />
+                        <!-- Opportunity dots -->
+                        <circle cx="100" cy="40" r="4" fill="#94a3b8" />
+                        <circle cx="125" cy="60" r="4" fill="#94a3b8" />
+                        <circle cx="110" cy="90" r="4" fill="#cbd5e1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">AI 机会雷达 <span class="en-sub">(AI Opportunity Radar)</span></h3>
+                    <p class="tool-desc">识别业务中的 AI 应用机会点。</p>
+                </div>
+            </a>
+
+            <!-- 5. AI Workflow Builder -->
+            <a href="ai-workflow-builder.html" class="tool-card">
+                <i data-lucide="workflow" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">流程</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <!-- Swimlanes -->
+                        <rect x="20" y="20" width="40" height="100" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="60" y="20" width="40" height="100" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="100" y="20" width="40" height="100" fill="#f8fafc" stroke="#e2e8f0" />
+                        <rect x="140" y="20" width="40" height="100" fill="#f8fafc" stroke="#e2e8f0" />
+
+                        <!-- Header Line -->
+                        <line x1="20" y1="35" x2="180" y2="35" stroke="#cbd5e1" stroke-width="1" />
+
+                        <!-- Nodes -->
+                        <rect x="25" y="45" width="30" height="20" rx="2" fill="#cbd5e1" />
+                        <rect x="65" y="65" width="30" height="20" rx="2" fill="#a78bfa" />
+                        <rect x="105" y="55" width="30" height="20" rx="2" fill="#fca5a5" />
+                        <rect x="145" y="85" width="30" height="20" rx="2" fill="#86efac" />
+
+                        <!-- Connectors -->
+                        <path d="M55 55 L65 75" stroke="#94a3b8" stroke-width="1" />
+                        <path d="M95 75 L105 65" stroke="#94a3b8" stroke-width="1" />
+                        <path d="M135 65 L145 95" stroke="#94a3b8" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">AI 工作流构建器 <span class="en-sub">(Workflow Builder)</span></h3>
+                    <p class="tool-desc">设计人机协作的自动化业务流程。</p>
+                </div>
+            </a>
+
+            <!-- 6. AI Agent Job Description -->
+            <a href="ai-agent-card.html" class="tool-card">
+                <i data-lucide="id-card" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">定义</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <rect x="50" y="20" width="100" height="100" rx="4" fill="#fff" stroke="#cbd5e1" />
+                        <rect x="80" y="30" width="40" height="40" rx="20" fill="#f1f5f9" />
+                        <rect x="65" y="80" width="70" height="5" rx="2" fill="#e2e8f0" />
+                        <rect x="65" y="90" width="50" height="5" rx="2" fill="#e2e8f0" />
+                        <path d="M95 15 L105 15" stroke="#cbd5e1" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">AI 智能体工牌 <span class="en-sub">(Agent ID)</span></h3>
+                    <p class="tool-desc">定义 AI 助理的角色、权限与职责。</p>
+                </div>
+            </a>
+
+            <!-- 7. AI Tool Matrix -->
+            <a href="ai-tool-matrix.html" class="tool-card">
+                <i data-lucide="grid-3x3" class="paper-icon"></i>
+                <div class="mini-preview">
+                    <div class="card-badge">选型</div>
+                    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                        preserveAspectRatio="xMidYMid meet">
+                        <rect width="200" height="140" fill="#fff" />
+                        <line x1="60" y1="20" x2="60" y2="120" stroke="#e2e8f0" />
+                        <line x1="130" y1="20" x2="130" y2="120" stroke="#e2e8f0" />
+                        <line x1="20" y1="50" x2="180" y2="50" stroke="#e2e8f0" />
+                        <line x1="20" y1="90" x2="180" y2="90" stroke="#e2e8f0" />
+
+                        <rect x="70" y="60" width="20" height="20" rx="2" fill="#dcfce7" />
+                        <rect x="140" y="60" width="20" height="20" rx="2" fill="#fee2e2" />
+                        <rect x="70" y="98" width="20" height="15" rx="2" fill="#e0f2fe" />
+                    </svg>
+                </div>
+                <div class="card-meta">
+                    <h3 class="tool-title">AI工具选型矩阵 <span class="en-sub">(Tool Matrix)</span></h3>
+                    <p class="tool-desc">根据场景选择最合适的 AI 模型工具。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">Modiqi Digital Marketing Workbench &copy; 2026</span>
+                    <span class="version-info">v1.0</span>
+                </div>
+                <div class="footer-right">
+                    <a href="../docs/index.html" class="footer-link">Documentation</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../docs/support.html" class="footer-link">Support</a>
+                    <span class="footer-divider">·</span>
+                    <a href="../LICENSE" class="footer-link">License</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle
+        (function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const THEME_KEY = 'modiqi_theme';
+
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'wood';
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = localStorage.getItem(THEME_KEY) || 'wood';
+                const nextTheme = currentTheme === 'dark' ? 'wood' : 'dark';
+                setTheme(nextTheme);
+            });
+
+            function setTheme(themeName) {
+                document.body.classList.remove('theme-dark');
+                if (themeName === 'dark') {
+                    document.body.classList.add('theme-dark');
+                }
+                localStorage.setItem(THEME_KEY, themeName);
+                updateThemeIcon(themeName);
+            }
+
+            function updateThemeIcon(themeName) {
+                if (themeName === 'dark') {
+                    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+                    themeToggle.title = '切换至经典模式 (Switch to Classic)';
+                } else {
+                    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+                    themeToggle.title = '切换至暗色模式 (Switch to Dark)';
+                }
+                lucide.createIcons();
+            }
+        })();
+
+        // Widescreen Toggle
+        (function () {
+            const toggle = document.getElementById('widescreenToggle');
+            const STORAGE_KEY = 'modiqi_widescreen';
+
+            // Load preference
+            const isWidescreen = localStorage.getItem(STORAGE_KEY) === 'true';
+            if (isWidescreen) {
+                document.body.classList.add('widescreen-mode');
+                updateIcon(true);
+            }
+
+            toggle.addEventListener('click', function () {
+                const nowWidescreen = document.body.classList.toggle('widescreen-mode');
+                localStorage.setItem(STORAGE_KEY, nowWidescreen.toString());
+                updateIcon(nowWidescreen);
+            });
+
+            function updateIcon(isWide) {
+                if (isWide) {
+                    toggle.innerHTML = '<i data-lucide="smartphone"></i>';
+                    toggle.title = '切换标准宽度 (Switch to Standard Width)';
+                } else {
+                    toggle.innerHTML = '<i data-lucide="monitor"></i>';
+                    toggle.title = '切换宽屏模式 (Toggle Widescreen)';
+                }
+                lucide.createIcons();
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+/* SCAMPER Canvas Layout */
+.scamper-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 cols */
+    grid-template-rows: repeat(2, 1fr);
+    /* 2 rows */
+    gap: var(--spacing-md);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Base Card Style */
+.scamper-card {
+    background: var(--color-bg-paper);
+    border: 1px solid var(--border-sem-inner);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.scamper-header {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-sem-inner);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-bg-subtle);
+}
+
+.scamper-letter {
+    width: 32px;
+    height: 32px;
+    background: var(--color-brand-primary);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.scamper-title-group {
+    flex: 1;
+}
+
+.scamper-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.scamper-desc {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+}
+
+.scamper-content {
+    flex: 1;
+    padding: var(--spacing-md);
+    overflow-y: auto;
+}
+
+.idea-bullet {
+    background: transparent;
+    border-bottom: 1px dashed var(--border-sem-dashed);
+    padding: 8px 0;
+    font-size: 12px;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    resize: none;
+    line-height: 1.4;
+}
+
+.idea-bullet:focus {
+    outline: none;
+    border-bottom-color: var(--color-brand-primary);
+    background: var(--color-bg-input);
+}
+
+/* Specific Colors per Letter */
+.card-s .scamper-letter {
+    background: var(--color-semantic-danger);
+}
+
+/* Substitute */
+.card-c .scamper-letter {
+    background: var(--color-semantic-alert);
+}
+
+/* Combine */
+.card-a .scamper-letter {
+    background: var(--color-archetype-independence);
+}
+
+/* Adapt */
+.card-m .scamper-letter {
+    background: var(--color-semantic-growth);
+}
+
+/* Modify */
+.card-p .scamper-letter {
+    background: var(--color-info);
+}
+
+/* Put to other use */
+.card-e .scamper-letter {
+    background: var(--color-brand-blue);
+}
+
+/* Eliminate */
+.card-r .scamper-letter {
+    background: var(--color-semantic-reflection);
+}
+
+/* Reverse */
+
+/* The 8th card is a summary or sketch area */
+.card-summary {
+    background: var(--color-bg-subtle);
+    border: 2px dashed var(--border-sem-dashed);
+}
+
+.card-summary .scamper-header {
+    background: transparent;
+}
+
+.card-summary .scamper-letter {
+    background: var(--color-text-tertiary);
+}
+
+/* Dark Mode */
+body.theme-dark .scamper-header {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.theme-dark .scamper-card {
+    background: var(--color-bg-muted);
+}
+
+body.theme-dark .idea-bullet:focus {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@media screen and (max-width: 768px) {
+    .paper-a3 {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .scamper-container {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+
+    .scamper-card,
+    .scamper-content {
+        overflow: visible;
+    }
+
+    .idea-bullet {
+        min-height: 90px;
+    }
+}
