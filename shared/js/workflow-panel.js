@@ -16,6 +16,10 @@
         return node.innerHTML;
     }
 
+    function escapeAttribute(value) {
+        return escape(value).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     function snapshot() {
         return Object.fromEntries([...document.querySelectorAll('[data-save-key]')].map(element => {
             const key = element.dataset.saveKey;
@@ -33,7 +37,7 @@
         const list = root.querySelector('[data-evidence-list]');
         list.innerHTML = items.length ? items.map(item => `
             <label class="workflow-evidence-item">
-                <input type="checkbox" name="evidenceIds" value="${escape(item.id)}">
+                <input type="checkbox" name="evidenceIds" value="${escapeAttribute(item.id)}">
                 <span><strong>${escape(item.kind)}</strong> ${escape(item.statement)}<small>${escape(item.source)} · ${escape(item.owner || '未指定负责人')} · ${escape(item.reviewDate || '未指定复核日期')}</small></span>
             </label>`).join('') : '<p class="workflow-empty">本工具还没有证据记录。</p>';
     }
@@ -84,7 +88,7 @@
                 <div class="workflow-form-grid">
                     <label>类型<select name="kind"><option value="fact">事实</option><option value="assumption">假设</option><option value="to_verify">待验证</option></select></label>
                     <label>状态<select name="status"><option value="draft">草稿</option><option value="needs_review">待复核</option><option value="confirmed">已确认</option><option value="rejected">已否定</option></select></label>
-                    <label>负责人<input name="owner" maxlength="120" value="${escape(project.owner)}"></label>
+                    <label>负责人<input name="owner" maxlength="120" value="${escapeAttribute(project.owner)}"></label>
                     <label>复核日期<input name="reviewDate" type="date"></label>
                 </div>
                 <label>来源或来源缺失说明<input name="source" maxlength="500" required placeholder="报告名称和日期；或明确写团队假设及缺失原因"></label>
@@ -96,7 +100,7 @@
                 <div data-evidence-list></div>
                 <label>优先结论 / 交付摘要<textarea name="summary" rows="4" maxlength="2000" required></textarea></label>
                 <label>未解决风险或待验证项<textarea name="unresolvedRisk" rows="3" maxlength="1000"></textarea></label>
-                <div class="workflow-form-grid"><label>负责人<input name="owner" maxlength="120" value="${escape(project.owner)}" required></label><label>复核日期<input name="reviewDate" type="date" required></label></div>
+                <div class="workflow-form-grid"><label>负责人<input name="owner" maxlength="120" value="${escapeAttribute(project.owner)}" required></label><label>复核日期<input name="reviewDate" type="date" required></label></div>
                 <button class="workflow-button" type="submit">检查并保存交接</button>
                 <p role="status" data-handoff-status></p>
             </form>
@@ -160,7 +164,7 @@
 
     renderEvidence();
     if (existing) existing.evidenceIds.forEach(id => {
-        const input = handoffForm.querySelector(`[name="evidenceIds"][value="${CSS.escape(id)}"]`);
+        const input = [...handoffForm.querySelectorAll('[name="evidenceIds"]')].find(item => item.value === id);
         if (input) input.checked = true;
     });
     renderUpstream();

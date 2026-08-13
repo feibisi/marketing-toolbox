@@ -3,8 +3,8 @@
   "source": "canonical core tools from data/tools.json",
   "summary": {
     "smoke": 24,
-    "contract": 0,
-    "fixture": 6,
+    "contract": 6,
+    "fixture": 0,
     "reviewed": 0,
     "release": 0
   },
@@ -387,7 +387,7 @@
       "path": "strategy-toolkit/business-model-canvas.html",
       "tool_id": "strategy-toolkit:business-model-canvas",
       "workflow_id": "strategy-alignment",
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -421,7 +421,7 @@
       "path": "strategy-toolkit/landscape-map.html",
       "tool_id": "strategy-toolkit:landscape-map",
       "workflow_id": "strategy-alignment",
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -438,7 +438,7 @@
       "path": "strategy-toolkit/okr-cascade.html",
       "tool_id": "strategy-toolkit:okr-cascade",
       "workflow_id": "strategy-alignment",
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -472,7 +472,7 @@
       "path": "strategy-toolkit/strategic-roadmap.html",
       "tool_id": "strategy-toolkit:strategic-roadmap",
       "workflow_id": "strategy-alignment",
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -489,7 +489,7 @@
       "path": "strategy-toolkit/swot-analysis.html",
       "tool_id": "strategy-toolkit:swot-analysis",
       "workflow_id": "strategy-alignment",
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,
@@ -506,7 +506,7 @@
       "path": "strategy-toolkit/value-proposition.html",
       "tool_id": "strategy-toolkit:value-proposition",
       "workflow_id": "strategy-alignment",
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "signals": {
         "shared_runtime": true,

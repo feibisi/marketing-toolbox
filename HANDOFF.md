@@ -202,16 +202,16 @@ FeiCode repository          BLOCKED: missing write:organization scope
 - Extended evidence provenance with an optional field key, while keeping project schema v2 and the local-first/no-login boundary.
 - Added six page-level illustrative fixture sets covering valid, contradiction, missing-source and roadmap dependency-cycle scenarios, plus deterministic business-rule checks.
 - Fixed OKR dynamic objective persistence by exposing the page app instance and restoring the saved objective container before recalculating scores.
-- Workflow 01 readiness advanced to six `fixture`; the other 24 core tools remain `smoke`; no tool is `release`.
+- Workflow 01 readiness is six `contract`; the other 24 core tools remain `smoke`. Illustrative fixture files exist, but page/module behavior does not yet assert every method rule, so no tool is marked `fixture` or `release`.
 
 ### Verification
 
 ```text
 npm run test:quality             PASS
-- fixture audit                  6 tools / 4 illustrative scenarios / 0 real customer samples
+- fixture audit                  6 tools / 4 illustrative scenarios / 0 real customer samples (business release BLOCKED)
 - JavaScript                     212 samples
-- static                         165 pages / 1644 refs / 850 controls
-- Playwright                     191 passed
+- static                         165 pages / 1645 refs / 850 controls
+- Playwright                     193 passed
 - layout                         318 clear / 0 high / 0 blocker
 gitleaks dir                     PASS
 CSS                              0 errors; existing warning baseline remains

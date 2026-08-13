@@ -42,7 +42,7 @@ test('SWOT evidence and handoff retain provenance for explicit downstream adopti
     await expect(panel.locator('[data-handoff-status]')).toContainText('交接已保存');
 
     const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('modiqi_workflow_handoffs_v1')));
-    const record = stored.project_workflow01_runtime['strategy-alignment']['strategy-toolkit/swot-analysis.html'];
+    const record = stored['key:project_workflow01_runtime']['key:strategy-alignment']['key:strategy-toolkit%2Fswot-analysis.html'];
     expect(record).toMatchObject({ schemaVersion: 1, projectId: project.id, status: 'ready', owner: 'Strategy Owner' });
     expect(record.evidenceIds).toHaveLength(1);
 
@@ -83,4 +83,50 @@ test('invalid handoff JSON does not stop a workflow page from opening', async ({
     await page.goto('/strategy-toolkit/strategic-roadmap.html');
     await expect(page.locator('[data-workflow-panel]')).toContainText('证据与工作流交接');
     expect(errors).toEqual([]);
+});
+
+test('hostile workflow bucket shapes are replaced without crossing project boundaries', async ({ page }) => {
+    await seedProject(page);
+    await page.addInitScript(() => localStorage.setItem(
+        'modiqi_workflow_handoffs_v1',
+        '{"key:project_workflow01_runtime":"not-an-object","__proto__":{"polluted":true}}'
+    ));
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.goto('/strategy-toolkit/swot-analysis.html');
+    const saved = await page.evaluate(() => window.ModiqiWorkflowStore.save({
+        projectId: 'project_workflow01_runtime',
+        workflowId: 'strategy-alignment',
+        sourceTool: 'strategy-toolkit/swot-analysis.html',
+        summary: 'Boundary-safe handoff',
+        status: 'draft',
+    }));
+    expect(saved.summary).toBe('Boundary-safe handoff');
+    expect(errors).toEqual([]);
+    expect(await page.evaluate(() => Object.prototype.polluted)).toBeUndefined();
+});
+
+test('imported project text cannot inject markup into workflow controls', async ({ page }) => {
+    const hostile = {
+        ...project,
+        owner: 'Owner"><img data-injected src=x>',
+        evidence: [{
+            id: 'evidence"><img data-evidence-injected src=x>',
+            statement: 'Quoted evidence',
+            kind: 'fact',
+            source: 'Public record',
+            owner: 'Owner',
+            reviewDate: '2026-08-20',
+            status: 'draft',
+            toolPath: 'strategy-toolkit/swot-analysis.html',
+            fieldKey: 'strengths',
+            createdAt: '2026-08-13T00:00:00.000Z',
+            updatedAt: '2026-08-13T00:00:00.000Z',
+        }],
+    };
+    await page.addInitScript(value => localStorage.setItem('modiqi_project_context_v2', JSON.stringify(value)), hostile);
+    await page.goto('/strategy-toolkit/swot-analysis.html');
+    await expect(page.locator('[data-injected], [data-evidence-injected]')).toHaveCount(0);
+    await expect(page.locator('[data-evidence-form] [name="owner"]')).toHaveValue(hostile.owner);
+    await expect(page.locator('[name="evidenceIds"]')).toHaveValue(hostile.evidence[0].id);
 });

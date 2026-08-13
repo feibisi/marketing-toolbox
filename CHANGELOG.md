@@ -15,7 +15,7 @@
 
 ### Changed
 
-- 核心 readiness 由 30 个 `smoke` 更新为 24 个 `smoke`、6 个 `fixture`；真实客户样本仍为 0，业务 release 保持阻断。
+- Workflow 01 六个工具已具备书面方法合同，核心 readiness 为 24 个 `smoke`、6 个 `contract`；fixture 尚未接入页面级业务规则，真实客户样本仍为 0，业务 release 保持阻断。
 
 ### Fixed
 

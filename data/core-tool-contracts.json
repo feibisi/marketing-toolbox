@@ -30,7 +30,7 @@
       "downstream": [
         "strategy-toolkit/landscape-map.html"
       ],
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#swot-analysis",
       "method_sources": [
@@ -73,7 +73,7 @@
       "downstream": [
         "strategy-toolkit/business-model-canvas.html"
       ],
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#competitive-landscape-map",
       "method_sources": [
@@ -120,7 +120,7 @@
       "downstream": [
         "strategy-toolkit/value-proposition.html"
       ],
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#business-model-canvas",
       "method_sources": [
@@ -167,7 +167,7 @@
       "downstream": [
         "strategy-toolkit/okr-cascade.html"
       ],
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#value-proposition-canvas",
       "method_sources": [
@@ -214,7 +214,7 @@
       "downstream": [
         "strategy-toolkit/strategic-roadmap.html"
       ],
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#okr-cascade",
       "method_sources": [
@@ -259,7 +259,7 @@
         "strategy-toolkit/okr-cascade.html"
       ],
       "downstream": [],
-      "validation_level": "fixture",
+      "validation_level": "contract",
       "review_status": "draft",
       "method_basis_ref": "docs/WORKFLOW_01_METHOD_BASES.md#strategic-roadmap",
       "method_sources": [
