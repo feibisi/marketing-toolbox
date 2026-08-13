@@ -163,3 +163,8 @@ FeiCode repository          BLOCKED: missing write:organization scope
 - A pre-existing FeiCode credential was exposed in one local Git diagnostic transcript because a verbose environment flag was set to the string `0`, which Git interpreted as enabled. The credential value was not written to this repository and the repository gitleaks scan is clean, but the credential must be revoked/rotated before any further FeiCode use.
 - Resume only with a replacement credential carrying the minimum `write:organization` and repository-write scopes, or after an organization owner creates the empty repository and grants push access.
 - Local `origin` now uses the rewrite-resistant, credential-free `ssh://git@feicode.com/Modiqi-com/marketing-toolbox.git`. `scripts/push_feicode_initial.sh` is the fail-closed first-push gate: it refuses a dirty tree or wrong remote, verifies the public repository, runs gitleaks, pushes with global Git config disabled, and compares the remote `main` SHA and HEAD.
+
+### Blocked audit
+
+- Three consecutive publication checks ended at the same external condition: public FeiCode API returns 404 for `Modiqi-com/marketing-toolbox`, and credential-isolated SSH `ls-remote` cannot find or access the repository.
+- Local preparation is complete and clean; no further safe local change can create the required organization repository. Resume after the old credential is revoked and the organization repository/write authority exists.
