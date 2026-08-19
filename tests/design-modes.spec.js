@@ -1,13 +1,19 @@
 const { test, expect } = require('@playwright/test');
 
 const fixedCanvases = [
-    'strategy-toolkit/swot-analysis.html',
-    'strategy-toolkit/business-model-canvas.html',
-    'strategy-toolkit/landscape-map.html',
-    'strategy-toolkit/value-proposition.html',
+    { path: 'strategy-toolkit/swot-analysis.html', paper: 'a3-landscape' },
+    { path: 'strategy-toolkit/business-model-canvas.html', paper: 'a3-landscape' },
+    { path: 'strategy-toolkit/landscape-map.html', paper: 'a3-landscape' },
+    { path: 'strategy-toolkit/value-proposition.html', paper: 'a3-landscape' },
+    { path: 'behavior-toolkit/customer-journey.html', paper: 'a3-landscape' },
+    { path: 'strategy-toolkit/stp-canvas.html', paper: 'a3-landscape' },
+    { path: 'brand-toolkit/jtbd-canvas.html', paper: 'a3-landscape' },
+    { path: 'brand-toolkit/brand-positioning-map.html', paper: 'a3-landscape' },
+    { path: 'customer-toolkit/user-persona.html', paper: 'a4-portrait' },
+    { path: 'behavior-toolkit/empathy-map.html', paper: 'a4-portrait' },
 ];
 
-for (const path of fixedCanvases) {
+for (const { path, paper: expectedPaper } of fixedCanvases) {
     test(`${path} preserves the desktop paper contract`, async ({ page }) => {
         await page.goto(`/${path}`);
         const result = await page.evaluate(() => {
@@ -15,14 +21,21 @@ for (const path of fixedCanvases) {
             const rect = paper.getBoundingClientRect();
             return {
                 kind: document.body.dataset.toolKind,
+                paper: document.body.dataset.paperContract,
                 ratio: rect.width / rect.height,
                 overflow: getComputedStyle(paper).overflow,
                 supportUiInside: Boolean(paper.querySelector('.workflow-panel-shell, .workspace-support-panel')),
             };
         });
         expect(result.kind).toBe('fixed-canvas');
-        expect(result.ratio).toBeGreaterThan(1.39);
-        expect(result.ratio).toBeLessThan(1.44);
+        expect(result.paper).toBe(expectedPaper);
+        if (expectedPaper === 'a3-landscape') {
+            expect(result.ratio).toBeGreaterThan(1.39);
+            expect(result.ratio).toBeLessThan(1.44);
+        } else {
+            expect(result.ratio).toBeGreaterThan(0.69);
+            expect(result.ratio).toBeLessThan(0.72);
+        }
         expect(result.overflow).toBe('hidden');
         expect(result.supportUiInside).toBe(false);
     });

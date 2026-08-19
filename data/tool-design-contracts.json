@@ -172,15 +172,17 @@
     },
     {
       "path": "behavior-toolkit/customer-journey.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
     },
     {
       "path": "behavior-toolkit/empathy-map.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a4-portrait",
+      "output": "single-sheet"
     },
     {
       "path": "behavior-toolkit/hook-model.html",
@@ -256,9 +258,10 @@
     },
     {
       "path": "brand-toolkit/brand-positioning-map.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
     },
     {
       "path": "brand-toolkit/brand-prism.html",
@@ -274,9 +277,10 @@
     },
     {
       "path": "brand-toolkit/jtbd-canvas.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
     },
     {
       "path": "brand-toolkit/perceptual-map.html",
@@ -400,9 +404,10 @@
     },
     {
       "path": "customer-toolkit/user-persona.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a4-portrait",
+      "output": "single-sheet"
     },
     {
       "path": "email-toolkit/deliverability-checklist.html",
@@ -829,9 +834,10 @@
     },
     {
       "path": "strategy-toolkit/stp-canvas.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
     },
     {
       "path": "strategy-toolkit/strategic-roadmap.html",

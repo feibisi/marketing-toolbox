@@ -4,7 +4,8 @@
     display: grid;
     grid-template-columns: 260px 1fr;
     gap: var(--spacing-xl);
-    height: 100%;
+    flex: 1;
+    min-height: 0;
 }
 
 .persona-sidebar {

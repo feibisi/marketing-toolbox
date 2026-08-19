@@ -417,3 +417,11 @@ Desktop Business Model Canvas and mobile SWOT screenshots were inspected. The fi
 - The fixed-canvas browser gate now covers Value Proposition Canvas, and the static contract gate rejects both workflow panels and workspace support panels placed inside paper.
 - Full `npm run test:quality` PASS: 215 JavaScript samples, 165 pages / 1660 references / 933 controls, 208 Playwright tests, 318/318 layout clear, CSS 0 errors / 715 existing warnings. Desktop Value Proposition Canvas was visually inspected after its title and paper boundary were corrected.
 - This is design migration evidence, not product release or domain/customer review. The remaining 137 tools are not design PASS.
+
+## [CX] 2026-08-19 Workflow 02 design classification
+
+- Classified the six Audience & Positioning core tools without starting Workflow 02 business-method implementation: User Persona and Empathy Map are A4 portrait fixed canvases; Customer Journey Map, STP Canvas, JTBD Canvas and Brand Positioning Map are A3 landscape fixed canvases. All six declare single-sheet output.
+- User Persona now uses the shared A4 paper container and a flex-owned content region, correcting a 146 px desktop overflow while keeping the physical A4 ratio. The six desktop compositions were visually inspected after the layout audit.
+- The design-contract inventory is now 13 declared / 131 `legacy-unclassified`. Browser gates cover both A3 landscape and A4 portrait fixed-paper ratios.
+- Full `npm run test:quality` PASS: 215 JavaScript samples, 165 pages / 1666 references / 933 controls, 214 Playwright tests, 318/318 layout clear, CSS 0 errors / 715 existing warnings. `git diff --check` and gitleaks PASS.
+- This is design classification and layout evidence only. Workflow 02 method behavior, fixtures, domain review, customer validation and release remain outside this batch; no website or production system was changed.

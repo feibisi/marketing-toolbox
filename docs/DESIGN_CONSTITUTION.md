@@ -69,5 +69,11 @@ Marketing Toolbox 是一张数字工作台，不是由 144 个普通网页表单
 | OKR Cascade | `worksheet` | 连续工作表，多页 |
 | Strategic Roadmap | `worksheet` | 连续工作表，多页 |
 | ROI Calculator | `calculator` | 应用式编辑，A4 结果摘要候选 |
+| User Persona | `fixed-canvas` | A4 纵向，单张 |
+| Empathy Map | `fixed-canvas` | A4 纵向，单张 |
+| Customer Journey Map | `fixed-canvas` | A3 横向，单张 |
+| STP Canvas | `fixed-canvas` | A3 横向，单张 |
+| JTBD Canvas | `fixed-canvas` | A3 横向，单张 |
+| Brand Positioning Map | `fixed-canvas` | A3 横向，单张 |
 
-其余 137 个工具在完成产品分类前保持 `legacy-unclassified`，这表示迁移债务，不表示符合本文。
+其余 131 个工具在完成产品分类前保持 `legacy-unclassified`，这表示迁移债务，不表示符合本文。
