@@ -861,9 +861,10 @@
     },
     {
       "path": "strategy-toolkit/value-proposition.html",
-      "kind": "legacy-unclassified",
-      "migration_status": "legacy-unclassified",
-      "output": "undecided"
+      "kind": "fixed-canvas",
+      "migration_status": "declared",
+      "paper": "a3-landscape",
+      "output": "single-sheet"
     },
     {
       "path": "strategy-toolkit/vrio-framework.html",

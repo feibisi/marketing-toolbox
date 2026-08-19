@@ -26,12 +26,13 @@
     <!-- Tool-specific styles -->
     <link rel="stylesheet" href="assets/css/value-proposition.css">
     <link rel="stylesheet" href="../shared/css/workflow-panel.css">
+    <link rel="stylesheet" href="../shared/css/design-modes.css">
 </head>
 
-<body>
+<body data-tool-kind="fixed-canvas" data-paper-contract="a3-landscape">
     <div class="desk-background"></div>
 
-    <main class="paper-a3">
+    <main class="paper-a3" data-output-format="single-sheet">
         <header class="canvas-header">
             <div class="title-group">
                 <h1>价值主张画布</h1>
@@ -166,8 +167,17 @@
             </div>
         </div>
 
-        <section class="vpc-fit-record" aria-labelledby="vpc-fit-title">
+        <!-- Footer -->
+        <footer class="modiqi-footer">
+            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
+            <span>Modiqi Digital Marketing Workbench © 2026</span>
+        </footer>
+
+    </main>
+
+    <section class="vpc-fit-record workspace-support-panel" aria-labelledby="vpc-fit-title">
             <h2 class="section-title" id="vpc-fit-title"><i data-lucide="link"></i> 匹配验证 <span class="en-sub">(Fit Validation)</span></h2>
+        <p class="workspace-panel-note">工作台匹配校验，不属于 A3 价值主张画布打印正文。</p>
             <p class="vpc-fit-help">为优先客户项提供稳定 ID 与排序，将响应明确映射到客户项，并关联证据。</p>
             <div class="vpc-priority-grid">
                 <label>任务 ID<input type="text" value="job-1" data-save-key="vpc_job_id"></label>
@@ -186,13 +196,6 @@
                 <label class="vpc-wide">尚未解决的匹配缺口<textarea rows="2" data-save-key="vpc_unresolved_mismatch" placeholder="写明仍缺少的证据或未覆盖需求"></textarea></label>
             </div>
         </section>
-        <!-- Footer -->
-        <footer class="modiqi-footer">
-            <img src="../shared/images/modiqi-logo-r.png" alt="Modiqi" class="footer-logo">
-            <span>Modiqi Digital Marketing Workbench © 2026</span>
-        </footer>
-
-    </main>
 
     <section class="workflow-panel-shell" data-evidence-panel data-workflow-panel data-workflow-id="strategy-alignment" data-tool-path="strategy-toolkit/value-proposition.html" data-upstream-path="strategy-toolkit/business-model-canvas.html" data-downstream-path="strategy-toolkit/okr-cascade.html" aria-label="证据与工作流交接"></section>
 

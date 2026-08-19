@@ -409,3 +409,11 @@ Desktop Business Model Canvas and mobile SWOT screenshots were inspected. The fi
 
 - This is the first representative batch, not a claim that all 144 tools comply. The remaining 138 tools are deliberately marked unclassified until product type and output are reviewed.
 - No website deployment, product release, production VM, DNS, provider, credential or permission changed. Workflow 01 still has zero customer samples and no named domain reviewer.
+
+## [CX] 2026-08-19 Workflow 01 design boundary completed
+
+- Value Proposition Canvas is now a declared A3 `fixed-canvas`; its FIT IDs, ranking, evidence and unresolved-gap controls moved outside the printed delivery sheet without changing storage keys or Workflow 01 validation.
+- All six Workflow 01 tools now have an explicit product type: four fixed canvases and two continuous worksheets. Together with ROI, the inventory is 7 declared / 137 `legacy-unclassified`.
+- The fixed-canvas browser gate now covers Value Proposition Canvas, and the static contract gate rejects both workflow panels and workspace support panels placed inside paper.
+- Full `npm run test:quality` PASS: 215 JavaScript samples, 165 pages / 1660 references / 933 controls, 208 Playwright tests, 318/318 layout clear, CSS 0 errors / 715 existing warnings. Desktop Value Proposition Canvas was visually inspected after its title and paper boundary were corrected.
+- This is design migration evidence, not product release or domain/customer review. The remaining 137 tools are not design PASS.

@@ -58,15 +58,16 @@ Marketing Toolbox 是一张数字工作台，不是由 144 个普通网页表单
 - 自动化需检查合同覆盖、DOM 类型声明、固定画布比例和工作台/纸张边界。
 - 视觉例外写入 `docs/DESIGN_DECISIONS.md`，不得以页面级 CSS 注释代替决策。
 
-## 7. 首批代表工具
+## 7. 已声明工具
 
 | 工具 | 类型 | 规格/输出 |
 | --- | --- | --- |
 | SWOT | `fixed-canvas` | A3 横向，单张 |
 | Business Model Canvas | `fixed-canvas` | A3 横向，单张 |
 | Landscape Map | `fixed-canvas` | A3 横向，单张 |
+| Value Proposition Canvas | `fixed-canvas` | A3 横向，单张 |
 | OKR Cascade | `worksheet` | 连续工作表，多页 |
 | Strategic Roadmap | `worksheet` | 连续工作表，多页 |
 | ROI Calculator | `calculator` | 应用式编辑，A4 结果摘要候选 |
 
-其余 138 个工具在完成产品分类前保持 `legacy-unclassified`，这表示迁移债务，不表示符合本文。
+其余 137 个工具在完成产品分类前保持 `legacy-unclassified`，这表示迁移债务，不表示符合本文。

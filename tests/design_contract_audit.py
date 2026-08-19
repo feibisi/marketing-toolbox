@@ -18,7 +18,7 @@ class ShellParser(HTMLParser):
         if tag == "main":
             self.main = values
             self.in_main += 1
-        if self.in_main and "workflow-panel-shell" in values.get("class", "").split():
+        if self.in_main and ({"workflow-panel-shell", "workspace-support-panel"} & set(values.get("class", "").split())):
             self.panel_inside_main = True
     def handle_endtag(self, tag):
         if tag == "main" and self.in_main: self.in_main -= 1
@@ -44,7 +44,7 @@ for item in contracts:
     if parser.panel_inside_main: errors.append(f"{item['path']}: workflow panel is inside paper")
     if item["kind"] == "fixed-canvas" and item["output"] != "single-sheet": errors.append(f"{item['path']}: fixed canvas must be single sheet")
 
-if declared != 6: errors.append(f"expected 6 declared reference tools, got {declared}")
+if declared != 7: errors.append(f"expected 7 declared/reference tools, got {declared}")
 if errors:
     raise SystemExit("FAIL design contract:\n- " + "\n- ".join(errors))
 print(f"PASS design contract: {len(contracts)} covered / {declared} declared / {len(contracts)-declared} legacy-unclassified")

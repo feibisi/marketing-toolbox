@@ -4,6 +4,7 @@ const fixedCanvases = [
     'strategy-toolkit/swot-analysis.html',
     'strategy-toolkit/business-model-canvas.html',
     'strategy-toolkit/landscape-map.html',
+    'strategy-toolkit/value-proposition.html',
 ];
 
 for (const path of fixedCanvases) {
