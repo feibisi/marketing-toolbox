@@ -369,23 +369,8 @@ body.toolbar-hidden .modiqi-toolbar {
 }
 
 .modiqi-toolbar .btn-mobile-toolbar {
-    display: flex;
-    flex: 0 0 40px;
-}
-
-/* Keep the canvas clear by default. Actions remain one click away and the
-   expanded strip preserves the original desktop layout. */
-body:not(.mobile-toolbar-expanded) .modiqi-toolbar {
-    right: 20px;
-    left: auto;
-    width: 48px;
-    padding: 3px;
-    overflow: hidden;
-    transform: none;
-}
-
-body:not(.mobile-toolbar-expanded) .modiqi-toolbar > :not(.btn-mobile-toolbar) {
     display: none;
+    flex: 0 0 40px;
 }
 
 .modiqi-toolbar button:hover {
@@ -1226,6 +1211,10 @@ body.presentation-mode .modiqi-toolbar .toolbar-divider:nth-child(6) {
         width: 100%;
         min-width: 0;
         box-sizing: border-box;
+    }
+
+    .modiqi-toolbar .btn-mobile-toolbar {
+        display: flex;
     }
 
     .modiqi-toolbar {
