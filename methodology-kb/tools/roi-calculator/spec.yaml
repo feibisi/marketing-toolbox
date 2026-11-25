@@ -1,0 +1,24 @@
+id: "roi-calculator"
+name: "ROI 计算器"
+en_name: "Marketing ROI Calculator"
+workflow_id: "measurement-growth"
+container: "calculator"
+paper: "a4-summary"
+purpose: "核算营销活动真实投资回报率、ROAS、获客成本 CAC 与单客贡献 ARPU，并进行转化率与成本敏感度模拟"
+entity_bindings:
+  reads: ["offer", "channel_plan"]
+  writes:
+    - entity_type: "funnel_metric"
+      mapping:
+        revenue: "revenue"
+        conversions: "conversions"
+        totalCost: "computed.totalCost"
+        roiPercent: "computed.roiPercent"
+        roas: "computed.roas"
+        cac: "computed.cac"
+        arpu: "computed.arpu"
+evidence_rules:
+  - field: "revenue"
+    rule: "归因收入应标明统计口径（财务实收 / 线索归因估算）"
+  - field: "adSpend"
+    rule: "投放与人力成本须覆盖完整活动周期，防止虚高 ROI"

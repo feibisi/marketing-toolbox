@@ -1,0 +1,69 @@
+version: "3.0.0"
+owner: "co-modiqi"
+workflows:
+  - id: "strategy-alignment"
+    order: 1
+    name: "战略对齐"
+    en_name: "Strategy Alignment"
+    summary: "理清内外处境、竞争格局、商业模式与季度目标"
+    tools:
+      - { id: "swot-analysis", name: "SWOT 分析", en_name: "SWOT Analysis", container: "fixed-canvas", paper: "a3-landscape", phase: "P0" }
+      - { id: "landscape-map", name: "竞争格局地图", en_name: "Competitive Landscape Map", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+      - { id: "business-model-canvas", name: "商业模式画布", en_name: "Business Model Canvas", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+      - { id: "value-proposition", name: "价值主张画布", en_name: "Value Proposition Canvas", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+      - { id: "okr-cascade", name: "OKR 战略级联地图", en_name: "OKR Strategy Cascade Map", container: "worksheet", paper: "a3-wide", phase: "P0" }
+      - { id: "strategic-roadmap", name: "战略路线图", en_name: "Strategic Roadmap", container: "worksheet", paper: "a3-wide", phase: "P1" }
+  - id: "audience-positioning"
+    order: 2
+    name: "受众与定位"
+    en_name: "Audience & Positioning"
+    summary: "锁死理想客户画像、切换触发点与心智差异位"
+    tools:
+      - { id: "user-persona", name: "用户画像卡", en_name: "User Persona Card", container: "fixed-canvas", paper: "a4-portrait", phase: "P1" }
+      - { id: "empathy-map", name: "同理心地图", en_name: "Empathy Map", container: "fixed-canvas", paper: "a4-portrait", phase: "P1" }
+      - { id: "customer-journey", name: "客户旅程地图", en_name: "Customer Journey Map", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+      - { id: "stp-canvas", name: "STP 战略画布", en_name: "STP Strategy Canvas", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+      - { id: "jtbd-canvas", name: "JTBD 任务画布", en_name: "Jobs To Be Done Canvas", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+      - { id: "brand-positioning-map", name: "品牌定位图", en_name: "Brand Positioning Map", container: "fixed-canvas", paper: "a3-landscape", phase: "P1" }
+  - id: "brand-narrative"
+    order: 3
+    name: "品牌叙事"
+    en_name: "Brand Narrative"
+    summary: "统一对外定位陈述、价值支柱、故事与表达禁词"
+    tools:
+      - { id: "positioning-statement", name: "定位陈述生成器", en_name: "Positioning Statement Builder", container: "worksheet", paper: "a4-continuous", phase: "P2" }
+      - { id: "brand-messaging", name: "品牌信息框架", en_name: "Brand Messaging Framework", container: "worksheet", paper: "a3-wide", phase: "P2" }
+      - { id: "brand-story", name: "品牌故事模板", en_name: "Brand Story Canvas", container: "worksheet", paper: "a4-continuous", phase: "P2" }
+      - { id: "tone-voice", name: "品牌语调均衡器", en_name: "Tone & Voice Equalizer", container: "fixed-canvas", paper: "a4-portrait", phase: "P2" }
+  - id: "content-operations"
+    order: 4
+    name: "内容运营"
+    en_name: "Content Operations"
+    summary: "用高价值内容与技术 SEO 持续获取精准搜索流量"
+    tools:
+      - { id: "content-audit", name: "内容盘点工具", en_name: "Content Audit Matrix", container: "worksheet", paper: "a3-wide", phase: "P2" }
+      - { id: "content-strategy-canvas", name: "内容战略画布", en_name: "Content Strategy Canvas", container: "fixed-canvas", paper: "a3-landscape", phase: "P2" }
+      - { id: "content-calendar", name: "内容日历", en_name: "Editorial Content Calendar", container: "worksheet", paper: "a3-wide", phase: "P2" }
+      - { id: "content-performance", name: "内容效果分析", en_name: "Content Performance Analyzer", container: "calculator", paper: "a4-summary", phase: "P2" }
+      - { id: "technical-seo-audit", name: "技术 SEO 审计", en_name: "Technical SEO Audit Checklist", container: "worksheet", paper: "a4-continuous", phase: "P2" }
+  - id: "go-to-market"
+    order: 5
+    name: "获客与成交"
+    en_name: "Go-To-Market & Sales"
+    summary: "把产品卖点落成上市节奏、渠道追踪、线索评分与正式报价"
+    tools:
+      - { id: "gtm-strategy", name: "GTM 策略画布", en_name: "Go-To-Market Strategy Canvas", container: "fixed-canvas", paper: "a3-landscape", phase: "P2" }
+      - { id: "utm-builder", name: "UTM 链接构建器", en_name: "UTM Campaign Builder", container: "calculator", paper: "a4-summary", phase: "P2" }
+      - { id: "lead-scoring", name: "客户评分卡", en_name: "Lead Scoring Calculator", container: "calculator", paper: "a4-summary", phase: "P2" }
+      - { id: "quote-calculator", name: "报价计算器", en_name: "Commercial Quote Calculator", container: "calculator", paper: "a4-summary", phase: "P2" }
+  - id: "measurement-growth"
+    order: 6
+    name: "衡量与增长"
+    en_name: "Measurement & Growth"
+    summary: "盯紧漏斗流失、统计实验与投资回报率，用数据驱动复盘"
+    tools:
+      - { id: "measurement-plan", name: "数字营销评估计划", en_name: "Digital Measurement Plan", container: "worksheet", paper: "a3-wide", phase: "P2" }
+      - { id: "kpi-dashboard", name: "KPI 仪表盘", en_name: "Marketing KPI Dashboard", container: "calculator", paper: "a3-summary", phase: "P2" }
+      - { id: "funnel-diagnosis", name: "漏斗诊断卡", en_name: "Conversion Funnel Diagnosis", container: "calculator", paper: "a4-summary", phase: "P2" }
+      - { id: "ab-test-planner", name: "A/B 测试规划器", en_name: "A/B Test Sample Planner", container: "calculator", paper: "a4-summary", phase: "P2" }
+      - { id: "roi-calculator", name: "ROI 计算器", en_name: "Marketing ROI Calculator", container: "calculator", paper: "a4-summary", phase: "P0" }

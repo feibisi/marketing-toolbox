@@ -1,0 +1,19 @@
+id: "swot-analysis"
+name: "SWOT 分析"
+en_name: "SWOT Analysis"
+workflow_id: "strategy-alignment"
+container: "fixed-canvas"
+paper: "a3-landscape"
+purpose: "系统梳理内部优势/劣势与外部机会/威胁，并提炼唯一核心战略结论"
+entity_bindings:
+  reads: ["company_profile", "competitor"]
+  writes:
+    - entity_type: "company_profile"
+      mapping:
+        coreAdvantage: "strengths"
+        hardConstraints: "weaknesses"
+evidence_rules:
+  - field: "conclusion"
+    rule: "核心结论须对应至少一条优势与一条机会或威胁，未验证判断须标注 assumption"
+  - field: "threats"
+    rule: "竞品威胁建议附带可核查来源链接或客户访谈记录"

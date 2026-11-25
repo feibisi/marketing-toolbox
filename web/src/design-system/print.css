@@ -1,0 +1,74 @@
+/* ============================================
+   PRINT MEDIA RULES - HIGH CONTRAST PHYSICAL PAPER
+   ============================================ */
+
+@media print {
+  @page {
+    margin: 10mm;
+  }
+
+  :root {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    --color-bg-desk: #ffffff;
+    --color-bg-paper: #ffffff;
+    --color-text-primary: #000000;
+    --color-text-secondary: #222222;
+    --color-text-tertiary: #444444;
+    --border-sem-outer: #000000;
+    --border-sem-frame: #222222;
+    --border-sem-inner: #555555;
+    --border-sem-dashed: #777777;
+    --shadow-paper: none;
+    --texture-noise: none;
+    --texture-noise-subtle: none;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .desk-backdrop,
+  .workbench-topbar,
+  .floating-toolbar,
+  .workbench-drawer,
+  .drawer-backdrop,
+  .mobile-edit-banner,
+  .editable-list-add,
+  .editable-list-remove,
+  .no-print {
+    display: none !important;
+  }
+
+  .desk-viewport {
+    padding: 0 !important;
+    min-height: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .paper-sheet {
+    box-shadow: none !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 6mm !important;
+    transform: none !important;
+  }
+
+  .paper-fixed-a3 {
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+  }
+
+  .paper-worksheet-a3,
+  .paper-worksheet-a4,
+  .paper-calculator {
+    min-height: 0 !important;
+  }
+
+  textarea {
+    resize: none !important;
+  }
+}

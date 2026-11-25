@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Modiqi Canonical Marketing Entities v3",
+  "version": "3.0.0",
+  "description": "八类跨画布共享的企业营销与销售核心业务实体，供前端、后端与内部 Agent 共同消费。",
+  "entityTypes": [
+    {
+      "type": "company_profile",
+      "name": "公司与品牌档案",
+      "fields": ["brandName", "industry", "stage", "coreAdvantage", "hardConstraints", "businessModel"]
+    },
+    {
+      "type": "offer",
+      "name": "货盘与定价",
+      "fields": ["offerName", "category", "pricingTiers", "deliveryScope", "grossMarginNote"]
+    },
+    {
+      "type": "icp_segment",
+      "name": "目标客群与决策人",
+      "fields": ["segmentName", "decisionMaker", "budgetRange", "corePains", "switchingTriggers"]
+    },
+    {
+      "type": "competitor",
+      "name": "竞品档案",
+      "fields": ["competitorName", "priceBand", "positioningNote", "strengths", "weaknesses", "sourceUrl"]
+    },
+    {
+      "type": "messaging",
+      "name": "核心卖点与证明",
+      "fields": ["positioningStatement", "valuePillars", "proofPoints", "forbiddenWords"]
+    },
+    {
+      "type": "channel_plan",
+      "name": "获客渠道与内容",
+      "fields": ["primaryChannels", "contentPillars", "utmConvention", "cadence"]
+    },
+    {
+      "type": "funnel_metric",
+      "name": "转化漏斗与 ROI 指标",
+      "fields": ["period", "revenue", "totalCost", "conversions", "roiPercent", "roas", "cac", "arpu"]
+    },
+    {
+      "type": "sales_enablement",
+      "name": "销售支持与报价规则",
+      "fields": ["mqlThreshold", "quoteStructure", "commonObjections", "closingProcess"]
+    }
+  ]
+}

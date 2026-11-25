@@ -1,36 +1,9 @@
-# Dependencies
 node_modules/
-
-# Test and browser output
-test-results/
-playwright-report/
-blob-report/
-coverage/
-
-# Generated visual evidence (regenerate locally)
-artifacts/visual-audit/
-
-# Local exports and temporary files
-exports/
-tmp/
-temp/
-*.tmp
-*.log
-
-# Local environment and credentials
+dist/
 .env
-.env.*
-!.env.example
-.claude/settings.local.json
-
-# Editors and operating systems
+.env.local
 .DS_Store
-Thumbs.db
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Python cache
+*.log
 __pycache__/
-*.py[cod]
+.venv/
+*.sqlite3

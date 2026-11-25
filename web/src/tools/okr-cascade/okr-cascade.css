@@ -1,0 +1,283 @@
+.okr-cascade-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.okr-vision-box {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--border-sem-inner);
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.okr-vision-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.okr-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.okr-section-title h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.okr-overall-score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.okr-overall-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-tertiary);
+}
+
+.okr-overall-value {
+  font-family: var(--font-mono);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.okr-score-high {
+  color: var(--color-status-good);
+}
+
+.okr-score-medium {
+  color: var(--color-status-warn);
+}
+
+.okr-score-low {
+  color: var(--color-status-bad);
+}
+
+.okr-vision-input {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  resize: vertical;
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  padding: 0.35rem 0.5rem;
+  color: var(--color-text-primary);
+  outline: none;
+}
+
+.okr-vision-input:hover {
+  border-color: var(--border-sem-light);
+}
+
+.okr-vision-input:focus {
+  border-color: var(--color-focus-border);
+  background: var(--color-focus-bg);
+}
+
+.okr-objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.okr-objective-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--border-sem-inner);
+  padding: 1.15rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  break-inside: avoid;
+}
+
+.okr-obj-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border-sem-light);
+}
+
+.okr-obj-badge {
+  background: var(--color-brand-primary);
+  color: var(--color-bg-paper);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 0.2rem 0.45rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.okr-obj-title {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  resize: none;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: 1.4;
+  padding: 0.1rem 0.3rem;
+  outline: none;
+}
+
+.okr-obj-title:focus {
+  border-color: var(--color-focus-border);
+  background: var(--color-focus-bg);
+}
+
+.okr-obj-score-pill {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--border-sem-light);
+  white-space: nowrap;
+}
+
+.okr-icon-btn {
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.2rem;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.okr-icon-btn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-hover);
+}
+
+.okr-kr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.okr-kr-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.65rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--border-sem-light);
+}
+
+.okr-kr-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.okr-kr-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  line-height: 1.45;
+  padding: 0.15rem 0.3rem;
+  outline: none;
+}
+
+.okr-kr-input:focus {
+  border-color: var(--color-focus-border);
+  background: var(--color-focus-bg);
+}
+
+.okr-kr-gauge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--color-bg-paper);
+  border: 1px solid var(--border-sem-inner);
+  padding: 0.15rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  flex-shrink: 0;
+}
+
+.okr-score-num {
+  width: 34px;
+  border: none;
+  background: transparent;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  outline: none;
+}
+
+.okr-add-obj-btn {
+  border: 1px dashed var(--border-sem-dashed);
+  background: transparent;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: var(--font-size-sm);
+}
+
+.okr-add-obj-btn:hover {
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-primary);
+  background: var(--color-bg-subtle);
+}
+
+/* Optional Color Mode */
+.paper-sheet.is-color-mode .okr-vision-box {
+  background: var(--color-semantic-opportunity);
+}
+
+.paper-sheet.is-color-mode .okr-objective-card:nth-child(4n + 1) {
+  background: var(--color-semantic-strength);
+}
+
+.paper-sheet.is-color-mode .okr-objective-card:nth-child(4n + 2) {
+  background: var(--color-semantic-opportunity);
+}
+
+.paper-sheet.is-color-mode .okr-objective-card:nth-child(4n + 3) {
+  background: var(--color-semantic-threat);
+}
+
+.paper-sheet.is-color-mode .okr-objective-card:nth-child(4n + 4) {
+  background: var(--color-semantic-gain);
+}
+
+.paper-sheet.is-color-mode .okr-kr-row {
+  background: rgba(253, 251, 247, 0.72);
+}
+
+@media screen and (max-width: 900px) {
+  .okr-objectives-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .okr-kr-row {
+    flex-wrap: wrap;
+  }
+}

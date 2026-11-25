@@ -1,0 +1,16 @@
+id: "okr-cascade"
+name: "OKR 战略级联地图"
+en_name: "OKR Strategy Cascade Map"
+workflow_id: "strategy-alignment"
+container: "worksheet"
+paper: "a3-wide"
+purpose: "将年度/季度愿景拆解为可衡量的目标 O 与关键结果 KR，并以 0-10 信心指数实时跟踪达成把握"
+entity_bindings:
+  reads: ["company_profile", "funnel_metric"]
+  writes:
+    - entity_type: "company_profile"
+      mapping:
+        businessModel: "vision"
+evidence_rules:
+  - field: "objectives[].keyResults[]"
+    rule: "每条 KR 必须包含明确数字目标与时间窗口；纯动作清单不作为 KR"
