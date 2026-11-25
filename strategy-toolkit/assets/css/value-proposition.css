@@ -110,7 +110,7 @@
     overflow: hidden;
 }
 
-/* 客户任务 - 右半圆：竖排文字 */
+/* 客户任务 - 右半圆：水平排版，居中留白避免贴弧边 */
 .customer-profile .section-jobs {
     top: 0;
     right: 0;
@@ -118,33 +118,21 @@
     height: 100%;
     clip-path: ellipse(100% 50% at 0% 50%);
     border-left: 1px solid var(--border-sem-inner);
-    /* 竖排布局 */
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    /* padding 调整 */
-    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) var(--spacing-xl);
-    /* 内容居中 */
+    padding: 20% 16% 20% var(--spacing-lg);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: stretch;
+    justify-content: center;
+    text-align: left;
 }
 
 .customer-profile .section-jobs .section-header {
-    writing-mode: vertical-rl;
-    border-bottom: none;
-    border-left: 1px dashed var(--border-sem-dashed);
-    padding-bottom: 0;
-    padding-left: var(--spacing-sm);
-    margin-bottom: 0;
-    margin-left: var(--spacing-sm);
+    justify-content: flex-start;
 }
 
 .customer-profile .section-jobs .section-content {
-    writing-mode: vertical-rl;
-    /* 防止右侧溢出 */
-    max-height: 70%;
-    overflow: hidden;
+    max-width: 100%;
+    overflow-y: auto;
 }
 
 /* 客户获益 - 左上四分之一：内容靠右下（向圆心） */
@@ -160,13 +148,14 @@
     /* 内容向右下靠拢 */
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: stretch;
     justify-content: flex-end;
-    text-align: right;
+    text-align: left;
+    padding: 18% var(--spacing-md) var(--spacing-md) 22%;
 }
 
 .customer-profile .section-gains .section-header {
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .customer-profile .section-gains .section-content {
@@ -185,13 +174,14 @@
     /* 内容向右上靠拢 */
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: stretch;
     justify-content: flex-start;
-    text-align: right;
+    text-align: left;
+    padding: var(--spacing-md) var(--spacing-md) 18% 22%;
 }
 
 .customer-profile .section-pains .section-header {
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .customer-profile .section-pains .section-content {

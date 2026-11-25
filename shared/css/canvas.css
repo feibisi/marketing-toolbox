@@ -67,7 +67,8 @@ body {
 }
 
 /* A4 Portrait Paper */
-.paper-a4 {
+.paper-a4,
+.paper-a4-portrait {
     background-color: var(--color-bg-paper);
     width: 100%;
     max-width: 794px;
@@ -82,7 +83,8 @@ body {
     overflow: hidden;
 }
 
-.paper-a4::before {
+.paper-a4::before,
+.paper-a4-portrait::before {
     content: "";
     position: absolute;
     top: 0;
@@ -672,7 +674,8 @@ h4 .en-sub,
    ======================================== */
 
 body.theme-whiteboard .paper-a3,
-body.theme-whiteboard .paper-a4 {
+body.theme-whiteboard .paper-a4,
+body.theme-whiteboard .paper-a4-portrait {
     box-shadow: var(--shadow-md);
 }
 
@@ -686,7 +689,8 @@ body.theme-whiteboard .paper-a4::before {
    ======================================== */
 
 body.theme-dark .paper-a3,
-body.theme-dark .paper-a4 {
+body.theme-dark .paper-a4,
+body.theme-dark .paper-a4-portrait {
     /* Purely token driven now */
     box-shadow: var(--shadow-paper);
     border: none;

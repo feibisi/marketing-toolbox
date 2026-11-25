@@ -101,14 +101,21 @@
 .bmc-header {
     display: flex;
     align-items: center;
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 4px 6px;
     font-weight: 700;
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     margin-bottom: 0.5rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px dashed var(--border-sem-dashed);
+    white-space: nowrap;
+}
+
+.bmc-header .en-sub {
+    font-size: 0.62rem;
+    white-space: normal;
 }
 
 .bmc-header .icon {
