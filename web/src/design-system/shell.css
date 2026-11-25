@@ -27,6 +27,8 @@
   align-items: center;
   justify-content: center;
   overflow-x: auto;
+  background-color: var(--color-bg-desk);
+  background-image: var(--texture-noise);
 }
 
 .desk-viewport.is-zoomed {
@@ -172,6 +174,8 @@
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+  background-color: var(--color-bg-desk-alt);
+  background-image: var(--texture-noise);
 }
 
 .launcher-container {
