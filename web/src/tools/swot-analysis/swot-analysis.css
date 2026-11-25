@@ -13,6 +13,15 @@
   flex-direction: column;
   border: 1px solid var(--border-sem-inner);
   background: transparent;
+  transition: background-color 0.15s ease;
+}
+
+.swot-card:focus-within {
+  background-color: var(--color-focus-bg);
+}
+
+.swot-center-circle:focus-within {
+  background-color: var(--color-focus-bg);
 }
 
 .swot-card.area-s {

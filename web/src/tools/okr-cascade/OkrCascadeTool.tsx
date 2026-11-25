@@ -16,10 +16,21 @@ interface OkrCascadeToolProps {
   data: OkrCascadeData;
   projectName: string;
   colorMode: boolean;
+  justSaved?: boolean;
+  toolbarHidden?: boolean;
+  onToggleToolbar?: () => void;
   onChange: (next: OkrCascadeData) => void;
 }
 
-export function OkrCascadeTool({ data, projectName, colorMode, onChange }: OkrCascadeToolProps) {
+export function OkrCascadeTool({
+  data,
+  projectName,
+  colorMode,
+  justSaved,
+  toolbarHidden,
+  onToggleToolbar,
+  onChange,
+}: OkrCascadeToolProps) {
   const overall = computeOverallConfidence(data.objectives);
   const overallLevel = getConfidenceLevel(overall);
 
@@ -62,6 +73,7 @@ export function OkrCascadeTool({ data, projectName, colorMode, onChange }: OkrCa
       <CanvasHeader
         title="OKR 战略级联地图"
         enSubtitle="OKR Strategy Cascade Map"
+        justSaved={justSaved}
         metaFields={
           <>
             <div className="canvas-meta-field">
@@ -229,7 +241,7 @@ export function OkrCascadeTool({ data, projectName, colorMode, onChange }: OkrCa
         </section>
       </div>
 
-      <CanvasFooter projectName={projectName} />
+      <CanvasFooter projectName={projectName} toolbarHidden={toolbarHidden} onToggleToolbar={onToggleToolbar} />
     </WorksheetDoc>
   );
 }

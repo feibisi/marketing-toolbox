@@ -24,6 +24,9 @@ interface RoiCalculatorToolProps {
   data: RoiData;
   projectName: string;
   colorMode: boolean;
+  justSaved?: boolean;
+  toolbarHidden?: boolean;
+  onToggleToolbar?: () => void;
   onChange: (next: RoiData) => void;
 }
 
@@ -33,7 +36,15 @@ function parseNumericInput(raw: string): number {
   return Number.isFinite(num) ? Math.max(0, num) : 0;
 }
 
-export function RoiCalculatorTool({ data, projectName, colorMode, onChange }: RoiCalculatorToolProps) {
+export function RoiCalculatorTool({
+  data,
+  projectName,
+  colorMode,
+  justSaved,
+  toolbarHidden,
+  onToggleToolbar,
+  onChange,
+}: RoiCalculatorToolProps) {
   const m = computeRoiMetrics(data);
   const symbol = data.currency || '¥';
 
@@ -51,6 +62,7 @@ export function RoiCalculatorTool({ data, projectName, colorMode, onChange }: Ro
       <CanvasHeader
         title="ROI 计算器"
         enSubtitle="Marketing ROI Calculator"
+        justSaved={justSaved}
         metaFields={
           <>
             <div className="canvas-meta-field">
@@ -373,7 +385,7 @@ export function RoiCalculatorTool({ data, projectName, colorMode, onChange }: Ro
         </section>
       </div>
 
-      <CanvasFooter projectName={projectName} />
+      <CanvasFooter projectName={projectName} toolbarHidden={toolbarHidden} onToggleToolbar={onToggleToolbar} />
     </CalculatorBoard>
   );
 }

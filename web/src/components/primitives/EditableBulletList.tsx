@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Plus, X } from 'lucide-react';
 
 interface EditableBulletListProps {
@@ -13,22 +14,51 @@ export function EditableBulletList({
   addLabel = '新增一条',
   onChange,
 }: EditableBulletListProps) {
+  const inputRefs = useRef<Array<HTMLTextAreaElement | null>>([]);
+
   const handleItemChange = (index: number, value: string) => {
     const next = [...items];
     next[index] = value;
     onChange(next);
   };
 
-  const handleAdd = () => {
-    onChange([...items, '']);
+  const handleInsertAfter = (index: number) => {
+    const next = [...items.slice(0, index + 1), '', ...items.slice(index + 1)];
+    onChange(next);
+    requestAnimationFrame(() => {
+      inputRefs.current[index + 1]?.focus();
+    });
   };
 
-  const handleRemove = (index: number) => {
+  const handleAdd = () => {
+    const nextIdx = items.length;
+    onChange([...items, '']);
+    requestAnimationFrame(() => {
+      inputRefs.current[nextIdx]?.focus();
+    });
+  };
+
+  const handleRemove = (index: number, focusPrev = false) => {
     if (items.length <= 1) {
       onChange(['']);
       return;
     }
     onChange(items.filter((_, idx) => idx !== index));
+    if (focusPrev && index > 0) {
+      requestAnimationFrame(() => {
+        inputRefs.current[index - 1]?.focus();
+      });
+    }
+  };
+
+  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleInsertAfter(index);
+    } else if (e.key === 'Backspace' && items[index] === '' && items.length > 1) {
+      e.preventDefault();
+      handleRemove(index, true);
+    }
   };
 
   return (
@@ -39,12 +69,16 @@ export function EditableBulletList({
             •
           </span>
           <textarea
+            ref={(el) => {
+              inputRefs.current[idx] = el;
+            }}
             className="editable-list-input"
             rows={Math.max(1, Math.ceil((item.length || 1) / 26))}
             value={item}
             placeholder={placeholder}
             aria-label={`${placeholder} ${idx + 1}`}
             onChange={(e) => handleItemChange(idx, e.target.value)}
+            onKeyDown={(e) => handleKeyDown(idx, e)}
           />
           <button
             type="button"

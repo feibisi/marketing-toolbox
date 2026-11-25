@@ -32,14 +32,20 @@ interface ToolPageProps {
   projects: ProjectBundle[];
   activeBundle: ProjectBundle;
   theme: WorkbenchTheme;
-  zoomed: boolean;
+  zoomScale: number;
   colorMode: boolean;
   drawerOpen: boolean;
+  toolbarHidden: boolean;
+  justSaved: boolean;
+  toastMessage: string | null;
+  onShowToast: (msg: string) => void;
   onGoHome: () => void;
   onSelectProject: (projectId: string) => void;
   onCreateProject: () => void;
   onToggleDrawer: () => void;
-  onToggleZoom: () => void;
+  onToggleToolbarHidden: () => void;
+  onCycleZoom: () => void;
+  onResetZoom: () => void;
   onToggleColorMode: () => void;
   onCycleTheme: () => void;
   onSaveToolData: (
@@ -55,7 +61,7 @@ interface ToolPageProps {
 }
 
 export function ToolPage(props: ToolPageProps) {
-  const { toolId, activeBundle, colorMode, onSaveToolData } = props;
+  const { toolId, activeBundle, colorMode, onSaveToolData, onShowToast } = props;
   const tool = getToolById(toolId);
   const rawDocData = activeBundle.documents[toolId]?.data;
 
@@ -76,7 +82,7 @@ export function ToolPage(props: ToolPageProps) {
     return (
       <div style={{ padding: '3rem', textAlign: 'center' }}>
         <p>未找到该工具：{toolId}</p>
-        <button type="button" className="topbar-btn" onClick={props.onGoHome}>
+        <button type="button" className="mode-switch-btn" onClick={props.onGoHome}>
           返回首页
         </button>
       </div>
@@ -140,12 +146,38 @@ export function ToolPage(props: ToolPageProps) {
     if (toolId === 'swot-analysis') saveSwot(SWOT_SAMPLE_DATA);
     if (toolId === 'okr-cascade') saveOkr(OKR_SAMPLE_DATA);
     if (toolId === 'roi-calculator') saveRoi(ROI_SAMPLE_DATA);
+    onShowToast('已载入莫蒂奇示范样本');
   };
 
   const handleResetTool = () => {
+    if (!window.confirm('确定要清空并重置当前画布数据吗？')) return;
     if (toolId === 'swot-analysis') saveSwot(createDefaultSwotData(activeBundle.project.name));
     if (toolId === 'okr-cascade') saveOkr(createDefaultOkrData(activeBundle.project.owner));
     if (toolId === 'roi-calculator') saveRoi(createDefaultRoiData(activeBundle.project.name));
+    onShowToast('当前画布已重置');
+  };
+
+  const handleShareLink = () => {
+    const payload =
+      toolId === 'swot-analysis' ? swotData : toolId === 'okr-cascade' ? okrData : roiData;
+    try {
+      const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
+      if (encoded.length > 2600) {
+        onShowToast('数据量较大，请使用「导出 JSON」分享');
+        return;
+      }
+      const shareUrl = `${window.location.origin}${window.location.pathname}#/tool/${toolId}?share=${encoded}`;
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard
+          .writeText(shareUrl)
+          .then(() => onShowToast('分享链接已复制到剪贴板'))
+          .catch(() => window.prompt('复制分享链接：', shareUrl));
+      } else {
+        window.prompt('复制分享链接：', shareUrl);
+      }
+    } catch {
+      onShowToast('生成分享链接失败，请使用导出 JSON');
+    }
   };
 
   return (
@@ -154,20 +186,25 @@ export function ToolPage(props: ToolPageProps) {
       projects={props.projects}
       activeBundle={activeBundle}
       theme={props.theme}
-      zoomed={props.zoomed}
+      zoomScale={props.zoomScale}
       colorMode={colorMode}
       drawerOpen={props.drawerOpen}
+      toolbarHidden={props.toolbarHidden}
+      toastMessage={props.toastMessage}
+      onShowToast={onShowToast}
       onGoHome={props.onGoHome}
       onSelectProject={props.onSelectProject}
       onCreateProject={props.onCreateProject}
       onToggleDrawer={props.onToggleDrawer}
-      onToggleZoom={props.onToggleZoom}
+      onCycleZoom={props.onCycleZoom}
+      onResetZoom={props.onResetZoom}
       onToggleColorMode={props.onToggleColorMode}
       onCycleTheme={props.onCycleTheme}
       onLoadSample={handleLoadSample}
       onPrint={() => window.print()}
       onExportJson={props.onExportJson}
       onImportJson={props.onImportJson}
+      onShareLink={handleShareLink}
       onResetTool={handleResetTool}
       onAddEvidence={props.onAddEvidence}
       onUpdateEvidenceStatus={props.onUpdateEvidenceStatus}
@@ -178,6 +215,9 @@ export function ToolPage(props: ToolPageProps) {
           data={swotData}
           projectName={activeBundle.project.name}
           colorMode={colorMode}
+          justSaved={props.justSaved}
+          toolbarHidden={props.toolbarHidden}
+          onToggleToolbar={props.onToggleToolbarHidden}
           onChange={saveSwot}
         />
       ) : null}
@@ -187,6 +227,9 @@ export function ToolPage(props: ToolPageProps) {
           data={okrData}
           projectName={activeBundle.project.name}
           colorMode={colorMode}
+          justSaved={props.justSaved}
+          toolbarHidden={props.toolbarHidden}
+          onToggleToolbar={props.onToggleToolbarHidden}
           onChange={saveOkr}
         />
       ) : null}
@@ -196,6 +239,9 @@ export function ToolPage(props: ToolPageProps) {
           data={roiData}
           projectName={activeBundle.project.name}
           colorMode={colorMode}
+          justSaved={props.justSaved}
+          toolbarHidden={props.toolbarHidden}
+          onToggleToolbar={props.onToggleToolbarHidden}
           onChange={saveRoi}
         />
       ) : null}

@@ -15,6 +15,7 @@
 
 .desk-backdrop.launcher-desk {
   background-color: var(--color-bg-desk-alt);
+  background-image: var(--texture-noise);
 }
 
 /* Canvas Viewport — pure floating paper on warm desk, ZERO topbar */
@@ -32,9 +33,28 @@
   justify-content: flex-start;
 }
 
-.desk-viewport.is-zoomed .paper-sheet {
-  transform: scale(1.08);
-  transform-origin: top center;
+/* Toolbar Hidden Mode (Click footer Modiqi logo to toggle) */
+.floating-toolbar.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(20px);
+  pointer-events: none;
+}
+
+/* Quiet Toast Notification */
+.workbench-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+  background: rgba(26, 26, 26, 0.9);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
 }
 
 /* ============================================

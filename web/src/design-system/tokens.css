@@ -10,9 +10,9 @@
   --color-brand-blue-dark: #3d4c7f;
   --color-brand-accent: #d32f2f;
 
-  /* Warm Desk & Paper Palette */
+  /* Warm Desk & Paper Palette (Exact 16038: Home uses --color-bg-warm-light #f5f3f0) */
   --color-bg-desk: #e3dad3;
-  --color-bg-desk-alt: #eae8e3;
+  --color-bg-desk-alt: #f5f3f0;
   --color-bg-paper: #fdfbf7;
   --color-bg-white: #ffffff;
   --color-bg-subtle: #f8f6f3;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { EntityType } from './core/schema/entities';
 import type { EvidenceKind, EvidenceStatus, WorkbenchTheme, WorkspaceStore } from './core/schema/project';
 import { LocalProjectRepository } from './core/storage/localRepository';
@@ -9,29 +9,60 @@ import { ToolPage } from './pages/ToolPage';
 type AppRoute =
   | { view: 'home' }
   | { view: 'workflow'; workflowId: string }
-  | { view: 'tool'; toolId: string };
+  | { view: 'tool'; toolId: string; sharePayload?: string };
 
 function parseHashRoute(): AppRoute {
   const hash = window.location.hash.replace(/^#/, '');
-  const toolMatch = hash.match(/^\/tool\/([a-z0-9-]+)$/i);
-  if (toolMatch) return { view: 'tool', toolId: toolMatch[1] };
+  const [pathPart, queryPart] = hash.split('?');
+  const toolMatch = pathPart.match(/^\/tool\/([a-z0-9-]+)$/i);
+  if (toolMatch) {
+    const params = new URLSearchParams(queryPart || '');
+    const sharePayload = params.get('share') || undefined;
+    return { view: 'tool', toolId: toolMatch[1], sharePayload };
+  }
 
-  const wfMatch = hash.match(/^\/workflow\/([a-z0-9-]+)$/i);
+  const wfMatch = pathPart.match(/^\/workflow\/([a-z0-9-]+)$/i);
   if (wfMatch) return { view: 'workflow', workflowId: wfMatch[1] };
 
   return { view: 'home' };
 }
 
 const THEME_ORDER: WorkbenchTheme[] = ['classic', 'whiteboard', 'dark'];
+const ZOOM_LEVELS = [1, 1.25, 1.5];
+
+function loadSavedTheme(): WorkbenchTheme {
+  const raw = localStorage.getItem('modiqi_v3_theme');
+  if (raw === 'whiteboard' || raw === 'dark' || raw === 'classic') return raw;
+  return 'classic';
+}
 
 export function App() {
   const repo = useMemo(() => new LocalProjectRepository(), []);
   const [store, setStore] = useState<WorkspaceStore>(() => repo.loadStore());
   const [route, setRoute] = useState<AppRoute>(parseHashRoute);
-  const [theme, setTheme] = useState<WorkbenchTheme>('classic');
-  const [zoomed, setZoomed] = useState(false);
-  const [colorMode, setColorMode] = useState(false);
+  const [theme, setTheme] = useState<WorkbenchTheme>(loadSavedTheme);
+  const [zoomIndex, setZoomIndex] = useState(0);
+  const [colorMode, setColorMode] = useState<boolean>(() => localStorage.getItem('modiqi_v3_color_mode') === 'true');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [toolbarHidden, setToolbarHidden] = useState<boolean>(
+    () => localStorage.getItem('modiqi_v3_toolbar_hidden') === 'true',
+  );
+  const [justSaved, setJustSaved] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const saveTimerRef = useRef<number | null>(null);
+  const toastTimerRef = useRef<number | null>(null);
+
+  const showToast = useCallback((msg: string) => {
+    setToastMessage(msg);
+    if (toastTimerRef.current) window.clearTimeout(toastTimerRef.current);
+    toastTimerRef.current = window.setTimeout(() => setToastMessage(null), 2200);
+  }, []);
+
+  const flashSaved = useCallback(() => {
+    setJustSaved(true);
+    if (saveTimerRef.current) window.clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = window.setTimeout(() => setJustSaved(false), 1800);
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -44,10 +75,34 @@ export function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('modiqi_v3_theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem('modiqi_v3_color_mode', String(colorMode));
+  }, [colorMode]);
+
+  useEffect(() => {
+    localStorage.setItem('modiqi_v3_toolbar_hidden', String(toolbarHidden));
+  }, [toolbarHidden]);
 
   const activeBundle = store.projects[store.activeProjectId];
   const allProjects = Object.values(store.projects);
+
+  // Import shared URL payload if present
+  useEffect(() => {
+    if (route.view === 'tool' && route.sharePayload) {
+      try {
+        const decoded = JSON.parse(decodeURIComponent(atob(route.sharePayload))) as Record<string, unknown>;
+        repo.saveToolDocument(activeBundle.project.id, route.toolId, decoded);
+        setStore({ ...repo.loadStore() });
+        window.location.hash = `/tool/${route.toolId}`;
+        showToast('已加载分享的画布内容');
+      } catch {
+        showToast('分享链接解析失败');
+      }
+    }
+  }, [route, repo, activeBundle.project.id, showToast]);
 
   const navigateHome = () => {
     window.location.hash = '/';
@@ -63,6 +118,7 @@ export function App() {
 
   const handleSelectProject = (projectId: string) => {
     setStore({ ...repo.switchProject(projectId) });
+    showToast('已切换项目');
   };
 
   const handleCreateProject = () => {
@@ -70,6 +126,7 @@ export function App() {
     if (!name || !name.trim()) return;
     const brand = window.prompt('输入品牌/业务简称：', name.trim()) || name.trim();
     setStore({ ...repo.createProject(name.trim(), brand.trim()) });
+    showToast(`已新建项目：${name.trim()}`);
   };
 
   const handleSaveToolData = (
@@ -79,6 +136,7 @@ export function App() {
   ) => {
     repo.saveToolDocument(activeBundle.project.id, toolId, data, entitySync);
     setStore({ ...repo.loadStore() });
+    flashSaved();
   };
 
   const handleAddEvidence = (input: {
@@ -90,6 +148,7 @@ export function App() {
   }) => {
     repo.addEvidence(activeBundle.project.id, input);
     setStore({ ...repo.loadStore() });
+    showToast('已记入证据台账');
   };
 
   const handleUpdateEvidenceStatus = (evidenceId: string, status: EvidenceStatus, kind?: EvidenceKind) => {
@@ -102,7 +161,7 @@ export function App() {
     setStore({ ...repo.loadStore() });
   };
 
-  const handleExportJson = () => {
+  const handleExportJson = useCallback(() => {
     const json = repo.exportProjectJson(activeBundle.project.id);
     const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -111,12 +170,14 @@ export function App() {
     a.download = `${activeBundle.project.brand || 'modiqi-project'}.modiqi.json`;
     a.click();
     URL.revokeObjectURL(url);
-  };
+    showToast('已导出项目数据包 (.modiqi.json)');
+  }, [repo, activeBundle.project.id, activeBundle.project.brand, showToast]);
 
   const handleImportJson = (raw: string) => {
     try {
       const next = repo.importProjectJson(raw);
       setStore({ ...next });
+      showToast('项目数据包导入成功');
     } catch {
       window.alert('导入失败：请确认选择的是有效的 .modiqi.json v3 项目数据包。');
     }
@@ -127,6 +188,13 @@ export function App() {
     setTheme(THEME_ORDER[nextIdx]);
   };
 
+  const handleCycleZoom = () => {
+    setZoomIndex((idx) => (idx + 1) % ZOOM_LEVELS.length);
+  };
+
+  const handleResetZoom = useCallback(() => setZoomIndex(0), []);
+  const handleToggleColorMode = useCallback(() => setColorMode((v) => !v), []);
+
   if (route.view === 'tool') {
     return (
       <ToolPage
@@ -134,15 +202,21 @@ export function App() {
         projects={allProjects}
         activeBundle={activeBundle}
         theme={theme}
-        zoomed={zoomed}
+        zoomScale={ZOOM_LEVELS[zoomIndex]}
         colorMode={colorMode}
         drawerOpen={drawerOpen}
+        toolbarHidden={toolbarHidden}
+        justSaved={justSaved}
+        toastMessage={toastMessage}
+        onShowToast={showToast}
         onGoHome={navigateHome}
         onSelectProject={handleSelectProject}
         onCreateProject={handleCreateProject}
         onToggleDrawer={() => setDrawerOpen((v) => !v)}
-        onToggleZoom={() => setZoomed((v) => !v)}
-        onToggleColorMode={() => setColorMode((v) => !v)}
+        onToggleToolbarHidden={() => setToolbarHidden((v) => !v)}
+        onCycleZoom={handleCycleZoom}
+        onResetZoom={handleResetZoom}
+        onToggleColorMode={handleToggleColorMode}
         onCycleTheme={handleCycleTheme}
         onSaveToolData={handleSaveToolData}
         onExportJson={handleExportJson}

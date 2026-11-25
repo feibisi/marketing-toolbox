@@ -10,15 +10,27 @@ interface SwotAnalysisToolProps {
   data: SwotData;
   projectName: string;
   colorMode: boolean;
+  justSaved?: boolean;
+  toolbarHidden?: boolean;
+  onToggleToolbar?: () => void;
   onChange: (next: SwotData) => void;
 }
 
-export function SwotAnalysisTool({ data, projectName, colorMode, onChange }: SwotAnalysisToolProps) {
+export function SwotAnalysisTool({
+  data,
+  projectName,
+  colorMode,
+  justSaved,
+  toolbarHidden,
+  onToggleToolbar,
+  onChange,
+}: SwotAnalysisToolProps) {
   return (
     <FixedCanvasSheet size="a3-landscape" colorMode={colorMode}>
       <CanvasHeader
         title="SWOT 分析"
         enSubtitle="SWOT Analysis"
+        justSaved={justSaved}
         metaFields={
           <>
             <div className="canvas-meta-field">
@@ -124,7 +136,7 @@ export function SwotAnalysisTool({ data, projectName, colorMode, onChange }: Swo
         </div>
       </div>
 
-      <CanvasFooter projectName={projectName} />
+      <CanvasFooter projectName={projectName} toolbarHidden={toolbarHidden} onToggleToolbar={onToggleToolbar} />
     </FixedCanvasSheet>
   );
 }

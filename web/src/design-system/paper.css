@@ -189,6 +189,26 @@
   width: auto;
   opacity: 0.75;
   mix-blend-mode: multiply;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.canvas-footer-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.save-badge-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-status-good);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.save-badge-dot.is-visible {
+  opacity: 1;
 }
 
 [data-theme='dark'] .canvas-footer-logo {
