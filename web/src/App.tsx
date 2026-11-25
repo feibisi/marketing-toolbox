@@ -188,6 +188,11 @@ export function App() {
     setTheme(THEME_ORDER[nextIdx]);
   };
 
+  // On Home / Blueprint launcher pages, match 16038/index.html: instant Classic <-> Dark toggle
+  const handleToggleLauncherTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'classic' : 'dark'));
+  };
+
   const handleCycleZoom = () => {
     setZoomIndex((idx) => (idx + 1) % ZOOM_LEVELS.length);
   };
@@ -236,7 +241,7 @@ export function App() {
         activeBundle={activeBundle}
         theme={theme}
         drawerOpen={drawerOpen}
-        onCycleTheme={handleCycleTheme}
+        onCycleTheme={handleToggleLauncherTheme}
         onGoHome={navigateHome}
         onOpenTool={navigateTool}
         onSelectProject={handleSelectProject}
@@ -255,7 +260,7 @@ export function App() {
       activeBundle={activeBundle}
       theme={theme}
       drawerOpen={drawerOpen}
-      onCycleTheme={handleCycleTheme}
+      onCycleTheme={handleToggleLauncherTheme}
       onSelectProject={handleSelectProject}
       onCreateProject={handleCreateProject}
       onToggleDrawer={() => setDrawerOpen((v) => !v)}

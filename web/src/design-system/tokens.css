@@ -120,32 +120,47 @@
 /* Dark Theme */
 [data-theme='dark'] {
   --color-bg-desk: #121212;
-  --color-bg-desk-alt: #141414;
+  --color-bg-desk-alt: #121212;
   --color-bg-paper: #1e1e1e;
-  --color-bg-white: #2d2d2d;
-  --color-bg-subtle: #2a2a2a;
-  --color-bg-muted: #333333;
-  --color-bg-warm-light: #2a2a2a;
-  --color-bg-warm-medium: #252525;
-  --color-bg-warm-dark: #1f1f1f;
-  --color-bg-hover: #334155;
-  --color-bg-card-layer: #1e293b;
+  --color-bg-white: #1e1e1e;
+  --color-bg-subtle: #252525;
+  --color-bg-muted: #2c2c2c;
+  --color-bg-warm-light: #252525;
+  --color-bg-warm-medium: #2c2c2c;
+  --color-bg-warm-dark: #363636;
+  --color-bg-hover: #2d2d2d;
+  --color-bg-card-layer: #181818;
 
   --color-brand-primary: #ffffff;
-  --color-text-primary: #e0e0e0;
-  --color-text-secondary: #aaaaaa;
+  --color-text-primary: #e5e5e5;
+  --color-text-secondary: #a8a8a8;
   --color-text-tertiary: #888888;
-  --color-text-muted: #9ca3af;
+  --color-text-muted: #8a8a8a;
 
-  --color-border-strong: #a3a3a3;
-  --color-border-medium: #444444;
-  --color-border-light: #3a3a3a;
-  --border-sem-outer: #6b6b6b;
-  --border-sem-inner: #555555;
-  --border-sem-dashed: #555555;
-  --border-sem-input-hover: #525252;
+  --color-border-strong: #757575;
+  --color-border-medium: #3a3a3a;
+  --color-border-light: #303030;
+  --border-sem-outer: #555555;
+  --border-sem-inner: #3c3c3c;
+  --border-sem-dashed: #454545;
+  --border-sem-input-hover: #555555;
 
-  --color-focus-bg: rgba(59, 130, 246, 0.15);
+  /* Dark-mode safe semantic tints (never blinding light pastel) */
+  --color-semantic-strength: #1c2a22;
+  --color-semantic-weakness: #2c1e20;
+  --color-semantic-opportunity: #1c2430;
+  --color-semantic-threat: #2b2519;
+  --color-semantic-gain: #1b2a22;
+  --color-semantic-pain: #2c1e20;
+  --color-semantic-neutral: #262626;
+
+  --color-focus-bg: rgba(96, 165, 250, 0.14);
   --color-focus-border: #60a5fa;
-  --shadow-paper: 0 0 0 1px var(--border-sem-outer), 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  --shadow-paper: 0 0 0 1px #3a3a3a, 0 20px 25px -5px rgba(0, 0, 0, 0.45);
+  --texture-noise: none;
+  --texture-noise-subtle: none;
+}
+
+[data-theme='dark'] input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(0.85);
 }
