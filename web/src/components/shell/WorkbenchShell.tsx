@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import type { EvidenceKind, EvidenceStatus, ProjectBundle, WorkbenchTheme } from '../../core/schema/project';
 import type { ToolCatalogItem } from '../../core/catalog/workflows';
-import { TopBar } from './TopBar';
 import { FloatingToolbar } from './FloatingToolbar';
 import { RightDrawer } from './RightDrawer';
 
@@ -59,26 +58,17 @@ export function WorkbenchShell({
   return (
     <>
       <div className="desk-backdrop" aria-hidden="true" />
-      <TopBar
-        activeToolName={tool.name}
-        projects={projects}
-        activeProjectId={activeBundle.project.id}
-        drawerOpen={drawerOpen}
-        evidenceCount={activeBundle.evidences.length}
-        entityCount={activeBundle.entities.length}
-        onGoHome={onGoHome}
-        onSelectProject={onSelectProject}
-        onCreateProject={onCreateProject}
-        onToggleDrawer={onToggleDrawer}
-      />
 
       <div className={`desk-viewport ${zoomed ? 'is-zoomed' : ''}`}>{children}</div>
 
       <FloatingToolbar
         zoomed={zoomed}
         colorMode={colorMode}
+        drawerOpen={drawerOpen}
+        hasDrawerBadge={activeBundle.evidences.length > 0}
         theme={theme}
         onGoHome={onGoHome}
+        onToggleDrawer={onToggleDrawer}
         onToggleZoom={onToggleZoom}
         onToggleColorMode={onToggleColorMode}
         onCycleTheme={onCycleTheme}
@@ -92,8 +82,11 @@ export function WorkbenchShell({
       <RightDrawer
         open={drawerOpen}
         tool={tool}
+        projects={projects}
         bundle={activeBundle}
         onClose={onToggleDrawer}
+        onSelectProject={onSelectProject}
+        onCreateProject={onCreateProject}
         onAddEvidence={onAddEvidence}
         onUpdateEvidenceStatus={onUpdateEvidenceStatus}
         onDeleteEvidence={onDeleteEvidence}

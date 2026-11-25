@@ -1,189 +1,177 @@
-import { ArrowRight, Layers, Plus } from 'lucide-react';
-import { ALL_TOOLS, WORKFLOWS, type ToolCatalogItem } from '../core/catalog/workflows';
-import type { EvidenceKind, EvidenceStatus, ProjectBundle } from '../core/schema/project';
-import { TopBar } from '../components/shell/TopBar';
+import { useState } from 'react';
+import {
+  BarChart2,
+  Briefcase,
+  FileText,
+  FolderKanban,
+  LayoutGrid,
+  Monitor,
+  Moon,
+  Palette,
+  Rocket,
+  Smartphone,
+  Sun,
+  UserCheck,
+} from 'lucide-react';
+import { ALL_TOOLS, WORKFLOWS } from '../core/catalog/workflows';
+import type { EvidenceKind, EvidenceStatus, ProjectBundle, WorkbenchTheme } from '../core/schema/project';
+import { WorkflowMiniPreview } from '../components/primitives/MiniSvgPreviews';
 import { RightDrawer } from '../components/shell/RightDrawer';
 
 interface HomePageProps {
   projects: ProjectBundle[];
   activeBundle: ProjectBundle;
+  theme: WorkbenchTheme;
   drawerOpen: boolean;
+  onCycleTheme: () => void;
   onSelectProject: (projectId: string) => void;
   onCreateProject: () => void;
   onToggleDrawer: () => void;
-  onOpenTool: (toolId: string) => void;
+  onOpenWorkflow: (workflowId: string) => void;
   onAddEvidence: (input: { toolId: string; fieldPath: string; statement: string; kind: EvidenceKind; source: string }) => void;
   onUpdateEvidenceStatus: (evidenceId: string, status: EvidenceStatus, kind?: EvidenceKind) => void;
   onDeleteEvidence: (evidenceId: string) => void;
 }
 
-const CONTAINER_LABELS: Record<ToolCatalogItem['container'], string> = {
-  'fixed-canvas': '固定画布',
-  worksheet: '连续工作表',
-  calculator: '实时计算器',
-  report: '项目总报告',
-};
+function WorkflowCornerIcon({ id }: { id: string }) {
+  const props = { size: 22, className: 'paper-icon' };
+  switch (id) {
+    case 'strategy-alignment':
+      return <Rocket {...props} />;
+    case 'audience-positioning':
+      return <UserCheck {...props} />;
+    case 'brand-narrative':
+      return <Palette {...props} />;
+    case 'content-operations':
+      return <FileText {...props} />;
+    case 'go-to-market':
+      return <Briefcase {...props} />;
+    default:
+      return <BarChart2 {...props} />;
+  }
+}
 
 export function HomePage({
   projects,
   activeBundle,
+  theme,
   drawerOpen,
+  onCycleTheme,
   onSelectProject,
   onCreateProject,
   onToggleDrawer,
-  onOpenTool,
+  onOpenWorkflow,
   onAddEvidence,
   onUpdateEvidenceStatus,
   onDeleteEvidence,
 }: HomePageProps) {
-  const readyTools = ALL_TOOLS.filter((t) => t.status === 'ready');
-  const savedDocCount = Object.keys(activeBundle.documents).length;
+  const [widescreen, setWidescreen] = useState(false);
 
   return (
     <>
-      <div className="desk-backdrop home-desk" aria-hidden="true" />
-      <TopBar
-        projects={projects}
-        activeProjectId={activeBundle.project.id}
-        drawerOpen={drawerOpen}
-        evidenceCount={activeBundle.evidences.length}
-        entityCount={activeBundle.entities.length}
-        onGoHome={() => undefined}
-        onSelectProject={onSelectProject}
-        onCreateProject={onCreateProject}
-        onToggleDrawer={onToggleDrawer}
-      />
+      <div className="desk-backdrop launcher-desk" aria-hidden="true" />
 
-      <main className="home-container">
-        <section className="home-hero">
-          <div>
-            <div className="home-eyebrow">MODIQI MARKETING TOOLBOX · V3</div>
-            <h1>莫蒂奇数字营销工作台</h1>
-            <p>
-              围绕营销、业务转化与销售成交重构的纸张级专业工作台。打开纸面即可直接书写，底层 8 类企业营销实体与证据台账在后台静默联动，支持单色高清打印与多项目管理。
-            </p>
-          </div>
+      <div className="launcher-page">
+        <div className={`launcher-container ${widescreen ? 'is-widescreen' : ''}`}>
+          <header className="launcher-header">
+            <div className="hero-left">
+              <div className="title-row">
+                <h1 className="brand-title">莫蒂奇数字营销工作台</h1>
+                <span className="version-tag">{ALL_TOOLS.length} CORE TOOLS</span>
 
-          <div className="home-project-box">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.74rem', color: 'var(--color-text-tertiary)' }}>当前活动项目</span>
-              <button type="button" className="topbar-btn" onClick={onCreateProject}>
-                <Plus size={13} />
-                <span>新建</span>
-              </button>
+                <button
+                  type="button"
+                  className="header-icon-btn"
+                  onClick={onCycleTheme}
+                  title="切换主题"
+                  aria-label="切换主题"
+                >
+                  {theme === 'dark' ? <Moon size={14} /> : <Sun size={14} />}
+                </button>
+
+                <button
+                  type="button"
+                  className="header-icon-btn"
+                  onClick={() => setWidescreen((v) => !v)}
+                  title={widescreen ? '切换标准宽度' : '切换宽屏模式'}
+                  aria-label="切换宽屏模式"
+                >
+                  {widescreen ? <Smartphone size={14} /> : <Monitor size={14} />}
+                </button>
+
+                <button
+                  type="button"
+                  className="mode-switch-btn"
+                  onClick={() => onOpenWorkflow('all')}
+                  title="进入全部工具蓝图目录"
+                >
+                  <LayoutGrid size={14} />
+                  <span>工具蓝图</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="mode-switch-btn is-outline"
+                  onClick={onToggleDrawer}
+                  title="查看当前项目、证据与业务图谱"
+                >
+                  <FolderKanban size={14} />
+                  <span>{activeBundle.project.name}</span>
+                </button>
+              </div>
+              <p className="brand-subtitle">Modiqi Digital Marketing Workbench Collection · v3</p>
             </div>
-            <strong style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem' }}>{activeBundle.project.name}</strong>
-            <div style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
-              {activeBundle.project.objective || '直接进入任意画布开始记录，数据自动保存在本地浏览器。'}
+
+            <div className="hero-right">
+              <img src="./images/modiqi-logo-r.png" alt="Modiqi" className="hero-logo" />
             </div>
-            <div className="home-project-stats">
-              <div className="home-stat-item">
-                <span className="home-stat-num">{activeBundle.entities.length}</span>
-                <span className="home-stat-label">业务实体</span>
-              </div>
-              <div className="home-stat-item">
-                <span className="home-stat-num">{activeBundle.evidences.length}</span>
-                <span className="home-stat-label">证据条目</span>
-              </div>
-              <div className="home-stat-item">
-                <span className="home-stat-num">{savedDocCount}</span>
-                <span className="home-stat-label">已填画布</span>
-              </div>
+          </header>
+
+          <main className="launcher-grid">
+            {WORKFLOWS.map((wf) => {
+              const readyCount = wf.tools.filter((t) => t.status === 'ready').length;
+              return (
+                <button
+                  type="button"
+                  key={wf.id}
+                  className="stacked-card"
+                  onClick={() => onOpenWorkflow(wf.id)}
+                >
+                  <WorkflowCornerIcon id={wf.id} />
+                  <div className="mini-preview">
+                    <div className={`card-badge ${readyCount > 0 ? 'has-ready' : ''}`}>
+                      {readyCount > 0 ? `${wf.tools.length} 工具 · ${readyCount} 可用` : `${wf.tools.length} 工具`}
+                    </div>
+                    <WorkflowMiniPreview id={wf.id} />
+                  </div>
+                  <div className="card-meta">
+                    <h2 className="card-title">
+                      {wf.name}工作台 <span className="en-sub">({wf.enName})</span>
+                    </h2>
+                    <p className="card-desc">{wf.summary}</p>
+                  </div>
+                </button>
+              );
+            })}
+          </main>
+
+          <footer className="site-footer">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span>Modiqi Digital Marketing Workbench © 2026</span>
+              <span className="version-tag">v3.0-p0</span>
             </div>
-          </div>
-        </section>
-
-        <section>
-          <div className="home-section-head">
-            <h2>P0 标杆样板工具（立即可用 · 覆盖 3 类核心容器）</h2>
-            <span style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)' }}>
-              点击直接打开纸面编辑，无需前置配置
-            </span>
-          </div>
-
-          <div className="benchmark-grid">
-            {readyTools.map((tool) => (
-              <button
-                type="button"
-                key={tool.id}
-                className="tool-card is-ready"
-                onClick={() => onOpenTool(tool.id)}
-              >
-                <div className="tool-card-top">
-                  <span className="tool-card-tag ready">可直接使用 · {CONTAINER_LABELS[tool.container]}</span>
-                  <ArrowRight size={16} />
-                </div>
-                <h3>
-                  {tool.name}
-                  <span className="en-sub">{tool.enName}</span>
-                </h3>
-                <p>{tool.summary}</p>
-                <div style={{ fontSize: '0.74rem', color: 'var(--color-text-tertiary)' }}>
-                  自动同步实体：{tool.writesEntities.join(', ')}
-                </div>
-              </button>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <div className="home-section-head">
-            <h2>
-              <Layers size={18} style={{ verticalAlign: '-3px', marginRight: '0.45rem' }} />6 条核心工作流 × 30 个核心工具全景
-            </h2>
-            <span style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)' }}>
-              已交付 {readyTools.length} / {ALL_TOOLS.length}（P1/P2 按同套容器与 Schema 并行补齐）
-            </span>
-          </div>
-
-          <div className="workflow-list">
-            {WORKFLOWS.map((wf) => (
-              <div className="workflow-block" key={wf.id}>
-                <div className="workflow-block-head">
-                  <h3>
-                    0{wf.order}. {wf.name}
-                    <span className="en-sub">{wf.enName}</span>
-                  </h3>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)' }}>{wf.summary}</span>
-                </div>
-
-                <div className="workflow-tools-grid">
-                  {wf.tools.map((tool) => {
-                    const isReady = tool.status === 'ready';
-                    return (
-                      <button
-                        type="button"
-                        key={tool.id}
-                        disabled={!isReady}
-                        className={`tool-card ${isReady ? 'is-ready' : 'is-planned'}`}
-                        onClick={() => {
-                          if (isReady) onOpenTool(tool.id);
-                        }}
-                      >
-                        <div className="tool-card-top">
-                          <span className={`tool-card-tag ${isReady ? 'ready' : ''}`}>
-                            {isReady ? `${tool.phase} · 已上线` : `${tool.phase} · 排期中`}
-                          </span>
-                          <span style={{ fontSize: '0.72rem', color: 'var(--color-text-tertiary)' }}>
-                            {CONTAINER_LABELS[tool.container]}
-                          </span>
-                        </div>
-                        <h3>{tool.name}</h3>
-                        <p>{tool.summary}</p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
+            <div>业务实体 {activeBundle.entities.length} · 证据条目 {activeBundle.evidences.length}</div>
+          </footer>
+        </div>
+      </div>
 
       <RightDrawer
         open={drawerOpen}
+        projects={projects}
         bundle={activeBundle}
         onClose={onToggleDrawer}
+        onSelectProject={onSelectProject}
+        onCreateProject={onCreateProject}
         onAddEvidence={onAddEvidence}
         onUpdateEvidenceStatus={onUpdateEvidenceStatus}
         onDeleteEvidence={onDeleteEvidence}

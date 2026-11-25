@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check, Trash2, X } from 'lucide-react';
+import { Check, Plus, Trash2, X } from 'lucide-react';
 import { ENTITY_TYPE_META } from '../../core/schema/entities';
 import type { EvidenceKind, EvidenceStatus, ProjectBundle } from '../../core/schema/project';
 import type { ToolCatalogItem } from '../../core/catalog/workflows';
@@ -7,8 +7,11 @@ import type { ToolCatalogItem } from '../../core/catalog/workflows';
 interface RightDrawerProps {
   open: boolean;
   tool?: ToolCatalogItem;
+  projects: ProjectBundle[];
   bundle: ProjectBundle;
   onClose: () => void;
+  onSelectProject: (projectId: string) => void;
+  onCreateProject: () => void;
   onAddEvidence: (input: { toolId: string; fieldPath: string; statement: string; kind: EvidenceKind; source: string }) => void;
   onUpdateEvidenceStatus: (evidenceId: string, status: EvidenceStatus, kind?: EvidenceKind) => void;
   onDeleteEvidence: (evidenceId: string) => void;
@@ -25,8 +28,11 @@ const KIND_LABELS: Record<EvidenceKind, string> = {
 export function RightDrawer({
   open,
   tool,
+  projects,
   bundle,
   onClose,
+  onSelectProject,
+  onCreateProject,
   onAddEvidence,
   onUpdateEvidenceStatus,
   onDeleteEvidence,
@@ -39,9 +45,7 @@ export function RightDrawer({
 
   if (!open) return null;
 
-  const toolEvidences = tool
-    ? bundle.evidences.filter((ev) => ev.toolId === tool.id)
-    : bundle.evidences;
+  const toolEvidences = tool ? bundle.evidences.filter((ev) => ev.toolId === tool.id) : bundle.evidences;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,9 +66,27 @@ export function RightDrawer({
       <div className="drawer-backdrop" onClick={onClose} aria-hidden="true" />
       <aside className="workbench-drawer" aria-label="纸外工作台抽屉">
         <div className="drawer-header">
-          <h2>纸外工作台抽屉</h2>
-          <button type="button" className="toolbar-btn" onClick={onClose} aria-label="关闭抽屉">
-            <X size={16} />
+          <h2>项目与证据抽屉</h2>
+          <button type="button" className="header-icon-btn" onClick={onClose} aria-label="关闭抽屉">
+            <X size={15} />
+          </button>
+        </div>
+
+        <div className="drawer-project-bar">
+          <select
+            className="drawer-project-select"
+            aria-label="切换当前项目"
+            value={bundle.project.id}
+            onChange={(e) => onSelectProject(e.target.value)}
+          >
+            {projects.map((p) => (
+              <option key={p.project.id} value={p.project.id}>
+                {p.project.name}
+              </option>
+            ))}
+          </select>
+          <button type="button" className="header-icon-btn" onClick={onCreateProject} title="新建项目">
+            <Plus size={14} />
           </button>
         </div>
 
@@ -76,7 +98,7 @@ export function RightDrawer({
             className={`drawer-tab ${tab === 'evidence' ? 'is-active' : ''}`}
             onClick={() => setTab('evidence')}
           >
-            证据与校验 ({toolEvidences.length})
+            证据 ({toolEvidences.length})
           </button>
           <button
             type="button"
@@ -102,7 +124,7 @@ export function RightDrawer({
           {tab === 'evidence' ? (
             <>
               <form className="drawer-form" onSubmit={handleSubmit}>
-                <strong style={{ fontSize: '0.82rem' }}>新增证据 / 假设记录（不占用纸面）</strong>
+                <strong style={{ fontSize: '0.8rem' }}>新增证据 / 假设（不占用纸面）</strong>
                 <textarea
                   className="drawer-textarea"
                   rows={2}
@@ -123,14 +145,14 @@ export function RightDrawer({
                   </select>
                   <input
                     className="drawer-input"
-                    placeholder="关联字段（如 revenue）"
+                    placeholder="字段（如 revenue）"
                     value={fieldPath}
                     onChange={(e) => setFieldPath(e.target.value)}
                   />
                 </div>
                 <input
                   className="drawer-input"
-                  placeholder="来源说明或链接（事实类建议必填）"
+                  placeholder="来源说明或链接"
                   value={source}
                   onChange={(e) => setSource(e.target.value)}
                 />
@@ -140,8 +162,8 @@ export function RightDrawer({
               </form>
 
               {toolEvidences.length === 0 ? (
-                <p style={{ fontSize: '0.84rem', color: 'var(--color-text-tertiary)' }}>
-                  当前工具还没有单独挂载证据条目。你可以直接先在纸上写，随时在此补记依据来源。
+                <p style={{ fontSize: '0.82rem', color: 'var(--color-text-tertiary)' }}>
+                  当前工具暂无证据条目，可直接在纸上书写，随时在此补充来源。
                 </p>
               ) : (
                 toolEvidences.map((ev) => (
@@ -152,26 +174,26 @@ export function RightDrawer({
                         {ev.status !== 'confirmed' ? (
                           <button
                             type="button"
-                            className="toolbar-btn"
-                            title="人审确认为事实"
+                            className="header-icon-btn"
+                            title="确认为事实"
                             onClick={() => onUpdateEvidenceStatus(ev.id, 'confirmed', 'fact')}
                           >
-                            <Check size={14} />
+                            <Check size={13} />
                           </button>
                         ) : null}
                         <button
                           type="button"
-                          className="toolbar-btn danger"
+                          className="header-icon-btn"
                           title="删除"
                           onClick={() => onDeleteEvidence(ev.id)}
                         >
-                          <Trash2 size={14} />
+                          <Trash2 size={13} />
                         </button>
                       </div>
                     </div>
-                    <div style={{ fontSize: '0.86rem', lineHeight: 1.5 }}>{ev.statement}</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--color-text-tertiary)' }}>
-                      来源：{ev.source || '未填写'} · 状态：{ev.status === 'confirmed' ? '已确认' : '草稿'}
+                    <div style={{ fontSize: '0.84rem', lineHeight: 1.5 }}>{ev.statement}</div>
+                    <div style={{ fontSize: '0.73rem', color: 'var(--color-text-tertiary)' }}>
+                      来源：{ev.source || '未填写'} · {ev.status === 'confirmed' ? '已确认' : '草稿'}
                     </div>
                   </div>
                 ))
@@ -181,54 +203,40 @@ export function RightDrawer({
 
           {tab === 'graph' ? (
             <>
-              <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
-                你在画布上编辑的内容会自动在后台同步到以下核心业务实体，供下游画布和总报告复用。
+              <div style={{ fontSize: '0.78rem', color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
+                纸面编辑内容自动沉淀到以下核心业务实体，供同项目下游画布与总报告复用。
               </div>
               {bundle.entities.map((ent) => (
                 <div className="drawer-card" key={ent.id}>
                   <div className="drawer-card-head">
                     <span className="drawer-badge">{ENTITY_TYPE_META[ent.entityType].label}</span>
-                    <span style={{ fontSize: '0.72rem', color: 'var(--color-text-tertiary)' }}>v{ent.version}</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--color-text-tertiary)' }}>v{ent.version}</span>
                   </div>
-                  <strong style={{ fontSize: '0.88rem' }}>{ent.title}</strong>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)', lineHeight: 1.45 }}>
+                  <strong style={{ fontSize: '0.86rem' }}>{ent.title}</strong>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', lineHeight: 1.45 }}>
                     {ent.summary || '待补充摘要'}
                   </div>
                 </div>
               ))}
-
-              {bundle.decisions.length > 0 ? (
-                <>
-                  <strong style={{ fontSize: '0.82rem', marginTop: '0.4rem' }}>关键决策台账</strong>
-                  {bundle.decisions.map((dec) => (
-                    <div className="drawer-card" key={dec.id}>
-                      <strong style={{ fontSize: '0.86rem' }}>{dec.title}</strong>
-                      <div style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)' }}>{dec.decision}</div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--color-text-tertiary)' }}>
-                        拍板人：{dec.decidedBy || '未署名'} · {dec.decidedAt}
-                      </div>
-                    </div>
-                  ))}
-                </>
-              ) : null}
+              {bundle.decisions.map((dec) => (
+                <div className="drawer-card" key={dec.id}>
+                  <span className="drawer-badge">决策拍板</span>
+                  <strong style={{ fontSize: '0.84rem' }}>{dec.title}</strong>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>{dec.decision}</div>
+                </div>
+              ))}
             </>
           ) : null}
 
           {tab === 'copilot' ? (
             <div className="drawer-card">
-              <strong style={{ fontSize: '0.9rem' }}>AI 营销副驾（P4 接入池化网关）</strong>
-              <p style={{ margin: 0, fontSize: '0.83rem', lineHeight: 1.6, color: 'var(--color-text-secondary)' }}>
-                本抽屉已为 P4 留好独立位置，严守「不占纸面、不伪造事实」原则：
+              <strong style={{ fontSize: '0.88rem' }}>AI 营销副驾（P4 接入池化网关）</strong>
+              <p style={{ margin: 0, fontSize: '0.8rem', lineHeight: 1.6, color: 'var(--color-text-secondary)' }}>
+                AI 起草内容强制标为「待验证假设」，经人确认才进入正式报告事实。
               </p>
-              <ul style={{ margin: '0.25rem 0', paddingLeft: '1.1rem', fontSize: '0.82rem', lineHeight: 1.6 }}>
-                <li>结构化起草：按当前工具 Schema 输出建议，填入后强制标为「待验证假设」</li>
-                <li>逻辑挑刺评审：对照上游实体检查缺口、矛盾与未量化项</li>
-                <li>走集群池化网关并记录用量账本，不占用单机个人 OIDC 席位</li>
-              </ul>
               {tool ? (
-                <div style={{ fontSize: '0.76rem', color: 'var(--color-text-tertiary)', marginTop: '0.3rem' }}>
-                  当前工具实体绑定：读 [{tool.readsEntities.join(', ') || '无'}] → 写 [
-                  {tool.writesEntities.join(', ') || '无'}]
+                <div style={{ fontSize: '0.74rem', color: 'var(--color-text-tertiary)' }}>
+                  实体绑定：读 [{tool.readsEntities.join(', ')}] → 写 [{tool.writesEntities.join(', ')}]
                 </div>
               ) : null}
             </div>

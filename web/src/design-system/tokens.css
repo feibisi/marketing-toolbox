@@ -1,6 +1,6 @@
 /* ============================================
    MODIQI DESIGN SYSTEM v3 - TOKENS
-   莫蒂奇独立视觉规范：暖米桌布 + 象牙白纸张 + 单色打印优先
+   100% 还原原版暖桌、象牙纸张、精细灰阶边框与蓝图制图令牌
    ============================================ */
 
 :root {
@@ -8,11 +8,11 @@
   --color-brand-primary: #1a1a1a;
   --color-brand-blue: #4e609f;
   --color-brand-blue-dark: #3d4c7f;
-  --color-brand-accent: #c53030;
+  --color-brand-accent: #d32f2f;
 
   /* Warm Desk & Paper Palette */
   --color-bg-desk: #e3dad3;
-  --color-bg-desk-alt: #EAE8E3;
+  --color-bg-desk-alt: #eae8e3;
   --color-bg-paper: #fdfbf7;
   --color-bg-white: #ffffff;
   --color-bg-subtle: #f8f6f3;
@@ -20,28 +20,30 @@
   --color-bg-warm-light: #f5f3f0;
   --color-bg-warm-medium: #ebe8e4;
   --color-bg-warm-dark: #e0dcd7;
-  --color-bg-hover: #f0ede8;
+  --color-bg-hover: #f1f5f9;
+  --color-bg-card-layer: #f8fafc;
 
-  /* Ink & Text */
+  /* Text Colors */
   --color-text-primary: #1a1a1a;
-  --color-text-secondary: #555555;
-  --color-text-tertiary: #777777;
-  --color-text-muted: #8c8c8c;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #888888;
+  --color-text-muted: #999999;
 
-  /* Hairline & Paper Borders */
-  --border-sem-outer: #333333;
-  --border-sem-frame: #a3a3a3;
+  /* Semantic Hairline Borders (Exact v2 values) */
+  --color-border-strong: #333333;
+  --color-border-medium: #e5e7eb;
+  --color-border-light: #f3f4f6;
+  --border-sem-outer: #a3a3a3;
   --border-sem-inner: #d4d4d4;
-  --border-sem-dashed: #cfcac4;
-  --border-sem-light: #e7e3dd;
-  --border-sem-input-hover: #b8b3ac;
+  --border-sem-dashed: #dcdcdc;
+  --border-sem-input-hover: #d1d5db;
 
-  /* Focus (Modiqi restrained blue) */
-  --color-focus-bg: rgba(78, 96, 159, 0.07);
-  --color-focus-ring: rgba(78, 96, 159, 0.35);
-  --color-focus-border: #4e609f;
+  /* Focus */
+  --color-focus-bg: rgba(59, 130, 246, 0.08);
+  --color-focus-ring: rgba(59, 130, 246, 0.4);
+  --color-focus-border: #3b82f6;
 
-  /* Muted Semantic Colors (Optional Color Mode) */
+  /* Semantic Colors (Color Mode - muted warm pastels) */
   --color-semantic-strength: #e8f0e4;
   --color-semantic-weakness: #f5e6e4;
   --color-semantic-opportunity: #e4eaf0;
@@ -50,39 +52,37 @@
   --color-semantic-pain: #f2e4e4;
   --color-semantic-neutral: #f0eeeb;
 
-  /* Status Colors (Restrained) */
-  --color-status-good: #1f7a4c;
-  --color-status-good-bg: #edf7f1;
-  --color-status-warn: #a16207;
-  --color-status-warn-bg: #fef9e7;
-  --color-status-bad: #b91c1c;
+  /* Status Colors */
+  --color-status-good: #10b981;
+  --color-status-good-bg: #ecfdf5;
+  --color-status-warn: #f59e0b;
+  --color-status-warn-bg: #fffbeb;
+  --color-status-bad: #ef4444;
   --color-status-bad-bg: #fef2f2;
 
   /* Typography */
   --font-serif: 'Noto Serif SC', 'Songti SC', 'STSong', Georgia, serif;
-  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'SF Mono', 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+  --font-sans: 'Inter', 'Noto Sans SC', 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', 'Menlo', monospace;
 
-  /* Font Scale */
-  --font-size-xs: 0.72rem;
-  --font-size-sm: 0.8125rem;
+  /* Scale */
+  --font-size-xs: 0.65rem;
+  --font-size-sm: 0.75rem;
   --font-size-base: 0.9rem;
   --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
+  --font-size-lg: 1.1rem;
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.85rem;
-  --font-size-4xl: 2.15rem;
+  --font-size-3xl: 1.7rem;
+  --font-size-4xl: 2.2rem;
 
-  /* Spacing (8pt grid) */
+  /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
-  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
-  --space-10: 2.5rem;
   --space-12: 3rem;
 
   /* Radii & Shadows */
@@ -90,67 +90,62 @@
   --radius-md: 4px;
   --radius-lg: 8px;
   --radius-xl: 12px;
-  --shadow-sm: 0 1px 2px rgba(26, 26, 26, 0.06);
-  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.1), 0 2px 6px rgba(26, 26, 26, 0.06);
-  --shadow-paper: 0 4px 12px rgba(26, 26, 26, 0.09), 0 14px 32px rgba(26, 26, 26, 0.09);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-paper: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.1);
 
   /* Paper Ratios */
   --paper-a3-aspect: 420 / 297;
   --paper-a4-aspect: 210 / 297;
 
-  /* Noise Texture (self-contained inline SVG) */
-  --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
-  --texture-noise-subtle: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  /* Paper Grain */
+  --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  --texture-noise-subtle: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
 
-  /* Z-index */
-  --z-topbar: 200;
-  --z-drawer: 400;
-  --z-toolbar: 500;
+  --z-drawer: 900;
+  --z-toolbar: 1000;
 }
 
 /* Whiteboard Theme */
 [data-theme='whiteboard'] {
-  --color-bg-desk: #f1f3f5;
-  --color-bg-desk-alt: #f5f6f8;
+  --color-bg-desk: #f0f2f5;
+  --color-bg-desk-alt: #f0f2f5;
   --color-bg-paper: #ffffff;
-  --shadow-paper: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-paper: 0 4px 12px rgba(0, 0, 0, 0.08);
   --texture-noise: none;
   --texture-noise-subtle: none;
 }
 
 /* Dark Theme */
 [data-theme='dark'] {
-  --color-bg-desk: #141414;
-  --color-bg-desk-alt: #181818;
-  --color-bg-paper: #1f1f1f;
-  --color-bg-white: #2a2a2a;
-  --color-bg-subtle: #262626;
-  --color-bg-muted: #2e2e2e;
-  --color-bg-warm-light: #272727;
-  --color-bg-warm-medium: #303030;
-  --color-bg-warm-dark: #383838;
-  --color-bg-hover: #333333;
+  --color-bg-desk: #121212;
+  --color-bg-desk-alt: #141414;
+  --color-bg-paper: #1e1e1e;
+  --color-bg-white: #2d2d2d;
+  --color-bg-subtle: #2a2a2a;
+  --color-bg-muted: #333333;
+  --color-bg-warm-light: #2a2a2a;
+  --color-bg-warm-medium: #252525;
+  --color-bg-warm-dark: #1f1f1f;
+  --color-bg-hover: #334155;
+  --color-bg-card-layer: #1e293b;
 
-  --color-brand-primary: #f0f0f0;
-  --color-text-primary: #eaeaea;
-  --color-text-secondary: #b0b0b0;
-  --color-text-tertiary: #8c8c8c;
-  --color-text-muted: #767676;
+  --color-brand-primary: #ffffff;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #aaaaaa;
+  --color-text-tertiary: #888888;
+  --color-text-muted: #9ca3af;
 
-  --border-sem-outer: #757575;
-  --border-sem-frame: #5e5e5e;
-  --border-sem-inner: #444444;
-  --border-sem-dashed: #4a4a4a;
-  --border-sem-light: #353535;
-  --border-sem-input-hover: #666666;
+  --color-border-strong: #a3a3a3;
+  --color-border-medium: #444444;
+  --color-border-light: #3a3a3a;
+  --border-sem-outer: #6b6b6b;
+  --border-sem-inner: #555555;
+  --border-sem-dashed: #555555;
+  --border-sem-input-hover: #525252;
 
-  --color-focus-bg: rgba(120, 145, 220, 0.16);
-  --color-focus-border: #8fa4e0;
-  --shadow-paper: 0 0 0 1px #3a3a3a, 0 16px 32px rgba(0, 0, 0, 0.45);
-  --color-status-good: #4ade80;
-  --color-status-good-bg: rgba(34, 197, 94, 0.15);
-  --color-status-warn: #fbbf24;
-  --color-status-warn-bg: rgba(245, 158, 11, 0.15);
-  --color-status-bad: #f87171;
-  --color-status-bad-bg: rgba(239, 68, 68, 0.15);
+  --color-focus-bg: rgba(59, 130, 246, 0.15);
+  --color-focus-border: #60a5fa;
+  --shadow-paper: 0 0 0 1px var(--border-sem-outer), 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }

@@ -3,14 +3,22 @@ import type { EntityType } from './core/schema/entities';
 import type { EvidenceKind, EvidenceStatus, WorkbenchTheme, WorkspaceStore } from './core/schema/project';
 import { LocalProjectRepository } from './core/storage/localRepository';
 import { HomePage } from './pages/HomePage';
+import { WorkflowPage } from './pages/WorkflowPage';
 import { ToolPage } from './pages/ToolPage';
 
-function parseHashRoute(): { view: 'home' } | { view: 'tool'; toolId: string } {
+type AppRoute =
+  | { view: 'home' }
+  | { view: 'workflow'; workflowId: string }
+  | { view: 'tool'; toolId: string };
+
+function parseHashRoute(): AppRoute {
   const hash = window.location.hash.replace(/^#/, '');
-  const match = hash.match(/^\/tool\/([a-z0-9-]+)$/i);
-  if (match) {
-    return { view: 'tool', toolId: match[1] };
-  }
+  const toolMatch = hash.match(/^\/tool\/([a-z0-9-]+)$/i);
+  if (toolMatch) return { view: 'tool', toolId: toolMatch[1] };
+
+  const wfMatch = hash.match(/^\/workflow\/([a-z0-9-]+)$/i);
+  if (wfMatch) return { view: 'workflow', workflowId: wfMatch[1] };
+
   return { view: 'home' };
 }
 
@@ -19,7 +27,7 @@ const THEME_ORDER: WorkbenchTheme[] = ['classic', 'whiteboard', 'dark'];
 export function App() {
   const repo = useMemo(() => new LocalProjectRepository(), []);
   const [store, setStore] = useState<WorkspaceStore>(() => repo.loadStore());
-  const [route, setRoute] = useState(parseHashRoute);
+  const [route, setRoute] = useState<AppRoute>(parseHashRoute);
   const [theme, setTheme] = useState<WorkbenchTheme>('classic');
   const [zoomed, setZoomed] = useState(false);
   const [colorMode, setColorMode] = useState(false);
@@ -43,6 +51,10 @@ export function App() {
 
   const navigateHome = () => {
     window.location.hash = '/';
+  };
+
+  const navigateWorkflow = (workflowId: string) => {
+    window.location.hash = `/workflow/${workflowId}`;
   };
 
   const navigateTool = (toolId: string) => {
@@ -142,15 +154,38 @@ export function App() {
     );
   }
 
+  if (route.view === 'workflow') {
+    return (
+      <WorkflowPage
+        workflowId={route.workflowId}
+        projects={allProjects}
+        activeBundle={activeBundle}
+        theme={theme}
+        drawerOpen={drawerOpen}
+        onCycleTheme={handleCycleTheme}
+        onGoHome={navigateHome}
+        onOpenTool={navigateTool}
+        onSelectProject={handleSelectProject}
+        onCreateProject={handleCreateProject}
+        onToggleDrawer={() => setDrawerOpen((v) => !v)}
+        onAddEvidence={handleAddEvidence}
+        onUpdateEvidenceStatus={handleUpdateEvidenceStatus}
+        onDeleteEvidence={handleDeleteEvidence}
+      />
+    );
+  }
+
   return (
     <HomePage
       projects={allProjects}
       activeBundle={activeBundle}
+      theme={theme}
       drawerOpen={drawerOpen}
+      onCycleTheme={handleCycleTheme}
       onSelectProject={handleSelectProject}
       onCreateProject={handleCreateProject}
       onToggleDrawer={() => setDrawerOpen((v) => !v)}
-      onOpenTool={navigateTool}
+      onOpenWorkflow={navigateWorkflow}
       onAddEvidence={handleAddEvidence}
       onUpdateEvidenceStatus={handleUpdateEvidenceStatus}
       onDeleteEvidence={handleDeleteEvidence}
